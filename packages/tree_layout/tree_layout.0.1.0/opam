@@ -24,7 +24,7 @@ remove: ["ocamlfind" "remove" "tree_layout"]
 depends: [
   "ocaml" {>= "4.01.0"}
   "ocamlfind" {build}
-  "tyxml" {with-test}
+  "tyxml" {< "4.0" & with-test}
   "ocamlbuild" {build}
 ]
 synopsis: "Algorithms to layout trees in a pretty manner."
