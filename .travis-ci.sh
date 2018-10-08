@@ -17,6 +17,13 @@ esac
 echo OCAML_VERSION=$OCAML_VERSION
 echo OPAM_SWITCH=$OPAM_SWITCH
 
+openssl sha < /dev/null
+openssl sha1 < /dev/null
+openssl sha224 < /dev/null
+openssl sha256 < /dev/null
+openssl sha384 < /dev/null
+openssl sha512 < /dev/null
+
 echo pull req: $TRAVIS_PULL_REQUEST
 if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   curl -L https://github.com/$TRAVIS_REPO_SLUG/pull/$TRAVIS_PULL_REQUEST.diff -o pullreq.diff
