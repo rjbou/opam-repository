@@ -86,8 +86,12 @@ function build_one {
     type ocaml
     ls -lh `which ocamlc`
     set +x
-    opam install -t -vv $pkg
-    cat /home/travis/.opam/4.07.0/.opam-switch/build/opam-devel.2.0.1/_build/default/tests/fulltest-local.log
+    if [ "x$pkg" = "xopam-devel.2.0.1" ]; then
+      OPAMVERBOSE=3 opam install -t -vv $pkg
+      cat /home/travis/.opam/4.07.0/.opam-switch/build/opam-devel.2.0.1/_build/default/tests/fulltest-local.log
+    else
+      opam install -t -v $pkg
+    fi
     opam remove -a ${pkg%%.*}
     if [ "$depext" != "" ]; then
       case $TRAVIS_OS_NAME in
