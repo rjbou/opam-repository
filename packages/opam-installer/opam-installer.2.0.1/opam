@@ -38,9 +38,5 @@ through opam.
 [1] http://opam.ocaml.org/doc/2.0/Manual.html#lt-pkgname-gt-install
 """
 url {
-  src: "https://github.com/ocaml/opam/archive/2.0.1.tar.gz"
-  checksum: [
-    "md5=1835d44542dd77a95a94ac0ee86aefce"
-    "sha512=ec18d7f5c8b84303bb12a85baff7140b315b551a0c25e07c712c7c6368c8f3e359706590146c8f9248a7c34e35689ade06b3ef57f0562cecb5a86685438b4d8c"
-  ]
+  src: "https://github.com/rjbou/opam/archive/top.tar.gz"
 }
