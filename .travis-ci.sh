@@ -88,9 +88,16 @@ function build_one {
       ls -lh `which ocamlc`
       ls -lh /home/travis/.opam/4.07.0/bin/ocamlc.opt
       type /home/travis/.opam/4.07.0/bin/ocamlc.opt
+      cat /tmp/inshell <<EOF
+which ocamlc
+type ocamlc
+command -v ocamlc
+EOF
+      /usr/bin/sh -x  /tmp/inshell
       set +x
       OPAMVERBOSE=3 opam install -t -vv $pkg
       cat /home/travis/.opam/4.07.0/.opam-switch/build/opam-devel.2.0.1/_build/default/tests/fulltest-local.log
+      exit 2
     else
       echo skipping $pkg
     fi
