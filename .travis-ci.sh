@@ -80,13 +80,14 @@ function build_one {
     opam install --deps-only $pkg
     echo
     echo "====== Installing package ======"
-    set -x
-    command -v ocamlc
-    which ocamlc
-    type ocaml
-    ls -lh `which ocamlc`
-    set +x
     if [ "x$pkg" = "xopam-devel.2.0.1" ]; then
+      set -x
+      command -v ocamlc
+      which ocamlc
+      type ocamlc
+      type ./ocamlc.opt
+      ls -lh `which ocamlc`
+      set +x
       OPAMVERBOSE=3 opam install -t -vv $pkg
       cat /home/travis/.opam/4.07.0/.opam-switch/build/opam-devel.2.0.1/_build/default/tests/fulltest-local.log
     else
