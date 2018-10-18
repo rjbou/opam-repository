@@ -85,13 +85,14 @@ function build_one {
       command -v ocamlc
       which ocamlc
       type ocamlc
-      type ./ocamlc.opt
       ls -lh `which ocamlc`
+      ls -lh /home/travis/.opam/4.07.0/bin/ocamlc.opt
+      type /home/travis/.opam/4.07.0/bin/ocamlc.opt
       set +x
       OPAMVERBOSE=3 opam install -t -vv $pkg
       cat /home/travis/.opam/4.07.0/.opam-switch/build/opam-devel.2.0.1/_build/default/tests/fulltest-local.log
     else
-      opam install -t -v $pkg
+      echo skipping $pkg
     fi
     opam remove -a ${pkg%%.*}
     if [ "$depext" != "" ]; then
