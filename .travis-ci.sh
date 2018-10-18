@@ -80,7 +80,7 @@ function build_one {
     opam install --deps-only $pkg
     echo
     echo "====== Installing package ======"
-    opam install -t -v $pkg
+    opam install -t -vv $pkg
     opam remove -a ${pkg%%.*}
     if [ "$depext" != "" ]; then
       case $TRAVIS_OS_NAME in
