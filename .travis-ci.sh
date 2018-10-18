@@ -69,6 +69,7 @@ function build_one {
           false
       fi
   else
+    if [ "x$pkg" = "xopam-devel.2.0.1" ]; then
     echo "... package available."
     echo
     echo "====== External dependency handling ======"
@@ -80,7 +81,6 @@ function build_one {
     opam install --deps-only $pkg
     echo
     echo "====== Installing package ======"
-    if [ "x$pkg" = "xopam-devel.2.0.1" ]; then
       set -x
       command -v ocamlc
       which ocamlc
@@ -93,14 +93,11 @@ which ocamlc
 type ocamlc
 command -v ocamlc
 EOF
-      /usr/bin/sh -x  /tmp/inshell
+      /bin/sh -x  /tmp/inshell
       set +x
       OPAMVERBOSE=3 opam install -t -vv $pkg
-      cat /home/travis/.opam/$OCAML_VERSION/.opam-switch/build/opam-devel.2.0.1/_build/default/tests/fulltest-local.log
+      cat /home/travis/.opam/$OPAM_SWITCH/.opam-switch/build/opam-devel.2.0.1/_build/default/tests/fulltest-local.log
       exit 2
-    else
-      echo skipping $pkg
-    fi
     opam remove -a ${pkg%%.*}
     if [ "$depext" != "" ]; then
       case $TRAVIS_OS_NAME in
@@ -112,6 +109,9 @@ EOF
         brew remove $depext
         ;;
       esac
+    else
+      echo skipping $pkg
+    fi
     fi
   fi
 }
