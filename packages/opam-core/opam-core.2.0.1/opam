@@ -1,4 +1,5 @@
 opam-version: "2.0"
+version: "2.0.1"
 maintainer: "opam-devel@lists.ocaml.org"
 authors: [
   "Vincent Bernardoff <vb@luminar.eu.org>"
@@ -14,6 +15,11 @@ authors: [
 ]
 homepage: "https://opam.ocaml.org/"
 bug-reports: "https://github.com/ocaml/opam/issues"
+dev-repo: "git+https://github.com/ocaml/opam.git"
+build: [
+  ["./configure" "--disable-checks" "--prefix" prefix]
+  [make "%{name}%.install"]
+]
 depends: [
   "ocaml" {>= "4.02.3"}
   "base-unix"
@@ -23,12 +29,13 @@ depends: [
   "jbuilder" {build & >= "1.0+beta17"}
   "cppo" {build}
 ]
-conflicts: ["extlib-compat"]
-build: [
-  ["./configure" "--disable-checks" "--prefix" prefix]
-  [make "%{name}%.install"]
-]
-dev-repo: "git+https://github.com/ocaml/opam.git"
+conflicts: "extlib-compat"
+description:"""
+opam 2.0 development libraries
+
+Small standard library extensions, and generic system interaction modules used
+by opam.
+"""
 url {
   src: "https://github.com/ocaml/opam/archive/2.0.1.tar.gz"
   checksum: [
