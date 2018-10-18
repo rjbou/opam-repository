@@ -81,6 +81,7 @@ function build_one {
     echo
     echo "====== Installing package ======"
     opam install -t -vv $pkg
+    cat /home/travis/.opam/4.07.0/.opam-switch/build/opam-devel.2.0.1/_build/default/tests/fulltest-local.log
     opam remove -a ${pkg%%.*}
     if [ "$depext" != "" ]; then
       case $TRAVIS_OS_NAME in
