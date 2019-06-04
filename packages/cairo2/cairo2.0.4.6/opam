@@ -1,13 +1,30 @@
 opam-version: "2.0"
+name: "cairo2"
+version: "0.4.6"
+synopsis: "Binding to Cairo, a 2D Vector Graphics Library."
+description: """
+This is a binding to Cairo, a 2D graphics library with support for
+multiple output devices. Currently supported output targets include
+the X Window System, Quartz, Win32, image buffers, PostScript, PDF,
+and SVG file output."""
 maintainer: "Christophe.Troestler@umons.ac.be"
 authors: [
   "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
   "Pierre Hauweele <antegallya@gmail.com>"
 ]
-homepage: "http://forge.ocamlcore.org/projects/cairo/"
 license: "LGPL-3.0 with OCaml linking exception"
-dev-repo: "git+https://github.com/Chris00/ocaml-cairo.git"
+homepage: "http://forge.ocamlcore.org/projects/cairo/"
 bug-reports: "https://github.com/Chris00/ocaml-cairo/issues"
+depends: [
+  "conf-cairo" {build}
+  "graphics" {build}
+  "ocaml" {< "4.06"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+depopts: ["lablgtk"]
+available: os != "macos"
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -20,32 +37,10 @@ build: [
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
-remove: [["ocamlfind" "remove" "cairo2"]]
-depends: [
-  "ocaml" {< "4.06"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "conf-cairo" {build}
-  "graphics" {build}
-]
-depopts: ["lablgtk"]
-
-# The package does not build without Graphics,
-# which is not available by default on OS X.
-# Use cairo2 >= 0.5.
-available: os != "macos"
-synopsis: "Binding to Cairo, a 2D Vector Graphics Library."
-description: """
-This is a binding to Cairo, a 2D graphics library with support for
-multiple output devices. Currently supported output targets include
-the X Window System, Quartz, Win32, image buffers, PostScript, PDF,
-and SVG file output."""
-flags: light-uninstall
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "cairo2"]
+dev-repo: "git+https://github.com/Chris00/ocaml-cairo.git"
 url {
-  src:
-    "https://download.ocamlcore.org/cairo/cairo/0.4.6/cairo2-0.4.6.tar.gz"
+  src: "https://download.ocamlcore.org/cairo/cairo/0.4.6/cairo2-0.4.6.tar.gz"
   checksum: "md5=ad1f9a4eff1d60c2c6bb3c078cc716e9"
 }

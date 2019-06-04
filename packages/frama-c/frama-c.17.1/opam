@@ -1,114 +1,108 @@
 opam-version: "2.0"
 name: "frama-c"
-synopsis: "Platform dedicated to the analysis of source code written in C"
 version: "17.1"
+synopsis: "Platform dedicated to the analysis of source code written in C"
 maintainer: "francois.bobot@cea.fr"
 authors: [
-  "Michele Alberti"
-  "Thibaud Antignac"
-  "Gergö Barany"
-  "Patrick Baudin"
-  "Lionel Blatter"
-  "François Bobot"
-  "Richard Bonichon"
-  "Quentin Bouillaguet"
-  "David Bühler"
-  "Zakaria Chihani"
-  "Loïc Correnson"
-  "Julien Crétin"
-  "Pascal Cuoq"
-  "Zaynah Dargaye"
-  "Jean-Christophe Filliâtre"
-  "Philippe Herrmann"
-  "Florent Kirchner"
-  "Tristan Le Gall"
-  "Jean-Christophe Léchenet"
-  "Matthieu Lemerre"
-  "David Maison"
-  "Claude Marché"
   "André Maroneze"
-  "Melody Méaulle"
-  "Benjamin Monate"
-  "Yannick Moy"
   "Anne Pacalet"
-  "Valentin Perrelle"
-  "Guillaume Petiot"
-  "Virgile Prevosto"
   "Armand Puccetti"
-  "Muriel Roger"
+  "Benjamin Monate"
+  "Boris Yakobowski"
+  "Claude Marché"
+  "David Bühler"
+  "David Maison"
+  "Florent Kirchner"
+  "François Bobot"
+  "Gergö Barany"
+  "Guillaume Petiot"
+  "Jean-Christophe Filliâtre"
+  "Jean-Christophe Léchenet"
+  "Julien Crétin"
   "Julien Signoles"
   "Kostyantyn Vorobyov"
-  "Boris Yakobowski"
+  "Lionel Blatter"
+  "Loïc Correnson"
+  "Matthieu Lemerre"
+  "Melody Méaulle"
+  "Michele Alberti"
+  "Muriel Roger"
+  "Pascal Cuoq"
+  "Patrick Baudin"
+  "Philippe Herrmann"
+  "Quentin Bouillaguet"
+  "Richard Bonichon"
+  "Thibaud Antignac"
+  "Tristan Le Gall"
+  "Valentin Perrelle"
+  "Virgile Prevosto"
+  "Yannick Moy"
+  "Zakaria Chihani"
+  "Zaynah Dargaye"
 ]
-homepage: "http://frama-c.com/"
 license: "GNU Lesser General Public License version 2.1"
-dev-repo: "git+https://github.com/Frama-C/Frama-C-snapshot.git#latest"
-doc: "http://frama-c.com/download/user-manual-Chlorine-20180501.pdf"
-bug-reports: "https://bts.frama-c.com/"
 tags: [
-  "deductive"
-  "program verification"
-  "formal specification"
-  "automated theorem prover"
-  "interactive theorem prover"
+  "ACSL"
   "C"
-  "plugins"
   "abstract interpretation"
+  "automated theorem prover"
+  "dataflow analysis"
+  "deductive"
+  "formal specification"
+  "interactive theorem prover"
+  "plugins"
+  "program verification"
+  "runtime verification"
   "slicing"
   "weakest precondition"
-  "ACSL"
-  "dataflow analysis"
-  "runtime verification"
 ]
-
+homepage: "http://frama-c.com/"
+doc: "http://frama-c.com/download/user-manual-Chlorine-20180501.pdf"
+bug-reports: "https://bts.frama-c.com/"
+depends: [
+  "alt-ergo"
+  "conf-autoconf" {build}
+  "conf-gnomecanvas"
+  "conf-graphviz" {post}
+  "conf-gtksourceview"
+  "lablgtk" {>= "2.18.2"}
+  "ocaml" {>= "4.02.3" & < "4.08.0"}
+  "ocamlfind"
+  "ocamlgraph" {>= "1.8.8" & < "1.9~"}
+  "zarith"
+]
+depopts: [
+  "apron" {build}
+  "coq" {build}
+  "mlgmpidl" {build}
+  "why3" {build}
+  "yojson" {build}
+]
+conflicts: [
+  "coq" {< "8.4.6"}
+  "frama-c-base"
+  "frama-c-e-acsl"
+  "lablgtk" {< "2.18.2"}
+  "why3-base" {< "0.88"}
+  "why3-base" {>= "1.0.0"}
+]
 build: [
   ["autoconf"] {pinned}
-  ["./configure" "--prefix" prefix
-                 "--disable-gui" { !conf-gtksourceview:installed |
-                                   !conf-gnomecanvas:installed }
-                 "--mandir=%{man}%"
+  [
+    "./configure"
+    "--prefix"
+    prefix
+    "--disable-gui"
+      {!conf-gtksourceview:installed | !conf-gnomecanvas:installed}
+    "--mandir=%{man}%"
   ]
   [make "-j%{jobs}%"]
   [make "-C" "doc" "download"] {with-doc}
 ]
-
 install: [
   [make "install"]
   [make "-C" "doc" "install"] {with-doc}
 ]
-
-depends: [
-  "ocaml" { >= "4.02.3" & < "4.08.0" }
-  "ocamlgraph" { >= "1.8.8" & < "1.9~" }
-  "ocamlfind" # needed beyond build stage, used by -load-module
-  "zarith"
-  "conf-autoconf" { build }
-  "lablgtk" { >= "2.18.2" } #for ocaml >= 4.02.1
-  "conf-gtksourceview"
-  "conf-gnomecanvas"
-  "alt-ergo"
-  "conf-graphviz" { post }
-]
-
-depopts: [
-  "yojson" { build }
-  "coq" { build }
-  "why3" { build }
-  "mlgmpidl" { build }
-  "apron" { build }
-]
-
-conflicts: [
-  "why3-base" { < "0.88" } #for WP plug-in
-  "why3-base" { >= "1.0.0" } #for WP plug-in
-  "coq"      { < "8.4.6" } #for WP plug-in
-  "lablgtk" { < "2.18.2" } #for ocaml >= 4.02.1
-  "frama-c-e-acsl" #avoid mixing old releases of E-ACSL, it is already
-                   #distributed with this version of Frama-C
-  "frama-c-base"   #avoid mixing old releases of Frama-C, now that only the
-                   #'frama-c' package exists
-]
-
 messages: [
   "Yojson enables kernel option -json-compilation-database"
     {!yojson:installed}
@@ -123,6 +117,7 @@ messages: [
   "Note: the installed package altgr-ergo could prevent the installation of newer versions of Alt-Ergo"
     {altgr-ergo:installed & ocaml >= "4.04.0"}
 ]
+dev-repo: "git+https://github.com/Frama-C/Frama-C-snapshot.git#latest"
 url {
   src: "http://frama-c.com/download/frama-c-Chlorine-20180502.tar.gz"
   checksum: "md5=5c152f0859880d48f98377de59d6328a"

@@ -1,10 +1,23 @@
 opam-version: "2.0"
+name: "syslog-message"
+version: "0.0.1"
+synopsis: "Syslog Message Parser"
+description:
+  "This is a library for parsing and generating RFC 3164 compatible Syslog messages."
 maintainer: "Jochen Bartl <jochenbartl@mailbox.org>"
 authors: "Jochen Bartl <jochenbartl@mailbox.org>"
+license: "FreeBSD"
 homepage: "https://github.com/verbosemode/syslog-message"
 bug-reports: "https://github.com/verbosemode/syslog-message/issues"
-license: "FreeBSD"
-dev-repo: "git+https://github.com/verbosemode/syslog-message.git"
+depends: [
+  "astring"
+  "oasis" {build & >= "0.4"}
+  "ocaml" {>= "4.02.3"}
+  "ocamlfind" {build}
+  "ptime"
+  "qcheck" {with-test}
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
@@ -16,18 +29,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "syslog-message"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "astring"
-  "oasis" {build & >= "0.4"}
-  "ocamlfind" {build}
-  "ptime"
-  "qcheck" {with-test}
-]
-synopsis: "Syslog Message Parser"
-description:
-  "This is a library for parsing and generating RFC 3164 compatible Syslog messages."
-flags: light-uninstall
+dev-repo: "git+https://github.com/verbosemode/syslog-message.git"
 url {
   src: "https://github.com/verbosemode/syslog-message/archive/0.0.1.tar.gz"
   checksum: "md5=23646fb9778c9f46eef1a0d00799d8f5"

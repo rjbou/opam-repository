@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "dev@ocsigen.org"
-authors: "dev@ocsigen.org"
-homepage: "http://ocsigen.org/eliom/"
-bug-reports: "https://github.com/ocsigen/eliom/issues/"
-license: "LGPL-2.1 with OCaml linking exception"
-dev-repo: "git+https://github.com/ocsigen/eliom.git"
-build: [make]
-depends: [
-  "ocaml" {>= "4.02.2"}
-  "ocamlfind"
-  "deriving" {>= "0.6"}
-  "lwt" {>= "2.5.0" & < "3.0.0"}
-  "ppx_deriving"
-  "ppx_tools" {>= "0.99.3"}
-  "js_of_ocaml" {>= "2.8.2" & < "3.0"}
-  "tyxml" {>= "4.0.0" & < "4.3"}
-  "ocsigenserver" {>= "2.8"}
-  "ipaddr" {>= "2.1"}
-  "reactiveData" {>= "0.2.1"}
-  ("dbm" | "sqlite3")
-  "base-bytes"
-]
+name: "eliom"
+version: "6.1.0"
 synopsis: "Client/server Web framework"
 description: """
 Eliom is a framework for implementing client/server Web
@@ -31,6 +11,28 @@ compile-time. Eliom allows implementing the whole application as a
 single program that includes both the client and the server code. We
 use a syntax extension to distinguish between the two sides. The
 client-side code is compiled to JS using Ocsigen Js_of_ocaml."""
+maintainer: "dev@ocsigen.org"
+authors: "dev@ocsigen.org"
+license: "LGPL-2.1 with OCaml linking exception"
+homepage: "http://ocsigen.org/eliom/"
+bug-reports: "https://github.com/ocsigen/eliom/issues/"
+depends: [
+  "base-bytes"
+  ("dbm" | "sqlite3")
+  "deriving" {>= "0.6"}
+  "ipaddr" {>= "2.1"}
+  "js_of_ocaml" {>= "2.8.2" & < "3.0"}
+  "lwt" {>= "2.5.0" & < "3.0.0"}
+  "ocaml" {>= "4.02.2"}
+  "ocamlfind"
+  "ocsigenserver" {>= "2.8"}
+  "ppx_deriving"
+  "ppx_tools" {>= "0.99.3"}
+  "reactiveData" {>= "0.2.1"}
+  "tyxml" {>= "4.0.0" & < "4.3"}
+]
+build: make
+dev-repo: "git+https://github.com/ocsigen/eliom.git"
 url {
   src: "https://github.com/ocsigen/eliom/archive/6.1.0.tar.gz"
   checksum: "md5=e3fb8dead2b427a3da5a240294c27bea"

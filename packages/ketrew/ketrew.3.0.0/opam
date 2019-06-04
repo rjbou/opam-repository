@@ -1,15 +1,48 @@
 opam-version: "2.0"
+name: "ketrew"
+version: "3.0.0"
+synopsis: "Ketrew is a workflow engine"
+description:
+  "Ketrew keeps track of complex experimental computationally heavy workflows."
 maintainer: "seb@mondet.org"
-authors : [
-  "Sebastien Mondet <seb@mondet.org>"
-  "Leonid Rozenberg <leonidr@gmail.com>"
+authors: [
   "Arun Ahuja <aahuja11@gmail.com>"
-  "Jeff Hammerbacher <jeff.hammerbacher@gmail.com>"
   "Isaac Hodes <isaachodes@gmail.com>"
+  "Jeff Hammerbacher <jeff.hammerbacher@gmail.com>"
+  "Leonid Rozenberg <leonidr@gmail.com>"
+  "Sebastien Mondet <seb@mondet.org>"
 ]
 homepage: "http://www.hammerlab.org/docs/ketrew/master/index.html"
-dev-repo: "git+https://github.com/hammerlab/ketrew.git"
 bug-reports: "https://github.com/hammerlab/ketrew/issues"
+depends: [
+  "cmdliner"
+  "cohttp" {>= "0.21.0" & < "0.99"}
+  "conduit"
+  "docout"
+  "js_of_ocaml" {>= "2.6" & < "3.0"}
+  "lwt" {< "3.0.0"}
+  "nonstd"
+  "ocaml" {>= "4.02.2" & < "4.04.0"}
+  "ocamlfind"
+  "ocamlify"
+  "omake" {= "0.9.8.6-0.rc1"}
+  "ppx_deriving"
+  "ppx_deriving_yojson" {>= "3.0"}
+  "pvem"
+  "pvem_lwt_unix"
+  "reactiveData" {>= "0.2"}
+  "sexplib" {< "v0.13"}
+  "sosa"
+  "trakeva" {>= "0.1.0"}
+  "tyxml" {>= "4.0.0"}
+  "uri"
+  "yojson"
+]
+depopts: ["postgresql" "sqlite3"]
+conflicts: [
+  "sexplib" {= "v0.9.0"}
+]
+flags: light-uninstall
 install: [
   ["omake"]
   ["omake" "install" "BINDIR=%{bin}%"]
@@ -19,40 +52,7 @@ remove: [
   ["ocamlfind" "remove" "ketrew_pure"]
   ["rm" "-f" "%{bin}%/ketrew"]
 ]
-depends: [
-  "ocaml" {>= "4.02.2" & < "4.04.0"}
-  "omake" {= "0.9.8.6-0.rc1"}
-  "ocamlfind"
-  "ocamlify"
-  "trakeva" {>= "0.1.0"}
-  "sosa"
-  "nonstd"
-  "docout"
-  "pvem"
-  "pvem_lwt_unix"
-  "cmdliner"
-  "yojson"
-  "uri"
-  "ppx_deriving"
-  "ppx_deriving_yojson" {>= "3.0"}
-  "cohttp" {>= "0.21.0" & < "0.99"}
-  "lwt" {< "3.0.0"}
-  "conduit"
-  "js_of_ocaml" {>= "2.6" & < "3.0"}
-  "tyxml" {>= "4.0.0"}
-  "reactiveData" {>= "0.2"}
-  "sexplib" {< "v0.13"}
-]
-depopts: [
-  "sqlite3" "postgresql"
-]
-conflicts: [
-  "sexplib" {= "v0.9.0"}
-]
-synopsis: "Ketrew is a workflow engine"
-description:
-  "Ketrew keeps track of complex experimental computationally heavy workflows."
-flags: light-uninstall
+dev-repo: "git+https://github.com/hammerlab/ketrew.git"
 url {
   src: "https://github.com/hammerlab/ketrew/archive/ketrew.3.0.0.tar.gz"
   checksum: "md5=75c53c767c98571488b542fe5337b7dd"

@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "paurkedal@gmail.com"
-authors: ["Petter A. Urkedal <paurkedal@gmail.com>"]
-homepage: "https://github.com/paurkedal/ppx_regexp"
-bug-reports: "https://github.com/paurkedal/ppx_regexp/issues"
-dev-repo: "git+https://github.com/paurkedal/ppx_regexp.git"
-license: "LGPL-3 with OCaml linking exception"
-build: ["jbuilder" "build" "--root" "." "-j" jobs "@install"]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "ocaml-migrate-parsetree"
-  "re" {< "1.7.2~"}
-  "ppx_metaquot" {build}
-  "topkg-jbuilder" {build}
-]
+name: "ppx_regexp"
+version: "0.3.0"
 synopsis: "Matching Regular Expressions with OCaml Patterns"
 description: """
 This syntax extension turns
@@ -30,6 +17,21 @@ variables using the syntax `(?<var>...)`.  The type of `var` will be
 `string` if a match is of the groups is guaranteed given a match of the
 whole pattern, and `string option` if the variable is bound to or nested
 below an optionally matched group."""
+maintainer: "paurkedal@gmail.com"
+authors: "Petter A. Urkedal <paurkedal@gmail.com>"
+license: "LGPL-3 with OCaml linking exception"
+homepage: "https://github.com/paurkedal/ppx_regexp"
+bug-reports: "https://github.com/paurkedal/ppx_regexp/issues"
+depends: [
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+  "ocaml-migrate-parsetree"
+  "ppx_metaquot" {build}
+  "re" {< "1.7.2~"}
+  "topkg-jbuilder" {build}
+]
+build: ["jbuilder" "build" "--root" "." "-j" jobs "@install"]
+dev-repo: "git+https://github.com/paurkedal/ppx_regexp.git"
 url {
   src:
     "https://github.com/paurkedal/ppx_regexp/releases/download/v0.3.0/ppx_regexp-0.3.0.tbz"

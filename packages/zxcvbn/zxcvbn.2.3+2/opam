@@ -1,28 +1,25 @@
 opam-version: "2.0"
+name: "zxcvbn"
+version: "2.3+2"
+synopsis: "Bindings for the zxcvbn password strength estimation library"
+description:
+  "This library provides functions to estimate the strength of a password."
 maintainer: "Cryptosense <opensource@cryptosense.com>"
 authors: "Nathan Rebours <nathan.p.rebours@gmail.com>"
-homepage: "https://github.com/cryptosense/ocaml-zxcvbn"
-bug-reports: "https://github.com/cryptosense/ocaml-zxcvbn/issues"
 license: "BSD-2"
-dev-repo:  "git+https://github.com/cryptosense/ocaml-zxcvbn.git"
+tags: "org:cryptosense"
+homepage: "https://github.com/cryptosense/ocaml-zxcvbn"
 doc: "https://cryptosense.github.io/ocaml-zxcvbn/doc"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
-run-test: [
-  ["dune" "runtest" "-p" name "-j" jobs]
-]
+bug-reports: "https://github.com/cryptosense/ocaml-zxcvbn/issues"
 depends: [
   "dune" {build & >= "1.4.0"}
   "ocaml" {>= "4.04.0"}
   "ounit" {with-test}
   "ppx_deriving" {>= "4.0" & < "5.0"}
 ]
-tags: ["org:cryptosense"]
-synopsis: "Bindings for the zxcvbn password strength estimation library"
-description: """
-This library provides functions to estimate the strength of a password.
-"""
+build: ["dune" "build" "-p" name "-j" jobs]
+run-test: ["dune" "runtest" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/cryptosense/ocaml-zxcvbn.git"
 url {
   src:
     "https://github.com/cryptosense/ocaml-zxcvbn/releases/download/v2.3%2B2/zxcvbn-v2.3.2.tbz"

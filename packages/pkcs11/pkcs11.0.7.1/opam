@@ -1,11 +1,35 @@
 opam-version: "2.0"
+name: "pkcs11"
+version: "0.7.1"
+synopsis: "Bindings to the PKCS#11 cryptographic API"
+description: """
+This library contains ctypes bindings to the PKCS#11 API.
+
+This API is used by smartcards and Hardware Security Modules to perform
+cryptographic operations such as signature or encryption."""
 maintainer: "Etienne Millon <etienne@cryptosense.com>"
 authors: "Etienne Millon <etienne@cryptosense.com>"
-homepage: "https://github.com/cryptosense/pkcs11"
-bug-reports: "https://github.com/cryptosense/pkcs11/issues"
 license: "BSD-2"
-dev-repo: "git+https://github.com/cryptosense/pkcs11.git"
+tags: "org:cryptosense"
+homepage: "https://github.com/cryptosense/pkcs11"
 doc: "https://cryptosense.github.io/pkcs11/doc"
+bug-reports: "https://github.com/cryptosense/pkcs11/issues"
+depends: [
+  "asn1-combinators" {< "0.2.0"}
+  "ctypes" {>= "0.6.0"}
+  "ctypes-foreign" {>= "0.4.0"}
+  "hex" {>= "1.0.0"}
+  "key-parsers" {>= "0.5.0" & != "0.6.0"}
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "ppx_deriving" {>= "4.0"}
+  "ppx_deriving_yojson" {>= "3.0"}
+  "topkg" {build}
+]
+depopts: ["cmdliner"]
+available: os != "macos"
 build: [
   [
     "ocaml"
@@ -29,31 +53,7 @@ build: [
   ] {with-test}
   ["ocaml" "pkg/pkg.ml" "test"] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "asn1-combinators" {< "0.2.0"}
-  "ctypes" {>= "0.6.0"}
-  "ctypes-foreign" {>= "0.4.0"}
-  "hex" {>= "1.0.0"}
-  "key-parsers" {>= "0.5.0" & != "0.6.0"}
-  "ppx_deriving" {>= "4.0"}
-  "ppx_deriving_yojson" {>= "3.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "topkg" {build}
-  "ounit" {with-test}
-]
-depopts: [
-  "cmdliner"
-]
-tags: ["org:cryptosense"]
-available: os != "macos"
-synopsis: "Bindings to the PKCS#11 cryptographic API"
-description: """
-This library contains ctypes bindings to the PKCS#11 API.
-
-This API is used by smartcards and Hardware Security Modules to perform
-cryptographic operations such as signature or encryption."""
+dev-repo: "git+https://github.com/cryptosense/pkcs11.git"
 url {
   src:
     "https://github.com/cryptosense/pkcs11/releases/download/v0.7.1/pkcs11-0.7.1.tbz"

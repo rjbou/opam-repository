@@ -1,20 +1,22 @@
 opam-version: "2.0"
+name: "camlp5"
+version: "6.15"
+synopsis: "Preprocessor-pretty-printer of OCaml"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: ["Daniel de Rauglaudre"]
-homepage: "http://pauillac.inria.fr/~ddr/camlp5"
+authors: "Daniel de Rauglaudre"
 license: "BSD-3-Clause"
+homepage: "http://pauillac.inria.fr/~ddr/camlp5"
+doc: "http://camlp5.gforge.inria.fr/doc/htmlc/"
+bug-reports: "mailto:daniel.de_rauglaudre@inria.fr"
+depends: [
+  "ocaml" {>= "4.02.0" & <= "4.03.0"}
+]
 build: [
   ["./configure" "--prefix" prefix "-libdir" lib "-mandir" man]
   [make "world.opt"]
 ]
-bug-reports: "mailto:daniel.de_rauglaudre@inria.fr"
-dev-repo: "git://scm.gforge.inria.fr/camlp5/camlp5.git"
-doc: "http://camlp5.gforge.inria.fr/doc/htmlc/"
 install: [make "install"]
-synopsis: "Preprocessor-pretty-printer of OCaml"
-depends: [
-  "ocaml" {>= "4.02.0" & <= "4.03.0"}
-]
+dev-repo: "git://scm.gforge.inria.fr/camlp5/camlp5.git"
 extra-files: ["camlp5.install" "md5=b16bcaf28bfb364236b2181fb50a6564"]
 url {
   src: "http://camlp5.gforge.inria.fr/distrib/src/camlp5-6.15.tgz"

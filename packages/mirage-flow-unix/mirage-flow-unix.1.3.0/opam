@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer:    "thomas@gazagnaire.org"
-homepage:      "https://github.com/mirage/mirage-flow"
-bug-reports:   "https://github.com/mirage/mirage-flow/issues"
-dev-repo: "git+https://github.com/mirage/mirage-flow.git"
-doc:           "https://mirage.github.io/mirage-flow/"
-authors:       ["Thomas Gazagnaire" "Dave Scott"]
-tags:          [ "org:mirage"]
-license:       "ISC"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest"] {with-test}
-]
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta7"}
-  "fmt"
-  "mirage-flow" {>= "1.3.0"}
-  "mirage-flow-lwt" {>= "1.3.0"}
-  "lwt"
-  "cstruct" {>= "2.3.0"}
-  "alcotest" {with-test}
-]
+name: "mirage-flow-unix"
+version: "1.3.0"
 synopsis: "Flow implementations and combinators for MirageOS"
 description: """
 This repo contains generic operations over Mirage `FLOW` implementations.
@@ -33,6 +11,29 @@ Please consult [the API documentation](https://mirage.github.io/mirage-flow/inde
 
 In a top-level like utop:
 ```ocaml"""
+maintainer: "thomas@gazagnaire.org"
+authors: ["Dave Scott" "Thomas Gazagnaire"]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-flow"
+doc: "https://mirage.github.io/mirage-flow/"
+bug-reports: "https://github.com/mirage/mirage-flow/issues"
+depends: [
+  "alcotest" {with-test}
+  "cstruct" {>= "2.3.0"}
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta7"}
+  "lwt"
+  "mirage-flow" {>= "1.3.0"}
+  "mirage-flow-lwt" {>= "1.3.0"}
+  "ocaml"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest"] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/mirage-flow.git"
 url {
   src:
     "https://github.com/mirage/mirage-flow/releases/download/v1.3.0/mirage-flow-1.3.0.tbz"

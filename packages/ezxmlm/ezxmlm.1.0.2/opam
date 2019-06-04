@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: [ "Anil Madhavapeddy" ]
-license: "ISC"
-
-build: [
-  [ "jbuilder" "subst" "-p" name] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "xmlm" {>= "1.1.0"}
-]
-tags: [ "org:mirage" "org:ocamllabs" ]
-dev-repo: "git+https://github.com/avsm/ezxmlm.git"
-homepage: "https://github.com/avsm/ezxmlm"
-bug-reports: "https://github.com/avsm/ezxmlm/issues"
+name: "ezxmlm"
+version: "1.0.2"
 synopsis: "Combinators to use with xmlm for parsing and selection"
 description: """
 An "easy" interface on top of the Xmlm [1] library.  This version provides more
@@ -33,6 +17,22 @@ if you decide to switch over.
 * Source Code: <https://github.com/avsm/ezxmlm>
 * Discussion: <https://discuss.ocaml.org> in the Ecosystem category
 * Bugs: <https://github.com/avsm/ezxmlm/issues>"""
+maintainer: "anil@recoil.org"
+authors: "Anil Madhavapeddy"
+license: "ISC"
+tags: ["org:mirage" "org:ocamllabs"]
+homepage: "https://github.com/avsm/ezxmlm"
+bug-reports: "https://github.com/avsm/ezxmlm/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta9"}
+  "ocaml" {>= "4.02.3"}
+  "xmlm" {>= "1.1.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/avsm/ezxmlm.git"
 url {
   src:
     "https://github.com/avsm/ezxmlm/releases/download/v1.0.2/ezxmlm-1.0.2.tbz"

@@ -1,12 +1,6 @@
 opam-version: "2.0"
-maintainer: "Adelyn Breedlove <tenseiken595@gmail.com>"
-authors: "Adelyn Breedlove <tenseiken595@gmail.com>"
-license: "MIT"
-homepage: "https://gitlab.com/Mishio595/disml"
-doc: "https://mishio595.gitlab.io/disml/"
-dev-repo: "git+https://gitlab.com/Mishio595/disml"
-bug-reports: "https://gitlab.com/Mishio595/disml/issues"
-tags: ["discord"]
+name: "disml"
+version: "0.2.5"
 synopsis: "An OCaml library for interfacing with the Discord API"
 description: """
 Dis.ml is a library that provides a high-level interface to the Discord API.
@@ -15,15 +9,21 @@ Key features include:
 * Deserialization of Discord objects to record types with related helper methods
 * Automatic rate-limiting
 
-For examples, see `/bin` in the git repo.
-"""
+For examples, see `/bin` in the git repo."""
+maintainer: "Adelyn Breedlove <tenseiken595@gmail.com>"
+authors: "Adelyn Breedlove <tenseiken595@gmail.com>"
+license: "MIT"
+tags: "discord"
+homepage: "https://gitlab.com/Mishio595/disml"
+doc: "https://mishio595.gitlab.io/disml/"
+bug-reports: "https://gitlab.com/Mishio595/disml/issues"
 depends: [
-  "ocaml" {>= "4.04.1"}
-  "dune" {build & >= "1.3.0"}
   "async_ssl" {>= "v0.11.0" & < "v0.13"}
   "cohttp-async" {>= "1.2.0"}
   "core" {>= "v0.11.3" & < "v0.13"}
   "decompress" {>= "0.8"}
+  "dune" {build & >= "1.3.0"}
+  "ocaml" {>= "4.04.1"}
   "odoc" {with-doc & >= "1.3.0"}
   "ppx_deriving_yojson" {>= "3.3"}
   "ppx_sexp_conv" {>= "v0.11.2" & < "v0.13"}
@@ -35,6 +35,7 @@ build: [
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "build" "@doc" "-p" name "-j" jobs] {with-doc}
 ]
+dev-repo: "git+https://gitlab.com/Mishio595/disml"
 url {
   src: "https://github.com/Mishio595/disml/archive/0.2.5.tar.gz"
   checksum: [

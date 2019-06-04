@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-homepage: "http://erratique.ch/software/uucd"
-#dev-repo: "http://erratique.ch/repos/uucd.git"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-doc: "http://erratique.ch/software/uucd/doc/Uucd"
-tags: [ "unicode" "database" "decoder" ]
-license: "BSD3"
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  "xmlm"
-  "ocamlbuild" {build}
-]
-build: 
-[
-  [ "ocaml" "pkg/git.ml" ]
-  [ "ocaml" "pkg/build.ml" "native=true"           # TODO fixme
-                           "native-dynlink=true" ] # TODO fixme 
-]
+name: "uucd"
+version: "2.0.0"
 synopsis: "Unicode character database decoder for OCaml"
 description: """
 Uucd is an OCaml module to decode the data of the [Unicode character 
@@ -31,6 +14,22 @@ under the BSD3 license.
 [1]: http://www.unicode.org/reports/tr44/
 [2]: http://www.unicode.org/reports/tr42/
 [3]: http://erratique.ch/software/xmlm"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD3"
+tags: ["database" "decoder" "unicode"]
+homepage: "http://erratique.ch/software/uucd"
+doc: "http://erratique.ch/software/uucd/doc/Uucd"
+depends: [
+  "ocaml" {>= "4.00.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "xmlm"
+]
+build: [
+  ["ocaml" "pkg/git.ml"]
+  ["ocaml" "pkg/build.ml" "native=true" "native-dynlink=true"]
+]
 url {
   src: "http://erratique.ch/software/uucd/releases/uucd-2.0.0.tbz"
   checksum: "md5=9cd5f23b3e9395ffc82cfe812615503b"

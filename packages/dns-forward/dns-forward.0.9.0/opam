@@ -1,38 +1,6 @@
 opam-version: "2.0"
-maintainer:   "dave@recoil.org"
-authors:      ["David Scott"]
-license:      "ISC"
-homepage:     "https://github.com/mirage/ocaml-dns-forward"
-bug-reports:  "https://github.com/mirage/ocaml-dns-forward/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-dns-forward.git"
-doc:          "https://mirage.github.io/ocaml-dns-forward/"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "ppx_sexp_conv" {< "v0.13"}
-  "cstruct" {>= "3.0.0"}
-  "logs" {>= "0.5.0"}
-  "lwt" {>= "2.7.0"}
-  "mirage-flow-lwt" {>= "1.2.0"}
-  "mirage-clock-lwt"
-  "mirage-channel-lwt"
-  "mirage-time-lwt"
-  "duration"
-  "dns"
-  "rresult"
-  "astring"
-  "fmt"
-  "result"
-  "mtime"
-  "sexplib" {< "v0.13"}
-  "ipaddr" {< "3.0.0"}
-]
+name: "dns-forward"
+version: "0.9.0"
 synopsis: "Library and tools for creating forwarding DNS servers"
 description: """
 Features:
@@ -41,6 +9,39 @@ Features:
 - support for sending queries to specific servers based on domain
 - dynamic configuration updates
 - extra records (e.g. from /etc/hosts)"""
+maintainer: "dave@recoil.org"
+authors: "David Scott"
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-dns-forward"
+doc: "https://mirage.github.io/ocaml-dns-forward/"
+bug-reports: "https://github.com/mirage/ocaml-dns-forward/issues"
+depends: [
+  "astring"
+  "cstruct" {>= "3.0.0"}
+  "dns"
+  "duration"
+  "fmt"
+  "ipaddr" {< "3.0.0"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "logs" {>= "0.5.0"}
+  "lwt" {>= "2.7.0"}
+  "mirage-channel-lwt"
+  "mirage-clock-lwt"
+  "mirage-flow-lwt" {>= "1.2.0"}
+  "mirage-time-lwt"
+  "mtime"
+  "ocaml" {>= "4.03.0"}
+  "ppx_sexp_conv" {< "v0.13"}
+  "result"
+  "rresult"
+  "sexplib" {< "v0.13"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/ocaml-dns-forward.git"
 url {
   src:
     "https://github.com/mirage/ocaml-dns-forward/releases/download/v0.9.0/dns-forward-0.9.0.tbz"

@@ -1,40 +1,6 @@
 opam-version: "2.0"
-maintainer: "zoggy@bat8.org"
-authors: "Maxence Guesdon"
-homepage: "http://zoggy.github.io/ocaml-rdf/"
-license: "GNU Lesser General Public License version 3"
-doc: "http://zoggy.github.io/ocaml-rdf/doc.html"
-dev-repo: "git+https://github.com/zoggy/ocaml-rdf.git"
-bug-reports: "https://github.com/zoggy/ocaml-rdf/issues"
-tags: ["rdf" "semantic web" "xml" "turtle" "graph" "sparql" "utf8"]
-build: [
-  ["./configure" "--prefix" prefix]
-  [make "all"]
-]
-install: [
-  [make "install"]
-]
-remove: ["ocamlfind" "remove" "rdf"]
-depends: [
-  "ocaml" {>= "4.02.2" & < "4.03.0"}
-  "ocamlfind"
-  "xmlm" {>= "1.1.1" & != "1.3.0"}
-  "sedlex" {>= "1.99.2"}
-  "menhir" {>= "20151112"}
-  "uuidm" {>= "0.9.5"}
-  "cryptokit" {>= "1.7"}
-  "pcre" {>= "7.0.2"}
-  "yojson" {>= "1.1.8"}
-  "iri" {>= "0.2.0"}
-  "uri" {>= "1.9.1"}
-  "calendar" {>= "2.03.2"}
-]
-depopts: ["mysql" "postgresql" "cohttp" "lwt"]
-conflicts: [
-  "cohttp" {< "0.11.2"}
-  "lwt" {< "2.4.5"}
-  "mysql" {< "1.1.1"}
-]
+name: "rdf"
+version: "0.10.0"
 synopsis: "Native OCaml implementation of RDF Graphs and Sparql 1.1 Query."
 description: """
 Implemented features
@@ -45,7 +11,41 @@ Implemented features
 - Importing from and exporting to RDF/XML and Turtle formats,
 - Executing Sparql 1.1 queries,
 - HTTP binding of the Sparql protocol, using Lwt."""
+maintainer: "zoggy@bat8.org"
+authors: "Maxence Guesdon"
+license: "GNU Lesser General Public License version 3"
+tags: ["graph" "rdf" "semantic web" "sparql" "turtle" "utf8" "xml"]
+homepage: "http://zoggy.github.io/ocaml-rdf/"
+doc: "http://zoggy.github.io/ocaml-rdf/doc.html"
+bug-reports: "https://github.com/zoggy/ocaml-rdf/issues"
+depends: [
+  "calendar" {>= "2.03.2"}
+  "cryptokit" {>= "1.7"}
+  "iri" {>= "0.2.0"}
+  "menhir" {>= "20151112"}
+  "ocaml" {>= "4.02.2" & < "4.03.0"}
+  "ocamlfind"
+  "pcre" {>= "7.0.2"}
+  "sedlex" {>= "1.99.2"}
+  "uri" {>= "1.9.1"}
+  "uuidm" {>= "0.9.5"}
+  "xmlm" {>= "1.1.1" & != "1.3.0"}
+  "yojson" {>= "1.1.8"}
+]
+depopts: ["cohttp" "lwt" "mysql" "postgresql"]
+conflicts: [
+  "cohttp" {< "0.11.2"}
+  "lwt" {< "2.4.5"}
+  "mysql" {< "1.1.1"}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make "all"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "rdf"]
+dev-repo: "git+https://github.com/zoggy/ocaml-rdf.git"
 url {
   src: "https://github.com/zoggy/ocaml-rdf/archive/0.10.0.tar.gz"
   checksum: "md5=9fad8205b792f3643382454d5637acb5"

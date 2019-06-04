@@ -1,27 +1,18 @@
 opam-version: "2.0"
 name: "debian-formats"
 version: "0.1.1"
+synopsis: "Parse debian files"
 maintainer: "opam-devel@lists.ocaml.org"
-authors: [ "Sylvain Le Gall" ]
+authors: "Sylvain Le Gall"
 license: "LGPL-2.1 with OCaml linking exception"
 homepage: "https://github.com/gildor478/ocaml-debian-formats"
-dev-repo: "git://github.com/gildor478/ocaml-debian-formats.git"
 bug-reports: "https://github.com/gildor478/ocaml-debian-formatsi/issues"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "debian-formats"]
-]
 depends: [
-  "ocaml" {>= "3.12.1"}
   ("extlib" {>= "1.7.0"} | "extlib-compat" {>= "1.7.0"})
-  "re"
+  "ocaml" {>= "3.12.1"}
   "ocamlfind"
   "ounit" {>= "2.0.0"}
+  "re"
 ]
 depopts: [
   "archive"
@@ -35,8 +26,15 @@ depopts: [
   "ocurl"
   "pcre"
 ]
-synopsis: "Parse debian files"
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "debian-formats"]
+dev-repo: "git://github.com/gildor478/ocaml-debian-formats.git"
 url {
   src:
     "https://download.ocamlcore.org/debian-formats/debian-formats/0.1.1/ocaml-debian-formats-0.1.1.tar.gz"

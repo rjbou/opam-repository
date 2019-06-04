@@ -1,16 +1,26 @@
 opam-version: "2.0"
+name: "react"
+version: "1.2.0"
+synopsis: "Declarative events and signals for OCaml"
+description: """
+React is an OCaml module for functional reactive programming (FRP). It
+provides support to program with time varying values : declarative
+events and signals. React doesn't define any primitive event or
+signal, it lets the client chooses the concrete timeline.
+
+React is made of a single, independent, module and distributed under
+the BSD3 license."""
 maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-homepage: "http://erratique.ch/software/react"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-doc: "http://erratique.ch/software/react/doc/React"
-dev-repo: "git+http://erratique.ch/repos/react.git"
-bug-reports: "https://github.com/dbuenzli/react/issues"
-tags: [ "reactive" "declarative" "signal" "event" "frp" "org:erratique" ]
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
 license: "BSD3"
+tags: ["declarative" "event" "frp" "org:erratique" "reactive" "signal"]
+homepage: "http://erratique.ch/software/react"
+doc: "http://erratique.ch/software/react/doc/React"
+bug-reports: "https://github.com/dbuenzli/react/issues"
 depends: [
   "ocaml" {>= "4.00.0" & < "4.06.0"}
-  "ocamlfind"
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
 build: [
   ["ocaml" "pkg/git.ml"]
@@ -21,15 +31,7 @@ build: [
     "native-dynlink=%{ocaml:native-dynlink}%"
   ]
 ]
-synopsis: "Declarative events and signals for OCaml"
-description: """
-React is an OCaml module for functional reactive programming (FRP). It
-provides support to program with time varying values : declarative
-events and signals. React doesn't define any primitive event or
-signal, it lets the client chooses the concrete timeline.
-
-React is made of a single, independent, module and distributed under
-the BSD3 license."""
+dev-repo: "git+http://erratique.ch/repos/react.git"
 url {
   src: "http://erratique.ch/software/react/releases/react-1.2.0.tbz"
   checksum: "md5=f071a1308b6cad131c55cda8677823c3"

@@ -1,10 +1,21 @@
 opam-version: "2.0"
+name: "junit"
+version: "0.1"
+synopsis: "Library to produce XML JUnit reports."
+description: "Library to produce XML JUnit reports."
 maintainer: "Louis Roché <louis@louisroche.net>"
 authors: "Louis Roché <louis@louisroche.net>"
+license: "MIT"
 homepage: "https://github.com/Khady/ocaml-junit"
 bug-reports: "https://github.com/Khady/ocaml-junit/issues"
-license: "MIT"
-dev-repo: "git://github.com/Khady/ocaml-junit.git"
+depends: [
+  "ocaml" {>= "4.02.1"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ptime"
+  "tyxml" {>= "4.0.0"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -15,16 +26,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "junit"]
-depends: [
-  "ocaml" {>= "4.02.1"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "ptime"
-  "tyxml" {>= "4.0.0"}
-]
-synopsis: "Library to produce XML JUnit reports."
-description: "Library to produce XML JUnit reports."
-flags: light-uninstall
+dev-repo: "git://github.com/Khady/ocaml-junit.git"
 url {
   src: "https://github.com/Khady/ocaml-junit/archive/0.1.zip"
   checksum: "md5=b25790f915ed08bd87796b3d722e0fd0"

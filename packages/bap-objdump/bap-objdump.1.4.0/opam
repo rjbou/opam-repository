@@ -1,32 +1,35 @@
 opam-version: "2.0"
 name: "bap-objdump"
 version: "1.4.0"
+synopsis: "Extract symbols from binary, using binutils objdump"
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
-build: [
-  ["./configure" "--prefix=%{prefix}%"
-                 "--enable-objdump"
-                 "--objdump-targets=%{conf-binutils:targets}%"
-                 "--objdump-path=%{conf-binutils:objdump}%"
-                 ]
-  [make]
-]
-install: [[make "install"]]
-remove: [["ocamlfind" "remove" "bap-plugin-objdump"]
-	 ["bapbundle" "remove" "objdump.plugin"]
-]
 depends: [
-  "ocaml" {>= "4.03" & < "4.06"}
   "bap-std" {= "1.4.0"}
-  "re" {< "1.7.2"}
   "cmdliner"
   "conf-binutils"
+  "ocaml" {>= "4.03" & < "4.06"}
+  "re" {< "1.7.2"}
 ]
-synopsis: "Extract symbols from binary, using binutils objdump"
+build: [
+  [
+    "./configure"
+    "--prefix=%{prefix}%"
+    "--enable-objdump"
+    "--objdump-targets=%{conf-binutils:targets}%"
+    "--objdump-path=%{conf-binutils:objdump}%"
+  ]
+  [make]
+]
+install: [make "install"]
+remove: [
+  ["ocamlfind" "remove" "bap-plugin-objdump"]
+  ["bapbundle" "remove" "objdump.plugin"]
+]
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.4.0.tar.gz"
   checksum: "md5=b7785715c24645e8e69a8091427d090e"

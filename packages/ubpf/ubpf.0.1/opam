@@ -1,26 +1,25 @@
 opam-version: "2.0"
+name: "ubpf"
+version: "0.1"
 synopsis: "OCaml bindings for userspace eBPF VM"
-license: "LGPL-3 with OCaml linking exception"
 maintainer: "Raman Varabets <roman.vorobets@gmail.com>"
 authors: [
-  "Raman Varabets <roman.vorobets@gmail.com>"
-  "ygrek <ygrek@autistici.org>"
+  "Raman Varabets <roman.vorobets@gmail.com>" "ygrek <ygrek@autistici.org>"
 ]
+license: "LGPL-3 with OCaml linking exception"
 homepage: "https://github.com/ahrefs/ocaml-ubpf"
 bug-reports: "https://github.com/ahrefs/ocaml-ubpf/issues"
-dev-repo: "git+https://github.com/ahrefs/ocaml-ubpf.git"
-available: [
-  os = "linux"
-]
 depends: [
+  "dune" {build}
   "ocaml" {>= "4.02"}
   "ocamlfind" {build}
-  "dune" {build}
 ]
+available: os = "linux"
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
 ]
+dev-repo: "git+https://github.com/ahrefs/ocaml-ubpf.git"
 url {
   src: "https://github.com/ahrefs/ocaml-ubpf/archive/0.1.tar.gz"
   checksum: "md5=481ebf53773aa84fe5926ac8fb942e8a"

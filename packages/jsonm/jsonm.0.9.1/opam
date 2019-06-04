@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "opam-devel@lists.ocaml.org"
-authors: ["Daniel Bünzli <daniel.buenzli at erratique.ch>"]
-homepage: "http://erratique.ch/software/jsonm"
-license: "BSD3"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "jsonm"]]
-depends: [
-  "ocaml" {>= "3.12.0"}
-  "ocamlfind"
-  "uutf" {<= "0.9.4"}
-  "ocamlbuild" {build}
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "jsonm"
+version: "0.9.1"
 synopsis: "Non-blocking streaming JSON codec for OCaml"
 description: """
 Jsonm is a non-blocking streaming codec to decode and encode the JSON
@@ -28,7 +14,23 @@ Jsonm is made of a single module and depends on [Uutf][1]. It is
 distributed under the BSD3 license.
 
 [1]: http://erratique.ch/software/uutf"""
+maintainer: "opam-devel@lists.ocaml.org"
+authors: "Daniel Bünzli <daniel.buenzli at erratique.ch>"
+license: "BSD3"
+homepage: "http://erratique.ch/software/jsonm"
+depends: [
+  "ocaml" {>= "3.12.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "uutf" {<= "0.9.4"}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "jsonm"]
 extra-files: ["jsonm.install" "md5=3fdbc9f9d50d36206e0da75346c2d59c"]
 url {
   src: "http://erratique.ch/software/jsonm/releases/jsonm-0.9.1.tbz"

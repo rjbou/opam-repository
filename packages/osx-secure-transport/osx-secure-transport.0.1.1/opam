@@ -1,21 +1,21 @@
 opam-version: "2.0"
+name: "osx-secure-transport"
+version: "0.1.1"
+synopsis: "macos/ios SecureTransport TLS OSX implementation API for OCaml"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "Romain Beauxis <toots@rastageeks.org>"
+license: "WTFPL"
 homepage: "https://github.com/toots/ocaml-osx-secure-transport"
 bug-reports: "https://github.com/toots/ocaml-osx-secure-transport/issues"
-license: "WTFPL"
-dev-repo: "git+https://github.com/toots/ocaml-osx-secure-transport.git"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
 depends: [
-  "ocaml"
   "ctypes" {>= "0.4"}
   "ctypes-foreign"
   "dune" {build}
+  "ocaml"
 ]
 available: os = "macos"
-synopsis: "macos/ios SecureTransport TLS OSX implementation API for OCaml"
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/toots/ocaml-osx-secure-transport.git"
 url {
   src:
     "https://github.com/toots/ocaml-osx-secure-transport/releases/download/0.1.1/osx-secure-transport-0.1.1.tar.gz"

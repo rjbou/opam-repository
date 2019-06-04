@@ -1,22 +1,6 @@
 opam-version: "2.0"
 name: "caqti"
-authors: ["Petter A. Urkedal"]
-maintainer: "paurkedal@gmail.com"
-homepage: "https://github.com/paurkedal/ocaml-caqti/"
-bug-reports: "https://github.com/paurkedal/ocaml-caqti/issues"
-dev-repo: "git+https://github.com/paurkedal/ocaml-caqti.git"
-license: "LGPL-3 with OCaml linking exception"
-
-build: [["jbuilder" "build" "-p" name "-j" jobs]]
-
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "jbuilder" {build}
-  "calendar"
-  "ocamlfind" {build}
-  "ptime"
-  "uri" {>= "1.9.0"}
-]
+version: "0.10.1"
 synopsis: "Unified interface to relational database libraries"
 description: """
 Caqti provides a monadic cooperative-threaded OCaml connector API for
@@ -34,6 +18,21 @@ and only provides the type information needed at the edges of communication
 between the OCaml code and the database; i.e. for encoding parameters and
 decoding returned tuples. It is hoped that this agnostic choice makes it a
 suitable target for higher level interfaces and code generators."""
+maintainer: "paurkedal@gmail.com"
+authors: "Petter A. Urkedal"
+license: "LGPL-3 with OCaml linking exception"
+homepage: "https://github.com/paurkedal/ocaml-caqti/"
+bug-reports: "https://github.com/paurkedal/ocaml-caqti/issues"
+depends: [
+  "calendar"
+  "jbuilder" {build}
+  "ocaml" {>= "4.04.0"}
+  "ocamlfind" {build}
+  "ptime"
+  "uri" {>= "1.9.0"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/paurkedal/ocaml-caqti.git"
 url {
   src:
     "https://github.com/paurkedal/ocaml-caqti/releases/download/v0.10.1/caqti-0.10.1.tbz"

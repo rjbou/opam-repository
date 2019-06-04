@@ -1,10 +1,26 @@
 opam-version: "2.0"
+name: "rdbg"
+version: "1.0"
+synopsis: "RDBG: a reactive programs debugger."
+description: """
+The library rdbg-plugin contains all the necessary ocaml modules
+needed to add a rdbg plugin. Such a plugin allows ocaml-interpreted
+languages to be executed (à la Lurette) or/and debugged (with rdbg)."""
 maintainer: "erwan.jahier@imag.fr"
-bug-reports: "erwan.jahier@imag.fr"
-authors: [ "Erwan Jahier" ]
+authors: "Erwan Jahier"
 license: "GPL-3"
 homepage: "http://rdbg.forge.imag.fr/"
-dev-repo: "git+https://forge.imag.fr/anonscm/git/rdbg/rdbg.git"
+bug-reports: "erwan.jahier@imag.fr"
+depends: [
+  "base-unix"
+  "camlp4"
+  "num"
+  ("oasis" {>= "0.4"} | "oasis-mirage" {>= "0.4"})
+  "ocaml" {>= "4.01" & < "4.05"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
@@ -12,24 +28,8 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "rdbg-plugin"]
-]
-depends: [
-  "ocaml" {>= "4.01" & < "4.05"}
-  "base-unix"
-  "camlp4"
-  "oasis" {>= "0.4"} | "oasis-mirage" {>= "0.4"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "num"
-]
-synopsis: "RDBG: a reactive programs debugger."
-description: """
-The library rdbg-plugin contains all the necessary ocaml modules
-needed to add a rdbg plugin. Such a plugin allows ocaml-interpreted
-languages to be executed (à la Lurette) or/and debugged (with rdbg)."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "rdbg-plugin"]
+dev-repo: "git+https://forge.imag.fr/anonscm/git/rdbg/rdbg.git"
 extra-files: ["rdbg.install" "md5=b898a625701fcf5675abf824487a2102"]
 url {
   src: "http://www-verimag.imag.fr/DIST-TOOLS/SYNCHRONE/rdbg/rdbg.tgz"

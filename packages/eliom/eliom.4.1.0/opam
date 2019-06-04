@@ -1,27 +1,6 @@
 opam-version: "2.0"
-authors: "dev@ocsigen.org"
-maintainer: "dev@ocsigen.org"
-homepage: "http://ocsigen.org/eliom/"
-bug-reports: "https://github.com/ocsigen/eliom/issues/"
-dev-repo: "git+https://github.com/ocsigen/eliom.git"
-license: "LGPL-2.1 with OCaml linking exception"
-build: [make]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocamlfind"
-  "deriving" {>= "0.6"}
-  "js_of_ocaml" {>= "2.5" & < "3.0"}
-  "tyxml" {>= "3.3.0" & < "3.6.0"}
-  "calendar"
-  "camlp4" {<= "4.02+6"}
-  "ocsigenserver" {= "2.5"}
-  "ipaddr" {>= "2.1"}
-  "reactiveData"
-  "ocamlbuild"
-]
-patches: [
-  "build-against-newer-lwt.diff"
-]
+name: "eliom"
+version: "4.1.0"
 synopsis:
   "Framework for programming Web sites and client/server Web applications."
 description: """
@@ -33,6 +12,27 @@ Web application, Eliom makes possible to write the whole application as
 a single program (client and server parts). A syntax extension is used
 to distinguish both parts and the client side is compiled to JS using
 Ocsigen Js_of_ocaml."""
+maintainer: "dev@ocsigen.org"
+authors: "dev@ocsigen.org"
+license: "LGPL-2.1 with OCaml linking exception"
+homepage: "http://ocsigen.org/eliom/"
+bug-reports: "https://github.com/ocsigen/eliom/issues/"
+depends: [
+  "calendar"
+  "camlp4" {<= "4.02+6"}
+  "deriving" {>= "0.6"}
+  "ipaddr" {>= "2.1"}
+  "js_of_ocaml" {>= "2.5" & < "3.0"}
+  "ocaml" {>= "4.00.0"}
+  "ocamlbuild"
+  "ocamlfind"
+  "ocsigenserver" {= "2.5"}
+  "reactiveData"
+  "tyxml" {>= "3.3.0" & < "3.6.0"}
+]
+build: make
+patches: "build-against-newer-lwt.diff"
+dev-repo: "git+https://github.com/ocsigen/eliom.git"
 extra-files: [
   "build-against-newer-lwt.diff" "md5=5dad5793ccd0112114e1d1b17271357d"
 ]

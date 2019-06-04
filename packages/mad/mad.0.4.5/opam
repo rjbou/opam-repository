@@ -1,32 +1,32 @@
 opam-version: "2.0"
+name: "mad"
+version: "0.4.5"
+synopsis:
+  "Bindings for the mad library which provides functions for encoding wave audio files into mp3"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-mad"
+bug-reports: "https://github.com/savonet/ocaml-mad/issues"
+depends: ["ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "mad"]
-depends: ["ocaml" "ocamlfind"]
 depexts: [
-  ["libmad-dev"] {os-distribution = "alpine"}
   ["libmad"] {os-distribution = "arch"}
+  ["libmad"] {os-distribution = "nixos"}
+  ["libmad-dev"] {os-distribution = "alpine"}
   ["libmad-devel"] {os-distribution = "centos"}
   ["libmad-devel"] {os-distribution = "fedora"}
   ["libmad-devel"] {os-family = "suse"}
   ["libmad0-dev"] {os-distribution = "debian"}
   ["libmad0-dev"] {os-distribution = "ubuntu"}
-  ["libmad"] {os-distribution = "nixos"}
   ["mad"] {os = "macos" & os-distribution = "homebrew"}
 ]
-bug-reports: "https://github.com/savonet/ocaml-mad/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-mad.git"
-synopsis:
-  "Bindings for the mad library which provides functions for encoding wave audio files into mp3"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-mad/releases/download/0.4.5/ocaml-mad-0.4.5.tar.gz"

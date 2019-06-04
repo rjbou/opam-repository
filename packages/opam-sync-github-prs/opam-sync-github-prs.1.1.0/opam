@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: [ "Anil Madhavapeddy" ]
-homepage: "https://github.com/avsm/opam-sync-github-prs"
-bug-reports: "https://github.com/avsm/opam-sync-github-prs/issues"
-dev-repo: "git+https://github.com/avsm/opam-sync-github-prs.git"
-tags: "org:ocamllabs"
-build: [
-  [make]
-]
-install: [
-  [make "install"]
-]
-remove: [["rm" "-f" "%{bin}%/opam-sync-github-prs"]]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "core" {build & >= "109.53.01" & < "v0.13"}
-  "github" {build & >= "1.0.0" & < "3.0.0"}
-  "lwt" {build & >= "2.4.2"}
-  "ocamlbuild" {build}
-]
+name: "opam-sync-github-prs"
+version: "1.1.0"
 synopsis: "Sync OCaml GitHub issues with OPAM"
 description: """
 This command-line tool generates an OPAM repository that contains a set of
@@ -50,7 +31,24 @@ open switch 4.02.0dev+pr7
 eval `opam config env`
 ocamllex ...
 ```"""
+maintainer: "anil@recoil.org"
+authors: "Anil Madhavapeddy"
+tags: "org:ocamllabs"
+homepage: "https://github.com/avsm/opam-sync-github-prs"
+bug-reports: "https://github.com/avsm/opam-sync-github-prs/issues"
+depends: [
+  "core" {build & >= "109.53.01" & < "v0.13"}
+  "github" {build & >= "1.0.0" & < "3.0.0"}
+  "lwt" {build & >= "2.4.2"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: [light-uninstall plugin]
+build: make
+install: [make "install"]
+remove: ["rm" "-f" "%{bin}%/opam-sync-github-prs"]
+dev-repo: "git+https://github.com/avsm/opam-sync-github-prs.git"
 url {
   src: "https://github.com/avsm/opam-sync-github-prs/archive/v1.1.0.tar.gz"
   checksum: "md5=fa6d18a09ff3a5dabdf9173ca91fc29b"

@@ -1,25 +1,7 @@
 opam-version: "2.0"
 name: "json_decoder"
-maintainer: "peter.degroff@gmail.com"
-authors: "Peter DeGroff"
-license: "ISC"
-homepage: "https://github.com/dagoof/ocaml-json-decoder"
-doc: "https://dagoof.github.io/ocaml-json-decoder/doc"
-bug-reports: "https://github.com/dagoof/ocaml-json-decoder/issues"
-dev-repo: "git+https://github.com/dagoof/ocaml-json-decoder.git"
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "dune" {build}
-  "alcotest" {with-test}
-  "result"
-  "yojson"
-]
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
-]
-
+version: "0.1.1"
+synopsis: ""
 description: """
 JSON Decoder is an OCaml module that enables flexible decoding of JSON values.
 It is based on Elm's Json.Decode module with a few tweaks.
@@ -30,11 +12,28 @@ It allows you to shape the results of a decode into a structure of your choice.
 
 Rather than unpacking a JSON value directly into an analogous OCaml structure;
 this module helps you to massage data into the shape you want by describing
-the transformations that need to take place.
-"""
-
+the transformations that need to take place."""
+maintainer: "peter.degroff@gmail.com"
+authors: "Peter DeGroff"
+license: "ISC"
+homepage: "https://github.com/dagoof/ocaml-json-decoder"
+doc: "https://dagoof.github.io/ocaml-json-decoder/doc"
+bug-reports: "https://github.com/dagoof/ocaml-json-decoder/issues"
+depends: [
+  "alcotest" {with-test}
+  "dune" {build}
+  "ocaml" {>= "4.02.3"}
+  "result"
+  "yojson"
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/dagoof/ocaml-json-decoder.git"
 url {
-  src: "https://github.com/dagoof/ocaml-json-decoder/releases/download/v0.1.1/json_decoder-0.1.1.tbz"
-  checksum: ["md5=04d5c7b9b55ec973bb88ac55789addef"]
+  src:
+    "https://github.com/dagoof/ocaml-json-decoder/releases/download/v0.1.1/json_decoder-0.1.1.tbz"
+  checksum: "md5=04d5c7b9b55ec973bb88ac55789addef"
 }
-

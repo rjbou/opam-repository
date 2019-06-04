@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "dave@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: make
-remove: [[make "uninstall"]]
-depends: ["ocaml" "ocamlfind"]
-depexts: [
-  ["libaio-dev"] {os-distribution = "debian"}
-  ["libaio-dev"] {os-distribution = "ubuntu"}
-]
-patches: ["meta.patch"]
-install: [make "install"]
+name: "aio"
+version: "0.0.3"
 synopsis: "Linux kernel AIO access library for ocaml"
 description: """
 Use this if you want very efficient I/O on Linux. Note this is not
@@ -21,6 +9,17 @@ an implementation of "POSIX AIO".
 Linux AIO allows a single thread to submit multiple I/O operations and
 perform other computations while they are in progress. To increase
 efficiency, all data is read and written in page-aligned buffers."""
+maintainer: "dave@recoil.org"
+tags: ["org:mirage" "org:xapi-project"]
+depends: ["ocaml" "ocamlfind"]
+build: make
+install: [make "install"]
+remove: [make "uninstall"]
+patches: "meta.patch"
+depexts: [
+  ["libaio-dev"] {os-distribution = "debian"}
+  ["libaio-dev"] {os-distribution = "ubuntu"}
+]
 extra-files: ["meta.patch" "md5=b76689eef7b6f6fb1373ee82c79e0b54"]
 url {
   src:

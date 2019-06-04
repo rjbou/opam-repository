@@ -1,46 +1,41 @@
 opam-version: "2.0"
 name: "mindstorm"
 version: "0.5.4"
-maintainer: "Christophe.Troestler@umons.ac.be"
-authors: [ "Christophe Troestler"
-           "Julie De Pril"
-           "Marc Ducobu"
-           "Dany Maslowski" ]
-license: "LGPL-2.1 with OCaml linking exception"
-homepage: "http://forge.ocamlcore.org/projects/ocaml-mindstorm/"
-bug-reports: "https://github.com/Chris00/ocaml-mindstorm/issues"
-dev-repo: "git+https://github.com/Chris00/ocaml-mindstorm.git"
-tags: [ "clib:usb" "clib:bluetooth"  ]
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-remove: [
-  ["ocamlfind" "remove" "mindstorm"]
-]
-depends: [
-  "ocaml" {< "4.05"}
-  "base-bytes"
-  "base-unix"
-  "ocamlfind" {>= "1.5"}
-  "ocamlbuild" {build}
-  "camlp4"
-]
-depopts: [
-  "base-threads"
-]
-depexts: [
-  ["libbluetooth-dev"] {os-distribution = "debian"}
-  ["libbluetooth-dev"] {os-distribution = "ubuntu"}
-]
-install: ["ocaml" "setup.ml" "-install"]
 synopsis: "Drive Lego Mindstorms bricks from OCaml"
 description: """
 This library allows you to communicate with your Lego Mindstorms brick
 via bluetooth, enable the motors and retrieve data from various
 sensors."""
+maintainer: "Christophe.Troestler@umons.ac.be"
+authors: [
+  "Christophe Troestler" "Dany Maslowski" "Julie De Pril" "Marc Ducobu"
+]
+license: "LGPL-2.1 with OCaml linking exception"
+tags: ["clib:bluetooth" "clib:usb"]
+homepage: "http://forge.ocamlcore.org/projects/ocaml-mindstorm/"
+bug-reports: "https://github.com/Chris00/ocaml-mindstorm/issues"
+depends: [
+  "base-bytes"
+  "base-unix"
+  "camlp4"
+  "ocaml" {< "4.05"}
+  "ocamlbuild" {build}
+  "ocamlfind" {>= "1.5"}
+]
+depopts: ["base-threads"]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "mindstorm"]
+depexts: [
+  ["libbluetooth-dev"] {os-distribution = "debian"}
+  ["libbluetooth-dev"] {os-distribution = "ubuntu"}
+]
+dev-repo: "git+https://github.com/Chris00/ocaml-mindstorm.git"
 url {
   src:
     "https://github.com/Chris00/ocaml-mindstorm/releases/download/0.5.4/mindstorm-0.5.4.tar.gz"

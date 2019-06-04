@@ -1,17 +1,6 @@
 opam-version: "2.0"
 name: "get_line"
-maintainer: "unixjunkie@sdf.org"
-authors: "Francois Berenger"
-homepage: "https://github.com/UnixJunkie/get_line"
-bug-reports: "https://github.com/UnixJunkie/get_line/issues"
-dev-repo: "git://github.com/UnixJunkie/get_line"
-license: "GPL"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml"
-  "dune" {build}
-  "batteries" {>= "2.6.0"}
-]
+version: "4.0.1"
 synopsis:
   "Robustly select lines from file; can replace the head and tail shell commands and do even more"
 description: """
@@ -29,6 +18,18 @@ get_line {--range|-r} {+n|-n|i|i..j|i,j[,...]} [-i FILE] [--rand] [-v] (1 <= i [
                 i..j => lines i to j;
                 i,j[,...] => only lines i,j,...
   {-help|--help} Display this list of options"""
+maintainer: "unixjunkie@sdf.org"
+authors: "Francois Berenger"
+license: "GPL"
+homepage: "https://github.com/UnixJunkie/get_line"
+bug-reports: "https://github.com/UnixJunkie/get_line/issues"
+depends: [
+  "batteries" {>= "2.6.0"}
+  "dune" {build}
+  "ocaml"
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git://github.com/UnixJunkie/get_line"
 url {
   src: "https://github.com/UnixJunkie/get_line/archive/v4.0.1.tar.gz"
   checksum: "md5=a3713e755fe3d7e01bc35db0df971614"

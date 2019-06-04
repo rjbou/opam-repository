@@ -1,24 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/uutf"
-license: "BSD3"
-doc: ["http://erratique.ch/software/uutf/doc/Uutf"]
-tags: [
-  "unicode"
-  "utf-8"
-  "utf-16"
-  "codec"
-]
-build: [
-  ["./pkg/pkg-git"]
-  ["./pkg/build" "true"]
-]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
+name: "uutf"
+version: "0.9.3"
 synopsis: "Non-blocking streaming Unicode codec for OCaml"
 description: """
 Uutf is a non-blocking streaming codec to decode and encode the UTF-8,
@@ -32,6 +14,21 @@ Buffer.t values.
 
 Uutf is made of a single, independent, module and distributed under
 the BSD3 license."""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD3"
+tags: ["codec" "unicode" "utf-16" "utf-8"]
+homepage: "http://erratique.ch/software/uutf"
+doc: "http://erratique.ch/software/uutf/doc/Uutf"
+depends: [
+  "ocaml" {>= "4.00.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+build: [
+  ["./pkg/pkg-git"]
+  ["./pkg/build" "true"]
+]
 url {
   src: "http://erratique.ch/software/uutf/releases/uutf-0.9.3.tbz"
   checksum: "md5=708c0421e158b390c7cc341f37b40add"

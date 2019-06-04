@@ -1,10 +1,21 @@
 opam-version: "2.0"
+name: "lpi"
+version: "0.0.2"
+synopsis: "A REPL and library for a small dependently-typed language."
+description: """
+lpi is a small dependently-typed language supporting dependent
+lists and dependent function spaces, and intends to grow into
+a fully featured, statically-checked programming language."""
 maintainer: "Sam Baxter <baxtersa14@gmail.com>"
 authors: "Sam Baxter <baxtersa14@gmail.com>"
+license: "MIT"
 homepage: "http://github.com/baxtersa/lambda-pi"
 bug-reports: "http://github.com/baxtersa/lambda-pi/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/baxtersa/lambda-pi.git"
+depends: [
+  "ocaml" {>= "4.01"}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocamllex" "src/lexer.mll"]
   ["ocamlyacc" "src/parser.mly"]
@@ -14,16 +25,7 @@ build: [
 ]
 install: [make "-C" "src/" "install"]
 remove: ["ocamlfind" "remove" "lpi"]
-depends: [
-  "ocaml" {>= "4.01"}
-  "ocamlfind" {build}
-]
-synopsis: "A REPL and library for a small dependently-typed language."
-description: """
-lpi is a small dependently-typed language supporting dependent
-lists and dependent function spaces, and intends to grow into
-a fully featured, statically-checked programming language."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/baxtersa/lambda-pi.git"
 url {
   src: "https://github.com/baxtersa/lambda-pi/archive/v0.0.2.tar.gz"
   checksum: "md5=7a6b764fb591a8f0c064af3015dc75f3"

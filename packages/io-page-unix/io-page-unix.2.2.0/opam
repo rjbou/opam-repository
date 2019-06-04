@@ -1,4 +1,10 @@
 opam-version: "2.0"
+name: "io-page-unix"
+version: "2.2.0"
+synopsis: "Support for efficient handling of I/O memory pages on Unix"
+description: """
+IO pages are page-aligned, and wrapped in the `Cstruct` library to avoid
+copying the data contained within the page."""
 maintainer: "anil@recoil.org"
 authors: ["Anil Madhavapeddy" "Dave Scott" "Thomas Gazagnaire"]
 license: "ISC"
@@ -6,11 +12,11 @@ tags: "org:mirage"
 homepage: "https://github.com/mirage/io-page"
 bug-reports: "https://github.com/mirage/io-page/issues"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "io-page"
-  "dune" {build & >= "1.0"}
   "configurator" {build}
   "cstruct" {>= "2.0.0"}
+  "dune" {build & >= "1.0"}
+  "io-page"
+  "ocaml" {>= "4.02.3"}
   "ounit" {with-test}
 ]
 build: [
@@ -19,11 +25,6 @@ build: [
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
 dev-repo: "git+https://github.com/mirage/io-page.git"
-synopsis: "Support for efficient handling of I/O memory pages on Unix"
-description: """
-IO pages are page-aligned, and wrapped in the `Cstruct` library to avoid
-copying the data contained within the page.
-"""
 url {
   src:
     "https://github.com/mirage/io-page/releases/download/v2.2.0/io-page-v2.2.0.tbz"

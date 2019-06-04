@@ -1,32 +1,32 @@
 opam-version: "2.0"
+name: "bt"
+version: "0.1.2"
+synopsis: "BitTorrent library and client using Lwt"
 maintainer: "n.oje.bar@gmail.com"
-authors: [ "Nicolas Ojeda Bar <n.oje.bar@gmail.com>" ]
+authors: "Nicolas Ojeda Bar <n.oje.bar@gmail.com>"
 license: "MIT"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocamlfind" "remove" "bt"]
-]
 depends: [
-  "ocaml" {>= "4.01.0"}
   "bitstring"
   "cmdliner"
   "cohttp" {>= "0.11.2" & < "0.99"}
   "cryptokit"
   "lwt" {< "2.4.7"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
   "ocamlfind"
   "qcheck"
+  "ssl"
   "uri"
   "zarith"
-  "ssl"
-  "ocamlbuild" {build}
 ]
-dev-repo: "git://github.com/nojb/ocaml-bt"
-install: ["ocaml" "setup.ml" "-install"]
-synopsis: "BitTorrent library and client using Lwt"
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "bt"]
+dev-repo: "git://github.com/nojb/ocaml-bt"
 extra-files: ["bt.install" "md5=3930cb93cfa27b2c88967c9994751b4a"]
 url {
   src: "https://github.com/nojb/ocaml-bt/archive/v0.1.2.tar.gz"

@@ -1,15 +1,33 @@
 opam-version: "2.0"
 name: "websocket"
 version: "2.3"
-authors: "Vincent Bernardoff <vb@luminar.eu.org>"
+synopsis: "Websocket library"
 maintainer: "Vincent Bernardoff <vb@luminar.eu.org>"
+authors: "Vincent Bernardoff <vb@luminar.eu.org>"
+tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/vbmithr/ocaml-websocket"
 bug-reports: "https://github.com/vbmithr/ocaml-websocket/issues"
-dev-repo: "git://github.com/vbmithr/ocaml-websocket"
-
-tags: [
-  "org:mirage"
-  "org:xapi-project"
+depends: [
+  "astring"
+  "cohttp" {>= "0.17.1" & < "0.99"}
+  "conduit" {>= "0.8.3"}
+  "containers" {>= "0.10"}
+  "cppo" {build}
+  "ocaml" {>= "4.02.0"}
+  "ocplib-endian" {>= "0.8"}
+  "ppx_deriving" {>= "2.0"}
+]
+depopts: [
+  "async" {< "v0.13"}
+  "async_ssl" {< "v0.13"}
+  "cryptokit"
+  "lwt"
+  "nocrypto"
+]
+conflicts: [
+  "async" {< "112.35.00"}
+  "lwt" {< "2.4.8"}
+  "nocrypto" {< "0.5.0"}
 ]
 build: [
   "ocaml"
@@ -23,30 +41,7 @@ build: [
   "cryptokit=%{cryptokit:installed}%"
   "test=false"
 ]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "cppo" {build}
-  "containers" {>= "0.10"}
-  "cohttp" {>= "0.17.1" & < "0.99"}
-  "ocplib-endian" {>= "0.8"}
-  "ppx_deriving" {>= "2.0"}
-  "conduit" {>= "0.8.3"}
-  "astring"
-]
-depopts: [
-  "async" {< "v0.13"}
-  "async_ssl" {< "v0.13"}
-  "lwt"
-  "nocrypto"
-  "cryptokit"
-]
-conflicts: [
-  "lwt" {< "2.4.8"}
-  "async" {< "112.35.00"}
-  "nocrypto" {< "0.5.0"}
-]
-
-synopsis: "Websocket library"
+dev-repo: "git://github.com/vbmithr/ocaml-websocket"
 url {
   src: "https://github.com/vbmithr/ocaml-websocket/archive/2.3.tar.gz"
   checksum: "md5=3fc6097d21a7f453342adb010575b20f"

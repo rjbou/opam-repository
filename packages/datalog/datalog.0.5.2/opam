@@ -1,24 +1,6 @@
 opam-version: "2.0"
-maintainer: "simon.cruanes.2007@m4x.org"
-authors: "Simon Cruanes <simon.cruanes@inria.fr>"
-homepage: "https://github.com/c-cube/datalog"
-bug-reports: "https://github.com/c-cube/datalog/issues"
-license: "BSD-2-Clause"
-doc: "http://cedeela.fr/~simon/software/datalog/index.html"
-tags: ["datalog" "relational" "query" "prolog"]
-dev-repo: "git://github.com/c-cube/datalog"
-build: ["./configure" "--bindir" bin "--docdir" "%{doc}%/datalog/"]
-install: [
-  [make "all" "install_file" "doc" "man"]
-  [make "install"]
-]
-remove: ["ocamlfind" "remove" "datalog"]
-depends: [
-  "ocaml" {>= "4.00.1" & < "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "num"
-]
+name: "datalog"
+version: "0.5.2"
 synopsis: "An in-memory datalog implementation for OCaml."
 description: """
 It features two main algorithm:
@@ -28,7 +10,27 @@ It features two main algorithm:
 - top-down resembles prolog (and allows nested subterms). It handles
   stratified negation and only explores the part of the search space that
   is relevant to a given query."""
+maintainer: "simon.cruanes.2007@m4x.org"
+authors: "Simon Cruanes <simon.cruanes@inria.fr>"
+license: "BSD-2-Clause"
+tags: ["datalog" "prolog" "query" "relational"]
+homepage: "https://github.com/c-cube/datalog"
+doc: "http://cedeela.fr/~simon/software/datalog/index.html"
+bug-reports: "https://github.com/c-cube/datalog/issues"
+depends: [
+  "num"
+  "ocaml" {>= "4.00.1" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: ["./configure" "--bindir" bin "--docdir" "%{doc}%/datalog/"]
+install: [
+  [make "all" "install_file" "doc" "man"]
+  [make "install"]
+]
+remove: ["ocamlfind" "remove" "datalog"]
+dev-repo: "git://github.com/c-cube/datalog"
 url {
   src: "https://github.com/c-cube/datalog/archive/0.5.2.tar.gz"
   checksum: "md5=d3165be0b6946d860904b708cc44bcde"

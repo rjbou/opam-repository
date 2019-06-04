@@ -1,21 +1,6 @@
 opam-version: "2.0"
-name:         "checkseum"
-maintainer:   [ "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-authors:      [ "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-homepage:     "https://github.com/dinosaure/checkseum"
-bug-reports:  "https://github.com/dinosaure/checkseum/issues"
-dev-repo: "git+https://github.com/dinosaure/checkseum.git"
-doc:          "https://dinosaure.github.io/checkseum/"
-license:      "MIT"
-
-build: [ "jbuilder" "build" "-p" name "-j" jobs ]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "optint"
-  "base-bytes"
-]
+name: "checkseum"
+version: "0.0.1"
 synopsis: "Checkseum"
 description: """
 =========
@@ -33,6 +18,20 @@ end-user can choose between the C implementation or the OCaml implementation
 
 Of course, you can link directly to `checkseum.c` or `checkseum.ocaml` if you
 want directly to make an executable."""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/checkseum"
+doc: "https://dinosaure.github.io/checkseum/"
+bug-reports: "https://github.com/dinosaure/checkseum/issues"
+depends: [
+  "base-bytes"
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+  "optint"
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/dinosaure/checkseum.git"
 url {
   src:
     "https://github.com/dinosaure/checkseum/releases/download/v0.0.1/checkseum-0.0.1.tbz"

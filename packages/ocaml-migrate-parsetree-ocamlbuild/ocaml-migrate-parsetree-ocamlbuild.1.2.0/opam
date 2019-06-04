@@ -1,28 +1,26 @@
 opam-version: "2.0"
-maintainer: "frederic.bour@lakaban.net"
-authors: [
-  "Jérémie Dimino <jeremie@dimino.org>"
-]
-license: "LGPL-2.1"
-homepage: "https://github.com/let-def/ocaml-migrate-parsetree"
-bug-reports: "https://github.com/let-def/ocaml-migrate-parsetree/issues"
-dev-repo: "git+https://github.com/let-def/ocaml-migrate-parsetree.git"
-tags: [ "syntax" "org:ocamllabs" ]
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "dune" {build & >= "1.6.0"}
-  "ocaml-migrate-parsetree"
-  "ocamlbuild"
-  ("ocamlfind" {build} & "ocaml" {>= "4.02.3" & < "4.03.0"} | "ocaml" {>= "4.03.0"})
-]
+name: "ocaml-migrate-parsetree-ocamlbuild"
+version: "1.2.0"
 synopsis: "Ocamlbuild plugin for ocaml-migrate-parsetree"
 description: """
 This package provides an ocamlbuild plugin that can be used to produce
 optimized on-demand statically linked ppx drivers, as Dune does
-by default.
-"""
+by default."""
+maintainer: "frederic.bour@lakaban.net"
+authors: "Jérémie Dimino <jeremie@dimino.org>"
+license: "LGPL-2.1"
+tags: ["org:ocamllabs" "syntax"]
+homepage: "https://github.com/let-def/ocaml-migrate-parsetree"
+bug-reports: "https://github.com/let-def/ocaml-migrate-parsetree/issues"
+depends: [
+  "dune" {build & >= "1.6.0"}
+  ("ocaml" {>= "4.02.3" & < "4.03.0"} & "ocamlfind" {build} |
+   "ocaml" {>= "4.03.0"})
+  "ocaml-migrate-parsetree"
+  "ocamlbuild"
+]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/let-def/ocaml-migrate-parsetree.git"
 url {
   src:
     "https://github.com/let-def/ocaml-migrate-parsetree/releases/download/v1.2.0/ocaml-migrate-parsetree-v1.2.0.tbz"

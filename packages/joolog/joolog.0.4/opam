@@ -1,39 +1,39 @@
 opam-version: "2.0"
+name: "joolog"
+version: "0.4"
+synopsis: "Logger for js_of_ocaml"
+description: """
+Joolog (Js_of_ocaml logger) is a library managing Lwt logger for
+application running in the browser."""
 maintainer: "hugo.heuzard@gmail.com"
-authors: [ "Hugo Heuzard" ]
+authors: "Hugo Heuzard"
 license: "LGPL-2.1 with OCaml linking exception"
 homepage: "https://github.com/hhugo/joolog"
-build: [
-  ["oasis" "setup"]
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-remove: [
-  ["ocamlfind" "remove" "joolog"]
-]
 depends: [
-  "ocaml"
+  "camlp4"
   "js_of_ocaml"
   "lwt"
-  "react"
   "oasis"
-  "ocamlfind"
-  "camlp4"
+  "ocaml"
   "ocamlbuild" {build}
+  "ocamlfind"
+  "react"
 ]
 conflicts: [
   "lwt" {< "2.4.4"}
   "lwt" {>= "2.4.5"}
   "react" {>= "1.0.0"}
 ]
-dev-repo: "git://github.com/hhugo/jsoolog"
-install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Logger for js_of_ocaml"
-description: """
-Joolog (Js_of_ocaml logger) is a library managing Lwt logger for
-application running in the browser."""
 flags: light-uninstall
+build: [
+  ["oasis" "setup"]
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "joolog"]
+dev-repo: "git://github.com/hhugo/jsoolog"
 extra-files: ["joolog.install" "md5=79a2ee1bdceae6a3510e67896edc741e"]
 url {
   src: "https://github.com/hhugo/jsoolog/archive/0.4.tar.gz"

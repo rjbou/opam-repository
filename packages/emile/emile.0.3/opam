@@ -1,27 +1,6 @@
 opam-version: "2.0"
-name:         "emile"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/dinosaure/emile"
-bug-reports:  "https://github.com/dinosaure/emile/issues"
-dev-repo: "git+https://github.com/dinosaure/emile.git"
-doc:          "https://dinosaure.github.io/emile/"
-license:      "MIT"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "angstrom" {>= "0.9.0"}
-  "ipaddr" {>= "2.7.0"}
-  "uutf"
-  "fmt"
-  "alcotest" {with-test}
-]
+name: "emile"
+version: "0.3"
 synopsis: "[Images](https://youtube.com/watch?v=S70NaQqAfaw))"
 description: """
 [![Build Status](https://travis-ci.org/dinosaure/emile.svg?branch=master)](https://travis-ci.org/dinosure/emile)
@@ -77,6 +56,27 @@ a(a(b(c)d(e(f))g)h(i)j)@iana.org
 
 All parsers are binded with a comment which explain where you can find the ABNF
 description and some notes about implementation. All was check by hand."""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/emile"
+doc: "https://dinosaure.github.io/emile/"
+bug-reports: "https://github.com/dinosaure/emile/issues"
+depends: [
+  "alcotest" {with-test}
+  "angstrom" {>= "0.9.0"}
+  "fmt"
+  "ipaddr" {>= "2.7.0"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "ocaml" {>= "4.03.0"}
+  "uutf"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/dinosaure/emile.git"
 url {
   src:
     "https://github.com/dinosaure/emile/releases/download/v0.3/emile-0.3.tbz"

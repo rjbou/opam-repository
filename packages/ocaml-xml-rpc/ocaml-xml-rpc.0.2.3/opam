@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [
-  [make]
-  [make "opt"]
-]
-remove: [["ocamlfind" "remove" "xmlrpc"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "ocamlnet" {>= "3.6.0" & < "4.0.0"}
-  "pxp"
-  "annexlib"
-]
-install: [make "install" "BIN_DIR=%{bin}%"]
+name: "ocaml-xml-rpc"
+version: "0.2.3"
 synopsis:
   "An XML-RPC client and server, using an ad-hoc interface definition language and IDL compiler"
 description: """
@@ -21,7 +9,21 @@ ad-hoc interface definition language and IDL compiler. It was started
 by Shawn Wagner (up to version 0.2.3), was improved for a little while
 by Eric Stokes (up to version 0.2.6), and is now maintained by Ewan
 Mellor."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "annexlib"
+  "ocaml"
+  "ocamlfind"
+  "ocamlnet" {>= "3.6.0" & < "4.0.0"}
+  "pxp"
+]
 flags: light-uninstall
+build: [
+  [make]
+  [make "opt"]
+]
+install: [make "install" "BIN_DIR=%{bin}%"]
+remove: ["ocamlfind" "remove" "xmlrpc"]
 extra-files: ["ocaml-xml-rpc.install" "md5=462b8e4f12cba458e7403d8ea828e192"]
 url {
   src:

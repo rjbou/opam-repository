@@ -1,16 +1,18 @@
 opam-version: "2.0"
-maintainer: "jonathan.protzenko@gmail.com"
-build: make
-remove: [["ocamlfind" "remove" "fix"]]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "fix"
+version: "20130611"
 synopsis:
   "a least fixed point computation library, using an efficient imperative algorithm"
+maintainer: "jonathan.protzenko@gmail.com"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "fix"]
 url {
   src: "http://gallium.inria.fr/~fpottier/fix/fix-20130611.tar.gz"
   checksum: "md5=056dec3341ef008458fa722ebf2e3c57"

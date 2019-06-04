@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "Drup <drupyog@zoho.com>"
-authors: "Drup <drupyog@zoho.com>"
-license: "ISC"
-homepage: "https://github.com/Drup/regenerate"
-bug-reports: "https://github.com/Drup/regenerate/issues"
-dev-repo: "git+https://github.com/Drup/regenerate.git"
-doc: "https://drup.github.io/regenerate/doc/0.1/"
-
-depends: [
-  "ocaml" {>= "4.03"}
-  "jbuilder" {build}
-  "cmdliner"
-  "fmt"
-  "containers"
-  "mtime"
-  "oseq"
-  "sequence"
-  "qcheck"
-  "re" {with-test}
-]
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs "@install"]
-  ["jbuilder" "runtest" "-p" name] {with-test}
-]
+name: "regenerate"
+version: "0.1"
 synopsis:
   "Regenerate is a tool to generate test-cases for regular expression engines."
 description: """
@@ -32,6 +9,30 @@ It handles most posix extended regular expressions along with
 complement (~a) and intersection (a&b).
 Since it handles complement, it can also generate strings that
 *don't* match a given regular expression."""
+maintainer: "Drup <drupyog@zoho.com>"
+authors: "Drup <drupyog@zoho.com>"
+license: "ISC"
+homepage: "https://github.com/Drup/regenerate"
+doc: "https://drup.github.io/regenerate/doc/0.1/"
+bug-reports: "https://github.com/Drup/regenerate/issues"
+depends: [
+  "cmdliner"
+  "containers"
+  "fmt"
+  "jbuilder" {build}
+  "mtime"
+  "ocaml" {>= "4.03"}
+  "oseq"
+  "qcheck"
+  "re" {with-test}
+  "sequence"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs "@install"]
+  ["jbuilder" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/Drup/regenerate.git"
 url {
   src:
     "https://github.com/Drup/regenerate/releases/download/0.1/regenerate-0.1.tbz"

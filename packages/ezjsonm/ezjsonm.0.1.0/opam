@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "thomas@gazagnaire.org"
-authors: [ "Thomas Gazagnaire" ]
-license: "ISC"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-remove: [
-  ["ocamlfind" "remove" "ezjsonm"]
-]
-depends: [
-  "ocaml" {< "4.03.0"}
-  "ocamlfind"
-  "jsonm" {>= "0.9.1"}
-  "ocamlbuild" {build}
-]
-tags: [
-  "org:mirage"
-  "org:ocamllabs"
-]
-dev-repo: "git://github.com/mirage/ezjsonm"
-install: ["ocaml" "setup.ml" "-install"]
+name: "ezjsonm"
+version: "0.1.0"
 synopsis: "An easy interface on top of the Jsonm library"
 description: """
 This version provides more convenient (but far less flexible)
@@ -31,7 +10,25 @@ quick scripts that manipulate JSON.
 
 More advanced users should go straight to the Jsonm library and
 use it directly, rather than be saddled with the Ezjsonm interface."""
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire"
+license: "ISC"
+tags: ["org:mirage" "org:ocamllabs"]
+depends: [
+  "jsonm" {>= "0.9.1"}
+  "ocaml" {< "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "ezjsonm"]
+dev-repo: "git://github.com/mirage/ezjsonm"
 url {
   src: "https://github.com/mirage/ezjsonm/archive/0.1.0.tar.gz"
   checksum: "md5=65a59017303aa87fd1df8911204281b0"

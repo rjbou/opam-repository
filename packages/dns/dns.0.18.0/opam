@@ -1,24 +1,52 @@
 opam-version: "2.0"
-maintainer:   "anil@recoil.org"
-homepage:     "https://github.com/mirage/ocaml-dns"
-dev-repo: "git+https://github.com/mirage/ocaml-dns.git"
-bug-reports:  "https://github.com/mirage/ocaml-dns/issues"
+name: "dns"
+version: "0.18.0"
+synopsis: "DNS client and server implementation"
+description: """
+This is a pure OCaml implementation of the DNS protocol. It is intended to be a
+reasonably high-performance implementation, but clarity is preferred rather
+than low-level performance hacks."""
+maintainer: "anil@recoil.org"
 authors: [
   "Anil Madhavapeddy"
-  "Tim Deegan"
-  "Richard Mortier"
-  "Haris Rotsos"
-  "David Sheets"
-  "Thomas Gazagnaire"
-  "Luke Dunstan"
   "David Scott"
+  "David Sheets"
+  "Haris Rotsos"
+  "Luke Dunstan"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Tim Deegan"
 ]
 license: "ISC"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/ocaml-dns"
+bug-reports: "https://github.com/mirage/ocaml-dns/issues"
+depends: [
+  "base-bytes"
+  "base64" {>= "2.0.0" & < "3.0.0"}
+  "cmdliner"
+  "cstruct" {>= "1.9.0" & < "3.0.0"}
+  "hashcons"
+  "ipaddr" {>= "2.6.0" & < "2.8.0"}
+  "lwt" {>= "2.4.7" & < "3.0.0"}
+  "mirage-profile"
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "pcap-format" {with-test}
+  "ppx_tools"
+  "re"
+  "uri" {>= "1.7.0" & < "1.9.4"}
 ]
-
+depopts: [
+  "async" {< "v0.13"}
+  "mirage-types"
+]
+conflicts: [
+  "async" {< "112.24.00"}
+  "mirage-types" {< "1.2.0" | > "3.0.0"}
+]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -45,38 +73,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "dns"]
-
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "base-bytes"
-  "lwt" {>= "2.4.7" & < "3.0.0"}
-  "cstruct" {>= "1.9.0" & < "3.0.0"}
-  "ppx_tools"
-  "re"
-  "cmdliner"
-  "ipaddr" {>= "2.6.0" & < "2.8.0"}
-  "uri" {>= "1.7.0" & < "1.9.4"}
-  "base64" {>= "2.0.0" & < "3.0.0"}
-  "mirage-profile"
-  "hashcons"
-  "ounit" {with-test}
-  "pcap-format" {with-test}
-]
-depopts: [
-  "async" {< "v0.13"}
-  "mirage-types"
-]
-conflicts: [
-  "mirage-types" {<"1.2.0" | >"3.0.0"}
-  "async" {<"112.24.00"}
-]
-synopsis: "DNS client and server implementation"
-description: """
-This is a pure OCaml implementation of the DNS protocol. It is intended to be a
-reasonably high-performance implementation, but clarity is preferred rather
-than low-level performance hacks."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/mirage/ocaml-dns.git"
 url {
   src: "https://github.com/mirage/ocaml-dns/archive/v0.18.0.tar.gz"
   checksum: "md5=90812cc89bca40b6e7802c50eed427d2"

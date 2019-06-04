@@ -1,33 +1,6 @@
 opam-version: "2.0"
-maintainer: "David Chemouil <david.chemouil+git@onera.fr>"
-authors: ["David Chemouil" "Julien Brunel"]
-homepage: "https://github.com/grayswandyr/electrod/"
-bug-reports: "https://github.com/grayswandyr/electrod/issues"
-license: "MPL-2.0"
-dev-repo: "git+https://github.com/grayswandyr/electrod.git"
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04"}
-  "ocamlfind" {build}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "ppxfind" {build}
-  "cmdliner" {>= "1.0.2"}
-  "containers" {>= "2.0"}
-  "fmt"
-  "gen"
-  "hashcons"
-  "logs"
-  "menhir"
-  "mtime"
-  "ppx_blob"
-  "ppx_deriving"
-  "printbox"
-  "sequence"
-  "visitors"
-]
+name: "electrod"
+version: "0.1.4"
 synopsis: "Formal analysis for the Electrod formal specification language"
 description: """
 Electrod is a model finder inspired by Kodkod. It takes as input a
@@ -67,6 +40,35 @@ Type `electrod --help` to get some help on options.
 electrod is distributed under the terms of the Mozilla Public License v2.0.
 
 See [LICENSES.md](LICENSES.md) for more information."""
+maintainer: "David Chemouil <david.chemouil+git@onera.fr>"
+authors: ["David Chemouil" "Julien Brunel"]
+license: "MPL-2.0"
+homepage: "https://github.com/grayswandyr/electrod/"
+bug-reports: "https://github.com/grayswandyr/electrod/issues"
+depends: [
+  "cmdliner" {>= "1.0.2"}
+  "containers" {>= "2.0"}
+  "fmt"
+  "gen"
+  "hashcons"
+  "jbuilder" {build & >= "1.0+beta9"}
+  "logs"
+  "menhir"
+  "mtime"
+  "ocaml" {>= "4.04"}
+  "ocamlfind" {build}
+  "ppx_blob"
+  "ppx_deriving"
+  "ppxfind" {build}
+  "printbox"
+  "sequence"
+  "visitors"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/grayswandyr/electrod.git"
 url {
   src:
     "https://github.com/grayswandyr/electrod/releases/download/0.1.4/electrod-0.1.4.tbz"

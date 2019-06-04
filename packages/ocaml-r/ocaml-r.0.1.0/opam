@@ -1,26 +1,28 @@
 opam-version: "2.0"
-maintainer: "philippe.veber@gmail.com"
-authors: ["Guillaume Yzyquel" "Maxence Guesdon" "Philippe Veber"]
-homepage: "https://github.com/pveber/ocaml-r"
-bug-reports: "https://github.com/pveber/ocaml-r/issues"
-license: "GPL"
-dev-repo: "git+https://github.com/pveber/ocaml-r.git"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml"
-  "base" {build & < "v0.13"}
-  "configurator" {build & < "v0.13"}
-  "conf-r" {build}
-  "conf-r-mathlib" {build}
-  "jbuilder" {build}
-  "stdio" {build & < "v0.13"}
-]
+name: "ocaml-r"
+version: "0.1.0"
 synopsis: "Objective Caml bindings for the R interpreter"
 description: """
 OCaml-R is a library that can be used to construct R values in memory,
 convert them to OCaml values, and build clean wrappers to R
 functions. It provide a simple means to develop bindings to any R
 package."""
+maintainer: "philippe.veber@gmail.com"
+authors: ["Guillaume Yzyquel" "Maxence Guesdon" "Philippe Veber"]
+license: "GPL"
+homepage: "https://github.com/pveber/ocaml-r"
+bug-reports: "https://github.com/pveber/ocaml-r/issues"
+depends: [
+  "base" {build & < "v0.13"}
+  "conf-r" {build}
+  "conf-r-mathlib" {build}
+  "configurator" {build & < "v0.13"}
+  "jbuilder" {build}
+  "ocaml"
+  "stdio" {build & < "v0.13"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/pveber/ocaml-r.git"
 url {
   src: "https://github.com/pveber/OCaml-R/archive/v0.1.0.tar.gz"
   checksum: "md5=7bb92f89fd728f2973b760f7811fe3a8"

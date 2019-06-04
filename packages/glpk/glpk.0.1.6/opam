@@ -1,20 +1,22 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [make "byte" "opt"]
-remove: [["ocamlfind" "remove" "glpk"]]
-depends: ["ocaml" "ocamlfind"]
-depexts: [
-  ["libglpk-dev"] {os-distribution = "debian"}
-  ["libglpk-dev"] {os-distribution = "ubuntu"}
-]
-install: [make "install"]
+name: "glpk"
+version: "0.1.6"
 synopsis: "Bindings for glpk"
 description: """
 ocaml-glpk are OCaml bindings to GLPK (GNU Linear Programming Kit)
 which is a package intended for solving large-scale linear programming
 (LP), mixed integer programming (MIP), and other related problems. The
 library is released under the GPL license (like GLPK itself)."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: ["ocaml" "ocamlfind"]
 flags: light-uninstall
+build: [make "byte" "opt"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "glpk"]
+depexts: [
+  ["libglpk-dev"] {os-distribution = "debian"}
+  ["libglpk-dev"] {os-distribution = "ubuntu"}
+]
 url {
   src:
     "http://downloads.sourceforge.net/project/ocaml-glpk/ocaml-glpk/0.1.6/ocaml-glpk-0.1.6.tar.gz"

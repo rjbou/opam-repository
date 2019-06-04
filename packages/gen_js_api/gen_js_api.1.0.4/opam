@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "Alain Frisch <alain.frisch@lexifi.com>"
-authors: [
-  "Alain Frisch <alain.frisch@lexifi.com>"
-  "Sebastien Briais <sebastien.briais@lexifi.com"
-]
-homepage: "https://github.com/LexiFi/gen_js_api"
-bug-reports: "https://github.com/LexiFi/gen_js_api/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/LexiFi/gen_js_api.git"
-build: [make "all"]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "gen_js_api"]
-depends: [
-  "ocaml" {>= "4.05.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  "js_of_ocaml"
-]
+name: "gen_js_api"
+version: "1.0.4"
 synopsis: "Easy OCaml bindings for Javascript libraries"
 description: """
 gen_js_api aims at simplifying the creation of OCaml bindings for
@@ -24,7 +9,24 @@ Javascript libraries and the tool generates the actual binding code
 with a combination of implicit conventions and explicit annotations.
 
 gen_js_api is to be used with the js_of_ocaml compiler."""
+maintainer: "Alain Frisch <alain.frisch@lexifi.com>"
+authors: [
+  "Alain Frisch <alain.frisch@lexifi.com>"
+  "Sebastien Briais <sebastien.briais@lexifi.com"
+]
+license: "MIT"
+homepage: "https://github.com/LexiFi/gen_js_api"
+bug-reports: "https://github.com/LexiFi/gen_js_api/issues"
+depends: [
+  "js_of_ocaml"
+  "ocaml" {>= "4.05.0" & < "4.06.0"}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [make "all"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "gen_js_api"]
+dev-repo: "git+https://github.com/LexiFi/gen_js_api.git"
 url {
   src: "https://github.com/LexiFi/gen_js_api/archive/v1.0.4.tar.gz"
   checksum: "md5=b996938e315fbcc37b7586ca6830eed5"

@@ -1,31 +1,29 @@
 opam-version: "2.0"
+name: "async-zmq"
+version: "0.3.0"
+synopsis: "Async wrapper for OCaml's zeromq bindings"
+description: "A faithful port of lwt-zmq"
 maintainer: "rudi.grinberg@gmail.com"
+authors: "Rudi Grinberg"
 license: "MIT"
-authors: [ "Rudi Grinberg" ]
-
 homepage: "https://github.com/rgrinberg/async-zmq"
 bug-reports: "https://github.com/rgrinberg/async-zmq/issues"
-dev-repo: "git+https://github.com/rgrinberg/async-zmq.git"
-build: [ "omake" ]
-
-install: [ "omake" "install"]
-
-remove: [["ocamlfind" "remove" "async_zmq"]]
-
 depends: [
+  "async" {< "v0.10"}
+  "core" {< "v0.13"}
   "ocaml" {>= "4.02.3"}
   "ocamlfind" {build}
   "omake" {build}
-  "core" {< "v0.13"}
-  "async" {< "v0.10"}
-  "ppx_sexp_conv" {< "v0.13"}
   "ppx_deriving"
+  "ppx_sexp_conv" {< "v0.13"}
   "sexplib" {< "v0.13"}
   "zmq" {< "5.0.0"}
 ]
-synopsis: "Async wrapper for OCaml's zeromq bindings"
-description: "A faithful port of lwt-zmq"
 flags: light-uninstall
+build: "omake"
+install: ["omake" "install"]
+remove: ["ocamlfind" "remove" "async_zmq"]
+dev-repo: "git+https://github.com/rgrinberg/async-zmq.git"
 url {
   src: "https://github.com/rgrinberg/async-zmq/archive/v0.3.0.tar.gz"
   checksum: "md5=03988a5dd8e62479283ef6a367877393"

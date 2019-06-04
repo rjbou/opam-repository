@@ -1,38 +1,6 @@
 opam-version: "2.0"
-maintainer: "zoggy@bat8.org"
-authors: "Maxence Guesdon"
-homepage: "http://zoggy.github.io/genet"
-license: "GNU General Public License version 3"
-doc: "http://zoggy.github.io/genet/doc.html"
-tags: [
-  "continuous integration"
-  "test"
-  "execution chains"
-]
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-remove: [
-  ["./configure" "--prefix" prefix]
-  [make "uninstall"]
-]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocamlfind"
-  "config-file" {>= "1.1"}
-  "lablgtk-extras" {>= "1.2"}
-  "lablgtk" {>= "2.16.0"}
-  "menhir" {>= "20120123"}
-  "xtmpl" {>= "0.5" & <= "0.7"}
-  "mysql" {>= "1.1.1"}
-  "pcre" {>= "7.0.2"}
-  "ocamlnet" {>= "3.6.5"}
-  "ocamldot" {>= "1.0"}
-  "rdf" {= "0.6.0"}
-]
-depopts: "postgresql"
-install: [make "install"]
+name: "genet"
+version: "0.4"
 synopsis: "Genet is tool to build a continuous integration platform."
 description: """
 The user defines tools, branches and versions. Interfaces
@@ -44,6 +12,36 @@ and test cases.
 
 Genet computes all tool version combinations to execute the
 chains on the test cases. Results can be compared."""
+maintainer: "zoggy@bat8.org"
+authors: "Maxence Guesdon"
+license: "GNU General Public License version 3"
+tags: ["continuous integration" "execution chains" "test"]
+homepage: "http://zoggy.github.io/genet"
+doc: "http://zoggy.github.io/genet/doc.html"
+depends: [
+  "config-file" {>= "1.1"}
+  "lablgtk" {>= "2.16.0"}
+  "lablgtk-extras" {>= "1.2"}
+  "menhir" {>= "20120123"}
+  "mysql" {>= "1.1.1"}
+  "ocaml" {>= "4.00.0"}
+  "ocamldot" {>= "1.0"}
+  "ocamlfind"
+  "ocamlnet" {>= "3.6.5"}
+  "pcre" {>= "7.0.2"}
+  "rdf" {= "0.6.0"}
+  "xtmpl" {>= "0.5" & <= "0.7"}
+]
+depopts: ["postgresql"]
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+install: [make "install"]
+remove: [
+  ["./configure" "--prefix" prefix]
+  [make "uninstall"]
+]
 url {
   src: "http://zoggy.github.io/genet/genet-0.4.tar.gz"
   checksum: "md5=5dcba076865a9a020ecf44537dbfcffe"

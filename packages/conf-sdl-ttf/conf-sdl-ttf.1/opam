@@ -1,18 +1,22 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://www.libsdl.org/projects/SDL_ttf/release-1.2.html"
-license: "LGPL 2.1"
-build: [["pkg-config" "SDL_ttf"]]
-depexts: [
-  ["libsdl-ttf2.0-dev"] {os-distribution = "debian"}
-  ["libsdl-ttf2.0-dev"] {os-distribution = "ubuntu"}
-  ["libSDL_ttf-devel"] {os-distribution = "mageia"}
-  ["sdl_ttf"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "conf-sdl-ttf"
+version: "1"
 synopsis: "Virtual package relying on a sdl-ttf system installation"
 description:
   "This package can only install if libsdl-ttf is installed on the system."
-depends: ["conf-pkg-config" {build}]
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
 authors: "Sam Lantinga"
+license: "LGPL 2.1"
+homepage: "http://www.libsdl.org/projects/SDL_ttf/release-1.2.html"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "SDL_ttf"]
+depexts: [
+  ["libSDL_ttf-devel"] {os-distribution = "mageia"}
+  ["libsdl-ttf2.0-dev"] {os-distribution = "debian"}
+  ["libsdl-ttf2.0-dev"] {os-distribution = "ubuntu"}
+  ["sdl_ttf"] {os = "macos" & os-distribution = "homebrew"}
+]

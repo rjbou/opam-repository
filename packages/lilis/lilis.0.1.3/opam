@@ -1,8 +1,21 @@
 opam-version: "2.0"
+name: "lilis"
+version: "0.1.3"
+synopsis: "Library to Interpret Lindenmayer Systems"
+description: "A Library to interpret, evaluate and draw L-systems."
 maintainer: "drupyog@zoho.com"
-authors: ["Gabriel Radanne <drupyog@zoho.com>"]
-homepage: "http://drup.github.io/LILiS/"
+authors: "Gabriel Radanne <drupyog@zoho.com>"
 license: "MIT"
+homepage: "http://drup.github.io/LILiS/"
+depends: [
+  "batteries"
+  "menhir"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+depopts: ["cairo2" "cmdliner" "lablgtk"]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -17,28 +30,13 @@ build: [
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
+install: ["ocaml" "setup.ml" "-install"]
 remove: [
   ["ocamlfind" "remove" "minicalc"]
   ["ocamlfind" "remove" "lilis"]
   ["ocamlfind" "remove" "glilis"]
 ]
-depends: [
-  "ocaml"
-  "batteries"
-  "ocamlfind"
-  "menhir"
-  "ocamlbuild" {build}
-]
-depopts: [
-  "cmdliner"
-  "cairo2"
-  "lablgtk"
-]
 dev-repo: "git://github.com/Drup/LILiS"
-install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Library to Interpret Lindenmayer Systems"
-description: "A Library to interpret, evaluate and draw L-systems."
-flags: light-uninstall
 extra-files: ["lilis.install" "md5=af10b6419b9c29b727bea3fcc108042e"]
 url {
   src: "https://github.com/Drup/LILiS/archive/v0.1.3.tar.gz"

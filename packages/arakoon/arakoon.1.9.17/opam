@@ -1,46 +1,47 @@
 opam-version: "2.0"
+name: "arakoon"
+version: "1.9.17"
+synopsis:
+  "A distributed key-value store that guarantees consistency above anything else."
 maintainer: "Romain Slootmaekers <romain.slootmaekers@openvstorage.com>"
-authors: ["Romain Slootmaekers <romain.slootmaekers@openvstorage.com>"
-          "Jan Doms <jan.doms@openvstorage.com>"]
+authors: [
+  "Jan Doms <jan.doms@openvstorage.com>"
+  "Romain Slootmaekers <romain.slootmaekers@openvstorage.com>"
+]
+license: "Apache 2.0"
 homepage: "https://github.com/openvstorage/arakoon"
 bug-reports: "https://github.com/openvstorage/arakoon/issues"
-license: "Apache 2.0"
-dev-repo: "git+https://github.com/openvstorage/arakoon.git"
-build: [ [make] ]
-
-install: [make "install"   "OCAML_LIBDIR=%{prefix}%/lib" "PREFIX=%{prefix}%"]
-
-remove:  [
+depends: [
+  "bisect" {>= "1.3"}
+  "camlbz2" {>= "0.6.0"}
+  "camltc" {>= "0.9.4"}
+  "conf-libev" {>= "4-11"}
+  "core" {>= "v0.9.0" & < "v0.13"}
+  "lwt" {>= "3.0.0"}
+  "lwt_ssl" {>= "1.0.1"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ocplib-endian" {>= "1.0"}
+  "ounit"
+  "quickcheck" {>= "1.0.2"}
+  "redis" {= "0.3.3"}
+  "snappy" {>= "0.1.0"}
+  "ssl" {>= "0.5.3"}
+  "uri" {>= "1.9.2"}
+]
+available: opam-version >= "1.2" & os != "macos"
+build: make
+install: [make "install" "OCAML_LIBDIR=%{prefix}%/lib" "PREFIX=%{prefix}%"]
+remove: [
   [make "uninstall_client" "OCAML_LIBDIR=%{prefix}%/lib" "PREFIX=%{prefix}%"]
   ["rm" "-rf" "%{bin}%/arakoon"]
 ]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "bisect" {>= "1.3"}
-  "camltc" {>= "0.9.4"}
-  "camlbz2" {>= "0.6.0"}
-  "conf-libev" {>= "4-11"}
-  "lwt" {>= "3.0.0"}
-  "lwt_ssl" {>= "1.0.1"}
-  "ocplib-endian" {>= "1.0"}
-  "ssl" {>= "0.5.3"}
-  "snappy" {>= "0.1.0"}
-  "quickcheck" {>= "1.0.2"}
-  "core" {>= "v0.9.0" & < "v0.13"}
-  "ocamlbuild" {build}
-  "redis" {= "0.3.3"}
-  "uri" {>= "1.9.2"}
-  "ounit"
-]
-available: opam-version >= "1.2" & os != "macos"
 depexts: [
   ["help2man"] {os-distribution = "ubuntu"}
   ["help2man"] {os-distribution = "debian"}
 ]
-synopsis:
-  "A distributed key-value store that guarantees consistency above anything else."
+dev-repo: "git+https://github.com/openvstorage/arakoon.git"
 url {
   src:
     "https://github.com/openvstorage/arakoon/archive/1a5da78cd06e7662c6d262ae0c723c4d54d94542.tar.gz"

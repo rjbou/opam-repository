@@ -1,25 +1,6 @@
 opam-version: "2.0"
 name: "glsurf"
 version: "3.3"
-maintainer: "Christophe Raffalli <raffalli@univ-savoie.fr>"
-bug-reports:  "mailto:raffalli@univ-savoie.fr"
-authors:
-  [ "Christophe Raffalli <raffalli@univ-savoie.fr>" ]
-homepage: "http://lama.univ-savoie.fr/~raffalli/glsurf.html"
-license: "GPL-3.0"
-dev-repo: "darcs+https://lama.univ-savoie.fr/~raffalli/glsurf/repos"
-build: [make]
-install: [make "install" "BINDIR=%{bin}%"]
-remove: [rm "%{bin}%/glsurf"]
-depends: [
-  "ocaml"
-  "camlimages"
-  "base-bytes"
-  "lablgl"
-  "camlp4" {build}
-  "ocamlfind" {build}
-  "num"
-]
 synopsis: "GlSurf, implicit curves and surfaces drawing and discretization"
 description: """
 GlSurf is a program (similar to Surf) to draw surfaces and curves from
@@ -32,6 +13,24 @@ power of OpenGl to animate the surface, use transparency, etc ...
 
 Authors:
 	Christophe Raffalli"""
+maintainer: "Christophe Raffalli <raffalli@univ-savoie.fr>"
+authors: "Christophe Raffalli <raffalli@univ-savoie.fr>"
+license: "GPL-3.0"
+homepage: "http://lama.univ-savoie.fr/~raffalli/glsurf.html"
+bug-reports: "mailto:raffalli@univ-savoie.fr"
+depends: [
+  "base-bytes"
+  "camlimages"
+  "camlp4" {build}
+  "lablgl"
+  "num"
+  "ocaml"
+  "ocamlfind" {build}
+]
+build: make
+install: [make "install" "BINDIR=%{bin}%"]
+remove: [rm "%{bin}%/glsurf"]
+dev-repo: "darcs+https://lama.univ-savoie.fr/~raffalli/glsurf/repos"
 url {
   src: "https://lama.univ-savoie.fr/~raffalli/glsurf/glsurf-3.3.tar.gz"
   checksum: "md5=af1de416d0d51e7be611324383eaf945"

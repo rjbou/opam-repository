@@ -1,31 +1,34 @@
 opam-version: "2.0"
 name: "caml-mode"
 version: "4.02"
+synopsis: "OCaml code editing commands for Emacs"
 maintainer: "Christophe.Troestler@umons.ac.be"
-authors: [ "Damien Doligez"
-           "Jacques Garrigue"
-           "Xavier Leroy"
-           "Didier Remy"
-           "Ian T Zimmerman" ]
+authors: [
+  "Damien Doligez"
+  "Didier Remy"
+  "Ian T Zimmerman"
+  "Jacques Garrigue"
+  "Xavier Leroy"
+]
+license: "GNU General Public License"
 homepage: "https://github.com/ocaml/ocaml"
 bug-reports: "http://caml.inria.fr/mantis/"
-license: "GNU General Public License"
-dev-repo: "git+https://github.com/ocaml/ocaml.git"
-remove: [
-  [make "uninstall" "EMACSDIR=%{share}%/emacs/site-lisp"]
-  [make "uninstall-ocamltags" "BINDIR=%{bin}%"]
-]
-depends: ["ocaml" "conf-emacs"]
-post-messages: "
-If you have not yet done so, please add in ~/.emacs.d/init.el or
-in ~/.emacs to following line:
-    (add-to-list 'load-path \"%{share}%/emacs/site-lisp/\")
-" {success}
+depends: ["conf-emacs" "ocaml"]
 install: [
   [make "install" "EMACSDIR=%{share}%/emacs/site-lisp"]
   [make "install-ocamltags" "BINDIR=%{bin}%"]
 ]
-synopsis: "OCaml code editing commands for Emacs"
+remove: [
+  [make "uninstall" "EMACSDIR=%{share}%/emacs/site-lisp"]
+  [make "uninstall-ocamltags" "BINDIR=%{bin}%"]
+]
+post-messages:
+  """
+If you have not yet done so, please add in ~/.emacs.d/init.el or
+in ~/.emacs to following line:
+    (add-to-list 'load-path "%{share}%/emacs/site-lisp/")"""
+    {success}
+dev-repo: "git+https://github.com/ocaml/ocaml.git"
 url {
   src:
     "https://github.com/ocaml/tuareg/releases/download/2.0.9/caml-mode-4.02.tar.gz"

@@ -1,24 +1,6 @@
 opam-version: "2.0"
-maintainer: "Thomas Leonard <talex5@gmail.com>"
-authors: "Thomas Leonard <talex5@gmail.com>"
-homepage: "https://github.com/mirage/mirage-profile"
-dev-repo: "git+https://github.com/mirage/mirage-profile.git"
-bug-reports: "https://github.com/mirage/mirage-profile/issues"
-doc: "https://mirage.github.io/mirage-profile"
-license: "BSD-2-clause"
-
-build: [
-  [ "jbuilder" "subst" "-p" name] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.03.0" & < "4.08.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "mirage-profile" {= "0.8.2"}
-  "mtime" {>= "1.0.0"}
-  "ocplib-endian"
-]
+name: "mirage-profile-unix"
+version: "0.8.2"
 synopsis: "Collect runtime profiling information in CTF format"
 description: """
 This library can be used to trace execution of OCaml/Lwt programs (such as Mirage unikernels) at the level of Lwt threads.
@@ -27,6 +9,24 @@ Some example traces can be found in the blog post [Visualising an Asynchronous M
 
 Libraries can use the functions mirage-profile provides to annotate the traces with extra information.
 When compiled against a normal version of Lwt, mirage-profile's functions are null-ops (or call the underlying untraced operation, as appropriate) and OCaml's cross-module inlining will optimise these calls away, meaning there should be no overhead in the non-profiling case."""
+maintainer: "Thomas Leonard <talex5@gmail.com>"
+authors: "Thomas Leonard <talex5@gmail.com>"
+license: "BSD-2-clause"
+homepage: "https://github.com/mirage/mirage-profile"
+doc: "https://mirage.github.io/mirage-profile"
+bug-reports: "https://github.com/mirage/mirage-profile/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta9"}
+  "mirage-profile" {= "0.8.2"}
+  "mtime" {>= "1.0.0"}
+  "ocaml" {>= "4.03.0" & < "4.08.0"}
+  "ocplib-endian"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-profile.git"
 url {
   src:
     "https://github.com/mirage/mirage-profile/releases/download/v0.8.2/mirage-profile-0.8.2.tbz"

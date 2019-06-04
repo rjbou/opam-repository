@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anders Fugmann <anders@fugmann.net>"
-authors: "Anders Fugmann"
-license: "BSD-3"
-homepage: "https://github.com/andersfugmann/aws-s3"
-dev-repo: "git+https://github.com/andersfugmann/aws-s3"
-bug-reports: "https://github.com/andersfugmann/aws-s3/issues"
-doc: "https://andersfugmann.github.io/aws-s3/"
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "dune" {build}
-  "aws-s3" {= "4.3.0" }
-  "async_kernel" {>= "v0.9.0"}
-  "async_unix" {>= "v0.9.0"}
-  "conduit-async"
-]
+name: "aws-s3-async"
+version: "4.3.0"
 synopsis: "Ocaml library for accessing Amazon S3 - Async version"
 description: """
 This library provides access to Amazon Simple Storage Solution (S3).
@@ -31,6 +14,25 @@ The library supports:
 * Fetching machine role/credentials (though IAM)
 
 This library uses async for concurrency"""
+maintainer: "Anders Fugmann <anders@fugmann.net>"
+authors: "Anders Fugmann"
+license: "BSD-3"
+homepage: "https://github.com/andersfugmann/aws-s3"
+doc: "https://andersfugmann.github.io/aws-s3/"
+bug-reports: "https://github.com/andersfugmann/aws-s3/issues"
+depends: [
+  "async_kernel" {>= "v0.9.0"}
+  "async_unix" {>= "v0.9.0"}
+  "aws-s3" {= "4.3.0"}
+  "conduit-async"
+  "dune" {build}
+  "ocaml" {>= "4.04.0"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/andersfugmann/aws-s3"
 url {
   src: "https://github.com/andersfugmann/aws-s3/archive/4.3.0.tar.gz"
   checksum: [

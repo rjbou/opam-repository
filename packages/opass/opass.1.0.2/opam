@@ -1,30 +1,24 @@
 opam-version: "2.0"
-maintainer: "mmatalka@gmail.com"
-build: [
-  [make]
-]
-install: [
-  [make "PREFIX=%{prefix}%" "-j" jobs "install"]
-]
-
-remove: [
-  ["rm" "-v" "%{prefix}%/bin/opass"]
-]
-
-depends: [
-  "ocaml" {>= "4.0.0"}
-  "ocamlfind"
-  "core" {>= "108.08.00" & < "113.24.00"}
-  "csv"
-]
-dev-repo: "git://github.com/orbitz/opass"
-authors: [ "orbitz@gmail.com" ]
-homepage: "https://github.com/orbitz/opass/blob/master/README.org"
-bug-reports: "https://github.com/orbitz/opass/issues"
+name: "opass"
+version: "1.0.2"
 synopsis:
   "A simple command line tool for storing, retreiving, and generating password and"
 description: "secret notes, using PGP for encryption."
+maintainer: "mmatalka@gmail.com"
+authors: "orbitz@gmail.com"
+homepage: "https://github.com/orbitz/opass/blob/master/README.org"
+bug-reports: "https://github.com/orbitz/opass/issues"
+depends: [
+  "core" {>= "108.08.00" & < "113.24.00"}
+  "csv"
+  "ocaml" {>= "4.0.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: make
+install: [make "PREFIX=%{prefix}%" "-j" jobs "install"]
+remove: ["rm" "-v" "%{prefix}%/bin/opass"]
+dev-repo: "git://github.com/orbitz/opass"
 url {
   src: "https://github.com/orbitz/opass/archive/1.0.2.tar.gz"
   checksum: "md5=f748df374449900679dd48a17a37610e"

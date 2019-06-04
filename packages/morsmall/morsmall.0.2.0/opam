@@ -1,29 +1,21 @@
 opam-version: "2.0"
-
+name: "morsmall"
+version: "0.2.0"
 synopsis: "A concise AST for POSIX shell"
-description: """
-A concise AST for POSIX shell
-"""
-
+description: "A concise AST for POSIX shell"
 maintainer: "Nicolas Jeannerod <nicolas.jeannerod@irif.fr>"
-authors: [ "Nicolas Jeannerod <nicolas.jeannerod@irif.fr>" ]
+authors: "Nicolas Jeannerod <nicolas.jeannerod@irif.fr>"
 license: "GPL3"
-
 homepage: "https://github.com/colis-anr/morsmall"
 bug-reports: "https://github.com/colis-anr/morsmall/issues"
-dev-repo: "git+ssh://git@github.com/colis-anr/morsmall.git"
-
 depends: [
-  "dune"          {build}
-  "morbig"        {>= "0.10.0"}
-  "ocaml"         {>= "4.04"}
+  "dune" {build}
+  "morbig" {>= "0.10.0"}
+  "ocaml" {>= "4.04"}
   "ppx_deriving"
 ]
-
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
-
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+ssh://git@github.com/colis-anr/morsmall.git"
 url {
   src: "https://github.com/colis-anr/morsmall/archive/0.2.0.tar.gz"
   checksum: [

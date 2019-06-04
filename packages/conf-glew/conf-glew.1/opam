@@ -1,22 +1,22 @@
 opam-version: "2.0"
-maintainer: "blue-prawn"
-authors: [
-  "Milan Ikits"
-  "Marcelo E. Magallon"
-  "Lev Povalahev"
-]
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://glew.sourceforge.net/"
-license: "modified BSD"
-build: [["pkg-config" "glew"]]
-depends: ["conf-pkg-config" {build}]
-depexts: [
-  ["libglew-dev"] {os-distribution = "debian"}
-  ["libglew-devel"] {os-distribution = "mageia"}
-  ["libglew-dev"] {os-distribution = "ubuntu"}
-  ["glew-devel"] {os-distribution = "fedora"}
-]
+name: "conf-glew"
+version: "1"
 synopsis: "Virtual package relying on a GLEW system installation"
 description:
   "This package can only install if the lib GLEW is installed on the system."
+maintainer: "blue-prawn"
+authors: ["Lev Povalahev" "Marcelo E. Magallon" "Milan Ikits"]
+license: "modified BSD"
+homepage: "http://glew.sourceforge.net/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "glew"]
+depexts: [
+  ["glew-devel"] {os-distribution = "fedora"}
+  ["libglew-dev"] {os-distribution = "debian"}
+  ["libglew-dev"] {os-distribution = "ubuntu"}
+  ["libglew-devel"] {os-distribution = "mageia"}
+]

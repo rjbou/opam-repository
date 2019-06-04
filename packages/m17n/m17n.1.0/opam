@@ -1,13 +1,34 @@
 opam-version: "2.0"
+name: "m17n"
+version: "1.0"
+synopsis: "Multilingualization for OCaml source code"
+description: """
+m17n is an OCaml package that allows to use non-English
+identifiers in the OCaml source code. It treats source
+code as UTF-8 text and performs normalization and
+case-folding according to the Unicode standard."""
 maintainer: "whitequark <whitequark@whitequark.org>"
 authors: "whitequark <whitequark@whitequark.org>"
-homepage: "https://github.com/whitequark/ocaml-m17n"
-bug-reports: "https://github.com/whitequark/ocaml-m17n/issues"
 license: "MIT"
-doc: "http://whitequark.github.io/ocaml-m17n"
 tags: "syntax"
-dev-repo: "git://github.com/whitequark/ocaml-m17n.git"
-substs: "pkg/META"
+homepage: "https://github.com/whitequark/ocaml-m17n"
+doc: "http://whitequark.github.io/ocaml-m17n"
+bug-reports: "https://github.com/whitequark/ocaml-m17n/issues"
+depends: [
+  "gen" {>= "0.2.3" & < "0.5"}
+  "ocaml" {= "4.03.0"}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "ppx_deriving" {with-test}
+  "sedlex"
+  "uucp" {>= "1.1.0" & < "2.0.0"}
+  "uunf" {>= "1.0.0" & < "2.0.0"}
+  "uutf" {>= "0.9.4" & < "1.0.0"}
+]
+depopts: ["utop"]
+conflicts: [
+  "utop" {< "1.17"}
+]
 build: [
   [
     "ocaml"
@@ -24,27 +45,8 @@ build: [
     "--"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {= "4.03.0"}
-  "ocamlfind" {build}
-  "sedlex"
-  "uutf" {>= "0.9.4" & < "1.0.0"}
-  "uunf" {>= "1.0.0" & < "2.0.0"}
-  "uucp" {>= "1.1.0" & < "2.0.0"}
-  "gen" {>= "0.2.3" & < "0.5"}
-  "ounit" {with-test}
-  "ppx_deriving" {with-test}
-]
-depopts: "utop"
-conflicts: [
-  "utop" {< "1.17"}
-]
-synopsis: "Multilingualization for OCaml source code"
-description: """
-m17n is an OCaml package that allows to use non-English
-identifiers in the OCaml source code. It treats source
-code as UTF-8 text and performs normalization and
-case-folding according to the Unicode standard."""
+substs: "pkg/META"
+dev-repo: "git://github.com/whitequark/ocaml-m17n.git"
 url {
   src: "https://github.com/whitequark/ocaml-m17n/archive/v1.0.tar.gz"
   checksum: "md5=c95d4404804208f1176b8868bbc2d365"

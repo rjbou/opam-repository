@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      ["Thomas Leonard" "Magnus Skjegstad"
-               "David Scott" "Thomas Gazagnaire"]
-license:      "Apache"
-homepage:     "https://github.com/moby/datakit"
-bug-reports:  "https://github.com/moby/datakit/issues"
-dev-repo: "git+https://github.com/moby/datakit.git"
-doc:          "https://docker.github.io/datakit/"
-
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta10"}
-  "astring"
-  "logs"
-  "fmt"
-  "cstruct" {> "2.2.0"}
-  "datakit-client" {>= "0.12.0"}
-  "protocol-9p-unix" {>= "0.11.0"}
-  "cmdliner"
-]
+name: "datakit-client-9p"
+version: "0.12.0"
 synopsis: "Orchestrate applications using a Git-like dataflow"
 description: """
 *DataKit* is a tool to orchestrate applications using a Git-like dataflow. It
@@ -33,6 +13,27 @@ layer for [HyperKit](http://github.com/docker/hyperkit), the
 hypervisor component of
 [Docker for Mac and Windows](https://blog.docker.com/2016/03/docker-for-mac-windows-beta/), and
 for the [DataKitCI][] continuous integration system."""
+maintainer: "thomas@gazagnaire.org"
+authors: [
+  "David Scott" "Magnus Skjegstad" "Thomas Gazagnaire" "Thomas Leonard"
+]
+license: "Apache"
+homepage: "https://github.com/moby/datakit"
+doc: "https://docker.github.io/datakit/"
+bug-reports: "https://github.com/moby/datakit/issues"
+depends: [
+  "astring"
+  "cmdliner"
+  "cstruct" {> "2.2.0"}
+  "datakit-client" {>= "0.12.0"}
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta10"}
+  "logs"
+  "ocaml"
+  "protocol-9p-unix" {>= "0.11.0"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/moby/datakit.git"
 url {
   src:
     "https://github.com/moby/datakit/releases/download/0.12.0/datakit-0.12.0.tbz"

@@ -1,10 +1,19 @@
 opam-version: "2.0"
+name: "conf-aclocal"
+version: "1.0.0"
+synopsis: "Virtual package relying on aclocal"
+description:
+  "This package can only install if the aclocal program is installed on the system."
 maintainer: "unixjunkie@sdf.org"
 authors: "https://git.savannah.gnu.org/cgit/automake.git/tree/AUTHORS"
+license: "GPL"
 homepage: "http://www.gnu.org/software/automake/"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "GPL"
-build: [["which" "aclocal"]]
+depends: [
+  "conf-which" {build}
+]
+flags: conf
+build: ["which" "aclocal"]
 depexts: [
   ["automake"] {os-distribution = "alpine"}
   ["automake"] {os-distribution = "centos"}
@@ -15,8 +24,3 @@ depexts: [
   ["automake"] {os-distribution = "nixos"}
   ["automake"] {os-distribution = "arch"}
 ]
-depends: ["conf-which" {build}]
-synopsis: "Virtual package relying on aclocal"
-description:
-  "This package can only install if the aclocal program is installed on the system."
-flags: conf

@@ -1,19 +1,17 @@
 opam-version: "2.0"
+name: "abella"
+version: "2.0.3"
+synopsis: "Interactive theorem prover based on lambda-tree syntax"
 maintainer: "kaustuv@chaudhuri.info"
-authors: [
-  "Andrew Gacek"
-  "Yuting Wang"
-  "Kaustuv Chaudhuri"
-]
-homepage: "http://abella-prover.org"
+authors: ["Andrew Gacek" "Kaustuv Chaudhuri" "Yuting Wang"]
 license: "GPL 3"
-build: [[make]]
+homepage: "http://abella-prover.org"
 depends: [
   "ocaml" {>= "3.12.1" & < "4.08.0"}
-  "ocamlfind"
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
-synopsis: "Interactive theorem prover based on lambda-tree syntax"
+build: make
 extra-files: ["abella.install" "md5=f5fd361890406899f21b2df25a63cf15"]
 url {
   src: "https://codeload.github.com/abella-prover/abella/tar.gz/v2.0.3"

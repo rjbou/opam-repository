@@ -1,24 +1,6 @@
 opam-version: "2.0"
-maintainer: "Liang Wang <ryanrhymes@gmail.com>"
-authors: [ "Liang Wang" ]
-license: "MIT"
-homepage: "https://github.com/owlbarn/owl"
-dev-repo: "git+https://github.com/owlbarn/owl.git"
-bug-reports: "https://github.com/owlbarn/owl/issues"
-doc: "https://owlbarn.github.io/"
-
-build: [
-  [ "dune" "subst" ] {pinned}
-  [ "dune" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.06.0"}
-  "dune" {build}
-  "ocaml-compiler-libs"
-  "owl"
-  "owl-zoo"
-]
+name: "owl-top"
+version: "0.4.0"
 synopsis: "An OCaml Numerical Library"
 description: """
 Owl is an emerging numerical library for scientific computing and engineering. The library is developed in the OCaml language and inherits all its powerful features such as static type checking, powerful module system, and superior runtime efficiency. Owl allows you to write succinct type-safe numerical applications in functional language without sacrificing performance, significantly reduces the cost from prototype to production use.
@@ -136,6 +118,24 @@ However, installing from OpenBLAS source code leads to way better performance in
 Owl is well integrated with `utop`. You can use `utop` to try out the experiments in our tutorials. If you want `utop` to automatically load Owl for you, you can also edit `.ocamlinit` file in your home folder by adding the following lines. (Note that the library name is `owl` with lowercase `o`.)
 
 ```bash"""
+maintainer: "Liang Wang <ryanrhymes@gmail.com>"
+authors: "Liang Wang"
+license: "MIT"
+homepage: "https://github.com/owlbarn/owl"
+doc: "https://owlbarn.github.io/"
+bug-reports: "https://github.com/owlbarn/owl/issues"
+depends: [
+  "dune" {build}
+  "ocaml" {>= "4.06.0"}
+  "ocaml-compiler-libs"
+  "owl"
+  "owl-zoo"
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/owlbarn/owl.git"
 url {
   src: "https://github.com/owlbarn/owl/releases/download/0.4.0/owl-0.4.0.tbz"
   checksum: "md5=164fbec1c8025895eea703b125dd35f3"

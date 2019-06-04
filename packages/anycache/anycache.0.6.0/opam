@@ -1,25 +1,33 @@
 opam-version: "2.0"
+name: "anycache"
+version: "0.6.0"
+synopsis: "Scan-resistant LRU/2Q cache"
+description: """
+anycache is a scan-resistant LRU/2Q cache.
+See the [documentation][basics] for details on the algorithm used.
+
+[basics]: https://edwintorok.gitlab.io/ocaml-anycache/doc/Anycache.html#basics
+
+anycache is distributed under the ISC license."""
 maintainer: "Török Edwin <edwin@skylable.com>"
-authors: ["Török Edwin <edwin@skylable.com>"]
+authors: "Török Edwin <edwin@skylable.com>"
+license: "ISC"
 homepage: "https://gitlab.com/edwintorok/ocaml-anycache"
 doc: "https://edwintorok.gitlab.io/ocaml-anycache/doc"
-license: "ISC"
-dev-repo: "git+https://gitlab.com/edwintorok/ocaml-anycache.git"
 bug-reports: "https://gitlab.com/edwintorok/ocaml-anycache/issues"
 depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
   "alcotest" {with-test & >= "0.7.2" & < "0.8.0"}
   "base-bytes"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
   "result"
+  "topkg" {build}
 ]
-depopts: [
-    "lwt"
-    "async"
+depopts: ["async" "lwt"]
+conflicts: [
+  "async" {>= "v0.10.0"}
 ]
-conflicts: ["async" {>= "v0.10.0"}]
 build: [
   [
     "ocaml"
@@ -49,14 +57,7 @@ build: [
   ] {with-test}
   ["ocaml" "pkg/pkg.ml" "test"] {with-test}
 ]
-synopsis: "Scan-resistant LRU/2Q cache"
-description: """
-anycache is a scan-resistant LRU/2Q cache.
-See the [documentation][basics] for details on the algorithm used.
-
-[basics]: https://edwintorok.gitlab.io/ocaml-anycache/doc/Anycache.html#basics
-
-anycache is distributed under the ISC license."""
+dev-repo: "git+https://gitlab.com/edwintorok/ocaml-anycache.git"
 url {
   src:
     "https://gitlab.com/edwintorok/ocaml-anycache/uploads/78722628e5af42b59da2abe17939ff89/anycache-0.6.0.tbz"

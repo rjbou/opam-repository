@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "conf-vim"
+version: "1"
+synopsis: "Virtual package to install the Vim editor"
+description:
+  "This package will install a system vim if invoked via `opam depext`"
 maintainer: "anil@recoil.org"
+authors: "anil@recoil.org"
+license: "charityware"
 homepage: "http://vim.org"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "charityware"
+flags: conf
 build: ["vim" "--version"]
 depexts: [
-  ["vim-nox"] {os-distribution = "debian"}
-  ["vim-nox"] {os-distribution = "ubuntu"}
   ["vim"] {os-distribution = "centos"}
   ["vim"] {os-distribution = "rhel"}
   ["vim"] {os-distribution = "fedora"}
   ["vim"] {os-distribution = "ol"}
+  ["vim-nox"] {os-distribution = "debian"}
+  ["vim-nox"] {os-distribution = "ubuntu"}
 ]
-synopsis: "Virtual package to install the Vim editor"
-description:
-  "This package will install a system vim if invoked via `opam depext`"
-authors: "anil@recoil.org"
-flags: conf

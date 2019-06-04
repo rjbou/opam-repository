@@ -1,26 +1,30 @@
 opam-version: "2.0"
+name: "aacplus"
+version: "0.2.2"
+synopsis:
+  "Bindings for the aacplus library which provides functions for decoding AAC audio files"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-aacplus"
+bug-reports: "https://github.com/savonet/ocaml-aacplus/issues"
+depends: [
+  "conf-pkg-config" {build}
+  "ocaml"
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "aacplus"]
-depends: ["ocaml" "ocamlfind" "conf-pkg-config" {build}]
 depexts: [
   ["libaacplus"] {os-distribution = "arch"}
   ["libaacplus"] {os-distribution = "gentoo"}
   ["libaacplus"] {os = "freebsd"}
 ]
-bug-reports: "https://github.com/savonet/ocaml-aacplus/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-aacplus.git"
-synopsis:
-  "Bindings for the aacplus library which provides functions for decoding AAC audio files"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-aacplus/releases/download/0.2.2/ocaml-aacplus-0.2.2.tar.gz"

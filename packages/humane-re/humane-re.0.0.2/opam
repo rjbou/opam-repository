@@ -1,28 +1,26 @@
 opam-version: "2.0"
+name: "humane-re"
+version: "0.0.2"
+synopsis: "A human friendly interface to regular expressions in OCaml"
 maintainer: "rudi.grinberg@gmail.com"
-authors: ["Rudi Grinberg"]
+authors: "Rudi Grinberg"
 license: "LGPL-2.0 with OCaml linking exception"
 homepage: "https://github.com/rgrinberg/humane-re"
-
+depends: [
+  "oasis"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "re"
+]
+flags: light-uninstall
 build: [
   [make "configure-no-tests"]
   [make "build"]
 ]
-remove: [
-  ["ocamlfind" "remove" "humane_re"]
-]
-
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
-  "oasis"
-  "re"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/rgrinberg/humane-re"
 install: [make "install"]
-synopsis: "A human friendly interface to regular expressions in OCaml"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "humane_re"]
+dev-repo: "git://github.com/rgrinberg/humane-re"
 url {
   src: "https://github.com/rgrinberg/humane-re/archive/v0.0.2.tar.gz"
   checksum: "md5=2c08eaf953ceabe425058ca5cdf10a06"

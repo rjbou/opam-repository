@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "pure-splitmix"
+version: "0.1"
+synopsis: "Purely functional splittable PRNG"
 maintainer: "Li-yao Xia <lysxia@gmail.com>"
 authors: "Li-yao Xia"
+license: "MIT"
 homepage: "https://github.com/Lysxia/pure-splitmix"
 bug-reports: "https://github.com/Lysxia/pure-splitmix/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/Lysxia/pure-splitmix.git"
-build: [
-  [make "build"]
-  [make "test"] {with-test}
-]
 depends: [
   "ocaml"
   "ocamlbuild" {build & >= "0.9.0"}
 ]
-synopsis: "Purely functional splittable PRNG"
+build: [
+  [make "build"]
+  [make "test"] {with-test}
+]
+dev-repo: "git+https://github.com/Lysxia/pure-splitmix.git"
 extra-files: ["pure-splitmix.install" "md5=729786d7726ba498a64dfe515539316a"]
 url {
   src: "https://github.com/Lysxia/pure-splitmix/archive/0.1.tar.gz"

@@ -1,13 +1,40 @@
 opam-version: "2.0"
+name: "lilis"
+version: "0.2.1"
+synopsis: "Library to Interpret Lindenmayer Systems"
+description: "A Library to interpret, evaluate and draw L-systems."
 maintainer: "drupyog@zoho.com"
-authors: ["Gabriel Radanne <drupyog@zoho.com>"]
-homepage: "https://github.com/Drup/LILiS"
-bug-reports: "https://github.com/Drup/LILiS/issues"
-dev-repo: "git+https://github.com/Drup/LILiS.git"
-doc: "https://drup.github.io/LILiS/0.2/"
+authors: "Gabriel Radanne <drupyog@zoho.com>"
 license: "MIT"
-tags: [ "lsystem" "grammar" "graphics" "logo" ]
-
+tags: ["grammar" "graphics" "logo" "lsystem"]
+homepage: "https://github.com/Drup/LILiS"
+doc: "https://drup.github.io/LILiS/0.2/"
+bug-reports: "https://github.com/Drup/LILiS/issues"
+depends: [
+  "containers" {< "0.7"}
+  "cppo" {build & >= "0.9.4"}
+  "cppo_ocamlbuild" {build}
+  "menhir"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+depopts: [
+  "batteries"
+  "cairo2"
+  "cfstream"
+  "cmdliner"
+  "core_kernel" {< "v0.13"}
+  "js_of_ocaml"
+  "lablgtk"
+  "tyxml"
+]
+conflicts: [
+  "core_kernel" {< "111.13.00"}
+  "js_of_ocaml" {< "2.1"}
+  "tyxml" {< "3.0.0"}
+]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -36,39 +63,12 @@ remove: [
   ["ocamlfind" "remove" "lilis"]
   ["ocamlfind" "remove" "glilis"]
 ]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "cppo" {build & >= "0.9.4"}
-  "cppo_ocamlbuild" {build}
-  "menhir"
-  "containers" {< "0.7"}
-  "ocamlbuild" {build}
-]
-depopts: [
-  "batteries"
-  "cfstream"
-  "core_kernel" {< "v0.13"}
-  "cairo2"
-  "lablgtk"
-  "tyxml"
-  "js_of_ocaml"
-  "cmdliner"
-]
-conflicts: [
-  "core_kernel" {< "111.13.00"}
-  "tyxml" {< "3.0.0"}
-  "js_of_ocaml" {< "2.1"}
-]
-
 messages: [
   "To build and install the graphical front-end glilis, you should install cairo2 lablgtk and cmdliner"
     {!cairo2:installed | !lablgtk:installed | !cmdliner:installed}
   "To enable the svg output, you should install tyxml" {!tyxml:installed}
 ]
-synopsis: "Library to Interpret Lindenmayer Systems"
-description: "A Library to interpret, evaluate and draw L-systems."
-flags: light-uninstall
+dev-repo: "git+https://github.com/Drup/LILiS.git"
 url {
   src: "https://github.com/Drup/LILiS/archive/v0.2.1.tar.gz"
   checksum: "md5=bed47cf7984eaefebca6fcf58f2b5bda"

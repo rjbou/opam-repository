@@ -1,38 +1,9 @@
 opam-version: "2.0"
-maintainer:    "anil@recoil.org"
-authors:       ["Anil Madhavapeddy" "Thomas Leonard"]
-homepage:      "https://github.com/mirage/mirage-net-xen"
-bug-reports:   "https://github.com/mirage/mirage-net-xen/issues"
-dev-repo:      "git+https://github.com/mirage/mirage-net-xen.git"
-doc:           "https://mirage.github.io/mirage-net-xen"
-build: [
-  [ "jbuilder" "subst" "-n" name] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "cstruct" {>= "3.0.0"}
-  "ppx_tools" {build}
-  "ppx_sexp_conv" {build & < "v0.13"}
-  "ppx_cstruct" {build}
-  "lwt" {>= "2.4.3"}
-  "mirage-net-lwt" {>= "1.0.0" & < "2.0.0"}
-  "io-page" {>= "1.5.0"}
-  "io-page-xen" {>= "2.0.0"}
-  "mirage-xen" {>= "1.1.0" & < "3.3.0"}
-  "ipaddr" {>= "3.0.0"}
-  "mirage-profile" {>= "0.3"}
-  "shared-memory-ring" {>= "3.0.0"}
-  "sexplib" {>= "113.01.00" & < "v0.13"}
-  "logs" {>= "0.5.0"}
-  "rresult"
-]
-tags: "org:mirage"
-synopsis: "Network device for reading and writing Ethernet frames via then Xen netfront/netback protocol"
-description: """\
-
+name: "netchannel"
+version: "1.8.1"
+synopsis:
+  "Network device for reading and writing Ethernet frames via then Xen netfront/netback protocol"
+description: """
 This library allows an OCaml application to read and
 write Ethernet frames via the [Netfront/netback][xen-net] protocol.
 
@@ -44,7 +15,38 @@ The `Netchannel` API is still under development.
 * Issues: <https://github.com/mirage/mirage/issues>
 
 [xen-net]: http://xenbits.xen.org/gitweb/?p=xen.git;a=blob;f=xen/include/public/io/netif.h"""
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "Thomas Leonard"]
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-net-xen"
+doc: "https://mirage.github.io/mirage-net-xen"
+bug-reports: "https://github.com/mirage/mirage-net-xen/issues"
+depends: [
+  "cstruct" {>= "3.0.0"}
+  "io-page" {>= "1.5.0"}
+  "io-page-xen" {>= "2.0.0"}
+  "ipaddr" {>= "3.0.0"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "logs" {>= "0.5.0"}
+  "lwt" {>= "2.4.3"}
+  "mirage-net-lwt" {>= "1.0.0" & < "2.0.0"}
+  "mirage-profile" {>= "0.3"}
+  "mirage-xen" {>= "1.1.0" & < "3.3.0"}
+  "ocaml" {>= "4.04.0"}
+  "ppx_cstruct" {build}
+  "ppx_sexp_conv" {build & < "v0.13"}
+  "ppx_tools" {build}
+  "rresult"
+  "sexplib" {>= "113.01.00" & < "v0.13"}
+  "shared-memory-ring" {>= "3.0.0"}
+]
+build: [
+  ["jbuilder" "subst" "-n" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-net-xen.git"
 url {
-archive: "https://github.com/mirage/mirage-net-xen/releases/download/v1.8.1/mirage-net-xen-1.8.1.tbz"
-checksum: "ab5bf2613b8a37aa143d88d25e803c2d"
+  src:
+    "https://github.com/mirage/mirage-net-xen/releases/download/v1.8.1/mirage-net-xen-1.8.1.tbz"
+  checksum: "md5=ab5bf2613b8a37aa143d88d25e803c2d"
 }

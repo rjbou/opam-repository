@@ -1,13 +1,35 @@
 opam-version: "2.0"
-name:         "charrua-client"
-maintainer:   ["Mindy Preston <mindy.preston@docker.com>"]
-authors   :   ["Mindy Preston <mindy.preston@docker.com>"]
-homepage:     "https://github.com/yomimono/charrua-client"
-bug-reports:  "https://github.com/yomimono/charrua-client/issues"
-dev-repo: "git+https://github.com/yomimono/charrua-client.git"
-tags:         [ "org:mirage"]
-doc:          "https://docs.mirage.io"
-
+name: "charrua-client"
+version: "0.1.0"
+synopsis:
+  "Library using charrua-core to provide a DHCP-configured IPv4 implementation"
+maintainer: "Mindy Preston <mindy.preston@docker.com>"
+authors: "Mindy Preston <mindy.preston@docker.com>"
+tags: "org:mirage"
+homepage: "https://github.com/yomimono/charrua-client"
+doc: "https://docs.mirage.io"
+bug-reports: "https://github.com/yomimono/charrua-client/issues"
+depends: [
+  "alcotest" {with-test}
+  "charrua-core" {>= "0.4" & < "0.5"}
+  "cstruct"
+  "duration"
+  "fmt"
+  "ipaddr"
+  "logs"
+  "mirage-random" {>= "1.0.0" & < "1.2.0"}
+  "ocaml" {>= "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "rresult"
+  "tcpip" {>= "3.0.0" & < "3.6.0"}
+  "topkg" {build}
+]
+depopts: ["mirage-types-lwt"]
+conflicts: [
+  "mirage-types" {< "3.0.0"}
+  "mirage-types-lwt" {< "3.0.0"}
+]
 build: [
   [
     "ocaml"
@@ -23,31 +45,7 @@ build: [
   ["ocaml" "pkg/pkg.ml" "build" "--tests" "true"] {with-test}
   ["ocaml" "pkg/pkg.ml" "test"] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.03"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "topkg" {build}
-  "alcotest" {with-test}
-  "charrua-core" {>= "0.4" & < "0.5"}
-  "cstruct"
-  "ipaddr"
-  "rresult"
-  "mirage-random" {>= "1.0.0" & < "1.2.0"}
-  "duration"
-  "logs"
-  "tcpip" {>= "3.0.0" & < "3.6.0"}
-  "fmt"
-]
-depopts: [
-  "mirage-types-lwt"
-]
-conflicts: [
-  "mirage-types-lwt" {<"3.0.0"}
-  "mirage-types" {<"3.0.0"}
-]
-synopsis:
-  "Library using charrua-core to provide a DHCP-configured IPv4 implementation"
+dev-repo: "git+https://github.com/yomimono/charrua-client.git"
 url {
   src:
     "https://github.com/yomimono/charrua-client/releases/download/0.1.0/charrua-client-0.1.0.tbz"

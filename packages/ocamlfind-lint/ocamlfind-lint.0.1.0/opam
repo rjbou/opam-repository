@@ -1,16 +1,6 @@
 opam-version: "2.0"
-maintainer: "zoggy@bat8.org"
-authors: ["Maxence Guesdon"]
-homepage: "https://github.com/zoggy/findlib-lint"
-license: "New BSD License"
-doc: ["https://github.com/zoggy/findlib-lint"]
-tags: ["findlib" "ocamlfind" "check" "META"]
-
-build: [make "all"]
-remove: [["ocamlfind" "remove" "findlib-lint"]]
-depends: ["ocaml" "ocamlfind"]
-dev-repo: "git://github.com/zoggy/findlib-lint"
-install: [make "install-lib"]
+name: "ocamlfind-lint"
+version: "0.1.0"
 synopsis: "Simple tool performing checks on installed findlib META files"
 description: """
 By now, only checks that META files declare a ``archive`` variable
@@ -22,7 +12,18 @@ with a ``native`` predicate.
 ocamlfind-lint     # check all installed packages
 ocamlfind-lint pkg # check only the installed package pkg and its subpackages
 ````"""
+maintainer: "zoggy@bat8.org"
+authors: "Maxence Guesdon"
+license: "New BSD License"
+tags: ["META" "check" "findlib" "ocamlfind"]
+homepage: "https://github.com/zoggy/findlib-lint"
+doc: "https://github.com/zoggy/findlib-lint"
+depends: ["ocaml" "ocamlfind"]
 flags: light-uninstall
+build: [make "all"]
+install: [make "install-lib"]
+remove: ["ocamlfind" "remove" "findlib-lint"]
+dev-repo: "git://github.com/zoggy/findlib-lint"
 extra-files: [
   "ocamlfind-lint.install" "md5=b0a7863158805e2f08baa791fa4e61ef"
 ]

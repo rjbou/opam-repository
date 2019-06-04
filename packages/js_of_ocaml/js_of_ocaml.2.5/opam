@@ -1,34 +1,33 @@
 opam-version: "2.0"
-maintainer:   "dev@ocsigen.org"
-authors:      "Ocsigen team"
-bug-reports:  "https://github.com/ocsigen/js_of_ocaml/issues"
-homepage:     "http://ocsigen.org/js_of_ocaml"
-dev-repo: "git+https://github.com/ocsigen/js_of_ocaml.git"
-build:   [make "build"]
-install: [make "install-lib" "BINDIR=%{bin}%"]
-remove:  ["ocamlfind" "remove" "js_of_ocaml"]
-
+name: "js_of_ocaml"
+version: "2.5"
+synopsis: "Compiler from OCaml bytecode to Javascript"
+maintainer: "dev@ocsigen.org"
+authors: "Ocsigen team"
+homepage: "http://ocsigen.org/js_of_ocaml"
+bug-reports: "https://github.com/ocsigen/js_of_ocaml/issues"
 depends: [
-  "ocaml" {< "4.03.0"}
-  "cmdliner"
   "base-unix"
-  "ocamlfind" {>= "1.5.1"}
+  "camlp4"
+  "cmdliner"
   "lwt" {>= "2.4.4" & < "4.0.0"}
   "menhir"
-  "camlp4"
+  "ocaml" {< "4.03.0"}
   "ocamlbuild"
+  "ocamlfind" {>= "1.5.1"}
 ]
-depopts: ["deriving" "tyxml" "reactiveData" ]
-
+depopts: ["deriving" "reactiveData" "tyxml"]
 conflicts: [
   "deriving" {< "0.6"}
-  "tyxml"    {< "3.2.1"}
-  "tyxml"    {>= "3.6.0"}
   "reactiveData" {>= "0.2"}
+  "tyxml" {< "3.2.1"}
+  "tyxml" {>= "3.6.0"}
 ]
-
-synopsis: "Compiler from OCaml bytecode to Javascript"
 flags: light-uninstall
+build: [make "build"]
+install: [make "install-lib" "BINDIR=%{bin}%"]
+remove: ["ocamlfind" "remove" "js_of_ocaml"]
+dev-repo: "git+https://github.com/ocsigen/js_of_ocaml.git"
 url {
   src: "https://github.com/ocsigen/js_of_ocaml/archive/2.5.tar.gz"
   checksum: "md5=dec0847a3f6e289360a46e0b5b7cce61"

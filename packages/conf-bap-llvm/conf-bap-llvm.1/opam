@@ -1,22 +1,22 @@
 opam-version: "2.0"
+name: "conf-bap-llvm"
+version: "1"
+synopsis: "Virtual package relying on llvm library installation for BAP"
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
-homepage: "http://llvm.org"
 authors: "The LLVM Team"
-bug-reports: "https://llvm.org/bugs/"
 license: "BSD"
-build: [
-  ["sh" "-x" "configure" os]
-]
+homepage: "http://llvm.org"
+bug-reports: "https://llvm.org/bugs/"
 depends: [
-  "ocaml"
   "conf-which" {build}
-]
-depexts: [
-  ["llvm-3.8-dev"] {os-distribution = "debian"}
-  ["llvm-3.8-dev"] {os-distribution = "ubuntu"}
-  ["llvm-3.8"] {os = "macos" & os-distribution = "macports"}
+  "ocaml"
 ]
 conflicts: ["conf-llvm"]
-synopsis: "Virtual package relying on llvm library installation for BAP"
-extra-files: ["configure" "md5=47b8674130ba68afeeabebb719960c0f"]
 flags: conf
+build: ["sh" "-x" "configure" os]
+depexts: [
+  ["llvm-3.8"] {os = "macos" & os-distribution = "macports"}
+  ["llvm-3.8-dev"] {os-distribution = "debian"}
+  ["llvm-3.8-dev"] {os-distribution = "ubuntu"}
+]
+extra-files: ["configure" "md5=47b8674130ba68afeeabebb719960c0f"]

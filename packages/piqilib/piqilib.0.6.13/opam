@@ -1,7 +1,23 @@
 opam-version: "2.0"
+name: "piqilib"
+version: "0.6.13"
+synopsis:
+  "The Piqi library -- runtime support for multi-format Protobuf/JSON/XML/Piq data serialization and conversion"
 maintainer: "Anton Lavrik <alavrik@piqi.org>"
+authors: "Anton Lavrik <alavrik@piqi.org>"
 homepage: "http://piqi.org"
 bug-reports: "https://github.com/alavrik/piqi/issues"
+depends: [
+  "base-bytes"
+  "base64" {>= "2.0.0" & < "3.0.0"}
+  "easy-format"
+  "ocaml"
+  "ocamlfind"
+  "optcomp"
+  "ulex"
+  "xmlm"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
@@ -16,21 +32,7 @@ remove: [
   ["rm" "-f" "%{prefix}%/bin/piqi"]
   ["ocamlfind" "remove" "piqilib"]
 ]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "easy-format"
-  "ulex"
-  "xmlm"
-  "optcomp"
-  "base64" {>= "2.0.0" & < "3.0.0"}
-  "base-bytes"
-]
 dev-repo: "git://github.com/alavrik/piqi"
-synopsis:
-  "The Piqi library -- runtime support for multi-format Protobuf/JSON/XML/Piq data serialization and conversion"
-authors: "Anton Lavrik <alavrik@piqi.org>"
-flags: light-uninstall
 url {
   src: "https://github.com/alavrik/piqi/archive/v0.6.13.tar.gz"
   checksum: "md5=028d964856c6555c631a8a13b46a4c6c"

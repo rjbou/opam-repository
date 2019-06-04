@@ -1,27 +1,29 @@
 opam-version: "2.0"
+name: "tar-format"
+version: "0.2.0"
+synopsis: "A pure OCaml library to read and write tar files"
+maintainer: "dave@recoil.org"
 authors: ["Dave Scott" "Jonathan Ludlam" "Thomas Gazagnaire"]
+tags: "org:xapi-project"
 homepage: "https://github.com/mirage/ocaml-tar"
 bug-reports: "https://github.com/mirage/ocaml-tar/issues"
-maintainer: "dave@recoil.org"
-tags: ["org:xapi-project"]
-build: make
-remove: [["ocamlfind" "remove" "tar"]]
 depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "cstruct" {>= "0.6.0" & < "2.0"}
   "camlp4" {build}
-  "type_conv" {build}
-  "re"
-  "ounit"
   "cmdliner"
+  "cstruct" {>= "0.6.0" & < "2.0"}
+  "ocaml" {< "4.06.0"}
   "ocamlbuild" {build}
+  "ocamlfind"
+  "ounit"
+  "re"
+  "type_conv" {build}
 ]
 depopts: ["lwt"]
-dev-repo: "git://github.com/mirage/ocaml-tar"
-install: [make "install"]
-synopsis: "A pure OCaml library to read and write tar files"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "tar"]
+dev-repo: "git://github.com/mirage/ocaml-tar"
 url {
   src: "https://github.com/mirage/ocaml-tar/archive/0.2.0.tar.gz"
   checksum: "md5=f8a9e01165f63f1cbcf49023816d0699"

@@ -1,23 +1,26 @@
 opam-version: "2.0"
+name: "async_unix"
+version: "113.33.03"
+synopsis: "Monadic concurrency library"
+description: """
+Part of Jane Street’s Core library
+The Core suite of libraries is an industrial strength alternative to
+OCaml's standard library that was developed by Jane Street, the
+largest industrial user of OCaml."""
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
 homepage: "https://github.com/janestreet/async_unix"
 bug-reports: "https://github.com/janestreet/async_unix/issues"
-dev-repo: "git+https://github.com/janestreet/async_unix.git"
-license: "Apache-2.0"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
 depends: [
-  "ocaml" {= "4.02.3"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build & >= "1.3.2"}
   "async_kernel" {>= "113.33.03" & < "113.34.00"}
   "bin_prot" {>= "113.33.03" & < "113.34.00"}
   "core" {>= "113.33.03" & < "113.34.00"}
   "fieldslib" {>= "113.33.03" & < "113.34.00"}
   "js-build-tools" {build & >= "113.33.04" & < "113.34.00"}
+  "ocaml" {= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.3.2"}
   "ppx_assert" {>= "113.33.03" & < "113.34.00"}
   "ppx_bench" {>= "113.33.03" & < "113.34.00"}
   "ppx_driver" {>= "113.33.03" & < "113.34.00"}
@@ -28,12 +31,11 @@ depends: [
   "typerep" {>= "113.33.03" & < "113.34.00"}
   "variantslib" {>= "113.33.03" & < "113.34.00"}
 ]
-synopsis: "Monadic concurrency library"
-description: """
-Part of Jane Street’s Core library
-The Core suite of libraries is an industrial strength alternative to
-OCaml's standard library that was developed by Jane Street, the
-largest industrial user of OCaml."""
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+dev-repo: "git+https://github.com/janestreet/async_unix.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/113.33/files/async_unix-113.33.03.tar.gz"

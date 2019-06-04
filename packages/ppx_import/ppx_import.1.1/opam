@@ -1,12 +1,25 @@
 opam-version: "2.0"
+name: "ppx_import"
+version: "1.1"
+synopsis:
+  "A syntax extension for importing declarations from interface files"
 maintainer: "whitequark <whitequark@whitequark.org>"
-authors: [ "whitequark <whitequark@whitequark.org>" ]
+authors: "whitequark <whitequark@whitequark.org>"
 license: "MIT"
+tags: "syntax"
 homepage: "https://github.com/whitequark/ppx_import"
 bug-reports: "https://github.com/whitequark/ppx_import/issues"
-dev-repo: "git://github.com/whitequark/ppx_import.git"
-tags: [ "syntax" ]
-substs: [ "pkg/META" ]
+depends: [
+  "cppo" {build}
+  "cppo_ocamlbuild" {build}
+  "ocaml" {>= "4.02.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "ppx_deriving" {with-test & >= "2.0"}
+  "ppx_tools" {>= "0.99.1"}
+]
+available: opam-version >= "1.2.2"
 build: [
   [
     "ocaml"
@@ -22,19 +35,8 @@ build: [
     "--"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.06.0"}
-  "ppx_tools" {>= "0.99.1"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "cppo" {build}
-  "cppo_ocamlbuild" {build}
-  "ounit" {with-test}
-  "ppx_deriving" {with-test & >= "2.0"}
-]
-available: opam-version >= "1.2.2"
-synopsis:
-  "A syntax extension for importing declarations from interface files"
+substs: "pkg/META"
+dev-repo: "git://github.com/whitequark/ppx_import.git"
 url {
   src: "https://github.com/ocaml-ppx/ppx_import/archive/v1.1.tar.gz"
   checksum: "md5=9cb4f59dd6ef023141232265892cd53a"

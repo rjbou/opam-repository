@@ -1,7 +1,6 @@
 opam-version: "2.0"
-maintainer: "jun.furuse@gmail.com"
-remove: [[make "uninstall" "BINDIR=%{bin}%" "PREFIX=%{prefix}%"]]
-install: [make "all" "opt" "install" "BINDIR=%{bin}%" "PREFIX=%{prefix}%"]
+name: "ocamlspot"
+version: "4.00.0.2.1.0"
 synopsis: "OCamlSpotter - OCaml source browsing"
 description: """
 OCamlSpotter is a tool for OCaml source code browsing. 
@@ -15,9 +14,12 @@ OCamlSpotter 2.x uses \\*.cmt and \\*.cmti files created by OCaml compiler 4.00.
 Unlike OCamlSpotter 1.x, OCamlSpotter 2.x is a standalone application. You NO LONGER need compiler patching. Just make, make install, and configure ocamlspot.el.
 
 In OPAM, ocamlspot.el and ocamlspot.vim is %{lib%}/ocamlspot ."""
+maintainer: "jun.furuse@gmail.com"
 depends: [
   "ocaml" {>= "4.00.0" & <= "4.00.1"}
 ]
+install: [make "all" "opt" "install" "BINDIR=%{bin}%" "PREFIX=%{prefix}%"]
+remove: [make "uninstall" "BINDIR=%{bin}%" "PREFIX=%{prefix}%"]
 extra-files: ["ocamlspot.install" "md5=f43cbca5e0836c5ff9da5bd00d816ac3"]
 url {
   src: "https://bitbucket.org/camlspotter/ocamlspot/get/4.00.0.2.1.0.tar.gz"

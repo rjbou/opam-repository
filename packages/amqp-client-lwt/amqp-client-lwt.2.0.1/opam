@@ -1,24 +1,26 @@
 opam-version: "2.0"
+name: "amqp-client-lwt"
+version: "2.0.1"
+synopsis: "Amqp client library, async version"
 maintainer: "Anders Fugmann <anders@fugmann.net>"
-authors: [ "Anders Fugmann" ]
+authors: "Anders Fugmann"
+license: "BSD3"
 homepage: "https://github.com/andersfugmann/amqp-client"
 bug-reports: "https://github.com/andersfugmann/amqp-client/issues"
-dev-repo: "git+https://github.com/andersfugmann/amqp-client.git"
-license: "BSD3"
+depends: [
+  "amqp-client" {= "2.0.1"}
+  "jbuilder" {build}
+  "lwt" {>= "2.4.6"}
+  "lwt_log"
+  "ocaml" {>= "4.03.0" & < "4.07.0"}
+  "ocplib-endian" {>= "0.6"}
+  "xml-light" {build}
+]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.03.0" & < "4.07.0"}
-  "jbuilder" {build}
-  "xml-light" {build}
-  "amqp-client" {= "2.0.1"}
-  "ocplib-endian" {>= "0.6"}
-  "lwt" {>= "2.4.6"}
-  "lwt_log"
-]
-synopsis: "Amqp client library, async version"
+dev-repo: "git+https://github.com/andersfugmann/amqp-client.git"
 url {
   src: "https://github.com/andersfugmann/amqp-client/archive/2.0.1.tar.gz"
   checksum: "md5=90a0582ea49b338ec1f62208e60a64d8"

@@ -1,24 +1,24 @@
 opam-version: "2.0"
+name: "cppo_ocamlbuild"
+version: "1.6.0"
+synopsis: "ocamlbuild support for cppo, OCaml-friendly source preprocessor"
 maintainer: "martin@mjambon.com"
-authors: ["Martin Jambon"]
-homepage: "http://mjambon.com/cppo.html"
-dev-repo: "git+https://github.com/mjambon/cppo.git"
-bug-reports: "https://github.com/mjambon/cppo/issues"
+authors: "Martin Jambon"
 license: "BSD-3-Clause"
-
+homepage: "http://mjambon.com/cppo.html"
+bug-reports: "https://github.com/mjambon/cppo/issues"
+depends: [
+  "cppo" {>= "1.6.0"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml"
+  "ocamlbuild"
+  "ocamlfind"
+]
 build: [
   ["jbuilder" "subst" "-p" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
 ]
-
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta10"}
-  "ocamlbuild"
-  "ocamlfind"
-  "cppo" {>= "1.6.0"}
-]
-synopsis: "ocamlbuild support for cppo, OCaml-friendly source preprocessor"
+dev-repo: "git+https://github.com/mjambon/cppo.git"
 url {
   src: "https://github.com/mjambon/cppo/archive/v1.6.0.tar.gz"
   checksum: "md5=aee411b3546bc5d198c71ae9185cade4"

@@ -1,25 +1,23 @@
 opam-version: "2.0"
-name:         "ocveralls"
-version:      "0.1.0"
-maintainer:   "Julien Sagot ju.sagot@gmail.com"
-license:      "GPL v3.0"
-bug-reports:  "https://github.com/sagotch/ocveralls/issues"
-dev-repo: "git+https://github.com/sagotch/ocveralls.git"
-build:   [ make "build" ]
-install: [ make "bindir=%{bin}%" "install" ]
-remove:  [ "rm" "-f" "%{bin}%/ocveralls" ]
-
-
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ezjsonm" {build & >= "0.4.0"}
-  "bisect" {build}
-]
+name: "ocveralls"
+version: "0.1.0"
 synopsis:
   "Generate JSON for http://coveralls.io from bisect code coverage data."
+maintainer: "Julien Sagot ju.sagot@gmail.com"
 authors: "Julien Sagot ju.sagot@gmail.com"
+license: "GPL v3.0"
+bug-reports: "https://github.com/sagotch/ocveralls/issues"
+depends: [
+  "bisect" {build}
+  "ezjsonm" {build & >= "0.4.0"}
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [make "build"]
+install: [make "bindir=%{bin}%" "install"]
+remove: ["rm" "-f" "%{bin}%/ocveralls"]
+dev-repo: "git+https://github.com/sagotch/ocveralls.git"
 url {
   src: "https://github.com/sagotch/ocveralls/archive/0.1.0.tar.gz"
   checksum: "md5=a81660ef62f7e35bf5a193cae8663f2f"

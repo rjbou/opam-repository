@@ -1,10 +1,26 @@
 opam-version: "2.0"
+name: "owl"
+version: "0.2.2"
+synopsis: "Scientific computing library"
+description:
+  "Owl is an OCaml numerical library for scientific computing. Owl supports both dense and sparse matrices of real and complex numbers, and various maths, stats, matrix, regression, optimisation, and fft operations. Owl also includes an integrated plotting module."
 maintainer: "Liang Wang (ryanrhymes@gmail.com)"
-authors: [ "Liang Wang (ryanrhymes@gmail.com)" ]
+authors: "Liang Wang (ryanrhymes@gmail.com)"
 license: "MIT"
 homepage: "https://github.com/ryanrhymes/owl"
-dev-repo: "git+https://github.com/ryanrhymes/owl.git"
 bug-reports: "https://github.com/ryanrhymes/owl/issues"
+depends: [
+  "conf-gsl"
+  "ctypes"
+  "dolog"
+  "eigen" {< "0.0.4"}
+  "gsl" {< "1.20.0"}
+  "oasis" {build & >= "0.4"}
+  "ocaml" {>= "4.04.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "plplot"
+]
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
@@ -16,24 +32,8 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocaml" "%{etc}%/owl/_oasis_remove_.ml" "%{etc}%/owl"]
-]
-depends: [
-  "ocaml" {>= "4.04.0" & < "4.06.0"}
-  "ctypes"
-  "dolog"
-  "gsl" {< "1.20.0"}
-  "conf-gsl"
-  "oasis" {build & >= "0.4"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "plplot"
-  "eigen" {< "0.0.4"}
-]
-synopsis: "Scientific computing library"
-description:
-  "Owl is an OCaml numerical library for scientific computing. Owl supports both dense and sparse matrices of real and complex numbers, and various maths, stats, matrix, regression, optimisation, and fft operations. Owl also includes an integrated plotting module."
+remove: ["ocaml" "%{etc}%/owl/_oasis_remove_.ml" "%{etc}%/owl"]
+dev-repo: "git+https://github.com/ryanrhymes/owl.git"
 extra-files: ["owl.install" "md5=0d1b822c897681cf54b3e1aed52dda99"]
 url {
   src: "https://github.com/ryanrhymes/owl/archive/0.2.2.tar.gz"

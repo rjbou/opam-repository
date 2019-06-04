@@ -1,22 +1,26 @@
 opam-version: "2.0"
+name: "conf-g++"
+version: "1.0"
+synopsis: "Virtual package relying on the g++ compiler (for C++)"
+description:
+  "This package can only install if the g++ compiler is installed on the system."
 maintainer: "unixjunkie@sdf.org"
 authors: "Francois Berenger"
+license: "GPL-2+"
 homepage: "https://github.com/ocaml/opam-repository"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "GPL-2+"
-build: [["which" "g++"]]
-depends: ["conf-which" {build}]
+depends: [
+  "conf-which" {build}
+]
+flags: conf
+build: ["which" "g++"]
 depexts: [
-  ["gcc-c++"] {os-distribution = "centos"}
-  ["gcc-c++"] {os-distribution = "fedora"}
-  ["gcc-c++"] {os-family = "suse"}
   ["g++"] {os-distribution = "debian"}
   ["g++"] {os-distribution = "ubuntu"}
   ["gcc"] {os-distribution = "nixos"}
   ["gcc"] {os-distribution = "arch"}
   ["gcc"] {os = "macos" & os-distribution = "homebrew"}
+  ["gcc-c++"] {os-distribution = "centos"}
+  ["gcc-c++"] {os-distribution = "fedora"}
+  ["gcc-c++"] {os-family = "suse"}
 ]
-synopsis: "Virtual package relying on the g++ compiler (for C++)"
-description:
-  "This package can only install if the g++ compiler is installed on the system."
-flags: conf

@@ -1,12 +1,39 @@
 opam-version: "2.0"
-maintainer: "dev@ocsigen.org"
+name: "ocsigenserver"
+version: "2.10"
 synopsis: "A full-featured and extensible Web server."
-description: "Ocsigen Server implements most features of the HTTP protocol, and has a very powerful extension mechanism that makes it very easy to plug your own OCaml modules for generating pages. Many extensions are already implemented, like a reverse proxy, content compression, access control, authentication, etc."
+description:
+  "Ocsigen Server implements most features of the HTTP protocol, and has a very powerful extension mechanism that makes it very easy to plug your own OCaml modules for generating pages. Many extensions are already implemented, like a reverse proxy, content compression, access control, authentication, etc."
+maintainer: "dev@ocsigen.org"
 authors: "dev@ocsigen.org"
+license: "LGPL-2.1 with OCaml linking exception"
 homepage: "http://ocsigen.org/ocsigenserver/"
 bug-reports: "https://github.com/ocsigen/ocsigenserver/issues/"
-license: "LGPL-2.1 with OCaml linking exception"
-dev-repo: "git+https://github.com/ocsigen/ocsigenserver.git"
+depends: [
+  "base-threads"
+  "base-unix"
+  "cryptokit"
+  (("dbm" | "pgocaml") | "sqlite3")
+  "ipaddr" {>= "2.1"}
+  "lwt" {>= "3.0.0"}
+  "lwt_log"
+  "lwt_react"
+  "lwt_ssl"
+  "ocaml" {>= "4.06.1" & < "4.08.0"}
+  "ocamlfind"
+  "ocamlnet" {>= "4.0.2"}
+  "pcre"
+  "react"
+  "ssl"
+  "tyxml" {>= "4.0.0"}
+  "xml-light"
+]
+depopts: ["camlzip"]
+conflicts: [
+  "camlzip" {< "1.04"}
+  "pgocaml" {< "2.2"}
+]
+flags: light-uninstall
 build: [
   [
     "sh"
@@ -42,31 +69,7 @@ remove: [
   ["rm" "-rf" "%{doc}%/ocsigenserver"]
   ["rm" "-f" "%{man}%/man1/ocsigenserver.1"]
 ]
-depends: [
-  "ocaml" {>= "4.06.1" & < "4.08.0"}
-  "ocamlfind"
-  "base-unix"
-  "base-threads"
-  "react"
-  "ssl"
-  "lwt" {>= "3.0.0"}
-  "lwt_ssl"
-  "lwt_react"
-  "lwt_log"
-  "ocamlnet" {>= "4.0.2"}
-  "pcre"
-  "cryptokit"
-  "tyxml" {>= "4.0.0"}
-  "dbm" | "sqlite3" | "pgocaml"
-  "ipaddr" {>= "2.1"}
-  "xml-light"
-]
-depopts: "camlzip"
-conflicts: [
-  "camlzip" {< "1.04"}
-  "pgocaml" {< "2.2"}
-]
-flags: light-uninstall
+dev-repo: "git+https://github.com/ocsigen/ocsigenserver.git"
 url {
   src: "https://github.com/ocsigen/ocsigenserver/archive/2.10.tar.gz"
   checksum: [

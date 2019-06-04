@@ -1,11 +1,24 @@
 opam-version: "2.0"
+name: "tsdl-ttf"
+version: "0.2"
+synopsis: "SDL2_ttf bindings to go with Tsdl"
+description:
+  "Tsdl_ttf provides bindings to SDL2_ttf intended to be used with Tsdl."
 maintainer: "Julian Squires <julian@cipht.net>"
 authors: "Julian Squires <julian@cipht.net>"
-homepage: "http://github.com/tokenrove/tsdl-ttf"
-bug-reports: "http://github.com/tokenrove/tsdl-ttf/issues"
 license: "BSD3"
 tags: ["bindings" "graphics"]
-dev-repo: "git+https://github.com/tokenrove/tsdl-ttf.git"
+homepage: "http://github.com/tokenrove/tsdl-ttf"
+bug-reports: "http://github.com/tokenrove/tsdl-ttf/issues"
+depends: [
+  "ctypes" {>= "0.4.0"}
+  "ctypes-foreign"
+  "oasis" {build}
+  "ocaml"
+  "result"
+  "tsdl" {>= "0.9.0"}
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure"]
@@ -15,23 +28,12 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "tsdl_ttf"]
-depends: [
-  "ocaml"
-  "ctypes" {>= "0.4.0"}
-  "ctypes-foreign"
-  "tsdl" {>= "0.9.0"}
-  "result"
-  "oasis" {build}
-]
 depexts: [
   ["libsdl2-ttf-dev"] {os-distribution = "debian"}
-  ["sdl2_ttf"] {os-distribution = "homebrew" & os = "macos"}
   ["libsdl2-ttf-dev"] {os-distribution = "ubuntu"}
+  ["sdl2_ttf"] {os-distribution = "homebrew" & os = "macos"}
 ]
-synopsis: "SDL2_ttf bindings to go with Tsdl"
-description:
-  "Tsdl_ttf provides bindings to SDL2_ttf intended to be used with Tsdl."
-flags: light-uninstall
+dev-repo: "git+https://github.com/tokenrove/tsdl-ttf.git"
 url {
   src: "https://github.com/tokenrove/tsdl-ttf/archive/0.2.tar.gz"
   checksum: "md5=8ddf57c2fa30e074e453dc5a5a81eb46"

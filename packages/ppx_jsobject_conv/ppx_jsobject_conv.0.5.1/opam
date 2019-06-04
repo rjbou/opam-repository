@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "Roma Sokolov <sokolov.r.v@gmail.com>"
-authors: [ "Roma Sokolov <sokolov.r.v@gmail.com>" ]
-license: "MIT"
-homepage: "https://github.com/little-arhat/ppx_jsobject_conv"
-bug-reports: "https://github.com/little-arhat/ppx_jsobject_conv/issues"
-dev-repo: "git://github.com/little-arhat/ppx_jsobject_conv.git"
-tags: [ "syntax" "jsoo" "javascript" ]
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "js_of_ocaml" {>= "2.8" & < "3.4" }
-  "ppx_type_conv" {>= "v0.10.0"}
-  "ppx_driver"
-  "ppx_core"
-  "ppx_metaquot"
-  "ocaml-migrate-parsetree" {>= "0.4"}
-  "jbuilder" {build & >= "1.0+beta12"}
-  "webtest" {with-test}
-]
+name: "ppx_jsobject_conv"
+version: "0.5.1"
 synopsis:
   "Ppx plugin for Typeconv to derive conversion from ocaml types to js objects to use with js_of_ocaml."
 description: """
@@ -29,6 +10,25 @@ to easy go down to js types. Easy conversion from js objects to OCaml types mean
 convert JSON to OCaml types.
 
 Plugin supports number of customizations."""
+maintainer: "Roma Sokolov <sokolov.r.v@gmail.com>"
+authors: "Roma Sokolov <sokolov.r.v@gmail.com>"
+license: "MIT"
+tags: ["javascript" "jsoo" "syntax"]
+homepage: "https://github.com/little-arhat/ppx_jsobject_conv"
+bug-reports: "https://github.com/little-arhat/ppx_jsobject_conv/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta12"}
+  "js_of_ocaml" {>= "2.8" & < "3.4"}
+  "ocaml" {>= "4.04.0"}
+  "ocaml-migrate-parsetree" {>= "0.4"}
+  "ppx_core"
+  "ppx_driver"
+  "ppx_metaquot"
+  "ppx_type_conv" {>= "v0.10.0"}
+  "webtest" {with-test}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git://github.com/little-arhat/ppx_jsobject_conv.git"
 url {
   src:
     "https://github.com/little-arhat/ppx_jsobject_conv/archive/v0.5.1.tar.gz"

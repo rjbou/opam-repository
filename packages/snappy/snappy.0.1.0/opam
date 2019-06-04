@@ -1,27 +1,29 @@
 opam-version: "2.0"
-authors: "ygrek@autistici.org"
+name: "snappy"
+version: "0.1.0"
+synopsis: "Bindings to snappy - fast compression/decompression library"
 maintainer: "ygrek@autistici.org"
+authors: "ygrek@autistici.org"
 homepage: "http://ygrek.org.ua/p/ocaml-snappy/"
-doc: ["http://ygrek.org.ua/p/ocaml-snappy/api/index.html"]
+doc: "http://ygrek.org.ua/p/ocaml-snappy/api/index.html"
 bug-reports: "https://github.com/ygrek/ocaml-snappy/issues"
-dev-repo: "git://github.com/ygrek/ocaml-snappy"
+depends: [
+  "conf-snappy"
+  "ocaml" {< "4.06"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-test"] {with-test}
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
-remove: [["ocamlfind" "remove" "snappy"]]
-depends: [
-  "ocaml" {< "4.06"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "conf-snappy"
-]
-patches: "myocamlbuild.ml.osx.patch" {os = "macos"}
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Bindings to snappy - fast compression/decompression library"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "snappy"]
+patches: "myocamlbuild.ml.osx.patch" {os = "macos"}
+dev-repo: "git://github.com/ygrek/ocaml-snappy"
 extra-files: [
   "myocamlbuild.ml.osx.patch" "md5=1c3d251fdaf29b2b5114681b5aa16eb5"
 ]

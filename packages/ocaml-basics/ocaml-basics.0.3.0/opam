@@ -1,10 +1,22 @@
 opam-version: "2.0"
+name: "ocaml-basics"
+version: "0.3.0"
+synopsis: "Implements common functionnal patterns / abstractions"
 maintainer: "Antoine Luciani <aluciani@advanced-schema.com>"
 authors: "Advanced Schema"
+license: "MIT"
 homepage: "http://github.com/advanced-schema/ocaml-basics"
 bug-reports: "http://github.com/advanced-schema/ocaml-basics/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/advanced-schema/ocaml-basics.git"
+depends: [
+  "oasis" {>= "0.4"}
+  "ocaml" {>= "4.04"}
+  "ocamlfind" {build}
+  "ppx_deriving" {>= "4.0"}
+  "ppx_sexp_conv" {>= "v0.9" & < "v0.13"}
+  "result" {>= "1.2"}
+  "sexplib" {>= "v0.9" & < "v0.13"}
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["./configure" "--prefix=%{prefix}%"]
@@ -12,17 +24,7 @@ build: [
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "ocaml-basics"]
-depends: [
-  "ocaml" {>= "4.04"}
-  "ocamlfind" {build}
-  "oasis" {>= "0.4"}
-  "result" {>= "1.2"}
-  "ppx_sexp_conv" {>= "v0.9" & < "v0.13"}
-  "sexplib" {>= "v0.9" & < "v0.13"}
-  "ppx_deriving" {>= "4.0"}
-]
-synopsis: "Implements common functionnal patterns / abstractions"
-flags: light-uninstall
+dev-repo: "git+https://github.com/advanced-schema/ocaml-basics.git"
 url {
   src:
     "https://github.com/advanced-schema/ocaml-basics/archive/v0.3.0.tar.gz"

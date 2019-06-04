@@ -1,25 +1,26 @@
 opam-version: "2.0"
+name: "zmq-async"
+version: "5.0.0"
+synopsis: "Async aware bindings to zmq"
 maintainer: "anders@fugmann.net"
-authors: ["Rudi Grinberg"]
+authors: "Rudi Grinberg"
 license: "MIT"
 homepage: "https://github.com/issuu/ocaml-zmq"
-dev-repo:
-  "git+https://github.com/issuu/ocaml-zmq.git"
 bug-reports: "https://github.com/issuu/ocaml-zmq/issues"
+depends: [
+  "async_kernel" {>= "v0.9.0" & < "v0.13"}
+  "async_unix" {>= "v0.9.0" & < "v0.13"}
+  "base" {>= "v0.9.0" & < "v0.13"}
+  "jbuilder" {build & >= "1.0+beta17"}
+  "ocaml"
+  "zmq" {>= "5.0.0"}
+]
 build: [
   ["jbuilder" "subst" "-p" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml"
-  "zmq" {>= "5.0.0"}
-  "jbuilder" {build & >= "1.0+beta17"}
-  "async_unix" {>= "v0.9.0" & < "v0.13"}
-  "async_kernel" {>= "v0.9.0" & < "v0.13"}
-  "base" {>= "v0.9.0" & < "v0.13"}
-]
-synopsis: "Async aware bindings to zmq"
+dev-repo: "git+https://github.com/issuu/ocaml-zmq.git"
 url {
   src: "https://github.com/issuu/ocaml-zmq/archive/5.0.0.tar.gz"
   checksum: "md5=08c6d97f2e5b67c9a77b9e65e10cb417"

@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/jbuilder"
-bug-reports: "https://github.com/janestreet/jbuilder/issues"
-dev-repo: "git+https://github.com/janestreet/jbuilder.git"
-license: "Apache-2.0"
-build: [
-  ["ocaml" "bootstrap.ml"]
-  ["./boot.exe" "--subst"] {pinned}
-  ["./boot.exe" "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.02.3" & < "4.08.0"}
-  "ocamlfind" {build}
-]
+name: "jbuilder"
+version: "1.0+beta10"
 synopsis: "Fast, portable and opinionated build system"
 description: """
 jbuilder is a build system that was designed to simplify the release
@@ -32,6 +19,21 @@ It also supports multi-context builds, such as building against
 several opam roots/switches simultaneously. This helps maintaining
 packages across several versions of OCaml and gives cross-compilation
 for free."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/jbuilder"
+bug-reports: "https://github.com/janestreet/jbuilder/issues"
+depends: [
+  "ocaml" {>= "4.02.3" & < "4.08.0"}
+  "ocamlfind" {build}
+]
+build: [
+  ["ocaml" "bootstrap.ml"]
+  ["./boot.exe" "--subst"] {pinned}
+  ["./boot.exe" "-j" jobs]
+]
+dev-repo: "git+https://github.com/janestreet/jbuilder.git"
 url {
   src:
     "https://github.com/janestreet/jbuilder/releases/download/1.0+beta10/jbuilder-1.0.beta10.tbz"

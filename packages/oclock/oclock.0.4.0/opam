@@ -1,16 +1,18 @@
 opam-version: "2.0"
-maintainer: "mickael.delahaye@gmail.com"
-authors: ["Mickaël Delahaye"]
-homepage: ["http://micdel.fr/oclock.html"]
-license: "ISC license"
-build: [make "all"]
-remove: [["ocamlfind" "remove" "oclock"]]
-depends: ["ocaml" "ocamlfind"]
-dev-repo: "git://github.com/polazarus/oclock"
-install: [make "install"]
-available: os != "macos"
+name: "oclock"
+version: "0.4.0"
 synopsis: "Oclock: Precise POSIX clock for OCaml"
+maintainer: "mickael.delahaye@gmail.com"
+authors: "Mickaël Delahaye"
+license: "ISC license"
+homepage: "http://micdel.fr/oclock.html"
+depends: ["ocaml" "ocamlfind"]
+available: os != "macos"
 flags: light-uninstall
+build: [make "all"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "oclock"]
+dev-repo: "git://github.com/polazarus/oclock"
 url {
   src: "https://github.com/polazarus/oclock/archive/v0.4.tar.gz"
   checksum: "md5=80b35eedb0e73bd8811976e7d521a5a6"

@@ -1,25 +1,26 @@
 opam-version: "2.0"
+name: "ulid"
+version: "0.1"
+synopsis: "ULIDs for OCaml"
+description:
+  "ULIDs are Universally Unique Lexicographically Sortable Identifiers"
 maintainer: "stripedpajamas273@gmail.com"
-authors: [ "Peter Squicciarini" ]
+authors: "Peter Squicciarini"
 license: "MIT"
 homepage: "https://github.com/stripedpajamas/ocaml-ulid"
 doc: "https://github.com/stripedpajamas/ocaml-ulid"
 bug-reports: "https://github.com/stripedpajamas/ocaml-ulid/issues"
-dev-repo: "git+https://github.com/stripedpajamas/ocaml-ulid.git"
-synopsis: "ULIDs for OCaml"
-description: """
-ULIDs are Universally Unique Lexicographically Sortable Identifiers
-"""
 depends: [
+  "alcotest" {with-test}
   "dune" {build & >= "1.0.1"}
   "nocrypto"
-  "alcotest" {with-test}
 ]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name] {with-test}
 ]
+dev-repo: "git+https://github.com/stripedpajamas/ocaml-ulid.git"
 url {
   src: "https://github.com/stripedpajamas/ocaml-ulid/archive/0.1.tar.gz"
   checksum: [

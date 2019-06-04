@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "jun.furuse@gmail.com"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-uninstall"]
-]
-depends: [
-  "ocaml" {= "4.01.0"}
-  "ocamlfind"
-  "sexplib" {< "v0.13"}
-  "omake"
-  "type_conv"
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "ocaml-indent"
+version: "1.2.1"
 synopsis: "OCaml-indent: OCaml source code indenter"
 description: """
 OCaml-indent is an OCaml source code indenter. 
@@ -32,6 +17,23 @@ OCaml-indent is an OCaml source code indenter.
 The indentation tries to follow my style as possible. Neither the
 official one (does it exists?) or something already available
 (i.e. ocaml-mode/tuareg)."""
+maintainer: "jun.furuse@gmail.com"
+depends: [
+  "ocaml" {= "4.01.0"}
+  "ocamlfind"
+  "omake"
+  "sexplib" {< "v0.13"}
+  "type_conv"
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
 url {
   src: "https://bitbucket.org/camlspotter/ocaml-indent/get/1.2.1.tar.gz"
   checksum: "md5=551bd8b4b5c3de61baf1684c739fe315"

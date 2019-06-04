@@ -1,16 +1,19 @@
 opam-version: "2.0"
+name: "pa_do"
+version: "0.8.16"
+synopsis: "Syntax extension to write arithmetic expressions"
 maintainer: "vb@luminar.eu.org"
-build: make
-remove: [["ocamlfind" "remove" "pa_do"]]
 depends: [
   "ocaml" {<= "4.01.0"}
-  "ocamlfind"
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
-install: [make "install"]
-synopsis: "Syntax extension to write arithmetic expressions"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "pa_do"]
 url {
-  src: "https://download.ocamlcore.org/pa-do/pa-do/0.8.16/pa_do-0.8.16.tar.gz"
+  src:
+    "https://download.ocamlcore.org/pa-do/pa-do/0.8.16/pa_do-0.8.16.tar.gz"
   checksum: "md5=a5686159671fe462e876f5138ebe3009"
 }

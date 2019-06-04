@@ -1,31 +1,29 @@
 opam-version: "2.0"
+name: "lablgtk-extras"
+version: "1.4"
+synopsis:
+  "A collection of additional tools and libraries to develop ocaml applications based on Lablgtk2."
 maintainer: "zoggy@bat8.org"
-authors: ["Maxence Guesdon"]
-homepage: "http://gtk-extras.forge.ocamlcore.org/"
+authors: "Maxence Guesdon"
 license: "GNU Lesser General Public License version 2 or later"
-doc: ["http://gtk-extras.forge.ocamlcore.org/"]
-tags: [
-  "gtk"
-  "utils"
-  "configuration"
+tags: ["configuration" "gtk" "utils"]
+homepage: "http://gtk-extras.forge.ocamlcore.org/"
+doc: "http://gtk-extras.forge.ocamlcore.org/"
+depends: [
+  "conf-gtksourceview" {= "2"}
+  "config-file" {>= "1.1"}
+  "lablgtk" {>= "2.16.0"}
+  "ocaml" {< "4.02.0"}
+  "ocamlfind"
+  "xmlm" {>= "1.1.1"}
 ]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make "all"]
 ]
-remove: [["ocamlfind" "remove" "lablgtk2-extras"]]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind"
-  "config-file" {>= "1.1"}
-  "xmlm" {>= "1.1.1"}
-  "lablgtk" {>= "2.16.0"}
-  "conf-gtksourceview" {= "2"}
-]
 install: [make "install"]
-synopsis:
-  "A collection of additional tools and libraries to develop ocaml applications based on Lablgtk2."
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "lablgtk2-extras"]
 url {
   src:
     "https://download.ocamlcore.org/gtk-extras/Lablgtk-extras/1.4/lablgtkextras-1.4.tar.gz"

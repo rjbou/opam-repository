@@ -1,26 +1,6 @@
 opam-version: "2.0"
-authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
-maintainer: "anil@recoil.org"
-homepage: "https://github.com/mirage/mirage-clock"
-bug-reports: "https://github.com/mirage/mirage-clock/issues"
-dev-repo: "git+https://github.com/mirage/mirage-clock.git"
-doc: "https://mirage.github.io/mirage-clock/"
-
-license: "ISC"
-tags: ["org:mirage"]
-
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta9"}
-  "mirage-clock" {>= "1.2.0" & <"2.0.0"}
-  "mirage-clock-lwt" {>= "1.2.0" & <"2.0.0"}
-  "lwt"
-  "configurator" {build & < "v0.13"}
-]
-build: [
-  [ "jbuilder" "subst" "-p" name ] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
+name: "mirage-clock-unix"
+version: "1.3.0"
 synopsis: "Libraries and module types for portable clocks"
 description: """
 This library implements portable support for an operating system timesource
@@ -36,6 +16,26 @@ The following sources are used:
 * The Unix version uses `gettimeofday` or `clock_gettime`, depending on
   which OS is in use (see [clock_stubs.c](https://github.com/mirage/mirage-clock/blob/master/unix/clock_stubs.c)).
 * The freestanding version uses the paravirtual clock source from the hypervisor."""
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-clock"
+doc: "https://mirage.github.io/mirage-clock/"
+bug-reports: "https://github.com/mirage/mirage-clock/issues"
+depends: [
+  "configurator" {build & < "v0.13"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "lwt"
+  "mirage-clock" {>= "1.2.0" & < "2.0.0"}
+  "mirage-clock-lwt" {>= "1.2.0" & < "2.0.0"}
+  "ocaml"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-clock.git"
 url {
   src:
     "https://github.com/mirage/mirage-clock/releases/download/v1.3.0/mirage-clock-1.3.0.tbz"

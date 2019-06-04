@@ -1,28 +1,30 @@
 opam-version: "2.0"
+name: "ojs-base"
+version: "0.1.0"
+synopsis:
+  "Components to create web applications using js_of_ocaml and websockets."
 maintainer: "zoggy@bat8.org"
-authors: ["Maxence Guesdon"]
-homepage: "http://zoggy.github.io/ojs-base/"
+authors: "Maxence Guesdon"
 license: "GNU Public License version 3"
-doc: ["http://zoggy.github.io/ojs-base/refdoc/"]
-tags: ["javascript" "web" "components"]
+tags: ["components" "javascript" "web"]
+homepage: "http://zoggy.github.io/ojs-base/"
+doc: "http://zoggy.github.io/ojs-base/refdoc/"
+depends: [
+  "js_of_ocaml" {>= "2.4.0" & < "3.0"}
+  "lwt" {>= "2.4.6"}
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind"
+  "ppx_deriving_yojson" {>= "1.1" & < "2.0"}
+  "websocket" {>= "0.8.1"}
+  "yojson" {>= "1.1.8"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make "all"]
 ]
-remove: [["ocamlfind" "remove" "ojs"]]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind"
-  "js_of_ocaml" {>= "2.4.0" & < "3.0"}
-  "websocket" {>= "0.8.1"}
-  "lwt" {>= "2.4.6"}
-  "yojson" {>= "1.1.8"}
-  "ppx_deriving_yojson" {>= "1.1" & < "2.0"}
-]
 install: [make "install"]
-synopsis:
-  "Components to create web applications using js_of_ocaml and websockets."
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "ojs"]
 url {
   src: "http://zoggy.github.com/ojs-base/ojs-base-0.1.0.tar.gz"
   checksum: "md5=350993860f89177bb4db86b3247fab95"

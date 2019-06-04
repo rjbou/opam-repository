@@ -1,26 +1,18 @@
 opam-version: "2.0"
-
+name: "syslog"
+version: "2.0.0"
 synopsis: "syslog(3) routines for ocaml"
-
-authors: [
-  "Shawn Wagner"
-  "Eric Stokes"
-]
-
-maintainer: [ "Julien Sagot <julien.sagot@geneanet.org>" ]
-
-homepage: "http://github.com/geneanet/ocaml-syslog"
-dev-repo: "git://github.com/geneanet/ocaml-syslog"
-bug-reports: "https://github.com/geneanet/ocaml-syslog/issues"
-
+maintainer: "Julien Sagot <julien.sagot@geneanet.org>"
+authors: ["Eric Stokes" "Shawn Wagner"]
 license: "LGPL"
-
-build: [ "dune" "build" ]
-
+homepage: "http://github.com/geneanet/ocaml-syslog"
+bug-reports: "https://github.com/geneanet/ocaml-syslog/issues"
 depends: [
-  "dune" { build }
+  "dune" {build}
   "ocaml" {>= "4.03.0"}
 ]
+build: ["dune" "build"]
+dev-repo: "git://github.com/geneanet/ocaml-syslog"
 url {
   src: "https://github.com/geneanet/ocaml-syslog/archive/v2.0.0.tar.gz"
   checksum: [

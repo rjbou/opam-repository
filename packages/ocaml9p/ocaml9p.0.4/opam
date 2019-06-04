@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "raphael.proust@cl.cam.ac.uk"
-authors: [ "Raphaël Proust" "Oscar Hellström" ]
-license: "BSD"
-build: [
-  [make]
-  [make "htdoc"] {with-doc}
-]
-remove: [
-  [make "uninstall"]
-]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlfind"
-]
-dev-repo: "git://github.com/raphael-proust/ocaml9p"
-install: [make "install"]
+name: "ocaml9p"
+version: "0.4"
 synopsis: "ocaml9p is a library for the 9p protocol."
 description: """
 9p is a protocol used throughout Plan9 system and software (including
@@ -23,6 +9,20 @@ language neutral interface for scripting: reading state and writing commands
 through control files.
 
 The current library is for 9p clients only."""
+maintainer: "raphael.proust@cl.cam.ac.uk"
+authors: ["Oscar Hellström" "Raphaël Proust"]
+license: "BSD"
+depends: [
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlfind"
+]
+build: [
+  [make]
+  [make "htdoc"] {with-doc}
+]
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git://github.com/raphael-proust/ocaml9p"
 url {
   src: "https://github.com/raphael-proust/ocaml9p/archive/0.4.2.tar.gz"
   checksum: "md5=dbf8904f6a18d903de5daa2f461508ab"

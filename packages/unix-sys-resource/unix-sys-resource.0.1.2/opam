@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "sheets@alum.mit.edu"
-authors: "David Sheets"
-homepage: "https://github.com/dsheets/ocaml-unix-sys-resource"
-bug-reports: "https://github.com/dsheets/ocaml-unix-sys-resource/issues"
-license: "ISC"
-tags: ["unix" "posix" "sys/resource.h" "getrlimit" "setrlimit" "rlimit"]
-dev-repo: "git+https://github.com/dsheets/ocaml-unix-sys-resource.git"
-build: [
-  [make "build"]
-  [make "test"] {with-test}
-]
-install: [make "install"]
-remove: [make "uninstall"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "alcotest" {with-test}
-  "unix-errno" {>= "0.4.0"}
-  "ctypes"
-]
-depopts: "base-unix"
-conflicts: [
-  "ctypes" {< "0.4.0"}
-]
+name: "unix-sys-resource"
+version: "0.1.2"
 synopsis:
   "Unix sys/resource.h types and bindings (getrlimit, setrlimit, and friends)"
 description: """
@@ -39,6 +16,31 @@ types in Sys_resource.
 
 Currently, getrlimit and setrlimit and their corresponding flags are
 bound."""
+maintainer: "sheets@alum.mit.edu"
+authors: "David Sheets"
+license: "ISC"
+tags: ["getrlimit" "posix" "rlimit" "setrlimit" "sys/resource.h" "unix"]
+homepage: "https://github.com/dsheets/ocaml-unix-sys-resource"
+bug-reports: "https://github.com/dsheets/ocaml-unix-sys-resource/issues"
+depends: [
+  "alcotest" {with-test}
+  "ctypes"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "unix-errno" {>= "0.4.0"}
+]
+depopts: ["base-unix"]
+conflicts: [
+  "ctypes" {< "0.4.0"}
+]
+build: [
+  [make "build"]
+  [make "test"] {with-test}
+]
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/dsheets/ocaml-unix-sys-resource.git"
 url {
   src:
     "https://github.com/dsheets/ocaml-unix-sys-resource/archive/0.1.2.tar.gz"

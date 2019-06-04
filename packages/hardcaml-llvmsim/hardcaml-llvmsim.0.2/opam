@@ -1,22 +1,22 @@
 opam-version: "2.0"
+name: "hardcaml-llvmsim"
+version: "0.2"
+synopsis: "HardCaml simulation backend using LLVM"
 maintainer: "andy.ray@ujamjar.com"
-homepage: "https://github.com/ujamjar/hardcaml-llvmsim"
 authors: "MicroJamJar Ltd"
-build: [make "all"]
-remove: [
-  [make "uninstall"]
-]
+homepage: "https://github.com/ujamjar/hardcaml-llvmsim"
 depends: [
-  "ocaml" {>= "4.02.0"}
+  "ctypes-foreign"
   "hardcaml" {>= "1.1.1" & < "2.0.0"}
   "llvm" {>= "3.4" & < "3.6"}
+  "ocaml" {>= "4.02.0"}
   "ocamlbuild" {build}
-  "ctypes-foreign"
 ]
+build: [make "all"]
+install: [make "install"]
+remove: [make "uninstall"]
 depexts: ["llvm"] {os = "macos" & os-distribution = "homebrew"}
 dev-repo: "git://github.com/ujamjar/hardcaml-llvmsim"
-install: [make "install"]
-synopsis: "HardCaml simulation backend using LLVM"
 url {
   src: "https://github.com/ujamjar/hardcaml-llvmsim/archive/v0.2.tar.gz"
   checksum: "md5=edb3eef442b126d6258eb916f1a0c585"

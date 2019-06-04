@@ -1,29 +1,30 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/expect_test_helpers_kernel"
-bug-reports: "https://github.com/janestreet/expect_test_helpers_kernel/issues"
-dev-repo: "git+https://github.com/janestreet/expect_test_helpers_kernel.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "core_kernel" {>= "v0.9" & < "v0.10"}
-  "jbuilder" {build & >= "1.0+beta7"}
-  "ppx_driver" {>= "v0.9" & < "v0.10"}
-  "ppx_jane" {>= "v0.9" & < "v0.10"}
-  "sexp_pretty" {>= "v0.9" & < "v0.10"}
-  "ocaml-migrate-parsetree" {>= "0.4"}
-  "re" {>= "1.5.0"}
-]
+name: "expect_test_helpers_kernel"
+version: "v0.9.0"
 synopsis: "Helpers for writing expectation tests"
 description: """
 This library provides helper functions for writing expect tests.
 
 If you want helpers for writing expect tests using the Async library,
 look at expect_test_helpers."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/expect_test_helpers_kernel"
+bug-reports:
+  "https://github.com/janestreet/expect_test_helpers_kernel/issues"
+depends: [
+  "core_kernel" {>= "v0.9" & < "v0.10"}
+  "jbuilder" {build & >= "1.0+beta7"}
+  "ocaml" {>= "4.03.0"}
+  "ocaml-migrate-parsetree" {>= "0.4"}
+  "ppx_driver" {>= "v0.9" & < "v0.10"}
+  "ppx_jane" {>= "v0.9" & < "v0.10"}
+  "re" {>= "1.5.0"}
+  "sexp_pretty" {>= "v0.9" & < "v0.10"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/expect_test_helpers_kernel.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.9/files/expect_test_helpers_kernel-v0.9.0.tar.gz"

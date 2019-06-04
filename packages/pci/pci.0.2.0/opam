@@ -1,9 +1,19 @@
 opam-version: "2.0"
-maintainer:   "simon.beaumont@citrix.com"
-authors:      "Si Beaumont"
-homepage:     "https://github.com/simonjbeaumont/ocaml-pci"
-bug-reports:  "https://github.com/simonjbeaumont/ocaml-pci/issues"
-dev-repo: "git+https://github.com/simonjbeaumont/ocaml-pci.git"
+name: "pci"
+version: "0.2.0"
+synopsis: "Ctypes bindings to libpci for OCaml"
+maintainer: "simon.beaumont@citrix.com"
+authors: "Si Beaumont"
+homepage: "https://github.com/simonjbeaumont/ocaml-pci"
+bug-reports: "https://github.com/simonjbeaumont/ocaml-pci/issues"
+depends: [
+  "ctypes" {>= "0.4"}
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+]
+available: os = "linux"
 build: [
   ["./configure"]
   [make]
@@ -12,25 +22,20 @@ build: [
 ]
 install: [make "install"]
 remove: [make "uninstall"]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ctypes" {>= "0.4"}
-  "ocamlfind" {build}
-  "ounit" {with-test}
-  "ocamlbuild" {build}
+post-messages: [
+  "This package requires libpci-dev (>= 3.2.0) to be installed on your system"
+    {failure & os = "debian"}
+  "This package requires libpci-dev (>= 3.2.0) to be installed on your system"
+    {failure & os = "ubuntu"}
+  "This package requires pciutils-devel (>= 3.2.0) to be installed on your system"
+    {failure & os = "centos"}
 ]
-available: os = "linux"
 depexts: [
   ["libpci-dev"] {os-distribution = "debian"}
   ["libpci-dev"] {os-distribution = "ubuntu"}
   ["pciutils-devel"] {os-distribution = "centos"}
 ]
-post-messages: [
-  "This package requires libpci-dev (>= 3.2.0) to be installed on your system"     {failure & (os = "debian")}
-  "This package requires libpci-dev (>= 3.2.0) to be installed on your system"     {failure & (os = "ubuntu")}
-  "This package requires pciutils-devel (>= 3.2.0) to be installed on your system" {failure & (os = "centos")}
-]
-synopsis: "Ctypes bindings to libpci for OCaml"
+dev-repo: "git+https://github.com/simonjbeaumont/ocaml-pci.git"
 url {
   src: "https://github.com/simonjbeaumont/ocaml-pci/archive/v0.2.0.tar.gz"
   checksum: "md5=220ba275078eab5bd41cb8febf2d74f3"

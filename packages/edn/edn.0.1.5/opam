@@ -1,11 +1,23 @@
 opam-version: "2.0"
+name: "edn"
+version: "0.1.5"
+synopsis: "Parsing OCaml library for EDN format"
+description:
+  "This library implements [EDN][edn] parser and generator for OCaml."
 maintainer: "Andrew Rudenko <ceo@prepor.ru>"
 authors: "Andrew Rudenko <ceo@prepor.ru>"
-homepage: "http://github.com/prepor/ocaml-edn"
 license: "MIT"
-bug-reports: "http://github.com/prepor/ocaml-edn/issues"
-dev-repo: "git+https://github.com/prepor/ocaml-edn.git"
+homepage: "http://github.com/prepor/ocaml-edn"
 doc: "https://prepor.github.io/ocaml-edn/doc"
+bug-reports: "http://github.com/prepor/ocaml-edn/issues"
+depends: [
+  "cconv" {>= "0.4"}
+  "menhir" {build}
+  "ocaml" {>= "4.02.0" & < "4.06.0"}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "topkg" {build}
+]
 build: [
   ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
   [
@@ -21,17 +33,7 @@ build: [
     "test"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  "menhir" {build}
-  "topkg" {build}
-  "ounit" {with-test}
-  "cconv" {>= "0.4"}
-]
-synopsis: "Parsing OCaml library for EDN format"
-description:
-  "This library implements [EDN][edn] parser and generator for OCaml."
+dev-repo: "git+https://github.com/prepor/ocaml-edn.git"
 url {
   src:
     "https://github.com/prepor/ocaml-edn/releases/download/v0.1.5/edn-0.1.5.tbz"

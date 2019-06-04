@@ -1,28 +1,6 @@
 opam-version: "2.0"
 name: "mld"
 version: "0.2"
-maintainer: "Stephane Graham-Lengrand <graham-lengrand@lix.polytechnique.fr>"
-authors: [ "Stephane Graham-Lengrand <graham-lengrand@lix.polytechnique.fr>" ]
-homepage: "https://github.com/disteph/mld"
-bug-reports: "https://github.com/disteph/mld/issues"
-dev-repo: "git+https://github.com/disteph/mld.git"
-license: "CeCILL-C"
-build: [
-  ["oasis" "setup"]
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "mld"]
-]
-depends: [
-  "ocaml" {>= "4.02"}
-  "oasis"
-  ((("ocamlbuild" {>= "0.9.0"}) ("ocamlbuild" {<= "0.12.0"})) |
-   "ocamlbuild" {= "0"})
-  "ocamlfind" {build}
-]
 synopsis: "The MLD package makes directory foo.mld turn into module Foo"
 description: """
 The contents of module `Foo` are the modules that can be "found" in directory `foo.mld` and recursively in its subdirectories,
@@ -57,7 +35,27 @@ will turn into the following module structure
 
 In the background:
 an mlpack is automatically generated for each directory *.mld, and the `-for-pack` options are automatically generated."""
+maintainer: "Stephane Graham-Lengrand <graham-lengrand@lix.polytechnique.fr>"
+authors: "Stephane Graham-Lengrand <graham-lengrand@lix.polytechnique.fr>"
+license: "CeCILL-C"
+homepage: "https://github.com/disteph/mld"
+bug-reports: "https://github.com/disteph/mld/issues"
+depends: [
+  "oasis"
+  "ocaml" {>= "4.02"}
+  ("ocamlbuild" {>= "0.9.0"} & "ocamlbuild" {<= "0.12.0"} |
+   "ocamlbuild" {= "0"})
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["oasis" "setup"]
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "mld"]
+dev-repo: "git+https://github.com/disteph/mld.git"
 url {
   src: "https://github.com/disteph/mld/archive/0.2.tar.gz"
   checksum: "md5=209b7dc2353859204d80d9fc7598b349"

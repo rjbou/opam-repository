@@ -1,33 +1,6 @@
 opam-version: "2.0"
-maintainer: "talex5@gmail.com"
-authors: "zero-install-devel@lists.sourceforge.net"
-homepage: "http://0install.net/"
-bug-reports: "https://github.com/0install/0install/issues"
-dev-repo: "git+https://github.com/0install/0install.git"
-build: [
-  [make "all"]
-  [make "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "yojson"
-  "xmlm"
-  "ounit" {with-test}
-  "lwt_react"
-  "ocurl" {>= "0.7.9"}
-  "sha" {>= "1.9"}
-  "dune" {build}
-  "cppo" {build}
-]
-depopts: ["obus" "lablgtk" "lwt_glib"]
-conflicts: [
-  "lablgtk" {< "2.18.2"}
-]
-depexts: [
-  ["unzip"] {os-distribution = "ubuntu"}
-  ["unzip"] {os-distribution = "debian"}
-  ["gnupg"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "0install"
+version: "2.14.1"
 synopsis: "The antidote to app-stores"
 description: """
 Zero Install is a decentralised cross-distribution software installation system.
@@ -35,6 +8,35 @@ Other features include full support for shared libraries (with a SAT solver for
 dependency resolution), sharing between users, and integration with native platform
 package managers. It supports both binary and source packages, and works on Linux,
 Mac OS X, Unix and Windows systems."""
+maintainer: "talex5@gmail.com"
+authors: "zero-install-devel@lists.sourceforge.net"
+homepage: "http://0install.net/"
+bug-reports: "https://github.com/0install/0install/issues"
+depends: [
+  "cppo" {build}
+  "dune" {build}
+  "lwt_react"
+  "ocaml" {>= "4.03.0"}
+  "ocurl" {>= "0.7.9"}
+  "ounit" {with-test}
+  "sha" {>= "1.9"}
+  "xmlm"
+  "yojson"
+]
+depopts: ["lablgtk" "lwt_glib" "obus"]
+conflicts: [
+  "lablgtk" {< "2.18.2"}
+]
+build: [
+  [make "all"]
+  [make "test"] {with-test}
+]
+depexts: [
+  ["gnupg"] {os = "macos" & os-distribution = "homebrew"}
+  ["unzip"] {os-distribution = "ubuntu"}
+  ["unzip"] {os-distribution = "debian"}
+]
+dev-repo: "git+https://github.com/0install/0install.git"
 url {
   src:
     "https://downloads.sf.net/project/zero-install/0install/2.14.1/0install-2.14.1.tar.bz2"

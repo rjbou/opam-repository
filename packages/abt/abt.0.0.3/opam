@@ -1,8 +1,20 @@
 opam-version: "2.0"
+name: "abt"
+version: "0.0.3"
+synopsis: "OCaml port of CMU's abstract binding trees."
+description: "OCaml port of CMU's abstract binding trees."
 maintainer: "Ayberk Tosun <ayberk.tosun@gmail.com>"
 authors: "Ayberk Tosun <ayberk.tosun@gmail.com>"
-homepage: "https://github.com/ayberkt/abt"
 license: "MIT"
+homepage: "https://github.com/ayberkt/abt"
+depends: [
+  "camlp4" {build}
+  "core_kernel" {< "v0.9.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -12,16 +24,6 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "abt"]
-depends: [
-  "ocaml"
-  "camlp4" {build}
-  "core_kernel" {< "v0.9.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
-synopsis: "OCaml port of CMU's abstract binding trees."
-description: "OCaml port of CMU's abstract binding trees."
-flags: light-uninstall
 url {
   src: "https://github.com/ayberkt/abt/archive/v0.0.3.zip"
   checksum: "md5=ca793c7ffba57851fe0e4e9d58c42083"

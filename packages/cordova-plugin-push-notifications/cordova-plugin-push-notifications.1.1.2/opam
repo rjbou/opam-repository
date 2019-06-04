@@ -1,22 +1,24 @@
 opam-version: "2.0"
-maintainer: "Danny Willems <contact@danny-willems.be>"
-authors: "Danny Willems <contact@danny-willems.be>"
-homepage: "https://github.com/dannywillems/ocaml-cordova-plugin-push"
-bug-reports:
-  "https://github.com/dannywillems/ocaml-cordova-plugin-push/issues"
-license: "LGPL-3.0 with OCaml linking exception"
-dev-repo: "git+https://github.com/dannywillems/ocaml-cordova-plugin-push.git"
-build: [make "build"]
-install: [make "install"]
-remove: [make "remove"]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "gen_js_api"
-]
+name: "cordova-plugin-push-notifications"
+version: "1.1.2"
 synopsis: "Binding OCaml to phonegap-plugin-push using gen_js_api."
 description: """
 Binding OCaml to phonegap-plugin-push using gen_js_api.
 See https://github.com/dannywillems/ocaml-cordova-plugin-list for the complete list of bindings to Cordova plugins."""
+maintainer: "Danny Willems <contact@danny-willems.be>"
+authors: "Danny Willems <contact@danny-willems.be>"
+license: "LGPL-3.0 with OCaml linking exception"
+homepage: "https://github.com/dannywillems/ocaml-cordova-plugin-push"
+bug-reports:
+  "https://github.com/dannywillems/ocaml-cordova-plugin-push/issues"
+depends: [
+  "gen_js_api"
+  "ocaml" {>= "4.03.0"}
+]
+build: [make "build"]
+install: [make "install"]
+remove: [make "remove"]
+dev-repo: "git+https://github.com/dannywillems/ocaml-cordova-plugin-push.git"
 url {
   src:
     "https://github.com/dannywillems/ocaml-cordova-plugin-push-notifications/archive/v1.1.2.zip"

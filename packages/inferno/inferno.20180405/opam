@@ -1,27 +1,21 @@
 opam-version: "2.0"
+name: "inferno"
+version: "20180405"
+synopsis: "A library for constraint-based Hindley-Milner type inference."
 maintainer: "francois.pottier@inria.fr"
-authors: [
-  "François Pottier <francois.pottier@inria.fr>"
-]
-homepage: "https://gitlab.inria.fr/fpottier/inferno"
-dev-repo: "git+https://gitlab.inria.fr/fpottier/inferno.git"
-bug-reports: "francois.pottier@inria.fr"
+authors: "François Pottier <francois.pottier@inria.fr>"
 license: "MIT"
-build: [
-  [make]
-]
-install: [
-  [make "install"]
-]
-remove: [
-  [make "uninstall"]
-]
+homepage: "https://gitlab.inria.fr/fpottier/inferno"
+bug-reports: "francois.pottier@inria.fr"
 depends: [
   "ocaml" {>= "4.02"}
-  "ocamlfind" {build}
   "ocamlbuild" {build}
+  "ocamlfind" {build}
 ]
-synopsis: "A library for constraint-based Hindley-Milner type inference."
+build: make
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://gitlab.inria.fr/fpottier/inferno.git"
 url {
   src:
     "https://gitlab.inria.fr/fpottier/inferno/repository/20180405/archive.tar.gz"

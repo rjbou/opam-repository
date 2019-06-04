@@ -1,28 +1,30 @@
 opam-version: "2.0"
+name: "records"
+version: "0.7.0"
+synopsis: "Records"
+description:
+  "This library enables you to define and manipulate dynamic records in OCaml."
 maintainer: "Etienne Millon <etienne@cryptosense.com>"
 authors: "Etienne Millon <etienne@cryptosense.com>"
-homepage: "https://github.com/cryptosense/records"
-bug-reports: "https://github.com/cryptosense/records/issues"
 license: "BSD-2"
-dev-repo: "git+https://github.com/cryptosense/records.git"
+homepage: "https://github.com/cryptosense/records"
 doc: "https://cryptosense.github.io/records/doc"
+bug-reports: "https://github.com/cryptosense/records/issues"
+depends: [
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "result"
+  "topkg" {build}
+  "yojson"
+]
 build: [
   ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
   ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
     {with-test}
   ["ocaml" "pkg/pkg.ml" "test"] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ounit" {with-test}
-  "yojson"
-  "result"
-  "topkg" {build}
-]
-synopsis: "Records"
-description:
-  "This library enables you to define and manipulate dynamic records in OCaml."
+dev-repo: "git+https://github.com/cryptosense/records.git"
 url {
   src:
     "https://github.com/cryptosense/records/releases/download/v0.7.0/records-0.7.0.tbz"

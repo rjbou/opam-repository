@@ -1,37 +1,35 @@
 opam-version: "2.0"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      [ "Romain Calascibetta"
-                "Christophe Troestler" ]
-license:      "MIT"
-homepage:     "https://github.com/Cumulus/Syndic"
-dev-repo:     "git+https://github.com/Cumulus/Syndic.git"
-bug-reports:  "https://github.com/Cumulus/Syndic/issues"
-doc:          "https://cumulus.github.io/Syndic/"
-synopsis:     "RSS1, RSS2, Atom and OPML1 parsing"
+name: "syndic"
+version: "1.6.1"
+synopsis: "RSS1, RSS2, Atom and OPML1 parsing"
 description: """
 Pure OCaml Library for parsing and writing various types of
 feeds and subscriber lists."""
-
-build: [
-  [ "dune" "subst" ]
-  [ "dune" "build" "-p" name "-j" jobs ]
-  [ "dune" "runtest" "-p" name ] {with-test & ocaml:version >= "4.04.1"}
-]
-
-
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: ["Christophe Troestler" "Romain Calascibetta"]
+license: "MIT"
+homepage: "https://github.com/Cumulus/Syndic"
+doc: "https://cumulus.github.io/Syndic/"
+bug-reports: "https://github.com/Cumulus/Syndic/issues"
 depends: [
-  "ocaml" {>= "4.03.0"}
+  "base-unix" {with-test}
   "dune"
+  "fmt" {with-test}
+  "fpath" {with-test}
+  "jsonm" {with-test}
+  "ocaml" {>= "4.03.0"}
+  "ocplib-json-typed" {with-test}
+  "ocurl" {with-test}
   "ptime"
   "uri" {>= "1.9"}
   "xmlm" {>= "1.2.0"}
-  "fmt" {with-test}
-  "ocurl" {with-test}
-  "fpath" {with-test}
-  "ocplib-json-typed" {with-test}
-  "base-unix" {with-test}
-  "jsonm" {with-test}
 ]
+build: [
+  ["dune" "subst"]
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name] {with-test & ocaml:version >= "4.04.1"}
+]
+dev-repo: "git+https://github.com/Cumulus/Syndic.git"
 url {
   src:
     "https://github.com/Cumulus/Syndic/releases/download/v1.6.1/syndic-v1.6.1.tbz"

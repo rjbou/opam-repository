@@ -1,34 +1,36 @@
 opam-version: "2.0"
+name: "ppx_deriving_cmdliner"
+version: "0.2.0"
+synopsis: "Cmdliner.Term.t generator"
+description: """
+ppx_deriving_cmdliner is a ppx_deriving plugin that generates
+a Cmdliner Term.t for a record type."""
 maintainer: "Isaac Hodes <isaachodes@gmail.com>"
 authors: "Isaac Hodes <isaachodes@gmail.com>"
-homepage: "https://github.com/hammerlab/ppx_deriving_cmdliner"
-bug-reports: "https://github.com/hammerlab/ppx_deriving_cmdliner/issues"
 license: "MIT"
+tags: ["cli" "syntax"]
+homepage: "https://github.com/hammerlab/ppx_deriving_cmdliner"
 doc: "http://hammerlab.github.io/ppx_deriving_cmdliner"
-tags: ["syntax" "cli"]
-dev-repo: "git+https://github.com/hammerlab/ppx_deriving_cmdliner.git"
-substs: "pkg/META"
+bug-reports: "https://github.com/hammerlab/ppx_deriving_cmdliner/issues"
+depends: [
+  "alcotest" {with-test}
+  "cmdliner"
+  "cppo" {build}
+  "cppo_ocamlbuild" {build}
+  "ocaml"
+  "ocamlfind" {build}
+  "ppx_deriving" {>= "4.0" & < "4.3"}
+  "ppx_import" {with-test & >= "1.1"}
+  "result"
+]
 build: [
   "ocaml"
   "pkg/build.ml"
   "native=%{ocaml:native}%"
   "native-dynlink=%{ocaml:native-dynlink}%"
 ]
-depends: [
-  "ocaml"
-  "cmdliner"
-  "result"
-  "ppx_deriving" {>= "4.0" & < "4.3"}
-  "ocamlfind" {build}
-  "cppo" {build}
-  "cppo_ocamlbuild" {build}
-  "alcotest" {with-test}
-  "ppx_import" {with-test & >= "1.1"}
-]
-synopsis: "Cmdliner.Term.t generator"
-description: """
-ppx_deriving_cmdliner is a ppx_deriving plugin that generates
-a Cmdliner Term.t for a record type."""
+substs: "pkg/META"
+dev-repo: "git+https://github.com/hammerlab/ppx_deriving_cmdliner.git"
 url {
   src:
     "https://github.com/hammerlab/ppx_deriving_cmdliner/archive/v0.2.0.tar.gz"

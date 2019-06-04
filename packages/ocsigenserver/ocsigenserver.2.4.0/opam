@@ -1,5 +1,34 @@
 opam-version: "2.0"
+name: "ocsigenserver"
+version: "2.4.0"
+synopsis: "A full-featured and extensible Web server"
+description: """
+It implements most features of the HTTP protocol, and has a very
+powerful extension mechanism that make very easy to plug your own
+OCaml modules for generating pages. Many extensions are already
+written, like a reverse proxy, content compression, access control,
+authentication, etc."""
 maintainer: "dev@ocsigen.org"
+depends: [
+  "base-threads"
+  "base-unix"
+  "cryptokit"
+  ("dbm" | "sqlite3")
+  "ipaddr" {>= "2.1"}
+  "lwt" {>= "2.4.0" & < "2.4.7"}
+  "ocaml" {< "4.08.0"}
+  "ocamlfind"
+  "ocamlnet" {>= "3.6.0"}
+  "pcre"
+  "react"
+  "ssl"
+  "tyxml" {>= "3.0.0" & < "3.2"}
+]
+depopts: ["camlzip"]
+conflicts: [
+  "camlzip" {< "1.04"}
+]
+flags: light-uninstall
 build: [
   [
     "sh"
@@ -29,38 +58,9 @@ build: [
   ]
   [make]
 ]
-remove: [["rm" "-rf" "%{lib}%/ocsigenserver"]]
-depends: [
-  "ocaml" {< "4.08.0"}
-  "ocamlfind"
-  "base-unix"
-  "base-threads"
-  "react"
-  "ssl"
-  "lwt" {>= "2.4.0" & < "2.4.7"}
-  "ocamlnet" {>= "3.6.0"}
-  "pcre"
-  "cryptokit"
-  "tyxml" {>= "3.0.0" & < "3.2"}
-  ("dbm" | "sqlite3")
-  "ipaddr" {>= "2.1"}
-]
-depopts: [
-  "camlzip"
-]
-conflicts: [
-  "camlzip" {< "1.04"}
-]
-dev-repo: "git://github.com/ocsigen/ocsigenserver"
 install: [make "install"]
-synopsis: "A full-featured and extensible Web server"
-description: """
-It implements most features of the HTTP protocol, and has a very
-powerful extension mechanism that make very easy to plug your own
-OCaml modules for generating pages. Many extensions are already
-written, like a reverse proxy, content compression, access control,
-authentication, etc."""
-flags: light-uninstall
+remove: ["rm" "-rf" "%{lib}%/ocsigenserver"]
+dev-repo: "git://github.com/ocsigen/ocsigenserver"
 url {
   src: "https://github.com/ocsigen/ocsigenserver/archive/2.4.0.tar.gz"
   checksum: "md5=646594a1b2e362cd0e346ac09a3f6316"

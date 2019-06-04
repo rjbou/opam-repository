@@ -1,20 +1,30 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/ppx_optcomp"
-bug-reports: "https://github.com/janestreet/ppx_optcomp/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_optcomp.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "--only-packages" "ppx_optcomp" "--root" "." "-j" jobs "@install"]
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta4"}
-  "ppx_core" {>= "v0.9" & < "v0.10"}
-]
+name: "ppx_optcomp"
+version: "v0.9.0"
 synopsis: "Optional compilation for OCaml"
 description: "Part of the Jane Street's PPX rewriters collection."
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/ppx_optcomp"
+bug-reports: "https://github.com/janestreet/ppx_optcomp/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta4"}
+  "ocaml" {>= "4.03.0"}
+  "ppx_core" {>= "v0.9" & < "v0.10"}
+]
+build: [
+  "jbuilder"
+  "build"
+  "--only-packages"
+  "ppx_optcomp"
+  "--root"
+  "."
+  "-j"
+  jobs
+  "@install"
+]
+dev-repo: "git+https://github.com/janestreet/ppx_optcomp.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.9/files/ppx_optcomp-v0.9.0.tar.gz"

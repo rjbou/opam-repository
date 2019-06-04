@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "batteries"
+version: "2.1.0"
+synopsis: "Community-maintained foundation library"
 maintainer: "thelema314@gmail.com"
-homepage: "http://batteries.forge.ocamlcore.org/"
 license: "LGPL-2.1+ with OCaml linking exception"
+homepage: "http://batteries.forge.ocamlcore.org/"
+depends: [
+  "num"
+  "ocaml" {< "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   [make "all"]
 ]
-remove: [["ocamlfind" "remove" "batteries"]]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "num"
-]
-patches: "cloexec.patch" {ocaml:version >= "4.01.0"}
 install: [make "install"]
-synopsis: "Community-maintained foundation library"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "batteries"]
+patches: "cloexec.patch" {ocaml:version >= "4.01.0"}
 extra-files: ["cloexec.patch" "md5=1e028dc99ffbdad4be64df4bc6ceecff"]
 url {
   src:

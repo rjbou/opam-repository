@@ -1,30 +1,29 @@
 opam-version: "2.0"
+name: "xen-block-driver"
+version: "0.2.2"
+synopsis:
+  "Xen disk device drivers: both client (\"frontend\") and server (\"backend\")"
 maintainer: "dave.scott@eu.citrix.com"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: make
-remove: [[make "uninstall" "BINDIR=%{bin}%"]]
+tags: ["org:mirage" "org:xapi-project"]
 depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind"
   "cmdliner"
-  "lwt"
   "cstruct" {= "0.7.1"}
-  "shared-memory-ring" {>= "0.4.1"}
-  "mirage-xen" {>= "0.9.4" & < "0.9.8"}
+  "lwt"
   "mirage" {>= "0.9.4" & < "0.9.8"}
+  "mirage-xen" {>= "0.9.4" & < "0.9.8"}
+  "ocaml" {< "4.02.0"}
   "ocamlbuild" {build}
+  "ocamlfind"
+  "shared-memory-ring" {>= "0.4.1"}
 ]
 depopts: ["xenctrl"]
 conflicts: [
   "xenctrl" {< "0.9.8"}
 ]
-dev-repo: "git://github.com/mirage/ocaml-xen-block-driver"
+build: make
 install: [make "install" "BINDIR=%{bin}%"]
-synopsis:
-  "Xen disk device drivers: both client (\"frontend\") and server (\"backend\")"
+remove: [make "uninstall" "BINDIR=%{bin}%"]
+dev-repo: "git://github.com/mirage/ocaml-xen-block-driver"
 url {
   src:
     "https://github.com/mirage/ocaml-xen-block-driver/archive/0.2.2.tar.gz"

@@ -1,15 +1,17 @@
 opam-version: "2.0"
+name: "otags"
+version: "3.12.5"
+synopsis: "Tag file generation of OCaml sources (for vi and emacs)"
 maintainer: "sebastien.fricker@gmail.com"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
 depends: [
   "ocaml" {< "4.00.0"}
   "ocamlbuild"
 ]
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
 install: [make "install"]
-synopsis: "Tag file generation of OCaml sources (for vi and emacs)"
 url {
   src: "http://askra.de/software/otags/otags-3.12.5.tar.gz"
   checksum: "md5=897f3309a69b133d3f52ef0bf617271e"

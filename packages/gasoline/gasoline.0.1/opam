@@ -1,31 +1,6 @@
 opam-version: "2.0"
-maintainer: "michipili@gmail.com"
-authors: "Michael Grünewald"
-license: "CeCILL-B"
-homepage: "https://github.com/michipili/gasoline"
-bug-reports: "https://github.com/michipili/gasoline/issues"
-dev-repo: "git+https://github.com/michipili/gasoline.git"
-tags: [
-  "application"
-]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.02.0"}
-  "bsdowl"
-  "ocamlfind"
-  "camomile"
-  "conf-bmake"
-]
-build: [
-  ["./configure" "--prefix" prefix]
-  [conf-bmake:path "-I%{bsdowl:share}%" "all"]
-]
-install: [
-  [conf-bmake:path "-I%{bsdowl:share}%" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "gasoline"]
-  ["rm" "-rf" "%{share}%/doc/gasoline"]
-]
+name: "gasoline"
+version: "0.1"
 synopsis: "Unix-ish application development framework"
 description: """
 The Gasoline project aims at implementing a Unix-ish application
@@ -45,10 +20,33 @@ Users of Gasoline should be enabled to:
 - Use common file formats such as CSV or JSON in their applications.
 
 WWW: https://github.com/michipili/gasoline"""
+maintainer: "michipili@gmail.com"
+authors: "Michael Grünewald"
+license: "CeCILL-B"
+tags: "application"
+homepage: "https://github.com/michipili/gasoline"
+bug-reports: "https://github.com/michipili/gasoline/issues"
+depends: [
+  "bsdowl"
+  "camomile"
+  "conf-bmake"
+  "ocaml" {>= "4.01.0" & < "4.02.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [conf-bmake:path "-I%{bsdowl:share}%" "all"]
+]
+install: [conf-bmake:path "-I%{bsdowl:share}%" "install"]
+remove: [
+  ["ocamlfind" "remove" "gasoline"]
+  ["rm" "-rf" "%{share}%/doc/gasoline"]
+]
+dev-repo: "git+https://github.com/michipili/gasoline.git"
 extra-files: [
-  ["gasoline.install" "md5=70e96f3a7ef8dc33e3a6cbf893991ce4"]
   ["META" "md5=4045a60891fd22a4953c263104c59abf"]
+  ["gasoline.install" "md5=70e96f3a7ef8dc33e3a6cbf893991ce4"]
 ]
 url {
   src:

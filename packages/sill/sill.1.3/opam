@@ -1,31 +1,34 @@
 opam-version: "2.0"
-homepage: "https://github.com/ISANobody/sill"
-dev-repo: "git+https://github.com/ISANobody/sill.git"
-bug-reports: "https://github.com/ISANobody/sill/issues"
-maintainer: "isanobody@gmail.com"
-authors: [ "Dennis Griffith <isanobody@gmail.com>"
-           "Frank Pfenning <fp@cs.cmu.edu>" ]
-license: "GPL-3 with OCaml linking exception"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "base-threads"
-  "base-unix"
-  "bin_prot" {< "113.01.00"}
-  "core" {< "v0.13"}
-  "ocamlfind"
-  "sexplib" {< "113.01.00"}
-  "mparser"
-  "pa_monad_custom"
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "sill"
+version: "1.3"
 synopsis: "Implementation of Linear Session Types"
 description: """
 A prototype language focused on organizing concurrent programs via
 communication along substructurally typed channels between processes."""
+maintainer: "isanobody@gmail.com"
+authors: [
+  "Dennis Griffith <isanobody@gmail.com>" "Frank Pfenning <fp@cs.cmu.edu>"
+]
+license: "GPL-3 with OCaml linking exception"
+homepage: "https://github.com/ISANobody/sill"
+bug-reports: "https://github.com/ISANobody/sill/issues"
+depends: [
+  "base-threads"
+  "base-unix"
+  "bin_prot" {< "113.01.00"}
+  "core" {< "v0.13"}
+  "mparser"
+  "ocaml" {>= "4.01.0"}
+  "ocamlfind"
+  "pa_monad_custom"
+  "sexplib" {< "113.01.00"}
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+dev-repo: "git+https://github.com/ISANobody/sill.git"
 extra-files: ["sill.install" "md5=1a4837f3fc59e3f211c51d7041dfcead"]
 url {
   src: "https://github.com/ISANobody/sill/archive/v1.3.zip"

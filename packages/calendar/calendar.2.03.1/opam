@@ -1,17 +1,19 @@
 opam-version: "2.0"
+name: "calendar"
+version: "2.03.1"
+synopsis: "Library for handling dates and times in your program"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [
-  ["./configure"]
-  [make]
-]
-remove: [["ocamlfind" "remove" "calendar"]]
 depends: [
   "ocaml" {= "3.12.1"}
   "ocamlfind"
 ]
-install: [make "install"]
-synopsis: "Library for handling dates and times in your program"
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "calendar"]
 url {
   src:
     "https://download.ocamlcore.org/calendar/calendar/2.03.1/calendar-2.03.1.tar.gz"

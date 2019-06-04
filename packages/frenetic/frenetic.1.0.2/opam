@@ -1,26 +1,28 @@
 opam-version: "2.0"
+name: "frenetic"
+version: "1.0.2"
+synopsis: "The Frenetic Network Programming Language for SDN"
 maintainer: "arjun@cs.umass.edu"
 authors: "many people at Cornell, Princeton, UMass Amherst, UCL"
 homepage: "http://frenetic-lang.org"
+depends: [
+  "cstruct"
+  "lwt"
+  "ocaml" {>= "4.00"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "openflow" {< "0.2.0"}
+  "ounit"
+  "packet" {< "0.2.0"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix "--enable-installexec"]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "netcore"]]
-depends: [
-  "ocaml" {>= "4.00"}
-  "ocamlfind"
-  "lwt"
-  "cstruct"
-  "packet" {< "0.2.0"}
-  "openflow" {< "0.2.0"}
-  "ounit"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/frenetic-lang/frenetic"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "The Frenetic Network Programming Language for SDN"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "netcore"]
+dev-repo: "git://github.com/frenetic-lang/frenetic"
 url {
   src:
     "https://github.com/frenetic-lang/frenetic/archive/frenetic.1.0.2.tar.gz"

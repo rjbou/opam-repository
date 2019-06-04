@@ -1,48 +1,6 @@
 opam-version: "2.0"
-maintainer:   "datakit@docker.com"
-authors:      ["Thomas© Leonard" "Anil Madhavapeddy"
-               "Dave Tucker" "Thomas Gazagnaire" ]
-license:      "Apache"
-homepage:     "https://github.com/moby/datakit"
-bug-reports:  "https://github.com/moby/datakit/issues"
-dev-repo: "git+https://github.com/moby/datakit.git"
-doc:          "https://docker.github.io/datakit/"
-
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "ci/tests"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & < "1.0+beta12"}
-  "multipart-form-data"
-  "datakit-client" {>= "0.10.0" & < "0.11.0"}
-  "datakit-github" {>= "0.10.0" & < "0.11.0"}
-  "protocol-9p" {= "0.9.0"}
-  "astring"
-  "cmdliner"
-  "fmt"
-  "logs"
-  "tyxml" {>= "4.0.0"}
-  "tls" {< "0.9.0"}
-  "cstruct" {<"4.0.0"}
-  "conduit"
-  "io-page"
-  "pbkdf"
-  "webmachine" {>= "0.4.0" & < "0.6.0"}
-  "session" {< "0.3.2"}
-  "redis" {>= "0.3.0" & < "0.3.4"}
-  "asetmap"
-  "github-unix"
-  "prometheus-app"
-  "lwt" {>= "2.7.1"}
-  "ppx_sexp_conv" {< "v0.13"}
-  "uri" {< "2.0.0"}
-  "crunch" {build}
-  "datakit" {with-test & >= "0.10.0" & < "0.11.0"}
-  "irmin-unix" {with-test & >= "1.1.0"}
-  "alcotest" {with-test}
-]
+name: "datakit-ci"
+version: "0.10.0"
 synopsis: "Continuous Integration service using DataKit"
 description: """
 DataKitCI is a continuous integration service that monitors your
@@ -50,6 +8,50 @@ GitHub project and tests each branch, tag and pull request. It
 displays the test results as status indicators in the GitHub UI. It
 keeps all of its state and logs in DataKit, rather than a traditional
 relational database, allowing review with the usual Git tools."""
+maintainer: "datakit@docker.com"
+authors: [
+  "Anil Madhavapeddy" "Dave Tucker" "Thomas Gazagnaire" "Thomas© Leonard"
+]
+license: "Apache"
+homepage: "https://github.com/moby/datakit"
+doc: "https://docker.github.io/datakit/"
+bug-reports: "https://github.com/moby/datakit/issues"
+depends: [
+  "alcotest" {with-test}
+  "asetmap"
+  "astring"
+  "cmdliner"
+  "conduit"
+  "crunch" {build}
+  "cstruct" {< "4.0.0"}
+  "datakit" {with-test & >= "0.10.0" & < "0.11.0"}
+  "datakit-client" {>= "0.10.0" & < "0.11.0"}
+  "datakit-github" {>= "0.10.0" & < "0.11.0"}
+  "fmt"
+  "github-unix"
+  "io-page"
+  "irmin-unix" {with-test & >= "1.1.0"}
+  "jbuilder" {build & < "1.0+beta12"}
+  "logs"
+  "lwt" {>= "2.7.1"}
+  "multipart-form-data"
+  "ocaml" {>= "4.03.0"}
+  "pbkdf"
+  "ppx_sexp_conv" {< "v0.13"}
+  "prometheus-app"
+  "protocol-9p" {= "0.9.0"}
+  "redis" {>= "0.3.0" & < "0.3.4"}
+  "session" {< "0.3.2"}
+  "tls" {< "0.9.0"}
+  "tyxml" {>= "4.0.0"}
+  "uri" {< "2.0.0"}
+  "webmachine" {>= "0.4.0" & < "0.6.0"}
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "ci/tests"] {with-test}
+]
+dev-repo: "git+https://github.com/moby/datakit.git"
 url {
   src:
     "https://github.com/moby/datakit/releases/download/0.10.0/datakit-0.10.0.tbz"

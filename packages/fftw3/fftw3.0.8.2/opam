@@ -1,12 +1,21 @@
 opam-version: "2.0"
-authors: ["Christophe Troestler <Christophe.Troestler@umons.ac.be>"]
+name: "fftw3"
+version: "0.8.2"
+synopsis: "Binding to the famous Fast Fourier Transform library FFTW"
 maintainer: "Christophe.Troestler@umons.ac.be"
+authors: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
 license: "LGPL-2.1 with OCaml linking exception"
+tags: "FFT"
 homepage: "https://github.com/Chris00/fftw-ocaml"
-dev-repo: "git+https://github.com/Chris00/fftw-ocaml.git"
-bug-reports: "https://github.com/Chris00/fftw-ocaml/issues"
 doc: "https://Chris00.github.io/fftw-ocaml/doc"
-tags: ["FFT"]
+bug-reports: "https://github.com/Chris00/fftw-ocaml/issues"
+depends: [
+  "conf-fftw3"
+  "cppo" {build}
+  "dune" {build}
+  "lacaml" {with-test}
+  "ocaml" {>= "4.03.0"}
+]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs] {os != "macos"}
@@ -22,14 +31,7 @@ build: [
   ] {os = "macos"}
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "cppo" {build}
-  "lacaml" {with-test}
-  "conf-fftw3"
-]
-synopsis: "Binding to the famous Fast Fourier Transform library FFTW"
+dev-repo: "git+https://github.com/Chris00/fftw-ocaml.git"
 url {
   src:
     "https://github.com/Chris00/fftw-ocaml/releases/download/0.8.2/fftw3-0.8.2.tbz"

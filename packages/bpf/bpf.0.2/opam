@@ -1,18 +1,23 @@
 opam-version: "2.0"
+name: "bpf"
+version: "0.2"
+synopsis: "Embedded eBPF assembler"
+description: """
+Generate BPF programs directly from OCaml, for use with Linux kernel
+socket/seccomp/event filters or to generate machine code with ubpf JIT for userspace."""
 maintainer: "ygrek <ygrek@autistici.org>"
-authors: ["ygrek <ygrek@autistici.org>"]
+authors: "ygrek <ygrek@autistici.org>"
+license: "BSD3"
+tags: "org:ygrek"
 homepage: "https://github.com/ygrek/ocaml-bpf"
 doc: "http://ygrek.org.ua/p/ocaml-bpf/api/"
-license: "BSD3"
-dev-repo: "git+https://github.com/ygrek/ocaml-bpf.git"
 bug-reports: "https://github.com/ygrek/ocaml-bpf/issues"
-tags: ["org:ygrek"]
 depends: [
   "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
   "ocamlbuild" {build}
-  "topkg" {build}
+  "ocamlfind" {build}
   "ppx_deriving"
+  "topkg" {build}
 ]
 build: [
   ["ocaml" "pkg/pkg.ml" "build" "--dev-pkg" "%{pinned}%"]
@@ -20,10 +25,7 @@ build: [
     {with-test}
   ["ocaml" "pkg/pkg.ml" "test"] {with-test}
 ]
-synopsis: "Embedded eBPF assembler"
-description: """
-Generate BPF programs directly from OCaml, for use with Linux kernel
-socket/seccomp/event filters or to generate machine code with ubpf JIT for userspace."""
+dev-repo: "git+https://github.com/ygrek/ocaml-bpf.git"
 url {
   src: "http://ygrek.org.ua/p/release/ocaml-bpf/bpf-0.2.tbz"
   checksum: "md5=f1df7018dd45fc057da8c437f1a86270"

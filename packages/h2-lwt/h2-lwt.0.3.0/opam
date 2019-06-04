@@ -1,25 +1,24 @@
 opam-version: "2.0"
-maintainer: "Antonio Monteiro <anmonteiro@gmail.com>"
-authors: [ "Antonio Monteiro <anmonteiro@gmail.com>" ]
-license: "BSD-3-clause"
-homepage: "https://github.com/anmonteiro/ocaml-h2"
-bug-reports: "https://github.com/anmonteiro/ocaml-h2/issues"
-dev-repo: "git+https://github.com/anmonteiro/ocaml-h2.git"
-doc: "https://anmonteiro.github.io/ocaml-h2/"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04"}
-  "h2" {>= "0.3.0" & < "0.4.0"}
-  "dune" {build}
-  "lwt"
-]
+name: "h2-lwt"
+version: "0.3.0"
 synopsis: "Lwt support for h2"
 description: """
 h2 is an implementation of the HTTP/2 specification entirely in OCaml. h2-lwt
-provides an Lwt runtime implementation for h2.
-"""
+provides an Lwt runtime implementation for h2."""
+maintainer: "Antonio Monteiro <anmonteiro@gmail.com>"
+authors: "Antonio Monteiro <anmonteiro@gmail.com>"
+license: "BSD-3-clause"
+homepage: "https://github.com/anmonteiro/ocaml-h2"
+doc: "https://anmonteiro.github.io/ocaml-h2/"
+bug-reports: "https://github.com/anmonteiro/ocaml-h2/issues"
+depends: [
+  "dune" {build}
+  "h2" {>= "0.3.0" & < "0.4.0"}
+  "lwt"
+  "ocaml" {>= "4.04"}
+]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/anmonteiro/ocaml-h2.git"
 url {
   src:
     "https://github.com/anmonteiro/ocaml-h2/releases/download/0.3.0/h2-0.3.0.tbz"

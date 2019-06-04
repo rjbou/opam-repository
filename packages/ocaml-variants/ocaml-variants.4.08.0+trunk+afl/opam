@@ -1,19 +1,22 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.08.0+trunk+afl"
 synopsis: "latest 4.08 development, with afl-fuzz instrumentation"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.08.0" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
   "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.08.0" & post}
   "ocaml-beta"
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler
 setenv: CAML_LD_LIBRARY_PATH = "%{lib}%/stublibs"
 build: [
-  ["./configure" "--prefix=%{prefix}%" "--with-afl" "--disable-debug-runtime"]
-    {os != "openbsd" & os != "freebsd" & os != "macos"}
+  [
+    "./configure" "--prefix=%{prefix}%" "--with-afl" "--disable-debug-runtime"
+  ] {os != "openbsd" & os != "freebsd" & os != "macos"}
   [
     "./configure"
     "--prefix=%{prefix}%"

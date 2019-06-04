@@ -1,29 +1,31 @@
 opam-version: "2.0"
-maintainer: "unixjunkie@sdf.org"
-homepage: "https://www.python.org/download/releases/2.7/"
-authors: "Python Software Foundation"
-license: "PSF"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-build: ["python2.7" "test.py"]
-depexts: [
-  ["python2.7"] {os-distribution = "debian"}
-  ["python2.7"] {os-distribution = "ubuntu"}
-  ["python27"] {os-distribution = "nixos"}
-  ["python"] {os-distribution = "alpine"}
-  ["python"] {os-distribution = "centos"}
-  ["python2"] {os-distribution = "fedora"}
-  ["python2"] {os-distribution = "arch"}
-  ["python"] {os-family = "suse"}
-  ["dev-lang/python:2.7"] {os-distribution = "gentoo"}
-  ["python/2.7"] {os = "openbsd"}
-  ["lang/python27"] {os = "netbsd"}
-  ["lang/python27"] {os = "freebsd"}
-  ["python27"] {os-distribution = "macports" & os = "macos"}
-  ["python"] {os-distribution = "homebrew" & os = "macos"}
-]
+name: "conf-python-2-7"
+version: "1.0"
 synopsis: "Virtual package relying on Python-2.7 installation"
 description: """
 This package can only install if the Python-2.7 interpreter is available
 on the system."""
-extra-files: ["test.py" "md5=b2b11a2f587814ed4c08b109d9ed949f"]
+maintainer: "unixjunkie@sdf.org"
+authors: "Python Software Foundation"
+license: "PSF"
+homepage: "https://www.python.org/download/releases/2.7/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
 flags: conf
+build: ["python2.7" "test.py"]
+depexts: [
+  ["dev-lang/python:2.7"] {os-distribution = "gentoo"}
+  ["lang/python27"] {os = "netbsd"}
+  ["lang/python27"] {os = "freebsd"}
+  ["python"] {os-distribution = "alpine"}
+  ["python"] {os-distribution = "centos"}
+  ["python"] {os-family = "suse"}
+  ["python"] {os-distribution = "homebrew" & os = "macos"}
+  ["python/2.7"] {os = "openbsd"}
+  ["python2"] {os-distribution = "fedora"}
+  ["python2"] {os-distribution = "arch"}
+  ["python2.7"] {os-distribution = "debian"}
+  ["python2.7"] {os-distribution = "ubuntu"}
+  ["python27"] {os-distribution = "nixos"}
+  ["python27"] {os-distribution = "macports" & os = "macos"}
+]
+extra-files: ["test.py" "md5=b2b11a2f587814ed4c08b109d9ed949f"]

@@ -1,30 +1,6 @@
 opam-version: "2.0"
-maintainer: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
-authors: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
-license: "ISC"
-homepage: "https://github.com/mirage/charrua"
-bug-reports: "https://github.com/mirage/charrua/issues"
-dev-repo: "git+https://github.com/mirage/charrua.git"
-doc: "https://mirage.github.io/charrua/api"
-
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
-]
-
-depends: [
-  "dune" {build & >= "1.0"}
-  "ppx_sexp_conv"
-  "menhir"        {build}
-  "charrua"       {>= "1.0.0"}
-  "ocaml"         {>= "4.04.2"}
-  "cstruct"       {>= "3.0.1"}
-  "sexplib"
-  "ipaddr"        {>= "3.0.0"}
-  "macaddr"
-  "cstruct-unix"  {with-test}
-]
+name: "charrua-server"
+version: "1.0.0"
 synopsis: "DHCP server"
 description: """
 Charrua-server consists of a single `Dhcp_server` module used for constructing DHCP
@@ -45,8 +21,31 @@ is a Mirage DHCP unikernel server based on charrua, included as a part of the Mi
 * It's in OCaml, so it's pretty cool.
 
 The name `charrua` is a reference to the, now extinct, semi-nomadic people of
-southern South America.
-"""
+southern South America."""
+maintainer: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
+authors: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
+license: "ISC"
+homepage: "https://github.com/mirage/charrua"
+doc: "https://mirage.github.io/charrua/api"
+bug-reports: "https://github.com/mirage/charrua/issues"
+depends: [
+  "charrua" {>= "1.0.0"}
+  "cstruct" {>= "3.0.1"}
+  "cstruct-unix" {with-test}
+  "dune" {build & >= "1.0"}
+  "ipaddr" {>= "3.0.0"}
+  "macaddr"
+  "menhir" {build}
+  "ocaml" {>= "4.04.2"}
+  "ppx_sexp_conv"
+  "sexplib"
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/charrua.git"
 url {
   src:
     "https://github.com/mirage/charrua/releases/download/v1.0.0/charrua-v1.0.0.tbz"

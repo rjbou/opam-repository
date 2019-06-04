@@ -1,30 +1,32 @@
 opam-version: "2.0"
+name: "piqi"
+version: "0.6.0"
+synopsis: "Protocol Buffers, JSON and XML serialization"
 maintainer: "alavrik@piqi.org"
+depends: [
+  "camlp4" {< "4.02"}
+  "easy-format"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ulex"
+  "xmlm"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
   [make "ocaml"]
 ]
-remove: [
-  ["rm" "-f" "%{prefix}%/bin/piqi" "%{prefix}%/bin/piqic"]
-  ["ocamlfind" "remove" "piqi"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "easy-format"
-  "ulex"
-  "xmlm"
-  "camlp4" {< "4.02"}
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/alavrik/piqi"
 install: [
   [make "install"]
   [make "ocaml-install"]
 ]
-synopsis: "Protocol Buffers, JSON and XML serialization"
-flags: light-uninstall
+remove: [
+  ["rm" "-f" "%{prefix}%/bin/piqi" "%{prefix}%/bin/piqic"]
+  ["ocamlfind" "remove" "piqi"]
+]
+dev-repo: "git://github.com/alavrik/piqi"
 url {
   src: "https://github.com/alavrik/piqi/archive/v0.6.0.tar.gz"
   checksum: "md5=b707f6b8a13baff0cf18033c73a5d924"

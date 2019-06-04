@@ -1,33 +1,33 @@
 opam-version: "2.0"
-maintainer:   "dave@recoil.org"
-authors:      [
-  "Vincent Hanquez"
-  "Thomas Gazagnaire"
-  "Dave Scott"
+name: "xenstore"
+version: "1.4.0"
+synopsis: "Xenstore protocol clients and server"
+maintainer: "dave@recoil.org"
+authors: [
   "Anil Madhavapeddy"
+  "Dave Scott"
+  "Thomas Gazagnaire"
   "Vincent Bernardoff"
+  "Vincent Hanquez"
 ]
-homepage:     "https://github.com/mirage/ocaml-xenstore"
-bug-reports:  "https://github.com/mirage/ocaml-xenstore/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-xenstore.git"
-doc:          "https://mirage.github.io/ocaml-xenstore"
-
-build: [
-  [ "jbuilder" "subst" "-p" name] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
+homepage: "https://github.com/mirage/ocaml-xenstore"
+doc: "https://mirage.github.io/ocaml-xenstore"
+bug-reports: "https://github.com/mirage/ocaml-xenstore/issues"
 depends: [
+  "cstruct" {>= "2.4.0" & < "3.4.0"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "lwt"
   "ocaml" {>= "4.02.0" & < "4.06.0"}
   "ocamlfind" {build}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "cstruct" {>= "2.4.0" & <"3.4.0"}
+  "ounit" {build}
   "ppx_cstruct"
   "ppx_tools"
-  "lwt"
-  "ounit" {build}
 ]
-synopsis: "Xenstore protocol clients and server"
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/ocaml-xenstore.git"
 url {
   src:
     "https://github.com/mirage/ocaml-xenstore/releases/download/1.4.0/xenstore-1.4.0.tbz"

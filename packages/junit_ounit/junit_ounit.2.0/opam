@@ -1,24 +1,6 @@
 opam-version: "2.0"
-maintainer: "Louis Roché <louis@louisroche.net>"
-authors: ["Louis Roché <louis@louisroche.net>" "Simon Cruanes <simon.cruanes.2007@m4x.org>"]
-homepage: "https://github.com/Khady/ocaml-junit"
-bug-reports: "https://github.com/Khady/ocaml-junit/issues"
-license: "LGPLv3+ with OCaml linking exception"
-dev-repo: "git+https://github.com/Khady/ocaml-junit.git"
-doc: "https://khady.github.io/ocaml-junit/"
-tags: ["junit" "jenkins" "ounit"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "odoc" {with-doc & >= "1.1.1"}
-  "ounit"
-  "junit"
-]
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "build" "@doc" "-p" name "-j" jobs] {with-doc}
-]
+name: "junit_ounit"
+version: "2.0"
 synopsis: "JUnit"
 description: """
 ocaml-junit is a package for the creation of JUnit XML reports. It
@@ -50,6 +32,29 @@ Those files are archived in directory [`schemes`](schemes)
 
 License: LGPL either version 3 of the License, or (at your option) any
 later version with OCaml linking exception."""
+maintainer: "Louis Roché <louis@louisroche.net>"
+authors: [
+  "Louis Roché <louis@louisroche.net>"
+  "Simon Cruanes <simon.cruanes.2007@m4x.org>"
+]
+license: "LGPLv3+ with OCaml linking exception"
+tags: ["jenkins" "junit" "ounit"]
+homepage: "https://github.com/Khady/ocaml-junit"
+doc: "https://khady.github.io/ocaml-junit/"
+bug-reports: "https://github.com/Khady/ocaml-junit/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta10"}
+  "junit"
+  "ocaml" {>= "4.02.3"}
+  "odoc" {with-doc & >= "1.1.1"}
+  "ounit"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "build" "@doc" "-p" name "-j" jobs] {with-doc}
+]
+dev-repo: "git+https://github.com/Khady/ocaml-junit.git"
 url {
   src:
     "https://github.com/Khady/ocaml-junit/releases/download/2.0/junit-2.0.tbz"

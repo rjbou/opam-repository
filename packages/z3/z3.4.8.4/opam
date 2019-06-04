@@ -1,39 +1,48 @@
 opam-version: "2.0"
+name: "z3"
+version: "4.8.4"
+synopsis: "Z3 solver"
 maintainer: "simon@aestheticintegration.com"
 authors: "MSR"
+license: "MIT"
 homepage: "https://github.com/Z3prover/z3"
 bug-reports: "https://github.com/Z3prover/z3/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/Z3prover/z3.git"
+depends: [
+  "conf-gmp"
+  "conf-python-2-7" {build}
+  "num"
+  "ocaml"
+  "ocamlfind" {build}
+]
+flags: light-uninstall
+build: [
+  ["python2.7" "scripts/mk_make.py" "--ml" "--staticlib"]
+  [make "-C" "build" "-j" jobs]
+]
+install: [
+  "sh"
+  "-c"
+  "ocamlfind install z3 build/api/ml/META -nodll build/libz3* build/api/ml/*"
+]
+remove: ["ocamlfind" "remove" "z3"]
 patches: [
   "fix-parallel-build.patch"
   "0001-OCaml-static-fix-linking-options.patch"
   "0002-OCaml-API-build-provide-static-linking-options-by-de.patch"
 ]
-build: [
-  [ "python2.7" "scripts/mk_make.py" "--ml" "--staticlib" ]
-  [ make "-C" "build" "-j" jobs ]
-]
-install: [
-  [ "sh" "-c" "ocamlfind install z3 build/api/ml/META -nodll build/libz3* build/api/ml/*" ]
-]
-remove: ["ocamlfind" "remove" "z3"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "num"
-  "conf-gmp"
-  "conf-python-2-7" {build}
-]
-synopsis: "Z3 solver"
-flags: light-uninstall
+dev-repo: "git+https://github.com/Z3prover/z3.git"
 extra-files: [
+  [
+    "0001-OCaml-static-fix-linking-options.patch"
+    "md5=47ec4c4b43677f314bd06ec0c7b345e5"
+  ]
+  [
+    "0002-OCaml-API-build-provide-static-linking-options-by-de.patch"
+    "md5=9d7b2c02d2b98ca36798841bf227a7e7"
+  ]
   ["fix-parallel-build.patch" "md5=54516d6bf1f1005508f5cbfe9c53dad2"]
-  ["0001-OCaml-static-fix-linking-options.patch" "md5=47ec4c4b43677f314bd06ec0c7b345e5"]
-  ["0002-OCaml-API-build-provide-static-linking-options-by-de.patch" "md5=9d7b2c02d2b98ca36798841bf227a7e7"]
 ]
 url {
-  src:
-    "https://github.com/Z3Prover/z3/archive/z3-4.8.4.tar.gz"
+  src: "https://github.com/Z3Prover/z3/archive/z3-4.8.4.tar.gz"
   checksum: "md5=b74bbb04e90c034125fe9e01988add95"
 }

@@ -1,29 +1,8 @@
 opam-version: "2.0"
-maintainer:   "Mindy Preston <meetup@yomimono.org>"
-authors:      ["Mindy Preston <meetup@yomimono.org>"]
-homepage:     "https://github.com/mirage/mirage-protocols"
-doc:          "https://mirage.github.io/mirage-protocols/"
-license:      "ISC"
-dev-repo:     "git+https://github.com/mirage/mirage-protocols.git"
-bug-reports:  "https://github.com/mirage/mirage-protocols/issues"
-tags:         ["org:mirage"]
-
-build: [
-  [ "jbuilder" "subst" "-p" name ] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.04.2"}
-  "jbuilder" {build & >="1.0+beta9"}
-  "mirage-device" {>= "1.0.0"}
-  "mirage-flow" {>= "1.2.0"}
-  "fmt"
-  "duration"
-]
+name: "mirage-protocols"
+version: "1.4.1"
 synopsis: "MirageOS signatures for network protocols"
-description: """\
-
+description: """
 mirage-protocols provides a set of module types which libraries intended to be used as MirageOS network implementations should implement.
 
 The set of protocols defined is:
@@ -36,7 +15,28 @@ The set of protocols defined is:
 [Mirage_protocols.TCP](tcp) and [Mirage_protocols_lwt.TCP](tcp-lwt), via [Mirage_protocols_lwt.TCPV4](tcpv4-lwt) and [Mirage_protocols_lwt.TCPV6](tcpv6-lwt)
 
 mirage-protocols is distributed under the ISC license."""
+maintainer: "Mindy Preston <meetup@yomimono.org>"
+authors: "Mindy Preston <meetup@yomimono.org>"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-protocols"
+doc: "https://mirage.github.io/mirage-protocols/"
+bug-reports: "https://github.com/mirage/mirage-protocols/issues"
+depends: [
+  "duration"
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta9"}
+  "mirage-device" {>= "1.0.0"}
+  "mirage-flow" {>= "1.2.0"}
+  "ocaml" {>= "4.04.2"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-protocols.git"
 url {
-archive: "https://github.com/mirage/mirage-protocols/releases/download/v1.4.1/mirage-protocols-1.4.1.tbz"
-checksum: "5ad641be29e1e09b78fc3d1c2b3b9721"
+  src:
+    "https://github.com/mirage/mirage-protocols/releases/download/v1.4.1/mirage-protocols-1.4.1.tbz"
+  checksum: "md5=5ad641be29e1e09b78fc3d1c2b3b9721"
 }

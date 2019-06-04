@@ -1,24 +1,24 @@
 opam-version: "2.0"
+name: "msgpck"
+version: "1.0"
+synopsis: "Fast MessagePack (http://msgpack.org) library"
 maintainer: "Vincent Bernardoff <vb@luminar.eu.org>"
-authors: ["Vincent Bernardoff <vb@luminar.eu.org>"]
-homepage: "https://github.com/vbmithr/ocaml-msgpck"
+authors: "Vincent Bernardoff <vb@luminar.eu.org>"
 license: "ISC"
-dev-repo: "git+https://github.com/vbmithr/ocaml-msgpck.git"
+homepage: "https://github.com/vbmithr/ocaml-msgpck"
 bug-reports: "https://github.com/vbmithr/ocaml-msgpck/issues"
 depends: [
   "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
   "ocamlbuild" {build}
-  "topkg" {build}
+  "ocamlfind" {build}
+  "ocplib-endian"
   "ppx_deriving"
   "ppx_sexp_conv" {< "v0.11.0"}
   "sexplib" {< "v0.13"}
-  "ocplib-endian"
+  "topkg" {build}
 ]
-build:
-[[ "ocaml" "pkg/pkg.ml" "build"
-           "--pinned" "%{pinned}%" ]]
-synopsis: "Fast MessagePack (http://msgpack.org) library"
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/vbmithr/ocaml-msgpck.git"
 url {
   src: "https://github.com/vbmithr/ocaml-msgpck/archive/1.0.tar.gz"
   checksum: "md5=1653a0bdfc1b2c3c0b25cc52dc1a553e"

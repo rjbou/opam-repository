@@ -1,30 +1,32 @@
 opam-version: "2.0"
-maintainer: "jonathan.ludlam@eu.citrix.com"
-build: make
-remove: [
-  [make "uninstall" "BINDIR=%{bin}%"]
-  ["ocamlfind" "remove" "camldm"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "rpc" {>= "1.5.0"}
-  "ocamlbuild" {build}
-]
-depexts: [
-  ["libdevmapper-dev"] {os-distribution = "debian"}
-  ["libdevmapper-dev"] {os-distribution = "ubuntu"}
-  ["device-mapper-devel"] {os-distribution = "centos"}
-]
-dev-repo: "git://github.com/jonludlam/camldm"
-available: os = "linux"
-install: [make "install" "BINDIR=%{bin}%"]
+name: "camldm"
+version: "0.1.0"
 synopsis: "Bindings for Linux libdevicemapper"
 description: """
 Linux's device mapper allows one to create virtual block devices
 on top of existing devices. The virtual devices may be remapped,
 mirrored, thin-provisioned etc. Device mapper is used to support
 logical volume management systems such as LVM."""
+maintainer: "jonathan.ludlam@eu.citrix.com"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "rpc" {>= "1.5.0"}
+]
+available: os = "linux"
+build: make
+install: [make "install" "BINDIR=%{bin}%"]
+remove: [
+  [make "uninstall" "BINDIR=%{bin}%"]
+  ["ocamlfind" "remove" "camldm"]
+]
+depexts: [
+  ["device-mapper-devel"] {os-distribution = "centos"}
+  ["libdevmapper-dev"] {os-distribution = "debian"}
+  ["libdevmapper-dev"] {os-distribution = "ubuntu"}
+]
+dev-repo: "git://github.com/jonludlam/camldm"
 url {
   src: "https://github.com/jonludlam/camldm/archive/0.1.0.tar.gz"
   checksum: "md5=c98cb87d60ea1e1415dc05b4bf7b84f0"

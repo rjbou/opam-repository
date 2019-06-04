@@ -1,24 +1,23 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [make "all"]
-remove: [["ocamlfind" "remove" "mirage"]]
-depends: [
-  "ocaml" {>= "4.00.1" & < "4.06.0"}
-  "cstruct" {>= "0.6.0"}
-  "ocamlfind"
-  "lwt" {>= "2.4.0" & < "4.0.0"}
-  "xenstore" {>= "1.2.0"}
-  "shared-memory-ring" {< "0.4.0"}
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/mirage/mirage-platform"
-install: [make "install" "PREFIX=%{prefix}%"]
+name: "mirage"
+version: "0.8.1"
 synopsis: "MirageOS stdlib"
+maintainer: "anil@recoil.org"
+tags: ["org:mirage" "org:xapi-project"]
+depends: [
+  "cstruct" {>= "0.6.0"}
+  "lwt" {>= "2.4.0" & < "4.0.0"}
+  "ocaml" {>= "4.00.1" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "shared-memory-ring" {< "0.4.0"}
+  "xenstore" {>= "1.2.0"}
+]
 flags: light-uninstall
+build: [make "all"]
+install: [make "install" "PREFIX=%{prefix}%"]
+remove: ["ocamlfind" "remove" "mirage"]
+dev-repo: "git://github.com/mirage/mirage-platform"
 url {
   src:
     "https://github.com/mirage/mirage-platform/archive/mirage-platform-0.8.1.tar.gz"

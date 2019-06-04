@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: ["Anil Madhavapeddy <anil@recoil.org>"]
-homepage: "https://github.com/avsm/ocaml-dockerfile"
-doc: "http://avsm.github.io/avsm/ocaml-dockerfile/doc"
-license: "ISC"
-dev-repo: "git+https://github.com/avsm/ocaml-dockerfile.git"
-bug-reports: "https://github.com/avsm/ocaml-dockerfile/issues"
-tags: ["org:mirage" "org:ocamllabs"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "dockerfile" {>= "3.0.0"}
-  "ocaml-version" {<"1.0.0"}
-  "cmdliner"
-  "astring"
-  "sexplib" {< "v0.13"}
-  "fmt"
-  "cmdliner"
-]
-build: [
-  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
+name: "dockerfile-opam"
+version: "4.0.0"
 synopsis: "Dockerfile eDSL and distribution support"
 description: """
 [Docker](http://docker.com) is a container manager that can build images
@@ -41,6 +20,29 @@ ocaml-dockerfile is distributed under the ISC license.
 - **Source:**: <https://github.com/avsm/ocaml-dockerfile>
 - **Issues**: <https://github.com/avsm/ocaml-dockerfile/issues>
 - **Email**: <anil@recoil.org>"""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+tags: ["org:mirage" "org:ocamllabs"]
+homepage: "https://github.com/avsm/ocaml-dockerfile"
+doc: "http://avsm.github.io/avsm/ocaml-dockerfile/doc"
+bug-reports: "https://github.com/avsm/ocaml-dockerfile/issues"
+depends: [
+  "astring"
+  "cmdliner"
+  "cmdliner"
+  "dockerfile" {>= "3.0.0"}
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml" {>= "4.02.3"}
+  "ocaml-version" {< "1.0.0"}
+  "sexplib" {< "v0.13"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/avsm/ocaml-dockerfile.git"
 url {
   src:
     "https://github.com/avsm/ocaml-dockerfile/releases/download/v4.0.0/dockerfile-4.0.0.tbz"

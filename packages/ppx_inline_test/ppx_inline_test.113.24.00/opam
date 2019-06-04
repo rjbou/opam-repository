@@ -1,14 +1,13 @@
 opam-version: "2.0"
+name: "ppx_inline_test"
+version: "113.24.00"
+synopsis: "Syntax extension for writing in-line tests in ocaml code"
+description: "Part of the Jane Street's PPX rewriters collection."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
 homepage: "https://github.com/janestreet/ppx_inline_test"
 bug-reports: "https://github.com/janestreet/ppx_inline_test/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_inline_test.git"
-license: "Apache-2.0"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
 depends: [
   "ocaml" {>= "4.02.3"}
   "ocamlbuild" {build}
@@ -17,8 +16,11 @@ depends: [
   "ppx_driver" {>= "113.24.00" & < "113.25.00"}
   "ppx_tools"
 ]
-synopsis: "Syntax extension for writing in-line tests in ocaml code"
-description: "Part of the Jane Street's PPX rewriters collection."
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+dev-repo: "git+https://github.com/janestreet/ppx_inline_test.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/113.24/files/ppx_inline_test-113.24.00.tar.gz"

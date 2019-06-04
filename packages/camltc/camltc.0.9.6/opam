@@ -1,38 +1,33 @@
 opam-version: "2.0"
+name: "camltc"
+version: "0.9.6"
+synopsis: "OCaml bindings for tokyo cabinet"
 maintainer: "romain.slootmaekers@openvstorage.com"
+authors: ["Jan Doms" "Joost Damad" "Nicolas Trangez" "Romain Slootmaekers"]
 homepage: "http://github.com/toolslive/camltc"
-dev-repo: "git+https://github.com/toolslive/camltc.git"
 bug-reports: "http://github.com/toolslive/camltc/issues"
-build: [
-  [ "git" "submodule" "init"]
-  [ "git" "submodule" "update"]
-  ["%{make}%" "-C" "src"]
-]
-
-install:[
-  ["%{make}%" "-C" "src" "install"]
-]
-
-remove: [
-  ["ocamlfind" "remove" "camltc"]
-]
-
 depends: [
+  "logs"
+  "lwt" {>= "3.2.0"}
   "ocaml" {> "4.02.2"}
+  "ocamlbuild" {build}
   "ocamlfind" {build}
   "ounit"
-  "lwt" {>= "3.2.0"}
-  "logs"
-  "ocamlbuild" {build}
 ]
 available: opam-version > "1.2.0"
+flags: light-uninstall
+build: [
+  ["git" "submodule" "init"]
+  ["git" "submodule" "update"]
+  ["%{make}%" "-C" "src"]
+]
+install: ["%{make}%" "-C" "src" "install"]
+remove: ["ocamlfind" "remove" "camltc"]
 depexts: [
   ["git"] {os-distribution = "ubuntu"}
   ["git"] {os-distribution = "debian"}
 ]
-synopsis: "OCaml bindings for tokyo cabinet"
-authors: ["Jan Doms" "Joost Damad" "Romain Slootmaekers" "Nicolas Trangez"]
-flags: light-uninstall
+dev-repo: "git+https://github.com/toolslive/camltc.git"
 url {
   src: "git+https://github.com/toolslive/camltc.git#camltc-0.9.6"
 }

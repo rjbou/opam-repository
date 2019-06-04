@@ -1,11 +1,24 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      ["Benjamin Farinier" "Thomas Gazagnaire"]
-homepage:     "https://github.com/mirage/merge-queues"
-bug-reports:  "https://github.com/mirage/merge-queues/issues"
-dev-repo: "git+https://github.com/mirage/merge-queues.git"
-license:      "ISC"
-
+name: "merge-queues"
+version: "0.2.0"
+synopsis: "Mergeable queues"
+description:
+  "The package implements \"mergeable\" queues, ie. persistent queues with a fast merge operation."
+maintainer: "thomas@gazagnaire.org"
+authors: ["Benjamin Farinier" "Thomas Gazagnaire"]
+license: "ISC"
+homepage: "https://github.com/mirage/merge-queues"
+bug-reports: "https://github.com/mirage/merge-queues/issues"
+depends: [
+  "alcotest" {with-test}
+  "cohttp" {with-test}
+  "comparelib"
+  "git" {with-test}
+  "irmin" {>= "0.9.3" & < "0.10.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
@@ -14,19 +27,7 @@ build: [
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "merge-queues"]
-depends: [
-  "ocaml"
-  "irmin" {>= "0.9.3" & < "0.10.0"}
-  "comparelib"
-  "alcotest" {with-test}
-  "git" {with-test}
-  "cohttp" {with-test}
-  "ocamlbuild" {build}
-]
-synopsis: "Mergeable queues"
-description:
-  "The package implements \"mergeable\" queues, ie. persistent queues with a fast merge operation."
-flags: light-uninstall
+dev-repo: "git+https://github.com/mirage/merge-queues.git"
 url {
   src: "https://github.com/mirage/merge-queues/archive/0.2.0.tar.gz"
   checksum: "md5=52a3e3d772290a688be2a16a1316ef34"

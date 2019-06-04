@@ -1,15 +1,31 @@
 opam-version: "2.0"
 name: "reason"
 version: "1.13.0"
+synopsis: "Reason: Meta Language Toolchain"
+description: """
+reason allows development of Meta Language syntax trees in non-text format. It
+allows a development model that is equivalent to collaborating on syntax trees
+that have been committed to a source code repository."""
 maintainer: "Jordan Walke <jordojw@gmail.com>"
-authors: [ "Jordan Walke <jordojw@gmail.com>" ]
+authors: "Jordan Walke <jordojw@gmail.com>"
 license: "BSD"
+tags: "syntax"
 homepage: "https://github.com/facebook/reason"
 doc: "http://facebook.github.io/reason"
 bug-reports: "https://github.com/facebook/reason/issues"
-dev-repo: "git://github.com/facebook/reason.git"
-tags: [ "syntax" ]
-substs: [ "pkg/META" ]
+depends: [
+  "merlin-extend" {>= "0.3"}
+  "ocaml" {>= "4.02" & < "4.05"}
+  "ocaml-migrate-parsetree"
+  "ocamlfind" {build}
+  "reason-parser" {= "1.13.0"}
+  "result" {= "1.2"}
+  "topkg" {= "0.8.1"}
+  "utop" {>= "1.17"}
+]
+conflicts: [
+  "utop" {< "1.17"}
+]
 build: [
   ["ocamlbuild" "-package" "topkg" "pkg/build.native"]
   [
@@ -30,24 +46,8 @@ build: [
     "--"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02" & < "4.05"}
-  "ocamlfind" {build}
-  "utop" {>= "1.17"}
-  "merlin-extend" {>= "0.3"}
-  "result" {= "1.2"}
-  "topkg" {= "0.8.1"}
-  "ocaml-migrate-parsetree"
-  "reason-parser" {= "1.13.0"}
-]
-conflicts: [
-  "utop" {< "1.17"}
-]
-synopsis: "Reason: Meta Language Toolchain"
-description: """
-reason allows development of Meta Language syntax trees in non-text format. It
-allows a development model that is equivalent to collaborating on syntax trees
-that have been committed to a source code repository."""
+substs: "pkg/META"
+dev-repo: "git://github.com/facebook/reason.git"
 url {
   src: "https://github.com/facebook/reason/archive/1.13.0.tar.gz"
   checksum: "md5=e1536c89e9fc0b7c90898c8483eea085"

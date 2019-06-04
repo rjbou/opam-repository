@@ -1,35 +1,35 @@
 opam-version: "2.0"
+name: "udunits"
+version: "0.2.0"
+synopsis: "Bindings to the UDUNITS-2 library"
+description: """
+This library provides access to the UDUNITS-2 unit conversion library
+(http://www.unidata.ucar.edu/software/udunits/)."""
 maintainer: "hez@0ok.org"
-authors: [ "Hezekiah M. Carty" ]
+authors: "Hezekiah M. Carty"
 license: "MIT"
+tags: ["clib:expat" "clib:m" "clib:udunits2"]
 homepage: "https://github.com/hcarty/ocaml-udunits"
-tags: [ "clib:udunits2" "clib:m" "clib:expat"  ]
+depends: [
+  "oasis" {build}
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [
-  ["ocamlfind" "remove" "udunits"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "oasis" {build}
-]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "udunits"]
 depexts: [
   ["libudunits2-dev" "libexpat1-dev"] {os-distribution = "debian"}
   ["libudunits2-dev" "libexpat1-dev"] {os-distribution = "ubuntu"}
   ["udunits" "expat"] {os = "macos" & os-distribution = "homebrew"}
 ]
 dev-repo: "git://github.com/hcarty/ocaml-udunits"
-install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Bindings to the UDUNITS-2 library"
-description: """
-This library provides access to the UDUNITS-2 unit conversion library
-(http://www.unidata.ucar.edu/software/udunits/)."""
-flags: light-uninstall
 url {
   src: "https://github.com/hcarty/ocaml-udunits/archive/v0.2.0.tar.gz"
   checksum: "md5=b541b63213f7e9c906a0c8f8f6e5c666"

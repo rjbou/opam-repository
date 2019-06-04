@@ -1,17 +1,19 @@
 opam-version: "2.0"
+name: "protobuf"
+version: "0.0.2"
+synopsis: "Protobuf implementation for Ocaml"
 maintainer: "mmatalka@gmail.com"
-build: make
-remove: [["ocamlfind" "remove" "protobuf"]]
 depends: [
+  "bitstring"
+  "core" {<= "111.13.00"}
   "ocaml"
   "ocamlfind"
-  "core" {<= "111.13.00"}
-  "bitstring"
 ]
-dev-repo: "git://github.com/orbitz/ocaml-protobuf"
-install: [make "install"]
-synopsis: "Protobuf implementation for Ocaml"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "protobuf"]
+dev-repo: "git://github.com/orbitz/ocaml-protobuf"
 url {
   src: "https://github.com/orbitz/ocaml-protobuf/archive/0.0.2.tar.gz"
   checksum: "md5=e3b137066f7bec998cc1f810f3f59358"

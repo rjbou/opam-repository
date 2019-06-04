@@ -1,13 +1,27 @@
 opam-version: "2.0"
+name: "depext"
+version: "0.9.0"
+synopsis: "Query and install external dependencies of OPAM packages"
+description: """
+opam-depext is a simple program intended to facilitate the interaction between
+OPAM packages and the host package management system. It can perform OS and
+distribution detection, query OPAM for the right external dependencies on a set
+of packages, and call the OS's package manager in the appropriate way to install
+them."""
 maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
 authors: [
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
   "Anil Madhavapeddy <anil@recoil.org>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
 ]
+license: "LGPL-3.0 with OCaml linking exception"
 homepage: "https://github.com/ocaml/opam-depext"
 bug-reports: "https://github.com/ocaml/opam-depext/issues"
-license: "LGPL-3.0 with OCaml linking exception"
-dev-repo: "git+https://github.com/ocaml/opam-depext.git"
+depends: [
+  "cmdliner" {build & <= "0.9.8"}
+  "ocaml"
+]
+available: opam-version >= "1.1.0" & opam-version < "2.0.0~beta5"
+flags: plugin
 build: [
   [
     "ocamlopt"
@@ -30,19 +44,7 @@ build: [
     "depext.ml"
   ] {!ocaml:native}
 ]
-depends: [
-  "ocaml"
-  "cmdliner" {build & <= "0.9.8"}
-]
-available: [opam-version >= "1.1.0" & opam-version < "2.0.0~beta5"]
-synopsis: "Query and install external dependencies of OPAM packages"
-description: """
-opam-depext is a simple program intended to facilitate the interaction between
-OPAM packages and the host package management system. It can perform OS and
-distribution detection, query OPAM for the right external dependencies on a set
-of packages, and call the OS's package manager in the appropriate way to install
-them."""
-flags: plugin
+dev-repo: "git+https://github.com/ocaml/opam-depext.git"
 url {
   src: "https://github.com/ocaml/opam-depext/archive/0.9.0.tar.gz"
   checksum: "md5=b00b72fa3782e0e22f37cd6e548b0819"

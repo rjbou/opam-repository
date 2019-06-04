@@ -1,33 +1,6 @@
 opam-version: "2.0"
+name: "ocamltter"
 version: "2.1.2"
-authors: [
-  "Yoshihiro Imai" "Jun Furuse"
-]
-maintainer: "jun.furuse@gmail.com"
-homepage: "https://github.com/yoshihiro503/ocamltter"
-bug-reports: "https://github.com/yoshihiro503/ocamltter/issues"
-dev-repo: "git://github.com/yoshihiro503/ocamltter"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%" ]
-  [ "ocaml" "setup.ml" "-build" ]
-  [ "ocaml" "setup.ml" "-install" ]
-]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.03.0"}
-  "ocamlfind"
-  "omake"
-  "cryptokit"
-  "ocurl" {>= "0.5.3"}
-  "tiny_json_conv" {>= "1.4.1"}
-  "spotlib" {>= "2.4.0" & < "3.0.0"}
-  "orakuda" {>= "1.1.1" & < "2.0.0"}
-]
 synopsis: "The OCAMLTTER twitter client"
 description: """
 OCAMLTTER is a Twitter client written in OCaml.
@@ -52,6 +25,28 @@ Common twitter commands are accessible via simple functions like:
            - setup ();;            (re)authorize ocamltter
            - let CMD = ...;;       define a your own command CMD
            - help;;                print the help"""
+maintainer: "jun.furuse@gmail.com"
+authors: ["Jun Furuse" "Yoshihiro Imai"]
+homepage: "https://github.com/yoshihiro503/ocamltter"
+bug-reports: "https://github.com/yoshihiro503/ocamltter/issues"
+depends: [
+  "cryptokit"
+  "ocaml" {>= "4.01.0" & < "4.03.0"}
+  "ocamlfind"
+  "ocurl" {>= "0.5.3"}
+  "omake"
+  "orakuda" {>= "1.1.1" & < "2.0.0"}
+  "spotlib" {>= "2.4.0" & < "3.0.0"}
+  "tiny_json_conv" {>= "1.4.1"}
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%"]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-install"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocaml" "setup.ml" "-uninstall"]
+dev-repo: "git://github.com/yoshihiro503/ocamltter"
 url {
   src: "https://github.com/yoshihiro503/ocamltter/archive/2.1.2.tar.gz"
   checksum: "md5=93832e8df2777c14121ade98501dbac8"

@@ -1,24 +1,25 @@
 opam-version: "2.0"
-authors: "Francois Berenger"
-maintainer: "unixjunkie@sdf.org"
-homepage: "https://github.com/UnixJunkie/cpmlib"
-bug-reports: "https://github.com/UnixJunkie/cpmlib/issues"
-dev-repo: "git+https://github.com/UnixJunkie/cpmlib.git"
-license: "LGPL"
-build: ["dune" "build" "-p" name "-j" jobs]
-depends: [
-  "batteries"
-  "dune" {build & >= "1.0"}
-  "ocaml"
-]
+name: "cpm"
+version: "5.0.0"
 synopsis: "The Classification Performance Metrics library"
 description: """
 ROC = Receiver Operating Characteristic curve
 AUC = Area Under the (ROC) Curve
 EF = Enrichment Factor
 BEDROC = Boltzmann-Enhanced Discrimination of Receiver Operating Characteristic
-MCC = Matthews Correlation Coefficient
-"""
+MCC = Matthews Correlation Coefficient"""
+maintainer: "unixjunkie@sdf.org"
+authors: "Francois Berenger"
+license: "LGPL"
+homepage: "https://github.com/UnixJunkie/cpmlib"
+bug-reports: "https://github.com/UnixJunkie/cpmlib/issues"
+depends: [
+  "batteries"
+  "dune" {build & >= "1.0"}
+  "ocaml"
+]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/UnixJunkie/cpmlib.git"
 url {
   src: "https://github.com/UnixJunkie/cpmlib/archive/v5.0.0.tar.gz"
   checksum: "md5=c9e8788398db79b371939482b538282a"

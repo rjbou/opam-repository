@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "Hugo Heuzard <hugo.heuzard@gmail.com>"
-homepage: "https://github.com/hhugo/reactiveData"
-authors: ["Hugo Heuzard <hugo.heuzard@gmail.com>"]
-tags: [ "reactive" "declarative" "signal" "event" "frp" ]
-license: "LGPL-3.0 with OCaml linking exception"
-depends: [
-  "ocaml" {>= "3.11.0"}
-  "ocamlfind"
-  "react" {>= "1.0.0"}
-  "ocamlbuild" {build}
-]
-build:
-[
-  [ "ocaml" "pkg/build.ml" "native=true"
-                           "native-dynlink=true" ]
-]
-dev-repo: "git://github.com/hhugo/reactiveData"
+name: "reactiveData"
+version: "0.1"
 synopsis:
   "Functional reactive programming with incremental changes in data structures"
 description: """
@@ -23,6 +8,19 @@ ReactiveData is an OCaml module for functional reactive
 programming (FRP) based on React. It adds support to incremental
 changes in data structures by reasoning on patches instead of absolute
 values."""
+maintainer: "Hugo Heuzard <hugo.heuzard@gmail.com>"
+authors: "Hugo Heuzard <hugo.heuzard@gmail.com>"
+license: "LGPL-3.0 with OCaml linking exception"
+tags: ["declarative" "event" "frp" "reactive" "signal"]
+homepage: "https://github.com/hhugo/reactiveData"
+depends: [
+  "ocaml" {>= "3.11.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "react" {>= "1.0.0"}
+]
+build: ["ocaml" "pkg/build.ml" "native=true" "native-dynlink=true"]
+dev-repo: "git://github.com/hhugo/reactiveData"
 url {
   src: "https://github.com/hhugo/reactiveData/archive/0.1.tar.gz"
   checksum: "md5=777a68c27184dfbfb4fb7b881cb2ecc6"

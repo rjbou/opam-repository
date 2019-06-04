@@ -1,27 +1,24 @@
 opam-version: "2.0"
+name: "ppx_there"
+version: "0.0.0"
+synopsis: "PPX extension for improved __MODULE__"
+description: """
+ppx_there is a ppx rewriter that turns [%there] extension points into
+a string representing the fully qualified path to the value in which it's defined."""
 maintainer: "Nathan Rebours <nathan.p.rebours@gmail.com>"
-homepage: "https://github.com/NathanReb/ppx_there"
-bug-reports: "https://github.com/NathanReb/ppx_there/issues"
+authors: "Nathan Rebours <nathan.p.rebours@gmail.com>"
 license: "BSD-2"
-dev-repo: "git+https://github.com/NathanReb/ppx_there.git"
+homepage: "https://github.com/NathanReb/ppx_there"
 doc: "https://nathanreb.github.io/ppx_there/doc"
-build: [
-  [ "dune" "build" "-p" name "-j" jobs ]
-]
-run-test: [
-  [ "dune" "runtest" "-p" name "-j" jobs ]
-]
+bug-reports: "https://github.com/NathanReb/ppx_there/issues"
 depends: [
   "dune" {build}
   "ocaml" {>= "4.04.2"}
   "ppxlib" {>= "0.6.0" & < "0.9.0"}
 ]
-synopsis: "PPX extension for improved __MODULE__"
-description: """
-ppx_there is a ppx rewriter that turns [%there] extension points into
-a string representing the fully qualified path to the value in which it's defined.
-"""
-authors: "Nathan Rebours <nathan.p.rebours@gmail.com>"
+build: ["dune" "build" "-p" name "-j" jobs]
+run-test: ["dune" "runtest" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/NathanReb/ppx_there.git"
 url {
   src:
     "https://github.com/NathanReb/ppx_there/releases/download/v0.0.0/ppx_there-v0.0.0.tbz"

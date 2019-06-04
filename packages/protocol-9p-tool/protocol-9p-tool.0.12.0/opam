@@ -1,30 +1,31 @@
 opam-version: "2.0"
-maintainer:   "dave@recoil.org"
-authors:      [ "David Scott" "David Sheets" "Thomas Leonard" ]
-license:      "ISC"
-homepage:     "https://github.com/mirage/ocaml-9p"
-dev-repo: "git+https://github.com/mirage/ocaml-9p.git"
-bug-reports:  "https://github.com/mirage/ocaml-9p/issues"
-doc:          "https://mirage.github.io/ocaml-9p/"
-
+name: "protocol-9p-tool"
+version: "0.12.0"
+synopsis: "A simple command-line tool for accessing 9P servers"
+maintainer: "dave@recoil.org"
+authors: ["David Scott" "David Sheets" "Thomas Leonard"]
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-9p"
+doc: "https://mirage.github.io/ocaml-9p/"
+bug-reports: "https://github.com/mirage/ocaml-9p/issues"
+depends: [
+  "base-bytes"
+  "cmdliner"
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta10"}
+  "lambda-term" {< "2.0"}
+  "logs" {>= "0.5.0"}
+  "ocaml" {>= "4.03.0"}
+  "protocol-9p" {>= "0.12.0"}
+  "protocol-9p-unix" {>= "0.12.0"}
+  "rresult"
+  "win-error"
+]
 build: [
   ["jbuilder" "subst" "-p" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
 ]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "protocol-9p" {>= "0.12.0"}
-  "protocol-9p-unix" {>= "0.12.0"}
-  "base-bytes"
-  "rresult"
-  "logs" {>= "0.5.0"}
-  "fmt"
-  "lambda-term" {< "2.0"}
-  "win-error"
-  "cmdliner"
-]
-synopsis: "A simple command-line tool for accessing 9P servers"
+dev-repo: "git+https://github.com/mirage/ocaml-9p.git"
 url {
   src:
     "https://github.com/mirage/ocaml-9p/releases/download/v0.12.0/protocol-9p-0.12.0.tbz"

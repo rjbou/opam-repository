@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "Arlen Cox <arlencox@gmail.com>"
-authors: "Arlen Cox <arlencox@gmail.com>"
-homepage: "https://github.com/arlencox/SETr"
-bug-reports: "https://github.com/arlencox/SETr/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/arlencox/SETr.git"
-build: [make]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "setr"]
-depends: [
-  "ocaml" {>= "4.02"}
-  "ocamlfind" {build}
-  "cppo" {build}
-  "mlbdd"
-  "ocamlbuild" {build}
-]
+name: "setr"
+version: "0.1"
 synopsis: "Abstract domain library for sets"
 description: """
 SETr is an interface for set abstractions. It defines common infrastructure for
@@ -22,7 +8,23 @@ abstracting set constraints for use in an abstract interpreter. Built upon this
 interface, it provides a number of included abstractions usable as libraries.
 These included abstractions are tuned for high-performance, symbolic (no known
 constants), relational (constraints over multiple variables) constraints."""
+maintainer: "Arlen Cox <arlencox@gmail.com>"
+authors: "Arlen Cox <arlencox@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/arlencox/SETr"
+bug-reports: "https://github.com/arlencox/SETr/issues"
+depends: [
+  "cppo" {build}
+  "mlbdd"
+  "ocaml" {>= "4.02"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "setr"]
+dev-repo: "git+https://github.com/arlencox/SETr.git"
 url {
   src: "https://github.com/arlencox/SETr/archive/v0.1.tar.gz"
   checksum: "md5=56618f3f7a90e8eb9885a094fd306b8c"

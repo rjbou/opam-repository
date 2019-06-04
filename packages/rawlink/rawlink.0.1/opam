@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
-authors: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
-homepage: "https://github.com/haesbaert/rawlink"
-bug-reports: "https://github.com/haesbaert/rawlink/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/haesbaert/rawlink.git"
-build: ["sh" "build.sh"]
-depends: [
-  "ocaml" {>= "4.02" & < "4.06.0"}
-  "ocamlfind" {build}
-  "lwt" {>= "2.4.7" & < "4.0.0"}
-  "cstruct" {>= "1.0.1" & < "2.0.0"}
-  "ocamlbuild" {build}
-]
+name: "rawlink"
+version: "0.1"
 synopsis: "A portable library to read and write raw packets."
 description: """
 Rawlink is an ocaml library for sending and receiving raw packets at the link
@@ -41,6 +29,20 @@ Rawlink.send_packet link buf
 ```
 
 Check the mli interface for more options."""
+maintainer: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
+authors: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
+license: "ISC"
+homepage: "https://github.com/haesbaert/rawlink"
+bug-reports: "https://github.com/haesbaert/rawlink/issues"
+depends: [
+  "cstruct" {>= "1.0.1" & < "2.0.0"}
+  "lwt" {>= "2.4.7" & < "4.0.0"}
+  "ocaml" {>= "4.02" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+build: ["sh" "build.sh"]
+dev-repo: "git+https://github.com/haesbaert/rawlink.git"
 url {
   src: "https://github.com/haesbaert/rawlink/archive/v0.1.tar.gz"
   checksum: "md5=1c600ed9fcb47617daa7431991e9e00f"

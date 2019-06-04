@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "jun.furuse@gmail.com"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-uninstall"]
-]
-depends: [
-  "ocaml" {= "4.02.1"}
-  "ocamlfind"
-  "omake"
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "ppx_poly_record"
+version: "1.0.0"
 synopsis: "ppx for polymorphic records"
 description: """
 Polymorphic record in OCaml
@@ -34,6 +21,21 @@ encoded into OCaml's object type. For example:
 Implementation of `_ PPx_poly_record.Poly_record.t` is not by OCaml objects:
 it has no method table inside therefore safely serializable between different
 programs if its fields have no functional value."""
+maintainer: "jun.furuse@gmail.com"
+depends: [
+  "ocaml" {= "4.02.1"}
+  "ocamlfind"
+  "omake"
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
 url {
   src: "https://bitbucket.org/camlspotter/ppx_poly_record/get/1.0.0.tar.gz"
   checksum: "md5=143ddde1e09f64d4514070191d7d3bf6"

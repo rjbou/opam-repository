@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "unixjunkie@sdf.org"
-authors: ["Francois BERENGER"]
-homepage: "https://github.com/UnixJunkie/phashtbl"
-bug-reports: "https://github.com/UnixJunkie/phashtbl/issues"
-dev-repo: "git+https://github.com/UnixJunkie/phashtbl.git"
-license: "LGPL"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml"
-  "jbuilder" {build}
-  "dbm"
-]
+name: "phashtbl"
+version: "1.0.0"
 synopsis: "Persistent hash table library using dbm under the carpet."
 description: """
 Thin layer on top of the dbm library (in opam) to provide modules
@@ -27,6 +15,18 @@ val Phashtbl.StrKeyToStrVal.find: t -> string -> string
 
 The stdlib's Marshal module is used for serialization/deserialization
 to/from strings."""
+maintainer: "unixjunkie@sdf.org"
+authors: "Francois BERENGER"
+license: "LGPL"
+homepage: "https://github.com/UnixJunkie/phashtbl"
+bug-reports: "https://github.com/UnixJunkie/phashtbl/issues"
+depends: [
+  "dbm"
+  "jbuilder" {build}
+  "ocaml"
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/UnixJunkie/phashtbl.git"
 url {
   src: "https://github.com/UnixJunkie/phashtbl/archive/v1.0.0.tar.gz"
   checksum: "md5=59f043a78b76063bac46bd9704252a89"

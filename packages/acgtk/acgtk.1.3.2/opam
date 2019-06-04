@@ -1,31 +1,31 @@
 opam-version: "2.0"
+name: "acgtk"
+version: "1.3.2"
+synopsis: "Abstract Categorial Grammar development toolkit."
+description:
+  "Provides a compiler and an interpreter to parse or realize terms"
 maintainer: "sylvain.pogodalla@inria.fr"
-
+authors: "Sylvain Pogodalla"
+license: "CeCILL"
+homepage: "http://acg.gforge.inria.fr/"
+bug-reports: "sylvain.pogodalla@inria.fr"
+depends: [
+  "ANSITerminal"
+  "bolt"
+  "cairo2"
+  "camlp4"
+  "dypgen"
+  "easy-format"
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+  "ocf"
+  "yojson"
+]
 build: [
   ["jbuilder" "subst" "-p" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
 ]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "dypgen"
-  "camlp4"
-  "bolt"
-  "ANSITerminal"
-  "cairo2"
-  "yojson"
-  "easy-format"
-  "ocf"
-]
 dev-repo: "git+https://gitlab.inria.fr/ACG/dev/ACGtk.git"
-homepage: "http://acg.gforge.inria.fr/"
-license: "CeCILL"
-authors: ["Sylvain Pogodalla"]
-bug-reports: "sylvain.pogodalla@inria.fr"
-synopsis: "Abstract Categorial Grammar development toolkit."
-description:
-  "Provides a compiler and an interpreter to parse or realize terms"
 url {
   src: "http://calligramme.loria.fr/acg/software/acg-1.3.2-20171128.tar.gz"
   checksum: "md5=90384a5967efddd004d3bb7b812d2bb8"

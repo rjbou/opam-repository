@@ -1,26 +1,35 @@
 opam-version: "2.0"
-maintainer:    "thomas@gazagnaire.org"
-homepage:      "https://github.com/mirage/mirage-random"
-bug-reports:   "https://github.com/mirage/mirage-random/issues"
-dev-repo: "git+https://github.com/mirage/mirage-random.git"
-doc:           "https://mirage.github.io/mirage-random/"
-authors:       ["Thomas Gazagnaire" "Anil Madhavapeddy" "Gabriel Radanne"
-               "Mindy Preston" "Thomas Leonard" "Nicolas Ojeda Bar"
-               "Dave Scott" "David Kaloper" "Hannes Mehnert" "Richard Mortier"]
-tags:          [ "org:mirage"]
-license:       "ISC"
-
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.8.0"}
-  "cstruct" {>= "1.9.0"}
-]
+name: "mirage-random"
+version: "1.0.0"
 synopsis:
   "Random signatures for MirageOS, and an implementation using stdlib"
+maintainer: "thomas@gazagnaire.org"
+authors: [
+  "Anil Madhavapeddy"
+  "Dave Scott"
+  "David Kaloper"
+  "Gabriel Radanne"
+  "Hannes Mehnert"
+  "Mindy Preston"
+  "Nicolas Ojeda Bar"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Thomas Leonard"
+]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-random"
+doc: "https://mirage.github.io/mirage-random/"
+bug-reports: "https://github.com/mirage/mirage-random/issues"
+depends: [
+  "cstruct" {>= "1.9.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build & >= "0.8.0"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/mirage/mirage-random.git"
 url {
   src:
     "https://github.com/mirage/mirage-random/releases/download/1.0.0/mirage-random-1.0.0.tbz"

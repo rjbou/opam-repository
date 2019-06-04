@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "Etienne Millon <etienne@cryptosense.com>"
-authors: "Etienne Millon <etienne@cryptosense.com>"
-homepage: "https://github.com/cryptosense/ocaml-mock"
-bug-reports: "https://github.com/cryptosense/ocaml-mock/issues"
-license: "BSD-2"
-dev-repo: "git+https://github.com/cryptosense/ocaml-mock.git"
-doc: "https://cryptosense.github.io/ocaml-mock/doc"
-build: [
-  [ "jbuilder" "subst" "-p" name ] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta10"}
-  "mock"
-  "ounit"
-]
+name: "mock-ounit"
+version: "0.1.0"
 synopsis: "Configurable functions to test impure code"
 description: """
 This package provides "mocks", fake functions that can be configured to return
@@ -30,6 +15,23 @@ it makes it possible to have pleasant output like this in your tests:
 A wrapper for `OUnit2` is available as `mock-ounit`.
 
 [unittest.mock]: https://docs.python.org/3/library/unittest.mock.html"""
+maintainer: "Etienne Millon <etienne@cryptosense.com>"
+authors: "Etienne Millon <etienne@cryptosense.com>"
+license: "BSD-2"
+homepage: "https://github.com/cryptosense/ocaml-mock"
+doc: "https://cryptosense.github.io/ocaml-mock/doc"
+bug-reports: "https://github.com/cryptosense/ocaml-mock/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta10"}
+  "mock"
+  "ocaml"
+  "ounit"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/cryptosense/ocaml-mock.git"
 url {
   src:
     "https://github.com/cryptosense/ocaml-mock/releases/download/v0.1.0/mock-0.1.0.tbz"

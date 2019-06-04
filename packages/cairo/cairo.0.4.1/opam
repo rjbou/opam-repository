@@ -1,38 +1,38 @@
 opam-version: "2.0"
+name: "cairo"
+version: "0.4.1"
+synopsis: "Binding to Cairo, a 2D Vector Graphics Library"
+description: """
+Cairo is a 2D graphics library with support for multiple output
+devices. This module is a binding to http://cairographics.org/"""
 maintainer: "Christophe.Troestler@umons.ac.be"
 authors: [
   "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
   "Pierre Hauweele <antegallya@gmail.com>"
 ]
-homepage: "http://forge.ocamlcore.org/projects/cairo/"
-dev-repo: "git+https://github.com/Chris00/ocaml-cairo.git"
-bug-reports: "https://forge.ocamlcore.org/tracker/?atid=1104&group_id=246&func=browse"
 license: "LGPL-3.0 with OCaml linking exception"
+homepage: "http://forge.ocamlcore.org/projects/cairo/"
+bug-reports:
+  "https://forge.ocamlcore.org/tracker/?atid=1104&group_id=246&func=browse"
+depends: [
+  "conf-autoconf" {build}
+  "conf-cairo" {build}
+  "lablgtk"
+  "ocaml" {= "3.12.1"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+conflicts: ["cairo2"]
+available: os != "macos"
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-install: [["ocaml" "setup.ml" "-install"]]
-remove: [["ocamlfind" "remove" "cairo2"]]
-depends: [
-  "ocaml" {= "3.12.1"}
-  "ocamlfind" {build}
-  "lablgtk"
-  "ocamlbuild" {build}
-  "conf-cairo" {build}
-  "conf-autoconf" {build}
-]
-patches: ["opam.patch"]
-# The package does not build without Graphics,
-# which is not available by default on OS X.
-# Use cairo2 >= 0.5.
-available: os != "macos"
-conflicts: [ "cairo2" ]
-synopsis: "Binding to Cairo, a 2D Vector Graphics Library"
-description: """
-Cairo is a 2D graphics library with support for multiple output
-devices. This module is a binding to http://cairographics.org/"""
-flags: light-uninstall
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "cairo2"]
+patches: "opam.patch"
+dev-repo: "git+https://github.com/Chris00/ocaml-cairo.git"
 extra-files: ["opam.patch" "md5=e8a3c627521f9cad9a8a526b3e7902b0"]
 url {
   src: "https://download.ocamlcore.org/cairo/cairo/0.4.1/cairo-0.4.1.tar.gz"

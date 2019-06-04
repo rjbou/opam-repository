@@ -1,31 +1,31 @@
 opam-version: "2.0"
+name: "farmhash"
+version: "0.3"
+synopsis: "Bindings for Google's farmhash library"
 maintainer: "github@ahrefs.com"
 authors: "Ahrefs <github@ahrefs.com>"
 license: "LGPL-2.1 with OCaml linking exception"
+tags: "org:ahrefs"
 homepage: "https://github.com/ahrefs/ocaml-farmhash"
-dev-repo: "git://github.com/ahrefs/ocaml-farmhash.git"
 bug-reports: "https://github.com/ahrefs/ocaml-farmhash/issues"
-tags: ["org:ahrefs"]
+depends: [
+  "oasis" {build}
+  "ocaml" {>= "4.01.0"}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
-remove: [["ocamlfind" "remove" "farmhash"]]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "oasis" {build}
-]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "farmhash"]
 depexts: [
   ["g++"] {os-distribution = "debian"}
   ["g++"] {os-distribution = "ubuntu"}
   ["gcc-c++"] {os-distribution = "fedora"}
 ]
-synopsis: "Bindings for Google's farmhash library"
-flags: light-uninstall
+dev-repo: "git://github.com/ahrefs/ocaml-farmhash.git"
 url {
   src: "https://github.com/ahrefs/ocaml-farmhash/archive/v0.3.tar.gz"
   checksum: "md5=282a43247f93b21d3cb423df77d507c8"

@@ -1,24 +1,28 @@
 opam-version: "2.0"
+name: "conf-tcl"
+version: "1"
+synopsis: "Virtual package relying on tcl"
+description:
+  "This package can only install if tcl is installed on the system."
 maintainer: "tim@gfxmonk.net"
 authors: "Tcl Core Team"
 homepage: "http://www.tcl.tk"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-build: [["sh" "check.sh"]]
-depends: ["conf-pkg-config" {build}]
+depends: [
+  "conf-pkg-config" {build}
+]
+flags: conf
+build: ["sh" "check.sh"]
 depexts: [
+  ["tcl"] {os-distribution = "nixos"}
   ["tcl-dev"] {os-distribution = "debian"}
   ["tcl-dev"] {os-distribution = "ubuntu"}
-  ["tcl"] {os-distribution = "nixos"}
   ["tcl-dev"] {os-family = "alpine"}
   ["tcl-devel"] {os-family = "rhel"}
   ["tcl-devel"] {os-family = "fedora"}
   ["tcl-devel"] {os-family = "suse"}
 ]
-synopsis: "Virtual package relying on tcl"
-description:
-  "This package can only install if tcl is installed on the system."
 extra-files: [
-  ["compiletest.c" "md5=519d14d3baadfe9a94982fa58a596820"]
   ["check.sh" "md5=23052a7642deaf090480b4162d365358"]
+  ["compiletest.c" "md5=519d14d3baadfe9a94982fa58a596820"]
 ]
-flags: conf

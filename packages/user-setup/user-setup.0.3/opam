@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-authors: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-homepage: "https://github.com/OCamlPro/opam-user-setup"
-bug-reports: "https://github.com/OCamlPro/opam-user-setup/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/OCamlPro/opam-user-setup.git"
-build: [make]
-install: [
-  "./opam-user-setup"
-  "tuareg" {tuareg:installed}
-  "ocp-indent" {ocp-indent:installed}
-  "ocp-index" {ocp-index:installed}
-  "merlin" {merlin:installed}
-]
-depends: [
-  "ocaml" {>= "4.02"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "re"
-]
-depopts: ["tuareg" "merlin" "ocp-indent" "ocp-index"]
+name: "user-setup"
+version: "0.3"
 synopsis:
   "OPAM User Setup helper to configure various editors and tools for OCaml"
 description: """
@@ -29,6 +10,27 @@ users by automating the tedious task of adjusting editor and tool configuration.
 It will run after the installation of ocp-indent, merlin or similar tools and
 adjust the configuration for your available editors accordingly. It won't suit
 advanced users who prefer to do such things by hand anyway."""
+maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+authors: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+license: "ISC"
+homepage: "https://github.com/OCamlPro/opam-user-setup"
+bug-reports: "https://github.com/OCamlPro/opam-user-setup/issues"
+depends: [
+  "ocaml" {>= "4.02"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "re"
+]
+depopts: ["merlin" "ocp-indent" "ocp-index" "tuareg"]
+build: make
+install: [
+  "./opam-user-setup"
+  "tuareg" {tuareg:installed}
+  "ocp-indent" {ocp-indent:installed}
+  "ocp-index" {ocp-index:installed}
+  "merlin" {merlin:installed}
+]
+dev-repo: "git+https://github.com/OCamlPro/opam-user-setup.git"
 url {
   src: "https://github.com/OCamlPro/opam-user-setup/archive/0.3.tar.gz"
   checksum: "md5=bfc34a76d34268a9c479ec43ac40e907"

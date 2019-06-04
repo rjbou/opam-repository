@@ -1,26 +1,6 @@
 opam-version: "2.0"
 name: "bap-strings"
 version: "1.6.0"
-maintainer: "Ivan Gotovchits <ivg@ieee.org>"
-authors: "BAP Team"
-homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
-bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
-build: [
-  ["./configure" "--prefix=%{prefix}%" "--enable-strings"]
-  [make]
-]
-
-install: [[make "install"]]
-
-remove: [["ocamlfind" "remove" "bap-strings"]]
-
-depends: [
-  "ocaml" {>= "4.04.1" & < "4.08.0"}
-  "core_kernel" {>= "v0.11" & < "v0.12"}
-  "oasis" {build & >= "0.4.7"}
-]
 synopsis: "Text utilities useful in Binary Analysis and Reverse Engineering"
 description: """
 The library provides several algorithms:
@@ -34,7 +14,24 @@ The library provides several algorithms:
 
 - Scanner - a generic algorithm for finding strings of characters (a
   library variant of strings tool)"""
+maintainer: "Ivan Gotovchits <ivg@ieee.org>"
+authors: "BAP Team"
+license: "MIT"
+homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
+bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
+depends: [
+  "core_kernel" {>= "v0.11" & < "v0.12"}
+  "oasis" {build & >= "0.4.7"}
+  "ocaml" {>= "4.04.1" & < "4.08.0"}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix=%{prefix}%" "--enable-strings"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "bap-strings"]
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.6.0.tar.gz"
   checksum: "md5=0ccf6571613c0666a37d154c7f70af4f"

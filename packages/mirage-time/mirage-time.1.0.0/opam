@@ -1,27 +1,36 @@
 opam-version: "2.0"
-maintainer:    "thomas@gazagnaire.org"
-homepage:      "https://github.com/mirage/mirage-time"
-bug-reports:   "https://github.com/mirage/mirage-time/issues"
-dev-repo: "git+https://github.com/mirage/mirage-time.git"
-doc:           "https://mirage.github.io/mirage-time/"
-authors:       ["Thomas Gazagnaire" "Anil Madhavapeddy" "Gabriel Radanne"
-               "Mindy Preston" "Thomas Leonard" "Nicolas Ojeda Bar"
-               "Dave Scott" "David Kaloper" "Hannes Mehnert" "Richard Mortier"]
-tags:          [ "org:mirage"]
-license:       "ISC"
-
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.8.0"}
-  "mirage-device" {>= "1.0.0"}
-]
+name: "mirage-time"
+version: "1.0.0"
 synopsis: "Module type definitions for dealing with time."
 description:
   "This package is most useful in the context of applications built with the Mirage project."
+maintainer: "thomas@gazagnaire.org"
+authors: [
+  "Anil Madhavapeddy"
+  "Dave Scott"
+  "David Kaloper"
+  "Gabriel Radanne"
+  "Hannes Mehnert"
+  "Mindy Preston"
+  "Nicolas Ojeda Bar"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Thomas Leonard"
+]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-time"
+doc: "https://mirage.github.io/mirage-time/"
+bug-reports: "https://github.com/mirage/mirage-time/issues"
+depends: [
+  "mirage-device" {>= "1.0.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build & >= "0.8.0"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/mirage/mirage-time.git"
 url {
   src:
     "https://github.com/mirage/mirage-time/releases/download/1.0.0/mirage-time-1.0.0.tbz"

@@ -1,34 +1,31 @@
 opam-version: "2.0"
-maintainer: "dave@recoil.org"
-authors:      ["Anil Madhavapeddy" "David Scott"]
-homepage:     "https://github.com/mirage/shared-memory-ring"
-bug-reports:  "https://github.com/mirage/shared-memory-ring/issues"
-dev-repo: "git+https://github.com/mirage/shared-memory-ring.git"
-license:      "ISC"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [
-  [make "all"]
-]
-install: [make "install"]
-remove: [["ocamlfind" "remove" "shared-memory-ring"]]
-depends: [
-  "ocaml"
-  "cstruct" {>= "0.7.1" & <= "1.9.0"}
-  "type_conv" {build}
-  "lwt" {< "4.0.0"}
-  "ocamlfind"
-  "ounit"
-  "camlp4"
-  "ocamlbuild" {build}
-]
+name: "shared-memory-ring"
+version: "0.4.3"
 synopsis: "Shared memory rings for RPC and bytestream communications."
 description: """
 Includes concrete implementations of Xen console and Xenstore 
 rings."""
+maintainer: "dave@recoil.org"
+authors: ["Anil Madhavapeddy" "David Scott"]
+license: "ISC"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/shared-memory-ring"
+bug-reports: "https://github.com/mirage/shared-memory-ring/issues"
+depends: [
+  "camlp4"
+  "cstruct" {>= "0.7.1" & <= "1.9.0"}
+  "lwt" {< "4.0.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ounit"
+  "type_conv" {build}
+]
 flags: light-uninstall
+build: [make "all"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "shared-memory-ring"]
+dev-repo: "git+https://github.com/mirage/shared-memory-ring.git"
 url {
   src: "https://github.com/mirage/shared-memory-ring/archive/0.4.3.tar.gz"
   checksum: "md5=083b8ba30c724c979ea8cb0264243d10"

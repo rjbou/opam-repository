@@ -1,26 +1,24 @@
 opam-version: "2.0"
-maintainer: "Dominik Bousquet <bousquet.dominik@gmail.com>"
-authors: "Dominik Bousquet <bousquet.dominik@gmail.com>"
-homepage: "https://github.com/dbousque/lymp"
-bug-reports: "https://github.com/dbousque/lymp/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/dbousque/lymp.git"
-build: [
-	[make "build"]
-]
-install: [
-        [make "install"]
-]
-remove: ["ocamlfind" "remove" "lymp"]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "bson"
-]
+name: "lymp"
+version: "0.1.3"
 synopsis: "Use Python functions and objects from OCaml"
 description: "Access the rich ecosystem of Python libraries."
+maintainer: "Dominik Bousquet <bousquet.dominik@gmail.com>"
+authors: "Dominik Bousquet <bousquet.dominik@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dbousque/lymp"
+bug-reports: "https://github.com/dbousque/lymp/issues"
+depends: [
+  "bson"
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [make "build"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "lymp"]
+dev-repo: "git+https://github.com/dbousque/lymp.git"
 url {
   src: "https://github.com/dbousque/lymp/archive/0.1.3.tar.gz"
   checksum: "md5=0079754e7d1a04a3f1baa76f33295d75"

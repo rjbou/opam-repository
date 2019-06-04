@@ -1,20 +1,22 @@
 opam-version: "2.0"
-authors: ["Jesper Andersen"]
-homepage: "http://www.diku.dk/~jespera/index.html"
-license: "GPL"
-build: [
-  [make "depend"]
-  [make "opt"]
-]
-depends: [
-  "ocaml"
-  "menhir" {<= "20140422"}
-]
-dev-repo: "git://github.com/jespera/spdiff"
+name: "spdiff"
+version: "0.1"
 synopsis: "tool for automatic inference of semantic patches"
 description: """
 spdiff-infered semantic patches can be applied by spatch from the coccinelle
 package (also in opam)"""
+authors: "Jesper Andersen"
+license: "GPL"
+homepage: "http://www.diku.dk/~jespera/index.html"
+depends: [
+  "menhir" {<= "20140422"}
+  "ocaml"
+]
+build: [
+  [make "depend"]
+  [make "opt"]
+]
+dev-repo: "git://github.com/jespera/spdiff"
 extra-files: ["spdiff.install" "md5=d94c249f05b782156ac58745739998b4"]
 url {
   src: "https://github.com/jespera/spdiff/archive/0.1.tar.gz"

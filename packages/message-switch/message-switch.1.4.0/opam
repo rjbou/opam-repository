@@ -1,49 +1,44 @@
 opam-version: "2.0"
-maintainer: "xen-api@lists.xen.org"
-authors: [ "xen-api@lists.xen.org" ]
-homepage: "https://github.com/xapi-project/message-switch"
-bug-reports: "https://github.com/xapi-project/message-switch/issues"
-dev-repo: "git://github.com/xapi-project/message-switch"
-tags: [ "org:xapi-project" ]
-build: [
-  ["./configure" "--bindir" "%{bin}%"]
-  [make]
-]
-install: [
-  [make "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "message_switch"]
-]
-patches: [
-  "disable-error-on-warn.patch"
-  "fix-mktemp-for-busybox.patch"
-]
-depends: [
-  "ocaml"
-  "oasis" {build}
-  "ocamlfind" {build}
-  "base-unix"
-  "cohttp" {>= "0.15.0" & < "0.22.0"}
-  "rpc" {>= "1.9.51"}
-  "sexplib" {< "v0.13"}
-  "ppx_sexp_conv" {< "v0.13"}
-  "uri"
-  "re"
-  "mtime" {< "1.0.0"}
-  "mirage-block-unix" {>= "2.4.0"}
-  "shared-block-ring" {>= "2.3.0"}
-  "cmdliner"
-  "async" {< "v0.9.0"}
-]
+name: "message-switch"
+version: "1.4.0"
 synopsis: "A simple store-and-forward message switch."
 description: """
 The switch stores messages in queues with well-known names. Clients use
 a simple HTTP protocol to enqueue and dequeue messages."""
+maintainer: "xen-api@lists.xen.org"
+authors: "xen-api@lists.xen.org"
+tags: "org:xapi-project"
+homepage: "https://github.com/xapi-project/message-switch"
+bug-reports: "https://github.com/xapi-project/message-switch/issues"
+depends: [
+  "async" {< "v0.9.0"}
+  "base-unix"
+  "cmdliner"
+  "cohttp" {>= "0.15.0" & < "0.22.0"}
+  "mirage-block-unix" {>= "2.4.0"}
+  "mtime" {< "1.0.0"}
+  "oasis" {build}
+  "ocaml"
+  "ocamlfind" {build}
+  "ppx_sexp_conv" {< "v0.13"}
+  "re"
+  "rpc" {>= "1.9.51"}
+  "sexplib" {< "v0.13"}
+  "shared-block-ring" {>= "2.3.0"}
+  "uri"
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--bindir" "%{bin}%"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "message_switch"]
+patches: ["disable-error-on-warn.patch" "fix-mktemp-for-busybox.patch"]
+dev-repo: "git://github.com/xapi-project/message-switch"
 extra-files: [
-  ["fix-mktemp-for-busybox.patch" "md5=60b1f639519604effbe0ef62272e014e"]
   ["disable-error-on-warn.patch" "md5=372a7b6757e4780b9f2af9b67df530ec"]
+  ["fix-mktemp-for-busybox.patch" "md5=60b1f639519604effbe0ef62272e014e"]
 ]
 url {
   src: "https://github.com/xapi-project/message-switch/archive/v1.4.0.tar.gz"

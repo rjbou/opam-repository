@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/ppx_ast"
-bug-reports: "https://github.com/janestreet/ppx_ast/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_ast.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "--only-packages" "ppx_ast" "--root" "." "-j" jobs "@install"]
-]
-depends: [
-  "ocaml" {>= "4.03.0" & < "4.06.0"}
-  "jbuilder" {build & >= "1.0+beta2"}
-  "ocaml-compiler-libs" {>= "v0.9" & < "v0.10"}
-  "ocaml-migrate-parsetree" {>= "0.4"}
-]
+name: "ppx_ast"
+version: "v0.9.1"
 synopsis: "OCaml AST used by Jane Street ppx rewriters"
 description: """
 Ppx_ast selects a specific version of the OCaml Abstract Syntax Tree
@@ -23,6 +10,29 @@ one as the one being used by the compiler.
 It also snapshots the corresponding parser and pretty-printer from the
 OCaml compiler, to create a full frontend independent of the version
 of OCaml."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/ppx_ast"
+bug-reports: "https://github.com/janestreet/ppx_ast/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta2"}
+  "ocaml" {>= "4.03.0" & < "4.06.0"}
+  "ocaml-compiler-libs" {>= "v0.9" & < "v0.10"}
+  "ocaml-migrate-parsetree" {>= "0.4"}
+]
+build: [
+  "jbuilder"
+  "build"
+  "--only-packages"
+  "ppx_ast"
+  "--root"
+  "."
+  "-j"
+  jobs
+  "@install"
+]
+dev-repo: "git+https://github.com/janestreet/ppx_ast.git"
 url {
   src: "https://github.com/janestreet/ppx_ast/archive/v0.9.1.tar.gz"
   checksum: "md5=aaf009fd50a6342c95bf3c1422da0273"

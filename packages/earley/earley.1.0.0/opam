@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer  : "Christophe Raffalli <christophe@raffalli.eu>"
-bug-reports : "https://github.com/rlepigre/ocaml-earley/issues"
-authors     : [ "Christophe Raffalli <christophe@raffalli.eu>"
-                "Rodolphe Lepigre <rodolphe.lepigre@inria.fr>" ]
-homepage    : "https://github.com/rlepigre/ocaml-earley"
-license     : "CeCILL-B_V1"
-dev-repo: "git+https://github.com/rlepigre/ocaml-earley.git"
-build       : [make]
-install     : [make "install"]
-remove      : [make "uninstall"]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
+name: "earley"
+version: "1.0.0"
 synopsis: "Earley parser combinator library"
 description: """
 Earley is a parser combinator library base on Earley's algorithm. It
@@ -25,6 +12,23 @@ inside the language.
 Authors:
  - Christophe Raffalli <christophe@raffalli.eu>
  - Rodolphe Lepigre <rodolphe.lepigre@inria.fr>"""
+maintainer: "Christophe Raffalli <christophe@raffalli.eu>"
+authors: [
+  "Christophe Raffalli <christophe@raffalli.eu>"
+  "Rodolphe Lepigre <rodolphe.lepigre@inria.fr>"
+]
+license: "CeCILL-B_V1"
+homepage: "https://github.com/rlepigre/ocaml-earley"
+bug-reports: "https://github.com/rlepigre/ocaml-earley/issues"
+depends: [
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+build: make
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/rlepigre/ocaml-earley.git"
 url {
   src:
     "https://github.com/rlepigre/ocaml-earley/archive/ocaml-earley_1.0.0.tar.gz"

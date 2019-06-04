@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "thomas.leonard@docker.com"
-authors: "Thomas Leonard"
-license: "Apache"
-homepage: "https://github.com/moby/datakit"
-doc: "https://docker.github.io/datakit/"
-bug-reports: "https://github.com/moby/datakit/issues"
-depends: [
-  "ocaml"
-  "dune" {build}
-  "cmdliner"
-  "irmin-watcher"
-  "irmin" {>= "1.2.0"}
-  "irmin-unix" {>= "1.2.0"}
-  "lwt" {>= "3.0.0"}
-  "logs"
-  "fmt"
-  "protocol-9p-unix" {>= "0.11.0"}
-  "datakit-client" {>= "0.12.0"}
-  "datakit-client-9p" {>= "0.12.0"}
-  "datakit-github" {>= "0.12.0"}
-]
-build: ["dune" "build" "-p" name "-j" jobs]
-dev-repo: "git+https://github.com/moby/datakit.git"
+name: "datakit-bridge-local-git"
+version: "0.12.2"
 synopsis: "DataKit Local-Git bridge"
 description: """
 This service is a drop-in replacement for the DataKit-GitHub bridge
@@ -42,8 +21,30 @@ Unlike the GitHub bridge, this service:
 
 - only reports on branches, not tags or pull requests;
 - does not report build statuses from other CI systems; and
-- does not push the statuses set by the CI anywhere.
-"""
+- does not push the statuses set by the CI anywhere."""
+maintainer: "thomas.leonard@docker.com"
+authors: "Thomas Leonard"
+license: "Apache"
+homepage: "https://github.com/moby/datakit"
+doc: "https://docker.github.io/datakit/"
+bug-reports: "https://github.com/moby/datakit/issues"
+depends: [
+  "cmdliner"
+  "datakit-client" {>= "0.12.0"}
+  "datakit-client-9p" {>= "0.12.0"}
+  "datakit-github" {>= "0.12.0"}
+  "dune" {build}
+  "fmt"
+  "irmin" {>= "1.2.0"}
+  "irmin-unix" {>= "1.2.0"}
+  "irmin-watcher"
+  "logs"
+  "lwt" {>= "3.0.0"}
+  "ocaml"
+  "protocol-9p-unix" {>= "0.11.0"}
+]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/moby/datakit.git"
 url {
   src:
     "https://github.com/moby/datakit/releases/download/0.12.2/datakit-0.12.2.tbz"

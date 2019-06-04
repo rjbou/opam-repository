@@ -1,17 +1,6 @@
 opam-version: "2.0"
-maintainer: "florian.pichlmeier@mytum.de"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "promela"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "ospec" {>= "0.3.0"}
-  "ocamlbuild" {build}
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "promela"
+version: "0.4.2"
 synopsis:
   "Library to create, manipulate and reason about PROMELA data structures."
 description: """
@@ -19,7 +8,20 @@ The PROMELA OCaml library provides types to create, manipulate and to reason
 about PROMELA programs. The OCaml data structures can finally be converted to 
 their textual representation with a pretty-printer to be used with the SPIN 
 model checker."""
+maintainer: "florian.pichlmeier@mytum.de"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ospec" {>= "0.3.0"}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "promela"]
 url {
   src:
     "https://download.ocamlcore.org/promela/promela/0.4.2/promela-0.4.2.tar.gz"

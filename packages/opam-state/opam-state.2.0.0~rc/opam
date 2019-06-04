@@ -1,33 +1,33 @@
 opam-version: "2.0"
+name: "opam-state"
+version: "2.0.0~rc"
+synopsis: "opam 2.0 development libraries"
+description:
+  "Handling of the ~/.opam hierarchy, repository and switch states."
 maintainer: "opam-devel@lists.ocaml.org"
 authors: [
-  "Thomas Gazagnaire <thomas@gazagnaire.org>"
   "Anil Madhavapeddy   <anil@recoil.org>"
   "Fabrice Le Fessant  <Fabrice.Le_fessant@inria.fr>"
   "Frederic Tuong      <tuong@users.gforge.inria.fr>"
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
   "Guillem Rieu        <guillem.rieu@ocamlpro.com>"
-  "Vincent Bernardoff  <vb@luminar.eu.org>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
   "Roberto Di Cosmo    <roberto@dicosmo.org>"
+  "Thomas Gazagnaire <thomas@gazagnaire.org>"
+  "Vincent Bernardoff  <vb@luminar.eu.org>"
 ]
 homepage: "https://opam.ocaml.org/"
 bug-reports: "https://github.com/ocaml/opam/issues"
-dev-repo: "git+https://github.com/ocaml/opam.git"
+depends: [
+  "jbuilder" {build & >= "1.0+beta12"}
+  "ocaml" {>= "4.02.3"}
+  "opam-repository" {= "2.0.0~rc"}
+]
+conflicts: ["dune"]
 build: [
   ["./configure" "--disable-checks" "--prefix" prefix]
   [make "%{name}%.install"]
 ]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "opam-repository" {= "2.0.0~rc"}
-  "jbuilder" {build & >= "1.0+beta12"}
-]
-conflicts: [
-  "dune"
-]
-synopsis: "opam 2.0 development libraries"
-description:
-  "Handling of the ~/.opam hierarchy, repository and switch states."
+dev-repo: "git+https://github.com/ocaml/opam.git"
 url {
   src: "https://github.com/ocaml/opam/archive/2.0.0-rc.tar.gz"
   checksum: "md5=ae216e3ea0a9388cc9f711a2a9925557"

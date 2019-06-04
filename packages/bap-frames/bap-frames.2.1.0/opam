@@ -1,48 +1,43 @@
 opam-version: "2.0"
 name: "bap-frames"
 version: "2.1.0"
+synopsis: "A data format for storing execution traces"
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
+depends: [
+  "bap-std"
+  "bap-traces"
+  "cmdliner"
+  "oasis" {build & = "0.4.7"}
+  "ocaml"
+  "piqi" {>= "0.7.4"}
+]
 build: [
   ["oasis" "setup"]
   ["./configure" "--prefix=%{prefix}%"]
   [make]
 ]
-
-install: [
-  [make "install"]
-]
-
+install: [make "install"]
 remove: [
-        [ "ocamlfind" "remove" "bap-plugin-frames"]
-        [ "ocamlfind" "remove" "bap-frames"]
-        [ "ocamlfind" "remove" "bfd"]
-        [ "bapbundle" "remove" "frames.plugin"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/*.piqi"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/exceptionframe.piqi"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/frame.piqi"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/keyframe.piqi"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/metaframe.piqi"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/modloadframe.piqi"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/stdframe.piqi"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/syscallframe.piqi"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/taintintroframe.piqi"]
-        [ "rm" "-f" "%{prefix}%/share/bap-frames/types.piqi"]
-        ]
-
-depends: [
-  "ocaml"
-  "oasis" {build & = "0.4.7"}
-  "bap-std"
-  "bap-traces"
-  "cmdliner"
-  "piqi" {>= "0.7.4"}
+  ["ocamlfind" "remove" "bap-plugin-frames"]
+  ["ocamlfind" "remove" "bap-frames"]
+  ["ocamlfind" "remove" "bfd"]
+  ["bapbundle" "remove" "frames.plugin"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/*.piqi"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/exceptionframe.piqi"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/frame.piqi"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/keyframe.piqi"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/metaframe.piqi"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/modloadframe.piqi"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/stdframe.piqi"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/syscallframe.piqi"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/taintintroframe.piqi"]
+  ["rm" "-f" "%{prefix}%/share/bap-frames/types.piqi"]
 ]
-synopsis: "A data format for storing execution traces"
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src:
     "https://github.com/BinaryAnalysisPlatform/bap-frames/archive/v2.1.0.tar.gz"

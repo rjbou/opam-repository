@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "nv-vn <nv@cock.li>"
-authors: "nv-vn <nv@cock.li>"
-homepage: "https://github.com/nv-vn/ppx_where"
-bug-reports: "https://github.com/nv-vn/ppx_where/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/nv-vn/ppx_where.git"
-build: [
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
-]
-install: [make "install"]
-remove: [make "uninstall"]
-depends: [
-  "ocaml" {>= "4.02" & < "4.03"}
-  "ocamlfind" {build}
-  "oasis" {build}
-]
+name: "ppx_where"
+version: "1.0"
 synopsis: "Haskell-style `where` clauses as a PPX syntax extension"
 description: """
 ppx_where allows for the use of `where` clauses after expressions
@@ -23,6 +8,23 @@ by rewriting the `where` syntax into `let ... in` syntax at
 compile-time. Additionally, ppx_where allows for some limited
 pattern matching such as that allowed in-place for arguments
 in normal function bindings."""
+maintainer: "nv-vn <nv@cock.li>"
+authors: "nv-vn <nv@cock.li>"
+license: "MIT"
+homepage: "https://github.com/nv-vn/ppx_where"
+bug-reports: "https://github.com/nv-vn/ppx_where/issues"
+depends: [
+  "oasis" {build}
+  "ocaml" {>= "4.02" & < "4.03"}
+  "ocamlfind" {build}
+]
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/nv-vn/ppx_where.git"
 url {
   src: "https://github.com/nv-vn/ppx_where/archive/1.0.tar.gz"
   checksum: "md5=cdb1d702a42d4b61d02012bf146286f2"

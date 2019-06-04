@@ -1,28 +1,30 @@
 opam-version: "2.0"
+name: "iocaml"
+version: "0.4.4"
+synopsis: "A webserver for iocaml-kernel and iocamljs-kernel."
 maintainer: "andy.ray@ujamjar.com"
 homepage: "https://github.com/andrewray/iocamlserver"
-build: [
-  ["cp" "config.darwin.ml" "config.ml"] {os = "macos"}
-  [make "all"]
-]
 depends: [
-  "ocaml" {>= "4.01.0" & < "4.02.0"}
-  "ocamlfind"
-  "uuidm"
-  "yojson"
-  "cow" {< "2.0.0"}
-  "lwt" {>= "2.4"}
-  "websocket" {>= "0.8"}
   "cohttp" {>= "0.10.0"}
+  "cow" {< "2.0.0"}
   "crunch"
   "ctypes" {>= "0.4"}
   "ctypes-foreign"
   "iocaml-kernel" {= "0.4.4"}
   "iocamljs-kernel" {= "0.4.4"}
+  "lwt" {>= "2.4"}
+  "ocaml" {>= "4.01.0" & < "4.02.0"}
   "ocamlbuild" {build}
+  "ocamlfind"
+  "uuidm"
+  "websocket" {>= "0.8"}
+  "yojson"
+]
+build: [
+  ["cp" "config.darwin.ml" "config.ml"] {os = "macos"}
+  [make "all"]
 ]
 dev-repo: "git://github.com/andrewray/iocamlserver"
-synopsis: "A webserver for iocaml-kernel and iocamljs-kernel."
 extra-files: ["iocaml.install" "md5=3b7af60d88c424b24aaa6582a9845fa0"]
 url {
   src: "https://github.com/andrewray/iocamlserver/archive/v0.4.4.tar.gz"

@@ -1,18 +1,20 @@
 opam-version: "2.0"
+name: "opam-lock"
+version: "0.1"
 synopsis: "Locking of development package definition dependency versions"
 maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
 authors: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
 homepage: "https://github.com/AltGr/opam-lock"
 bug-reports: "https://github.com/AltGr/opam-lock/issues"
-dev-repo: "git+https://github.com/AltGr/opam-lock.git"
 depends: [
-  "ocaml"
   "cmdliner" {>= "1.0"}
+  "ocaml"
   "opam-solver" {>= "2.0.0~beta5"}
   "opam-state" {>= "2.0.0~beta5"}
 ]
-build: ["jbuilder" "build" "-p" name]
 flags: plugin
+build: ["jbuilder" "build" "-p" name]
+dev-repo: "git+https://github.com/AltGr/opam-lock.git"
 url {
   src: "https://github.com/AltGr/opam-lock/archive/0.1.tar.gz"
   checksum: [

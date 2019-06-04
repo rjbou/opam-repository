@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "quickcheck"
+version: "0.0.3"
+synopsis: "Translation of QuickCheck from Haskell into OCaml"
 maintainer: "anil@recoil.org"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "optcomp"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "quickcheck"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "optcomp"
-  "ocamlbuild" {build}
-]
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Translation of QuickCheck from Haskell into OCaml"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "quickcheck"]
 url {
   src: "git://github.com/avsm/ocaml-quickcheck.git"
 }

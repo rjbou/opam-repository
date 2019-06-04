@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "gtktop"
+version: "2.0"
+synopsis: "A small library to ease the creation of graphical toplevels."
 maintainer: "zoggy@bat8.org"
+depends: [
+  "conf-glade"
+  "lablgtk" {>= "2.16.0"}
+  "lablgtk-extras" {>= "1.2"}
+  "ocaml" {>= "4.00.0" & < "4.06.0"}
+  "ocamlfind"
+]
 build: [
   ["./configure" "--prefix" prefix]
   [make "all"]
 ]
-remove: [[make "uninstall"]]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.06.0"}
-  "ocamlfind"
-  "lablgtk-extras" {>= "1.2"}
-  "lablgtk" {>= "2.16.0"}
-  "conf-glade"
-]
 install: [make "install"]
-synopsis: "A small library to ease the creation of graphical toplevels."
+remove: [make "uninstall"]
 url {
   src: "http://zoggy.github.com/gtktop/gtktop-2.0.tar.gz"
   checksum: "md5=c77091dcddc63711c370370a6860dbb3"

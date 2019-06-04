@@ -1,16 +1,20 @@
 opam-version: "2.0"
+name: "stitch"
+version: "0.0.0"
+synopsis: "Refactoring framework"
+description: """
+stitch is a framework to record calls in existing code and replay them as characterization tests
+to help refactoring of legacy code.
+
+The name stitch comes from [Ruby's Suture gem](https://github.com/testdouble/suture) from which 
+it's inspired."""
 maintainer: "James Owen <jamesowen@outlook.com>"
-homepage: "https://github.com/cryptosense/ocaml-stitch"
-bug-reports: "https://github.com/cryptosense/ocaml-stitch/issues"
+authors: "Nathan Rebours <nathan.p.rebours@gmail.com>"
 license: "BSD-2"
-dev-repo: "git+https://github.com/cryptosense/ocaml-stitch.git"
+tags: "org:cryptosense"
+homepage: "https://github.com/cryptosense/ocaml-stitch"
 doc: "https://cryptosense.github.io/ocaml-stitch/doc"
-build: [
-  [ "dune" "build" "-p" name "-j" jobs ]
-]
-run-test: [
-  [ "dune" "runtest" "-p" name "-j" jobs ]
-]
+bug-reports: "https://github.com/cryptosense/ocaml-stitch/issues"
 depends: [
   "containers"
   "dune" {build & >= "1.1.0"}
@@ -20,16 +24,9 @@ depends: [
   "ppx_deriving_yojson"
   "yojson"
 ]
-tags: ["org:cryptosense"]
-synopsis: "Refactoring framework"
-description: """
-stitch is a framework to record calls in existing code and replay them as characterization tests
-to help refactoring of legacy code.
-
-The name stitch comes from [Ruby's Suture gem](https://github.com/testdouble/suture) from which 
-it's inspired.
-"""
-authors: "Nathan Rebours <nathan.p.rebours@gmail.com>"
+build: ["dune" "build" "-p" name "-j" jobs]
+run-test: ["dune" "runtest" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/cryptosense/ocaml-stitch.git"
 url {
   src:
     "https://github.com/cryptosense/ocaml-stitch/releases/download/v0.0.0/stitch-v0.0.0.tbz"

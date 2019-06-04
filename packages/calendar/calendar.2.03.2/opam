@@ -1,17 +1,19 @@
 opam-version: "2.0"
+name: "calendar"
+version: "2.03.2"
+synopsis: "Library for handling dates and times in your program"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: ["Julien Signoles"]
-homepage: "http://calendar.forge.ocamlcore.org/"
+authors: "Julien Signoles"
 license: "LGPL-2.1 with OCaml linking exception"
+homepage: "http://calendar.forge.ocamlcore.org/"
+depends: ["ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure"]
   [make]
 ]
-remove: [["ocamlfind" "remove" "calendar"]]
-depends: ["ocaml" "ocamlfind"]
 install: [make "install"]
-synopsis: "Library for handling dates and times in your program"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "calendar"]
 url {
   src:
     "https://download.ocamlcore.org/calendar/calendar/2.03.2/calendar-2.03.2.tar.gz"

@@ -1,41 +1,42 @@
 opam-version: "2.0"
+name: "biocaml"
+version: "0.5.0"
+synopsis: "The OCaml Bioinformatics Library"
+description: """
+Biocaml aims to be a high-performance user-friendly library for
+Bioinformatics. See the [website](http://biocaml.org) for detailed API
+documentation. We welcome contributors and feedback from users. Please
+contact us with any comments and suggestions for features you would
+like added."""
 maintainer: "biocaml@googlegroups.com"
 authors: [
-  "Sebastien Mondet"
-  "Ashish Agarwal"
-  "Philippe Veber"
-  "Christophe Troestler"
-  "Sergei Lebedev"
-  "David Koppstein"
   "Alexander Gryzlov"
+  "Ashish Agarwal"
+  "Christophe Troestler"
+  "David Koppstein"
   "Francois Berenger"
+  "Philippe Veber"
+  "Sebastien Mondet"
+  "Sergei Lebedev"
 ]
+license: "LGPL + linking exception"
 homepage: "http://biocaml.org"
 bug-reports: "https://github.com/biocaml/biocaml/issues"
-license: "LGPL + linking exception"
-dev-repo: "git+https://github.com/biocaml/biocaml.git"
-build: [
-  [make "byte"]
-  [make "native"]
-  [make "META"]
-  [make "%{name}%.install"]
-  ["omake" "-j%{jobs}%" "doc"] {with-doc}
-]
 depends: [
+  "camlzip" {>= "1.05"}
+  "cfstream"
+  "core_kernel" {>= "111.13.00" & <= "113.33.03"}
   "ocaml" {>= "4.03.0" & < "4.04.0"}
   "ocamlfind" {build}
-  "solvuu-build" {build & <= "0.1.0"}
-  "core_kernel" {>= "111.13.00" & <= "113.33.03"}
-  "sexplib" {< "v0.13"}
-  "camlzip" {>= "1.05"}
-  "xmlm"
-  "cfstream"
   "ppx_compare" {< "v0.13"}
   "ppx_deriving"
   "ppx_sexp_conv" {< "v0.13"}
   "re" {< "1.8.0"}
   "rresult"
+  "sexplib" {< "v0.13"}
+  "solvuu-build" {build & <= "0.1.0"}
   "uri"
+  "xmlm"
 ]
 depopts: [
   "async" {< "v0.13"}
@@ -46,14 +47,15 @@ depopts: [
 conflicts: [
   "core" {< "111.13.00"}
 ]
-synopsis: "The OCaml Bioinformatics Library"
-description: """
-Biocaml aims to be a high-performance user-friendly library for
-Bioinformatics. See the [website](http://biocaml.org) for detailed API
-documentation. We welcome contributors and feedback from users. Please
-contact us with any comments and suggestions for features you would
-like added."""
+build: [
+  [make "byte"]
+  [make "native"]
+  [make "META"]
+  [make "%{name}%.install"]
+  ["omake" "-j%{jobs}%" "doc"] {with-doc}
+]
 install: ["omake" "install_doc" "DOCDIR=%{doc}%/biocaml"] {with-doc}
+dev-repo: "git+https://github.com/biocaml/biocaml.git"
 url {
   src: "https://github.com/biocaml/biocaml/archive/v0.5.0.tar.gz"
   checksum: "md5=38d46f29c8722e07a885227ee319b220"

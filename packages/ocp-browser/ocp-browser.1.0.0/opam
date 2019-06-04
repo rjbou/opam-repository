@@ -1,12 +1,14 @@
 opam-version: "2.0"
+name: "ocp-browser"
+version: "1.0.0"
+synopsis: "virtual package to force the installation of ocp-browser"
 maintainer: "unixjunkie@sdf.org"
-authors: ["Francois BERENGER"]
+authors: "Francois BERENGER"
+license: "Public Domain"
 homepage: "https://github.com/ocaml/opam-repository"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "Public Domain"
 depends: [
-  "ocaml"
   "lambda-term" {< "2.0"}
+  "ocaml"
   "ocp-index" {>= "1.1.4"}
 ]
-synopsis: "virtual package to force the installation of ocp-browser"

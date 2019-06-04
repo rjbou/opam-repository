@@ -1,19 +1,7 @@
 opam-version: "2.0"
+name: "ocolor"
+version: "1.0"
 synopsis: "Print with style in your terminal using Format's semantic tags"
-maintainer: "Marc Chevalier <ocolor@marc-chevalier.com>"
-authors: "Marc Chevalier <ocolor@marc-chevalier.com>"
-depends: [
-  "ocaml" {>= "4.05.0" & < "4.08.0"}
-  "dune" {build & >= "1.6.3"}
-]
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-]
-homepage: "https://github.com/marc-chevalier/ocolor"
-bug-reports: "https://github.com/marc-chevalier/ocolor/issues"
-dev-repo: "git+https://github.com/marc-chevalier/ocolor.git"
-license: "MIT"
 description: """
 This package provides a nice way to use ANSI escape codes thanks to Format's
 semantic tags. This mode is compositional: ending a style restore the previous
@@ -24,8 +12,21 @@ Note that this library does not intend to handle anything else than ANSI escape
 codes (in particular, not the old Windows style of styling). Moreover, it aims
 to be as pure as possible, so insensitive to the environment. As a consequence,
 there is no mechanism to detect terminal's settings. However, some configuration
-is possible, but must be done manually.
-"""
+is possible, but must be done manually."""
+maintainer: "Marc Chevalier <ocolor@marc-chevalier.com>"
+authors: "Marc Chevalier <ocolor@marc-chevalier.com>"
+license: "MIT"
+homepage: "https://github.com/marc-chevalier/ocolor"
+bug-reports: "https://github.com/marc-chevalier/ocolor/issues"
+depends: [
+  "dune" {build & >= "1.6.3"}
+  "ocaml" {>= "4.05.0" & < "4.08.0"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/marc-chevalier/ocolor.git"
 url {
   src: "https://github.com/marc-chevalier/ocolor/archive/1.0.tar.gz"
   checksum: [

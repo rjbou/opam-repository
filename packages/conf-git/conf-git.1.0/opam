@@ -1,13 +1,19 @@
 opam-version: "2.0"
+name: "conf-git"
+version: "1.0"
+synopsis: "Virtual package relying on git"
+description:
+  "This package can only install if the git program is installed on the system."
 maintainer: "unixjunkie@sdf.org"
-homepage: "https://git-scm.com"
 authors: "Linus Torvalds"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
 license: "GPL-2+"
-build: [["which" "git"]]
+homepage: "https://git-scm.com"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
 depends: [
   "conf-which" {build}
 ]
+flags: conf
+build: ["which" "git"]
 depexts: [
   ["git"] {os-distribution = "centos"}
   ["git"] {os-distribution = "fedora"}
@@ -18,7 +24,3 @@ depexts: [
   ["git"] {os-distribution = "arch"}
   ["git"] {os = "macos" & os-distribution = "homebrew"}
 ]
-synopsis: "Virtual package relying on git"
-description:
-  "This package can only install if the git program is installed on the system."
-flags: conf

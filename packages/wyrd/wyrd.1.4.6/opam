@@ -1,5 +1,10 @@
 opam-version: "2.0"
+name: "wyrd"
+version: "1.4.6"
+synopsis:
+  "Text-based front-end to Remind, a sophisticated calendar and alarm program"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: ["camlp4" "ocaml"]
 build: [
   [
     "./configure"
@@ -17,10 +22,7 @@ build: [
   ]
   [make]
 ]
-depends: ["ocaml" "camlp4"]
 install: [make "install"]
-synopsis:
-  "Text-based front-end to Remind, a sophisticated calendar and alarm program"
 extra-files: ["wyrd.install" "md5=cb866bfdfc06f8d236079fdc745ac648"]
 url {
   src: "ftp://ftp.netbsd.org/pub/pkgsrc/distfiles/wyrd-1.4.6.tar.gz"

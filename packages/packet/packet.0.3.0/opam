@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "seliopou@gmail.com"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--%{quickcheck:enable}%-quickcheck"]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocamlfind" "remove" "packet"]
-]
-depends: [
-  "ocaml" {>= "4.00.1"}
-  "ocamlfind"
-  "cstruct" {>= "1.0.1" & < "2.0.0"}
-  "ocamlbuild" {build}
-]
-depopts: ["quickcheck"]
-dev-repo: "git://github.com/frenetic-lang/ocaml-packet"
-install: ["ocaml" "setup.ml" "-install"]
+name: "packet"
+version: "0.3.0"
 synopsis: "A serialization library for network packets."
 description: """
 This library includes serializers for:
@@ -28,7 +13,22 @@ This library includes serializers for:
  * DNS
 
 and others."""
+maintainer: "seliopou@gmail.com"
+depends: [
+  "cstruct" {>= "1.0.1" & < "2.0.0"}
+  "ocaml" {>= "4.00.1"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+depopts: ["quickcheck"]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--%{quickcheck:enable}%-quickcheck"]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "packet"]
+dev-repo: "git://github.com/frenetic-lang/ocaml-packet"
 url {
   src: "https://github.com/frenetic-lang/ocaml-packet/archive/v0.3.0.tar.gz"
   checksum: "md5=79ec177703c8cd3035b5c907e75e113e"

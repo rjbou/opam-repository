@@ -1,27 +1,28 @@
 opam-version: "2.0"
+name: "camelsnakekebab"
+version: "0.4"
 synopsis: "A Ocaml library for word case conversion"
-description:"""
+description: """
 conversion bettween upper_camel_case, lower_camel_case 
 lower_snake_case, lower_snake_case, upper_snake_case,
-constant_case, kebab_case, http_header_case 
-"""
+constant_case, kebab_case, http_header_case"""
 maintainer: "Hao Wu <echowuhao@gmail.com>"
-authors: ["Hao Wu <echowuhao@gmail.com>"]
-license:  "MIT"
-build: [
-["dune" "build" "-p" name]
-["dune" "runtest" "-p" name] {with-test}
-]
+authors: "Hao Wu <echowuhao@gmail.com>"
+license: "MIT"
 homepage: "https://github.com/swuecho/camelsnakekebab"
 bug-reports: "https://github.com/swuecho/camelsnakekebab/issues"
-dev-repo: "git+https://github.com/swuecho/camelsnakekebab.git"
 depends: [
-  "ocaml" {>= "4.04.1"}
-  "dune" {build}
   "base" {< "v0.13"}
-  "pcre"
+  "dune" {build}
+  "ocaml" {>= "4.04.1"}
   "ounit" {with-test}
+  "pcre"
 ]
+build: [
+  ["dune" "build" "-p" name]
+  ["dune" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/swuecho/camelsnakekebab.git"
 url {
   src: "https://github.com/swuecho/camelsnakekebab/archive/0.4.tar.gz"
   checksum: [

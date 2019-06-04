@@ -1,12 +1,22 @@
 opam-version: "2.0"
 name: "lwt-parallel"
 version: "0.1.2"
+synopsis: "Lwt-enabled multiprocessing library"
+description: "Allows to run lwt threads in different process."
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "Ivan Gotovchits <ivg@ieee.org>"
+license: "MIT"
 homepage: "https://github.com/ivg/parallel"
 bug-reports: "https://github.com/ivg/parallel/issues"
-dev-repo: "git+https://github.com/ivg/parallel.git"
-license: "MIT"
+depends: [
+  "base-unix"
+  "lwt" {>= "2.7.0" & < "4.0.0"}
+  "oasis" {build}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["./configure" "--prefix=%{prefix}%"]
@@ -14,17 +24,7 @@ build: [
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "lwt-parallel"]
-depends: [
-  "ocaml"
-  "base-unix"
-  "lwt" {>= "2.7.0" & < "4.0.0"}
-  "ocamlfind" {build}
-  "oasis" {build}
-  "ocamlbuild" {build}
-]
-synopsis: "Lwt-enabled multiprocessing library"
-description: "Allows to run lwt threads in different process."
-flags: light-uninstall
+dev-repo: "git+https://github.com/ivg/parallel.git"
 url {
   src: "https://github.com/ivg/parallel/archive/v0.1.2.tar.gz"
   checksum: "md5=e24c31f2b1e14d2805449ee689306134"

@@ -1,21 +1,6 @@
 opam-version: "2.0"
 name: "ppx_compose"
-authors: ["Petter A. Urkedal"]
-maintainer: "paurkedal@gmail.com"
-homepage: "https://github.com/paurkedal/ppx_compose/"
-bug-reports: "https://github.com/paurkedal/ppx_compose/issues"
-dev-repo: "git+https://github.com/paurkedal/ppx_compose.git"
-license: "LGPL-3 with OCaml linking exception"
-
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta7"}
-  "ocaml-migrate-parsetree"
-]
+version: "0.0.4"
 synopsis: "Inlined Function Composition"
 description: """
 `ppx_compose` is a simple syntax extension which rewrites code containing
@@ -44,6 +29,21 @@ E.g.
     h % g % f ==> (fun x -> h (f (g x)))
     h % (g % f) ==> (fun x -> h (f (g x)))
     (g % f) (h % h) ==> g (f (fun x -> h (h x)))"""
+maintainer: "paurkedal@gmail.com"
+authors: "Petter A. Urkedal"
+license: "LGPL-3 with OCaml linking exception"
+homepage: "https://github.com/paurkedal/ppx_compose/"
+bug-reports: "https://github.com/paurkedal/ppx_compose/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta7"}
+  "ocaml" {>= "4.02.3"}
+  "ocaml-migrate-parsetree"
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/paurkedal/ppx_compose.git"
 url {
   src:
     "https://github.com/paurkedal/ppx_compose/releases/download/v0.0.4/ppx_compose-0.0.4.tbz"

@@ -1,22 +1,24 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-build: make
-remove: [["ocamlfind" "remove" "pa_test"]]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "camlp4"
-  "ocamlfind"
-  "type_conv" {>= "109.53.00" & < "112.02.00"}
-  "sexplib" {>= "110.01.00" & < "112.07.00"}
-  "comparelib" {>= "109.27.00" & < "109.61.00"}
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "pa_test"
+version: "111.08.00"
 synopsis: "Quotation expander for assertions."
 description: """
 This package adds quotation expanders for <:test_eq< type >> and <:test_pred< type >>,
 which fail with nicely formatted error messages."""
+maintainer: "opensource@janestreet.com"
+depends: [
+  "camlp4"
+  "comparelib" {>= "109.27.00" & < "109.61.00"}
+  "ocaml" {>= "4.00.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "sexplib" {>= "110.01.00" & < "112.07.00"}
+  "type_conv" {>= "109.53.00" & < "112.02.00"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "pa_test"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/111.08.00/individual/pa_test-111.08.00.tar.gz"

@@ -1,8 +1,19 @@
 opam-version: "2.0"
+name: "ssl"
+version: "0.5.4"
+synopsis: "Bindings for OpenSSL"
 maintainer: "Christopher Zimmermann <christopher@gmerlin.de>"
+authors: "Samuel Mimram <samuel.mimram@ens-lyon.org>"
 homepage: "https://github.com/savonet/ocaml-ssl"
-dev-repo: "git+https://github.com/savonet/ocaml-ssl.git"
 bug-reports: "https://github.com/savonet/ocaml-ssl/issues"
+depends: [
+  "base-bytes"
+  "conf-openssl"
+  "conf-which" {build}
+  "ocaml"
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix] {os != "macos"}
   [
@@ -12,18 +23,9 @@ build: [
   ] {os = "macos"}
   [make]
 ]
-install: [[make "install"]]
-remove: [["ocamlfind" "remove" name]]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "conf-which" {build}
-  "conf-openssl"
-  "base-bytes"
-]
-synopsis: "Bindings for OpenSSL"
-authors: "Samuel Mimram <samuel.mimram@ens-lyon.org>"
-flags: light-uninstall
+install: [make "install"]
+remove: ["ocamlfind" "remove" name]
+dev-repo: "git+https://github.com/savonet/ocaml-ssl.git"
 url {
   src:
     "https://github.com/savonet/ocaml-ssl/releases/download/0.5.4/ocaml-ssl-0.5.4.tar.gz"

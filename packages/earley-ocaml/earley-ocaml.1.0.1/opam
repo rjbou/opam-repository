@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer  : "Christophe Raffalli <christophe@raffalli.eu>"
-bug-reports : "https://github.com/rlepigre/ocaml-earley-ocaml/issues"
-authors     : [ "Christophe Raffalli <christophe@raffalli.eu>"
-                "Rodolphe Lepigre <rodolphe.lepigre@inria.fr>" ]
-homepage    : "https://github.com/rlepigre/ocaml-earley-ocaml"
-license     : "CeCILL-B_V1"
-dev-repo: "git+https://github.com/rlepigre/ocaml-earley-ocaml.git"
-build       : [ [make] [make] ]
-install     : [make "install" "BINDIR=%{bin}%" ]
-remove      : [make "uninstall"]
-depends: [
-  "ocaml" {>= "4.03.0" & <= "4.06.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "earley" {= "1.0.1"}
-]
+name: "earley-ocaml"
+version: "1.0.1"
 synopsis:
   "Earley-OCaml extensible parser for OCaml (and pa_ocaml preprocessos)"
 description: """
@@ -26,6 +12,27 @@ be used to define Earley parsers inside the language.
 Authors:
  - Christophe Raffalli <christophe@raffalli.eu>
  - Rodolphe Lepigre <rodolphe.lepigre@lepigre.fr>"""
+maintainer: "Christophe Raffalli <christophe@raffalli.eu>"
+authors: [
+  "Christophe Raffalli <christophe@raffalli.eu>"
+  "Rodolphe Lepigre <rodolphe.lepigre@inria.fr>"
+]
+license: "CeCILL-B_V1"
+homepage: "https://github.com/rlepigre/ocaml-earley-ocaml"
+bug-reports: "https://github.com/rlepigre/ocaml-earley-ocaml/issues"
+depends: [
+  "earley" {= "1.0.1"}
+  "ocaml" {>= "4.03.0" & <= "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+build: [
+  [make]
+  [make]
+]
+install: [make "install" "BINDIR=%{bin}%"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/rlepigre/ocaml-earley-ocaml.git"
 url {
   src:
     "https://github.com/rlepigre/ocaml-earley-ocaml/archive/ocaml-earley-ocaml_1.0.1.tar.gz"

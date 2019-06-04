@@ -1,27 +1,26 @@
 opam-version: "2.0"
+name: "xen-disk"
+version: "1.0.2"
+synopsis:
+  "A command-line tool for attaching disks to VMs running on a xen host."
 maintainer: "dave.scott@eu.citrix.com"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: make
-remove: [[make "uninstall" "BINDIR=%{bin}%"]]
+tags: ["org:mirage" "org:xapi-project"]
 depends: [
+  "cmdliner"
+  "mirage-unix"
+  "obuild"
   "ocaml"
   "ocamlfind"
-  "obuild"
-  "mirage-unix"
+  "vhd-format"
   "xen-block-driver" {>= "0.2.0"}
   "xenctrl" {>= "0.9.7"}
   "xenstore"
   "xenstore_transport"
-  "vhd-format"
-  "cmdliner"
 ]
-dev-repo: "git://github.com/mirage/xen-disk"
+build: make
 install: [make "install" "BINDIR=%{bin}%"]
-synopsis:
-  "A command-line tool for attaching disks to VMs running on a xen host."
+remove: [make "uninstall" "BINDIR=%{bin}%"]
+dev-repo: "git://github.com/mirage/xen-disk"
 url {
   src: "https://github.com/mirage/xen-disk/archive/1.0.2.tar.gz"
   checksum: "md5=e36a653bcff2c8b22d3f66c51a6bb7c6"

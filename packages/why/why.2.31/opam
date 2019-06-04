@@ -1,16 +1,29 @@
 opam-version: "2.0"
+name: "why"
+version: "2.31"
+synopsis: "Why is a software verification platform."
+description: """
+Why is not any longer under active development. Our efforts have moved
+to the development of Why3.
+
+Why is still maintained, in particular to provide the Jessie plug-in
+of Frama-C and the Krakatoa front-end for Java."""
 maintainer: "Claude.Marche@inria.fr"
 authors: [
-  "Jean-Christophe Filliâtre"
-  "Claude Marché"
-  "Yannick Moy"
-  "Romain Bardou"
+  "Claude Marché" "Jean-Christophe Filliâtre" "Romain Bardou" "Yannick Moy"
 ]
 homepage: "http://krakatoa.lri.fr/"
-doc: ["http://krakatoa.lri.fr/"]
-# dev-repo: "https://guest:guest@www.lri.fr/svn/demons/why2/trunk/"
-bug-reports: "https://gforge.inria.fr/tracker/?atid=4012&group_id=999&func=browse"
-substs: ["opam.patch"]
+doc: "http://krakatoa.lri.fr/"
+bug-reports:
+  "https://gforge.inria.fr/tracker/?atid=4012&group_id=999&func=browse"
+depends: [
+  "conf-autoconf"
+  "coq" {= "8.3"}
+  "frama-c"
+  "lablgtk" {<= "2.16.0"}
+  "ocaml" {< "4.00.0"}
+  "ocamlgraph" {= "1.8.2"}
+]
 build: [
   ["autoconf"]
   [
@@ -30,30 +43,13 @@ build: [
   ]
   [make]
 ]
-depends: [
-  "ocaml" {< "4.00.0"}
-  "lablgtk" {<= "2.16.0"}
-  "ocamlgraph" {= "1.8.2"}
-  "coq" {= "8.3"}
-  "frama-c"
-  "conf-autoconf"
-]
-patches: [
-  "opam.patch"
-  "warn-error.patch"
-]
 install: [make "install"]
-synopsis: "Why is a software verification platform."
-description: """
-Why is not any longer under active development. Our efforts have moved
-to the development of Why3.
-
-Why is still maintained, in particular to provide the Jessie plug-in
-of Frama-C and the Krakatoa front-end for Java."""
+substs: "opam.patch"
+patches: ["opam.patch" "warn-error.patch"]
 extra-files: [
-  ["why.install" "md5=b0739d72861b5701a4f93444489aa0eb"]
-  ["warn-error.patch" "md5=2686e176f48ec00aa9d76dc6743f2886"]
   ["opam.patch.in" "md5=892a95f565fe18b15eb03e6f2bc6a1e7"]
+  ["warn-error.patch" "md5=2686e176f48ec00aa9d76dc6743f2886"]
+  ["why.install" "md5=b0739d72861b5701a4f93444489aa0eb"]
 ]
 url {
   src: "http://why.lri.fr/download/why-2.31.tar.gz"

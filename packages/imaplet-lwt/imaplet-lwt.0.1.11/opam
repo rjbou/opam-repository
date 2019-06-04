@@ -1,13 +1,29 @@
 opam-version: "2.0"
 name: "imaplet-lwt"
 version: "0.1.11"
+synopsis: "IMAP server prototype, supports IMAPv4rev1"
 maintainer: "Gregory Tsipenyuk <gregtsip@gmail.com>"
 authors: "Gregory Tsipenyuk <gregtsip@gmail.com>"
 license: "MIT"
-dev-repo: "git://github.com/gregtatcam/imaplet-lwt"
 homepage: "https://github.com/gregtatcam/imaplet-lwt"
 bug-reports: "https://github.com/gregtatcam/imaplet-lwt/issues"
-
+depends: [
+  "camlp4"
+  "cohttp" {>= "0.16.1"}
+  "fieldslib" {<= "113.00.00"}
+  "git" {>= "1.4.11"}
+  "irmin" {>= "0.9.4" & < "0.10.0"}
+  "irmin-unix" {< "0.12.0"}
+  "lwt"
+  "menhir"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "re"
+  "sexplib" {<= "113.00.00"}
+  "tls" {= "0.4.0"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix=%{prefix}%"]
   [make]
@@ -17,24 +33,7 @@ remove: [
   ["ocamlfind" "remove" "imaplet"]
   ["rm" "-f" "%{bin}%/imaplet*"]
 ]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "lwt"
-  "cohttp" {>= "0.16.1"}
-  "git" {>= "1.4.11"}
-  "irmin" {>= "0.9.4" & < "0.10.0"}
-  "irmin-unix" {< "0.12.0"}
-  "re"
-  "tls" {= "0.4.0"}
-  "menhir"
-  "camlp4"
-  "sexplib" {<= "113.00.00"}
-  "fieldslib" {<= "113.00.00"}
-  "ocamlbuild" {build}
-]
-synopsis: "IMAP server prototype, supports IMAPv4rev1"
-flags: light-uninstall
+dev-repo: "git://github.com/gregtatcam/imaplet-lwt"
 url {
   src: "https://github.com/gregtatcam/imaplet-lwt/archive/v0.1.11.tar.gz"
   checksum: "md5=cdf101b506bb43ea19646a90a853a1bf"

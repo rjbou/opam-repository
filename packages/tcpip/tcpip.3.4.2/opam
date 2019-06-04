@@ -1,51 +1,6 @@
 opam-version: "2.0"
-maintainer:   "anil@recoil.org"
-homepage:     "https://github.com/mirage/mirage-tcpip"
-dev-repo: "git+https://github.com/mirage/mirage-tcpip.git"
-bug-reports:  "https://github.com/mirage/mirage-tcpip/issues"
-authors: [
-  "Anil Madhavapeddy" "Balraj Singh" "Richard Mortier" "Nicolas Ojeda Bar"
-  "Thomas Gazagnaire" "Vincent Bernardoff" "Magnus Skjegstad" "Mindy Preston"
-  "Thomas Leonard" "David Scott" "Gabor Pali" "Hannes Mehnert" "Haris Rotsos"
-  "Kia" "Luke Dunstan" "Pablo Polvorin" "Tim Cuthbertson" "lnmx" "pqwy" ]
-license: "ISC"
-tags: ["org:mirage"]
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "configurator" {build & < "v0.13"}
-  "rresult" {>= "0.5.0"}
-  "cstruct" {>= "3.0.2"}
-  "cstruct-lwt"
-  "mirage-net" {>= "1.0.0" & < "2.0.0"}
-  "mirage-net-lwt" {>= "1.0.0" & < "2.0.0"}
-  "mirage-clock" {>= "1.2.0"}
-  "mirage-random" {>= "1.0.0" & < "1.2.0"}
-  "mirage-clock-lwt" {>= "1.2.0"}
-  "mirage-stack-lwt" {>= "1.2.0" & < "1.3.0"}
-  "mirage-protocols" {>= "1.3.0" & < "1.4.0"}
-  "mirage-protocols-lwt" {>= "1.3.0" & < "1.4.0"}
-  "mirage-time-lwt" {>= "1.0.0"}
-  "ipaddr" {>= "2.2.0" & < "3.0.0"}
-  "mirage-profile" {>= "0.5"}
-  "fmt"
-  "lwt" {>= "3.0.0"}
-  "logs" {>= "0.6.0"}
-  "duration"
-  "io-page-unix"
-  "randomconv"
-  "mirage-flow" {with-test & >= "1.2.0"}
-  "mirage-vnetif" {with-test & >= "0.4.0"}
-  "alcotest" {with-test & >= "0.7.0"}
-  "pcap-format" {with-test}
-  "mirage-clock-unix" {with-test & >= "1.2.0" & < "2.0.0"}
-]
+name: "tcpip"
+version: "3.4.2"
 synopsis: "An OCaml TCP/IP networking stack"
 description: """
 `mirage-tcpip` provides a networking stack for the [Mirage operating
@@ -96,6 +51,68 @@ applications which will run as unikernels on a hypervisor target.
 ## License
 
 `mirage-tcpip` is distributed under the ISC license."""
+maintainer: "anil@recoil.org"
+authors: [
+  "Anil Madhavapeddy"
+  "Balraj Singh"
+  "David Scott"
+  "Gabor Pali"
+  "Hannes Mehnert"
+  "Haris Rotsos"
+  "Kia"
+  "Luke Dunstan"
+  "Magnus Skjegstad"
+  "Mindy Preston"
+  "Nicolas Ojeda Bar"
+  "Pablo Polvorin"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Thomas Leonard"
+  "Tim Cuthbertson"
+  "Vincent Bernardoff"
+  "lnmx"
+  "pqwy"
+]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-tcpip"
+bug-reports: "https://github.com/mirage/mirage-tcpip/issues"
+depends: [
+  "alcotest" {with-test & >= "0.7.0"}
+  "configurator" {build & < "v0.13"}
+  "cstruct" {>= "3.0.2"}
+  "cstruct-lwt"
+  "duration"
+  "fmt"
+  "io-page-unix"
+  "ipaddr" {>= "2.2.0" & < "3.0.0"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "logs" {>= "0.6.0"}
+  "lwt" {>= "3.0.0"}
+  "mirage-clock" {>= "1.2.0"}
+  "mirage-clock-lwt" {>= "1.2.0"}
+  "mirage-clock-unix" {with-test & >= "1.2.0" & < "2.0.0"}
+  "mirage-flow" {with-test & >= "1.2.0"}
+  "mirage-net" {>= "1.0.0" & < "2.0.0"}
+  "mirage-net-lwt" {>= "1.0.0" & < "2.0.0"}
+  "mirage-profile" {>= "0.5"}
+  "mirage-protocols" {>= "1.3.0" & < "1.4.0"}
+  "mirage-protocols-lwt" {>= "1.3.0" & < "1.4.0"}
+  "mirage-random" {>= "1.0.0" & < "1.2.0"}
+  "mirage-stack-lwt" {>= "1.2.0" & < "1.3.0"}
+  "mirage-time-lwt" {>= "1.0.0"}
+  "mirage-vnetif" {with-test & >= "0.4.0"}
+  "ocaml" {>= "4.03.0"}
+  "pcap-format" {with-test}
+  "randomconv"
+  "rresult" {>= "0.5.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/mirage-tcpip.git"
 url {
   src:
     "https://github.com/mirage/mirage-tcpip/releases/download/v3.4.2/tcpip-3.4.2.tbz"

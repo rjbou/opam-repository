@@ -1,32 +1,30 @@
 opam-version: "2.0"
 name: "kinetic-client"
 version: "0.0.4"
+synopsis: "Client for Seagate's kinetic drives."
 maintainer: "Romain Slootmaekers <romain.slootmaekers@cloudfounders.com>"
 authors: "Romain Slootmaekers <romain.slootmaekers@cloudfounders.com>"
+license: "LGPL"
 homepage: "https://github.com/CloudFounders/kinetic-ocaml-client"
 bug-reports: "https://github.com/cloudfounders/kinetic-ocaml-client"
-license: "LGPL"
-build: [
-  [make]
-]
-install: [make "install-lib"]
-remove: ["ocamlfind" "remove" "kinetic-client"]
 depends: [
+  "cryptokit"
+  "lwt" {< "4.0.0"}
   "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
   "ocamlfind" {build}
   "piqi" {build & >= "0.7.1"}
-  "lwt" {< "4.0.0"}
-  "cryptokit"
-  "ocamlbuild" {build}
 ]
+flags: light-uninstall
+build: make
+install: [make "install-lib"]
+remove: ["ocamlfind" "remove" "kinetic-client"]
 depexts: [
+  ["protobuf"] {os = "macos" & os-distribution = "homebrew"}
   ["protobuf-compiler"] {os-distribution = "debian"}
   ["protobuf-compiler"] {os-distribution = "ubuntu"}
-  ["protobuf"] {os = "macos" & os-distribution = "homebrew"}
 ]
 dev-repo: "git://github.com/CloudFounders/kinetic-ocaml-client"
-synopsis: "Client for Seagate's kinetic drives."
-flags: light-uninstall
 url {
   src:
     "https://github.com/CloudFounders/kinetic-ocaml-client/archive/0.0.4.tar.gz"

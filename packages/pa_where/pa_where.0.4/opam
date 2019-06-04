@@ -1,26 +1,28 @@
 opam-version: "2.0"
-maintainer: "Max Mouratov <mmouratov@gmail.com>"
-homepage: "https://github.com/cakeplus/pa_comprehension/"
-license: "LGPL-2.1 with OCaml linking exception"
-build: [
-  ["ocaml" "setup.ml" "-configure"]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "pa_where"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "camlp4"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/cakeplus/pa_where"
-install: ["ocaml" "setup.ml" "-install"]
+name: "pa_where"
+version: "0.4"
 synopsis: "Backward declaration syntax"
 description: """
 Pa_where provides a syntax for backward declarations (allowing a
 top-to-bottom declarative style), using the "where" keyword.
 Local definitions in expressions and toplevel definitions are both supported."""
+maintainer: "Max Mouratov <mmouratov@gmail.com>"
+license: "LGPL-2.1 with OCaml linking exception"
+homepage: "https://github.com/cakeplus/pa_comprehension/"
+depends: [
+  "camlp4"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure"]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "pa_where"]
+dev-repo: "git://github.com/cakeplus/pa_where"
 url {
   src: "https://github.com/cakeplus/pa_where/archive/0.4.tar.gz"
   checksum: "md5=714f53dde03930b06caa6d0981b69a29"

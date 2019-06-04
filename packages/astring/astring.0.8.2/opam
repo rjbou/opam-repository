@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/astring"
-doc: "http://erratique.ch/software/astring/doc"
-dev-repo: "git+http://erratique.ch/repos/astring.git"
-bug-reports: "https://github.com/dbuenzli/astring/issues"
-tags: [ "string" "org:erratique" ]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "base-bytes"
-]
-build: [[
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%" ]]
+name: "astring"
+version: "0.8.2"
 synopsis: "Alternative String module for OCaml"
 description: """
 Release %%VERSION%%
@@ -34,6 +18,22 @@ newfound string immutability.
 
 Astring depends only on the OCaml standard library. It is distributed
 under the ISC license."""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+tags: ["org:erratique" "string"]
+homepage: "http://erratique.ch/software/astring"
+doc: "http://erratique.ch/software/astring/doc"
+bug-reports: "https://github.com/dbuenzli/astring/issues"
+depends: [
+  "base-bytes"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+http://erratique.ch/repos/astring.git"
 url {
   src: "http://erratique.ch/software/astring/releases/astring-0.8.2.tbz"
   checksum: "md5=533f5b9a7c99b591043f69782123bd78"

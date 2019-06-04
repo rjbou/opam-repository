@@ -1,28 +1,27 @@
 opam-version: "2.0"
 name: "bap-ida-plugin"
 version: "1.6.0"
+synopsis: "Plugins for IDA and BAP integration"
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
+depends: [
+  "bap" {= "1.6.0"}
+  "cmdliner"
+  "ocaml" {>= "4.04.1" & < "4.08.0"}
+]
 build: [
   ["./configure" "--prefix=%{prefix}%" "--enable-ida-plugin"]
   [make]
 ]
-install: [[make "install"]]
+install: [make "install"]
 remove: [
-        ["ocamlfind" "remove" "bap-plugin-emit_ida_script"]
-        [ "bapbundle" "remove" "emit_ida_script.plugin"]
-
+  ["ocamlfind" "remove" "bap-plugin-emit_ida_script"]
+  ["bapbundle" "remove" "emit_ida_script.plugin"]
 ]
-depends: [
-  "ocaml" {>= "4.04.1" & < "4.08.0"}
-  "bap" {= "1.6.0"}
-  "cmdliner"
-]
-synopsis: "Plugins for IDA and BAP integration"
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.6.0.tar.gz"
   checksum: "md5=0ccf6571613c0666a37d154c7f70af4f"

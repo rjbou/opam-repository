@@ -1,35 +1,37 @@
 opam-version: "2.0"
-maintainer:    "anil@recoil.org"
-homepage:      "https://github.com/mirage/mirage-console"
-bug-reports:   "https://github.com/mirage/mirage-console/issues"
-dev-repo: "git+https://github.com/mirage/mirage-console.git"
-doc:           "https://mirage.github.io/mirage-console/"
-authors:       [ "Anil Madhavapeddy" "David Scott"]
-tags:          [ "org:mirage" "org:xapi-project"]
-license:       "ISC"
-
-build: ["ocaml" "pkg/pkg.ml" "build" "--pkg-name" name "--pinned" "%{pinned}%"]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "mirage-console" {>= "2.2.0"}
-  "mirage-console-lwt" {>= "2.2.0"}
-  "lwt"
-  "cstruct" {< "3.0.0"}
-  "cstruct-lwt"
-  "ipaddr"
-  "io-page"
-  "cmdliner"
-  "mirage-unix" {>= "1.1.0"}
-  "xenstore_transport"
-  "xenctrl"
-  "xen-gnt"
-  "mirage-console-xen-backend" {>= "2.2.0"}
-  "mirage-console-unix" {>= "2.2.0"}
-]
+name: "mirage-console-xen-cli"
+version: "2.2.0"
 synopsis:
   "Libraries for interacting with the Xen console command-line interface."
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "David Scott"]
+license: "ISC"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/mirage-console"
+doc: "https://mirage.github.io/mirage-console/"
+bug-reports: "https://github.com/mirage/mirage-console/issues"
+depends: [
+  "cmdliner"
+  "cstruct" {< "3.0.0"}
+  "cstruct-lwt"
+  "io-page"
+  "ipaddr"
+  "lwt"
+  "mirage-console" {>= "2.2.0"}
+  "mirage-console-lwt" {>= "2.2.0"}
+  "mirage-console-unix" {>= "2.2.0"}
+  "mirage-console-xen-backend" {>= "2.2.0"}
+  "mirage-unix" {>= "1.1.0"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlfind" {build}
+  "xen-gnt"
+  "xenctrl"
+  "xenstore_transport"
+]
+build: [
+  "ocaml" "pkg/pkg.ml" "build" "--pkg-name" name "--pinned" "%{pinned}%"
+]
+dev-repo: "git+https://github.com/mirage/mirage-console.git"
 url {
   src:
     "https://github.com/mirage/mirage-console/releases/download/2.2.0/mirage-console-xen-cli-2.2.0.tbz"

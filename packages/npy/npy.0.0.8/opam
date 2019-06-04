@@ -1,19 +1,20 @@
 opam-version: "2.0"
-bug-reports:  "https://github.com/LaurentMazare/npy-ocaml/issues"
-homepage:     "https://github.com/LaurentMazare/npy-ocaml"
-dev-repo:     "git+https://github.com/LaurentMazare/npy-ocaml.git"
-maintainer:   "Laurent Mazare <lmazare@gmail.com>"
-authors:      [ "Laurent Mazare" ]
-
-build: [["dune" "build" "-p" name "-j" jobs]]
+name: "npy"
+version: "0.0.8"
+synopsis: "Numpy npy file format reading/writing."
+description:
+  "Provide simple read/write function using the numpy npy/npz file formats. These can be used to save a bigarray to disk and then load it from python using numpy."
+maintainer: "Laurent Mazare <lmazare@gmail.com>"
+authors: "Laurent Mazare"
+homepage: "https://github.com/LaurentMazare/npy-ocaml"
+bug-reports: "https://github.com/LaurentMazare/npy-ocaml/issues"
 depends: [
   "camlzip"
   "dune" {build}
   "ocaml" {>= "4.06"}
 ]
-synopsis: "Numpy npy file format reading/writing."
-description:
-  "Provide simple read/write function using the numpy npy/npz file formats. These can be used to save a bigarray to disk and then load it from python using numpy."
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/LaurentMazare/npy-ocaml.git"
 url {
   src: "https://github.com/LaurentMazare/npy-ocaml/archive/0.0.8.tar.gz"
   checksum: [

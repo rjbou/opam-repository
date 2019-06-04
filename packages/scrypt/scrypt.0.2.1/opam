@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "Nikolay Zalutskiy <pacemkr@gmail.com>"
-authors: ["Nikolay Zalutskiy <pacemkr@gmail.com>"]
-homepage: "https://github.com/constfun/ocaml-scrypt"
-doc: "https://constfun.github.io/ocaml-scrypt/"
-dev-repo: "git+https://github.com/constfun/ocaml-scrypt.git"
-bug-reports: "https://github.com/constfun/ocaml-scrypt/issues"
-license: "BSD-2-Clause"
-build: make
-remove: [
-  ["ocamlfind" "remove" "scrypt"]
-]
-depends: ["ocaml" "ocamlfind" "conf-openssl"]
-patches: [
-  "no-ctypes-dependency.patch"
-]
-install: [make "install"]
-available: os != "macos"
+name: "scrypt"
+version: "0.2.1"
 synopsis:
   "C bindings and a high level interface to the official scrypt distribution."
 description: """
@@ -24,7 +9,20 @@ scrypt is key derivation function designed to be far more secure against hardwar
 scrypt was originally developed by Colin Percival for use in the Tarnsnap online backup system.
 
 More information can be found at https://www.tarsnap.com/scrypt.html"""
+maintainer: "Nikolay Zalutskiy <pacemkr@gmail.com>"
+authors: "Nikolay Zalutskiy <pacemkr@gmail.com>"
+license: "BSD-2-Clause"
+homepage: "https://github.com/constfun/ocaml-scrypt"
+doc: "https://constfun.github.io/ocaml-scrypt/"
+bug-reports: "https://github.com/constfun/ocaml-scrypt/issues"
+depends: ["conf-openssl" "ocaml" "ocamlfind"]
+available: os != "macos"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "scrypt"]
+patches: "no-ctypes-dependency.patch"
+dev-repo: "git+https://github.com/constfun/ocaml-scrypt.git"
 extra-files: [
   "no-ctypes-dependency.patch" "md5=8e78eebac9e9168468a7431b69cbce87"
 ]

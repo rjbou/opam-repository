@@ -1,40 +1,61 @@
 opam-version: "2.0"
+name: "frama-c"
+version: "9.1"
+synopsis:
+  "Platform dedicated to the static analysis of source code written in C"
+description: """
+Frama-C is a suite of tools dedicated to the analysis of the source
+code of software written in C. Fluorine version.
+
+Frama-C gathers several static analysis techniques in a single
+collaborative framework. The collaborative approach of Frama-C allows
+static analyzers to build upon the results already computed by other
+analyzers in the framework. Thanks to this approach, Frama-C provides
+sophisticated tools, such as a slicer and dependency analysis."""
 maintainer: "francois.bobot@cea.fr"
 authors: [
-  "Patrick Baudin"
-  "François Bobot"
-  "Richard Bonichon"
-  "Loïc Correnson"
-  "Pascal Cuoq"
-  "Zaynah Dargaye"
-  "Jean-Christophe Filliâtre"
-  "Philippe Herrmann"
-  "Florent Kirchner"
-  "Matthieu Lemerre"
-  "Claude Marché"
-  "Benjamin Monate"
-  "Yannick Moy"
   "Anne Pacalet"
-  "Virgile Prévosto"
-  "Julien Signoles"
+  "Benjamin Monate"
   "Boris Yakobowski"
+  "Claude Marché"
+  "Florent Kirchner"
+  "François Bobot"
+  "Jean-Christophe Filliâtre"
+  "Julien Signoles"
+  "Loïc Correnson"
+  "Matthieu Lemerre"
+  "Pascal Cuoq"
+  "Patrick Baudin"
+  "Philippe Herrmann"
+  "Richard Bonichon"
+  "Virgile Prévosto"
+  "Yannick Moy"
+  "Zaynah Dargaye"
 ]
-homepage: "http://frama-c.com/"
 license: "GNU Lesser General Public License version 2.1"
-doc: ["http://frama-c.com/download/user-manual-Fluorine-20130601.pdf"]
 tags: [
-  "deductive"
-  "program verification"
-  "formal specification"
-  "automated theorem prover"
-  "interactive theorem prover"
+  "ACSL"
   "C"
-  "plugins"
   "abstract interpretation"
+  "automated theorem prover"
+  "dataflow analysis"
+  "deductive"
+  "formal specification"
+  "interactive theorem prover"
+  "plugins"
+  "program verification"
   "slicing"
   "weakest precondition"
-  "ACSL"
-  "dataflow analysis"
+]
+homepage: "http://frama-c.com/"
+doc: "http://frama-c.com/download/user-manual-Fluorine-20130601.pdf"
+depends: [
+  "camlp4"
+  "conf-gnomecanvas"
+  "conf-gtksourceview"
+  "lablgtk"
+  "ocaml" {< "4.02.0"}
+  "ocamlgraph" {>= "1.8.3"}
 ]
 build: [
   [
@@ -52,30 +73,11 @@ build: [
   ]
   [make]
 ]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlgraph" {>= "1.8.3"}
-  "lablgtk"
-  "conf-gtksourceview"
-  "conf-gnomecanvas"
-  "camlp4"
-]
-patches: ["4.01-compat.patch"]
 install: [make "install"]
-synopsis:
-  "Platform dedicated to the static analysis of source code written in C"
-description: """
-Frama-C is a suite of tools dedicated to the analysis of the source
-code of software written in C. Fluorine version.
-
-Frama-C gathers several static analysis techniques in a single
-collaborative framework. The collaborative approach of Frama-C allows
-static analyzers to build upon the results already computed by other
-analyzers in the framework. Thanks to this approach, Frama-C provides
-sophisticated tools, such as a slicer and dependency analysis."""
+patches: "4.01-compat.patch"
 extra-files: [
-  ["frama-c.install" "md5=86508360ef0e4127e85baa4dc2e60a47"]
   ["4.01-compat.patch" "md5=2895719ab5d27936e10338dfc2e2cdf0"]
+  ["frama-c.install" "md5=86508360ef0e4127e85baa4dc2e60a47"]
 ]
 url {
   src: "http://frama-c.com/download/frama-c-Fluorine-20130601.tar.gz"

@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/ocaml-ppx/ppxlib"
-bug-reports: "https://github.com/ocaml-ppx/ppxlib/issues"
-dev-repo: "git+https://github.com/ocaml-ppx/ppxlib.git"
-doc: "https://ocaml-ppx.github.io/ppxlib/"
-license: "MIT"
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-]
-run-test: [
-  ["dune" "runtest" "-p" name "-j" jobs] { ocaml >= "4.06" }
-]
-depends: [
-  "ocaml"                   {>= "4.04.1" & < "4.08.0"}
-  "base"                    {>= "v0.11.0" & < "v0.13"}
-  "dune"                    {build}
-  "ocaml-compiler-libs"     {>= "v0.11.0"}
-  "ocaml-migrate-parsetree" {>= "1.0.9"}
-  "ppx_derivers"            {>= "1.0"}
-  "stdio"                   {>= "v0.11.0" & < "v0.13"}
-  "ocamlfind"               {with-test}
-]
+name: "ppxlib"
+version: "0.5.0"
 synopsis: "Base library and tools for ppx rewriters"
 description: """
 A comprehensive toolbox for ppx development. It features:
@@ -33,8 +11,29 @@ A comprehensive toolbox for ppx development. It features:
 - a feature-full driver for OCaml AST transformers;
 - a quotation mechanism allowing  to write values representing the
    OCaml AST in the OCaml syntax;
-- a generator of open recursion classes from type definitions.
-"""
+- a generator of open recursion classes from type definitions."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "MIT"
+homepage: "https://github.com/ocaml-ppx/ppxlib"
+doc: "https://ocaml-ppx.github.io/ppxlib/"
+bug-reports: "https://github.com/ocaml-ppx/ppxlib/issues"
+depends: [
+  "base" {>= "v0.11.0" & < "v0.13"}
+  "dune" {build}
+  "ocaml" {>= "4.04.1" & < "4.08.0"}
+  "ocaml-compiler-libs" {>= "v0.11.0"}
+  "ocaml-migrate-parsetree" {>= "1.0.9"}
+  "ocamlfind" {with-test}
+  "ppx_derivers" {>= "1.0"}
+  "stdio" {>= "v0.11.0" & < "v0.13"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+run-test: ["dune" "runtest" "-p" name "-j" jobs] {ocaml >= "4.06"}
+dev-repo: "git+https://github.com/ocaml-ppx/ppxlib.git"
 url {
   src:
     "https://github.com/ocaml-ppx/ppxlib/releases/download/0.5.0/ppxlib-0.5.0.tbz"

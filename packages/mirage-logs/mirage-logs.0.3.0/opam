@@ -1,25 +1,32 @@
 opam-version: "2.0"
+name: "mirage-logs"
+version: "0.3.0"
+synopsis:
+  "A reporter for the Logs library that writes log messages to stderr, using a Mirage `CLOCK` to add timestamps."
+description: """
+It can also log only important messages to the console, while writing all received messages to a ring buffer which is displayed if an exception occurs.
+
+If tracing is enabled (via mirage-profile), it also writes each log message to the trace buffer."""
 maintainer: "talex5@gmail.com"
-authors: [ "Thomas Leonard" ]
+authors: "Thomas Leonard"
 license: "ISC"
+tags: "org:mirage"
 homepage: "https://github.com/mirage/mirage-logs"
-dev-repo: "git+https://github.com/mirage/mirage-logs.git"
 bug-reports: "https://github.com/mirage/mirage-logs/issues"
-tags: ["org:mirage"]
 depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
+  "alcotest" {with-test}
   "logs" {>= "0.5.0"}
-  "ptime" {>= "0.8.1"}
+  "lwt"
   "mirage-clock" {>= "1.2.0"}
   "mirage-profile"
-  "lwt"
-  "alcotest" {with-test}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ptime" {>= "0.8.1"}
+  "topkg" {build}
 ]
 conflicts: [
-  "mirage-types" { < "3.0.0" }
+  "mirage-types" {< "3.0.0"}
 ]
 build: [
   ["ocaml" "pkg/pkg.ml" "build" "--tests" "false" "--pinned" "%{pinned}%"]
@@ -27,12 +34,7 @@ build: [
     {with-test}
   ["ocaml" "pkg/pkg.ml" "test"] {with-test}
 ]
-synopsis:
-  "A reporter for the Logs library that writes log messages to stderr, using a Mirage `CLOCK` to add timestamps."
-description: """
-It can also log only important messages to the console, while writing all received messages to a ring buffer which is displayed if an exception occurs.
-
-If tracing is enabled (via mirage-profile), it also writes each log message to the trace buffer."""
+dev-repo: "git+https://github.com/mirage/mirage-logs.git"
 url {
   src:
     "https://github.com/mirage/mirage-logs/releases/download/0.3.0/mirage-logs-0.3.0.tbz"

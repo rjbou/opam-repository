@@ -1,10 +1,26 @@
 opam-version: "2.0"
+name: "enumerators"
+version: "0.1.1"
+synopsis: "Finite lazy enumerators"
+description: """
+This library enables you to work with large sequences of elements.  It provides
+constructors and combinators to build finite sequences that can be iterated through with a
+low memory footprint."""
 maintainer: "Bertrand Bonnefoy-Claudet <bertrand@cryptosense.com>"
 authors: "Bertrand Bonnefoy-Claudet <bertrand@cryptosense.com>"
+license: "BSD-2"
 homepage: "https://github.com/cryptosense/enumerators"
 bug-reports: "https://github.com/cryptosense/enumerators/issues"
-license: "BSD-2"
-dev-repo: "git+https://github.com/cryptosense/enumerators.git"
+depends: [
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+]
+depopts: [
+  "bisect_ppx" {with-test}
+]
+flags: light-uninstall
 build: [
   [make] {ocaml:native}
   [make "byte"] {!ocaml:native}
@@ -12,21 +28,7 @@ build: [
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "enumerators"]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "ounit" {with-test}
-]
-depopts: [
-  "bisect_ppx" {with-test}
-]
-synopsis: "Finite lazy enumerators"
-description: """
-This library enables you to work with large sequences of elements.  It provides
-constructors and combinators to build finite sequences that can be iterated through with a
-low memory footprint."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/cryptosense/enumerators.git"
 url {
   src: "https://github.com/cryptosense/enumerators/archive/v0.1.1.tar.gz"
   checksum: "md5=8e5c1392d4aa12e0baf49076cf650c9b"

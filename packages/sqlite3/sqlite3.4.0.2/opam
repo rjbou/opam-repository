@@ -1,12 +1,31 @@
 opam-version: "2.0"
+name: "sqlite3"
+version: "4.0.2"
+synopsis: "SQLite3 bindings"
+description: """
+sqlite3-ocaml is an OCaml library with bindings to the SQLite3 client
+API. Sqlite3 is a self-contained, serverless, zero-configuration,
+transactional SQL database engine with outstanding performance for
+many use cases. These bindings are written in a way that enables a
+friendly coexistence with the old (version 2) SQLite and its OCaml
+wrapper ocaml-sqlite."""
 maintainer: "Markus Mottl <markus.mottl@gmail.com>"
-authors: [ "Markus Mottl <markus.mottl@gmail.com>"
-           "Christian Szegedy <csdontspam@metamatix.com>" ]
+authors: [
+  "Christian Szegedy <csdontspam@metamatix.com>"
+  "Markus Mottl <markus.mottl@gmail.com>"
+]
 license: "LGPL-2.1+ with OCaml linking exception"
+tags: ["clib:pthread" "clib:sqlite3"]
 homepage: "http://mmottl.github.io/sqlite3-ocaml"
-dev-repo: "git+https://github.com/mmottl/sqlite3-ocaml.git"
 bug-reports: "https://github.com/mmottl/sqlite3-ocaml/issues"
-tags: [ "clib:sqlite3" "clib:pthread"  ]
+depends: [
+  "conf-pkg-config" {build}
+  "conf-sqlite3" {build}
+  "ocaml" {>= "3.12"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.3.1"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"] {os != "macos"}
@@ -18,25 +37,8 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "sqlite3"]
-]
-depends: [
-  "ocaml" {>= "3.12"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build & >= "1.3.1"}
-  "conf-pkg-config" {build}
-  "conf-sqlite3" {build}
-]
-synopsis: "SQLite3 bindings"
-description: """
-sqlite3-ocaml is an OCaml library with bindings to the SQLite3 client
-API. Sqlite3 is a self-contained, serverless, zero-configuration,
-transactional SQL database engine with outstanding performance for
-many use cases. These bindings are written in a way that enables a
-friendly coexistence with the old (version 2) SQLite and its OCaml
-wrapper ocaml-sqlite."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "sqlite3"]
+dev-repo: "git+https://github.com/mmottl/sqlite3-ocaml.git"
 url {
   src:
     "https://github.com/mmottl/sqlite3-ocaml/releases/download/v4.0.2/sqlite3-ocaml-4.0.2.tar.gz"

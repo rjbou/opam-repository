@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "Hannes Mehnert <hannes@mehnert.org>"
-authors: ["Hannes Mehnert <hannes@mehnert.org>"]
-homepage: "https://github.com/hannesm/gmap"
-doc: "https://hannesm.github.io/gmap/doc"
-dev-repo: "git+https://github.com/hannesm/gmap.git"
-bug-reports: "https://github.com/hannesm/gmap/issues"
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.04.2"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "fmt"
-]
-build: [
-  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false" ]
-]
+name: "gmap"
+version: "0.1.0"
 synopsis: "Heterogenous maps over a GADT"
 description: """
 Gmap exposes the functor `Make` which takes a key type (a GADT 'a key) and
@@ -66,6 +51,23 @@ Discussing this problem with Justus Matthiesen, we came up with this design. Its
 main difference to Daniel C. Bünzli's [hmap](http://erratique.ch/software/hmap)
 is that in gmap the key-value GADT type must be provided when instantiating the
 functor.  In hmap, keys are created dynamically."""
+maintainer: "Hannes Mehnert <hannes@mehnert.org>"
+authors: "Hannes Mehnert <hannes@mehnert.org>"
+license: "ISC"
+homepage: "https://github.com/hannesm/gmap"
+doc: "https://hannesm.github.io/gmap/doc"
+bug-reports: "https://github.com/hannesm/gmap/issues"
+depends: [
+  "fmt"
+  "ocaml" {>= "4.04.2"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+build: [
+  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"
+]
+dev-repo: "git+https://github.com/hannesm/gmap.git"
 url {
   src:
     "https://github.com/hannesm/gmap/releases/download/0.1.0/gmap-0.1.0.tbz"

@@ -1,11 +1,23 @@
 opam-version: "2.0"
-homepage:     "https://github.com/hannesm/ocaml-hkdf"
-dev-repo: "git+https://github.com/hannesm/ocaml-hkdf.git"
-bug-reports:  "https://github.com/hannesm/ocaml-hkdf/issues"
-authors:      ["Hannes Mehnert <hannes@mehnert.org>"]
-maintainer:   ["Hannes Mehnert <hannes@mehnert.org>"]
-license:      "BSD2"
-
+name: "hkdf"
+version: "1.0.1"
+synopsis:
+  "HMAC-based Extract-and-Expand Key Derivation Function (HKDF), RFC5869"
+description:
+  "An implementation of HKDF, including test cases from RFC 5869, in OCaml.  This is used in various protocols, including IKEv2, PANA, EAP-AKA."
+maintainer: "Hannes Mehnert <hannes@mehnert.org>"
+authors: "Hannes Mehnert <hannes@mehnert.org>"
+license: "BSD2"
+homepage: "https://github.com/hannesm/ocaml-hkdf"
+bug-reports: "https://github.com/hannesm/ocaml-hkdf/issues"
+depends: [
+  "alcotest" {with-test}
+  "cstruct" {>= "1.6.0"}
+  "nocrypto" {>= "0.5.0"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 build: [
   [
     "ocaml"
@@ -27,18 +39,7 @@ build: [
     "if test -f ./rfctests.native; then ./rfctests.native; else ./rfctests.byte; fi"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "cstruct" {>= "1.6.0"}
-  "nocrypto" {>= "0.5.0"}
-  "alcotest" {with-test}
-  "ocamlbuild" {build}
-]
-synopsis:
-  "HMAC-based Extract-and-Expand Key Derivation Function (HKDF), RFC5869"
-description:
-  "An implementation of HKDF, including test cases from RFC 5869, in OCaml.  This is used in various protocols, including IKEv2, PANA, EAP-AKA."
+dev-repo: "git+https://github.com/hannesm/ocaml-hkdf.git"
 url {
   src: "https://github.com/hannesm/ocaml-hkdf/archive/1.0.1.tar.gz"
   checksum: "md5=7974bdf65c1e0897fd0485f34bcc80ec"

@@ -1,5 +1,9 @@
 opam-version: "2.0"
+name: "ocamldsort"
+version: "0.16.0"
+synopsis: "Sorts a set of OCaml source files according to their dependencies"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: ["camlp4" "ocaml"]
 build: [
   [
     "./configure"
@@ -16,9 +20,7 @@ build: [
   ]
   [make]
 ]
-depends: ["ocaml" "camlp4"]
 install: [make "install"]
-synopsis: "Sorts a set of OCaml source files according to their dependencies"
 extra-files: ["ocamldsort.install" "md5=2559d16061178a281cd65ffc5af98243"]
 url {
   src:

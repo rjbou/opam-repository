@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "martin@mjambon.com"
-authors: ["Martin Jambon"]
-
-homepage: "https://github.com/mjambon/atd"
-bug-reports: "https://github.com/mjambon/atd/issues"
-dev-repo: "git+https://github.com/mjambon/atd.git"
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "atd" {>= "1.13.0" & < "2.0.0"}
-  "atdgen-runtime"
-  "biniou" {>= "1.0.6"}
-  "yojson" {>= "1.2.1"}
-]
+name: "atdgen"
+version: "1.13.0"
 synopsis:
   "Generates efficient JSON serializers, deserializers and validators"
 description: """
@@ -32,6 +15,24 @@ other.
 Atdgen was designed with efficiency and durability in mind. Software authors
 are encouraged to use Atdgen directly and to write tools that may reuse part of
 Atdgen’s source code."""
+maintainer: "martin@mjambon.com"
+authors: "Martin Jambon"
+homepage: "https://github.com/mjambon/atd"
+bug-reports: "https://github.com/mjambon/atd/issues"
+depends: [
+  "atd" {>= "1.13.0" & < "2.0.0"}
+  "atdgen-runtime"
+  "biniou" {>= "1.0.6"}
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+  "yojson" {>= "1.2.1"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/mjambon/atd.git"
 url {
   src: "https://github.com/mjambon/atd/archive/1.13.0.tar.gz"
   checksum: "md5=da11b6157d5674e2d27cfd401eb8003a"

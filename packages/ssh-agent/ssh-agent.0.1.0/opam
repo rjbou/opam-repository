@@ -1,24 +1,26 @@
 opam-version: "2.0"
+name: "ssh-agent"
+version: "0.1.0"
+synopsis: "Ssh-agent protocol parser and serialization implementation."
 maintainer: "Reynir Björnsson <reynir@reynir.dk>"
-dev-repo: "git+https://github.com/reynir/ocaml-ssh-agent.git"
+authors: "Reynir Björnsson <reynir@reynir.dk>"
+license: "BSD-2-clause"
 homepage: "https://github.com/reynir/ocaml-ssh-agent/"
 bug-reports: "https://github.com/reynir/ocaml-ssh-agent/issues/"
-license: "BSD-2-clause"
-build: ["jbuilder" "build" "-p" name]
 depends: [
-  "ocaml" {>= "4.04.0"}
+  "alcotest" {with-test}
+  "angstrom" {>= "0.10" & < "0.11"}
+  "cstruct"
+  "faraday" {>= "0.6" & < "0.7"}
   "jbuilder" {build}
+  "nocrypto"
+  "ocaml" {>= "4.04.0"}
   "ppx_cstruct" {build}
   "ppx_sexp_conv" {< "v0.13"}
-  "angstrom" {>= "0.10" & < "0.11"}
-  "faraday" {>= "0.6" & < "0.7"}
-  "nocrypto"
-  "cstruct"
-  "alcotest" {with-test}
   "sexplib" {with-test & < "v0.13"}
 ]
-synopsis: "Ssh-agent protocol parser and serialization implementation."
-authors: "Reynir Björnsson <reynir@reynir.dk>"
+build: ["jbuilder" "build" "-p" name]
+dev-repo: "git+https://github.com/reynir/ocaml-ssh-agent.git"
 url {
   src: "https://github.com/reynir/ocaml-ssh-agent/archive/v0.1.0.tar.gz"
   checksum: "md5=47ba2ef8a749a01cd75ad01e531778c0"

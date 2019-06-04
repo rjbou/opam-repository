@@ -1,37 +1,39 @@
 opam-version: "2.0"
+name: "jenga"
+version: "109.28.00"
+synopsis: "Build system"
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Capital LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/jenga"
+authors: "Jane Street Capital LLC <opensource@janestreet.com>"
 license: "Apache-2.0"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-remove: [["ocamlfind" "remove" "jenga"]]
+homepage: "https://github.com/janestreet/jenga"
+bug-reports: "https://github.com/janestreet/jenga/issues"
 depends: [
-  "ocaml" {>= "4.00.0" & < "4.03"}
-  "camlp4"
-  "ocamlfind" {>= "1.3.2"}
   "async" {= "109.27.00"}
   "async_inotify" {= "109.15.00"}
-  "async_shell" {= "109.28.00"}
   "async_parallel" {= "109.27.00"}
+  "async_shell" {= "109.28.00"}
   "bin_prot" {= "109.15.01"}
+  "camlp4"
   "comparelib" {= "109.27.00"}
   "core" {= "109.28.00"}
   "core_extended" {= "109.28.00"}
   "fieldslib" {= "109.20.00"}
+  "ocaml" {>= "4.00.0" & < "4.03"}
   "ocaml_plugin" {= "109.22.00"}
+  "ocamlbuild" {build}
+  "ocamlfind" {>= "1.3.2"}
   "pcre"
   "sexplib" {= "109.20.00"}
-  "ocamlbuild" {build}
 ]
 available: os = "linux"
-bug-reports: "https://github.com/janestreet/jenga/issues"
-dev-repo: "git+https://github.com/janestreet/jenga.git"
-install: [[make "install"]]
-synopsis: "Build system"
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "jenga"]
+dev-repo: "git+https://github.com/janestreet/jenga.git"
 extra-files: ["jenga.install" "md5=7a0921d353f6ace52148ed5d43a11e92"]
 url {
   src:

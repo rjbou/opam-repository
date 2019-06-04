@@ -1,22 +1,24 @@
 opam-version: "2.0"
-maintainer: "Danny Willems <contact@danny-willems.be>"
-authors: "Danny Willems <contact@danny-willems.be>"
-homepage: "https://github.com/dannywillems/ocaml-cordova"
-bug-reports: "https://github.com/dannywillems/ocaml-cordova/issues"
-license: "LGPL-3.0 with OCaml linking exception"
-dev-repo: "git+https://github.com/dannywillems/ocaml-cordova.git"
-build: [make "build"]
-install: [make "install"]
-remove: [make "remove"]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "gen_js_api"
-]
+name: "cordova"
+version: "1.0"
 synopsis: "Binding OCaml to cordova Javascript object."
 description: """
 Binding OCaml to cordova Javascript object. See
 https://github.com/dannywillems/ocaml-cordova-plugin-list for the complete list
 of bindings to Cordova plugins."""
+maintainer: "Danny Willems <contact@danny-willems.be>"
+authors: "Danny Willems <contact@danny-willems.be>"
+license: "LGPL-3.0 with OCaml linking exception"
+homepage: "https://github.com/dannywillems/ocaml-cordova"
+bug-reports: "https://github.com/dannywillems/ocaml-cordova/issues"
+depends: [
+  "gen_js_api"
+  "ocaml" {>= "4.03.0"}
+]
+build: [make "build"]
+install: [make "install"]
+remove: [make "remove"]
+dev-repo: "git+https://github.com/dannywillems/ocaml-cordova.git"
 url {
   src: "https://github.com/dannywillems/ocaml-cordova/archive/v1.0.zip"
   checksum: "md5=f4f1c70dd35cce5fd97e1716c7dadb7c"

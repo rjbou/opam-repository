@@ -1,37 +1,38 @@
 opam-version: "2.0"
-maintainer:   "dev@ocsigen.org"
-authors:      "Ocsigen team"
-bug-reports:  "https://github.com/ocsigen/js_of_ocaml/issues"
-homepage:     "http://ocsigen.org/js_of_ocaml"
-dev-repo: "git+https://github.com/ocsigen/js_of_ocaml.git"
-build:   [make "build"]
-install: [make "install-lib" "BINDIR=%{bin}%"]
-remove:  ["ocamlfind" "remove" "js_of_ocaml"]
-
+name: "js_of_ocaml"
+version: "2.8"
+synopsis: "Compiler from OCaml bytecode to Javascript"
+maintainer: "dev@ocsigen.org"
+authors: "Ocsigen team"
+homepage: "http://ocsigen.org/js_of_ocaml"
+bug-reports: "https://github.com/ocsigen/js_of_ocaml/issues"
 depends: [
-  "ocaml" {>= "4.02.0" & < "4.04.0"}
-  "cmdliner"
+  ("base-no-ppx" | "ppx_tools")
   "base-unix"
-  "ocamlfind" {>= "1.5.1"}
+  "base64" {>= "2.0.0" & < "3.0.0"}
+  "camlp4"
+  "cmdliner"
+  "cppo" {>= "1.1.0"}
   "lwt" {>= "2.4.4" & < "4.0.0"}
   "menhir"
-  "cppo" {>= "1.1.0"}
-  "camlp4"
-  "base64" {>= "2.0.0" & < "3.0.0"}
-  "base-no-ppx" | "ppx_tools"
+  "ocaml" {>= "4.02.0" & < "4.04.0"}
   "ocamlbuild"
+  "ocamlfind" {>= "1.5.1"}
 ]
-depopts: ["deriving" "ppx_deriving" "tyxml" "reactiveData" "async_kernel" ]
+depopts: ["async_kernel" "deriving" "ppx_deriving" "reactiveData" "tyxml"]
 conflicts: [
-  "deriving"     {< "0.6"}
-  "tyxml"        {< "4.0.0"}
-  "ppx_deriving" {< "3.0"}
-  "reactiveData" {< "0.2"}
   "async_kernel" {< "113.33.00"}
   "async_kernel" {>= "v0.9.0"}
+  "deriving" {< "0.6"}
+  "ppx_deriving" {< "3.0"}
+  "reactiveData" {< "0.2"}
+  "tyxml" {< "4.0.0"}
 ]
-synopsis: "Compiler from OCaml bytecode to Javascript"
 flags: light-uninstall
+build: [make "build"]
+install: [make "install-lib" "BINDIR=%{bin}%"]
+remove: ["ocamlfind" "remove" "js_of_ocaml"]
+dev-repo: "git+https://github.com/ocsigen/js_of_ocaml.git"
 url {
   src: "https://github.com/ocsigen/js_of_ocaml/archive/2.8.tar.gz"
   checksum: "md5=5aba84afd00a583e62fa3be64caab685"

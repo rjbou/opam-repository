@@ -1,15 +1,17 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.01.0+lsb"
 synopsis: "4.01.0 release compiled with lsbcc."
 description: """
 Requires the Linux Standard Base SDK installed in /opt/lsb:
 http://www.linuxfoundation.org/collaborate/workgroups/lsb/download"""
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.01.0" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
-  "base-threads" {post}
   "base-ocamlbuild" {post}
+  "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.01.0" & post}
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler

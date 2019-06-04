@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-homepage:     "https://github.com/ocaml/ocaml-ci-scripts"
-bug-reports:  "https://github.com/ocaml/ocaml-ci-scripts/issues"
-dev-repo: "git+https://github.com/ocaml/ocaml-ci-scripts.git"
-authors: [
-  "Thomas Gazagnaire"
-  "Richard Mortier"
-  "David Sheets"
-]
-
-depends: [
-  "ocaml"
-  "ocamlbuild" {build}
-]
-depexts: [
-  ["jq"] {os-distribution = "alpine"}
-  ["jq"] {os-distribution = "centos"}
-  ["jq"] {os-distribution = "debian"}
-  ["jq"] {os-distribution = "fedora"}
-  ["jq"] {os-distribution = "homebrew" & os = "macos"}
-  ["jq"] {os-family = "suse"}
-  ["jq"] {os-distribution = "ol"}
-  ["jq"] {os-distribution = "ubuntu"}
-]
-build: [make]
+name: "travis-opam"
+version: "1.1.0"
 synopsis: "Travis CI (Continuous Integration) helpers"
 description: """
 This package installs a set of helper tools that integrate your 
@@ -36,6 +13,26 @@ C linkage or external library dependencies quickly.
 
 See <https://github.com/ocaml/ocaml-ci-scripts> for more
 information and usage."""
+maintainer: "thomas@gazagnaire.org"
+authors: ["David Sheets" "Richard Mortier" "Thomas Gazagnaire"]
+homepage: "https://github.com/ocaml/ocaml-ci-scripts"
+bug-reports: "https://github.com/ocaml/ocaml-ci-scripts/issues"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+]
+build: make
+depexts: [
+  ["jq"] {os-distribution = "alpine"}
+  ["jq"] {os-distribution = "centos"}
+  ["jq"] {os-distribution = "debian"}
+  ["jq"] {os-distribution = "fedora"}
+  ["jq"] {os-distribution = "homebrew" & os = "macos"}
+  ["jq"] {os-family = "suse"}
+  ["jq"] {os-distribution = "ol"}
+  ["jq"] {os-distribution = "ubuntu"}
+]
+dev-repo: "git+https://github.com/ocaml/ocaml-ci-scripts.git"
 url {
   src: "https://github.com/ocaml/ocaml-ci-scripts/archive/v1.1.0.tar.gz"
   checksum: "md5=cd1141d93feecf2c7585a927be9e7e5c"

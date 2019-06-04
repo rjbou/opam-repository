@@ -1,30 +1,6 @@
 opam-version: "2.0"
-authors: ["David Kaloper Meršinjak <david@numm.org>"]
-maintainer: "David Kaloper Meršinjak <david@numm.org>"
-homepage: "https://github.com/mirleft/ocaml-asn1-combinators"
-doc: "https://mirleft.github.io/ocaml-asn1-combinators/doc"
-license: "ISC"
-dev-repo: "git+https://github.com/mirleft/ocaml-asn1-combinators.git"
-bug-reports: "https://github.com/mirleft/ocaml-asn1-combinators/issues"
-tags: [ "org:mirage" ]
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "cstruct" {>= "1.2.0"}
-  "result"
-  "zarith"
-  "ounit" {with-test}
-]
-conflicts: [ "cstruct" {< "1.2.0"} 
-             "base-implicits" ]
+name: "asn1-combinators"
+version: "0.1.3"
 synopsis: "Define ASN.1 grammars in OCaml"
 description: """
 asn1-combinators is a library for declarative definitions of ASN.1 grammars,
@@ -34,6 +10,34 @@ serialization.
 Presently, only BER and DER encoding and supported.
 
 asn1-combinators is distributed under the ISC license."""
+maintainer: "David Kaloper Meršinjak <david@numm.org>"
+authors: "David Kaloper Meršinjak <david@numm.org>"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirleft/ocaml-asn1-combinators"
+doc: "https://mirleft.github.io/ocaml-asn1-combinators/doc"
+bug-reports: "https://github.com/mirleft/ocaml-asn1-combinators/issues"
+depends: [
+  "cstruct" {>= "1.2.0"}
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "result"
+  "topkg" {build}
+  "zarith"
+]
+conflicts: [
+  "base-implicits"
+  "cstruct" {< "1.2.0"}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/mirleft/ocaml-asn1-combinators.git"
 url {
   src:
     "https://github.com/mirleft/ocaml-asn1-combinators/releases/download/v0.1.3/asn1-combinators-0.1.3.tbz"

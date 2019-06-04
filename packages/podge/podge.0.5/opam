@@ -1,35 +1,6 @@
 opam-version: "2.0"
-maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
-authors: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
-homepage: "http://hyegar.com"
-bug-reports: "https://github.com/fxfactorial/podge/issues"
-dev-repo: "git+http://github.com/fxfactorial/podge.git"
-license: "BSD-3-clause"
-build: [
-  ["oasis" "setup"]
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["oasis" "setup"] {with-test}
-  ["ocaml" "setup.ml" "-configure" "--enable-tests"] {with-test}
-  ["ocaml" "setup.ml" "-build"] {with-test}
-  ["ocaml" "setup.ml" "-test"] {with-test}
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: ["ocamlfind" "remove" "podge"]
-depends: [
-  "ocaml" {>= "4.02.3" & < "4.06.0"}
-  "ANSITerminal" {>= "0.6.5"}
-  "base-unix"
-  "cohttp" {>= "0.9.7"}
-  "ezxmlm"
-  "oasis" {build & >= "0.4"}
-  "ocamlfind" {build}
-  "re" {>= "1.3.0"}
-  "tyxml" {< "4.0.0"}
-  "yojson"
-  "stringext"
-  "ocamlbuild" {build}
-]
+name: "podge"
+version: "0.5"
 synopsis: "Shortcuts and helpers for common tasks in OCaml ecosystem"
 description: """
 If you're doing any modern OCaml then you're doubtlessly annoyed by
@@ -49,10 +20,41 @@ Some conveniences with Podge:
    and String for common string tasks.
 
 Podge is especially useful for Hackathons and prototyping."""
+maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
+authors: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
+license: "BSD-3-clause"
+homepage: "http://hyegar.com"
+bug-reports: "https://github.com/fxfactorial/podge/issues"
+depends: [
+  "ANSITerminal" {>= "0.6.5"}
+  "base-unix"
+  "cohttp" {>= "0.9.7"}
+  "ezxmlm"
+  "oasis" {build & >= "0.4"}
+  "ocaml" {>= "4.02.3" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "re" {>= "1.3.0"}
+  "stringext"
+  "tyxml" {< "4.0.0"}
+  "yojson"
+]
 flags: light-uninstall
+build: [
+  ["oasis" "setup"]
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["oasis" "setup"] {with-test}
+  ["ocaml" "setup.ml" "-configure" "--enable-tests"] {with-test}
+  ["ocaml" "setup.ml" "-build"] {with-test}
+  ["ocaml" "setup.ml" "-test"] {with-test}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "podge"]
+dev-repo: "git+http://github.com/fxfactorial/podge.git"
 extra-files: [
-  ["podge.install" "md5=0d1b822c897681cf54b3e1aed52dda99"]
   ["_oasis_remove_.ml" "md5=6100ca146fa97d2196eb49a2631d0796"]
+  ["podge.install" "md5=0d1b822c897681cf54b3e1aed52dda99"]
 ]
 url {
   src: "https://github.com/fxfactorial/podge/archive/v0.5.tar.gz"

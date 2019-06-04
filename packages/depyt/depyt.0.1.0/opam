@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer:   "Thomas Gazagnaire <thomas@gazagnaire.org>"
-authors:      ["Thomas Gazagnaire <thomas@gazagnaire.org>"]
-homepage:     "https://github.com/samoht/depyt"
-dev-repo: "git+https://github.com/samoht/depyt.git"
-bug-reports:  "https://github.com/samoht/depyt/issues"
-doc:          "https://samoht.github.io/depyt/doc"
-license:      "ISC"
-tags:         ["org:mirage"]
-
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.08.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "cstruct" {<"5.0.0"}
-  "fmt"
-  "result"
-  "jsonm"
-  "ocplib-endian" {>= "0.7"}
-  "alcotest" {with-test}
-]
+name: "depyt"
+version: "0.1.0"
 synopsis: "Yet-an-other type combinator library"
 description: """
 Depyt provides type combinators to define runtime representation for
@@ -40,6 +20,27 @@ Dyntype (in 2012) GADTs were not available in OCaml and
 not the case anymore. Finally, Depyt avoids some of the performance
 caveats present in Dyntype by avoiding allocating and converting
 between intermediate formats."""
+maintainer: "Thomas Gazagnaire <thomas@gazagnaire.org>"
+authors: "Thomas Gazagnaire <thomas@gazagnaire.org>"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/samoht/depyt"
+doc: "https://samoht.github.io/depyt/doc"
+bug-reports: "https://github.com/samoht/depyt/issues"
+depends: [
+  "alcotest" {with-test}
+  "cstruct" {< "5.0.0"}
+  "fmt"
+  "jsonm"
+  "ocaml" {>= "4.02.0" & < "4.08.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ocplib-endian" {>= "0.7"}
+  "result"
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/samoht/depyt.git"
 url {
   src:
     "https://github.com/samoht/depyt/releases/download/0.1.0/depyt-0.1.0.tbz"

@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/splittable_random"
-bug-reports: "https://github.com/janestreet/splittable_random/issues"
-dev-repo: "git+https://github.com/janestreet/splittable_random.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "base" {>= "v0.11" & < "v0.12"}
-  "ppx_jane" {>= "v0.11" & < "v0.12"}
-  "jbuilder" {build & >= "1.0+beta18.1"}
-  "ocaml-migrate-parsetree" {>= "1.0"}
-]
+name: "splittable_random"
+version: "v0.11.0"
 synopsis: "PRNG that can be split into independent streams"
 description: """
 PRNG that can be split into independent streams
@@ -25,6 +11,20 @@ independent stream of random values.
 
 This library implements a splittable pseudo-random number generator that sacrifices
 cryptographic-quality randomness in favor of performance."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/splittable_random"
+bug-reports: "https://github.com/janestreet/splittable_random/issues"
+depends: [
+  "base" {>= "v0.11" & < "v0.12"}
+  "jbuilder" {build & >= "1.0+beta18.1"}
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "1.0"}
+  "ppx_jane" {>= "v0.11" & < "v0.12"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/splittable_random.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.11/files/splittable_random-v0.11.0.tar.gz"

@@ -1,59 +1,68 @@
 opam-version: "2.0"
-maintainer:   "anil@recoil.org"
-homepage:     "https://github.com/mirage/ocaml-dns"
-dev-repo: "git+https://github.com/mirage/ocaml-dns.git"
-bug-reports:  "https://github.com/mirage/ocaml-dns/issues"
-authors: [
-  "Anil Madhavapeddy"
-  "Tim Deegan"
-  "Richard Mortier"
-  "Haris Rotsos"
-  "David Sheets"
-  "Thomas Gazagnaire"
-  "Luke Dunstan"
-]
-license: "LGPL-2.0 &\n   LGPL-2.1 with OCaml linking exception &\n   ISC"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix "--enable-lwt" "--%{mirage-types:enable}%-mirage" "--%{async:enable}%-async"]
-  ["ocaml" "setup.ml" "-build"]
-]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
-remove: [["ocamlfind" "remove" "dns"]]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "base-bytes"
-  "lwt" {>= "2.4.3" & < "3.0.0"}
-  "cstruct" {>= "1.0.1" & < "1.6.0"}
-  "ocamlfind"
-  "re"
-  "cmdliner"
-  "ipaddr" {>= "2.2.0" & < "2.8.0"}
-  "base64" {>= "2.0.0" & < "3.0.0"}
-  "ounit"
-  "pcap-format" {with-test}
-  "ocamlbuild" {build}
-]
-depopts: [
-  "tcpip"
-  "mirage-types"
-  "async" {< "v0.13"}
-]
-conflicts: [
-  "mirage-types" {<"1.2.0" | >"3.0.0"}
-  "async" {<"112.24.00"}
-]
+name: "dns"
+version: "0.14.1"
 synopsis: "DNS client and server implementation"
 description: """
 This is a pure OCaml implementation of the DNS protocol. It is intended to be a
 reasonably high-performance implementation, but clarity is preferred rather
 than low-level performance hacks."""
+maintainer: "anil@recoil.org"
+authors: [
+  "Anil Madhavapeddy"
+  "David Sheets"
+  "Haris Rotsos"
+  "Luke Dunstan"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Tim Deegan"
+]
+license: """
+LGPL-2.0 &
+   LGPL-2.1 with OCaml linking exception &
+   ISC"""
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/ocaml-dns"
+bug-reports: "https://github.com/mirage/ocaml-dns/issues"
+depends: [
+  "base-bytes"
+  "base64" {>= "2.0.0" & < "3.0.0"}
+  "cmdliner"
+  "cstruct" {>= "1.0.1" & < "1.6.0"}
+  "ipaddr" {>= "2.2.0" & < "2.8.0"}
+  "lwt" {>= "2.4.3" & < "3.0.0"}
+  "ocaml" {>= "4.00.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ounit"
+  "pcap-format" {with-test}
+  "re"
+]
+depopts: [
+  "async" {< "v0.13"}
+  "mirage-types"
+  "tcpip"
+]
+conflicts: [
+  "async" {< "112.24.00"}
+  "mirage-types" {< "1.2.0" | > "3.0.0"}
+]
 flags: light-uninstall
+build: [
+  [
+    "ocaml"
+    "setup.ml"
+    "-configure"
+    "--prefix"
+    prefix
+    "--enable-lwt"
+    "--%{mirage-types:enable}%-mirage"
+    "--%{async:enable}%-async"
+  ]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "dns"]
+dev-repo: "git+https://github.com/mirage/ocaml-dns.git"
 url {
   src: "https://github.com/mirage/ocaml-dns/archive/v0.14.1.tar.gz"
   checksum: "md5=89e3cc39c2911d2e39f29858e80684bc"

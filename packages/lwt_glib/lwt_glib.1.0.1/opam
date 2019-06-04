@@ -1,38 +1,30 @@
 opam-version: "2.0"
 name: "lwt_glib"
 version: "1.0.1"
-maintainer: [
-  "Anton Bachin <antonbachin@yahoo.com>"
-]
-authors: [
-  "Jérémie Dimino"
-]
+synopsis: "GLib integration for Lwt"
+maintainer: "Anton Bachin <antonbachin@yahoo.com>"
+authors: "Jérémie Dimino"
+license: "LGPL with OpenSSL linking exception"
 homepage: "https://github.com/ocsigen/lwt"
 doc: "https://ocsigen.org/lwt/manual/"
-dev-repo: "git+https://github.com/ocsigen/lwt.git"
 bug-reports: "https://github.com/ocsigen/lwt/issues"
-license: "LGPL with OpenSSL linking exception"
-build: [
-    [make "configure"]
-    [make "build"]
-]
-install: [
-    [make "install"]
-]
-remove: [
-    ["ocamlfind" "remove" "lwt_glib"]
-]
 depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "lwt" {>= "3.0.0"}
   "base-unix"
-  "conf-pkg-config" {build}
   "conf-glib-2" {build}
+  "conf-pkg-config" {build}
+  "lwt" {>= "3.0.0"}
+  "ocaml"
   "ocamlbuild" {build}
+  "ocamlfind" {build}
 ]
-synopsis: "GLib integration for Lwt"
 flags: light-uninstall
+build: [
+  [make "configure"]
+  [make "build"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "lwt_glib"]
+dev-repo: "git+https://github.com/ocsigen/lwt.git"
 url {
   src:
     "https://github.com/ocsigen/lwt/releases/download/3.0.0/lwt_glib-1.0.1.tar.gz"

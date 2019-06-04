@@ -1,18 +1,22 @@
 opam-version: "2.0"
-maintainer: "vb@luminar.eu.org"
-homepage: "https://www.gnutls.org"
-authors: ["Nikos Mavrogiannopoulos" "Simon Josefsson"]
-build: [["pkg-config" "gnutls" "nettle"]]
-depends: ["conf-pkg-config" {build}]
-depexts: [
-  ["libgnutls28-dev" "nettle-dev"] {os-distribution = "debian"}
-  ["libgnutls28-dev" "nettle-dev"] {os-distribution = "ubuntu"}
-  ["gnutls-dev"] {os-distribution = "alpine"}
-  ["gnutls-devel" "nettle-devel"] {os-distribution = "fedora"}
-  ["gnutls"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "conf-gnutls"
+version: "1"
 synopsis: "Virtual package relying on a gnutls system installation"
 description:
   "This package can only install if the gnutls lib is installed on the system."
+maintainer: "vb@luminar.eu.org"
+authors: ["Nikos Mavrogiannopoulos" "Simon Josefsson"]
+homepage: "https://www.gnutls.org"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "gnutls" "nettle"]
+depexts: [
+  ["gnutls"] {os = "macos" & os-distribution = "homebrew"}
+  ["gnutls-dev"] {os-distribution = "alpine"}
+  ["gnutls-devel" "nettle-devel"] {os-distribution = "fedora"}
+  ["libgnutls28-dev" "nettle-dev"] {os-distribution = "debian"}
+  ["libgnutls28-dev" "nettle-dev"] {os-distribution = "ubuntu"}
+]

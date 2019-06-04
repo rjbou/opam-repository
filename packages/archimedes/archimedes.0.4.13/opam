@@ -1,31 +1,33 @@
 opam-version: "2.0"
+name: "archimedes"
+version: "0.4.13"
+synopsis:
+  "High quality, platform-independent, and extensible 2D plotting library"
 maintainer: "Christophe.Troestler@umons.ac.be"
 authors: [
+  "Bertrand Desmons <bibi-6@hotmail.fr>"
   "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-  "Pierre Hauweele <pierre@hauweele.net>"
   "Fabian Pijcke <fabian.pijcke@gmail.com>"
   "Noémie Meunier <noemie_6462@hotmail.com>"
-  "Bertrand Desmons <bibi-6@hotmail.fr>"
+  "Pierre Hauweele <pierre@hauweele.net>"
   "Xavier Deschuyteneer <xavier.deschuyteneer@gmail.com>"
 ]
-homepage: "http://forge.ocamlcore.org/projects/archimedes/"
 license: "LGPL-3.0 with OCaml linking exception"
+homepage: "http://forge.ocamlcore.org/projects/archimedes/"
+depends: [
+  "cairo2" {< "0.6"}
+  "graphics"
+  "ocaml" {= "3.12.1"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "archimedes"]]
-depends: [
-  "ocaml" {= "3.12.1"}
-  "graphics"
-  "ocamlfind"
-  "cairo2" {< "0.6"}
-  "ocamlbuild" {build}
-]
 install: ["ocaml" "setup.ml" "-install"]
-synopsis:
-  "High quality, platform-independent, and extensible 2D plotting library"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "archimedes"]
 url {
   src:
     "https://download.ocamlcore.org/archimedes/archimedes/0.4.13/archimedes-0.4.13.tar.gz"

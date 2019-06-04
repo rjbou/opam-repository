@@ -1,28 +1,28 @@
 opam-version: "2.0"
+name: "spotify-web-api"
+version: "0.2.0"
+synopsis:
+  "OCaml library for interacting with the web-based Spotify metadata API"
 maintainer: "john.else@gmail.com"
+depends: [
+  "atdgen"
+  "biniou"
+  "cohttp" {>= "0.10.0" & < "0.99"}
+  "lwt"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ounit"
+  "ssl"
+  "uri"
+  "yojson"
+]
 build: [
   [make]
   [make "test"] {with-test}
 ]
-remove: [
-  [make "PREFIX=%{prefix}%" "uninstall"]
-]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "atdgen"
-  "biniou"
-  "yojson"
-  "uri"
-  "ssl"
-  "lwt"
-  "cohttp" {>= "0.10.0" & < "0.99"}
-  "ounit"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/johnelse/ocaml-spotify-web-api"
 install: [make "PREFIX=%{prefix}%" "install"]
-synopsis:
-  "OCaml library for interacting with the web-based Spotify metadata API"
+remove: [make "PREFIX=%{prefix}%" "uninstall"]
+dev-repo: "git://github.com/johnelse/ocaml-spotify-web-api"
 url {
   src:
     "https://github.com/johnelse/ocaml-spotify-web-api/archive/0.2.0.tar.gz"

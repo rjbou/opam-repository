@@ -1,35 +1,31 @@
 opam-version: "2.0"
 name: "bap-x86"
 version: "1.6.0"
+synopsis: "BAP x86 lifter"
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
+depends: [
+  "bap-abi" {= "1.6.0"}
+  "bap-c" {= "1.6.0"}
+  "bap-llvm" {= "1.6.0"}
+  "bap-std" {= "1.6.0"}
+  "cmdliner"
+  "ocaml" {>= "4.04.1" & < "4.08.0"}
+]
 build: [
   ["./configure" "--prefix=%{prefix}%" "--enable-x86"]
   [make]
 ]
-
-install: [[make "install"]]
-
+install: [make "install"]
 remove: [
-        ["ocamlfind" "remove" "bap-x86-cpu"]
-        ["ocamlfind" "remove" "bap-plugin-x86"]
-        ["bapbundle" "remove" "x86.plugin"]
-
+  ["ocamlfind" "remove" "bap-x86-cpu"]
+  ["ocamlfind" "remove" "bap-plugin-x86"]
+  ["bapbundle" "remove" "x86.plugin"]
 ]
-
-depends: [
-  "ocaml" {>= "4.04.1" & < "4.08.0"}
-  "bap-std" {= "1.6.0"}
-  "bap-abi" {= "1.6.0"}
-  "bap-c" {= "1.6.0"}
-  "bap-llvm" {= "1.6.0"}
-  "cmdliner"
-]
-synopsis: "BAP x86 lifter"
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.6.0.tar.gz"
   checksum: "md5=0ccf6571613c0666a37d154c7f70af4f"

@@ -1,33 +1,35 @@
 opam-version: "2.0"
-maintainer: "Andre Nathan <andre@hostnet.com.br>"
-authors: "Andre Nathan <andre@hostnet.com.br>"
-homepage: "https://github.com/andrenth/ocaml-milter"
-bug-reports: "https://github.com/andrenth/ocaml-milter/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/andrenth/ocaml-milter.git"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml"
-  "jbuilder" {build}
-]
-depexts: [
-  ["libmilter-dev"] {os-distribution = "alpine"}
-  ["libmilter"] {os-distribution = "arch"}
-  ["sendmail-devel"] {os-distribution = "centos"}
-  ["sendmail-milter-devel"] {os-distribution = "fedora"}
-  ["libmilter"] {os = "freebsd"}
-  ["libmilter"] {os-distribution = "gentoo"}
-  ["libmilter"] {os-distribution = "macports"}
-  ["libmilter-dev"] {os-distribution = "debian"}
-  ["sendmail-devel"] {os-distribution = "mageia"}
-  ["sendmail-devel"] {os-family = "suse"}
-  ["libmilter"] {os = "netbsd"}
-  ["libmilter-dev"] {os-distribution = "ubuntu"}
-]
+name: "milter"
+version: "1.0.4"
 synopsis: "OCaml libmilter bindings"
 description: """
 This package provides OCaml bindings for sendmail's libmilter, allowing
 integration of OCaml programs with compatible MTAs."""
+maintainer: "Andre Nathan <andre@hostnet.com.br>"
+authors: "Andre Nathan <andre@hostnet.com.br>"
+license: "MIT"
+homepage: "https://github.com/andrenth/ocaml-milter"
+bug-reports: "https://github.com/andrenth/ocaml-milter/issues"
+depends: [
+  "jbuilder" {build}
+  "ocaml"
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+depexts: [
+  ["libmilter"] {os-distribution = "arch"}
+  ["libmilter"] {os = "freebsd"}
+  ["libmilter"] {os-distribution = "gentoo"}
+  ["libmilter"] {os-distribution = "macports"}
+  ["libmilter"] {os = "netbsd"}
+  ["libmilter-dev"] {os-distribution = "alpine"}
+  ["libmilter-dev"] {os-distribution = "debian"}
+  ["libmilter-dev"] {os-distribution = "ubuntu"}
+  ["sendmail-devel"] {os-distribution = "centos"}
+  ["sendmail-devel"] {os-distribution = "mageia"}
+  ["sendmail-devel"] {os-family = "suse"}
+  ["sendmail-milter-devel"] {os-distribution = "fedora"}
+]
+dev-repo: "git+https://github.com/andrenth/ocaml-milter.git"
 url {
   src: "https://github.com/andrenth/ocaml-milter/archive/1.0.4.tar.gz"
   checksum: "md5=c6e206750966d529ad3bdb0cdc317b50"

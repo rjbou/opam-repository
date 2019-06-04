@@ -1,10 +1,26 @@
 opam-version: "2.0"
+name: "distributed"
+version: "0.4.0"
+synopsis:
+  "Library to provide Erlang style distributed computations. This library is inspired by Cloud Haskell."
+description: """
+Primitive for spawning processes (in the Erlang sense) either remotely or locally, monitoring/unmonitoring spawned processes, sending, 
+receiving, broadcasting messages to those processes. Unlike Erlang, the messages that are sent between processes are typed."""
 maintainer: "essdotteedot <essdotteedot@gmail.com>"
 authors: "essdotteedot <essdotteedot@gmail.com>"
+license: "MIT"
 homepage: "https://github.com/essdotteedot/distributed"
 bug-reports: "https://github.com/essdotteedot/distributed/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/essdotteedot/distributed.git"
+depends: [
+  "base-threads"
+  "base-unix"
+  "lwt" {>= "2.7.0" & < "4.0.0"}
+  "ocaml" {>= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test & >= "2.0"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix "--%{lwt:enable}%-lwt"]
   ["ocaml" "setup.ml" "-build"]
@@ -16,21 +32,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "distributed"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "base-threads"
-  "base-unix"
-  "lwt" {>= "2.7.0" & < "4.0.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "ounit" {with-test & >= "2.0"}
-]
-synopsis:
-  "Library to provide Erlang style distributed computations. This library is inspired by Cloud Haskell."
-description: """
-Primitive for spawning processes (in the Erlang sense) either remotely or locally, monitoring/unmonitoring spawned processes, sending, 
-receiving, broadcasting messages to those processes. Unlike Erlang, the messages that are sent between processes are typed."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/essdotteedot/distributed.git"
 url {
   src: "https://github.com/essdotteedot/distributed/archive/v0.4.0.tar.gz"
   checksum: "md5=4db28d42f3c31c0d252ba2e479870232"

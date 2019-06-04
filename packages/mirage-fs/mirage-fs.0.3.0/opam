@@ -1,16 +1,15 @@
 opam-version: "2.0"
+name: "mirage-fs"
+version: "0.3.0"
+synopsis: "MirageOS filesystem utilities"
 maintainer: "anil@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [[make "all"]]
+tags: ["org:mirage" "org:xapi-project"]
 depends: [
   "ocaml"
-  "ocamlfind"
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
-synopsis: "MirageOS filesystem utilities"
+build: [make "all"]
 url {
   src: "https://github.com/mirage/mirage-fs/tarball/mirage-fs-0.3.0"
   checksum: "md5=6ddcfc6607e5f1a6b47cb3e08cebdd1a"

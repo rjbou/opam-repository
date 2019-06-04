@@ -1,16 +1,6 @@
 opam-version: "2.0"
 name: "oc45"
-authors: "Théophile Bastian <contact@tobast.fr> and Noémie Fong"
-maintainer: "contact@tobast.fr"
-homepage: "https://github.com/tobast/OC4.5"
-bug-reports: "https://github.com/tobast/OC4.5/issues"
-dev-repo: "git+https://github.com/tobast/OC4.5.git"
-license: "LGPL"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml"
-  "jbuilder" {build}
-]
+version: "1.0.0"
 synopsis: "Pure OCaml implementation of the C4.5 algorithm."
 description: """
 This algorithm is used to generate a decision tree from a dataset and a
@@ -18,6 +8,17 @@ criteria set, and is usually found in machine learning.  The algorithm
 description can be found in eg. "Efficient C4.5" by S. Ruggieri in
 IEEE transactions on knowledge and data engineering, vol. 14, no. 2,
 march/april 2002."""
+maintainer: "contact@tobast.fr"
+authors: "Théophile Bastian <contact@tobast.fr> and Noémie Fong"
+license: "LGPL"
+homepage: "https://github.com/tobast/OC4.5"
+bug-reports: "https://github.com/tobast/OC4.5/issues"
+depends: [
+  "jbuilder" {build}
+  "ocaml"
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/tobast/OC4.5.git"
 url {
   src: "https://github.com/tobast/OC4.5/archive/v1.0.0.tar.gz"
   checksum: "md5=3ad2e5cd1c54c2a581cdba3920ac9ca5"

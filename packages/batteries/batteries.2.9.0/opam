@@ -1,4 +1,7 @@
 opam-version: "2.0"
+name: "batteries"
+version: "2.9.0"
+synopsis: ""
 description: "A community-maintained standard library extension"
 maintainer: [
   "Francois Berenger <unixjunkie@sdf.org>"
@@ -6,25 +9,26 @@ maintainer: [
   "Thibault Suzanne <thi.suzanne@gmail.com>"
 ]
 authors: "OCaml batteries-included team"
-homepage: "http://batteries.forge.ocamlcore.org/"
-bug-reports: "https://github.com/ocaml-batteries-team/batteries-included/issues"
-dev-repo: "git://github.com/ocaml-batteries-team/batteries-included.git"
 license: "LGPL-2.1+ with OCaml linking exception"
+homepage: "http://batteries.forge.ocamlcore.org/"
 doc: "http://ocaml-batteries-team.github.io/batteries-included/hdoc2/"
+bug-reports:
+  "https://github.com/ocaml-batteries-team/batteries-included/issues"
+depends: [
+  "num"
+  "ocaml" {>= "4.00.0" & < "4.08.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.5.3"}
+  "qcheck" {with-test & >= "0.6"}
+  "qtest" {with-test & >= "2.5"}
+]
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   [make "all"]
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "batteries"]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.08.0"}
-  "ocamlfind" {build & >= "1.5.3"}
-  "ocamlbuild" {build}
-  "qtest" {with-test & >= "2.5"}
-  "qcheck" {with-test & >= "0.6"}
-  "num"
-]
+dev-repo: "git://github.com/ocaml-batteries-team/batteries-included.git"
 url {
   src:
     "https://github.com/ocaml-batteries-team/batteries-included/releases/download/v2.9.0/batteries-2.9.0.tar.gz"

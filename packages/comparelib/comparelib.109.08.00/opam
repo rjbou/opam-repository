@@ -1,21 +1,23 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-build: make
-remove: [["ocamlfind" "remove" "comparelib"]]
-depends: [
-  "ocaml"
-  "camlp4"
-  "ocamlfind"
-  "type_conv" {= "109.08.00"}
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "comparelib"
+version: "109.08.00"
 synopsis: "Part of Jane Street’s Core library"
 description: """
 The Core suite of libraries is an industrial strength alternative to
 OCaml's standard library that was developed by Jane Street, the
 largest industrial user of OCaml."""
+maintainer: "opensource@janestreet.com"
+depends: [
+  "camlp4"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "type_conv" {= "109.08.00"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "comparelib"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.08.00/individual/comparelib-109.08.00.tar.gz"

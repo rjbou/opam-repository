@@ -1,48 +1,6 @@
 opam-version: "2.0"
-name:         "decompress"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/mirage/decompress"
-bug-reports:  "https://github.com/mirage/decompress/issues"
-dev-repo: "git+https://github.com/mirage/decompress.git"
-doc:          "https://mirage.github.io/decompress/"
-license:      "MIT"
-
-build: [
-  [
-    "jbuilder"
-    "build"
-    "--only-packages"
-    name
-    "--root"
-    "."
-    "-j"
-    jobs
-    "@install"
-  ]
-  [
-    "jbuilder"
-    "build"
-    "--only-packages"
-    name
-    "--root"
-    "."
-    "-j"
-    jobs
-    "@runtest"
-  ] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "base-bytes"
-  "optint"
-  "checkseum"
-  "camlzip" {with-test & >= "1.07"}
-  "re" {with-test & >= "1.7.2"}
-  "alcotest" {with-test}
-  "cmdliner"
-]
+name: "decompress"
+version: "0.8"
 synopsis: "Pure OCaml implementation of Zlib"
 description: """
 [![Build Status](https://travis-ci.org/mirage/decompress.svg?branch=master)](https://travis-ci.org/mirage/decompress)
@@ -107,6 +65,48 @@ If you want to compile the test program, you need:
  * `camlzip` to compare `decompress` with `zlib`
  * `re.1.7.1`
  * `alcotest`"""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/mirage/decompress"
+doc: "https://mirage.github.io/decompress/"
+bug-reports: "https://github.com/mirage/decompress/issues"
+depends: [
+  "alcotest" {with-test}
+  "base-bytes"
+  "camlzip" {with-test & >= "1.07"}
+  "checkseum"
+  "cmdliner"
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+  "optint"
+  "re" {with-test & >= "1.7.2"}
+]
+build: [
+  [
+    "jbuilder"
+    "build"
+    "--only-packages"
+    name
+    "--root"
+    "."
+    "-j"
+    jobs
+    "@install"
+  ]
+  [
+    "jbuilder"
+    "build"
+    "--only-packages"
+    name
+    "--root"
+    "."
+    "-j"
+    jobs
+    "@runtest"
+  ] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/decompress.git"
 url {
   src:
     "https://github.com/mirage/decompress/releases/download/v0.8/decompress-0.8.tbz"

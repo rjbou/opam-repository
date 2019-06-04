@@ -1,34 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/uuseg"
-doc: "http://erratique.ch/software/uuseg"
-dev-repo: "git+http://erratique.ch/repos/uuseg.git"
-bug-reports: "https://github.com/dbuenzli/uuseg/issues"
-tags: [ "segmentation" "text" "unicode" "org:erratique" ]
-license: "BSD3"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
-  "uucp" {>= "0.9.1" & < "1.0.0"}
-  "ocamlbuild" {build}
-]
-depopts: [
-  "uutf"
-  "cmdliner"
-  "uutf" {with-test}
-  "cmdliner" {with-test}
-]
-conflicts: [ "uutf"  {> "0.9.4"} ]
-build: ["ocaml" "pkg/git.ml"]
-install: [
-  "ocaml"
-  "pkg/build.ml"
-  "native=%{ocaml:native}%"
-  "native-dynlink=%{ocaml:native-dynlink}%"
-  "uutf=%{uutf:installed}%"
-  "cmdliner=%{cmdliner:installed}%"
-]
+name: "uuseg"
+version: "0.8.0"
 synopsis: "Unicode text segmentation for OCaml"
 description: """
 Uuseg is an OCaml library for segmenting Unicode text. It implements
@@ -47,6 +19,38 @@ OCaml UTF-X encoded strings. It is distributed under the BSD3 license.
 
 [1]: http://www.unicode.org/reports/tr29/
 [2]: http://www.unicode.org/reports/tr14/"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD3"
+tags: ["org:erratique" "segmentation" "text" "unicode"]
+homepage: "http://erratique.ch/software/uuseg"
+doc: "http://erratique.ch/software/uuseg"
+bug-reports: "https://github.com/dbuenzli/uuseg/issues"
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "uucp" {>= "0.9.1" & < "1.0.0"}
+]
+depopts: [
+  "cmdliner"
+  "cmdliner" {with-test}
+  "uutf"
+  "uutf" {with-test}
+]
+conflicts: [
+  "uutf" {> "0.9.4"}
+]
+build: ["ocaml" "pkg/git.ml"]
+install: [
+  "ocaml"
+  "pkg/build.ml"
+  "native=%{ocaml:native}%"
+  "native-dynlink=%{ocaml:native-dynlink}%"
+  "uutf=%{uutf:installed}%"
+  "cmdliner=%{cmdliner:installed}%"
+]
+dev-repo: "git+http://erratique.ch/repos/uuseg.git"
 url {
   src: "http://erratique.ch/software/uuseg/releases/uuseg-0.8.0.tbz"
   checksum: "md5=409bbd8a3c3f00e0d7259441a5e4b648"

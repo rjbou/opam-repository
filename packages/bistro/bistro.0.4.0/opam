@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "Philippe Veber <philippe.veber@gmail.com>"
-authors: "Philippe Veber <philippe.veber@gmail.com>"
-homepage: "https://github.com/pveber/bistro/"
-bug-reports: "https://github.com/pveber/bistro/issues"
-license: "GPL"
-dev-repo: "git+https://github.com/pveber/bistro.git"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta8"}
-  "core" {>= "v0.11.0" & < "v0.12"}
-  "lwt"
-  "ocamlgraph" {>= "1.8.7"}
-  "ppx_sexp_conv" {< "v0.12"}
-  "rresult"
-  "tyxml" {>= "4.0"}
-]
+name: "bistro"
+version: "0.4.0"
 synopsis: "A library to build and run distributed workflows"
 description: """
 bistro is an OCaml library to build and run computations represented
@@ -37,6 +22,23 @@ The library provides a datatype to represent scripts (including
 metadata and dependencies), an engine to run workflows and a standard
 library providing components for popular tools (although mostly
 related to computational biology and unix for now)."""
+maintainer: "Philippe Veber <philippe.veber@gmail.com>"
+authors: "Philippe Veber <philippe.veber@gmail.com>"
+license: "GPL"
+homepage: "https://github.com/pveber/bistro/"
+bug-reports: "https://github.com/pveber/bistro/issues"
+depends: [
+  "core" {>= "v0.11.0" & < "v0.12"}
+  "jbuilder" {build & >= "1.0+beta8"}
+  "lwt"
+  "ocaml" {>= "4.03.0"}
+  "ocamlgraph" {>= "1.8.7"}
+  "ppx_sexp_conv" {< "v0.12"}
+  "rresult"
+  "tyxml" {>= "4.0"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/pveber/bistro.git"
 url {
   src: "https://github.com/pveber/bistro/archive/v0.4.0.tar.gz"
   checksum: "md5=2b9921e3a0ad46fcb677644012b2f01f"

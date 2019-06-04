@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "jun.furuse@gmail.com"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-uninstall"]
-]
-depends: [
-  "ocaml" {= "4.02.1"}
-  "ocamlfind"
-  "omake"
-  "ppx_tools"
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "ppx_monadic"
+version: "1.0.2"
 synopsis:
   "ppx_monadic: ppx extension for do notation, pattern guards, and monad comprehension"
 description: """
@@ -27,6 +13,22 @@ The sugar is supported inside the following constructs:
 * `do_` sequence notation for monadic bind
 * `when` clause for pattern guards
 * `[%comp e || ..]` for list (and other monadic) comprehensions"""
+maintainer: "jun.furuse@gmail.com"
+depends: [
+  "ocaml" {= "4.02.1"}
+  "ocamlfind"
+  "omake"
+  "ppx_tools"
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
 url {
   src: "https://bitbucket.org/camlspotter/ppx_monadic/get/1.0.2.tar.gz"
   checksum: "md5=6972c5eb08d02e96357f9bf102ef1f0a"

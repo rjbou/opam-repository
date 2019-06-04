@@ -1,30 +1,27 @@
 opam-version: "2.0"
+name: "hamt"
+version: "0.1"
+synopsis: "Hash Array Mapped Tries"
 maintainer: "rudi.grinberg@gmail.com"
-authors: [
-  "Thibault Suzanne"
-  "Gabriel Scherer"
-  "Rudi Grinberg"
-]
+authors: ["Gabriel Scherer" "Rudi Grinberg" "Thibault Suzanne"]
 license: "MIT"
-
+depends: [
+  "monomorphic"
+  "oasis"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ounit" {>= "1.0.2"}
+]
+flags: light-uninstall
 build: [
   [make "configure"]
   [make "all"]
   [make "doc"] {with-doc}
 ]
-remove: [["ocamlfind" "remove" "hamt"]]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
-  "oasis"
-  "monomorphic"
-  "ounit" {>= "1.0.2"}
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/rgrinberg/ocaml-hamt"
 install: [make "install"]
-synopsis: "Hash Array Mapped Tries"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "hamt"]
+dev-repo: "git://github.com/rgrinberg/ocaml-hamt"
 url {
   src: "https://github.com/rgrinberg/ocaml-hamt/archive/0.1.tar.gz"
   checksum: "md5=51f67ef806a08c1835566de208594565"

@@ -1,25 +1,29 @@
 opam-version: "2.0"
+name: "conf-freetype"
+version: "1"
+synopsis: "Virtual package relying on a freetype lib system installation"
+description:
+  "This package can only install if the freetype lib is installed on the system."
 maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: ["Christophe Troestler <Christophe.Troestler@umons.ac.be>"]
+authors: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
+license: "GPL"
 homepage: "http://www.freetype.org"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "GPL"
-build: [["pkg-config" "freetype2"]]
-depends: ["conf-pkg-config" {build}]
+depends: [
+  "conf-pkg-config" {build}
+]
+flags: conf
+build: ["pkg-config" "freetype2"]
 depexts: [
-  ["libfreetype6-dev"] {os-distribution = "ubuntu"}
-  ["libfreetype6-dev"] {os-distribution = "debian"}
+  ["freetype"] {os = "macos" & os-distribution = "homebrew"}
   ["freetype-dev"] {os-distribution = "alpine"}
   ["freetype-devel"] {os-distribution = "centos"}
   ["freetype-devel"] {os-distribution = "fedora"}
   ["freetype-devel"] {os-distribution = "rhel"}
-  ["libfreetype2-devel"] {os-distribution = "mageia"}
   ["freetype2-devel"] {os-family = "suse"}
+  ["libfreetype2-devel"] {os-distribution = "mageia"}
+  ["libfreetype6-dev"] {os-distribution = "ubuntu"}
+  ["libfreetype6-dev"] {os-distribution = "debian"}
   ["print/freetype2"] {os = "freebsd"}
   ["print/freetype2"] {os = "openbsd"}
-  ["freetype"] {os = "macos" & os-distribution = "homebrew"}
 ]
-synopsis: "Virtual package relying on a freetype lib system installation"
-description:
-  "This package can only install if the freetype lib is installed on the system."
-flags: conf

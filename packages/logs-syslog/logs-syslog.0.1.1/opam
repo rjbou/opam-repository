@@ -1,41 +1,6 @@
 opam-version: "2.0"
-maintainer: "Hannes Mehnert <hannes@mehnert.org>"
-authors: ["Hannes Mehnert <hannes@mehnert.org>"]
-homepage: "https://github.com/hannesm/logs-syslog"
-doc: "https://hannesm.github.io/logs-syslog/doc"
-dev-repo: "git+https://github.com/hannesm/logs-syslog.git"
-bug-reports: "https://github.com/hannesm/logs-syslog/issues"
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "logs"
-  "ptime"
-  "syslog-message" {= "0.0.2"}
-]
-depopts: [
-  "lwt"
-  "x509" "tls" "cstruct"
-  "mirage-kv-lwt"
-  "mirage-console-lwt" "mirage-clock" "mirage-stack-lwt" "ipaddr"
-]
-
-conflicts: [
-  "mirage-types-lwt" {< "3.0.0"}
-  "x509" {< "0.6.0"}
-  "tls" {< "0.8.0"}
-]
-
-build: [
-  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"
-    "--with-lwt" "%{lwt:installed}%"
-    "--with-lwt-tls" "%{lwt+x509+tls+cstruct:installed}%"
-    "--with-mirage" "%{lwt+mirage-stack-lwt+mirage-console-lwt+mirage-clock+cstruct+ipaddr:installed}%"
-    "--with-mirage-tls" "%{lwt+mirage-kv-lwt+x509+tls+mirage-stack-lwt+mirage-console-lwt+mirage-clock+cstruct+ipaddr:installed}%"
- ]
-]
+name: "logs-syslog"
+version: "0.1.1"
 synopsis: "Logs output via syslog"
 description: """
 This library provides log reporters using syslog over various transports (UDP,
@@ -64,6 +29,53 @@ let logger =
     foreign
       ~deps:[abstract logger]
 ```"""
+maintainer: "Hannes Mehnert <hannes@mehnert.org>"
+authors: "Hannes Mehnert <hannes@mehnert.org>"
+license: "ISC"
+homepage: "https://github.com/hannesm/logs-syslog"
+doc: "https://hannesm.github.io/logs-syslog/doc"
+bug-reports: "https://github.com/hannesm/logs-syslog/issues"
+depends: [
+  "logs"
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ptime"
+  "syslog-message" {= "0.0.2"}
+  "topkg" {build}
+]
+depopts: [
+  "cstruct"
+  "ipaddr"
+  "lwt"
+  "mirage-clock"
+  "mirage-console-lwt"
+  "mirage-kv-lwt"
+  "mirage-stack-lwt"
+  "tls"
+  "x509"
+]
+conflicts: [
+  "mirage-types-lwt" {< "3.0.0"}
+  "tls" {< "0.8.0"}
+  "x509" {< "0.6.0"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--with-lwt"
+  "%{lwt:installed}%"
+  "--with-lwt-tls"
+  "%{lwt+x509+tls+cstruct:installed}%"
+  "--with-mirage"
+  "%{lwt+mirage-stack-lwt+mirage-console-lwt+mirage-clock+cstruct+ipaddr:installed}%"
+  "--with-mirage-tls"
+  "%{lwt+mirage-kv-lwt+x509+tls+mirage-stack-lwt+mirage-console-lwt+mirage-clock+cstruct+ipaddr:installed}%"
+]
+dev-repo: "git+https://github.com/hannesm/logs-syslog.git"
 url {
   src:
     "https://github.com/hannesm/logs-syslog/releases/download/0.1.1/logs-syslog-0.1.1.tbz"

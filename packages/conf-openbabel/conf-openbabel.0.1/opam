@@ -1,9 +1,16 @@
 opam-version: "2.0"
+name: "conf-openbabel"
+version: "0.1"
+synopsis: "Virtual package relying on openbabel library installation"
+description: """
+This package can only install if the openbabel devel library is installed
+on the system."""
 maintainer: "unixjunkie@sdf.org"
-homepage: "http://openbabel.org/"
-license: "GPL"
 authors: "http://openbabel.org/wiki/THANKS"
+license: "GPL"
+homepage: "http://openbabel.org/"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
+flags: conf
 build: [
   ["c++" "-I/usr/include/openbabel-2.0" "test.cpp" "-lopenbabel"]
     {os != "macos"}
@@ -21,9 +28,4 @@ depexts: [
   ["open-babel"] {os = "macos" & os-distribution = "homebrew"}
   ["openbabel-devel"] {os-distribution = "centos"}
 ]
-synopsis: "Virtual package relying on openbabel library installation"
-description: """
-This package can only install if the openbabel devel library is installed
-on the system."""
 extra-files: ["test.cpp" "md5=0a2f6ad381a1624089cd12718bfbfdd8"]
-flags: conf

@@ -1,33 +1,6 @@
 opam-version: "2.0"
-maintainer: "thomas@gazagnaire.org"
-authors: "Thomas Gazagnaire, Jon Ludlam"
-homepage: "https://github.com/mirage/ocaml-rpc"
-bug-reports: "https://github.com/mirage/ocaml-rpc/issues"
-dev-repo: "git+ssh://git@github.com/mirage/ocaml-rpc.git"
-doc: "https://mirage.github.io/ocaml-rpc/ppx_deriving_rpc"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "cppo" {build}
-  "rpclib" {>= "5.0.0"}
-  "rresult"
-  "ppx_deriving"
-  "ppx_tools"
-  "ppxfind"
-  "rpclib-lwt" {with-test & >= "5.0.0"}
-  "rpclib-async" {with-test & >= "5.0.0"}
-  "lwt" {with-test & >= "3.0.0"}
-  "async" {with-test & < "v0.13"}
-  "alcotest" {with-test}
-]
+name: "ppx_deriving_rpc"
+version: "5.9.0"
 synopsis: "ppx extension for rpclib"
 description: """
 The library provides the `[@@deriving rpc]` ppx directly
@@ -50,6 +23,32 @@ It also supports the `@key` annotations for having different field names:
 ```ocaml
 type t = { foo: int [@key "type"]; bar: int [@key "let"]; } [@@deriving rpc]
 ```"""
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire, Jon Ludlam"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/ocaml-rpc"
+doc: "https://mirage.github.io/ocaml-rpc/ppx_deriving_rpc"
+bug-reports: "https://github.com/mirage/ocaml-rpc/issues"
+depends: [
+  "alcotest" {with-test}
+  "async" {with-test & < "v0.13"}
+  "cppo" {build}
+  "jbuilder" {build}
+  "lwt" {with-test & >= "3.0.0"}
+  "ocaml" {>= "4.03.0"}
+  "ppx_deriving"
+  "ppx_tools"
+  "ppxfind"
+  "rpclib" {>= "5.0.0"}
+  "rpclib-async" {with-test & >= "5.0.0"}
+  "rpclib-lwt" {with-test & >= "5.0.0"}
+  "rresult"
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+ssh://git@github.com/mirage/ocaml-rpc.git"
 url {
   src: "https://github.com/mirage/ocaml-rpc/archive/v5.9.0.tar.gz"
   checksum: "md5=177db71621a7aa7a55cbea6c237eb6dc"

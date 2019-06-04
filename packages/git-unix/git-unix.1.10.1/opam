@@ -1,12 +1,30 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      "Thomas Gazagnaire"
-license:      "ISC"
-homepage:     "https://github.com/mirage/ocaml-git"
-bug-reports:  "https://github.com/mirage/ocaml-git/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-git.git"
-doc:          "https://mirage.github.io/ocaml-git/"
-
+name: "git-unix"
+version: "1.10.1"
+synopsis: "Unix backend for the Git protocol(s)"
+description: """
+The library comes with a command-line tool called `ogit` which shares
+a similar interface with `git`, but where all operations are mapped to
+the API exposed `ocaml-git` (and hence using only OCaml code)."""
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire"
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-git"
+doc: "https://mirage.github.io/ocaml-git/"
+bug-reports: "https://github.com/mirage/ocaml-git/issues"
+depends: [
+  "alcotest" {with-test}
+  "base-unix"
+  "camlzip" {>= "1.06"}
+  "cmdliner"
+  "conduit" {>= "0.8.4"}
+  "git" {>= "1.10.0" & < "1.11.0"}
+  "git-http" {>= "1.10.0"}
+  "mtime" {< "1.0.0"}
+  "nocrypto" {>= "0.2.0"}
+  "ocaml" {>= "4.02.3"}
+  "topkg" {>= "0.9.0"}
+]
 build: [
   [
     "ocaml"
@@ -32,24 +50,7 @@ build: [
   ] {with-test}
   ["ocaml" "pkg/pkg.ml" "test" "-n" name] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "topkg" {>= "0.9.0"}
-  "cmdliner"
-  "git" {>= "1.10.0" & < "1.11.0"}
-  "git-http" {>= "1.10.0"}
-  "conduit" {>= "0.8.4"}
-  "camlzip" {>= "1.06"}
-  "nocrypto" {>= "0.2.0"}
-  "mtime" {< "1.0.0"}
-  "base-unix"
-  "alcotest" {with-test}
-]
-synopsis: "Unix backend for the Git protocol(s)"
-description: """
-The library comes with a command-line tool called `ogit` which shares
-a similar interface with `git`, but where all operations are mapped to
-the API exposed `ocaml-git` (and hence using only OCaml code)."""
+dev-repo: "git+https://github.com/mirage/ocaml-git.git"
 url {
   src:
     "https://github.com/mirage/ocaml-git/releases/download/1.10.1/git-1.10.1.tbz"

@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "Rodolphe Lepigre <rodolphe.lepigre@univ-smb.fr>"
-authors: "Rodolphe Lepigre <rodolphe.lepigre@univ-smb.fr>"
-homepage: "http://lepigre.fr"
-bug-reports: "Rodolphe Lepigre <rodolphe.lepigre@univ-smb.fr>"
-license: "LGPL-3.0"
-dev-repo: "git://github.com:rlepigre/ocaml-imagelib.git"
-build: [make]
-install: [make "install"]
-remove: [make "uninstall"]
-depends: [
-  "ocaml" {>= "3.12.1" & < "4.06.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "camlzip"
-]
-post-messages: [
-  "imagelib requires convert (imagemagick) to handle format other than png and ppm."
-]
+name: "imagelib"
+version: "20170118"
 synopsis: "The imagelib library implements image formats such as PNG or PPM"
 description: """
 The imagelib library implements image formats such as PNG or PPM  in
@@ -34,6 +18,23 @@ Supported image formats:
 As imagelib only requires camlzip, it is suitable for compilation to
 javascript using js_of_ocaml (only for operations not requireing the
 convert binary)."""
+maintainer: "Rodolphe Lepigre <rodolphe.lepigre@univ-smb.fr>"
+authors: "Rodolphe Lepigre <rodolphe.lepigre@univ-smb.fr>"
+license: "LGPL-3.0"
+homepage: "http://lepigre.fr"
+bug-reports: "Rodolphe Lepigre <rodolphe.lepigre@univ-smb.fr>"
+depends: [
+  "camlzip"
+  "ocaml" {>= "3.12.1" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+build: make
+install: [make "install"]
+remove: [make "uninstall"]
+post-messages:
+  "imagelib requires convert (imagemagick) to handle format other than png and ppm."
+dev-repo: "git+ssh://github.com/rlepigre/ocaml-imagelib.git"
 url {
   src:
     "https://github.com/rlepigre/ocaml-imagelib/archive/ocaml-imagelib_20170118.tar.gz"

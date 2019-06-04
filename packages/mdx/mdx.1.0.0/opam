@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "mdx"
+version: "1.0.0"
 synopsis: "Executable markdown files"
 description: """
 `mdx` allows to execute code blocks inside markdow files.
@@ -29,15 +31,15 @@ homepage: "https://github.com/realworldocaml/mdx"
 doc: "https://realworldocaml.github.io/mdx/"
 bug-reports: "https://github.com/realworldocaml/mdx/issues"
 depends: [
-  "ocaml" {>= "4.06.0" & < "4.07.0"}
+  "astring"
+  "cmdliner"
   "dune" {build}
   "fmt"
-  "astring"
   "logs" {< "0.6.3"}
-  "cmdliner"
-  "re" {>= "1.7.2"}
-  "ppx_tools"
   "lwt" {with-test}
+  "ocaml" {>= "4.06.0" & < "4.07.0"}
+  "ppx_tools"
+  "re" {>= "1.7.2"}
 ]
 flags: light-uninstall
 build: [

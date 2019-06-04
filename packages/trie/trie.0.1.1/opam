@@ -1,10 +1,19 @@
 opam-version: "2.0"
+name: "trie"
+version: "0.1.1"
+synopsis: "trie tree"
+description: "Implementation of strict impure trie tree"
 maintainer: "zandoye@gmail.com"
-authors: [ "ZAN DoYe" ]
+authors: "ZAN DoYe"
+license: "MIT"
 homepage: "https://bitbucket.org/zandoye/trie/"
 bug-reports: "https://bitbucket.org/zandoye/trie/issues"
-license: "MIT"
-dev-repo: "hg+https://bitbucket.org/zandoye/trie"
+depends: [
+  "core_kernel" {< "v0.10"}
+  "ocaml"
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   [make]
   [make "doc"] {with-doc}
@@ -17,14 +26,7 @@ remove: [
   ["ocamlfind" "remove" "trie"]
   ["rm" "-rf" "%{doc}%/trie"]
 ]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "core_kernel" {< "v0.10"}
-]
-synopsis: "trie tree"
-description: "Implementation of strict impure trie tree"
-flags: light-uninstall
+dev-repo: "hg+https://bitbucket.org/zandoye/trie"
 url {
   src: "https://bitbucket.org/zandoye/trie/get/0.1.1.tar.gz"
   checksum: "md5=a7460a1e9c1f1c94bb36b1ce48aea50f"

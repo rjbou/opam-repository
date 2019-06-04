@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "Darren Ldl <darrenldldev@gmail.com>"
-authors: "Darren Ldl <darrenldldev@gmail.com>"
-homepage: "https://gitlab.com/darrenldl/ocaml-reed-solomon-erasure"
-bug-reports: "https://gitlab.com/darrenldl/ocaml-reed-solomon-erasure/issues"
-license: "MIT"
-dev-repo: "git+https://gitlab.com/darrenldl/ocaml-reed-solomon-erasure.git"
-build: ["jbuilder" "build" "-p" name]
-depends: [
-  "ocaml" {>= "4.06"}
-  "jbuilder" {build}
-  "cppo" {build}
-  "bisect_ppx" {build}
-  "core_kernel" {< "v0.13"}
-  "ctypes"
-  "ctypes-foreign"
-]
-conflicts: [
-  "dune"
-]
+name: "reed-solomon-erasure"
+version: "1.0.1"
 synopsis: "OCaml implementation of Reed-Solomon erasure coding"
 description: """
 This library provides an encoder/decoder for Reed-Solomon erasure code.
@@ -29,6 +12,23 @@ the configuration provides high enough redundancy.
 You will have to implement error detection separately(e.g. via checksums)
 and simply leave out the corrupted shards when attempting to reconstruct
 the missing data."""
+maintainer: "Darren Ldl <darrenldldev@gmail.com>"
+authors: "Darren Ldl <darrenldldev@gmail.com>"
+license: "MIT"
+homepage: "https://gitlab.com/darrenldl/ocaml-reed-solomon-erasure"
+bug-reports: "https://gitlab.com/darrenldl/ocaml-reed-solomon-erasure/issues"
+depends: [
+  "bisect_ppx" {build}
+  "core_kernel" {< "v0.13"}
+  "cppo" {build}
+  "ctypes"
+  "ctypes-foreign"
+  "jbuilder" {build}
+  "ocaml" {>= "4.06"}
+]
+conflicts: ["dune"]
+build: ["jbuilder" "build" "-p" name]
+dev-repo: "git+https://gitlab.com/darrenldl/ocaml-reed-solomon-erasure.git"
 url {
   src:
     "https://gitlab.com/darrenldl/ocaml-reed-solomon-erasure/-/archive/v1.0.1/ocaml-reed-solomon-erasure-v1.0.1.tar.gz"

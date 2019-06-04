@@ -1,12 +1,14 @@
 opam-version: "2.0"
+name: "ocaml-base-compiler"
+version: "3.12.0"
 synopsis: "Official 3.12.0 release"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "3.12.0" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
-  "base-threads" {post}
   "base-ocamlbuild" {post}
+  "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "3.12.0" & post}
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler
@@ -22,7 +24,9 @@ build: [
 install: [
   [make "install"]
   ["mkdir" "-p" "%{prefix}%/lib/ocaml/compiler-libs"]
-  ["cp" "-r" "typing" "parsing" "utils" "%{prefix}%/lib/ocaml/compiler-libs/"]
+  [
+    "cp" "-r" "typing" "parsing" "utils" "%{prefix}%/lib/ocaml/compiler-libs/"
+  ]
 ]
 patches: "file_download.php?file_id=418&type=bug"
 url {

@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "dune-release"
+version: "1.0.0"
 synopsis: "Release dune packages in opam"
 description: """
 `dune-release` is a tool to streamline the release of Dune packages in
@@ -12,17 +14,17 @@ homepage: "https://github.com/samoht/dune-release"
 doc: "https://samoht.github.io/dune-release/"
 bug-reports: "https://github.com/samoht/dune-release/issues"
 depends: [
-  "ocaml" {>= "4.06.0"}
-  "dune" {build}
-  "fmt"
+  "alcotest" {with-test}
   "bos"
   "cmdliner"
-  "re"
-  "opam-format"
-  "rresult"
+  "dune" {build}
+  "fmt"
   "logs"
+  "ocaml" {>= "4.06.0"}
   "odoc"
-  "alcotest" {with-test}
+  "opam-format"
+  "re"
+  "rresult"
 ]
 build: ["dune" "build" "-p" name "-j" jobs]
 run-test: ["dune" "runtest" "-p" name "-j" jobs] {with-test}

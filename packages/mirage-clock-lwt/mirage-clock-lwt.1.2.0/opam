@@ -1,20 +1,26 @@
 opam-version: "2.0"
-authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
-maintainer: "anil@recoil.org"
-homepage: "https://github.com/mirage/mirage-clock"
-bug-reports: "https://github.com/mirage/mirage-clock/issues"
-dev-repo: "git://github.com/mirage/mirage-clock"
-doc: "https://mirage.github.io/mirage-clock/"
+name: "mirage-clock-lwt"
+version: "1.2.0"
+synopsis: "Libraries and module types for two kinds of clocks:"
+description: """
+* clocks which give a full date and time (PCLOCK)
+* clocks which give a count of time elapsed since the clock started, guaranteed to always increase (MCLOCK)
 
+These are primarily useful in the context of Mirage projects."""
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
 license: "ISC"
-tags: ["org:mirage"]
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-clock"
+doc: "https://mirage.github.io/mirage-clock/"
+bug-reports: "https://github.com/mirage/mirage-clock/issues"
 depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.8.0"}
-  "mirage-clock" {= "1.2.0"}
   "lwt"
+  "mirage-clock" {= "1.2.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build & >= "0.8.0"}
 ]
 build: [
   ["ocaml" "pkg/pkg.ml" "build" "--pkg-name" name "--pinned" "%{pinned}%"]
@@ -31,12 +37,7 @@ build: [
   ] {with-test}
   ["ocaml" "pkg/pkg.ml" "test" "--pkg-name" name] {with-test}
 ]
-synopsis: "Libraries and module types for two kinds of clocks:"
-description: """
-* clocks which give a full date and time (PCLOCK)
-* clocks which give a count of time elapsed since the clock started, guaranteed to always increase (MCLOCK)
-
-These are primarily useful in the context of Mirage projects."""
+dev-repo: "git://github.com/mirage/mirage-clock"
 url {
   src:
     "https://github.com/mirage/mirage-clock/releases/download/1.2.0/mirage-clock-lwt-1.2.0.tbz"

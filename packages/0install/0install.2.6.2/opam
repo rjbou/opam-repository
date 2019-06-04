@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer: "ygrek@autistici.org"
-homepage: "http://0install.net/"
-build: [
-  [make]
-]
-patches: [ "gui_gtk_dir.patch" ]
-depends: [
-  "ocaml"
-  "yojson"
-  "xmlm"
-  "ounit"
-  "react"
-  "lwt" {< "3.0.0"}
-  "extlib"
-  "ssl"
-  "ocurl"
-  "ocamlbuild" {build & <= "0.9.3"}
-  "camlp4" {build}
-]
-depopts: [ "obus" "lablgtk" ]
-depexts: [
-  ["unzip"] {os-distribution = "ubuntu"}
-  ["unzip"] {os-distribution = "debian"}
-]
+name: "0install"
+version: "2.6.2"
 synopsis: "The antidote to app-stores"
 description: """
 Zero Install is a decentralised cross-distribution software installation system.
@@ -30,9 +8,31 @@ Other features include full support for shared libraries (with a SAT solver for
 dependency resolution), sharing between users, and integration with native platform
 package managers. It supports both binary and source packages, and works on Linux,
 Mac OS X, Unix and Windows systems."""
+maintainer: "ygrek@autistici.org"
+homepage: "http://0install.net/"
+depends: [
+  "camlp4" {build}
+  "extlib"
+  "lwt" {< "3.0.0"}
+  "ocaml"
+  "ocamlbuild" {build & <= "0.9.3"}
+  "ocurl"
+  "ounit"
+  "react"
+  "ssl"
+  "xmlm"
+  "yojson"
+]
+depopts: ["lablgtk" "obus"]
+build: make
+patches: "gui_gtk_dir.patch"
+depexts: [
+  ["unzip"] {os-distribution = "ubuntu"}
+  ["unzip"] {os-distribution = "debian"}
+]
 extra-files: [
-  ["gui_gtk_dir.patch" "md5=0a14e57ca2b2a914a5433b3a2ca2abb1"]
   ["0install.install" "md5=db6ee7a35da5d98136e5a56bad08496e"]
+  ["gui_gtk_dir.patch" "md5=0a14e57ca2b2a914a5433b3a2ca2abb1"]
 ]
 url {
   src:

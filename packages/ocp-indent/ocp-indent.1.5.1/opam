@@ -1,40 +1,6 @@
 opam-version: "2.0"
-maintainer: "contact@ocamlpro.com"
-authors: [
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-  "Thomas Gazagnaire <thomas@gazagnaire.org>"
-  "Jun Furuse"
-]
-homepage: "http://www.typerex.org/ocp-indent.html"
-bug-reports: "https://github.com/OCamlPro/ocp-indent/issues"
-license: "LGPL"
-tags: ["org:ocamlpro" "org:typerex"]
-dev-repo: "git+https://github.com/OCamlPro/ocp-indent.git"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocp-build" {build & >= "1.99.6-beta"}
-  "cmdliner" {<= "0.9.7"}
-]
-post-messages: [
-  "
-This package requires additional configuration for use in editors.
-
-* The easiest is to use 'opam user-setup install'
-
-* Otherwise, for Emacs, add these lines to ~/.emacs:
-  (add-to-list 'load-path \"%{share}%/emacs/site-lisp\")
-  (require 'ocp-indent)
-
-* Or for Vim, add this line to ~/.vimrc:
-  set rtp^=\"%{share}%/ocp-indent/vim\"
-  "
-    {success & !user-setup:installed}
-]
-patches: "elisp-hotfix.patch"
+name: "ocp-indent"
+version: "1.5.1"
 synopsis: "A simple tool to indent OCaml programs"
 description: """
 Ocp-indent is based on an approximate, tolerant OCaml parser and a simple stack
@@ -48,6 +14,40 @@ Includes:
 * Bindings for popular editors
 * A library that can be directly used by editor writers, or just for
 approximate parsing."""
+maintainer: "contact@ocamlpro.com"
+authors: [
+  "Jun Furuse"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+  "Thomas Gazagnaire <thomas@gazagnaire.org>"
+]
+license: "LGPL"
+tags: ["org:ocamlpro" "org:typerex"]
+homepage: "http://www.typerex.org/ocp-indent.html"
+bug-reports: "https://github.com/OCamlPro/ocp-indent/issues"
+depends: [
+  "cmdliner" {<= "0.9.7"}
+  "ocaml" {< "4.06.0"}
+  "ocp-build" {build & >= "1.99.6-beta"}
+]
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+patches: "elisp-hotfix.patch"
+post-messages:
+  """
+This package requires additional configuration for use in editors.
+
+* The easiest is to use 'opam user-setup install'
+
+* Otherwise, for Emacs, add these lines to ~/.emacs:
+  (add-to-list 'load-path "%{share}%/emacs/site-lisp")
+  (require 'ocp-indent)
+
+* Or for Vim, add this line to ~/.vimrc:
+  set rtp^="%{share}%/ocp-indent/vim\""""
+    {success & !user-setup:installed}
+dev-repo: "git+https://github.com/OCamlPro/ocp-indent.git"
 extra-files: ["elisp-hotfix.patch" "md5=a7df9ed155af44ec34949a97543d4e6d"]
 url {
   src: "https://github.com/OCamlPro/ocp-indent/archive/1.5.1.tar.gz"

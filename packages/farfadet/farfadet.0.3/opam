@@ -1,28 +1,6 @@
 opam-version: "2.0"
-name:         "farfadet"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/oklm-wsh/Farfadet"
-bug-reports:  "https://github.com/oklm-wsh/Farfadet/issues"
-dev-repo: "git+https://github.com/oklm-wsh/Farfadet.git"
-doc:          "https://oklm-wsh.github.io/Farfadet/"
-license:      "MIT"
-
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "topkg" {build}
-  "faraday" {>= "0.6.0"}
-  "alcotest" {with-test}
-  "ezjsonm" {with-test}
-]
+name: "farfadet"
+version: "0.3"
 synopsis:
   "A printf-like for [Faraday](https://github.com/inhabitedtype/faraday) library"
 description: """
@@ -120,6 +98,28 @@ value](https://github.com/oklm-wsh/Farfadet/blob/master/test/test.ml).
 ## Feedback
 
 It's a Proof of Concept and you can improve the library like you want!"""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/oklm-wsh/Farfadet"
+doc: "https://oklm-wsh.github.io/Farfadet/"
+bug-reports: "https://github.com/oklm-wsh/Farfadet/issues"
+depends: [
+  "alcotest" {with-test}
+  "ezjsonm" {with-test}
+  "faraday" {>= "0.6.0"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/oklm-wsh/Farfadet.git"
 url {
   src:
     "https://github.com/oklm-wsh/Farfadet/releases/download/v0.3/farfadet-0.3.tbz"

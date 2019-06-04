@@ -1,12 +1,28 @@
 opam-version: "2.0"
+name: "qcheck"
+version: "0.5.3"
+synopsis: "QuickCheck inspired property-based testing for OCaml."
+description: """
+This module allows to check invariants (properties of some types) over
+randomly generated instances of the type. It provides combinators for
+generating instances and printing them."""
 maintainer: "simon.cruanes@inria.fr"
+authors: "Simon Cruanes <simon.cruanes@inria.fr>"
+tags: ["property" "quickcheck" "test"]
 homepage: "https://github.com/c-cube/qcheck/"
-doc: ["http://cedeela.fr/~simon/software/qcheck/QCheck.html"]
-tags: [
-  "test"
-  "property"
-  "quickcheck"
+doc: "http://cedeela.fr/~simon/software/qcheck/QCheck.html"
+bug-reports: "https://github.com/c-cube/qcheck/issues"
+depends: [
+  "base-bytes"
+  "base-unix"
+  "ocaml" {>= "4.00.0"}
+  "ocamlfind"
+  "ounit"
 ]
+conflicts: [
+  "ounit" {< "2.0"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   [make "build"]
@@ -15,31 +31,9 @@ build: [
   ["./configure" "--enable-docs" "--docdir" "%{doc}%"] {with-doc}
   [make "doc"] {with-doc}
 ]
-install: [
-  [make "install"]
-]
-remove: [
-    ["ocamlfind" "remove" "qcheck"]
-]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocamlfind"
-  "base-bytes"
-  "base-unix"
-  "ounit"
-]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "qcheck"]
 dev-repo: "git+https://github.com/c-cube/qcheck.git"
-bug-reports: "https://github.com/c-cube/qcheck/issues"
-conflicts: [
-  "ounit" { < "2.0" }
-]
-synopsis: "QuickCheck inspired property-based testing for OCaml."
-description: """
-This module allows to check invariants (properties of some types) over
-randomly generated instances of the type. It provides combinators for
-generating instances and printing them."""
-authors: "Simon Cruanes <simon.cruanes@inria.fr>"
-flags: light-uninstall
 url {
   src: "https://github.com/c-cube/qcheck/archive/0.5.3.tar.gz"
   checksum: "md5=779d8b7d2a8cd25a2f0a08dc6643792d"

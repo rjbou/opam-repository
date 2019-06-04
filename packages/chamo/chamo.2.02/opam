@@ -1,25 +1,27 @@
 opam-version: "2.0"
+name: "chamo"
+version: "2.02"
+synopsis:
+  "A source code editor, even if it can be used to edit any text file."
 maintainer: "zoggy@bat8.org"
+depends: [
+  "conf-glade" {= "2"}
+  "config-file" {>= "1.1"}
+  "lablgtk" {>= "2.16.0" & < "2.18"}
+  "lablgtk-extras" {>= "1.2"}
+  "ocaml" {>= "4.00.0" & < "4.02.0"}
+  "ocamlfind"
+  "pcre"
+]
 build: [
   ["./configure" "--prefix" prefix]
   [make "all"]
 ]
+install: [make "install-lib"]
 remove: [
   ["./configure" "--prefix" prefix]
   [make "uninstall-lib"]
 ]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.02.0"}
-  "ocamlfind"
-  "config-file" {>= "1.1"}
-  "lablgtk-extras" {>= "1.2"}
-  "lablgtk" {>= "2.16.0" & < "2.18"}
-  "conf-glade" {= "2"}
-  "pcre"
-]
-install: [make "install-lib"]
-synopsis:
-  "A source code editor, even if it can be used to edit any text file."
 extra-files: ["chamo.install" "md5=61635a19e58f6af4d4587471c79bef4a"]
 url {
   src: "http://zoggy.github.com/chamo/chamo-2.02.tar.gz"

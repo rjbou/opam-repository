@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "hardcaml-waveterm"
+version: "0.2.0"
+synopsis: "Terminal based digital waveform viewer"
 maintainer: "andy.ray@ujamjar.com"
 authors: "andy.ray@ujamjar.com"
 homepage: "https://github.com/ujamjar/hardcaml-waveterm"
-dev-repo: "git+https://github.com/ujamjar/hardcaml-waveterm.git"
 bug-reports: "https://github.com/ujamjar/hardcaml-waveterm/issues"
-build: [ ["ocaml" "pkg/pkg.ml" "build"] ]
 depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
+  "astring"
   "camlp4" {build}
   "hardcaml" {>= "1.2.0" & < "2.0.0"}
-  "astring"
   "lambda-term" {< "2.0"}
   "lwt" {< "4.0.0"}
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
 ]
-synopsis: "Terminal based digital waveform viewer"
+build: ["ocaml" "pkg/pkg.ml" "build"]
+dev-repo: "git+https://github.com/ujamjar/hardcaml-waveterm.git"
 url {
   src:
     "https://github.com/ujamjar/hardcaml-waveterm/archive/v0.2.0+compat.tar.gz"

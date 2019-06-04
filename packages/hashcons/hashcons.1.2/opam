@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer:   "sheets@alum.mit.edu"
-homepage:     "https://github.com/backtracking/ocaml-hashcons"
-dev-repo: "git+https://github.com/backtracking/ocaml-hashcons.git"
-bug-reports:  "https://github.com/backtracking/ocaml-hashcons/issues"
-authors:      [ "Jean-Christophe Filliatre" ]
-license: "LGPL-2.1 with OCaml linking exception"
-build: [
-  ["autoconf"]
-  ["./configure"]
-  [make "all"]
-]
-install: [
-  [make "install"]
-]
-remove: [["ocamlfind" "remove" "hashcons"]]
-depends: [
-  "ocaml"
-  "conf-autoconf" {build}
-  "ocamlfind" {build}
-  "conf-which" {build}
-]
+name: "hashcons"
+version: "1.2"
 synopsis: "OCaml hash-consing library"
 description: """
 The technique is described in this paper:
@@ -28,7 +9,26 @@ The technique is described in this paper:
 In ACM SIGPLAN Workshop on ML, Portland, Oregon, September 2006.
 The PDF is available at
 <https://www.lri.fr/~filliatr/ftp/publis/hash-consing2.pdf>"""
+maintainer: "sheets@alum.mit.edu"
+authors: "Jean-Christophe Filliatre"
+license: "LGPL-2.1 with OCaml linking exception"
+homepage: "https://github.com/backtracking/ocaml-hashcons"
+bug-reports: "https://github.com/backtracking/ocaml-hashcons/issues"
+depends: [
+  "conf-autoconf" {build}
+  "conf-which" {build}
+  "ocaml"
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["autoconf"]
+  ["./configure"]
+  [make "all"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "hashcons"]
+dev-repo: "git+https://github.com/backtracking/ocaml-hashcons.git"
 url {
   src: "https://github.com/backtracking/ocaml-hashcons/archive/1.2.tar.gz"
   checksum: "md5=3febf305ffbdd31d6de92c42d382a09e"

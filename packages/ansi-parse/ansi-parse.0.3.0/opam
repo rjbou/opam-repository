@@ -1,21 +1,6 @@
 opam-version: "2.0"
-license: "ISC"
-maintainer: "Joel Jakubovic"
-authors: "Joel Jakubovic"
-dev-repo: "git+https://github.com/jdjakub/ansi-parse.git"
-homepage: "https://github.com/jdjakub/ansiparse"
-bug-reports: "https://github.com/jdjakub/ansiparse/issues"
-build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "angstrom" {< "0.2.0"}
-  "ppx_deriving"
-  "tyxml" {>= "4.0"}
-]
-doc: "https://jdjakub.github.io/ansi-parse/doc"
+name: "ansi-parse"
+version: "0.3.0"
 synopsis: "Escape sequences to HTML"
 description: """
 %%1.0.2%%
@@ -24,6 +9,23 @@ Ansiparse is a library for converting raw terminal output,
 replete with escape codes, into formatted HTML.
 
 Ansiparse is distributed under the ISC license."""
+maintainer: "Joel Jakubovic"
+authors: "Joel Jakubovic"
+license: "ISC"
+homepage: "https://github.com/jdjakub/ansiparse"
+doc: "https://jdjakub.github.io/ansi-parse/doc"
+bug-reports: "https://github.com/jdjakub/ansiparse/issues"
+depends: [
+  "angstrom" {< "0.2.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_deriving"
+  "topkg" {build}
+  "tyxml" {>= "4.0"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/jdjakub/ansi-parse.git"
 url {
   src:
     "https://github.com/jdjakub/ansi-parse/releases/download/v0.3.0/ansi-parse-0.3.0.tbz"

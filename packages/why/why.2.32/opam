@@ -1,28 +1,43 @@
 opam-version: "2.0"
+name: "why"
+version: "2.32"
+synopsis: "Why is a software verification platform."
+description: """
+Why is not any longer under active development. Our efforts have moved
+to the development of Why3.
+
+Why is still maintained, in particular to provide the Jessie plug-in
+of Frama-C and the Krakatoa front-end for Java."""
 maintainer: "Claude.Marche@inria.fr"
 authors: [
-  "Jean-Christophe Filliâtre"
-  "Claude Marché"
-  "Yannick Moy"
-  "Romain Bardou"
+  "Claude Marché" "Jean-Christophe Filliâtre" "Romain Bardou" "Yannick Moy"
 ]
-homepage: "http://krakatoa.lri.fr/"
-doc: ["http://krakatoa.lri.fr/"]
-# dev-repo: "https://guest:guest@www.lri.fr/svn/demons/why2/trunk/"
-bug-reports: "https://gforge.inria.fr/tracker/?atid=4012&group_id=999&func=browse"
 license: "LGPL-2.1"
 tags: [
+  "ACSL"
+  "C"
+  "JML"
+  "Java"
+  "automated theorem prover"
   "deductive"
+  "interactive theorem prover"
   "program verification"
   "specification"
-  "automated theorem prover"
-  "interactive theorem prover"
-  "Java"
-  "JML"
-  "C"
-  "ACSL"
 ]
-substs: ["opam.patch"]
+homepage: "http://krakatoa.lri.fr/"
+doc: "http://krakatoa.lri.fr/"
+bug-reports:
+  "https://gforge.inria.fr/tracker/?atid=4012&group_id=999&func=browse"
+depends: [
+  "alt-ergo" {>= "0.95"}
+  "conf-autoconf"
+  "coq" {>= "8.4pl1"}
+  "frama-c" {= "8.0"}
+  "lablgtk" {<= "2.16.0"}
+  "ocaml"
+  "ocamlgraph" {= "1.8.2"}
+  "why3" {= "0.81"}
+]
 build: [
   ["autoconf"]
   [
@@ -42,31 +57,12 @@ build: [
   ]
   [make]
 ]
-depends: [
-  "ocaml"
-  "lablgtk" {<= "2.16.0"}
-  "ocamlgraph" {= "1.8.2"}
-  "why3" {= "0.81"}
-  "coq" {>= "8.4pl1"}
-  "frama-c" {= "8.0"}
-  "alt-ergo" {>= "0.95"}
-  "conf-autoconf"
-]
-patches: [
-  "opam.patch"
-  "warn-error.patch"
-]
 install: [make "install"]
-synopsis: "Why is a software verification platform."
-description: """
-Why is not any longer under active development. Our efforts have moved
-to the development of Why3.
-
-Why is still maintained, in particular to provide the Jessie plug-in
-of Frama-C and the Krakatoa front-end for Java."""
+substs: "opam.patch"
+patches: ["opam.patch" "warn-error.patch"]
 extra-files: [
-  ["warn-error.patch" "md5=2686e176f48ec00aa9d76dc6743f2886"]
   ["opam.patch.in" "md5=892a95f565fe18b15eb03e6f2bc6a1e7"]
+  ["warn-error.patch" "md5=2686e176f48ec00aa9d76dc6743f2886"]
 ]
 url {
   src: "http://why.lri.fr/download/why-2.32.tar.gz"

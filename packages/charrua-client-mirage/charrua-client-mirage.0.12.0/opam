@@ -1,35 +1,34 @@
 opam-version: "2.0"
-maintainer:   ["Mindy Preston"]
-authors   :   ["Mindy Preston"]
-homepage:     "https://github.com/mirage/charrua-core"
-bug-reports:  "https://github.com/mirage/charrua-core/issues"
-dev-repo:     "git+https://github.com/mirage/charrua-core.git"
-tags:         [ "org:mirage"]
-doc:          "https://docs.mirage.io"
-
+name: "charrua-client-mirage"
+version: "0.12.0"
+synopsis: "A DHCP client for MirageOS"
+description: """
+`charrua-client-mirage` exposes an additional `Dhcp_client_mirage` for direct use
+with the [MirageOS library operating system](https://github.com/mirage/mirage)."""
+maintainer: "Mindy Preston"
+authors: "Mindy Preston"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/charrua-core"
+doc: "https://docs.mirage.io"
+bug-reports: "https://github.com/mirage/charrua-core/issues"
+depends: [
+  "charrua-client-lwt" {>= "0.12.0"}
+  "dune" {build & >= "1.0"}
+  "ipaddr" {>= "3.0.0"}
+  "logs"
+  "lwt"
+  "mirage-clock"
+  "mirage-net-lwt" {>= "2.0.0"}
+  "mirage-protocols-lwt" {>= "2.0.0"}
+  "mirage-random" {>= "1.0.0"}
+  "mirage-time-lwt"
+  "ocaml" {>= "4.04.2"}
+]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
 ]
-
-depends: [
-  "dune" {build & >= "1.0"}
-  "ocaml" {>= "4.04.2"}
-  "charrua-client-lwt" {>= "0.12.0"}
-  "ipaddr" {>= "3.0.0"}
-  "mirage-random" {>= "1.0.0"}
-  "mirage-clock"
-  "mirage-time-lwt"
-  "mirage-net-lwt" {>= "2.0.0"}
-  "mirage-protocols-lwt" {>= "2.0.0"}
-  "logs"
-  "lwt"
-]
-synopsis: "A DHCP client for MirageOS"
-description: """
-`charrua-client-mirage` exposes an additional `Dhcp_client_mirage` for direct use
-with the [MirageOS library operating system](https://github.com/mirage/mirage).
-"""
+dev-repo: "git+https://github.com/mirage/charrua-core.git"
 url {
   src:
     "https://github.com/mirage/charrua-core/releases/download/v0.12.0/charrua-core-v0.12.0.tbz"

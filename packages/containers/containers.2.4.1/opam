@@ -1,26 +1,28 @@
 opam-version: "2.0"
+name: "containers"
+version: "2.4.1"
 synopsis:
   "A modular, clean and powerful extension of the OCaml standard library"
 maintainer: "simon.cruanes.2007@m4x.org"
 authors: "Simon Cruanes"
-tags: ["stdlib" "containers" "iterators" "list" "heap" "queue"]
+tags: ["containers" "heap" "iterators" "list" "queue" "stdlib"]
 homepage: "https://github.com/c-cube/ocaml-containers/"
 doc: "https://c-cube.github.io/ocaml-containers"
 bug-reports: "https://github.com/c-cube/ocaml-containers/issues/"
 depends: [
   "dune" {build}
-  "result"
-  "uchar"
-  "qtest" {with-test}
-  "qcheck" {with-test & >= "0.7"}
-  "ounit" {with-test}
-  "sequence" {with-test}
   "gen" {with-test}
-  "uutf" {with-test}
-  "odoc" {with-doc}
   "ocaml" {>= "4.02.0" & < "4.08.0"}
+  "odoc" {with-doc}
+  "ounit" {with-test}
+  "qcheck" {with-test & >= "0.7"}
+  "qtest" {with-test}
+  "result"
+  "sequence" {with-test}
+  "uchar"
+  "uutf" {with-test}
 ]
-depopts: ["base-unix" "base-threads"]
+depopts: ["base-threads" "base-unix"]
 conflicts: [
   "sequence" {< "0.5"}
 ]

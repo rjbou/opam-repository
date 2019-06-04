@@ -1,34 +1,32 @@
 opam-version: "2.0"
 name: "alt-ergo-lib"
 version: "2.3.0"
-authors: "Alt-Ergo developers"
+synopsis: "The Alt-Ergo SMT prover library"
+description: """
+This is the core library used in the Alt-Ergo SMT solver.
+
+Alt-Ergo is an automatic theorem prover of mathematical formulas. It was developed at LRI, and is now maintained at OCamlPro.
+
+See more details on http://alt-ergo.ocamlpro.com/"""
 maintainer: "OCamlPro <alt-ergo@ocamlpro.com>"
+authors: "Alt-Ergo developers"
 license: "OCamlPro Non-Commercial Purpose License, version 1"
+homepage: "http://alt-ergo.ocamlpro.com/"
+bug-reports: "https://github.com/OCamlPro/alt-ergo/issues"
+depends: [
+  "dune" {build}
+  "num"
+  "ocaml" {>= "4.04.0"}
+  "ocplib-simplex" {>= "0.4"}
+  "seq"
+  "zarith"
+]
 build: [
   ["./configure" name]
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
 ]
-depends: [
-  "ocaml" {>="4.04.0"}
-  "dune" { build }
-  "num"
-  "ocplib-simplex" {>= "0.4" }
-  "zarith"
-  "seq"
-]
-homepage: "http://alt-ergo.ocamlpro.com/"
 dev-repo: "git+https://github.com/OCamlPro/alt-ergo.git"
-bug-reports: "https://github.com/OCamlPro/alt-ergo/issues"
-
-synopsis: "The Alt-Ergo SMT prover library"
-description:
-"This is the core library used in the Alt-Ergo SMT solver.
-
-Alt-Ergo is an automatic theorem prover of mathematical formulas. It was developed at LRI, and is now maintained at OCamlPro.
-
-See more details on http://alt-ergo.ocamlpro.com/"
-
 url {
   src:
     "http://alt-ergo.ocamlpro.com/http/alt-ergo-2.3.0/alt-ergo-2.3.0.tar.gz"

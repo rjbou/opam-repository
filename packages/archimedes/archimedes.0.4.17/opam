@@ -1,16 +1,35 @@
 opam-version: "2.0"
+name: "archimedes"
+version: "0.4.17"
+synopsis: "Extensible 2D plotting library."
+description: """
+Archimedes is a high quality, platform-independent, extensible 2D
+plotting library. It provides dynamically loaded backends such as
+Graphics and Cairo."""
 maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-           "Pierre Hauweele <pierre@hauweele.net>"
-           "Fabian Pijcke <fabian.pijcke@gmail.com>"
-           "Noémie Meunier <noemie_6462@hotmail.com>"
-           "Bertrand Desmons <bibi-6@hotmail.fr>"
-           "Xavier Deschuyteneer <xavier.deschuyteneer@gmail.com>" ]
+authors: [
+  "Bertrand Desmons <bibi-6@hotmail.fr>"
+  "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
+  "Fabian Pijcke <fabian.pijcke@gmail.com>"
+  "Noémie Meunier <noemie_6462@hotmail.com>"
+  "Pierre Hauweele <pierre@hauweele.net>"
+  "Xavier Deschuyteneer <xavier.deschuyteneer@gmail.com>"
+]
 license: "LGPL-3.0 with OCaml linking exception"
 homepage: "http://forge.ocamlcore.org/projects/archimedes/"
-dev-repo:
-  "git+http://forge.ocamlcore.org/anonscm/git/archimedes/archimedes.git"
 bug-reports: "https://forge.ocamlcore.org/tracker/?group_id=105"
+depends: [
+  "base-bigarray"
+  "camlp4" {build}
+  "ocaml" {< "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+depopts: [
+  "cairo2" {< "0.6"}
+  "graphics"
+]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -35,26 +54,9 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "archimedes"]
-]
-depends: [
-  "ocaml" {< "4.03"}
-  "base-bigarray"
-  "ocamlfind" {build}
-  "camlp4" {build}
-  "ocamlbuild" {build}
-]
-depopts: [
-  "cairo2" {< "0.6"}
-  "graphics"
-]
-synopsis: "Extensible 2D plotting library."
-description: """
-Archimedes is a high quality, platform-independent, extensible 2D
-plotting library. It provides dynamically loaded backends such as
-Graphics and Cairo."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "archimedes"]
+dev-repo:
+  "git+http://forge.ocamlcore.org/anonscm/git/archimedes/archimedes.git"
 extra-files: ["archimedes.install" "md5=77a877e7628a37723cfe5460c4090831"]
 url {
   src:

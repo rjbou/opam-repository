@@ -1,28 +1,28 @@
 opam-version: "2.0"
+name: "patdiff"
+version: "v0.10.0"
+synopsis: "File Diff using the Patience Diff algorithm"
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
 homepage: "https://github.com/janestreet/patdiff"
 bug-reports: "https://github.com/janestreet/patdiff/issues"
-dev-repo: "git+https://github.com/janestreet/patdiff.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
 depends: [
-  "ocaml" {>= "4.04.1"}
   "core" {>= "v0.10" & < "v0.11"}
   "core_extended" {>= "v0.10" & < "v0.11"}
   "expect_test_helpers" {>= "v0.10" & < "v0.11"}
+  "jbuilder" {build & >= "1.0+beta12"}
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "0.4"}
   "patience_diff" {>= "v0.10" & < "v0.11"}
+  "pcre"
   "ppx_driver" {>= "v0.10" & < "v0.11"}
   "ppx_jane" {>= "v0.10" & < "v0.11"}
   "re2" {>= "v0.10" & < "v0.11"}
   "sexplib" {>= "v0.10" & < "v0.11"}
-  "jbuilder" {build & >= "1.0+beta12"}
-  "ocaml-migrate-parsetree" {>= "0.4"}
-  "pcre"
 ]
-synopsis: "File Diff using the Patience Diff algorithm"
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/patdiff.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.10/files/patdiff-v0.10.0.tar.gz"

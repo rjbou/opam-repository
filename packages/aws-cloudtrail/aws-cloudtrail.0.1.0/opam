@@ -1,26 +1,29 @@
 opam-version: "2.0"
+name: "aws-cloudtrail"
+version: "0.1.0"
+synopsis: "AWS CloudTrail"
 maintainer: "Spiros Eliopoulos <spiros@inhabitedtype.com>"
-authors: [ "Spiros Eliopoulos <spiros@inhabitedtype.com>" "Daniel Patterson <dbp@dbpmail.net>" ]
+authors: [
+  "Daniel Patterson <dbp@dbpmail.net>"
+  "Spiros Eliopoulos <spiros@inhabitedtype.com>"
+]
 license: "BSD-3-clause"
 homepage: "https://github.com/inhabitedtype/ocaml-aws"
-dev-repo: "git+https://github.com/inhabitedtype/ocaml-aws.git"
 bug-reports: "https://github.com/inhabitedtype/ocaml-aws/issues"
+depends: [
+  "aws" {>= "0.1.0"}
+  "ocaml"
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "aws-autoscaling"]
-]
-depends: [
-  "ocaml"
-  "aws" {>= "0.1.0"}
-  "ocamlfind" {build}
-]
-synopsis: "AWS CloudTrail"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "aws-autoscaling"]
+dev-repo: "git+https://github.com/inhabitedtype/ocaml-aws.git"
 url {
   src:
     "https://github.com/inhabitedtype/ocaml-aws/releases/download/aws-1.0.2/aws-cloudtrail-0.1.0.tar.gz"

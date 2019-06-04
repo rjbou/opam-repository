@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "ocaml-markdown"
+version: "0.1.1"
+synopsis: "Markdown processor for Ocsigen"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "extlib" {= "1.5.3"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ounit"
+  "sexplib" {< "113.01.00"}
+  "type_conv"
+  "tyxml" {< "3.2.0"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "markdown"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "extlib" {= "1.5.3"}
-  "sexplib" {< "113.01.00"}
-  "type_conv"
-  "ounit"
-  "tyxml" {< "3.2.0"}
-  "ocamlbuild" {build}
-]
 install: [make "install"]
-synopsis: "Markdown processor for Ocsigen"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "markdown"]
 url {
   src:
     "https://download.ocamlcore.org/ocaml-markdown/ocaml-markdown/0.1.1/ocaml-markdown-0.1.1.tar.gz"

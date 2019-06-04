@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "jun.furuse@gmail.com"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-uninstall"]
-]
-depends: [
-  "ocaml" {= "4.02.1"}
-  "ocamlfind"
-  "omake"
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "ppx_pattern_guard"
+version: "1.0.0"
 synopsis: "ppx_pattern_guard: ppx extension for pattern guard"
 description: """
 Pattern guards in OCaml
@@ -46,6 +33,21 @@ Example
 match e with
 | (x, y) when [%guard let w = x + y;; w = 5] -> prerr_endline "3"
 ```"""
+maintainer: "jun.furuse@gmail.com"
+depends: [
+  "ocaml" {= "4.02.1"}
+  "ocamlfind"
+  "omake"
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
 url {
   src: "https://bitbucket.org/camlspotter/ppx_pattern_guard/get/1.0.0.tar.gz"
   checksum: "md5=176b8c2d67669c436a77531815282b6e"

@@ -1,30 +1,6 @@
 opam-version: "2.0"
-maintainer: "Tony Wuersch <tony.wuersch@gmail.com>"
-homepage: "https://github.com/awuersch/sslconf"
-dev-repo: "git+https://github.com/awuersch/sslconf.git"
-bug-reports: "https://github.com/awuersch/sslconf/issues"
-doc: "https://awuersch.github.io/sslconf/doc"
-authors: [
-  "Tony Wuersch <tony.wuersch@gmail.com>"
-]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "ppx_sexp_conv" {< "v0.13"}
-  "sexplib" {< "v0.13"}
-  "astring"
-  "rresult"
-  "fpath"
-  "cmdliner"
-  "topkg-jbuilder" {build}
-  "ounit" {with-test}
-  "odoc" {with-doc}
-]
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
+name: "sslconf"
+version: "0.8.3"
 synopsis: "An OCaml version of Openssl's NCONF library"
 description: """
 sslconf is a reimplementation of the Openssl NCONF library in OCaml.
@@ -37,6 +13,30 @@ implementation.
 sslconf has only OCaml code, so it can be used in a unikernel.
 
 sslconf is distributed under the ISC license."""
+maintainer: "Tony Wuersch <tony.wuersch@gmail.com>"
+authors: "Tony Wuersch <tony.wuersch@gmail.com>"
+license: "ISC"
+homepage: "https://github.com/awuersch/sslconf"
+doc: "https://awuersch.github.io/sslconf/doc"
+bug-reports: "https://github.com/awuersch/sslconf/issues"
+depends: [
+  "astring"
+  "cmdliner"
+  "fpath"
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+  "odoc" {with-doc}
+  "ounit" {with-test}
+  "ppx_sexp_conv" {< "v0.13"}
+  "rresult"
+  "sexplib" {< "v0.13"}
+  "topkg-jbuilder" {build}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/awuersch/sslconf.git"
 url {
   src:
     "https://github.com/awuersch/sslconf/releases/download/0.8.3/sslconf-0.8.3.tbz"

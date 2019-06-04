@@ -1,24 +1,6 @@
 opam-version: "2.0"
-maintainer: "Miguel Molina <miguel@erizocosmi.co>"
-authors: "Miguel Molina <miguel@erizocosmi.co>"
-homepage: "https://github.com/erizocosmico/ocaml-socialpeek"
-bug-reports: "https://github.com/erizocosmico/ocaml-socialpeek/issues"
-license: "MIT"
-doc: "http://erizocosmi.co/ocaml-socialpeek"
-dev-repo: "git+https://github.com/erizocosmico/ocaml-socialpeek.git"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "base" {< "v0.13"}
-  "lambdasoup" {< "0.7.0"}
-  "lwt_ssl" {< "1.2.0"}
-  "cohttp-lwt-unix" {< "0.100.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "ounit" {with-test & >= "2.0.6"}
-]
+name: "socialpeek"
+version: "1.0.0"
 synopsis:
   "OCaml library to extract social information such as Twitter cards or OpenGraph data from webpages and HTML."
 description: """
@@ -65,6 +47,26 @@ let () =
   let twitter_card = Twitter.get_card tags in
   (** do something with the data *)
 ```"""
+maintainer: "Miguel Molina <miguel@erizocosmi.co>"
+authors: "Miguel Molina <miguel@erizocosmi.co>"
+license: "MIT"
+homepage: "https://github.com/erizocosmico/ocaml-socialpeek"
+doc: "http://erizocosmi.co/ocaml-socialpeek"
+bug-reports: "https://github.com/erizocosmico/ocaml-socialpeek/issues"
+depends: [
+  "base" {< "v0.13"}
+  "cohttp-lwt-unix" {< "0.100.0"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "lambdasoup" {< "0.7.0"}
+  "lwt_ssl" {< "1.2.0"}
+  "ocaml" {>= "4.02.3"}
+  "ounit" {with-test & >= "2.0.6"}
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/erizocosmico/ocaml-socialpeek.git"
 url {
   src:
     "https://github.com/erizocosmico/ocaml-socialpeek/archive/1.0.0.tar.gz"

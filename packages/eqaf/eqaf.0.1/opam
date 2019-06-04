@@ -1,19 +1,6 @@
 opam-version: "2.0"
-name:         "eqaf"
-maintainer:   [ "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-authors:      [ "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-homepage:     "https://github.com/dinosaure/eqaf"
-bug-reports:  "https://github.com/dinosaure/eqaf/issues"
-dev-repo: "git+https://github.com/dinosaure/eqaf.git"
-doc:          "https://dinosaure.github.io/eqaf/"
-license:      "MIT"
-
-build: [ "jbuilder" "build" "-p" name "-j" jobs ]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-]
+name: "eqaf"
+version: "0.1"
 synopsis: "Constant time equal function on `string`"
 description: """
 From some crypto libraries like
@@ -28,6 +15,18 @@ OpenBSD's code and an OCaml implementation which is simply a translation of the
 C code) well tested to check constant time assumption (see tests).
 
 Happy hacking!"""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/eqaf"
+doc: "https://dinosaure.github.io/eqaf/"
+bug-reports: "https://github.com/dinosaure/eqaf/issues"
+depends: [
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/dinosaure/eqaf.git"
 url {
   src:
     "https://github.com/dinosaure/eqaf/releases/download/v0.1/eqaf-0.1.tbz"

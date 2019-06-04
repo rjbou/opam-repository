@@ -1,26 +1,6 @@
 opam-version: "2.0"
-name:         "pecu"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/dinosaure/pecu"
-bug-reports:  "https://github.com/dinosaure/pecu/issues"
-dev-repo: "git+https://github.com/dinosaure/pecu.git"
-doc:          "https://dinosaure.github.io/pecu/"
-license:      "MIT"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "fmt"
-  "uutf"
-  "rresult"
-  "cmdliner"
-]
+name: "pecu"
+version: "0.1"
 synopsis: "Pecu (PQ/QP - Quoted Printable)"
 description: """
 Pecu is a little library to encode and decode quoted-printable according to
@@ -34,6 +14,25 @@ This project is a part of an encoder/decoder of e-mail.
 Decoder can decode input which does not respect 80 characters rule but it
 signals to the client if this case appear - which can be an attack entry point.
 By this way, the decoder provide a best-effort case to the client."""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/pecu"
+doc: "https://dinosaure.github.io/pecu/"
+bug-reports: "https://github.com/dinosaure/pecu/issues"
+depends: [
+  "cmdliner"
+  "fmt"
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+  "rresult"
+  "uutf"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/dinosaure/pecu.git"
 url {
   src:
     "https://github.com/dinosaure/pecu/releases/download/v0.1/pecu-0.1.tbz"

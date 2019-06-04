@@ -1,12 +1,14 @@
 opam-version: "2.0"
-maintainer: "opam-devel@lists.ocaml.org"
-remove: [["rm" "-rf" "%{lib}%/ocaml-src"]]
-install: ["cp" "-r" "." "%{lib}%/ocaml-src"]
+name: "ocaml-src"
+version: "4.03.0"
 synopsis: "Compiler sources"
+maintainer: "opam-devel@lists.ocaml.org"
 depends: [
   "ocaml" {= "4.03.0"}
 ]
 flags: light-uninstall
+install: ["cp" "-r" "." "%{lib}%/ocaml-src"]
+remove: ["rm" "-rf" "%{lib}%/ocaml-src"]
 extra-files: ["META" "md5=09535047836fbd35d265a4f914ac4eba"]
 url {
   src: "http://caml.inria.fr/pub/distrib/ocaml-4.03/ocaml-4.03.0.tar.gz"

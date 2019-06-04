@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "sebastien.fricker@gmail.com"
-build: [
-  [
-    "qmake"
-    "CONFIG-=app_bundle"
-    "CONFIG+=release"
-    "PREFIX_BIN=%{bin}%/"
-    "CONFIG-=debug"
-    "oqamldebug.pro"
-  ]
-  [make]
-]
-remove: [
-  [ "qmake" "CONFIG-=app_bundle" "CONFIG+=release" "PREFIX_BIN=%{bin}%/" "CONFIG-=debug" "oqamldebug.pro" ]
-  [ make "uninstall" ]
-]
-install: ["%{make}%" "install"]
+name: "oqamldebug"
+version: "0.9.3"
 synopsis: "Graphical front-end to ocamldebug"
 description: """
 Features:
@@ -36,7 +21,31 @@ On debian install simply qt4-dev package..
 
 On MacOS it is necessary to set QMAKESPEC as follow to install the package
 export QMAKESPEC=macx-g++"""
+maintainer: "sebastien.fricker@gmail.com"
 depends: ["ocaml"]
+build: [
+  [
+    "qmake"
+    "CONFIG-=app_bundle"
+    "CONFIG+=release"
+    "PREFIX_BIN=%{bin}%/"
+    "CONFIG-=debug"
+    "oqamldebug.pro"
+  ]
+  [make]
+]
+install: ["%{make}%" "install"]
+remove: [
+  [
+    "qmake"
+    "CONFIG-=app_bundle"
+    "CONFIG+=release"
+    "PREFIX_BIN=%{bin}%/"
+    "CONFIG-=debug"
+    "oqamldebug.pro"
+  ]
+  [make "uninstall"]
+]
 url {
   src: "http://oqamldebug.forge.ocamlcore.org/oqamldebug-0.9.3.tar.gz"
   checksum: "md5=e7af5a5b24da9a0435e184628248c292"

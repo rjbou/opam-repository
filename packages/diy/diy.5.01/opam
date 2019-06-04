@@ -1,13 +1,25 @@
 opam-version: "2.0"
 name: "diy"
 version: "5.01"
+synopsis: "Tool suite for testing shared memory models"
+description: """
+`(don't) diy` is a tool suite: `litmus` runs assembly tests against
+hardware, `diy` proper generates assembly tests from concise
+specifications, and `don't` automatically either checks the
+conformance of a machine to a given model, or explores the features
+exhibited by a machine."""
 maintainer: "Thibault Suzanne <thi.suzanne@gmail.com>"
-authors: "Luc Maranget <Luc.Maranget@inria.fr>, Susmit Sarkar <ss265@st-andrews.ac.uk>, Jade Alglave <j.alglave@ucl.ac.uk >"
-homepage: "http://diy.inria.fr/"
-dev-repo: "git+https://github.com/herd/herdtools7.git"
-bug-reports: "https://github.com/herd/herdtools7/issues"
+authors:
+  "Luc Maranget <Luc.Maranget@inria.fr>, Susmit Sarkar <ss265@st-andrews.ac.uk>, Jade Alglave <j.alglave@ucl.ac.uk >"
 license: "LGPL"
-available: ["ocaml-version" >= "3.12"]
+homepage: "http://diy.inria.fr/"
+bug-reports: "https://github.com/herd/herdtools7/issues"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+]
+available: "ocaml-version" >= "3.12"
+flags: light-uninstall
 build: [
   ["sed" "-i" "-e" "s#^PREFIX=.*$#PREFIX=%{prefix}%#" "Makefile"]
   [make "-j" jobs]
@@ -24,18 +36,7 @@ remove: [
   ["rm" "-f" "%{prefix}%/bin/dont"]
   ["rm" "-fr" "%{prefix}%/lib/litmus"]
 ]
-depends: [
-  "ocaml"
-  "ocamlbuild" {build}
-]
-synopsis: "Tool suite for testing shared memory models"
-description: """
-`(don't) diy` is a tool suite: `litmus` runs assembly tests against
-hardware, `diy` proper generates assembly tests from concise
-specifications, and `don't` automatically either checks the
-conformance of a machine to a given model, or explores the features
-exhibited by a machine."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/herd/herdtools7.git"
 url {
   src: "http://diy.inria.fr/sources/old/diy-5.01.tar.gz"
   checksum: "md5=0aac7ad1013b0e15ac595d86b1d130cb"

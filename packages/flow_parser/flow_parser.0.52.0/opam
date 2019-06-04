@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "gabe@fb.com"
-authors: [
-  "Avik Chaudhuri"
-  "Basil Hosmer"
-  "Gabe Levi"
-  "Jeff Morrison"
-  "Marshall Roch"
-  "Sam Goldman"
-  "James Kyle"
-]
-homepage: "https://github.com/facebook/flow/tree/master/src/parser"
-bug-reports: "https://github.com/facebook/flow/issues"
-license: "BSD3"
-
-build: [ make "-C" "src/parser" "build-parser" ]
-install: [ make "-C" "src/parser" "ocamlfind-install"]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "sedlex" {< "2.0"}
-]
-dev-repo: "git+https://github.com/facebook/flow.git"
+name: "flow_parser"
+version: "0.52.0"
 synopsis:
   "The Flow parser is a JavaScript parser written in OCaml. It produces an AST"
 description: """
@@ -30,6 +9,28 @@ produces. The Flow Parser can be compiled to native code or can be compiled to
 JavaScript using js_of_ocaml.
 
 To find out more about Flow, check out <http://flowtype.org>."""
+maintainer: "gabe@fb.com"
+authors: [
+  "Avik Chaudhuri"
+  "Basil Hosmer"
+  "Gabe Levi"
+  "James Kyle"
+  "Jeff Morrison"
+  "Marshall Roch"
+  "Sam Goldman"
+]
+license: "BSD3"
+homepage: "https://github.com/facebook/flow/tree/master/src/parser"
+bug-reports: "https://github.com/facebook/flow/issues"
+depends: [
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "sedlex" {< "2.0"}
+]
+build: [make "-C" "src/parser" "build-parser"]
+install: [make "-C" "src/parser" "ocamlfind-install"]
+dev-repo: "git+https://github.com/facebook/flow.git"
 url {
   src: "https://github.com/facebook/flow/archive/v0.52.0.tar.gz"
   checksum: "md5=3952d688209f86ff66b7815827b4d898"

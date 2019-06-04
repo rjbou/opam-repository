@@ -1,23 +1,6 @@
 opam-version: "2.0"
 name: "lipsum"
 version: "0.2"
-maintainer: "Christian Lindig <lindig@gmail.com>"
-authors: "Christian Lindig <lindig@gmail.com>"
-homepage: "https://github.com/lindig/lipsum"
-bug-reports: "https://github.com/lindig/lipsum/issues"
-license: "BSD"
-dev-repo: "git+https://github.com/lindig/lipsum.git"
-build: [
-  [make]
-]
-install: [make "PREFIX=%{prefix}%" "install"]
-remove: [make "PREFIX=%{prefix}%" "remove"]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "re"
-]
 synopsis:
   "lipsum - self-contained tool for literate programming in tradition of NoWeb"
 description: """
@@ -32,6 +15,21 @@ program and Lipsum is a tool to do this.
 Like Noweb, Lipsum employs a minimal markup to arrange documentation and
 code in a file. Also like Noweb, Lipsum is language agnostic and can be
 used for almost any programming language and documentation."""
+maintainer: "Christian Lindig <lindig@gmail.com>"
+authors: "Christian Lindig <lindig@gmail.com>"
+license: "BSD"
+homepage: "https://github.com/lindig/lipsum"
+bug-reports: "https://github.com/lindig/lipsum/issues"
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "re"
+]
+build: make
+install: [make "PREFIX=%{prefix}%" "install"]
+remove: [make "PREFIX=%{prefix}%" "remove"]
+dev-repo: "git+https://github.com/lindig/lipsum.git"
 url {
   src: "https://github.com/lindig/lipsum/archive/v0.2.zip"
   checksum: "md5=68080f850882d90c6936b0c1343eb66b"

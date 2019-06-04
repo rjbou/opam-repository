@@ -1,24 +1,6 @@
 opam-version: "2.0"
-authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
-maintainer: "anil@recoil.org"
-homepage: "https://github.com/mirage/mirage-clock"
-bug-reports: "https://github.com/mirage/mirage-clock/issues"
-dev-repo: "git://github.com/mirage/mirage-clock"
-license: "ISC"
-tags: ["org:mirage"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.8.0"}
-  "mirage-clock" {>= "1.2.0"}
-  "mirage-clock-lwt" {>= "1.2.0"}
-  "lwt"
-]
-build: [
-  "ocaml" "pkg/pkg.ml" "build"
-            "--pkg-name" name
-            "--pinned" "%{pinned}%" ]
+name: "mirage-clock-freestanding"
+version: "1.2.0"
 synopsis: "Libraries and module types for portable clocks"
 description: """
 This library implements portable support for an operating system timesource
@@ -34,6 +16,25 @@ The following sources are used:
 * The Unix version uses `gettimeofday` or `clock_gettime`, depending on
   which OS is in use (see [clock_stubs.c](https://github.com/mirage/mirage-clock/blob/master/unix/clock_stubs.c)).
 * The freestanding version uses the paravirtual clock source from the hypervisor."""
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-clock"
+bug-reports: "https://github.com/mirage/mirage-clock/issues"
+depends: [
+  "lwt"
+  "mirage-clock" {>= "1.2.0"}
+  "mirage-clock-lwt" {>= "1.2.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build & >= "0.8.0"}
+]
+build: [
+  "ocaml" "pkg/pkg.ml" "build" "--pkg-name" name "--pinned" "%{pinned}%"
+]
+dev-repo: "git://github.com/mirage/mirage-clock"
 url {
   src:
     "https://github.com/mirage/mirage-clock/releases/download/1.2.0/mirage-clock-freestanding-1.2.0.tbz"

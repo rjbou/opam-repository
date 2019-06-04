@@ -1,11 +1,13 @@
 opam-version: "2.0"
-maintainer: "vb@luminar.eu.org"
-build: make
-remove: [[make "uninstall"]]
-depends: ["ocaml" "ocamlfind" "ocaml-makefile"]
-dev-repo: "git://github.com/vbmithr/ocaml-crypt"
-install: [make "install"]
+name: "crypt"
+version: "1.3"
 synopsis: "Tiny binding for the unix crypt function"
+maintainer: "vb@luminar.eu.org"
+depends: ["ocaml" "ocaml-makefile" "ocamlfind"]
+build: make
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git://github.com/vbmithr/ocaml-crypt"
 url {
   src: "https://github.com/vbmithr/ocaml-crypt/archive/1.3.tar.gz"
   checksum: "md5=539fe0163a95a89cf9b5262e326e2866"

@@ -1,56 +1,6 @@
 opam-version: "2.0"
-maintainer:   "anil@recoil.org"
-authors:      ["Anil Madhavapeddy" "Thomas Leonard" "Thomas Gazagnaire" "Rudi Grinberg"]
-homepage:     "https://github.com/mirage/ocaml-conduit"
-dev-repo: "git+https://github.com/mirage/ocaml-conduit.git"
-bug-reports:  "https://github.com/mirage/ocaml-conduit/issues"
-tags:         "org:mirage"
-license:      "ISC"
-
-build: [
-  ["./configure"]
-  [make]
-  [make "doc"] {with-doc}
-]
-install: [make "install"]
-remove:  ["ocamlfind" "remove" "conduit"]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "ppx_driver" {build & < "v0.10.0"}
-  "ppx_optcomp" {>= "113.24.00" & < "v0.13"}
-  "ppx_sexp_conv" {< "v0.13"}
-  "sexplib" {< "v0.13"}
-  "stringext"
-  "uri" {< "2.0.0"}
-  "result"
-  "logs" {>= "0.5.0"}
-  "ipaddr" {>= "2.5.0" & < "2.8.0"}
-]
-depopts: [
-  "async" {< "v0.13"}
-  "lwt"
-  "ssl"
-  "async_ssl" {< "v0.13"}
-  "mirage-dns"
-  "vchan"
-  "launchd"
-  "tls"
-  "mirage-types-lwt"
-  "mirage-flow-lwt"
-]
-conflicts: [
-  "lwt" {<"2.7.0"}
-  "async_ssl" {<"112.24.00"}
-  "async" {<"113.24.00"}
-  "mirage-flow-lwt" {< "1.2.0"}
-  "mirage-types-lwt" {<"3.0.0"}
-  "dns" {<"0.19.0"}
-  "tls" {<"0.4.0"}
-  "vchan" {<"2.3.0"}
-  "nocrypto" {<"0.4.0"}
-]
+name: "conduit"
+version: "0.15.3"
 synopsis: "Network connection library for TCP and SSL"
 description: """
 The `conduit` library takes care of establishing and listening for TCP and
@@ -66,7 +16,60 @@ environment variables to control the behaviour of the library:
 
 - `CONDUIT_DEBUG=1` will output debug information to standard error.
 - `CONDUIT_TLS=native` will force the use of the pure OCaml TLS library."""
+maintainer: "anil@recoil.org"
+authors: [
+  "Anil Madhavapeddy" "Rudi Grinberg" "Thomas Gazagnaire" "Thomas Leonard"
+]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/ocaml-conduit"
+bug-reports: "https://github.com/mirage/ocaml-conduit/issues"
+depends: [
+  "ipaddr" {>= "2.5.0" & < "2.8.0"}
+  "logs" {>= "0.5.0"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_driver" {build & < "v0.10.0"}
+  "ppx_optcomp" {>= "113.24.00" & < "v0.13"}
+  "ppx_sexp_conv" {< "v0.13"}
+  "result"
+  "sexplib" {< "v0.13"}
+  "stringext"
+  "uri" {< "2.0.0"}
+]
+depopts: [
+  "async" {< "v0.13"}
+  "async_ssl" {< "v0.13"}
+  "launchd"
+  "lwt"
+  "mirage-dns"
+  "mirage-flow-lwt"
+  "mirage-types-lwt"
+  "ssl"
+  "tls"
+  "vchan"
+]
+conflicts: [
+  "async" {< "113.24.00"}
+  "async_ssl" {< "112.24.00"}
+  "dns" {< "0.19.0"}
+  "lwt" {< "2.7.0"}
+  "mirage-flow-lwt" {< "1.2.0"}
+  "mirage-types-lwt" {< "3.0.0"}
+  "nocrypto" {< "0.4.0"}
+  "tls" {< "0.4.0"}
+  "vchan" {< "2.3.0"}
+]
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make]
+  [make "doc"] {with-doc}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "conduit"]
+dev-repo: "git+https://github.com/mirage/ocaml-conduit.git"
 url {
   src: "https://github.com/mirage/ocaml-conduit/archive/v0.15.3.tar.gz"
   checksum: "md5=6cb52e08e8b2df29b4ef73a26f5056c0"

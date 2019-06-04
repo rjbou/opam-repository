@@ -1,7 +1,23 @@
 opam-version: "2.0"
+name: "zarith"
+version: "1.4"
+synopsis:
+  "Implements arithmetic and logical operations over arbitrary-precision integers"
+description: """
+The Zarith library implements arithmetic and logical operations over
+arbitrary-precision integers. It uses GMP to efficiently implement
+arithmetic over big integers. Small integers are represented as Caml
+unboxed integers, for speed and space economy."""
 maintainer: "thomas.braibant@gmail.com"
 authors: "Xavier Leroy"
 homepage: "https://forge.ocamlcore.org/projects/zarith"
+depends: [
+  "conf-gmp"
+  "conf-perl" {build}
+  "ocaml"
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["./configure"] {os != "openbsd" & os != "freebsd" & os != "macos"}
   [
@@ -12,25 +28,9 @@ build: [
   ] {os = "openbsd" | os = "freebsd" | os = "macos"}
   [make]
 ]
-install: [
-  [make "install"]
-]
-remove:  ["ocamlfind" "remove" "zarith"]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "conf-gmp"
-  "conf-perl" {build}
-]
-patches: [ "z_pp.pl.patch" ]
-synopsis:
-  "Implements arithmetic and logical operations over arbitrary-precision integers"
-description: """
-The Zarith library implements arithmetic and logical operations over
-arbitrary-precision integers. It uses GMP to efficiently implement
-arithmetic over big integers. Small integers are represented as Caml
-unboxed integers, for speed and space economy."""
-flags: light-uninstall
+install: [make "install"]
+remove: ["ocamlfind" "remove" "zarith"]
+patches: "z_pp.pl.patch"
 extra-files: ["z_pp.pl.patch" "md5=91205dc2130807273fb83a00a3b54215"]
 url {
   src: "https://download.ocamlcore.org/zarith/Zarith/1.4/zarith-1.4.tgz"

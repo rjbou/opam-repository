@@ -1,34 +1,6 @@
 opam-version: "2.0"
-maintainer: "Claude.Marche@inria.fr"
-authors: [
-  "François Bobot"
-  "Jean-Christophe Filliâtre"
-  "Claude Marché"
-  "Guillaume Melquiond"
-  "Andrei Paskevich"
-]
-homepage: "http://why3.lri.fr/"
-license: "GNU Lesser General Public License version 2.1"
-doc: ["http://why3.lri.fr/#documentation"]
-tags: [
-  "deductive"
-  "program verification"
-  "formal specification"
-  "automated theorem prover"
-  "interactive theorem prover"
-]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "why3-base" {= "0.86.3"}
-  "lablgtk"
-  "conf-gtksourceview"
-  "zarith"
-  "camlzip"
-  "ocamlgraph"
-]
-messages:[
-"Coq realizations of Why3 theories are only available if Coq is installed" { !coq:installed }
-]
+name: "why3"
+version: "0.86.3"
 synopsis: "Why3 environment for deductive program verification."
 description: """
 Why3 provides a rich language for specification and programming, called
@@ -49,3 +21,33 @@ allowing to use Why3 as a software library. An important emphasis is
 put on modularity and genericity, giving the end user a possibility to
 easily reuse Why3 formalizations or to add support for a new external
 prover if wanted."""
+maintainer: "Claude.Marche@inria.fr"
+authors: [
+  "Andrei Paskevich"
+  "Claude Marché"
+  "François Bobot"
+  "Guillaume Melquiond"
+  "Jean-Christophe Filliâtre"
+]
+license: "GNU Lesser General Public License version 2.1"
+tags: [
+  "automated theorem prover"
+  "deductive"
+  "formal specification"
+  "interactive theorem prover"
+  "program verification"
+]
+homepage: "http://why3.lri.fr/"
+doc: "http://why3.lri.fr/#documentation"
+depends: [
+  "camlzip"
+  "conf-gtksourceview"
+  "lablgtk"
+  "ocaml" {>= "4.01.0"}
+  "ocamlgraph"
+  "why3-base" {= "0.86.3"}
+  "zarith"
+]
+messages:
+  "Coq realizations of Why3 theories are only available if Coq is installed"
+    {!coq:installed}

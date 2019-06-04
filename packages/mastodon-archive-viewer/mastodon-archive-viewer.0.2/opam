@@ -1,23 +1,25 @@
 opam-version: "2.0"
-license: "MIT"
+name: "mastodon-archive-viewer"
+version: "0.2"
+synopsis: "View your Mastodon archive offline"
 maintainer: "Kate <kit.ty.kate@disroot.org>"
 authors: "Kate <kit.ty.kate@disroot.org>"
+license: "MIT"
+tags: ["ActivityPub" "mastodon"]
 homepage: "https://github.com/kit-ty-kate/mastodon-archive-viewer"
-dev-repo: "git://github.com/kit-ty-kate/mastodon-archive-viewer.git"
 bug-reports: "https://github.com/kit-ty-kate/mastodon-archive-viewer/issues"
-tags: ["mastodon" "ActivityPub"]
-build: ["dune" "build" "-p" name "-j" jobs]
 depends: [
-  "ocaml" {>= "4.05.0"}
-  "dune" {build}
+  "cmdliner"
   "containers"
+  "dune" {build}
   "ezjsonm"
+  "ffmpeg" {>= "0.2.0"}
+  "ocaml" {>= "4.05.0"}
   "ptime"
   "tyxml"
-  "cmdliner"
-  "ffmpeg" {>= "0.2.0"}
 ]
-synopsis: "View your Mastodon archive offline"
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git://github.com/kit-ty-kate/mastodon-archive-viewer.git"
 url {
   src:
     "https://github.com/kit-ty-kate/mastodon-archive-viewer/archive/0.2.tar.gz"

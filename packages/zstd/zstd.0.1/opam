@@ -1,11 +1,27 @@
 opam-version: "2.0"
+name: "zstd"
+version: "0.1"
+synopsis: "Bindings to zstd compression library"
+description: """
+Zstd, short for Zstandard, is a fast lossless compression algorithm,
+targeting real-time compression scenarios at zlib-level compression ratio.
+See http://zstd.net/ for more info."""
 maintainer: "ygrek@autistici.org"
-homepage: "https://github.com/ygrek/ocaml-zstd"
+authors: "ygrek"
 license: "BSD3"
-authors: [ "ygrek" ]
-#doc: ["http://ocurl.forge.ocamlcore.org/api/index.html"]
-dev-repo: "git://github.com/ygrek/ocaml-zstd.git"
+homepage: "https://github.com/ygrek/ocaml-zstd"
 bug-reports: "https://github.com/ygrek/ocaml-zstd/issues"
+depends: [
+  "base-unix" {with-test}
+  "conf-zstd"
+  "ctypes" {< "0.6.0"}
+  ("extlib" {with-test} | "extlib-compat" {with-test})
+  "oasis" {build}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--disable-tests" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -15,28 +31,9 @@ build: [
   ["ocaml" "setup.ml" "-test"] {with-test}
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
-remove: [
-  ["ocamlfind" "remove" "zstd"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "oasis" {build}
-  "ocamlbuild" {build}
-  "ctypes" {< "0.6.0"}
-  ("extlib" {with-test} | "extlib-compat" {with-test})
-  "base-unix" {with-test}
-  "conf-zstd"
-]
-synopsis: "Bindings to zstd compression library"
-description: """
-Zstd, short for Zstandard, is a fast lossless compression algorithm,
-targeting real-time compression scenarios at zlib-level compression ratio.
-See http://zstd.net/ for more info."""
-flags: light-uninstall
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "zstd"]
+dev-repo: "git://github.com/ygrek/ocaml-zstd.git"
 url {
   src: "http://ygrek.org.ua/p/release/ocaml-zstd/ocaml-zstd-0.1.tar.gz"
   checksum: "md5=584f0a706a194ace68c5ed7c5f9ea0dd"

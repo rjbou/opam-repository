@@ -1,29 +1,31 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: "Maas-Maarten Zeeman"
-homepage: "http://mmzeeman.home.xs4all.nl/ocaml/"
-build: [
-  [make "all"]
-  [make "allopt"]
-]
-remove: [["ocamlfind" "remove" "expat"]]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-]
-depexts: [
-  ["libexpat1-dev"] {os-distribution = "debian"}
-  ["libexpat1-dev"] {os-distribution = "ubuntu"}
-  ["expat"] {os = "macos" & os-distribution = "homebrew"}
-]
-patches: [ "Makefile.patch" ]
-install: [make "install"]
+name: "ocaml-expat"
+version: "0.9.1"
 synopsis: "Write XML-Parsers using the SAX method"
 description: """
 An ocaml wrapper for the Expat XML parsing library. It allows you to
 write XML-Parsers using the SAX method. An XML document is parsed on
 the fly without needing to load the entire XML-Tree into memory."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+authors: "Maas-Maarten Zeeman"
+homepage: "http://mmzeeman.home.xs4all.nl/ocaml/"
+depends: [
+  "ocaml"
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  [make "all"]
+  [make "allopt"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "expat"]
+patches: "Makefile.patch"
+depexts: [
+  ["expat"] {os = "macos" & os-distribution = "homebrew"}
+  ["libexpat1-dev"] {os-distribution = "debian"}
+  ["libexpat1-dev"] {os-distribution = "ubuntu"}
+]
 extra-files: ["Makefile.patch" "md5=19bc9743e0db8b190ab7b42e1361d230"]
 url {
   src: "http://mmzeeman.home.xs4all.nl/ocaml/ocaml-expat-0.9.1.tar.gz"

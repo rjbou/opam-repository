@@ -1,30 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/tsdl"
-doc: "http://erratique.ch/software/tsdl/doc/Tsdl"
-dev-repo: "git+http://erratique.ch/repos/tsdl.git"
-bug-reports: "https://github.com/dbuenzli/tsdl/issues"
-tags: [ "audio" "bindings" "graphics" "media" "opengl" "input" "hci" ]
-license: "BSD-3-Clause"
-depends: [
-  "ocaml" {>= "4.00.1" & < "4.06.0"}
-  "ocamlfind" {build}
-  "conf-sdl2"
-  "ctypes" {>= "0.4.1"}
-  "ctypes-foreign"
-  "result"
-  "ocamlbuild" {build}
-]
-build: [
-  ["ocaml" "pkg/git.ml"]
-  [
-    "ocaml"
-    "pkg/build.ml"
-    "native=%{ocaml:native}%"
-    "native-dynlink=%{ocaml:native-dynlink}%"
-  ]
-]
+name: "tsdl"
+version: "0.9.0"
 synopsis: "Thin bindings to SDL for OCaml"
 description: """
 Tsdl is an OCaml library providing thin bindings to the cross-platform
@@ -36,6 +12,32 @@ Tsdl is distributed under the BSD3 license.
 
 [1]: http://www.libsdl.org/
 [2]: https://github.com/ocamllabs/ocaml-ctypes"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD-3-Clause"
+tags: ["audio" "bindings" "graphics" "hci" "input" "media" "opengl"]
+homepage: "http://erratique.ch/software/tsdl"
+doc: "http://erratique.ch/software/tsdl/doc/Tsdl"
+bug-reports: "https://github.com/dbuenzli/tsdl/issues"
+depends: [
+  "conf-sdl2"
+  "ctypes" {>= "0.4.1"}
+  "ctypes-foreign"
+  "ocaml" {>= "4.00.1" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "result"
+]
+build: [
+  ["ocaml" "pkg/git.ml"]
+  [
+    "ocaml"
+    "pkg/build.ml"
+    "native=%{ocaml:native}%"
+    "native-dynlink=%{ocaml:native-dynlink}%"
+  ]
+]
+dev-repo: "git+http://erratique.ch/repos/tsdl.git"
 url {
   src: "http://erratique.ch/software/tsdl/releases/tsdl-0.9.0.tbz"
   checksum: "md5=8827e42d90ec3b8f8bcb7aadc6156818"

@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "genspir"
+version: "0.1"
+synopsis: "functions to generate almost uniformly points on the unit sphere"
 maintainer: "unixjunkie@sdf.org"
-authors: ["Francois Berenger"]
+authors: "Francois Berenger"
 homepage: "https://github.com/UnixJunkie/genspir"
+depends: [
+  "oasis" {build}
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "genspir"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "oasis" {build}
-]
-dev-repo: "git://github.com/HappyCrow/genspir"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "functions to generate almost uniformly points on the unit sphere"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "genspir"]
+dev-repo: "git://github.com/HappyCrow/genspir"
 url {
   src: "https://github.com/HappyCrow/genspir/archive/v0.1.tar.gz"
   checksum: "md5=ce5a2ed396d5c6391012237f93e2d6ea"

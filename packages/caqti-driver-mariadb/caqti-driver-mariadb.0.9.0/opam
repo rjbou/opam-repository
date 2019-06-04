@@ -1,21 +1,20 @@
 opam-version: "2.0"
 name: "caqti-driver-mariadb"
-authors: ["Petter A. Urkedal"]
+version: "0.9.0"
+synopsis: "MariaDB driver for Caqti using C bindings"
 maintainer: "paurkedal@gmail.com"
+authors: "Petter A. Urkedal"
+license: "LGPL-3 with OCaml linking exception"
 homepage: "https://github.com/paurkedal/ocaml-caqti/"
 bug-reports: "https://github.com/paurkedal/ocaml-caqti/issues"
-dev-repo: "git+https://github.com/paurkedal/ocaml-caqti.git"
-license: "LGPL-3 with OCaml linking exception"
-
-build: [["jbuilder" "build" "-p" name "-j" jobs]]
-
 depends: [
-  "ocaml"
   "caqti" {= "0.9.0"}
   "jbuilder" {build}
   "mariadb" {>= "0.10" & < "1.1.0"}
+  "ocaml"
 ]
-synopsis: "MariaDB driver for Caqti using C bindings"
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/paurkedal/ocaml-caqti.git"
 url {
   src:
     "https://github.com/paurkedal/ocaml-caqti/releases/download/v0.9.0/caqti-0.9.0.tbz"

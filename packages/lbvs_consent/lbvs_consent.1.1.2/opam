@@ -1,20 +1,21 @@
 opam-version: "2.0"
 name: "lbvs_consent"
-authors: "Francois BERENGER"
+version: "1.1.2"
+synopsis:
+  "Chemoinformatics software for Ligand-Based Virtual Screening (LBVS) using consensus queries."
+description: """
+Similarity search for molecules using several known active molecules
+(for a protein of interest) instead of a single query search.
+Details can be found in the paper:
+"Consensus queries in ligand-based virtual screening experiments".
+F. Berenger, O. Vu and J., Meiler.
+Journal of Cheminformatics, November 2017."""
 maintainer: "unixjunkie@sdf.org"
+authors: "Francois BERENGER"
+license: "GPL"
 homepage: "https://github.com/UnixJunkie/consent"
 bug-reports: "https://github.com/UnixJunkie/consent/issues"
-dev-repo: "git+https://github.com/UnixJunkie/consent.git"
-license: "GPL"
-build: [
-  [make "obmaccs"]
-  ["obuild" "configure"]
-  ["obuild" "build" "exe-lbvs_consent"]
-  ["obuild" "build" "exe-lbvs_consent_mop2di"]
-  ["obuild" "build" "exe-lbvs_consent_mop2de"]
-]
 depends: [
-  "ocaml"
   "batteries"
   "bitv" {>= "1.2"}
   "camlzip" {>= "1.06"}
@@ -26,19 +27,19 @@ depends: [
   "dolog"
   "minivpt"
   "obuild" {build}
+  "ocaml"
   "parmap"
   "qcheck" {build}
   "qtest" {build}
 ]
-synopsis:
-  "Chemoinformatics software for Ligand-Based Virtual Screening (LBVS) using consensus queries."
-description: """
-Similarity search for molecules using several known active molecules
-(for a protein of interest) instead of a single query search.
-Details can be found in the paper:
-"Consensus queries in ligand-based virtual screening experiments".
-F. Berenger, O. Vu and J., Meiler.
-Journal of Cheminformatics, November 2017."""
+build: [
+  [make "obmaccs"]
+  ["obuild" "configure"]
+  ["obuild" "build" "exe-lbvs_consent"]
+  ["obuild" "build" "exe-lbvs_consent_mop2di"]
+  ["obuild" "build" "exe-lbvs_consent_mop2de"]
+]
+dev-repo: "git+https://github.com/UnixJunkie/consent.git"
 extra-files: ["lbvs_consent.install" "md5=7d9d2bbfc6cbd3e03eb2ab9218c55780"]
 url {
   src: "https://github.com/UnixJunkie/consent/archive/v1.1.2.tar.gz"

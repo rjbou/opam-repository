@@ -1,11 +1,26 @@
 opam-version: "2.0"
+name: "msgpack"
+version: "1.0.0"
+synopsis: "Msgpack library"
+description: """
+MessagePack is an efficient binary serialization format.
+If meta_conv is installed, conv module will be installed."""
 maintainer: "mzp.ppp@gmail.com"
 authors: "MIZUNO Hiroki <mzp.ppp@gmail.com>"
 homepage: "http://github.com/msgpack/msgpack-ocaml/"
 bug-reports: "https://github.com/msgpack/msgpack-ocaml/issues"
-patches: [
-  "no-camlp4.patch"
+depends: [
+  ("extlib" | "extlib-compat")
+  "num"
+  "ocaml" {>= "4.00.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
 ]
+depopts: ["meta_conv"]
+conflicts: [
+  "meta_conv" {>= "1.1.1"}
+]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -18,23 +33,10 @@ build: [
   ]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "msgpack"]]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  ("extlib" | "extlib-compat")
-  "ocamlbuild" {build}
-  "num"
-]
-depopts: ["meta_conv"]
-conflicts: ["meta_conv" {>= "1.1.1"}]
-dev-repo: "git://github.com/msgpack/msgpack-ocaml"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Msgpack library"
-description: """
-MessagePack is an efficient binary serialization format.
-If meta_conv is installed, conv module will be installed."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "msgpack"]
+patches: "no-camlp4.patch"
+dev-repo: "git://github.com/msgpack/msgpack-ocaml"
 extra-files: ["no-camlp4.patch" "md5=44c557f6cc2d2d74f55c25cd01c0e569"]
 url {
   src: "https://github.com/msgpack/msgpack-ocaml/archive/1.0.0.tar.gz"

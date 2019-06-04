@@ -1,24 +1,6 @@
 opam-version: "2.0"
-maintainer: "m4b <m4b.github.io@gmail.com>"
-authors: "m4b <m4b.github.io@gmail.com>"
-homepage: "http://www.m4b.io"
-bug-reports: "m4b.github.io@gmail.com"
-license: "BSD"
-dev-repo: "git://github.com/m4b/rdr"
-build: [
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
-]
-install: [make "install"]
-remove: [
-  ["ocamlfind" "remove" "rdr"]
-  ["rm" "-f" "%{bin}%/rdr"]
-]
-depends: [
-  "ocaml" {>= "4.02" & < "4.06.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
+name: "rdr"
+version: "2.0.1"
 synopsis:
   "Rdr is a cross-platform binary analysis and reverse engineering library,"
 description: """
@@ -46,7 +28,27 @@ Features:
 * Make pretty graphs, at the binary or symbol map level
 * Byte Coverage algorithm which marks byte sequences as understood (or not)
   and provides other meta-data"""
+maintainer: "m4b <m4b.github.io@gmail.com>"
+authors: "m4b <m4b.github.io@gmail.com>"
+license: "BSD"
+homepage: "http://www.m4b.io"
+bug-reports: "m4b.github.io@gmail.com"
+depends: [
+  "ocaml" {>= "4.02" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove: [
+  ["ocamlfind" "remove" "rdr"]
+  ["rm" "-f" "%{bin}%/rdr"]
+]
+dev-repo: "git://github.com/m4b/rdr"
 url {
   src: "http://github.com/m4b/rdr/archive/v2.0.1.tar.gz"
   checksum: "md5=5d963556379e7f6192513d76f9b32b44"

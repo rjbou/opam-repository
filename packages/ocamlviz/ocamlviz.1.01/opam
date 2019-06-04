@@ -1,17 +1,25 @@
 opam-version: "2.0"
+name: "ocamlviz"
+version: "1.01"
+synopsis: "real-time profiling tool"
+description: """
+The key idea of Ocamlviz is the ability to instrument an existing
+code, in real time, with lightweight monitoring annotations. Ocamlviz
+can also be used as a debugging tool."""
 maintainer: "fabrice.le_fessant@ocamlpro.com"
 authors: [
-    "Robert Julien"
-    "Von Tokarski Guillaume"
-    "Filliatre Jean-Christophe"
-    "Conchon Sylvain"
-    "Le Fessant Fabrice"
+  "Conchon Sylvain"
+  "Filliatre Jean-Christophe"
+  "Le Fessant Fabrice"
+  "Robert Julien"
+  "Von Tokarski Guillaume"
 ]
-substs: ["opam.patch"]
-homepage: "http://ocamlviz.forge.ocamlcore.org/"
-# dev-repo: "svn://svn.forge.ocamlcore.org/svn/ocamlviz/"
-bug-reports: "https://forge.ocamlcore.org/tracker/?atid=503&group_id=104&func=browse"
 license: "LGPL-2.0"
+homepage: "http://ocamlviz.forge.ocamlcore.org/"
+bug-reports:
+  "https://forge.ocamlcore.org/tracker/?atid=503&group_id=104&func=browse"
+depends: ["cairo2" "camlp4" "conf-autoconf" "lablgtk" "ocaml"]
+flags: light-uninstall
 build: [
   ["mkdir" "-p" "%{lib}%/ocamlviz/camlp4"]
   ["autoconf"]
@@ -19,26 +27,25 @@ build: [
   [make]
 ]
 install: [
-  [make "install" "BINDIR=%{bin}%" "MANDIR=%{man}%" "OCAMLLIB=%{lib}%/ocamlviz"]
+  make
+  "install"
+  "BINDIR=%{bin}%"
+  "MANDIR=%{man}%"
+  "OCAMLLIB=%{lib}%/ocamlviz"
 ]
 remove: [
-  ["rm" "-rf"
-    "%{bin}%/ocamlviz-ascii"
-    "%{bin}%/ocamlviz-gui"
-    "%{man}%/man1/ocamlviz.1"
-    "%{lib}%/ocamlviz"]
+  "rm"
+  "-rf"
+  "%{bin}%/ocamlviz-ascii"
+  "%{bin}%/ocamlviz-gui"
+  "%{man}%/man1/ocamlviz.1"
+  "%{lib}%/ocamlviz"
 ]
-depends: ["ocaml" "cairo2" "lablgtk" "conf-autoconf" "camlp4"]
-patches: ["opam.patch"]
-synopsis: "real-time profiling tool"
-description: """
-The key idea of Ocamlviz is the ability to instrument an existing
-code, in real time, with lightweight monitoring annotations. Ocamlviz
-can also be used as a debugging tool."""
-flags: light-uninstall
+substs: "opam.patch"
+patches: "opam.patch"
 extra-files: [
-  ["opam.patch.in" "md5=adb704fd3664b3ce9b7e61bb02c745d0"]
   ["ocamlviz.install" "md5=0446feb2c8a0150e7e1d8168653c69c9"]
+  ["opam.patch.in" "md5=adb704fd3664b3ce9b7e61bb02c745d0"]
 ]
 url {
   src: "http://ocamlviz.forge.ocamlcore.org/ocamlviz-1.01.tar.gz"

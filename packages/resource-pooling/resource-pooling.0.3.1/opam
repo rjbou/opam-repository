@@ -1,10 +1,27 @@
 opam-version: "2.0"
+name: "resource-pooling"
+version: "0.3.1"
+synopsis:
+  "library for pooling resources like connections, threads, or similar"
+description: """
+This package is derived from the module Lwt_pool from the lwt package,
+which implements resource pooling. With Resource_pool this package
+provides a modified version with additional features. Also there is a
+module called Server_pool that manages resource clusters, specifically
+a cluster of servers each with its own connection pool."""
 maintainer: "Jan Rochel <jan@besport.com>"
 authors: "Jan Rochel (BeSport)"
+license: "MIT"
 homepage: "https://github.com/ocsigen/resource-pooling"
 bug-reports: "https://github.com/ocsigen/resource-pooling/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/ocsigen/resource-pooling.git"
+depends: [
+  "lwt" {>= "2.4.7" & < "4.0.0"}
+  "lwt_log"
+  "ocaml" {>= "4.02"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -14,22 +31,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "resource-pooling"]
-depends: [
-  "ocaml" {>= "4.02"}
-  "lwt" {>= "2.4.7" & < "4.0.0"}
-  "lwt_log"
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
-synopsis:
-  "library for pooling resources like connections, threads, or similar"
-description: """
-This package is derived from the module Lwt_pool from the lwt package,
-which implements resource pooling. With Resource_pool this package
-provides a modified version with additional features. Also there is a
-module called Server_pool that manages resource clusters, specifically
-a cluster of servers each with its own connection pool."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/ocsigen/resource-pooling.git"
 url {
   src: "https://github.com/ocsigen/resource-pooling/archive/0.3.1.tar.gz"
   checksum: "md5=bc6fbbcf31dd5535c1c063ad61d6fbbe"

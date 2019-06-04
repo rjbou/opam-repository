@@ -1,21 +1,21 @@
 opam-version: "2.0"
+name: "conf-llvm"
+version: "4.0.0"
+synopsis: "Virtual package relying on llvm library installation"
 maintainer: "Kate <kit.ty.kate@disroot.org>"
 authors: "The LLVM team"
+license: "MIT"
 homepage: "http://llvm.org"
 bug-reports: "https://llvm.org/bugs/"
-license: "MIT"
-build: [
-  ["bash" "-ex" "configure.sh" version]
-]
+flags: conf
+build: ["bash" "-ex" "configure.sh" version]
 depexts: [
-  ["llvm@4"] {os-distribution = "homebrew" & os = "macos"}
+  ["devel/llvm40"] {os = "freebsd"}
   ["llvm-4.0"] {os-distribution = "macports" & os = "macos"}
   ["llvm-4.0-dev"] {os-distribution = "debian"}
   ["llvm-4.0-dev"] {os-distribution = "ubuntu"}
   ["llvm4"] {os-distribution = "alpine"}
   ["llvm4"] {os-family = "suse"}
-  ["devel/llvm40"] {os = "freebsd"}
+  ["llvm@4"] {os-distribution = "homebrew" & os = "macos"}
 ]
-synopsis: "Virtual package relying on llvm library installation"
 extra-files: ["configure.sh" "md5=f569dbbd49aedc28b93f9aec79f3d532"]
-flags: conf

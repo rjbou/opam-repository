@@ -1,32 +1,33 @@
 opam-version: "2.0"
+name: "async_ssl"
+version: "v0.12.0"
+synopsis: "An Async-pipe-based interface with OpenSSL"
+description: """
+This library allows you to create an SSL client and server, with
+encrypted communication between both."""
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/async_ssl"
-bug-reports: "https://github.com/janestreet/async_ssl/issues"
-dev-repo: "git+https://github.com/janestreet/async_ssl.git"
-doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/async_ssl/index.html"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
 license: "MIT"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
+homepage: "https://github.com/janestreet/async_ssl"
+doc:
+  "https://ocaml.janestreet.com/ocaml-core/latest/doc/async_ssl/index.html"
+bug-reports: "https://github.com/janestreet/async_ssl/issues"
 depends: [
-  "ocaml"          {>= "4.07.0"}
-  "async"          {>= "v0.12" & < "v0.13"}
-  "base"           {>= "v0.12" & < "v0.13"}
-  "core"           {>= "v0.12" & < "v0.13"}
-  "ppx_jane"       {>= "v0.12" & < "v0.13"}
-  "stdio"          {>= "v0.12" & < "v0.13"}
+  "async" {>= "v0.12" & < "v0.13"}
+  "base" {>= "v0.12" & < "v0.13"}
   "conf-openssl"
+  "core" {>= "v0.12" & < "v0.13"}
   "ctypes"
   "ctypes-foreign"
-  "dune"           {build & >= "1.5.1"}
+  "dune" {build & >= "1.5.1"}
+  "ocaml" {>= "4.07.0"}
+  "ppx_jane" {>= "v0.12" & < "v0.13"}
+  "stdio" {>= "v0.12" & < "v0.13"}
 ]
-synopsis: "An Async-pipe-based interface with OpenSSL"
-description: "
-This library allows you to create an SSL client and server, with
-encrypted communication between both.
-"
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/async_ssl.git"
 url {
-  src: "https://ocaml.janestreet.com/ocaml-core/v0.12/files/async_ssl-v0.12.0.tar.gz"
+  src:
+    "https://ocaml.janestreet.com/ocaml-core/v0.12/files/async_ssl-v0.12.0.tar.gz"
   checksum: "md5=985b54cf4e93704586dc0c85a3daae49"
 }

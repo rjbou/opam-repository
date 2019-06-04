@@ -1,11 +1,19 @@
 opam-version: "2.0"
+name: "solvuu-build"
+version: "0.1.0"
+synopsis: "Solvuu's build system."
 maintainer: "Ashish Agarwal <ashish@solvuu.com>"
 authors: "Solvuu"
-homepage: "https://github.com/solvuu/solvuu-build"
-bug-reports: "https://github.com/solvuu/solvuu-build/issues"
 license: "ISC"
 tags: "org:solvuu"
-dev-repo: "git+https://github.com/solvuu/solvuu-build.git"
+homepage: "https://github.com/solvuu/solvuu-build"
+bug-reports: "https://github.com/solvuu/solvuu-build/issues"
+depends: [
+  "ocaml" {>= "4.02.0" & < "4.06.0"}
+  "ocamlbuild"
+  "ocamlfind"
+  "ocamlgraph"
+]
 build: [
   [make "byte"]
   [make "native"]
@@ -14,13 +22,7 @@ install: [
   [make "_build/META"]
   [make "solvuu-build.install"]
 ]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild"
-  "ocamlgraph"
-]
-synopsis: "Solvuu's build system."
+dev-repo: "git+https://github.com/solvuu/solvuu-build.git"
 url {
   src: "https://github.com/solvuu/solvuu-build/archive/v0.1.0.tar.gz"
   checksum: "md5=9dbd89223f15e7b09b3241e727f7d491"

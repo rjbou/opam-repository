@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "DrawGrammar"
+version: "0.2.2"
 synopsis: "Draw railroad diagrams of EBNF grammars"
 description:
   "An [interactive demo](http://jacquev6.github.io/DrawGrammar/) is available."
@@ -9,12 +11,12 @@ homepage: "https://jacquev6.github.io/DrawGrammar/"
 doc: "https://jacquev6.github.io/DrawGrammar/"
 bug-reports: "http://github.com/jacquev6/DrawGrammar/issues/"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "dune" {build}
-  "menhir"
-  "JsOfOCairo" {>= "2.0.0" & < "3"}
   "cairo2" {>= "0.6" & < "0.7"}
+  "dune" {build}
   "General" {>= "0.6.0"}
+  "JsOfOCairo" {>= "2.0.0" & < "3"}
+  "menhir"
+  "ocaml" {>= "4.02.3"}
 ]
 build: [
   ["dune" "build" "-p" name "-j" jobs]

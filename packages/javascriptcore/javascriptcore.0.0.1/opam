@@ -1,11 +1,21 @@
 opam-version: "2.0"
+name: "javascriptcore"
+version: "0.0.1"
+synopsis: "OCaml bindings to JavaScriptCore"
+description: "Create, Control, Execute JavaScript values directly in OCaml."
 maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
 authors: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
+license: "BSD-3-clause"
+tags: ["clib:c" "clib:javascriptcoregtk"]
 homepage: "https://github.com/fxfactorial/ocaml-javascriptcore"
 bug-reports: "https://github.com/fxfactorial/ocaml-javascriptcore/issues"
-license: "BSD-3-clause"
-tags: ["clib:javascriptcoregtk" "clib:c"]
-dev-repo: "git+https://github.com/fxfactorial/ocaml-javascriptcore.git"
+depends: [
+  "oasis" {build & >= "0.4"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
@@ -14,23 +24,14 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "javascriptcore"]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "oasis" {build & >= "0.4"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
+messages:
+  "Installation might fail on Linux, follow depext instructions and try again."
+    {os = "linux"}
 depexts: [
   ["libc++-dev" "libjavascriptcoregtk-3.0-dev"] {os-distribution = "debian"}
   ["libc++-dev" "libjavascriptcoregtk-3.0-dev"] {os-distribution = "ubuntu"}
 ]
-messages: [
-  "Installation might fail on Linux, follow depext instructions and try again."
-    {os = "linux"}
-]
-synopsis: "OCaml bindings to JavaScriptCore"
-description: "Create, Control, Execute JavaScript values directly in OCaml."
-flags: light-uninstall
+dev-repo: "git+https://github.com/fxfactorial/ocaml-javascriptcore.git"
 url {
   src:
     "https://github.com/fxfactorial/ocaml-javascriptcore/archive/v0.0.1.tar.gz"

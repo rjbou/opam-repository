@@ -1,11 +1,17 @@
 opam-version: "2.0"
+name: "conf-gles2"
+version: "1"
+synopsis: "Virtual package relying on a OpenGL ES 2 system installation"
 maintainer: "Frédéric Bour <frederic.bour@lakaban.net>"
-authors: ["ARB"]
-homepage: "https://www.khronos.org/opengles"
+authors: "ARB"
 license: "Free of charge, royalty or licensing"
+homepage: "https://www.khronos.org/opengles"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
+flags: conf
 build: ["pkg-config" "glesv2"] {os != "macos"}
-depends: ["conf-pkg-config" {build}]
 depexts: [
   ["libgles2-mesa-dev"] {os-distribution = "debian"}
   ["libgles2-mesa-dev"] {os-distribution = "ubuntu"}
@@ -13,5 +19,3 @@ depexts: [
   ["mesa-dev"] {os-distribution = "alpine"}
   ["mesa-libGLES-devel"] {os-distribution = "centos"}
 ]
-synopsis: "Virtual package relying on a OpenGL ES 2 system installation"
-flags: conf

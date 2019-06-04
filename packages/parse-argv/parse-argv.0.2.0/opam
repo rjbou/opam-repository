@@ -1,4 +1,8 @@
 opam-version: "2.0"
+name: "parse-argv"
+version: "0.2.0"
+synopsis: "Process strings into sets of command-line arguments"
+description: "parse-argv is a small implementation of a simple argv parser."
 maintainer: "Mindy Preston <mindy.preston@docker.com>"
 authors: ["Jon Ludlam" "Magnus Skjegstad" "Mindy Preston"]
 tags: "org:mirage"
@@ -6,10 +10,10 @@ homepage: "https://github.com/mirage/parse-argv"
 doc: "https://mirage.github.io/parse-argv/"
 bug-reports: "https://github.com/mirage/parse-argv/issues"
 depends: [
-  "ocaml" {>= "4.04.2"}
-  "dune" {build & >= "1.0"}
-  "ounit" {with-test}
   "astring"
+  "dune" {build & >= "1.0"}
+  "ocaml" {>= "4.04.2"}
+  "ounit" {with-test}
 ]
 build: [
   ["dune" "subst"] {pinned}
@@ -17,10 +21,6 @@ build: [
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
 dev-repo: "git+https://github.com/mirage/parse-argv.git"
-synopsis: "Process strings into sets of command-line arguments"
-description: """
-parse-argv is a small implementation of a simple argv parser.
-"""
 url {
   src:
     "https://github.com/mirage/parse-argv/releases/download/v0.2.0/parse-argv-v0.2.0.tbz"

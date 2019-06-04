@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "opam-devel@lists.ocaml.org"
-authors: ["Jérémie Dimino"]
-homepage: "http://zed.forge.ocamlcore.org/"
-license: "BSD3"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "zed"]]
-depends: [
-  "ocaml" {>= "3.12" & < "4.06.0"}
-  "ocamlfind"
-  "camomile" {>= "0.8"}
-  "react"
-  "ocamlbuild" {build}
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "zed"
+version: "1.2"
 synopsis: "Abstract engine for text edition in OCaml"
 description: """
 Zed is an abstract engine for text edition. It can be used to write
@@ -28,7 +13,24 @@ buffers. Zed also features a regular expression search on ropes.
 
 To support efficient text edition capabilities, Zed provides macro
 recording and cursor management facilities."""
+maintainer: "opam-devel@lists.ocaml.org"
+authors: "Jérémie Dimino"
+license: "BSD3"
+homepage: "http://zed.forge.ocamlcore.org/"
+depends: [
+  "camomile" {>= "0.8"}
+  "ocaml" {>= "3.12" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "react"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "zed"]
 url {
   src: "https://download.ocamlcore.org/zed/zed/1.2/zed-1.2.tar.gz"
   checksum: "md5=c5e2a5e223a7ed39faf74512343cef11"

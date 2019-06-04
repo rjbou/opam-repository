@@ -1,37 +1,8 @@
 opam-version: "2.0"
 name: "mirage-vnetif"
-maintainer: "Magnus Skjegstad <magnus@skjegstad.com>"
-authors: "Magnus Skjegstad <magnus@skjegstad.com>"
-homepage: "https://github.com/mirage/mirage-vnetif"
-bug-reports: "https://github.com/mirage/mirage-vnetif/issues/"
-dev-repo: "git+https://github.com/mirage/mirage-vnetif.git"
-doc: "https://docs.mirage.io/mirage-vnetif"
-license: "ISC"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-
-depends: [
-  "ocaml" {>= "4.04.2"}
-  "jbuilder" {build & >= "1.0+beta7"}
-  "lwt"
-  "mirage-time-lwt" {>= "1.0.0"}
-  "mirage-clock-lwt" {>= "1.2.0"}
-  "mirage-net-lwt" {>= "1.0.0" & < "2.0.0"}
-  "cstruct" {>= "2.4.0"}
-  "ipaddr" {>= "3.0.0"}
-  "macaddr"
-  "io-page"
-  "mirage-profile"
-  "duration"
-  "logs"
-]
-tags: ["org:mirage"]
+version: "0.4.1"
 synopsis: "Virtual network interface and software switch for Mirage"
-description: """\
-
+description: """
 Provides the module `Vnetif` which can be used as a replacement for the regular `Netif` implementation in Xen and Unix. Stacks built using `Vnetif` are connected to a software switch that allows the stacks to communicate as if they were connected to the same LAN.
 
 An example of a unikernel that communicates with itself over `Vnetif` can be seen [here](https://github.com/MagnusS/mirage-vnetif/blob/master/examples/connect/unikernel.ml). An iperf-like performance test is available [here](https://github.com/MagnusS/mirage-vnetif/tree/master/examples/iperf_self). The examples can be compiled for Unix and Xen and do not need access to a real network interface.
@@ -119,7 +90,35 @@ S.listen s1
 mirage configure --xen/--unix
 make
 ```"""
+maintainer: "Magnus Skjegstad <magnus@skjegstad.com>"
+authors: "Magnus Skjegstad <magnus@skjegstad.com>"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-vnetif"
+doc: "https://docs.mirage.io/mirage-vnetif"
+bug-reports: "https://github.com/mirage/mirage-vnetif/issues/"
+depends: [
+  "cstruct" {>= "2.4.0"}
+  "duration"
+  "io-page"
+  "ipaddr" {>= "3.0.0"}
+  "jbuilder" {build & >= "1.0+beta7"}
+  "logs"
+  "lwt"
+  "macaddr"
+  "mirage-clock-lwt" {>= "1.2.0"}
+  "mirage-net-lwt" {>= "1.0.0" & < "2.0.0"}
+  "mirage-profile"
+  "mirage-time-lwt" {>= "1.0.0"}
+  "ocaml" {>= "4.04.2"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-vnetif.git"
 url {
-archive: "https://github.com/mirage/mirage-vnetif/releases/download/v0.4.1/mirage-vnetif-0.4.1.tbz"
-checksum: "5b8e5c8fd0b1eb93d5296b03d62eb0b7"
+  src:
+    "https://github.com/mirage/mirage-vnetif/releases/download/v0.4.1/mirage-vnetif-0.4.1.tbz"
+  checksum: "md5=5b8e5c8fd0b1eb93d5296b03d62eb0b7"
 }

@@ -1,26 +1,24 @@
 opam-version: "2.0"
 name: "stemmer"
 version: "0.2"
-maintainer: "Erik L. Arneson <earneson@arnesonium.com>"
-authors: "Erik L. Arneson <earneson@arnesonium.com>"
-homepage: "https://github.com/pymander/ocaml-stemmer"
-bug-reports: "https://github.com/pymander/ocaml-stemmer/issues"
-license: "GNUv2"
-build: [
-  [make]
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "stemmer"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-]
-dev-repo: "git://github.com/pymander/ocaml-stemmer"
 synopsis: "Porter stemming algorithm in pure OCaml"
 description: """
 This is a pure OCaml implementation of the Porter
 stemming algorithm."""
+maintainer: "Erik L. Arneson <earneson@arnesonium.com>"
+authors: "Erik L. Arneson <earneson@arnesonium.com>"
+license: "GNUv2"
+homepage: "https://github.com/pymander/ocaml-stemmer"
+bug-reports: "https://github.com/pymander/ocaml-stemmer/issues"
+depends: [
+  "ocaml"
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "stemmer"]
+dev-repo: "git://github.com/pymander/ocaml-stemmer"
 url {
   src: "https://github.com/pymander/ocaml-stemmer/archive/v0.2.tar.gz"
   checksum: "md5=29588f4e3db0175e9a720143effd5f2b"

@@ -1,67 +1,6 @@
 opam-version: "2.0"
-maintainer: "Simon Fowler <simon.fowler@ed.ac.uk>"
-authors: "The Links Team <links-dev@inf.ed.ac.uk>"
-homepage: "https://github.com/links-lang/links"
-dev-repo: "git+https://github.com/links-lang/links.git"
-bug-reports: "https://github.com/links-lang/links/issues"
-license: "GPL-2"
-
-build: [
-  [ "jbuilder" "subst" "-p" name ] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-install: [
-# Install documentation
-  [ "mkdir" "-p" "%{links:doc}%"                                      ]
-  [ "cp" "INSTALL" "%{links:doc}%/README"                             ]
-# Copy examples
-  [ "mkdir" "-p" "%{links:share}%/examples"                           ]
-  [ "sh" "-c" "cp -r examples/dbsetup %{links:share}%/examples/dbsetup/" ]
-  [ "sh" "-c" "cp examples/*.links %{links:share}%/examples"          ]
-  [ "sh" "-c" "cp examples/*.jpg %{links:share}%/examples"            ]
-  [ "sh" "-c" "cp examples/*.sql %{links:share}%/examples"            ]
-  [ "sh" "-c" "cp examples/*.html %{links:share}%/examples"           ]
-  [ "sh" "-c" "cp examples/*.css %{links:share}%/examples"            ]
-  [ "sh" "-c" "cp examples/*.js %{links:share}%/examples"             ]
-  [ "sh" "-c" "cp -r examples/dictionary %{links:share}%/examples/"   ]
-  [ "sh" "-c" "cp -r examples/games %{links:share}%/examples/"        ]
-  [ "sh" "-c" "cp -r examples/sessions %{links:share}%/examples/"     ]
-  [ "sh" "-c" "cp -r examples/webserver %{links:share}%/examples/"    ]
-  [ "sh" "-c" "cp -r examples/css %{links:share}%/examples/"          ]
-# Generate and install a config file
-  [ "touch" "config"                                                  ]
-  [ "sh" "-c" "echo jsliburl=/lib/js > config"                          ]
-  [ "sh" "-c" "echo jslibdir=%{links:lib}%/js >> config"               ]
-  [ "sh" "-c" "echo #database_driver=postgresql >> config"             ]
-  [ "sh" "-c" "echo #database_args=localhost:5432:user:pass >> config" ]
-  [ "mkdir" "-p" "%{links:etc}%"                                      ]
-  [ "cp" "config" "%{links:etc}%"                                     ]
-]
-
-remove: [
-  [ "rm" "-f"  "%{links:bin}%/linx" ]
-  [ "rm" "-f"  "%{links:lib}%/prelude.links" ]
-  [ "rm" "-rf" "%{links:lib}%/stdlib" ]
-  [ "rm" "-rf" "%{links:lib}%/js" ]
-  [ "rm" "-rf" "%{links:share}%/examples" ]
-  [ "rm" "-f"  "%{links:etc}%/config" ]
-  [ "rm" "-f"  "%{links:doc}%/README" ]
-]
-
-depends: [
-  "ocaml" {>= "4.04.0" & < "4.06"}
-  "jbuilder" {build}
-  "deriving" {build}
-  "cgi"
-  "base64" {< "3.0.0"}
-  "linenoise"
-  "ANSITerminal"
-  "lwt"
-  "cohttp" {< "0.99.0"}
-  "websocket-lwt"
-  "safepass"
-]
+name: "links"
+version: "0.7.2"
 synopsis: "Linking Theory to Practice for the Web"
 description: """
 [![Build Status](https://travis-ci.org/links-lang/links.svg?branch=master)](https://travis-ci.org/links-lang/links)
@@ -105,7 +44,63 @@ FEATURES
  * An effect system for supporting abstraction over database queries
 whilst guaranteeing that they can be efficiently compiled to SQL
  * Handlers for algebraic effects on the server-side and the client-side"""
+maintainer: "Simon Fowler <simon.fowler@ed.ac.uk>"
+authors: "The Links Team <links-dev@inf.ed.ac.uk>"
+license: "GPL-2"
+homepage: "https://github.com/links-lang/links"
+bug-reports: "https://github.com/links-lang/links/issues"
+depends: [
+  "ANSITerminal"
+  "base64" {< "3.0.0"}
+  "cgi"
+  "cohttp" {< "0.99.0"}
+  "deriving" {build}
+  "jbuilder" {build}
+  "linenoise"
+  "lwt"
+  "ocaml" {>= "4.04.0" & < "4.06"}
+  "safepass"
+  "websocket-lwt"
+]
 flags: light-uninstall
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+install: [
+  ["mkdir" "-p" "%{links:doc}%"]
+  ["cp" "INSTALL" "%{links:doc}%/README"]
+  ["mkdir" "-p" "%{links:share}%/examples"]
+  ["sh" "-c" "cp -r examples/dbsetup %{links:share}%/examples/dbsetup/"]
+  ["sh" "-c" "cp examples/*.links %{links:share}%/examples"]
+  ["sh" "-c" "cp examples/*.jpg %{links:share}%/examples"]
+  ["sh" "-c" "cp examples/*.sql %{links:share}%/examples"]
+  ["sh" "-c" "cp examples/*.html %{links:share}%/examples"]
+  ["sh" "-c" "cp examples/*.css %{links:share}%/examples"]
+  ["sh" "-c" "cp examples/*.js %{links:share}%/examples"]
+  ["sh" "-c" "cp -r examples/dictionary %{links:share}%/examples/"]
+  ["sh" "-c" "cp -r examples/games %{links:share}%/examples/"]
+  ["sh" "-c" "cp -r examples/sessions %{links:share}%/examples/"]
+  ["sh" "-c" "cp -r examples/webserver %{links:share}%/examples/"]
+  ["sh" "-c" "cp -r examples/css %{links:share}%/examples/"]
+  ["touch" "config"]
+  ["sh" "-c" "echo jsliburl=/lib/js > config"]
+  ["sh" "-c" "echo jslibdir=%{links:lib}%/js >> config"]
+  ["sh" "-c" "echo #database_driver=postgresql >> config"]
+  ["sh" "-c" "echo #database_args=localhost:5432:user:pass >> config"]
+  ["mkdir" "-p" "%{links:etc}%"]
+  ["cp" "config" "%{links:etc}%"]
+]
+remove: [
+  ["rm" "-f" "%{links:bin}%/linx"]
+  ["rm" "-f" "%{links:lib}%/prelude.links"]
+  ["rm" "-rf" "%{links:lib}%/stdlib"]
+  ["rm" "-rf" "%{links:lib}%/js"]
+  ["rm" "-rf" "%{links:share}%/examples"]
+  ["rm" "-f" "%{links:etc}%/config"]
+  ["rm" "-f" "%{links:doc}%/README"]
+]
+dev-repo: "git+https://github.com/links-lang/links.git"
 url {
   src:
     "https://github.com/links-lang/links/releases/download/0.7.2/links-0.7.2.tbz"

@@ -1,18 +1,20 @@
 opam-version: "2.0"
+name: "ancient"
+version: "0.9.0"
+synopsis:
+  "Allows to use in-memory data structures which are larger than available memory and so are kept in swap"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [
-  ["sh" "-exc" "cd mmalloc && ./configure"]
-  [make]
-]
-remove: [["ocamlfind" "remove" "ancient"]]
 depends: [
   "ocaml" {< "4.03.0"}
   "ocamlfind"
 ]
-install: [make "install" "DESTDIR=%{lib}%"]
-synopsis:
-  "Allows to use in-memory data structures which are larger than available memory and so are kept in swap"
 flags: light-uninstall
+build: [
+  ["sh" "-exc" "cd mmalloc && ./configure"]
+  [make]
+]
+install: [make "install" "DESTDIR=%{lib}%"]
+remove: ["ocamlfind" "remove" "ancient"]
 url {
   src: "http://www.ocaml-programming.de/godi-backup/ancient-0.9.0.tar.gz"
   checksum: "md5=a5529e09f3c96247f362b7640e710157"

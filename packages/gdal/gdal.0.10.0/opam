@@ -1,22 +1,6 @@
 opam-version: "2.0"
 name: "gdal"
-maintainer: "Hezekiah M. Carty <hez@0ok.org>"
-authors: [ "Hezekiah M. Carty <hez@0ok.org>" ]
-license: "MIT"
-homepage: "https://github.com/hcarty/ocaml-gdal"
-bug-reports: "https://github.com/hcarty/ocaml-gdal/issues"
-dev-repo: "git+https://github.com/hcarty/ocaml-gdal.git"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name] {with-test}
-  ["jbuilder" "build" "@doc" "-p" name] {with-doc}
-]
-depends: [
-  "ocaml" {>= "4.02.1"}
-  "jbuilder" {build & >= "1.0+beta20"}
-  "ctypes" {>= "0.4.0"}
-  "ctypes-foreign" {>= "0.4.0"}
-]
+version: "0.10.0"
 synopsis: "GDAL and OGR bindings"
 description: """
 This library provides access to the GDAL library (http://www.gdal.org/).  It
@@ -24,6 +8,23 @@ provides both direct, low-level access to GDAL and OGR library functions as
 well as a higher level, more OCaml-like interface.
 
 The API is [viewable here](http://hcarty.github.io/ocaml-gdal/gdal/index.html)."""
+maintainer: "Hezekiah M. Carty <hez@0ok.org>"
+authors: "Hezekiah M. Carty <hez@0ok.org>"
+license: "MIT"
+homepage: "https://github.com/hcarty/ocaml-gdal"
+bug-reports: "https://github.com/hcarty/ocaml-gdal/issues"
+depends: [
+  "ctypes" {>= "0.4.0"}
+  "ctypes-foreign" {>= "0.4.0"}
+  "jbuilder" {build & >= "1.0+beta20"}
+  "ocaml" {>= "4.02.1"}
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name] {with-test}
+  ["jbuilder" "build" "@doc" "-p" name] {with-doc}
+]
+dev-repo: "git+https://github.com/hcarty/ocaml-gdal.git"
 url {
   src:
     "https://github.com/hcarty/ocaml-gdal/releases/download/v0.10.0/gdal-0.10.0.tbz"

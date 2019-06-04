@@ -1,10 +1,8 @@
 opam-version: "2.0"
+name: "ocamldap"
+version: "2.1.8"
+synopsis: "Implementation of the Light Weight Directory Access Protocol"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [
-  [make "all"]
-  [make "opt"]
-]
-remove: [["ocamlfind" "remove" "ocamldap"]]
 depends: [
   "ocaml" {= "3.12.1"}
   "ocamlfind" {build}
@@ -12,9 +10,13 @@ depends: [
   "pcre"
   "ssl"
 ]
-install: [make "install"]
-synopsis: "Implementation of the Light Weight Directory Access Protocol"
 flags: light-uninstall
+build: [
+  [make "all"]
+  [make "opt"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "ocamldap"]
 url {
   src:
     "http://downloads.sourceforge.net/project/ocamldap/ocamldap/ocamldap-2.1.8/ocamldap-2.1.8.tar.bz2"

@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "nunchaku"
+version: "0.6"
 synopsis:
   "A counter-example finder for higher-order logic, designed to be used from various proof assistants"
 maintainer: "simon.cruanes.2007@m4x.org"
-authors: ["Simon Cruanes" "Jasmin Blanchette"]
+authors: ["Jasmin Blanchette" "Simon Cruanes"]
 homepage: "https://github.com/nunchaku-inria/nunchaku/"
 bug-reports: "https://github.com/nunchaku-inria/nunchaku/issues"
 depends: [
-  "jbuilder" {build}
-  "containers" {>= "1.0"}
-  "menhir" {build & <= "20181026"}
-  "sequence" {>= "1.0"}
-  "base-unix"
   "base-threads"
+  "base-unix"
+  "containers" {>= "1.0"}
+  "jbuilder" {build}
+  "menhir" {build & <= "20181026"}
   "num"
-  "qtest" {with-test}
-  "qcheck" {with-test}
-  "ounit" {with-test}
-  "odoc" {with-doc}
   "ocaml" {>= "4.02.0"}
+  "odoc" {with-doc}
+  "ounit" {with-test}
+  "qcheck" {with-test}
+  "qtest" {with-test}
+  "sequence" {>= "1.0"}
 ]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]

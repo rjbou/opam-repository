@@ -1,29 +1,28 @@
 opam-version: "2.0"
 name: "asl"
-maintainer: "dave@recoil.org"
-authors: [ "David Scott" ]
-license: "ISC"
-homepage: "https://github.com/mirage/ocaml-asl"
-dev-repo: "git+https://github.com/mirage/ocaml-asl.git"
-bug-reports: "https://github.com/mirage/ocaml-asl/issues"
-doc: "https://mirage.github.io/ocaml-vmnet/"
-
-build: [
-  [ "jbuilder" "subst" "-p" name] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml"
-  "result"
-  "logs"
-  "ocamlfind" {build}
-  "jbuilder" {build & >= "1.0+beta9"}
-]
+version: "0.11"
 synopsis: "Bindings for the Apple System Log API"
 description: """
 The Apple System Log allows applications to send log messages, which can
 be recorded, filtered and searched."""
+maintainer: "dave@recoil.org"
+authors: "David Scott"
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-asl"
+doc: "https://mirage.github.io/ocaml-vmnet/"
+bug-reports: "https://github.com/mirage/ocaml-asl/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta9"}
+  "logs"
+  "ocaml"
+  "ocamlfind" {build}
+  "result"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/ocaml-asl.git"
 url {
   src:
     "https://github.com/mirage/ocaml-asl/releases/download/0.11/asl-0.11.tbz"

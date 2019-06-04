@@ -1,33 +1,35 @@
 opam-version: "2.0"
-maintainer: "opam-devel@lists.ocaml.org"
-authors: [
-  "Vincent Bernardoff <vb@luminar.eu.org>"
-  "Raja Boujbel <raja.boujbel@ocamlpro.com>"
-  "Roberto Di Cosmo <roberto@dicosmo.org>"
-  "Thomas Gazagnaire <thomas@gazagnaire.org>"
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
-  "Anil Madhavapeddy <anil@recoil.org>"
-  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
-  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
-  "Frederic Tuong <tuong@users.gforge.inria.fr>"
-]
-homepage: "https://opam.ocaml.org/"
-bug-reports: "https://github.com/ocaml/opam/issues"
-dev-repo: "git+https://github.com/ocaml/opam.git"
-build: [
-  ["./configure" "--disable-checks" "--prefix" prefix]
-  [make "%{name}%.install"]
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "opam-format" {= "2.0.0~rc2"}
-  "jbuilder" {build & >= "1.0+beta17"}
-]
+name: "opam-repository"
+version: "2.0.0~rc2"
 synopsis: "opam 2.0 development libraries"
 description: """
 This library includes repository and remote sources handling, including
 curl/wget, rsync, git, mercurial, darcs backends."""
+maintainer: "opam-devel@lists.ocaml.org"
+authors: [
+  "Anil Madhavapeddy <anil@recoil.org>"
+  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
+  "Frederic Tuong <tuong@users.gforge.inria.fr>"
+  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+  "Raja Boujbel <raja.boujbel@ocamlpro.com>"
+  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
+  "Roberto Di Cosmo <roberto@dicosmo.org>"
+  "Thomas Gazagnaire <thomas@gazagnaire.org>"
+  "Vincent Bernardoff <vb@luminar.eu.org>"
+]
+homepage: "https://opam.ocaml.org/"
+bug-reports: "https://github.com/ocaml/opam/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta17"}
+  "ocaml" {>= "4.02.3"}
+  "opam-format" {= "2.0.0~rc2"}
+]
+build: [
+  ["./configure" "--disable-checks" "--prefix" prefix]
+  [make "%{name}%.install"]
+]
+dev-repo: "git+https://github.com/ocaml/opam.git"
 url {
   src: "https://github.com/ocaml/opam/archive/2.0.0-rc2.tar.gz"
   checksum: "md5=86a60db4df8412db09cef82cf26cf335"

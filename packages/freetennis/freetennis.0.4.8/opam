@@ -1,19 +1,29 @@
 opam-version: "2.0"
+name: "freetennis"
+version: "0.4.8"
+synopsis: "Free Tennis, a free tennis simulation."
 maintainer: "yallop@gmail.com"
-authors: ["Maurizio Colucci"]
-homepage: "http://freetennis.sourceforge.net/"
+authors: "Maurizio Colucci"
 license: "GNU General Public License version 2"
-build: [
-  ["ocamlfind" "opt" "-linkpkg" "-package" "sdl.sdlmixer,lablgl,lablgtk2,camlimages" "-o" "freetennis.native" "freetennis.ml"]
-]
-doc: ["http://freetennis.sourceforge.net/manual.html"]
+homepage: "http://freetennis.sourceforge.net/"
+doc: "http://freetennis.sourceforge.net/manual.html"
 depends: [
-  "ocaml"
-  "ocamlfind"
   "camlimages" {>= "4.1.1"}
-  "ocamlsdl"
   "lablgl"
   "lablgtk"
+  "ocaml"
+  "ocamlfind"
+  "ocamlsdl"
+]
+build: [
+  "ocamlfind"
+  "opt"
+  "-linkpkg"
+  "-package"
+  "sdl.sdlmixer,lablgl,lablgtk2,camlimages"
+  "-o"
+  "freetennis.native"
+  "freetennis.ml"
 ]
 depexts: [
   [
@@ -33,10 +43,9 @@ depexts: [
     "libgtk2.0-dev"
   ] {os-distribution = "ubuntu"}
 ]
-synopsis: "Free Tennis, a free tennis simulation."
 extra-files: [
-  ["freetennis.install" "md5=d27e95b185948e5e16c06192d48de970"]
   ["freetennis" "md5=229b75b80257a2b2dcc62afc1530dfb3"]
+  ["freetennis.install" "md5=d27e95b185948e5e16c06192d48de970"]
 ]
 url {
   src:

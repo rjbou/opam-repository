@@ -1,29 +1,28 @@
 opam-version: "2.0"
-name:         "yuscii"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/dinosaure/yuscii"
-bug-reports:  "https://github.com/dinosaure/yuscii/issues"
-dev-repo:     "git+https://github.com/dinosaure/yuscii.git"
-doc:          "https://dinosaure.github.io/yuscii/"
-license:      "MIT"
-synopsis:     "Mapper of UTF-7 to Unicode"
-
+name: "yuscii"
+version: "0.2.1"
+synopsis: "Mapper of UTF-7 to Unicode"
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/yuscii"
+doc: "https://dinosaure.github.io/yuscii/"
+bug-reports: "https://github.com/dinosaure/yuscii/issues"
+depends: [
+  "alcotest" {with-test}
+  "cmdliner"
+  "dune" {build}
+  "fmt"
+  "ocaml" {>= "4.03.0"}
+  "rresult"
+  "uutf"
+]
 build: [
   ["dune" "subst"]
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "fmt"
-  "uutf"
-  "rresult"
-  "cmdliner"
-  "alcotest" {with-test}
-]
+dev-repo: "git+https://github.com/dinosaure/yuscii.git"
 url {
   src:
     "https://github.com/dinosaure/yuscii/releases/download/v0.2.1/yuscii-v0.2.1.tbz"

@@ -1,33 +1,35 @@
 opam-version: "2.0"
+name: "bulletml"
+version: "0.1.0"
+synopsis: "Library to manipulate shmup patterns"
+description: """
+This provides a set of tools to manipulate BulletML, a XML-based description
+language for patterns of bullets present in shoot-them-up (shmup) games."""
 maintainer: "Etienne Millon <me@emillon.org>"
 authors: "Etienne Millon <me@emillon.org>"
+license: "BSD-2"
 homepage: "https://github.com/emillon/bulletml"
 bug-reports: "https://github.com/emillon/bulletml/issues"
-license: "BSD-2"
-dev-repo: "git+https://github.com/emillon/bulletml.git"
+depends: [
+  "alcotest" {with-test}
+  "base64" {>= "2.0.0" & < "3.0.0"}
+  "js_of_ocaml" {>= "2.6" & < "3.0"}
+  "mparser"
+  "ocaml" {>= "4.02.2"}
+  "ocamlfind" {build}
+  "ocamlsdl"
+  "ounit" {with-test}
+  "ppx_deriving"
+  "re"
+  "xml-light"
+]
 build: [
   [make]
   [make "check"] {with-test}
 ]
 install: [make "install"]
 remove: [make "uninstall"]
-depends: [
-  "ocaml" {>= "4.02.2"}
-  "ocamlfind" {build}
-  "ounit" {with-test}
-  "base64" {>= "2.0.0" & < "3.0.0"}
-  "re"
-  "mparser"
-  "alcotest" {with-test}
-  "xml-light"
-  "ocamlsdl"
-  "js_of_ocaml" {>= "2.6" & < "3.0"}
-  "ppx_deriving"
-]
-synopsis: "Library to manipulate shmup patterns"
-description: """
-This provides a set of tools to manipulate BulletML, a XML-based description
-language for patterns of bullets present in shoot-them-up (shmup) games."""
+dev-repo: "git+https://github.com/emillon/bulletml.git"
 url {
   src: "https://github.com/emillon/bulletml/archive/v0.1.0.tar.gz"
   checksum: "md5=d49961d0e353975b94f1b7f05c99aecb"

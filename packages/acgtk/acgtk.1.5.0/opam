@@ -1,42 +1,34 @@
 opam-version: "2.0"
+name: "acgtk"
+version: "1.5.0"
+synopsis: "Abstract Categorial Grammar development toolkit"
+description:
+  "This toolkit provides a compiler and an interpreter for Abstract Categorial Grammars (ACGs). Grammars can be compiled and then used by the interpreter to parse (if the grammar is at most second-order) or to generate terms. See http://acg.loria.fr for more details and bibliographic references."
 maintainer: "sylvain.pogodalla@inria.fr"
-
-build: [
-  ["dune" "subst"] {pinned}
-# remove the -p to also build the local libraries: conflict with the
-# fact that some libraries are also part of the acgtkLib package
-#  ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "build" "-j" jobs]
-]
-
-install: ["dune" "install"]
-
+authors: "Sylvain Pogodalla"
+license: "CeCILL"
+homepage: "http://acg.inria.fr/"
+bug-reports: "sylvain.pogodalla@inria.fr"
 depends: [
-  "ocaml" { >= "4.03.0"}
-  "dune" {build}
-  "menhir"
   "ANSITerminal"
+  "cairo2"
+  "dune" {build}
+  "easy-format"
   "fmt"
   "logs"
+  "menhir"
   "mtime"
-  "cairo2"
-  "yojson"
-  "easy-format"
+  "ocaml" {>= "4.03.0"}
   "ocf"
+  "yojson"
 ]
-
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-j" jobs]
+]
+install: ["dune" "install"]
 dev-repo: "git+https://gitlab.inria.fr/ACG/dev/ACGtk.git"
-
-homepage: "http://acg.inria.fr/"
-license: "CeCILL"
-authors: ["Sylvain Pogodalla"]
-bug-reports: "sylvain.pogodalla@inria.fr"
-
-synopsis: "Abstract Categorial Grammar development toolkit"
-
-description: "This toolkit provides a compiler and an interpreter for Abstract Categorial Grammars (ACGs). Grammars can be compiled and then used by the interpreter to parse (if the grammar is at most second-order) or to generate terms. See http://acg.loria.fr for more details and bibliographic references."
-
 url {
-     src: "http://acg.loria.fr/software/acg-1.5.0-20181019.tar.gz"
-     checksum: "7fa4ac29e905f8d4ed7efccb131b304a"
+  src: "http://acg.loria.fr/software/acg-1.5.0-20181019.tar.gz"
+  checksum: "md5=7fa4ac29e905f8d4ed7efccb131b304a"
 }

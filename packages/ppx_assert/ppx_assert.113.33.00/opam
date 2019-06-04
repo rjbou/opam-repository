@@ -1,14 +1,13 @@
 opam-version: "2.0"
+name: "ppx_assert"
+version: "113.33.00"
+synopsis: "Assert-like extension nodes that raise useful errors on failure"
+description: "Part of the Jane Street's PPX rewriters collection."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
 homepage: "https://github.com/janestreet/ppx_assert"
 bug-reports: "https://github.com/janestreet/ppx_assert/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_assert.git"
-license: "Apache-2.0"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
 depends: [
   "ocaml" {>= "4.02.3"}
   "ocamlbuild" {build}
@@ -22,8 +21,11 @@ depends: [
   "ppx_type_conv" {>= "113.33.00" & < "113.34.00+4.03"}
   "sexplib" {>= "113.33.00" & < "113.34.00+4.03"}
 ]
-synopsis: "Assert-like extension nodes that raise useful errors on failure"
-description: "Part of the Jane Street's PPX rewriters collection."
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+dev-repo: "git+https://github.com/janestreet/ppx_assert.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_assert-113.33.00.tar.gz"

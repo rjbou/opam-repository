@@ -1,39 +1,39 @@
 opam-version: "2.0"
-maintainer: "Gabriel Radanne <drupyog@zoho.com>"
+name: "lmdb"
+version: "0.1"
 synopsis: "Bindings for LMDB, a fast in-file database with ACID transactions"
+maintainer: "Gabriel Radanne <drupyog@zoho.com>"
 authors: "Gabriel Radanne <drupyog@zoho.com>"
 license: "MIT"
+tags: ["clib:lmdb" "database"]
 homepage: "https://github.com/Drup/ocaml-lmdb"
-bug-reports: "https://github.com/Drup/ocaml-lmdb/issues"
-dev-repo: "git+https://github.com/Drup/ocaml-lmdb.git"
 doc: "https://drup.github.io/ocaml-lmdb/dev/Lmdb.html"
-tags: [ "clib:lmdb" "database" ]
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  [ "ocaml" "setup.ml" "-doc" ] {with-doc}
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: ["ocamlfind" "remove" "lmdb"]
+bug-reports: "https://github.com/Drup/ocaml-lmdb/issues"
 depends: [
   "base-bytes"
   "ctypes"
   "ctypes-foreign"
-  "unix-type-representations"
-  "ocamlfind" {build}
-
   "oasis" {dev & build}
+  "ocamlfind" {build}
+  "unix-type-representations"
 ]
-
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "lmdb"]
 depexts: [
   ["liblmdb-dev"] {os-distribution = "debian"}
   ["liblmdb-dev"] {os-distribution = "ubuntu"}
   ["lmdb"] {os = "macos" & os-distribution = "homebrew"}
   ["lmdb"] {os = "macos" & os-distribution = "macports"}
+  ["lmdb"] {os-distribution = "arch"}
   ["lmdb-devel"] {os-distribution = "fedora"}
   ["lmdb-devel"] {os-family = "suse"}
-  ["lmdb"] {os-distribution = "arch"}
 ]
+dev-repo: "git+https://github.com/Drup/ocaml-lmdb.git"
 url {
   src: "https://github.com/Drup/ocaml-lmdb/archive/0.1.tar.gz"
   checksum: [

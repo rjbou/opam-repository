@@ -1,29 +1,34 @@
 opam-version: "2.0"
-maintainer: "jeremie@dimino.org"
-authors: ["Jérémie Dimino"]
-homepage: "http://estring.forge.ocamlcore.org/"
-license: "BSD3"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-remove: [["ocamlfind" "remove" "estring"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "camlp4"
-  "ocamlbuild" {build}
-]
-conflicts: ["batteries" {<= "1.5.0"}]
-install: ["ocaml" "setup.ml" "-install"]
+name: "estring"
+version: "1.3"
 synopsis: "Extension for string literals"
 description: """
 Estring allows to transform string literals in programs by prefixing
 them with a specifier. For example ``u"foo"'' can be automatically
 replaced by ``Unicode.of_string "foo"''."""
+maintainer: "jeremie@dimino.org"
+authors: "Jérémie Dimino"
+license: "BSD3"
+homepage: "http://estring.forge.ocamlcore.org/"
+depends: [
+  "camlp4"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+conflicts: [
+  "batteries" {<= "1.5.0"}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "estring"]
 url {
-  src: "https://download.ocamlcore.org/estring/estring/1.3/estring-1.3.tar.gz"
+  src:
+    "https://download.ocamlcore.org/estring/estring/1.3/estring-1.3.tar.gz"
   checksum: "md5=b96f06de405ea3a6b4a21b672672bb14"
 }

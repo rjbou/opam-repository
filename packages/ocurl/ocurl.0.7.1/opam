@@ -1,36 +1,38 @@
 opam-version: "2.0"
+name: "ocurl"
+version: "0.7.1"
+synopsis: "Bindings to libcurl"
+description: """
+Client-side URL transfer library, supporting HTTP and a multitude of
+other network protocols (FTP/SMTP/RTSP/etc)."""
 maintainer: "ygrek@autistici.org"
-homepage: "http://ocurl.forge.ocamlcore.org"
+authors: ["Lars Nilsson" "ygrek"]
 license: "MIT"
-authors: [ "Lars Nilsson" "ygrek" ]
-doc: ["http://ocurl.forge.ocamlcore.org/api/index.html"]
-build: [
-  ["./configure"]
-  [make]
-  [make "doc"] {with-doc}
-]
-remove: [["ocamlfind" "remove" "curl"]]
+homepage: "http://ocurl.forge.ocamlcore.org"
+doc: "http://ocurl.forge.ocamlcore.org/api/index.html"
 depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
   "base-unix"
   "camlp4"
+  "ocaml" {< "4.06.0"}
+  "ocamlfind"
 ]
 depopts: ["lwt"]
 conflicts: [
   "lwt" {>= "4.0.0"}
 ]
-depexts: [
-  ["libcurl4-gnutls-dev"] {os-distribution = "debian"}
-  ["libcurl4-gnutls-dev"] {os-distribution = "ubuntu"}
-  ["libcurl-devel" "openssl-devel"] {os-distribution = "centos"}
+flags: light-uninstall
+build: [
+  ["./configure"]
+  [make]
+  [make "doc"] {with-doc}
 ]
 install: [make "install"]
-synopsis: "Bindings to libcurl"
-description: """
-Client-side URL transfer library, supporting HTTP and a multitude of
-other network protocols (FTP/SMTP/RTSP/etc)."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "curl"]
+depexts: [
+  ["libcurl-devel" "openssl-devel"] {os-distribution = "centos"}
+  ["libcurl4-gnutls-dev"] {os-distribution = "debian"}
+  ["libcurl4-gnutls-dev"] {os-distribution = "ubuntu"}
+]
 url {
   src: "https://download.ocamlcore.org/ocurl/ocurl/0.7.1/ocurl-0.7.1.tar.gz"
   checksum: "md5=d138fd78538ae3bd008d6e9c2993d240"

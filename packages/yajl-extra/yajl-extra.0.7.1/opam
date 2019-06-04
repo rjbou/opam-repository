@@ -1,18 +1,20 @@
 opam-version: "2.0"
-maintainer: "mlin@mlin.net"
-remove: [["ocamlfind" "remove" "yajl-extra"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "batteries" {< "2.0.0"}
-  "yajl"
-  "ocamlbuild" {build}
-]
-install: [make "install-extra"]
+name: "yajl-extra"
+version: "0.7.1"
 synopsis:
   "extended YAJL bindings with a convenient high-level JSON representation"
 description: "https://github.com/mlin/yajl-ocaml"
+maintainer: "mlin@mlin.net"
+depends: [
+  "batteries" {< "2.0.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "yajl"
+]
 flags: light-uninstall
+install: [make "install-extra"]
+remove: ["ocamlfind" "remove" "yajl-extra"]
 url {
   src:
     "https://raw.github.com/mlin/yajl-ocaml/tarball/yajl-ocaml-0.7.1.tar.gz"

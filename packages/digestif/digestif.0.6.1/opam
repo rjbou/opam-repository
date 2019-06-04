@@ -1,23 +1,6 @@
 opam-version: "2.0"
-name:         "digestif"
-maintainer:   [ "Eyyüb Sari <eyyub.sari@epitech.eu>"
-                "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-authors:      [ "Eyyüb Sari <eyyub.sari@epitech.eu>"
-                "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-homepage:     "https://github.com/mirage/digestif"
-bug-reports:  "https://github.com/mirage/digestif/issues"
-dev-repo: "git+https://github.com/mirage/digestif.git"
-doc:          "https://mirage.github.io/digestif/"
-license:      "MIT"
-
-build: [ "jbuilder" "build" "-p" name "-j" jobs ]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "base-bytes"
-  "base-bigarray"
-]
+name: "digestif"
+version: "0.6.1"
 synopsis: "Hash algorithms in C and OCaml"
 description: """
 [![Build Status](https://travis-ci.org/mirage/digestif.svg?branch=master)](https://travis-ci.org/mirage/digestif)
@@ -72,6 +55,26 @@ All credits appear in the begin of files and this library is motivated by two re
 
   * delete the dependancy with `nocrypto` if you don't use the encryption (and common) part
   * aggregate all hashes functions in one library"""
+maintainer: [
+  "Eyyüb Sari <eyyub.sari@epitech.eu>"
+  "Romain Calascibetta <romain.calascibetta@gmail.com>"
+]
+authors: [
+  "Eyyüb Sari <eyyub.sari@epitech.eu>"
+  "Romain Calascibetta <romain.calascibetta@gmail.com>"
+]
+license: "MIT"
+homepage: "https://github.com/mirage/digestif"
+doc: "https://mirage.github.io/digestif/"
+bug-reports: "https://github.com/mirage/digestif/issues"
+depends: [
+  "base-bigarray"
+  "base-bytes"
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/mirage/digestif.git"
 url {
   src:
     "https://github.com/mirage/digestif/releases/download/v0.6.1/digestif-0.6.1.tbz"

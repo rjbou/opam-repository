@@ -1,17 +1,19 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-build: make
-remove: [["ocamlfind" "remove" "async_find"]]
-depends: [
-  "ocaml"
-  "camlp4"
-  "async" {>= "109.15.00" & <= "109.53.00"}
-  "sexplib" {>= "109.15.00" & <= "109.55.00"}
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "async_find"
+version: "109.15.00"
 synopsis: "Directory traversal with Async"
+maintainer: "opensource@janestreet.com"
+depends: [
+  "async" {>= "109.15.00" & <= "109.53.00"}
+  "camlp4"
+  "ocaml"
+  "ocamlbuild" {build}
+  "sexplib" {>= "109.15.00" & <= "109.55.00"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "async_find"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.15.00/individual/async_find-109.15.00.tar.gz"

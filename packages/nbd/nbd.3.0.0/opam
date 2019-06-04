@@ -1,11 +1,38 @@
 opam-version: "2.0"
+name: "nbd"
+version: "3.0.0"
+synopsis: "Network Block Device (NBD) protocol implementation"
+description: """
+This library allows applications to export and consume block
+devices using the NBD protocol (as used by Linux, qemu etc)"""
 maintainer: "dave@recoil.org"
-authors: [ "Jonathan Ludlam" "David Scott" ]
+authors: ["David Scott" "Jonathan Ludlam"]
 license: "LGPL-2 with OCaml linking exception"
+tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/xapi-project/nbd"
-dev-repo: "git+https://github.com/xapi-project/nbd.git"
 bug-reports: "https://github.com/xapi-project/nbd/issues"
-
+depends: [
+  "cmdliner"
+  "cstruct" {>= "1.9.0" & < "3.4.0"}
+  "io-page-unix"
+  "lwt"
+  "mirage" {>= "1.1.0"}
+  "mirage-block-lwt"
+  "mirage-block-unix"
+  "mirage-types-lwt" {>= "3.0.0"}
+  "oasis" {build}
+  "ocaml" {>= "4.03.0"}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "ppx_cstruct" {< "3.4.0"}
+  "ppx_deriving"
+  "ppx_sexp_conv" {!= "113.33.00+4.03" & < "v0.13"}
+  "ppx_tools"
+  "result"
+  "rresult"
+  "sexplib" {< "v0.13"}
+  "uri"
+]
 build: [
   ["oasis" "setup"]
   ["./configure" "--prefix" prefix]
@@ -13,40 +40,12 @@ build: [
   ["./configure" "--enable-tests"] {with-test & ocaml:version < "4.06.0"}
   [make "test"] {with-test & ocaml:version < "4.06.0"}
 ]
-install: [
-  [make "install" "BINDIR=%{bin}%"]
-]
+install: [make "install" "BINDIR=%{bin}%"]
 remove: [
   [make "uninstall" "BINDIR=%{bin}%"]
   ["ocamlfind" "remove" "nbd"]
 ]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "oasis" {build}
-  "ounit" {with-test}
-  "ocamlfind" {build}
-  "ppx_tools"
-  "lwt"
-  "result"
-  "rresult"
-  "cstruct" {>= "1.9.0" & < "3.4.0"}
-  "ppx_cstruct" {<"3.4.0"}
-  "cmdliner"
-  "sexplib" {< "v0.13"}
-  "mirage-types-lwt" {>= "3.0.0"}
-  "mirage-block-unix"
-  "mirage-block-lwt"
-  "io-page-unix"
-  "mirage" {>= "1.1.0"}
-  "uri"
-  "ppx_deriving"
-  "ppx_sexp_conv" {!= "113.33.00+4.03" & < "v0.13"}
-]
-tags: [ "org:mirage" "org:xapi-project" ]
-synopsis: "Network Block Device (NBD) protocol implementation"
-description: """
-This library allows applications to export and consume block
-devices using the NBD protocol (as used by Linux, qemu etc)"""
+dev-repo: "git+https://github.com/xapi-project/nbd.git"
 url {
   src: "https://github.com/xapi-project/nbd/archive/v3.0.0.tar.gz"
   checksum: "md5=03b42229af1f555b927092c7d6e31f6d"

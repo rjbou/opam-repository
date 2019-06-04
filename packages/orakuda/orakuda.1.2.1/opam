@@ -1,29 +1,6 @@
 opam-version: "2.0"
+name: "orakuda"
 version: "1.2.1"
-authors: "Jun Furuse"
-maintainer: "jun.furuse@gmail.com"
-homepage: "https://bitbucket.org/camlspotter/orakuda/"
-bug-reports: "https://bitbucket.org/camlspotter/orakuda/issues?status=new&status=open"
-dev-repo: "hg+https://bitbucket.org/camlspotter/orakuda"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-build" ]
-]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "omake" {build}
-  "spotlib" {>= "2.4.0" & < "2.5.2"}
-  "pcre"
-  "camlp4"
-]
 synopsis: "ORakuda, Perlish string literals in OCaml"
 description: """
 ORakuda is a small library, CamlP4 extensions and an optional tiny
@@ -34,6 +11,29 @@ Perl (or other scripting language). It provides syntax like:
 * Variable and expression references in string $"..." or <:qq<...>>
 * Sub-shell call by back-quotes $`...` or <:qx<...>>
 * Easy hashtbl access tbl${key}"""
+maintainer: "jun.furuse@gmail.com"
+authors: "Jun Furuse"
+homepage: "https://bitbucket.org/camlspotter/orakuda/"
+bug-reports:
+  "https://bitbucket.org/camlspotter/orakuda/issues?status=new&status=open"
+depends: [
+  "camlp4"
+  "ocaml" {>= "4.01.0"}
+  "ocamlfind" {build}
+  "omake" {build}
+  "pcre"
+  "spotlib" {>= "2.4.0" & < "2.5.2"}
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
+dev-repo: "hg+https://bitbucket.org/camlspotter/orakuda"
 url {
   src: "https://bitbucket.org/camlspotter/orakuda/get/1.2.1.tar.gz"
   checksum: "md5=e46091a25682046c619e6f3cff881a9e"

@@ -1,22 +1,28 @@
 opam-version: "2.0"
+name: "conf-glfw3"
+version: "2"
 synopsis: "Virtual package relying on a GLFW3 system installation"
-description: "This package can only install if libglfw3 is installed on the system."
+description:
+  "This package can only install if libglfw3 is installed on the system."
 maintainer: "Sylvain BOILARD <boilard@crans.org>"
-authors: ["Sylvain BOILARD <boilard@crans.org>"]
+authors: "Sylvain BOILARD <boilard@crans.org>"
+license: "Zlib"
 homepage: "http://www.glfw.org"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "Zlib"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
-build: [["pkg-config" "glfw3"]]
-depends: ["conf-pkg-config" {build}]
+build: ["pkg-config" "glfw3"]
 depexts: [
-  ["libglfw3-dev"] {os-distribution = "debian"}
-  ["libglfw3-dev"] {os-distribution = "ubuntu"}
-  ["glfw-devel" "epel-release" "mesa-libGL-devel"] {os-distribution = "centos"}
+  ["glfw"] {os = "macos" & os-distribution = "homebrew"}
+  ["glfw-dev"] {os-distribution = "alpine"}
   ["glfw-devel"] {os-distribution = "rhel"}
   ["glfw-devel"] {os-distribution = "fedora"}
-  ["glfw-dev"] {os-distribution = "alpine"}
+  ["glfw-devel" "epel-release" "mesa-libGL-devel"]
+    {os-distribution = "centos"}
   ["libglfw-devel"] {os-family = "suse"}
   ["libglfw-devel"] {os-distribution = "mageia"}
-  ["glfw"] {os = "macos" & os-distribution = "homebrew"}
+  ["libglfw3-dev"] {os-distribution = "debian"}
+  ["libglfw3-dev"] {os-distribution = "ubuntu"}
 ]

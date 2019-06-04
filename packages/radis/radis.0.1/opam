@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/dinosaure/radis"
-bug-reports:  "https://github.com/dinosaure/radis/issues"
-dev-repo: "git+https://github.com/dinosaure/radis.git"
-doc:          "https://dinosaure.github.io/radis/"
-license:      "MIT"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.06.0" & < "4.07.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "fmt"
-  "alcotest" {with-test}
-]
+name: "radis"
+version: "0.1"
 synopsis: "Radix tree implementation"
 description: """
 Radis is a little library to provide an implementation of a Radix tree
@@ -32,6 +15,24 @@ The idea behind this library is to provide a fast access to an immutable store
 deleted. It's why remove operation should be slow - of course, in a git store,
 it's possible to delete an useless object (see `git gc`), however this
 computation does not appear in this way."""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/radis"
+doc: "https://dinosaure.github.io/radis/"
+bug-reports: "https://github.com/dinosaure/radis/issues"
+depends: [
+  "alcotest" {with-test}
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta9"}
+  "ocaml" {>= "4.06.0" & < "4.07.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/dinosaure/radis.git"
 url {
   src:
     "https://github.com/dinosaure/radis/releases/download/v0.1/radis-0.1.tbz"

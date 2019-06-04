@@ -1,20 +1,20 @@
 opam-version: "2.0"
+name: "uint"
+version: "1.1.1"
+synopsis: "Unsigned ints for OCaml"
 maintainer: "andre@digirati.com.br"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" "%{prefix}%"]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [
-  ["ocamlfind" "remove" "uint"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Unsigned ints for OCaml"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "uint"]
 url {
   src:
     "https://download.ocamlcore.org/ocaml-uint/ocaml-uint/1.1.1/ocaml-uint-1.1.1.tar.gz"

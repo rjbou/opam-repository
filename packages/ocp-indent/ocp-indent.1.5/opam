@@ -1,30 +1,6 @@
 opam-version: "2.0"
-maintainer: "contact@ocamlpro.com"
-authors: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-homepage: "http://www.typerex.org/ocp-indent.html"
-license: "LGPL"
-tags: ["org:ocamlpro" "org:typerex"]
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocp-build" {build & >= "1.99.6-beta"}
-  "cmdliner" {<= "0.9.7"}
-]
-post-messages: [
-  "To use from emacs, add the following to your .emacs:
-  (add-to-list 'load-path \"%{share}%/emacs/site-lisp\")
-  (require 'ocp-indent)
-
-To use from Vim, add to your .vimrc:
-  execute \":source \" . \"%{share}%/vim/syntax/ocp-indent.vim\"
-"
-  {success & !user-setup:installed}
-]
-bug-reports: "https://github.com/OCamlPro/ocp-indent/issues"
-dev-repo: "git+https://github.com/OCamlPro/ocp-indent.git"
+name: "ocp-indent"
+version: "1.5"
 synopsis: "A simple tool to indent OCaml programs"
 description: """
 Ocp-indent is based on an approximate, tolerant OCaml parser and a simple stack
@@ -38,6 +14,31 @@ Includes:
 * Bindings for popular editors
 * A library that can be directly used by editor writers, or just for
 approximate parsing."""
+maintainer: "contact@ocamlpro.com"
+authors: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+license: "LGPL"
+tags: ["org:ocamlpro" "org:typerex"]
+homepage: "http://www.typerex.org/ocp-indent.html"
+bug-reports: "https://github.com/OCamlPro/ocp-indent/issues"
+depends: [
+  "cmdliner" {<= "0.9.7"}
+  "ocaml" {< "4.06.0"}
+  "ocp-build" {build & >= "1.99.6-beta"}
+]
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+post-messages:
+  """
+To use from emacs, add the following to your .emacs:
+  (add-to-list 'load-path "%{share}%/emacs/site-lisp")
+  (require 'ocp-indent)
+
+To use from Vim, add to your .vimrc:
+  execute ":source " . "%{share}%/vim/syntax/ocp-indent.vim\""""
+    {success & !user-setup:installed}
+dev-repo: "git+https://github.com/OCamlPro/ocp-indent.git"
 url {
   src: "https://github.com/OCamlPro/ocp-indent/archive/1.5.tar.gz"
   checksum: "md5=4fffaf408044ef3a7add15c40ad0aa37"

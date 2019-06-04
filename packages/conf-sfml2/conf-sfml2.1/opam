@@ -1,17 +1,21 @@
 opam-version: "2.0"
-maintainer: "blue-prawn"
-authors: ["Laurent Gomila"]
-homepage: "http://sfml-dev.org/"
-license: "Zlib"
-build: [["pkg-config" "sfml-all"]]
-depexts: [
-  ["libsfml-dev"] {os-distribution = "debian"}
-  ["sfml2-devel"] {os-distribution = "mageia"}
-  ["libsfml-dev"] {os-distribution = "ubuntu"}
-]
+name: "conf-sfml2"
+version: "1"
 synopsis: "Virtual package relying on a SFML2 system installation"
 description:
   "This package can only install if libSFML2.X is installed on the system."
-depends: ["conf-pkg-config" {build}]
+maintainer: "blue-prawn"
+authors: "Laurent Gomila"
+license: "Zlib"
+homepage: "http://sfml-dev.org/"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "sfml-all"]
+depexts: [
+  ["libsfml-dev"] {os-distribution = "debian"}
+  ["libsfml-dev"] {os-distribution = "ubuntu"}
+  ["sfml2-devel"] {os-distribution = "mageia"}
+]

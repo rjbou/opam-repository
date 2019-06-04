@@ -1,23 +1,26 @@
 opam-version: "2.0"
-authors: ["Benoît Vaugon"]
-homepage: "http://www.algo-prog.info/ocapic/web/index.php?id=OCAPIC:OCamlClean"
-bug-reports: "https://github.com/bvaugon/ocamlclean/issues"
-dev-repo: "git+ssh://git@github.com/bvaugon/ocamlclean.git"
+name: "ocamlclean"
+version: "2.2"
+synopsis: "Reduce size of OCaml bytecode files by dead-code removing"
 maintainer: "benoit.vaugon@gmail.com"
+authors: "Benoît Vaugon"
+homepage:
+  "http://www.algo-prog.info/ocapic/web/index.php?id=OCAPIC:OCamlClean"
+bug-reports: "https://github.com/bvaugon/ocamlclean/issues"
+depends: [
+  "ocaml" {>= "4.07.0" & < "4.08.0"}
+  "ocamlbuild" {build}
+]
 build: [
   ["./configure" "-prefix" prefix]
   [make "all"]
 ]
+install: [make "install"]
 remove: [
   ["./configure" "-prefix" prefix]
   [make "uninstall"]
 ]
-depends: [
-  "ocaml" {>= "4.07.0" & < "4.08.0"}
-  "ocamlbuild" { build }
-]
-install: [make "install"]
-synopsis: "Reduce size of OCaml bytecode files by dead-code removing"
+dev-repo: "git+ssh://git@github.com/bvaugon/ocamlclean.git"
 url {
   src:
     "http://www.algo-prog.info/ocapic/web/lib/exe/fetch.php?media=ocapic:ocamlclean-2.2.tar.bz2"

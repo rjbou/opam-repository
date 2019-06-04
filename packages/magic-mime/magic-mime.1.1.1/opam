@@ -1,5 +1,6 @@
 opam-version: "2.0"
 name: "magic-mime"
+version: "1.1.1"
 synopsis: "Map filenames to common MIME types"
 description: """
 This library contains a database of MIME types that maps filename extensions
@@ -14,23 +15,22 @@ For example, here's how to lookup MIME types in the [utop] REPL:
     Magic_mime.lookup "/foo/bar.txt";;
     - : bytes = "text/plain"
     Magic_mime.lookup "bar.css";;
-    - : bytes = "text/css"
-"""
+    - : bytes = "text/css\""""
 maintainer: "Anil Madhavapeddy <anil@recoil.org>"
 authors: ["Anil Madhavapeddy" "Maxence Guesdon"]
 license: "ISC"
 homepage: "https://github.com/mirage/ocaml-magic-mime"
 doc: "https://mirage.github.io/ocaml-magic-mime/"
 bug-reports: "https://github.com/mirage/ocaml-magic-mime/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-magic-mime.git"
 depends: [
-  "ocaml" {>= "4.03.0"}
   "dune" {build}
+  "ocaml" {>= "4.03.0"}
 ]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
 ]
+dev-repo: "git+https://github.com/mirage/ocaml-magic-mime.git"
 url {
   src:
     "https://github.com/mirage/ocaml-magic-mime/releases/download/v1.1.1/magic-mime-v1.1.1.tbz"

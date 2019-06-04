@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-homepage:     "https://github.com/ocaml/ocaml-travisci-skeleton"
-bug-reports:  "https://github.com/ocaml/ocaml-travisci-skeleton/issues"
-dev-repo: "git+https://github.com/ocaml/ocaml-travisci-skeleton.git"
-authors: [
-  "Thomas Gazagnaire"
-  "Richard Mortier"
-  "David Sheets"
-]
-
-depends: [
-  "ocaml"
-  "ocamlbuild" {build}
-]
-build: [make]
+name: "travis-opam"
+version: "1.0.0"
 synopsis: "Travis CI (Continuous Integration) helpers"
 description: """
 This package installs a set of helper tools that integrate your 
@@ -26,6 +13,16 @@ C linkage or external library dependencies quickly.
 
 See <https://github.com/ocaml/ocaml-travisci-skeleton> for more
 information and usage."""
+maintainer: "thomas@gazagnaire.org"
+authors: ["David Sheets" "Richard Mortier" "Thomas Gazagnaire"]
+homepage: "https://github.com/ocaml/ocaml-travisci-skeleton"
+bug-reports: "https://github.com/ocaml/ocaml-travisci-skeleton/issues"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+]
+build: make
+dev-repo: "git+https://github.com/ocaml/ocaml-travisci-skeleton.git"
 url {
   src:
     "https://github.com/ocaml/ocaml-travisci-skeleton/archive/v1.0.0.tar.gz"

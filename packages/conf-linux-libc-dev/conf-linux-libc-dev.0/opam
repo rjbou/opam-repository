@@ -1,21 +1,23 @@
 opam-version: "2.0"
-maintainer: "Markus W. Weissmann <markus.weissmann@in.tum.de>"
-authors: [ "Markus W. Weissmann <markus.weissmann@in.tum.de>" ]
-homepage: "https://kernel.org/"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: [ "GPL 2.0" ]
-build: [["ls" "/usr/include/linux/stddef.h"]]
-depexts: [
-  ["linux-libc-dev"] {os-distribution = "debian"}
-  ["linux-libc-dev"] {os-distribution = "ubuntu"}
-  ["linux-glibc-devel"] {os-family = "suse"}
-  ["kernel-headers"] {os-distribution = "rhel"}
-  ["kernel-headers"] {os-distribution = "centos"}
-  ["linux-headers"] {os-distribution = "alpine"}
-]
-available: [os = "linux"]
+name: "conf-linux-libc-dev"
+version: "0"
 synopsis:
   "Virtual package relying on the installation of the Linux kernel headers files"
 description:
   "This package can only install if the kernel headers for user space applications are installed on the system."
+maintainer: "Markus W. Weissmann <markus.weissmann@in.tum.de>"
+authors: "Markus W. Weissmann <markus.weissmann@in.tum.de>"
+license: "GPL 2.0"
+homepage: "https://kernel.org/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+available: os = "linux"
 flags: conf
+build: ["ls" "/usr/include/linux/stddef.h"]
+depexts: [
+  ["kernel-headers"] {os-distribution = "rhel"}
+  ["kernel-headers"] {os-distribution = "centos"}
+  ["linux-glibc-devel"] {os-family = "suse"}
+  ["linux-headers"] {os-distribution = "alpine"}
+  ["linux-libc-dev"] {os-distribution = "debian"}
+  ["linux-libc-dev"] {os-distribution = "ubuntu"}
+]

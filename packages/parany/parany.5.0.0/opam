@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "unixjunkie@sdf.org"
-authors: "Francois Berenger"
-license: "LGPL"
-homepage: "https://github.com/UnixJunkie/parany"
-bug-reports: "https://github.com/UnixJunkie/parany/issues"
-dev-repo: "git+https://github.com/UnixJunkie/parany.git"
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "base-unix"
-  "ocamlnet"
-]
-build: [
-  ["dune" "build" "-p" name]
-  ["dune" "runtest" "-p" name] {with-test}
-]
+name: "parany"
+version: "5.0.0"
 synopsis: "Parallelize any computation"
 description: """
 Generalized map reduce for parallel computers (not distributed computing).
@@ -30,8 +16,23 @@ The number of processors running your computation in parallel is called
 The chunk size (number of items) processed by one call to the 'work' function
 is called 'csize'.
 
-Read the corresponding ocamldoc before using.
-"""
+Read the corresponding ocamldoc before using."""
+maintainer: "unixjunkie@sdf.org"
+authors: "Francois Berenger"
+license: "LGPL"
+homepage: "https://github.com/UnixJunkie/parany"
+bug-reports: "https://github.com/UnixJunkie/parany/issues"
+depends: [
+  "base-unix"
+  "dune" {build}
+  "ocaml" {>= "4.03.0"}
+  "ocamlnet"
+]
+build: [
+  ["dune" "build" "-p" name]
+  ["dune" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/UnixJunkie/parany.git"
 url {
   src: "https://github.com/UnixJunkie/parany/archive/v5.0.0.tar.gz"
   checksum: [

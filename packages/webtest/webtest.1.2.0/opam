@@ -1,29 +1,6 @@
 opam-version: "2.0"
-authors: "John Else"
-homepage: "https://github.com/johnelse/ocaml-webtest"
-bug-reports: "https://github.com/johnelse/ocaml-webtest/issues"
-dev-repo: "git://github.com/johnelse/ocaml-webtest"
-maintainer: "john.else@gmail.com"
-build: [
-  ["./configure" "--prefix" prefix "--enable-docs"]
-  [make "build"]
-  ["./configure" "--enable-tests"] {with-test}
-  [make "test"] {with-test}
-]
-install: [
-  [make "PREFIX=%{prefix}%" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "webtest"]
-]
-depends: [
-  "ocaml" {>= "4.02.1"}
-  "oasis" {build}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "js_of_ocaml" {< "3.4.0" }
-  "js_of_ocaml-ppx" {< "3.4.0" }
-]
+name: "webtest"
+version: "1.2.0"
 synopsis: "Framework for in-browser testing of js_of_ocaml code"
 description: """
 Webtest is a testing framework, fully compatible with js_of_ocaml, and written
@@ -38,7 +15,28 @@ Webtest implements a simple JavaScript API for integration with browser
 automation tools such as Selenium WebDriver.
 
 API documentation available at https://johnelse.github.io/ocaml-webtest/"""
+maintainer: "john.else@gmail.com"
+authors: "John Else"
+homepage: "https://github.com/johnelse/ocaml-webtest"
+bug-reports: "https://github.com/johnelse/ocaml-webtest/issues"
+depends: [
+  "js_of_ocaml" {< "3.4.0"}
+  "js_of_ocaml-ppx" {< "3.4.0"}
+  "oasis" {build}
+  "ocaml" {>= "4.02.1"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix "--enable-docs"]
+  [make "build"]
+  ["./configure" "--enable-tests"] {with-test}
+  [make "test"] {with-test}
+]
+install: [make "PREFIX=%{prefix}%" "install"]
+remove: ["ocamlfind" "remove" "webtest"]
+dev-repo: "git://github.com/johnelse/ocaml-webtest"
 url {
   src:
     "https://github.com/johnelse/ocaml-webtest/archive/webtest.1.2.0.tar.gz"

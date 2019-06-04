@@ -1,26 +1,26 @@
 opam-version: "2.0"
+name: "bignum"
+version: "v0.10.0"
+synopsis:
+  "Core-flavoured wrapper around zarith's arbitrary-precision rationals."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
 homepage: "https://github.com/janestreet/bignum"
 bug-reports: "https://github.com/janestreet/bignum/issues"
-dev-repo: "git+https://github.com/janestreet/bignum.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
 depends: [
-  "ocaml" {>= "4.04.1"}
   "core_kernel" {>= "v0.10" & < "v0.11"}
+  "jbuilder" {build & >= "1.0+beta12"}
+  "num"
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "0.4"}
   "ppx_driver" {>= "v0.10" & < "v0.11"}
   "ppx_jane" {>= "v0.10" & < "v0.11"}
   "typerep" {>= "v0.10" & < "v0.11"}
-  "jbuilder" {build & >= "1.0+beta12"}
-  "num"
-  "ocaml-migrate-parsetree" {>= "0.4"}
   "zarith" {>= "1.4"}
 ]
-synopsis:
-  "Core-flavoured wrapper around zarith's arbitrary-precision rationals."
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/bignum.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.10/files/bignum-v0.10.0.tar.gz"

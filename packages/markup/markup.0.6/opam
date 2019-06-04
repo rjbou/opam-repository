@@ -1,30 +1,6 @@
 opam-version: "2.0"
 name: "markup"
 version: "0.6"
-maintainer: "Anton Bachin <antonbachin@yahoo.com>"
-authors: "Anton Bachin <antonbachin@yahoo.com>"
-homepage: "https://github.com/aantron/markup.ml"
-bug-reports: "https://github.com/aantron/markup.ml/issues"
-dev-repo: "git+https://github.com/aantron/markup.ml.git"
-license: "BSD"
-depends: [
-  "ocaml"
-  "uutf" {<= "0.9.4"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "ounit" {with-test}
-]
-depopts: ["lwt"]
-conflicts: [
-  "lwt" {>= "4.0.0"}
-]
-build: [
-  [make "build"]
-  [make "test"] {with-test}
-  [make "docs"] {with-doc}
-]
-install: [make "ocamlfind-install"]
-remove: ["ocamlfind" "remove" "markup"]
 synopsis: "Error-recovering functional HTML5 and XML parsers and writers"
 description: """
 Markup.ml provides an HTML parser and an XML parser. The parsers are wrapped in
@@ -45,7 +21,31 @@ memory), non-blocking (can be used with threading libraries), lazy (do not
 consume input unless the signal stream is being read), and process the input in
 a single pass. They automatically detect the character encoding of the input
 stream, and convert everything to UTF-8."""
+maintainer: "Anton Bachin <antonbachin@yahoo.com>"
+authors: "Anton Bachin <antonbachin@yahoo.com>"
+license: "BSD"
+homepage: "https://github.com/aantron/markup.ml"
+bug-reports: "https://github.com/aantron/markup.ml/issues"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "uutf" {<= "0.9.4"}
+]
+depopts: ["lwt"]
+conflicts: [
+  "lwt" {>= "4.0.0"}
+]
 flags: light-uninstall
+build: [
+  [make "build"]
+  [make "test"] {with-test}
+  [make "docs"] {with-doc}
+]
+install: [make "ocamlfind-install"]
+remove: ["ocamlfind" "remove" "markup"]
+dev-repo: "git+https://github.com/aantron/markup.ml.git"
 url {
   src: "https://github.com/aantron/markup.ml/archive/0.6.tar.gz"
   checksum: "md5=c2804441c090cb893e0eaa36f372dea4"

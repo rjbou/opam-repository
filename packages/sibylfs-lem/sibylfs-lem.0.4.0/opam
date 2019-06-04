@@ -1,37 +1,6 @@
 opam-version: "2.0"
-homepage: "https://bitbucket.org/Peter_Sewell/lem"
-maintainer: "tom.j.ridge@googlemail.com"
-authors: [
-  "The Lem Team"
-]
-dev-repo: "git+https://bitbucket.org/dsheets/lem.git"
-build-env: [
-  [BUILD_DIR = "%{lib}%/sibylfs-lem"]
-]
-build: [
-  [make "-e"]
-  [make "ocaml-libs"]
-  [make "coq-libs"] {"%{coq:installed}%"}
-  ["sh" "-ex" "./generate_install_manifest.sh"]
-]
-install: [
-  ["sh" "-ex" "./ocamlfind_install.sh"]
-]
-remove: [
-  ["rm" "-r" "%{sibylfs-lem:lib}%"]
-]
-conflicts: [
-  "lem"
-  "coq" {>= "8.5.0"}
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-depopts: [
-  "coq"
-]
+name: "sibylfs-lem"
+version: "0.4.0"
 synopsis:
   "SibylFS fork of Lightweight Executable Mathematics for large-scale semantics"
 description: """
@@ -48,10 +17,33 @@ Lem is under active development and has been used in several
 applications, some of which can be found in the examples directory. It
 is made available under the BSD 3-clause license, with the exception of
 a few files derived from OCaml, which are under the GNU Library GPL."""
+maintainer: "tom.j.ridge@googlemail.com"
+authors: "The Lem Team"
+homepage: "https://bitbucket.org/Peter_Sewell/lem"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+depopts: ["coq"]
+conflicts: [
+  "coq" {>= "8.5.0"}
+  "lem"
+]
 flags: light-uninstall
+build: [
+  [make "-e"]
+  [make "ocaml-libs"]
+  [make "coq-libs"] {"%{coq:installed}%"}
+  ["sh" "-ex" "./generate_install_manifest.sh"]
+]
+install: ["sh" "-ex" "./ocamlfind_install.sh"]
+remove: ["rm" "-r" "%{sibylfs-lem:lib}%"]
+build-env: BUILD_DIR = "%{lib}%/sibylfs-lem"
+dev-repo: "git+https://bitbucket.org/dsheets/lem.git"
 extra-files: [
-  ["ocamlfind_install.sh" "md5=f7286993459cb1754830542d3122f3f2"]
   ["generate_install_manifest.sh" "md5=b00e2b11d8713deba697852a958889dd"]
+  ["ocamlfind_install.sh" "md5=f7286993459cb1754830542d3122f3f2"]
 ]
 url {
   src: "https://bitbucket.org/dsheets/lem/get/0.4.0.tar.gz"

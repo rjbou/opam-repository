@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anders Fugmann <anders@fugmann.net>"
-authors: "Anders Fugmann"
-homepage: "https://github.com/andersfugmann/ppx_protocol_conv"
-dev-repo: "git+https://github.com/andersfugmann/ppx_protocol_conv"
-bug-reports: "https://github.com/andersfugmann/ppx_protocol_conv/issues"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.04"}
-  "base" {< "v0.13"}
-  "ppx_type_conv"
-  "ppx_driver"
-  "ppx_core"
-  "jbuilder" {build}
-  "ppx_metaquot" {build}
-  "msgpck" {with-test}
-  "yojson" {with-test}
-  "yaml" {with-test}
-  "xml-light" {with-test}
-]
+name: "ppx_protocol_conv"
+version: "2.0.0"
 synopsis:
   "Ppx for generating serialisation and de-serialisation of ocaml types."
 description: """
@@ -34,6 +14,28 @@ ppx_protocol_conv_json (Yojson.Safe.json)
 ppx_protocol_conv_msgpack (Msgpck.t)(Xml.xml)
 ppx_protocol_conv_xml-light (Xml.xml)
 ppx_protocol_conv_yaml (Yaml.t)"""
+maintainer: "Anders Fugmann <anders@fugmann.net>"
+authors: "Anders Fugmann"
+homepage: "https://github.com/andersfugmann/ppx_protocol_conv"
+bug-reports: "https://github.com/andersfugmann/ppx_protocol_conv/issues"
+depends: [
+  "base" {< "v0.13"}
+  "jbuilder" {build}
+  "msgpck" {with-test}
+  "ocaml" {>= "4.04"}
+  "ppx_core"
+  "ppx_driver"
+  "ppx_metaquot" {build}
+  "ppx_type_conv"
+  "xml-light" {with-test}
+  "yaml" {with-test}
+  "yojson" {with-test}
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/andersfugmann/ppx_protocol_conv"
 url {
   src:
     "https://github.com/andersfugmann/ppx_protocol_conv/archive/2.0.0.tar.gz"

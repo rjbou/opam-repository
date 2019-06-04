@@ -1,42 +1,42 @@
 opam-version: "2.0"
+name: "gammu"
+version: "0.9.4"
+synopsis: "Cell phone and SIM card access"
+description: """
+Gammu is a binding to libGammu which allows to manage data in your
+cell phone such as contacts, calendar or messages."""
 maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler"
-           "Noémie Meunier"
-           "Pierre Hauweele"]
-tags: [ "SMS" "phone" "clib:gammu" ]
+authors: ["Christophe Troestler" "Noémie Meunier" "Pierre Hauweele"]
 license: "LGPL-3.0 with OCaml linking exception"
+tags: ["SMS" "clib:gammu" "phone"]
 homepage: "https://github.com/Chris00/ocaml-gammu"
-dev-repo: "git+https://github.com/Chris00/ocaml-gammu.git"
-bug-reports: "https://github.com/Chris00/ocaml-gammu/issues"
 doc: "https://Chris00.github.io/ocaml-gammu/doc"
+bug-reports: "https://github.com/Chris00/ocaml-gammu/issues"
+depends: [
+  "base" {build & < "v0.13"}
+  "base-unix" {build & with-test}
+  "conf-pkg-config" {build}
+  "configurator" {build & < "v0.13"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "ocaml" {>= "4.02.3"}
+  "stdio" {build & < "v0.13"}
+]
 build: [
   ["jbuilder" "subst" "-p" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "base" {build & < "v0.13"}
-  "stdio" {build & < "v0.13"}
-  "configurator" {build & < "v0.13"}
-  "base-unix" {build & with-test}
-  "conf-pkg-config" {build}
-]
 depexts: [
+  ["epel-release" "gammu-devel"] {os-distribution = "centos"}
+  ["gammu"] {os = "macos" & os-distribution = "homebrew"}
+  ["gammu-dev"] {os-distribution = "alpine"}
+  ["gammu-devel"] {os-distribution = "fedora"}
+  ["gammu-devel"] {os-family = "suse"}
+  ["lib64gammu-devel"] {os-distribution = "mageia"}
   ["libgammu-dev"] {os-distribution = "ubuntu"}
   ["libgammu-dev"] {os-distribution = "debian"}
-  ["epel-release" "gammu-devel"] {os-distribution = "centos"}
-  ["gammu-devel"] {os-distribution = "fedora"}
-  ["lib64gammu-devel"] {os-distribution = "mageia"}
-  ["gammu-devel"] {os-family = "suse"}
-  ["gammu-dev"] {os-distribution = "alpine"}
-  ["gammu"] {os = "macos" & os-distribution = "homebrew"}
 ]
-synopsis: "Cell phone and SIM card access"
-description: """
-Gammu is a binding to libGammu which allows to manage data in your
-cell phone such as contacts, calendar or messages."""
+dev-repo: "git+https://github.com/Chris00/ocaml-gammu.git"
 url {
   src:
     "https://github.com/Chris00/ocaml-gammu/releases/download/0.9.4/gammu-0.9.4.tbz"

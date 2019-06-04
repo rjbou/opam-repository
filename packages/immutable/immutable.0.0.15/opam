@@ -1,16 +1,6 @@
 opam-version: "2.0"
-maintainer: "Dave Bordoley <bordoley@gmail.com>"
-authors: "Dave Bordoley <bordoley@gmail.com>"
-homepage: "https://facebookincubator.github.io/immutable-re/"
-bug-reports: "https://github.com/facebookincubator/immutable-re/issues"
-license: "BSD-3-Clause"
-tags: ["reason" "reasonml" "ocaml" "immutable"]
-dev-repo: "git+https://github.com/facebookincubator/immutable-re.git"
-build: [make "build"]
-depends: [
-  "ocaml" {>= "4.02" & < "4.05"}
-  "reason" {build & >= "1.13.3"}
-]
+name: "immutable"
+version: "0.0.15"
 synopsis:
   "Pure Reason implementation of persistent immutable data structures."
 description: """
@@ -23,6 +13,18 @@ implementations support transient mutability for efficient batch mutations.
 Additionally Immutable-re provides lazy functional iterators and sequences,
 along with type definitions for basic operators such as equality, comparison,
 and hashing."""
+maintainer: "Dave Bordoley <bordoley@gmail.com>"
+authors: "Dave Bordoley <bordoley@gmail.com>"
+license: "BSD-3-Clause"
+tags: ["immutable" "ocaml" "reason" "reasonml"]
+homepage: "https://facebookincubator.github.io/immutable-re/"
+bug-reports: "https://github.com/facebookincubator/immutable-re/issues"
+depends: [
+  "ocaml" {>= "4.02" & < "4.05"}
+  "reason" {build & >= "1.13.3"}
+]
+build: [make "build"]
+dev-repo: "git+https://github.com/facebookincubator/immutable-re.git"
 url {
   src:
     "https://github.com/facebookincubator/immutable-re/archive/0.0.15.tar.gz"

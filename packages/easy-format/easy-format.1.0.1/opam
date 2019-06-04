@@ -1,19 +1,18 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: make
-remove: [["ocamlfind" "remove" "easy-format"]]
-depends: ["ocaml" "ocamlfind"]
-patches: [
-  "easy-format-make.diff"
-  "meta-tpl.diff"
-]
-install: [make "install"]
+name: "easy-format"
+version: "1.0.1"
 synopsis:
   "High-level and functional interface to the Format module of the OCaml standard library"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: ["ocaml" "ocamlfind"]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "easy-format"]
+patches: ["easy-format-make.diff" "meta-tpl.diff"]
 extra-files: [
-  ["meta-tpl.diff" "md5=60ed7fa13a02a98f11b0be99c49a9751"]
   ["easy-format-make.diff" "md5=7f8f7ab6b00c4d8618d63bb77d74daee"]
+  ["meta-tpl.diff" "md5=60ed7fa13a02a98f11b0be99c49a9751"]
 ]
 url {
   src: "https://github.com/mjambon/easy-format/archive/v1.0.1.tar.gz"

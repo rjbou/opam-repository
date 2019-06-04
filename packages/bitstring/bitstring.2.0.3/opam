@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "bitstring"
+version: "2.0.3"
+synopsis: "bitstrings and bitstring matching for OCaml"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: ["Richard W.M. Jones"]
-homepage: "http://code.google.com/p/bitstring/"
+authors: "Richard W.M. Jones"
 license: "LGPLv2+ with exceptions and GPLv2+"
+homepage: "http://code.google.com/p/bitstring/"
+depends: [
+  "base-unix"
+  "camlp4"
+  "conf-time"
+  "ocaml" {>= "3.10" & < "4.02"}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make "srcdir=./"]
 ]
-remove: [["ocamlfind" "remove" "bitstring"]]
-depends: [
-  "ocaml" {>= "3.10" & < "4.02"}
-  "ocamlfind"
-  "base-unix"
-  "camlp4"
-  "conf-time"
-]
 install: [make "install"]
-synopsis: "bitstrings and bitstring matching for OCaml"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "bitstring"]
 url {
   src:
     "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/bitstring/ocaml-bitstring-2.0.3.tar.gz"

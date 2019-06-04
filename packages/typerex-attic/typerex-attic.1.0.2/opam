@@ -1,36 +1,6 @@
 opam-version: "2.0"
-maintainer: "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
-authors: [
-  "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
-  ]
-homepage: "http://www.typerex.org/"
-dev-repo: "git+https://github.com/OCamlPro/typerex-attic.git"
-bug-reports: "https://github.com/OCamlPro/typerex-attic/issues"
-build: [
-  [ "./configure"
-    "--prefix" "%{prefix}%"
-    "--with-ocamldir" "%{prefix}%/lib"
-    "--with-metadir" "%{prefix}%/lib"
-  ]
-  [ make ]
-]
-install: [
-  [ make "install" ]
-]
-remove: [
-  [ "rm" "-f" "%{prefix}%/bin/ocp-check-crcs" ]
-  [ "rm" "-f" "%{prefix}%/bin/ocp-check-poly" ]
-  [ "rm" "-f" "%{prefix}%/bin/ocp-check-global" ]
-  [ "rm" "-f" "%{prefix}%/bin/ocp-check-headers" ]
-  [ "rm" "-f" "%{prefix}%/bin/ocp-imports" ]
-  [ "rm" "-f" "%{prefix}%/bin/ocp-manager" ]
-  [ "rm" "-f" "%{prefix}%/man/man1/ocp-manager.1" ]
-  [ "rm" "-f" "%{prefix}%/bin/ocp-pack" ]
-]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocp-build" {>= "1.99.11-beta" & < "1.99.17-beta"}
-]
+name: "typerex-attic"
+version: "1.0.2"
 synopsis:
   "A set of simple tools and libraries that we developed over the years"
 description: """
@@ -53,7 +23,39 @@ maintained/improved when we need them for a task.
     by set of modules, to get the architecture of a project.
 * ocp-pack: pack several OCaml source files into one source file, to get
    a result similar to the one of -pack"""
+maintainer: "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
+authors: "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
+homepage: "http://www.typerex.org/"
+bug-reports: "https://github.com/OCamlPro/typerex-attic/issues"
+depends: [
+  "ocaml" {>= "4.00.0"}
+  "ocp-build" {>= "1.99.11-beta" & < "1.99.17-beta"}
+]
 flags: light-uninstall
+build: [
+  [
+    "./configure"
+    "--prefix"
+    "%{prefix}%"
+    "--with-ocamldir"
+    "%{prefix}%/lib"
+    "--with-metadir"
+    "%{prefix}%/lib"
+  ]
+  [make]
+]
+install: [make "install"]
+remove: [
+  ["rm" "-f" "%{prefix}%/bin/ocp-check-crcs"]
+  ["rm" "-f" "%{prefix}%/bin/ocp-check-poly"]
+  ["rm" "-f" "%{prefix}%/bin/ocp-check-global"]
+  ["rm" "-f" "%{prefix}%/bin/ocp-check-headers"]
+  ["rm" "-f" "%{prefix}%/bin/ocp-imports"]
+  ["rm" "-f" "%{prefix}%/bin/ocp-manager"]
+  ["rm" "-f" "%{prefix}%/man/man1/ocp-manager.1"]
+  ["rm" "-f" "%{prefix}%/bin/ocp-pack"]
+]
+dev-repo: "git+https://github.com/OCamlPro/typerex-attic.git"
 url {
   src: "http://github.com/OCamlPro/typerex-attic/archive/1.0.2.tar.gz"
   checksum: "md5=3e472f2cc761297c32582293404136c4"

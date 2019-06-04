@@ -1,10 +1,21 @@
 opam-version: "2.0"
+name: "ocaml-protoc"
+version: "1.2.0"
+synopsis: "A Protobuf Compiler for OCaml"
+description:
+  "'ocaml-protoc' is a compiler of Protobuf file (.proto) to OCaml code. The compiler generate OCaml types with associated decoding/encoding functions following the Protobuf format."
 maintainer: "Maxime Ransan <maxime.ransan@gmail.com>"
 authors: "Maxime Ransan <maxime.ransan@gmail.com>"
+license: "MIT"
 homepage: "https://github.com/mransan/ocaml-protoc"
 bug-reports: "https://github.com/mransan/ocaml-protoc/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/mransan/ocaml-protoc.git"
+depends: [
+  "ocaml" {>= "4.02.1"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_deriving_protobuf"
+]
+available: opam-version >= "1.2"
 build: [
   [make "lib.byte"]
   [make "lib.native"] {ocaml:native}
@@ -16,16 +27,7 @@ install: [
   [make "bin.install" "PREFIX=%{prefix}%" "BINDIR=%{bin}%"]
 ]
 remove: [make "uninstall" "PREFIX=%{prefix}%" "BINDIR=%{bin}%"]
-depends: [
-  "ocaml" {>= "4.02.1"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "ppx_deriving_protobuf"
-]
-available: opam-version >= "1.2"
-synopsis: "A Protobuf Compiler for OCaml"
-description:
-  "'ocaml-protoc' is a compiler of Protobuf file (.proto) to OCaml code. The compiler generate OCaml types with associated decoding/encoding functions following the Protobuf format."
+dev-repo: "git+https://github.com/mransan/ocaml-protoc.git"
 url {
   src: "https://github.com/mransan/ocaml-protoc/archive/1.2.0.tar.gz"
   checksum: "md5=73448a71aba6682536a2581ab0430b90"

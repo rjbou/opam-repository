@@ -1,40 +1,6 @@
 opam-version: "2.0"
-maintainer:   ["anil@recoil.org" "thomas@gazagnaire.org"]
-authors:      ["Thomas Gazagnaire" "Anil Madhavapeddy" "Gabriel Radanne"
-               "Mindy Preston" "Thomas Leonard" "Nicolas Ojeda Bar"
-               "Dave Scott" "David Kaloper" "Hannes Mehnert" "Richard Mortier"]
-homepage:     "https://mirage.io/"
-bug-reports:  "https://github.com/mirage/mirage/issues/"
-dev-repo: "git+https://github.com/mirage/mirage.git"
-tags:         ["org:mirage" "org:xapi-project"]
-doc:          "https://mirage.github.io/mirage/"
-
-build: ["ocaml" "pkg/pkg.ml" "build" "--pkg-name" name "--pinned" "%{pinned}%"]
-
-depends: [
-  "ocaml" {>= "4.02.3" & < "4.07.0"}
-  "ocamlbuild"
-  "ocamlfind"
-  "topkg" {build & >= "0.8.0"}
-  "ipaddr" {>= "2.6.0" & < "3.0.0"}
-  "functoria" {>= "2.0.0" & < "2.2.0"}
-  "sexplib" {< "v0.11.0"}
-  "bos"
-  "astring"
-  "logs"
-  "mirage-runtime" {>= "3.0.0"}
-]
-conflicts: [
-  "nocrypto" {< "0.4.0"}
-  "cstruct" {< "1.0.1"}
-  "io-page" {< "1.4.0"}
-  "crunch" {< "1.2.2"}
-  "tcpip" {> "3.0.0"}
-  "mirage-solo5" {>= "0.4.0"}
-  "mirage-unix" {>= "3.1.0"}
-  "mirage-random" {>= "1.2.0"}
-  "charrua-client" {>= "0.11"}
-]
+name: "mirage"
+version: "3.0.0"
 synopsis: "The MirageOS library operating system"
 description: """
 MirageOS is a library operating system that constructs unikernels for
@@ -47,6 +13,51 @@ hypervisor.
 Since Xen powers most public cloud computing infrastructure such as
 Amazon EC2 or Rackspace, this lets your servers run more cheaply,
 securely and with finer control than with a full software stack."""
+maintainer: ["anil@recoil.org" "thomas@gazagnaire.org"]
+authors: [
+  "Anil Madhavapeddy"
+  "Dave Scott"
+  "David Kaloper"
+  "Gabriel Radanne"
+  "Hannes Mehnert"
+  "Mindy Preston"
+  "Nicolas Ojeda Bar"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Thomas Leonard"
+]
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://mirage.io/"
+doc: "https://mirage.github.io/mirage/"
+bug-reports: "https://github.com/mirage/mirage/issues/"
+depends: [
+  "astring"
+  "bos"
+  "functoria" {>= "2.0.0" & < "2.2.0"}
+  "ipaddr" {>= "2.6.0" & < "3.0.0"}
+  "logs"
+  "mirage-runtime" {>= "3.0.0"}
+  "ocaml" {>= "4.02.3" & < "4.07.0"}
+  "ocamlbuild"
+  "ocamlfind"
+  "sexplib" {< "v0.11.0"}
+  "topkg" {build & >= "0.8.0"}
+]
+conflicts: [
+  "charrua-client" {>= "0.11"}
+  "crunch" {< "1.2.2"}
+  "cstruct" {< "1.0.1"}
+  "io-page" {< "1.4.0"}
+  "mirage-random" {>= "1.2.0"}
+  "mirage-solo5" {>= "0.4.0"}
+  "mirage-unix" {>= "3.1.0"}
+  "nocrypto" {< "0.4.0"}
+  "tcpip" {> "3.0.0"}
+]
+build: [
+  "ocaml" "pkg/pkg.ml" "build" "--pkg-name" name "--pinned" "%{pinned}%"
+]
+dev-repo: "git+https://github.com/mirage/mirage.git"
 url {
   src:
     "https://github.com/mirage/mirage/releases/download/v3.0.0/mirage-3.0.0.tbz"

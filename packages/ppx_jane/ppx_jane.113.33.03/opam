@@ -1,19 +1,20 @@
 opam-version: "2.0"
+name: "ppx_jane"
+version: "113.33.03"
+synopsis: "Standard Jane Street ppx rewriters"
+description: """
+This package installs a ppx-jane executable, which is a ppx driver
+including all standard Jane Street ppx rewriters."""
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
 homepage: "https://github.com/janestreet/ppx_jane"
 bug-reports: "https://github.com/janestreet/ppx_jane/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_jane.git"
-license: "Apache-2.0"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
 depends: [
+  "js-build-tools" {build & >= "113.33.04" & < "113.34.00"}
   "ocaml" {= "4.02.3"}
   "ocamlbuild" {build}
   "ocamlfind" {build & >= "1.3.2"}
-  "js-build-tools" {build & >= "113.33.04" & < "113.34.00"}
   "ppx_assert" {>= "113.33.03" & < "113.34.00"}
   "ppx_bench" {>= "113.33.03" & < "113.34.00"}
   "ppx_bin_prot" {>= "113.33.03" & < "113.34.00"}
@@ -34,10 +35,11 @@ depends: [
   "ppx_typerep_conv" {>= "113.33.03" & < "113.34.00"}
   "ppx_variants_conv" {>= "113.33.03" & < "113.34.00"}
 ]
-synopsis: "Standard Jane Street ppx rewriters"
-description: """
-This package installs a ppx-jane executable, which is a ppx driver
-including all standard Jane Street ppx rewriters."""
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+dev-repo: "git+https://github.com/janestreet/ppx_jane.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_jane-113.33.03.tar.gz"

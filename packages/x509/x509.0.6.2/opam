@@ -1,39 +1,6 @@
 opam-version: "2.0"
-name:         "x509"
-homepage:     "https://github.com/mirleft/ocaml-x509"
-dev-repo: "git+https://github.com/mirleft/ocaml-x509.git"
-bug-reports:  "https://github.com/mirleft/ocaml-x509/issues"
-doc:          "https://mirleft.github.io/ocaml-x509/doc"
-maintainer:   [ "Hannes Mehnert <hannes@mehnert.org>" "David Kaloper <david@numm.org>" ]
-license:      "BSD2"
-
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.2"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "ppx_sexp_conv" {< "v0.13"}
-  "result"
-  "cstruct" {>= "1.6.0" & < "4.0.0"}
-  "sexplib" {< "v0.13"}
-  "asn1-combinators" {>= "0.2.0"}
-  "ptime"
-  "nocrypto" {>= "0.5.3"}
-  "astring"
-  "ounit" {with-test}
-  "cstruct-unix" {with-test & >= "3.0.0"}
-]
-conflicts: [
-  "ppx_sexp_conv" {= "v0.11.0"}
-]
-
-tags: [ "org:mirage" ]
+name: "x509"
+version: "0.6.2"
 synopsis: "Public Key Infrastructure purely in OCaml"
 description: """
 X.509 is a public key infrastructure used mostly on the Internet.  It consists
@@ -44,9 +11,43 @@ trust relationship.  This library implements most parts of
 [RFC6125](https://tools.ietf.org/html/rfc6125).
 
 Read [further](https://nqsb.io) and our [Usenix Security 2015 paper](https://usenix15.nqsb.io)."""
+maintainer: [
+  "Hannes Mehnert <hannes@mehnert.org>" "David Kaloper <david@numm.org>"
+]
 authors: [
   "David Kaloper <david@numm.org>" "Hannes Mehnert <hannes@mehnert.org>"
 ]
+license: "BSD2"
+tags: "org:mirage"
+homepage: "https://github.com/mirleft/ocaml-x509"
+doc: "https://mirleft.github.io/ocaml-x509/doc"
+bug-reports: "https://github.com/mirleft/ocaml-x509/issues"
+depends: [
+  "asn1-combinators" {>= "0.2.0"}
+  "astring"
+  "cstruct" {>= "1.6.0" & < "4.0.0"}
+  "cstruct-unix" {with-test & >= "3.0.0"}
+  "nocrypto" {>= "0.5.3"}
+  "ocaml" {>= "4.02.2"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "ppx_sexp_conv" {< "v0.13"}
+  "ptime"
+  "result"
+  "sexplib" {< "v0.13"}
+  "topkg" {build}
+]
+conflicts: [
+  "ppx_sexp_conv" {= "v0.11.0"}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/mirleft/ocaml-x509.git"
 url {
   src:
     "https://github.com/mirleft/ocaml-x509/releases/download/0.6.2/x509-0.6.2.tbz"

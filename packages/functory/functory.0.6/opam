@@ -1,23 +1,22 @@
 opam-version: "2.0"
+name: "functory"
+version: "0.6"
+synopsis: "Distributed computing library."
 maintainer: "roberto@dicosmo.org"
-authors: [
-  "Jean-Christophe Filliâtre"
-  "Kalyan Krishnamani"
-]
-homepage: "http://functory.lri.fr/"
+authors: ["Jean-Christophe Filliâtre" "Kalyan Krishnamani"]
 license: "GNU Library General Public License version 2.1"
-build: [
-  ["./configure"]
-  [make]
-]
-remove: [["ocamlfind" "remove" "functory"]]
+homepage: "http://functory.lri.fr/"
 depends: [
   "ocaml" {>= "4.03.0"}
   "ocamlfind"
 ]
-install: [make "ocamlfind-install"]
-synopsis: "Distributed computing library."
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make]
+]
+install: [make "ocamlfind-install"]
+remove: ["ocamlfind" "remove" "functory"]
 url {
   src: "https://www.lri.fr/~filliatr/functory/download/functory-0.6.tar.gz"
   checksum: "md5=0dd4a8ce7f2c8f293686a7df5c307477"

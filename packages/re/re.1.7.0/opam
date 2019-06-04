@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "jerome.vouillon@pps.univ-paris-diderot.fr"
-authors: ["Jerome Vouillon" "Thomas Gazagnaire" "Anil Madhavapeddy"]
-homepage: "https://github.com/ocaml/ocaml-re"
-bug-reports: "https://github.com/ocaml/ocaml-re/issues"
-license: "LGPL-2.0 with OCaml linking exception"
-dev-repo: "git+https://github.com/ocaml/ocaml-re.git"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: ["ocamlfind" "remove" "re"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "base-bytes"
-]
+name: "re"
+version: "1.7.0"
 synopsis: "RE is a regular expression library for OCaml"
 description: """
 Pure OCaml regular expressions with:
@@ -26,7 +9,26 @@ Pure OCaml regular expressions with:
 * Emacs-style regular expressions (module Re_emacs)
 * Shell-style file globbing (module Re_glob)
 * Compatibility layer for OCaml's built-in Str module (module Re_str)"""
+maintainer: "jerome.vouillon@pps.univ-paris-diderot.fr"
+authors: ["Anil Madhavapeddy" "Jerome Vouillon" "Thomas Gazagnaire"]
+license: "LGPL-2.0 with OCaml linking exception"
+homepage: "https://github.com/ocaml/ocaml-re"
+bug-reports: "https://github.com/ocaml/ocaml-re/issues"
+depends: [
+  "base-bytes"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "re"]
+dev-repo: "git+https://github.com/ocaml/ocaml-re.git"
 url {
   src: "https://github.com/ocaml/ocaml-re/archive/1.7.0.tar.gz"
   checksum: "md5=2deab687224c90c024355f7b5adcec19"

@@ -1,26 +1,27 @@
 opam-version: "2.0"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/mirage/typebeat"
-bug-reports:  "https://github.com/mirage/typebeat/issues"
-dev-repo: "git+https://github.com/mirage/typebeat.git"
-doc:          "https://mirage.github.io/typebeat/"
-license:      "MIT"
-
+name: "typebeat"
+version: "0.2"
+synopsis: "A parser for the Content-Type value"
+description:
+  "A agnostic parser for the Content-Type value (from the RFC822 and the RFC2045)."
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/mirage/typebeat"
+doc: "https://mirage.github.io/typebeat/"
+bug-reports: "https://github.com/mirage/typebeat/issues"
+depends: [
+  "alcotest" {with-test}
+  "angstrom" {= "0.8.0"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "ocaml" {>= "4.03.0"}
+]
 build: [
   ["jbuilder" "subst" "-p" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "angstrom" {= "0.8.0"}
-  "alcotest" {with-test}
-]
-synopsis: "A parser for the Content-Type value"
-description:
-  "A agnostic parser for the Content-Type value (from the RFC822 and the RFC2045)."
+dev-repo: "git+https://github.com/mirage/typebeat.git"
 url {
   src:
     "https://github.com/mirage/typebeat/releases/download/v0.2/typebeat-0.2.tbz"

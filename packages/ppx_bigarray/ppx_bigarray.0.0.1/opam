@@ -1,32 +1,29 @@
 opam-version: "2.0"
+name: "ppx_bigarray"
+version: "0.0.1"
+synopsis: "A PPX extension for big array literals"
 maintainer: "abe@sf.ecei.tohoku.ac.jp"
-authors: [ "Akinori ABE <abe@sf.ecei.tohoku.ac.jp>" ]
+authors: "Akinori ABE <abe@sf.ecei.tohoku.ac.jp>"
 license: "MIT"
 homepage: "https://github.com/akabe/ppx_bigarray"
-dev-repo: "git+https://github.com/akabe/ppx_bigarray.git"
 bug-reports: "https://github.com/akabe/ppx_bigarray/issues"
+depends: [
+  "cppo" {build}
+  "cppo_ocamlbuild" {build}
+  "ocaml" {>= "4.02.1" & < "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {>= "1.5.0"}
+]
+depopts: ["base-bigarray" "ounit"]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "ppx_bigarray"]
-]
-depends: [
-  "ocaml" {>= "4.02.1" & < "4.03.0"}
-  "ocamlfind" {>= "1.5.0"}
-  "cppo" {build}
-  "cppo_ocamlbuild" {build}
-  "ocamlbuild" {build}
-]
-depopts: [
-  "base-bigarray"
-  "ounit"
-]
-synopsis: "A PPX extension for big array literals"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "ppx_bigarray"]
+dev-repo: "git+https://github.com/akabe/ppx_bigarray.git"
 url {
   src: "https://github.com/akabe/ppx_bigarray/archive/v0.0.1.tar.gz"
   checksum: "md5=12ad39ddf36c91aae687e3b000b1b29f"

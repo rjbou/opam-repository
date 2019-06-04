@@ -1,29 +1,29 @@
 opam-version: "2.0"
-authors: ["gabriel@kerneis.info"]
+name: "cil"
+version: "1.7.3"
+synopsis:
+  "A front-end for the C programming language that facilitates program analysis and transformation"
 maintainer: "gabriel@kerneis.info"
+authors: "gabriel@kerneis.info"
 homepage: "http://kerneis.github.io/cil/"
 bug-reports: "http://sourceforge.net/p/cil/bugs/"
-dev-repo: "git://git.code.sf.net/p/cil/code cil-code.git"
+depends: [
+  "num"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 build: [
   ["env" "FORCE_PERL_PREFIX=1" "./configure" "--prefix" prefix]
   [make]
 ]
-install: [
-  make "install"
-]
+install: [make "install"]
 remove: [
   ["env" "FORCE_PERL_PREFIX=1" "./configure" "--prefix" prefix]
   [make "uninstall"]
 ]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "num"
-]
 patches: "format-obj-magic.patch" {ocaml:version >= "4.02.0"}
-synopsis:
-  "A front-end for the C programming language that facilitates program analysis and transformation"
+dev-repo: "git://git.code.sf.net/p/cil/code cil-code.git"
 extra-files: [
   "format-obj-magic.patch" "md5=c57137c1ab0e0ade7b17db4edf940137"
 ]

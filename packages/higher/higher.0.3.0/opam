@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "higher"
+version: "0.3.0"
+synopsis: "Library for higher-kinded programming."
 maintainer: "yallop@gmail.com"
 authors: ["Jeremy Yallop" "Leo White"]
+license: "MIT"
+tags: "org:ocamllabs"
 homepage: "https://github.com/ocamllabs/higher"
 bug-reports: "https://github.com/ocamllabs/higher/issues"
-dev-repo: "git+https://github.com/ocamllabs/higher.git"
-license: "MIT"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+]
 build: [
   "ocaml"
   "pkg/build.ml"
   "native=%{ocaml:native}%"
   "native-dynlink=%{ocaml:native-dynlink}%"
 ]
-depends: [
-  "ocaml"
-  "ocamlbuild" {build}
-]
-tags: ["org:ocamllabs"]
-synopsis: "Library for higher-kinded programming."
+dev-repo: "git+https://github.com/ocamllabs/higher.git"
 url {
   src: "https://github.com/ocamllabs/higher/archive/0.3.0.tar.gz"
   checksum: "md5=01d66c410421f105efcbaa1561a71afc"

@@ -1,21 +1,21 @@
 opam-version: "2.0"
+name: "irc-client"
+version: "0.1.2"
+synopsis: "IRC client library"
 maintainer: "john.else@citrix.com"
-build: make
-remove: [
-  [make "PREFIX=%{prefix}%" "uninstall"]
-]
 depends: [
   "ocaml" {>= "4.00.1" & < "4.06.0"}
-  "ounit"
   "ocamlbuild" {build}
+  "ounit"
 ]
 depopts: ["lwt"]
 conflicts: [
   "lwt" {>= "4.0.0"}
 ]
-dev-repo: "git://github.com/johnelse/ocaml-irc-client"
+build: make
 install: [make "PREFIX=%{prefix}%" "install"]
-synopsis: "IRC client library"
+remove: [make "PREFIX=%{prefix}%" "uninstall"]
+dev-repo: "git://github.com/johnelse/ocaml-irc-client"
 url {
   src: "https://github.com/johnelse/ocaml-irc-client/archive/0.1.2.tar.gz"
   checksum: "md5=9728eaa5e16db384354aff45f795f421"

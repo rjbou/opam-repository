@@ -1,26 +1,28 @@
 opam-version: "2.0"
-maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-authors: [
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-  "David Sheets <sheets@alum.mit.edu>"
-]
-homepage: "http://opam.ocaml.org"
-bug-reports: "https://github.com/OCamlPro/opam-publish/issues"
-license: "LGPL-3.0 with OCaml linking exception"
-dev-repo: "git+https://github.com/OCamlPro/opam-publish.git"
-build: [make]
-depends: [
-  "ocaml"
-  "opam-lib" {build & = "1.2.2"}
-  "ocamlfind" {build}
-  "cmdliner" {build}
-  "github" {build & >= "1.0.0" & < "2.0.0"}
-]
+name: "publish"
+version: "0.3.0"
 synopsis: "A tool to ease contributions to opam repositories."
 description: """
 Opam-publish helps gather metadata to form an OPAM package and submit it
 to a remote repository."""
+maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+authors: [
+  "David Sheets <sheets@alum.mit.edu>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+]
+license: "LGPL-3.0 with OCaml linking exception"
+homepage: "http://opam.ocaml.org"
+bug-reports: "https://github.com/OCamlPro/opam-publish/issues"
+depends: [
+  "cmdliner" {build}
+  "github" {build & >= "1.0.0" & < "2.0.0"}
+  "ocaml"
+  "ocamlfind" {build}
+  "opam-lib" {build & = "1.2.2"}
+]
 flags: plugin
+build: make
+dev-repo: "git+https://github.com/OCamlPro/opam-publish.git"
 extra-files: ["publish.install" "md5=849200f319f8871ccaf9bdd7fa7db44d"]
 url {
   src: "https://github.com/OCamlPro/opam-publish/archive/0.3.0.tar.gz"

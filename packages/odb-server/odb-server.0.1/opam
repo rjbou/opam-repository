@@ -1,16 +1,6 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-substs: ["opam.patch"]
-build: [
-  ["mkdir" "-p" bin]
-  [make]
-]
-patches: ["opam.patch"]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "camlp4"
-]
-install: [make "install" "OCAMLLIB=%{lib}%"]
+name: "odb-server"
+version: "0.1"
 synopsis: "Text editors/IDE helper module"
 description: """
 Odb-server provides services to code editors and integrated
@@ -19,6 +9,18 @@ being edited. In fact, Odb-server can be used to provide any service,
 but it was developped originally to make Oug able to provide services
 to code editors. A library is also included to add services to the
 server."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "camlp4"
+  "ocaml" {< "4.06.0"}
+]
+build: [
+  ["mkdir" "-p" bin]
+  [make]
+]
+install: [make "install" "OCAMLLIB=%{lib}%"]
+substs: "opam.patch"
+patches: "opam.patch"
 extra-files: ["opam.patch.in" "md5=794419aae620268adbf615a4560fa392"]
 url {
   src:

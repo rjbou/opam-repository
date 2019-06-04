@@ -1,9 +1,12 @@
 opam-version: "2.0"
-homepage: "http://lz4.org"
-authors: ["Yann Collet"]
-license: "GPLv2 & BSD-2-clause"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
+name: "conf-lz4"
+version: "1.0.0"
+synopsis: "Virtual package requiring the lz4 command to be available"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+authors: "Yann Collet"
+license: "GPLv2 & BSD-2-clause"
+homepage: "http://lz4.org"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
 build: ["lz4" "-V"]
 depexts: [
   ["liblz4-tool"] {os-distribution = "debian"}
@@ -15,4 +18,3 @@ depexts: [
   ["lz4"] {os-family = "suse"}
   ["lz4"] {os = "macos" & os-distribution = "homebrew"}
 ]
-synopsis: "Virtual package requiring the lz4 command to be available"

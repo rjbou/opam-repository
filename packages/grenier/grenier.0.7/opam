@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "Frederic Bour <frederic.bour@lakaban.net>"
-authors: "Frederic Bour <frederic.bour@lakaban.net>"
-homepage: "https://github.com/let-def/grenier"
-bug-reports: "https://github.com/let-def/grenier"
-license: "ISC"
-dev-repo: "git+https://github.com/let-def/grenier.git"
-doc: "https://let-def.github.io/grenier/doc"
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.02"}
-  "jbuilder" {build}
-]
+name: "grenier"
+version: "0.7"
 synopsis: "A collection of various algorithms in OCaml."
 description: """
 Licensed under ISC license.
@@ -105,6 +92,21 @@ The tests and some fixes come from
 
 Playing with [PCG generators](http://www.pcg-random.org/) in OCaml.
 Not even alpha, consider this doesn't exist."""
+maintainer: "Frederic Bour <frederic.bour@lakaban.net>"
+authors: "Frederic Bour <frederic.bour@lakaban.net>"
+license: "ISC"
+homepage: "https://github.com/let-def/grenier"
+doc: "https://let-def.github.io/grenier/doc"
+bug-reports: "https://github.com/let-def/grenier"
+depends: [
+  "jbuilder" {build}
+  "ocaml" {>= "4.02"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/let-def/grenier.git"
 url {
   src:
     "https://github.com/let-def/grenier/releases/download/v0.7/grenier-0.7.tbz"

@@ -1,23 +1,23 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      "Thomas Gazagnaire"
-license:      "ISC"
-homepage:     "https://github.com/mirage/ocaml-git"
-bug-reports:  "https://github.com/mirage/ocaml-git/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-git.git"
-doc:          "https://mirage.github.io/ocaml-git/"
-
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build}
-  "sexplib"
-  "git" {>= "1.11.0" & < "2.0.0"}
-  "cohttp-lwt" {>= "1.0.0"}
-]
+name: "git-http"
+version: "1.11.4"
 synopsis:
   "Client implementation of the \"Smart\" HTTP Git protocol in pure OCaml"
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire"
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-git"
+doc: "https://mirage.github.io/ocaml-git/"
+bug-reports: "https://github.com/mirage/ocaml-git/issues"
+depends: [
+  "cohttp-lwt" {>= "1.0.0"}
+  "git" {>= "1.11.0" & < "2.0.0"}
+  "jbuilder" {build}
+  "ocaml" {>= "4.02.3"}
+  "sexplib"
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/mirage/ocaml-git.git"
 url {
   src:
     "https://github.com/mirage/ocaml-git/releases/download/1.11.4/git-1.11.4.tbz"

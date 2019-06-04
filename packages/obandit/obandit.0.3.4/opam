@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "Valentin Reis <fre@freux.fr>"
-authors: ["Valentin Reis <fre@freux.fr>"]
-homepage: "http://freux.fr/oss/obandit.html"
-doc: "http://freux.fr/oss/obandit/documentation/index.html"
-license: "ISC"
-dev-repo: "git+https://github.com/freuk/obandit.git"
-bug-reports: "https://github.com/freuk/obandit/issues"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "cmdliner"
-  "batteries"
-]
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
+name: "obandit"
+version: "0.3.4"
 synopsis: "Ocaml Multi-Armed Bandits"
 description: """
 ![release](https://img.shields.io/github/release/freuk/obandit.svg)
@@ -30,6 +11,27 @@ Obandit is an OCaml module for basic multi-armed bandits. It supports the
 EXP3, UCB1 and Epsilon-greedy algorithms.
 
 Obandit is distributed under the ISC license."""
+maintainer: "Valentin Reis <fre@freux.fr>"
+authors: "Valentin Reis <fre@freux.fr>"
+license: "ISC"
+homepage: "http://freux.fr/oss/obandit.html"
+doc: "http://freux.fr/oss/obandit/documentation/index.html"
+bug-reports: "https://github.com/freuk/obandit/issues"
+depends: [
+  "batteries"
+  "cmdliner"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/freuk/obandit.git"
 url {
   src:
     "https://github.com/freuk/obandit/releases/download/v0.3.4/obandit-0.3.4.tbz"

@@ -1,38 +1,39 @@
 opam-version: "2.0"
-maintainer: "Carmelo Piccione <carmelo.piccione@gmail.com>"
+name: "gemini"
+version: "0.2.0"
 synopsis: "OCaml bindings for Gemini Trading Exchange API"
-description: "This library implements the Gemini exchange v1 REST, Market
+description: """
+This library implements the Gemini exchange v1 REST, Market
 Data, and Order events websockets services. It is backed by cohttp-async
 and websockets-async to do the heavy lifting. A provisional console interface
-is also provided using s-expressions to encode request parameters."
+is also provided using s-expressions to encode request parameters."""
+maintainer: "Carmelo Piccione <carmelo.piccione@gmail.com>"
 authors: "Carmelo Piccione"
-homepage: "https://github.com/struktured/ocaml-gemini"
 license: "MIT"
-bug-reports: "https://github.com/struktured/ocaml-gemini/issues"
-dev-repo: "git+https://github.com/struktured/ocaml-gemini.git"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
+homepage: "https://github.com/struktured/ocaml-gemini"
 doc: "https://struktured.github.io/ocaml-gemini/"
+bug-reports: "https://github.com/struktured/ocaml-gemini/issues"
 depends: [
-  "ocaml" {>= "4.06.1"}
   "async" {>= "v0.11.0" & < "v0.13"}
-  "core" {>= "v0.11.1" & < "v0.13"}
   "async_ssl" {< "v0.13"}
   "cohttp-async"
+  "core" {>= "v0.11.1" & < "v0.13"}
+  "csvfields" {< "v0.13"}
   "dune" {build}
+  "expect_test_helpers" {< "v0.13"}
+  "hex"
+  "nocrypto"
+  "ocaml" {>= "4.06.1"}
+  "ppx_csv_conv" {< "v0.13"}
+  "ppx_deriving_yojson"
   "ppx_jane" {< "v0.13"}
   "uri"
-  "hex"
+  "websocket-async" {< "2.13"}
   "yojson"
   "zarith"
-  "nocrypto"
-  "ppx_deriving_yojson"
-  "ppx_csv_conv" {< "v0.13"}
-  "csvfields" {< "v0.13"}
-  "websocket-async" {< "2.13"}
-  "expect_test_helpers" {< "v0.13"}
 ]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/struktured/ocaml-gemini.git"
 url {
   src:
     "https://github.com/struktured/ocaml-gemini/releases/download/0.2.0/gemini-0.2.0.tbz"

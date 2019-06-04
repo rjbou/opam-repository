@@ -1,28 +1,28 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/variantslib"
-license: "Apache-2.0"
-build: [
-  [make]
-]
-remove: [["ocamlfind" "remove" "variantslib"]]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.03"}
-  "camlp4"
-  "ocamlfind"
-  "type_conv" {>= "109.15.00" & < "113.01.00"}
-  "ocamlbuild" {build}
-]
-bug-reports: "https://github.com/janestreet/variantslib/issues"
-dev-repo: "git+https://github.com/janestreet/variantslib.git"
-install: [[make "install"]]
+name: "variantslib"
+version: "109.15.03"
 synopsis: "Part of Jane Street’s Core library"
 description: """
 The Core suite of libraries is an industrial strength alternative to
 OCaml's standard library that was developed by Jane Street, the
 largest industrial user of OCaml."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/variantslib"
+bug-reports: "https://github.com/janestreet/variantslib/issues"
+depends: [
+  "camlp4"
+  "ocaml" {>= "4.00.0" & < "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "type_conv" {>= "109.15.00" & < "113.01.00"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "variantslib"]
+dev-repo: "git+https://github.com/janestreet/variantslib.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.15.00/individual/variantslib-109.15.03.tar.gz"

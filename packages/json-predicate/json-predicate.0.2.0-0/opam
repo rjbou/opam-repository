@@ -1,35 +1,35 @@
 opam-version: "2.0"
+name: "json-predicate"
+version: "0.2.0-0"
+synopsis: "JSON predicate"
+description: """
+JSON Predicates defines a syntax for serializing various predicate expressions
+as JSON Objects. This library provides a parser for JSON predicate expressions
+and can evaluate them on other JSON documents."""
 maintainer: "Markus W. Weissmann <markus.weissmann@in.tum.de>"
-authors: [ "Markus W. Weissmann <markus.weissmann@in.tum.de>" ]
+authors: "Markus W. Weissmann <markus.weissmann@in.tum.de>"
 license: "MIT"
 homepage: "https://github.com/mwweissmann/ocaml-json-predicate"
 doc: "http://json-predicate.forge.ocamlcore.org/doc/"
-dev-repo: "git://github.com/mwweissmann/ocaml-json-predicate.git"
 bug-reports: "https://github.com/mwweissmann/ocaml-json-predicate/issues"
+depends: [
+  "base-bytes"
+  "json-pointer"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {>= "1.5"}
+  "result"
+  "yojson"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "json-predicate"]
-]
-depends: [
-  "ocaml"
-  "result"
-  "base-bytes"
-  "yojson"
-  "json-pointer"
-  "ocamlfind" {>= "1.5"}
-  "ocamlbuild" {build}
-]
-synopsis: "JSON predicate"
-description: """
-JSON Predicates defines a syntax for serializing various predicate expressions
-as JSON Objects. This library provides a parser for JSON predicate expressions
-and can evaluate them on other JSON documents."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "json-predicate"]
+dev-repo: "git://github.com/mwweissmann/ocaml-json-predicate.git"
 url {
   src:
     "https://github.com/mwweissmann/ocaml-json-predicate/archive/0.2.0.tar.gz"

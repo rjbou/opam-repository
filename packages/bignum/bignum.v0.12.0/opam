@@ -1,28 +1,28 @@
 opam-version: "2.0"
+name: "bignum"
+version: "v0.12.0"
+synopsis:
+  "Core-flavoured wrapper around zarith's arbitrary-precision rationals"
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/bignum"
-bug-reports: "https://github.com/janestreet/bignum/issues"
-dev-repo: "git+https://github.com/janestreet/bignum.git"
-doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/bignum/index.html"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
 license: "MIT"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
+homepage: "https://github.com/janestreet/bignum"
+doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/bignum/index.html"
+bug-reports: "https://github.com/janestreet/bignum/issues"
 depends: [
-  "ocaml"             {>= "4.07.0"}
-  "core_kernel"       {>= "v0.12" & < "v0.13"}
-  "ppx_jane"          {>= "v0.12" & < "v0.13"}
-  "splittable_random" {>= "v0.12" & < "v0.13"}
-  "typerep"           {>= "v0.12" & < "v0.13"}
-  "dune"              {build & >= "1.5.1"}
+  "core_kernel" {>= "v0.12" & < "v0.13"}
+  "dune" {build & >= "1.5.1"}
   "num"
-  "zarith"            {>= "1.5"}
+  "ocaml" {>= "4.07.0"}
+  "ppx_jane" {>= "v0.12" & < "v0.13"}
+  "splittable_random" {>= "v0.12" & < "v0.13"}
+  "typerep" {>= "v0.12" & < "v0.13"}
+  "zarith" {>= "1.5"}
 ]
-synopsis: "Core-flavoured wrapper around zarith's arbitrary-precision rationals"
-description: "
-"
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/bignum.git"
 url {
-  src: "https://ocaml.janestreet.com/ocaml-core/v0.12/files/bignum-v0.12.0.tar.gz"
+  src:
+    "https://ocaml.janestreet.com/ocaml-core/v0.12/files/bignum-v0.12.0.tar.gz"
   checksum: "md5=3bd6804528eaf6e1c6262bbd991c886d"
 }

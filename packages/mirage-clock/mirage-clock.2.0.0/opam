@@ -1,11 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
-license: "ISC"
-tags: "org:mirage"
-homepage: "https://github.com/mirage/mirage-clock"
-doc: "https://mirage.github.io/mirage-clock/"
-bug-reports: "https://github.com/mirage/mirage-clock/issues"
+name: "mirage-clock"
+version: "2.0.0"
 synopsis: "Libraries and module types for portable clocks"
 description: """
 This library implements portable support for an operating system timesource
@@ -14,12 +9,18 @@ found in: <https://github.com/mirage/mirage>
 
 It implements an `MCLOCK` module that represents a monotonic timesource
 since an arbitrary point, and `PCLOCK` which counts time since the Unix
-epoch.
-"""
+epoch."""
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-clock"
+doc: "https://mirage.github.io/mirage-clock/"
+bug-reports: "https://github.com/mirage/mirage-clock/issues"
 depends: [
-  "ocaml" {>= "4.04.2"}
   "dune" {build}
   "mirage-device" {>= "1.0.0"}
+  "ocaml" {>= "4.04.2"}
 ]
 build: [
   ["dune" "subst"] {pinned}

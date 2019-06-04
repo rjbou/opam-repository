@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-homepage: "http://github.com/avsm/travis-senv"
-tags: [
-  "org:ocamllabs"
-  "org:mirage"
-]
-build: [[make]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "cmdliner"
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/avsm/travis-senv"
+name: "travis-senv"
+version: "1.0.0"
 synopsis: "Utility to manipulate Travis CI secure environment variables"
 description: """
 `travis-senv` is a utility to make it easier to move secure key files in and
@@ -20,6 +8,17 @@ out of the Travis continuous integration environment.  You can find the general
 instructions on secure environments on the Travis site, but this command takes
 care of splitting up larger files (e.g. SSH private keys) into multiple
 environment variable so that they fit into the keyspace."""
+maintainer: "anil@recoil.org"
+tags: ["org:mirage" "org:ocamllabs"]
+homepage: "http://github.com/avsm/travis-senv"
+depends: [
+  "cmdliner"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+build: make
+dev-repo: "git://github.com/avsm/travis-senv"
 url {
   src: "https://github.com/avsm/travis-senv/archive/v1.0.0.tar.gz"
   checksum: "md5=d70eca2a46d95398363a41fe2c2a4338"

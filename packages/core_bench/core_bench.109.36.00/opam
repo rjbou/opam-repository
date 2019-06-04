@@ -1,20 +1,22 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-build: make
-remove: [["ocamlfind" "remove" "core_bench"]]
-depends: [
-  "ocaml"
-  "camlp4"
-  "core" {>= "109.36.00" & <= "109.38.00"}
-  "sexplib" {= "109.20.00"}
-  "fieldslib" {= "109.20.00"}
-  "comparelib" {= "109.27.00"}
-  "textutils" {= "109.36.00"}
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "core_bench"
+version: "109.36.00"
 synopsis: "Benchmarking library"
+maintainer: "opensource@janestreet.com"
+depends: [
+  "camlp4"
+  "comparelib" {= "109.27.00"}
+  "core" {>= "109.36.00" & <= "109.38.00"}
+  "fieldslib" {= "109.20.00"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "sexplib" {= "109.20.00"}
+  "textutils" {= "109.36.00"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "core_bench"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.36.00/individual/core_bench-109.36.00.tar.gz"

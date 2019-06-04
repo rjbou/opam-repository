@@ -1,36 +1,32 @@
 opam-version: "2.0"
+name: "configuration"
 version: "0.4.0"
+synopsis: "Analyse configuration files"
+description: "WWW: https://github.com/michipili/configuration"
 maintainer: "michipili@gmail.com"
 authors: "Michael Grünewald"
 license: "CeCILL-B"
+tags: ["configuration" "system"]
 homepage: "https://github.com/michipili/configuration"
 bug-reports: "https://github.com/michipili/configuration/issues"
-dev-repo: "git+https://github.com/michipili/configuration.git"
-tags: [
-  "configuration"
-  "system"
+depends: [
+  "broken" {>= "0.4.1"}
+  "bsdowl" {>= "3.0.0"}
+  "conf-bmake"
+  "ocaml" {>= "4.01.0"}
+  "ocamlfind"
 ]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [conf-bmake:path "-I%{bsdowl:share}%" "all"]
 ]
-install: [
-  [conf-bmake:path "-I%{bsdowl:share}%" "install"]
-]
+install: [conf-bmake:path "-I%{bsdowl:share}%" "install"]
 remove: [
   ["ocamlfind" "remove" "configuration"]
   ["rm" "-rf" "%{share}%/doc/configuration"]
 ]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "broken" {>= "0.4.1"}
-  "bsdowl" {>= "3.0.0"}
-  "conf-bmake"
-  "ocamlfind"
-]
-synopsis: "Analyse configuration files"
-description: "WWW: https://github.com/michipili/configuration"
-flags: light-uninstall
+dev-repo: "git+https://github.com/michipili/configuration.git"
 url {
   src:
     "https://github.com/michipili/configuration/releases/download/v0.4.0/configuration-0.4.0.tar.xz"

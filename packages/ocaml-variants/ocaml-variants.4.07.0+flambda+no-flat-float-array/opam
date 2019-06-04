@@ -1,12 +1,14 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.07.0+flambda+no-flat-float-array"
 synopsis:
   "Official 4.07.0 release with flambda activated and -no-flat-float-array"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.07.0" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
   "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.07.0" & post}
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler

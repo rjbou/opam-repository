@@ -1,20 +1,22 @@
 opam-version: "2.0"
-maintainer: "alin.popa@gmail.com"
-authors: "Alin Popa"
-homepage: "https://github.com/alinpopa/tube"
-bug-reports: "https://github.com/alinpopa/tube/issues"
-license: "LGPL-3 with OCaml linking exception"
-dev-repo: "git+https://github.com/alinpopa/tube.git"
-build: ["dune" "build" "-p" "tube"]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "dune" {build & >= "1.0"}
-  "lwt"
-]
+name: "tube"
+version: "4.4.0"
 synopsis: "Typesafe abstraction on top of Lwt_io channels"
 description: """
 A typesafe abstraction on top of Lwt_io channels in order to avoid things like unsafe operations
 (i.e. https://github.com/ocsigen/lwt/issues/345 ) when running in practice."""
+maintainer: "alin.popa@gmail.com"
+authors: "Alin Popa"
+license: "LGPL-3 with OCaml linking exception"
+homepage: "https://github.com/alinpopa/tube"
+bug-reports: "https://github.com/alinpopa/tube/issues"
+depends: [
+  "dune" {build & >= "1.0"}
+  "lwt"
+  "ocaml" {>= "4.04.0"}
+]
+build: ["dune" "build" "-p" "tube"]
+dev-repo: "git+https://github.com/alinpopa/tube.git"
 url {
   src: "https://github.com/alinpopa/tube/archive/4.4.0.tar.gz"
   checksum: "md5=65e17606d445d517aad1f912daca4d88"

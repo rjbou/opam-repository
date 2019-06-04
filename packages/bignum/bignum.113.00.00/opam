@@ -1,30 +1,30 @@
 opam-version: "2.0"
+name: "bignum"
+version: "113.00.00"
+synopsis:
+  "Core-flavoured wrapper around zarith's arbitrary-precision rationals."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/bignum"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
 license: "Apache-2.0"
+homepage: "https://github.com/janestreet/bignum"
+bug-reports: "https://github.com/janestreet/bignum/issues"
+depends: [
+  "camlp4"
+  "core_kernel" {>= "113.00.00" & < "113.01.00"}
+  "ocaml" {>= "4.02.1" & < "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind" {>= "1.3.2"}
+  "typerep" {>= "113.00.00" & < "113.01.00"}
+  "zarith"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   [make]
 ]
-remove: [
-  ["ocamlfind" "remove" "bignum"]
-]
-depends: [
-  "ocaml" {>= "4.02.1" & < "4.03"}
-  "camlp4"
-  "ocamlfind" {>= "1.3.2"}
-  "core_kernel" {>= "113.00.00" & < "113.01.00"}
-  "typerep" {>= "113.00.00" & < "113.01.00"}
-  "zarith"
-  "ocamlbuild" {build}
-]
-bug-reports: "https://github.com/janestreet/bignum/issues"
+install: [make "install"]
+remove: ["ocamlfind" "remove" "bignum"]
 dev-repo: "git+https://github.com/janestreet/bignum.git"
-install: [[make "install"]]
-synopsis:
-  "Core-flavoured wrapper around zarith's arbitrary-precision rationals."
-flags: light-uninstall
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/113.00/files/bignum-113.00.00.tar.gz"

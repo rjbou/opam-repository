@@ -1,10 +1,28 @@
 opam-version: "2.0"
+name: "syndic"
+version: "1.5"
+synopsis: "RSS1, RSS2, Atom and OPML1 parsing"
+description: """
+Pure OCaml Library for parsing and writing various types of feeds and
+subscriber lists."""
 maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors: ["Romain Calascibetta" "Christophe Troestler"]
+authors: ["Christophe Troestler" "Romain Calascibetta"]
+license: "MIT"
 homepage: "https://github.com/Cumulus/Syndic"
 bug-reports: "https://github.com/Cumulus/Syndic/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/Cumulus/Syndic.git"
+depends: [
+  "cohttp" {< "0.99.0" & with-test}
+  "lwt" {with-test}
+  "oasis" {build}
+  "ocaml" {>= "4.01"}
+  "ocamlfind" {build}
+  "ptime"
+  "ssl" {with-test}
+  "tls" {with-test}
+  "uri" {>= "1.9"}
+  "xmlm" {>= "1.2.0"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix=%{prefix}%"]
   [make]
@@ -14,23 +32,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "syndic"]
-depends: [
-  "ocaml" {>= "4.01"}
-  "ssl" {with-test}
-  "tls" {with-test}
-  "cohttp" {<"0.99.0" & with-test}
-  "lwt" {with-test}
-  "ocamlfind" {build}
-  "oasis" {build}
-  "uri" {>= "1.9"}
-  "xmlm" {>= "1.2.0"}
-  "ptime"
-]
-synopsis: "RSS1, RSS2, Atom and OPML1 parsing"
-description: """
-Pure OCaml Library for parsing and writing various types of feeds and
-subscriber lists."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/Cumulus/Syndic.git"
 url {
   src: "https://github.com/Cumulus/Syndic/archive/1.5.tar.gz"
   checksum: "md5=59c8a3cc5307c2c1b98f1bc2b92e09a0"

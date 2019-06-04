@@ -1,31 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-homepage: "http://erratique.ch/software/vg"
-authors: ["Daniel Bünzli <daniel.buenzli i@erratique.ch>"]
-doc: "http://erratique.ch/software/vg/doc/Vg"
-#dev-repo: "http://erratique.ch/repos/vg.git"
-#bug-reports: "https://github.com/dbuenzli/vg/issues"
-tags: [ "pdf" "svg" "html-canvas" "declarative" "graphics" "org:erratique" ]
-license: "BSD3"
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlfind"
-  "gg" {>= "0.9.0"}
-  "ocamlbuild" {build}
-]
-depopts: [ "uutf" "otfm" "js_of_ocaml"  ]
-conflicts: [ "uutf" {> "0.9.4"}
-             "js_of_ocaml" {>= "3.0"} ]
-build: ["ocaml" "pkg/git.ml"]
-install: [
-  "ocaml"
-  "pkg/build.ml"
-  "native=true"
-  "native-dynlink=true"
-  "uutf=%{uutf:installed}%"
-  "otfm=%{otfm:installed}%"
-  "jsoo=%{js_of_ocaml:installed}%"
-]
+name: "vg"
+version: "0.8.1"
 synopsis: "Declarative 2D vector graphics for OCaml"
 description: """
 Vg is an OCaml module for declarative 2D vector graphics. In Vg,
@@ -45,6 +20,33 @@ distributed under the BSD3 license.
 [2]: http://erratique.ch/software/uutf
 [3]: http://erratique.ch/software/otfm
 [4]: http://ocsigen.org/js_of_ocaml/"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzli i@erratique.ch>"
+license: "BSD3"
+tags: ["declarative" "graphics" "html-canvas" "org:erratique" "pdf" "svg"]
+homepage: "http://erratique.ch/software/vg"
+doc: "http://erratique.ch/software/vg/doc/Vg"
+depends: [
+  "gg" {>= "0.9.0"}
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+depopts: ["js_of_ocaml" "otfm" "uutf"]
+conflicts: [
+  "js_of_ocaml" {>= "3.0"}
+  "uutf" {> "0.9.4"}
+]
+build: ["ocaml" "pkg/git.ml"]
+install: [
+  "ocaml"
+  "pkg/build.ml"
+  "native=true"
+  "native-dynlink=true"
+  "uutf=%{uutf:installed}%"
+  "otfm=%{otfm:installed}%"
+  "jsoo=%{js_of_ocaml:installed}%"
+]
 url {
   src: "http://erratique.ch/software/vg/releases/vg-0.8.1.tbz"
   checksum: "md5=abde3e78212f155365b4a81e07ed83bf"

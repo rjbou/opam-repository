@@ -1,29 +1,29 @@
 opam-version: "2.0"
+name: "frei0r"
+version: "0.1.1"
+synopsis: "Bindings for the frei0r API which provides video effects"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-frei0r"
+bug-reports: "https://github.com/savonet/ocaml-frei0r/issues"
+depends: ["conf-pkg-config" "ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "frei0r"]
-depends: ["ocaml" "ocamlfind" "conf-pkg-config"]
 depexts: [
-  ["frei0r-plugins-dev"] {os-distribution = "alpine"}
+  ["frei0r"] {os = "macos" & os-distribution = "homebrew"}
   ["frei0r-devel"] {os-distribution = "centos"}
   ["frei0r-devel"] {os-distribution = "fedora"}
   ["frei0r-devel"] {os-family = "suse"}
-  ["frei0r"] {os = "macos" & os-distribution = "homebrew"}
+  ["frei0r-plugins-dev"] {os-distribution = "alpine"}
   ["frei0r-plugins-dev"] {os-distribution = "debian"}
   ["frei0r-plugins-dev"] {os-distribution = "ubuntu"}
 ]
-bug-reports: "https://github.com/savonet/ocaml-frei0r/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-frei0r.git"
-synopsis: "Bindings for the frei0r API which provides video effects"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-frei0r/releases/download/0.1.1/ocaml-frei0r-0.1.1.tar.gz"

@@ -1,18 +1,25 @@
 opam-version: "2.0"
+name: "ocaml-http"
+version: "0.1.6"
+synopsis: "Library freely inspired from Perl's HTTP::Daemon module"
 maintainer: "claudio.sacerdoticoen@unibo.it"
-bug-reports: "https://github.com/sacerdot/ocaml-http/issues"
-homepage: "https://github.com/sacerdot/ocaml-http"
 authors: "Stefano Zacchiroli"
-dev-repo: "git+https://github.com/sacerdot/ocaml-http.git"
+homepage: "https://github.com/sacerdot/ocaml-http"
+bug-reports: "https://github.com/sacerdot/ocaml-http/issues"
+depends: [
+  "ocaml" {>= "4.03.0"}
+  "ocamlfind" {build}
+  "ocamlnet"
+  "pcre"
+]
+flags: light-uninstall
 build: [
   [make "all"]
   [make "opt"]
 ]
-remove: [["ocamlfind" "remove" "http"]]
-depends: ["ocaml" {>="4.03.0"} "ocamlfind" {build} "ocamlnet" "pcre"]
 install: [make "install"]
-synopsis: "Library freely inspired from Perl's HTTP::Daemon module"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "http"]
+dev-repo: "git+https://github.com/sacerdot/ocaml-http.git"
 url {
   src: "https://github.com/sacerdot/ocaml-http/archive/v0.1.6.tar.gz"
   checksum: [

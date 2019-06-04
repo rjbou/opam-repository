@@ -1,7 +1,14 @@
 opam-version: "2.0"
+name: "opus"
+version: "0.1.1"
+synopsis:
+  "Bindings for the opus library to decode audio files in opus format"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-opus"
+bug-reports: "https://github.com/savonet/ocaml-opus/issues"
+depends: ["ocaml" "ocamlfind" "ogg"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix] {os != "macos"}
   [
@@ -14,21 +21,14 @@ build: [
   ] {os = "macos"}
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "opus"]
-depends: ["ocaml" "ocamlfind" "ogg"]
 depexts: [
   ["libavutil-dev" "libopus-dev"] {os-distribution = "debian"}
   ["libavutil-dev" "libopus-dev"] {os-distribution = "ubuntu"}
   ["opus"] {os = "macos" & os-distribution = "homebrew"}
 ]
-bug-reports: "https://github.com/savonet/ocaml-opus/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-opus.git"
-synopsis:
-  "Bindings for the opus library to decode audio files in opus format"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-opus/releases/download/0.1.1/ocaml-opus-0.1.1.tar.gz"

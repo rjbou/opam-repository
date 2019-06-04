@@ -1,17 +1,17 @@
 opam-version: "2.0"
-maintainer: "Markus Mottl <markus.mottl@gmail.com>"
-authors: [ "Markus Mottl <markus.mottl@gmail.com>" ]
-license: "LGPL-2.1+ with OCaml linking exception"
-homepage: "https://mmottl.github.io/ocaml-makefile"
-doc: "https://mmottl.github.io/ocaml-makefile/api"
-dev-repo: "git+https://github.com/mmottl/ocaml-makefile.git"
-bug-reports: "https://github.com/mmottl/ocaml-makefile/issues"
-
+name: "ocaml-makefile"
+version: "6.39.2"
 synopsis: "Generic Makefile for building OCaml projects"
-
 description: """
 OCamlMakefile supports a large variety of build target kinds for building small
 OCaml projects using GNU make."""
+maintainer: "Markus Mottl <markus.mottl@gmail.com>"
+authors: "Markus Mottl <markus.mottl@gmail.com>"
+license: "LGPL-2.1+ with OCaml linking exception"
+homepage: "https://mmottl.github.io/ocaml-makefile"
+doc: "https://mmottl.github.io/ocaml-makefile/api"
+bug-reports: "https://github.com/mmottl/ocaml-makefile/issues"
+dev-repo: "git+https://github.com/mmottl/ocaml-makefile.git"
 url {
   src:
     "https://github.com/mmottl/ocaml-makefile/releases/download/6.39.2/ocaml-makefile-6.39.2.tbz"

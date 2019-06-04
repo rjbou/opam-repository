@@ -1,30 +1,28 @@
 opam-version: "2.0"
-maintainer: "unixjunkie@sdf.org"
-authors: ["Francois Berenger"]
-homepage: "https://github.com/UnixJunkie/interval-tree"
-dev-repo: "git://github.com/UnixJunkie/interval-tree"
-bug-reports: "https://github.com/UnixJunkie/interval-tree/issues"
-license: "BSD"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
-remove: [
-  ["ocamlfind" "remove" "itv-tree"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
+name: "itv-tree"
+version: "2.1"
 synopsis: "float intervals tree library"
 description: """
 interval tree for float intervals, you can create a tree once then
 query it many times (queries are fast)"""
+maintainer: "unixjunkie@sdf.org"
+authors: "Francois Berenger"
+license: "BSD"
+homepage: "https://github.com/UnixJunkie/interval-tree"
+bug-reports: "https://github.com/UnixJunkie/interval-tree/issues"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "itv-tree"]
+dev-repo: "git://github.com/UnixJunkie/interval-tree"
 url {
   src: "https://github.com/UnixJunkie/interval-tree/archive/v2.1.tar.gz"
   checksum: "md5=55474b97f16c4bb031d185f753531717"

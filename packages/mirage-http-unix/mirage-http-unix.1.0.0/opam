@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "mirage-http-unix"
+version: "1.0.0"
+synopsis: "MirageOS HTTP client and server driver for Unix"
 maintainer: "anil@recoil.org"
-build: make
-remove: [[make "uninstall"]]
 depends: [
-  "ocaml" {>= "4.00.0"}
-  "mirage-types" {<= "1.0.0"}
-  "mirage-unix" {>= "1.0.0"}
-  "ocamlfind"
+  "cohttp" {>= "0.9.14" & < "0.10.0"}
   "lwt" {>= "2.4.3"}
   "mirage-tcpip-unix" {>= "0.9.5"}
-  "cohttp" {>= "0.9.14" & < "0.10.0"}
-  "ssl"
+  "mirage-types" {<= "1.0.0"}
+  "mirage-unix" {>= "1.0.0"}
+  "ocaml" {>= "4.00.0"}
   "ocamlbuild" {build}
+  "ocamlfind"
+  "ssl"
 ]
-dev-repo: "git://github.com/mirage/mirage-http-unix"
+build: make
 install: [make "install"]
-synopsis: "MirageOS HTTP client and server driver for Unix"
+remove: [make "uninstall"]
+dev-repo: "git://github.com/mirage/mirage-http-unix"
 url {
   src: "https://github.com/mirage/mirage-http-unix/archive/v1.0.0.tar.gz"
   checksum: "md5=ac773d4a74cf0e6e8d109d3eb86f296c"

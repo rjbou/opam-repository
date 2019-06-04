@@ -1,13 +1,6 @@
 opam-version: "2.0"
-homepage: "https://github.com/ocaml-obuild/obuild"
-bug-reports: "https://github.com/ocaml-obuild/obuild/issues"
-dev-repo: "git+https://github.com/ocaml-obuild/obuild.git"
-authors: ["Vincent Hanquez" "Jerome Maloberti"]
-
-maintainer: "jmaloberti@gmail.com"
-build: [
-  ["./bootstrap"]
-]
+name: "obuild"
+version: "0.1.8"
 synopsis: "simple package build system for OCaml"
 description: """
 The goal is to make a very simple build system for users and developers 
@@ -19,9 +12,15 @@ build it.
 
 The design is based on Haskell's Cabal and borrows most of the layout
 and way of working, adapting parts where necessary to fully support OCaml."""
+maintainer: "jmaloberti@gmail.com"
+authors: ["Jerome Maloberti" "Vincent Hanquez"]
+homepage: "https://github.com/ocaml-obuild/obuild"
+bug-reports: "https://github.com/ocaml-obuild/obuild/issues"
 depends: [
   "ocaml" {< "4.06.0"}
 ]
+build: "./bootstrap"
+dev-repo: "git+https://github.com/ocaml-obuild/obuild.git"
 url {
   src: "https://github.com/ocaml-obuild/obuild/archive/obuild-v0.1.8.tar.gz"
   checksum: "md5=5178265fec699c2c7da1cd7bd739996c"

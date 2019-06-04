@@ -1,18 +1,22 @@
 opam-version: "2.0"
-maintainer: "blue-prawn"
-authors: ["John Cristy"]
-homepage: "http://www.imagemagick.org/"
-license: "Apache"
-build: [["pkg-config" "MagickCore"]]
-depexts: [
-  ["libmagickcore-dev"] {os-distribution = "debian"}
-  ["libMagick-devel"] {os-distribution = "mageia"}
-  ["libmagickcore-dev"] {os-distribution = "ubuntu"}
-]
+name: "conf-libMagickCore"
+version: "1"
 synopsis: "Virtual package relying on an ImageMagick system installation"
 description: """
 This package can only install if the Core lib of ImageMagick is
 installed on the system."""
-depends: ["conf-pkg-config" {build}]
+maintainer: "blue-prawn"
+authors: "John Cristy"
+license: "Apache"
+homepage: "http://www.imagemagick.org/"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "MagickCore"]
+depexts: [
+  ["libMagick-devel"] {os-distribution = "mageia"}
+  ["libmagickcore-dev"] {os-distribution = "debian"}
+  ["libmagickcore-dev"] {os-distribution = "ubuntu"}
+]

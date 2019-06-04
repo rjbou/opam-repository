@@ -1,24 +1,23 @@
 opam-version: "2.0"
+name: "integers"
+version: "0.2.0"
+synopsis: "Various signed and unsigned integer types for OCaml"
 maintainer: "yallop@gmail.com"
-authors: ["Jeremy Yallop"
-          "Demi Obenour"
-          "Stephane Glondu"
-          "Andreas Hauptmann"]
-homepage: "https://github.com/ocamllabs/ocaml-integers"
-bug-reports: "https://github.com/ocamllabs/ocaml-integers/issues"
-dev-repo: "git+https://github.com/ocamllabs/ocaml-integers.git"
+authors: [
+  "Andreas Hauptmann" "Demi Obenour" "Jeremy Yallop" "Stephane Glondu"
+]
 license: "MIT"
-build:
-[[ "ocaml" "pkg/pkg.ml" "build"
-           "--pinned" "%{pinned}%"]]
+homepage: "https://github.com/ocamllabs/ocaml-integers"
+doc: "http://ocamllabs.github.io/ocaml-integers/"
+bug-reports: "https://github.com/ocamllabs/ocaml-integers/issues"
 depends: [
   "ocaml"
   "ocamlbuild" {build}
   "ocamlfind" {build}
   "topkg" {build}
 ]
-doc: "http://ocamllabs.github.io/ocaml-integers/"
-synopsis: "Various signed and unsigned integer types for OCaml"
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/ocamllabs/ocaml-integers.git"
 url {
   src:
     "https://github.com/ocamllabs/ocaml-integers/releases/download/0.2.0/integers-0.2.0.tbz"

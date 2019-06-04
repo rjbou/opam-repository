@@ -1,37 +1,41 @@
 opam-version: "2.0"
-maintainer: "gu.oliver@yahoo.com"
-authors: [ "Oliver Gu <gu.oliver@yahoo.com>"
-           "Dominik Brugger <dominikbrugger@fastmail.fm>" ]
-homepage: "https://bitbucket.org/ogu/libsvm-ocaml"
-build: [
-  ["ocaml" "setup.ml" "-configure"]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "libsvm"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "core" {>= "108.08.00" & < "v0.13"}
-  "lacaml" {< "8.0"}
-  "gsl"
-  "archimedes"
-  "ocamlbuild" {build}
-]
-conflicts: [
-  "sexplib" {>= "113.24.00"}
-]
-install: ["ocaml" "setup.ml" "-install"]
-depexts: [
-  ["libsvm-dev"] {os-distribution = "ubuntu"}
-  ["libsvm-dev"] {os-distribution = "debian"}
-]
+name: "libsvm"
+version: "0.9.0"
 synopsis: "LIBSVM Bindings for OCaml"
 description: """
 LIBSVM-OCaml is an OCaml library with bindings to the LIBSVM library, which is
 a library for Support Vector Machines. Support Vector Machines are used to
 create supervised learning models for classification and regression problems in
 machine learning."""
+maintainer: "gu.oliver@yahoo.com"
+authors: [
+  "Dominik Brugger <dominikbrugger@fastmail.fm>"
+  "Oliver Gu <gu.oliver@yahoo.com>"
+]
+homepage: "https://bitbucket.org/ogu/libsvm-ocaml"
+depends: [
+  "archimedes"
+  "core" {>= "108.08.00" & < "v0.13"}
+  "gsl"
+  "lacaml" {< "8.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+conflicts: [
+  "sexplib" {>= "113.24.00"}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure"]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "libsvm"]
+depexts: [
+  ["libsvm-dev"] {os-distribution = "ubuntu"}
+  ["libsvm-dev"] {os-distribution = "debian"}
+]
 url {
   src:
     "https://bitbucket.org/ogu/libsvm-ocaml/downloads/libsvm-ocaml-0.9.0.tar.gz"

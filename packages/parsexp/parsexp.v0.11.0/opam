@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/parsexp"
-bug-reports: "https://github.com/janestreet/parsexp/issues"
-dev-repo: "git+https://github.com/janestreet/parsexp.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "sexplib0" {>= "v0.11" & < "v0.12"}
-  "jbuilder" {build & >= "1.0+beta18.1"}
-]
+name: "parsexp"
+version: "v0.11.0"
 synopsis: "S-expression parsing library"
 description: """
 This library provides generic parsers for parsing S-expressions from
@@ -34,6 +22,18 @@ It provides three different class of parsers:
 This library is portable and doesn't provide IO functions. To read
 s-expressions from files or other external sources, you should use
 parsexp_io."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/parsexp"
+bug-reports: "https://github.com/janestreet/parsexp/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta18.1"}
+  "ocaml" {>= "4.04.1"}
+  "sexplib0" {>= "v0.11" & < "v0.12"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/parsexp.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.11/files/parsexp-v0.11.0.tar.gz"

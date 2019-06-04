@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "amqp-client-async"
+version: "2.0.3"
+synopsis: "Amqp client library, async version"
 maintainer: "Anders Fugmann <anders@fugmann.net>"
-authors: [ "Anders Fugmann" ]
+authors: "Anders Fugmann"
+license: "BSD3"
 homepage: "https://github.com/andersfugmann/amqp-client"
 bug-reports: "https://github.com/andersfugmann/amqp-client/issues"
-dev-repo: "git+https://github.com/andersfugmann/amqp-client.git"
-license: "BSD3"
+depends: [
+  "amqp-client" {= "2.0.3"}
+  "async" {>= "v0.10.0" & < "v0.13"}
+  "dune" {build}
+  "ocaml" {>= "4.04.0"}
+  "ocplib-endian" {>= "0.6"}
+  "xml-light" {build}
+]
 build: [
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "dune" {build}
-  "xml-light" {build}
-  "amqp-client" {= "2.0.3"}
-  "ocplib-endian" {>= "0.6"}
-  "async" {>= "v0.10.0" & < "v0.13"}
-]
-synopsis: "Amqp client library, async version"
+dev-repo: "git+https://github.com/andersfugmann/amqp-client.git"
 url {
   src: "https://github.com/andersfugmann/amqp-client/archive/2.0.3.tar.gz"
   checksum: "md5=4ff63b64da873a14047f541584c30d56"

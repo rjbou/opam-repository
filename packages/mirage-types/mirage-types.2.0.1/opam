@@ -1,24 +1,23 @@
 opam-version: "2.0"
+name: "mirage-types"
+version: "2.0.1"
+synopsis: "Module type definitions for Mirage-compatible applications"
 maintainer: "anil@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-remove: ["ocamlfind" "remove" "mirage-types"]
+tags: ["org:mirage" "org:xapi-project"]
 depends: [
   "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
   "ocamlfind"
   "sexplib" {< "113.01.00"}
-  "ocamlbuild" {build}
 ]
-depopts: ["lwt" "cstruct" "io-page" "ipaddr"]
+depopts: ["cstruct" "io-page" "ipaddr" "lwt"]
 conflicts: [
   "ipaddr" {< "0.2.0"}
 ]
-dev-repo: "git://github.com/mirage/mirage"
-install: [make "install-types"]
-synopsis: "Module type definitions for Mirage-compatible applications"
 flags: light-uninstall
+install: [make "install-types"]
+remove: ["ocamlfind" "remove" "mirage-types"]
+dev-repo: "git://github.com/mirage/mirage"
 url {
   src: "https://github.com/mirage/mirage/archive/v2.0.1.tar.gz"
   checksum: "md5=644b49021da9f2ad53c52214b588ccfa"

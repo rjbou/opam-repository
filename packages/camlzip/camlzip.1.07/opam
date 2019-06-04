@@ -1,33 +1,35 @@
 opam-version: "2.0"
+name: "camlzip"
+version: "1.07"
+synopsis:
+  "Provides easy access to compressed files in ZIP, GZIP and JAR format"
 maintainer: "Etienne Millon <etienne@cryptosense.com>"
-authors: ["Xavier Leroy"]
+authors: "Xavier Leroy"
+license: "LGPL-2.1+ with OCaml linking exception"
 homepage: "https://github.com/xavierleroy/camlzip"
 bug-reports: "https://github.com/xavierleroy/camlzip/issues"
-license: "LGPL-2.1+ with OCaml linking exception"
-build: [
-  [make "all"]
-  [make "allopt"]
-]
-remove: [
-  ["ocamlfind" "remove" "zip"]
-  ["ocamlfind" "remove" "camlzip"]
-]
 depends: [
   "ocaml" {>= "4.02.0"}
   "ocamlfind"
 ]
+flags: light-uninstall
+build: [
+  [make "all"]
+  [make "allopt"]
+]
+install: [make "install-findlib"]
+remove: [
+  ["ocamlfind" "remove" "zip"]
+  ["ocamlfind" "remove" "camlzip"]
+]
 depexts: [
-  ["zlib1g-dev"] {os-distribution = "debian"}
-  ["zlib1g-dev"] {os-distribution = "ubuntu"}
+  ["zlib-dev"] {os-distribution = "alpine"}
   ["zlib-devel"] {os-distribution = "centos"}
   ["zlib-devel"] {os-distribution = "rhel"}
   ["zlib-devel"] {os-distribution = "fedora"}
-  ["zlib-dev"] {os-distribution = "alpine"}
+  ["zlib1g-dev"] {os-distribution = "debian"}
+  ["zlib1g-dev"] {os-distribution = "ubuntu"}
 ]
-install: [make "install-findlib"]
-synopsis:
-  "Provides easy access to compressed files in ZIP, GZIP and JAR format"
-flags: light-uninstall
 url {
   src: "https://github.com/xavierleroy/camlzip/archive/rel107.zip"
   checksum: "md5=fb6b251fe6bf129cb25b5fd9f5938514"

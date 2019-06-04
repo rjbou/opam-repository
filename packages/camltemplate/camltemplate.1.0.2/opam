@@ -1,25 +1,30 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: ["Benjamin Geer"]
-homepage: "https://forge.ocamlcore.org/projects/camltemplate/"
-license: "GPL v2+"
-build: [
-  ["./configure" "--prefix=%{lib}%"]
-  [make]
-  [make "opt"]
-]
-remove: [["ocamlfind" "remove" "camltemplate"]]
-depends: ["ocaml" {< "4.06.0"} "ocamlfind"]
-install: [
-  [make "-C" "src" "install"]
-  [make "-C" "doc" "install" "INSTALL_DIR=%{doc}%/camltemplate"]
-]
+name: "camltemplate"
+version: "1.0.2"
 synopsis: "Library for generating text from templates"
 description: """
 CamlTemplate is library for generating text from templates in
 OCaml. It can be used to generate web pages, scripts, SQL
 queries, XML documents and other sorts of text."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+authors: "Benjamin Geer"
+license: "GPL v2+"
+homepage: "https://forge.ocamlcore.org/projects/camltemplate/"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix=%{lib}%"]
+  [make]
+  [make "opt"]
+]
+install: [
+  [make "-C" "src" "install"]
+  [make "-C" "doc" "install" "INSTALL_DIR=%{doc}%/camltemplate"]
+]
+remove: ["ocamlfind" "remove" "camltemplate"]
 url {
   src:
     "https://download.ocamlcore.org/camltemplate/camltemplate/camltemplate-1.0.2/camltemplate-1.0.2.tar.gz"

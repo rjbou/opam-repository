@@ -1,28 +1,28 @@
 opam-version: "2.0"
-name:         "ke"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/mirage/ke"
-bug-reports:  "https://github.com/mirage/ke/issues"
-dev-repo:     "git+https://github.com/mirage/ke.git"
-doc:          "https://mirage.github.io/ke/"
-license:      "MIT"
-synopsis:     "Queue implementation"
-description:  """Queue implementation in OCaml (functional and imperative queue)"""
-
-build: [
-  [ "dune" "subst" ]
-  [ "dune" "build" "-p" name "-j" jobs ]
-  [ "dune" "runtest" "-p" name "-j" jobs ] {with-test}
-]
-
+name: "ke"
+version: "0.3"
+synopsis: "Queue implementation"
+description:
+  "Queue implementation in OCaml (functional and imperative queue)"
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/mirage/ke"
+doc: "https://mirage.github.io/ke/"
+bug-reports: "https://github.com/mirage/ke/issues"
 depends: [
-  "ocaml"      {>= "4.03.0"}
-  "dune"       {build}
-  "fmt"
   "alcotest" {with-test}
   "bigstringaf" {with-test}
+  "dune" {build}
+  "fmt"
+  "ocaml" {>= "4.03.0"}
 ]
+build: [
+  ["dune" "subst"]
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/ke.git"
 url {
   src: "https://github.com/mirage/ke/releases/download/v0.3/ke-v0.3.tbz"
   checksum: [

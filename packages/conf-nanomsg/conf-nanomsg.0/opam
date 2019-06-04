@@ -1,18 +1,22 @@
 opam-version: "2.0"
+name: "conf-nanomsg"
+version: "0"
+synopsis: "Virtual package relying on a nanomsg system installation"
+description:
+  "This package can only install if the nanomsg lib is installed on the system."
 maintainer: "Vincent Bernardoff"
-authors: ["Martin Sustrik"]
-homepage: "http://nanomsg.org/"
+authors: "Martin Sustrik"
 license: "MIT/X11"
-build: [["pkg-config" "nanomsg"]]
+homepage: "http://nanomsg.org/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
+flags: conf
+build: ["pkg-config" "nanomsg"]
 depexts: [
   ["libnanomsg-dev"] {os-distribution = "ubuntu"}
   ["libnanomsg-dev"] {os-distribution = "debian"}
   ["nanomsg"] {os-distribution = "arch"}
   ["nanomsg"] {os = "macos" & os-distribution = "homebrew"}
 ]
-synopsis: "Virtual package relying on a nanomsg system installation"
-description:
-  "This package can only install if the nanomsg lib is installed on the system."
-depends: ["conf-pkg-config" {build}]
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-flags: conf

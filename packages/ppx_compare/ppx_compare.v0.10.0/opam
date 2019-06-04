@@ -1,25 +1,25 @@
 opam-version: "2.0"
+name: "ppx_compare"
+version: "v0.10.0"
+synopsis: "Generation of comparison functions from types"
+description: "Part of the Jane Street's PPX rewriters collection."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
 homepage: "https://github.com/janestreet/ppx_compare"
 bug-reports: "https://github.com/janestreet/ppx_compare/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_compare.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
 depends: [
-  "ocaml" {>= "4.04.1"}
   "base" {>= "v0.10" & < "v0.11"}
+  "jbuilder" {build & >= "1.0+beta12"}
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "0.4"}
   "ppx_core" {>= "v0.10" & < "v0.11"}
   "ppx_driver" {>= "v0.10" & < "v0.11"}
   "ppx_metaquot" {>= "v0.10" & < "v0.11"}
   "ppx_type_conv" {>= "v0.10" & < "v0.11"}
-  "jbuilder" {build & >= "1.0+beta12"}
-  "ocaml-migrate-parsetree" {>= "0.4"}
 ]
-synopsis: "Generation of comparison functions from types"
-description: "Part of the Jane Street's PPX rewriters collection."
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/ppx_compare.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.10/files/ppx_compare-v0.10.0.tar.gz"

@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "re"
+version: "1.2.1"
+synopsis: "RE is a regular expression library for OCaml"
 maintainer: "anil@recoil.org"
-authors: ["Jerome Vouillon" "Thomas Gazagnaire" "Anil Madhavapeddy"]
+authors: ["Anil Madhavapeddy" "Jerome Vouillon" "Thomas Gazagnaire"]
 homepage: "https://github.com/ocaml/ocaml-re"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "re"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/ocaml/ocaml-re"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "RE is a regular expression library for OCaml"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "re"]
+dev-repo: "git://github.com/ocaml/ocaml-re"
 url {
   src: "https://github.com/ocaml/ocaml-re/archive/ocaml-re-1.2.1.tar.gz"
   checksum: "md5=13b3f2aa3710d03c82e3338feefec669"

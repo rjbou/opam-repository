@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "andrenth@gmail.com"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "release"]]
-depends: [
-  "ocaml" {< "4.03.0"}
-  "lwt" {<= "2.4.6"}
-  "ocamlfind"
-  "uint"
-  "ocamlbuild" {build}
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "release"
+version: "1.0.1"
 synopsis:
   "Release is a multi-process Lwt-enabled daemon framework for OCaml."
 description: """
@@ -21,7 +9,21 @@ privilege-dropping.
 
 Its goal is to make it easy to write servers that are released from the calling
 terminal and to release root privileges when those are not necessary."""
+maintainer: "andrenth@gmail.com"
+depends: [
+  "lwt" {<= "2.4.6"}
+  "ocaml" {< "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "uint"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "release"]
 url {
   src:
     "https://download.ocamlcore.org/release/release/release-1.0.1/release-1.0.1.tar.gz"

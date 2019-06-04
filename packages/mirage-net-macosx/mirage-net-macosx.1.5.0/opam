@@ -1,40 +1,38 @@
 opam-version: "2.0"
-maintainer:  "Anil Madhavapeddy <anil@recoil.org>"
-authors:     "Anil Madhavapeddy <anil@recoil.org>"
-homepage:    "https://github.com/mirage/mirage-net-macosx"
-bug-reports: "https://github.com/mirage/mirage-net-macosx/issues"
-dev-repo:    "git+https://github.com/mirage/mirage-net-macosx.git"
-doc:         "https://mirage.github.io/mirage-net-macosx/"
-
-license: "ISC"
-build: [
-  [ "dune" "subst" ] {pinned}
-  [ "dune" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build & >= "1.0"}
-  "cstruct" {>= "1.4.0"}
-  "macaddr"
-  "sexplib" {< "v0.13"}
-  "logs"
-  "lwt" {>= "2.4.3"}
-  "mirage-net-lwt" {>= "1.0.0" & < "2.0.0"}
-  "io-page" {>= "2.0.0"}
-  "io-page-unix" {>= "2.0.0"}
-  "vmnet"
-]
-tags: "org:mirage"
-
+name: "mirage-net-macosx"
+version: "1.5.0"
 synopsis: "MacOS implementation of the Mirage_net_lwt interface"
 description: """
 This interface exposes raw Ethernet frames using the
 [Vmnet](https://github.com/mirage/ocaml-vmnet) framework that
 is available on MacOS X Yosemite onwards.  It is suitable for
 use with an OCaml network stack such as the one found at
-<https://github.com/mirage/mirage-tcpip>.
-"""
+<https://github.com/mirage/mirage-tcpip>."""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-net-macosx"
+doc: "https://mirage.github.io/mirage-net-macosx/"
+bug-reports: "https://github.com/mirage/mirage-net-macosx/issues"
+depends: [
+  "cstruct" {>= "1.4.0"}
+  "dune" {build & >= "1.0"}
+  "io-page" {>= "2.0.0"}
+  "io-page-unix" {>= "2.0.0"}
+  "logs"
+  "lwt" {>= "2.4.3"}
+  "macaddr"
+  "mirage-net-lwt" {>= "1.0.0" & < "2.0.0"}
+  "ocaml" {>= "4.03.0"}
+  "sexplib" {< "v0.13"}
+  "vmnet"
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-net-macosx.git"
 url {
   src:
     "https://github.com/mirage/mirage-net-macosx/releases/download/v1.5.0/mirage-net-macosx-v1.5.0.tbz"

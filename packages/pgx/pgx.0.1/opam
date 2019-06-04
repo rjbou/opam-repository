@@ -1,29 +1,30 @@
 opam-version: "2.0"
-authors: ["Arena Developers <silver-snakes@arena.io>"]
+name: "pgx"
+version: "0.1"
+synopsis: "Pgx - Pure-OCaml PostgreSQL client library"
+description:
+  "PGX is a pure-OCaml PostgreSQL client library, supporting Async, LWT, or synchronous operations."
 maintainer: "silver-snakes@arena.io"
+authors: "Arena Developers <silver-snakes@arena.io>"
 homepage: "https://github.com/arenadotio/pgx"
-dev-repo: "git+https://github.com/arenadotio/pgx.git"
-bug-reports: "https://github.com/arenadotio/pgx/issues"
 doc: "https://arenadotio.github.io/pgx/doc"
-
+bug-reports: "https://github.com/arenadotio/pgx/issues"
+depends: [
+  "base64" {with-test & < "3.0.0"}
+  "bisect_ppx" {build & >= "1.3.1"}
+  "jbuilder" {build & >= "1.0+beta14"}
+  "ocaml" {>= "4.04.2"}
+  "ounit" {with-test}
+  "ppx_jane" {< "v0.13"}
+  "re"
+  "sexplib" {>= "v0.10" & < "v0.13"}
+  "uuidm"
+]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.04.2"}
-  "ppx_jane" {< "v0.13"}
-  "uuidm"
-  "re"
-  "sexplib" {>= "v0.10" & < "v0.13"}
-  "bisect_ppx" {build & >= "1.3.1"}
-  "jbuilder" {build & >= "1.0+beta14"}
-  "base64" {with-test & < "3.0.0"}
-  "ounit" {with-test}
-]
-synopsis: "Pgx - Pure-OCaml PostgreSQL client library"
-description:
-  "PGX is a pure-OCaml PostgreSQL client library, supporting Async, LWT, or synchronous operations."
+dev-repo: "git+https://github.com/arenadotio/pgx.git"
 url {
   src: "https://github.com/arenadotio/pgx/releases/download/0.1/pgx-0.1.tbz"
   checksum: "md5=b659449513e1b70b7a67a954d115d246"

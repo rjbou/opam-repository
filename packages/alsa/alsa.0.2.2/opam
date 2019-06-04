@@ -1,28 +1,28 @@
 opam-version: "2.0"
+name: "alsa"
+version: "0.2.2"
+synopsis:
+  "Bindings for the ALSA library which provides functions for using soundcards"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-alsa"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-install: [
-  [make "install"]
-]
-remove: ["ocamlfind" "remove" "alsa"]
+bug-reports: "https://github.com/savonet/ocaml-alsa/issues"
 depends: [
   "ocaml" {< "4.04.0"}
   "ocamlfind"
 ]
+flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "alsa"]
 depexts: [
   ["libasound2-dev"] {os-distribution = "debian"}
   ["libasound2-dev"] {os-distribution = "ubuntu"}
 ]
-bug-reports: "https://github.com/savonet/ocaml-alsa/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-alsa.git"
-synopsis:
-  "Bindings for the ALSA library which provides functions for using soundcards"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-alsa/releases/download/0.2.2/ocaml-alsa-0.2.2.tar.gz"

@@ -1,11 +1,13 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.03.0+trunk+fp+flambda"
 synopsis: "latest 4.03 snapshot with frame-pointers and flambda activated"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.03.0" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
   "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.03.0" & post}
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler

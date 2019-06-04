@@ -1,10 +1,24 @@
 opam-version: "2.0"
+name: "gnuplot"
+version: "0.5.2"
+synopsis: "Simple interface to Gnuplot"
+description: """
+Gnuplot-OCaml provides a simple interface to Gnuplot from OCaml. The
+API supports only 2D graphs and was inspired by FnuPlot."""
 maintainer: "Oliver Gu <gu.oliver@yahoo.com>"
-authors: [ "Oliver Gu <gu.oliver@yahoo.com>" ]
+authors: "Oliver Gu <gu.oliver@yahoo.com>"
 license: "LGPL-2.1+ with OCaml linking exception"
 homepage: "https://bitbucket.org/ogu/gnuplot-ocaml"
-dev-repo: "git+https://bitbucket.org/ogu/gnuplot-ocaml.git"
 bug-reports: "https://bitbucket.org/ogu/gnuplot-ocaml/issues"
+depends: [
+  "base-threads"
+  "conf-gnuplot"
+  "core" {>= "113.24.00" & < "v0.9.0"}
+  "ocaml" {>= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.3.1"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -14,22 +28,8 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "gnuplot"]
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "base-threads"
-  "core" {>= "113.24.00" & < "v0.9.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build & >= "1.3.1"}
-  "conf-gnuplot"
-]
-synopsis: "Simple interface to Gnuplot"
-description: """
-Gnuplot-OCaml provides a simple interface to Gnuplot from OCaml. The
-API supports only 2D graphs and was inspired by FnuPlot."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "gnuplot"]
+dev-repo: "git+https://bitbucket.org/ogu/gnuplot-ocaml.git"
 url {
   src:
     "https://bitbucket.org/ogu/gnuplot-ocaml/downloads/gnuplot-ocaml-0.5.2.tar.gz"

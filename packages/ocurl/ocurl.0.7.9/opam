@@ -1,33 +1,33 @@
 opam-version: "2.0"
+name: "ocurl"
+version: "0.7.9"
+synopsis: "Bindings to libcurl"
+description: """
+Client-side URL transfer library, supporting HTTP and a multitude of
+other network protocols (FTP/SMTP/RTSP/etc)."""
 maintainer: "ygrek@autistici.org"
-homepage: "http://ocurl.forge.ocamlcore.org"
+authors: ["Lars Nilsson" "ygrek"]
 license: "MIT"
-authors: [ "Lars Nilsson" "ygrek" ]
-doc: ["http://ocurl.forge.ocamlcore.org/api/index.html"]
-dev-repo: "git://github.com/ygrek/ocurl.git"
+homepage: "http://ocurl.forge.ocamlcore.org"
+doc: "http://ocurl.forge.ocamlcore.org/api/index.html"
 bug-reports: "https://github.com/ygrek/ocurl/issues"
+depends: [
+  "base-unix"
+  "conf-libcurl"
+  "ocaml"
+  "ocamlfind" {build}
+]
+depopts: ["lwt"]
+flags: light-uninstall
 build: [
   ["./configure"]
   [make]
   [make "test"] {with-test}
   [make "doc"] {with-doc}
 ]
-install: [
-  [make "install"]
-]
-remove: [["ocamlfind" "remove" "curl"]]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "base-unix"
-  "conf-libcurl"
-]
-depopts: ["lwt"]
-synopsis: "Bindings to libcurl"
-description: """
-Client-side URL transfer library, supporting HTTP and a multitude of
-other network protocols (FTP/SMTP/RTSP/etc)."""
-flags: light-uninstall
+install: [make "install"]
+remove: ["ocamlfind" "remove" "curl"]
+dev-repo: "git://github.com/ygrek/ocurl.git"
 url {
   src: "http://ygrek.org.ua/p/release/ocurl/ocurl-0.7.9.tar.gz"
   checksum: "md5=3ffd81825e4c6f139942a2d6e7543378"

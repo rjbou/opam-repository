@@ -1,4 +1,7 @@
 opam-version: "2.0"
+name: "mysql"
+version: "1.0.4"
+synopsis: "Provides access to mysql databases"
 maintainer: "ygrek@autistici.org"
 authors: [
   "Christian Lindig <lindig@eecs.harvard.edu>"
@@ -6,23 +9,22 @@ authors: [
   "ygrek <ygrek@autistici.org>"
 ]
 homepage: "http://ocaml-mysql.forge.ocamlcore.org"
+depends: [
+  "camlp4"
+  "ocaml" {< "4.03"}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "mysql"]]
-depends: [
-  "ocaml" {< "4.03"}
-  "ocamlfind"
-  "camlp4"
-]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "mysql"]
 depexts: [
   ["libmysqlclient-dev"] {os-distribution = "debian"}
   ["libmysqlclient-dev"] {os-distribution = "ubuntu"}
 ]
-install: [make "install"]
-synopsis: "Provides access to mysql databases"
-flags: light-uninstall
 url {
   src:
     "http://raevnos.pennmush.org/code/ocaml-mysql/ocaml-mysql-1.0.4.tar.gz"

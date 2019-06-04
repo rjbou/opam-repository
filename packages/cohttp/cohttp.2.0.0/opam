@@ -1,14 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: [
-  "Anil Madhavapeddy"
-  "Stefano Zacchiroli"
-  "David Sheets"
-  "Thomas Gazagnaire"
-  "David Scott"
-  "Rudi Grinberg"
-  "Andy Ray"
-]
+name: "cohttp"
+version: "2.0.0"
 synopsis: "An OCaml library for HTTP clients and servers"
 description: """
 Cohttp is an OCaml library for creating HTTP daemons. It has a portable
@@ -26,25 +18,35 @@ You can activate some runtime debugging by setting `COHTTP_DEBUG` to any
 value, and all requests and responses will be written to stderr.  Further
 debugging of the connection layer can be obtained by setting `CONDUIT_DEBUG`
 to any value."""
+maintainer: "anil@recoil.org"
+authors: [
+  "Andy Ray"
+  "Anil Madhavapeddy"
+  "David Scott"
+  "David Sheets"
+  "Rudi Grinberg"
+  "Stefano Zacchiroli"
+  "Thomas Gazagnaire"
+]
 license: "ISC"
 tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/mirage/ocaml-cohttp"
 doc: "https://mirage.github.io/ocaml-cohttp/"
 bug-reports: "https://github.com/mirage/ocaml-cohttp/issues"
 depends: [
-  "ocaml" {>= "4.04.1"}
-  "dune" {build & >= "1.1.0"}
-  "re" {>= "1.7.2"}
-  "uri" {>= "2.0.0"}
-  "fieldslib" {< "v0.13"}
-  "sexplib0" {< "v0.13"}
-  "ppx_fields_conv" {>= "v0.9.0" & < "v0.13"}
-  "ppx_sexp_conv" {>= "v0.9.0" & < "v0.13"}
-  "stringext"
+  "alcotest" {with-test}
   "base64" {>= "3.1.0"}
+  "dune" {build & >= "1.1.0"}
+  "fieldslib" {< "v0.13"}
   "fmt" {with-test}
   "jsonm" {build}
-  "alcotest" {with-test}
+  "ocaml" {>= "4.04.1"}
+  "ppx_fields_conv" {>= "v0.9.0" & < "v0.13"}
+  "ppx_sexp_conv" {>= "v0.9.0" & < "v0.13"}
+  "re" {>= "1.7.2"}
+  "sexplib0" {< "v0.13"}
+  "stringext"
+  "uri" {>= "2.0.0"}
 ]
 build: [
   ["dune" "subst"] {pinned}

@@ -1,15 +1,17 @@
 opam-version: "2.0"
+name: "piqi"
+version: "0.7.0"
+synopsis: "Protocol Buffers, JSON and XML serialization system for OCaml"
 maintainer: "alavrik@piqi.org"
+depends: ["ocaml" "ocamlfind" "piqilib"]
+flags: light-uninstall
 build: make
+install: [make "DESTDIR=%{prefix}%" "install"]
 remove: [
   ["rm" "-f" "%{prefix}%/bin/piqic-ocaml"]
   ["ocamlfind" "remove" "piqirun"]
 ]
-depends: ["ocaml" "ocamlfind" "piqilib"]
 dev-repo: "git://github.com/alavrik/piqi-ocaml"
-install: [make "DESTDIR=%{prefix}%" "install"]
-synopsis: "Protocol Buffers, JSON and XML serialization system for OCaml"
-flags: light-uninstall
 url {
   src: "https://github.com/alavrik/piqi-ocaml/archive/v0.7.0.tar.gz"
   checksum: "md5=23508c56ab170304fd9f58b5f492a2cb"

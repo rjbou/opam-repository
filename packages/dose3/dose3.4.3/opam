@@ -1,19 +1,32 @@
 opam-version: "2.0"
+name: "dose3"
+version: "4.3"
+synopsis: "Dose library (part of Mancoosi tools)"
 maintainer: "pietro.abate@inria.fr"
 authors: [
-  "Pietro Abate"
   "Jaap Boender"
-  "Roberto Di Cosmo"
-  "Johannes Schauer"
-  "Ralf Treinen"
-  "Stefano Zacchiroli"
   "Jakub Zwolakowski"
+  "Johannes Schauer"
   "Olivier Rosello"
+  "Pietro Abate"
+  "Ralf Treinen"
+  "Roberto Di Cosmo"
+  "Stefano Zacchiroli"
 ]
+license: "LGPL-v3+ with OCaml linking exception"
 homepage: "http://www.mancoosi.org/software/"
 bug-reports: "https://gforge.inria.fr/tracker/?group_id=4395"
-license: "LGPL-v3+ with OCaml linking exception"
-dev-repo: "git+https://gforge.inria.fr/git/dose/dose.git"
+depends: [
+  "conf-perl" {build}
+  "cppo" {build & >= "1.1.2"}
+  "cudf" {>= "0.7"}
+  ("extlib" {>= "1.7.0"} | "extlib-compat" {>= "1.7.0"})
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlgraph" {= "1.8.6"}
+  "re" {>= "1.2.2"}
+]
+conflicts: ["dose"]
 build: [
   ["./configure"]
   [make]
@@ -23,21 +36,8 @@ remove: [
   ["./configure"]
   [make "uninstall"]
 ]
-depends: [
-  "ocaml"
-  "ocamlgraph" {= "1.8.6"}
-  "cudf" {>= "0.7"}
-  "conf-perl" {build}
-  ("extlib" {>= "1.7.0"} | "extlib-compat" {>= "1.7.0"})
-  "re" {>= "1.2.2"}
-  "ocamlbuild" {build}
-  "cppo" {build & >= "1.1.2"}
-]
-conflicts: "dose"
-patches: [
-  "0004-Add-unix-as-dependency-to-dose3.common-in-META.in.patch"
-]
-synopsis: "Dose library (part of Mancoosi tools)"
+patches: "0004-Add-unix-as-dependency-to-dose3.common-in-META.in.patch"
+dev-repo: "git+https://gforge.inria.fr/git/dose/dose.git"
 extra-files: [
   "0004-Add-unix-as-dependency-to-dose3.common-in-META.in.patch"
   "md5=618265012624df95902a98f756f1ca13"

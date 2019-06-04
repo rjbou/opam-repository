@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "Jonathan Chan <jyc@fastmail.fm>"
-authors: "Jonathan Chan <jyc@fastmail.fm>"
-homepage: "https://bitbucket.org/jyc/ppx_sexp"
-bug-reports:
-  "https://bitbucket.org/jyc/ppx_sexp/issues"
-license: "BSD 2-Clause"
-dev-repo: "hg+https://bitbucket.org/jyc/ppx_sexp"
-build: ["./build"]
-install: ["./install"]
-remove: ["./uninstall"]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.03.0"}
-  "ocamlfind" {build}
-]
+name: "ppx_sexp"
+version: "0.3.0"
 synopsis:
   "ppx_sexp is a ppx preprocessor for embedding S-expressions in OCaml programs."
 description: """
@@ -43,6 +31,19 @@ If you are embedding atoms, there is a streamlined syntax:
      [%sexp (print [%string "S-expressions: sexp"])]
 
 Unquote-splicing is also supported."""
+maintainer: "Jonathan Chan <jyc@fastmail.fm>"
+authors: "Jonathan Chan <jyc@fastmail.fm>"
+license: "BSD 2-Clause"
+homepage: "https://bitbucket.org/jyc/ppx_sexp"
+bug-reports: "https://bitbucket.org/jyc/ppx_sexp/issues"
+depends: [
+  "ocaml" {>= "4.02.0" & < "4.03.0"}
+  "ocamlfind" {build}
+]
+build: "./build"
+install: "./install"
+remove: "./uninstall"
+dev-repo: "hg+https://bitbucket.org/jyc/ppx_sexp"
 url {
   src: "https://bitbucket.org/jyc/ppx_sexp/get/0.3.0.tar.gz"
   checksum: "md5=afbfb6e6c9eca9032234464703b83588"

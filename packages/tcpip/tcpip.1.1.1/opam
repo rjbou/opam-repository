@@ -1,39 +1,39 @@
 opam-version: "2.0"
-maintainer:   "anil@recoil.org"
-homepage:     "https://github.com/mirage/mirage-tcpip"
-dev-repo: "git+https://github.com/mirage/mirage-tcpip.git"
-bug-reports:  "https://github.com/mirage/mirage-tcpip/issues"
+name: "tcpip"
+version: "1.1.1"
+synopsis: "Userlevel TCP/IP stack"
+maintainer: "anil@recoil.org"
 authors: [
   "Anil Madhavapeddy"
   "Balraj Singh"
-  "Richard Mortier"
   "Nicolas Ojeda Bar"
+  "Richard Mortier"
   "Thomas Gazagnaire"
 ]
-tags: ["org:mirage"]
-
-build:   [make]
-install: [make "install"]
-remove:  ["ocamlfind" "remove" "tcpip"]
-
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-tcpip"
+bug-reports: "https://github.com/mirage/mirage-tcpip/issues"
 depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocamlfind"
   "cstruct" {>= "1.0.1" & < "3.4.0"}
+  "io-page" {< "1.3.0"}
+  "ipaddr" {>= "2.2.0" & < "3.0.0"}
+  "mirage-clock-unix" {>= "1.0.0" & < "1.2.0"}
+  "mirage-console-unix"
+  "mirage-net-unix" {>= "1.1.0" & < "2.3.0"}
   "mirage-types" {= "1.1.1"}
   "mirage-unix" {>= "1.1.0" & <= "2.1.0"}
-  "mirage-console-unix"
-  "mirage-clock-unix" {>= "1.0.0" & < "1.2.0"}
-  "mirage-net-unix" {>= "1.1.0" & < "2.3.0"}
-  "ipaddr" {>= "2.2.0" & < "3.0.0"}
-  "io-page" {< "1.3.0"}
+  "ocaml" {>= "4.00.0"}
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
 conflicts: [
   "lwt" {>= "3.0.0"}
 ]
-synopsis: "Userlevel TCP/IP stack"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "tcpip"]
+dev-repo: "git+https://github.com/mirage/mirage-tcpip.git"
 url {
   src: "https://github.com/mirage/mirage-tcpip/archive/v1.1.1.tar.gz"
   checksum: "md5=eff0be933068ca20a15d5e7473ac0bfc"

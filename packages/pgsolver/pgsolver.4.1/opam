@@ -1,13 +1,26 @@
 opam-version: "2.0"
 name: "pgsolver"
 version: "4.1"
+synopsis:
+  "A collection of tools for generating, manipulating and - most of all - solving parity games."
+description: """
+A collection of tools for generating, manipulating and - most of all -
+solving parity games."""
 maintainer: "opam-devel@lists.ocaml.org"
-authors: [ "Oliver Friedmann"
-           "Martin Lange" ]
+authors: ["Martin Lange" "Oliver Friedmann"]
 license: "BSD-3-clause"
 homepage: "https://github.com/tcsprojects/pgsolver"
-dev-repo: "git://github.com/tcsprojects/pgsolver.git"
 bug-reports: "https://github.com/tcsprojects/pgsolver/issues"
+depends: [
+  ("extlib" | "extlib-compat")
+  "minisat"
+  "ocaml" {>= "4.03.0"}
+  "ocaml-sat-solvers"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {build}
+  "TCSLib" {>= "0.2"}
+]
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -17,23 +30,9 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: [
-  ["ocaml" "%{etc}%/pgsolver/setup.ml" "-C" "%{etc}%/pgsolver" "-uninstall"]
+  "ocaml" "%{etc}%/pgsolver/setup.ml" "-C" "%{etc}%/pgsolver" "-uninstall"
 ]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "TCSLib" {>= "0.2"}
-  ("extlib" | "extlib-compat")
-  "minisat"
-  "ocaml-sat-solvers"
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "ounit" {build}
-]
-synopsis:
-  "A collection of tools for generating, manipulating and - most of all - solving parity games."
-description: """
-A collection of tools for generating, manipulating and - most of all -
-solving parity games."""
+dev-repo: "git://github.com/tcsprojects/pgsolver.git"
 url {
   src: "https://github.com/tcsprojects/pgsolver/archive/v4.1.tar.gz"
   checksum: "md5=db269947469d6236a81bed558cbcc5b6"

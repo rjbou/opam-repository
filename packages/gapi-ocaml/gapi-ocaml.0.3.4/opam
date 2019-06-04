@@ -1,32 +1,6 @@
 opam-version: "2.0"
-maintainer: "Alessandro Strada <alessandro.strada@gmail.com>"
-authors: [ "Alessandro Strada" ]
-license: "MIT"
-homepage: "http://gapi-ocaml.forge.ocamlcore.org"
-dev-repo: "git+https://github.com/astrada/gapi-ocaml.git"
-bug-reports: "https://github.com/astrada/gapi-ocaml/issues"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "gapi-ocaml"]
-]
-depends: [
-  "ocaml" {>= "3.12.0" & < "4.06.0"}
-  "cryptokit"
-  "extlib" | "extlib-compat"
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "ocamlnet" {>= "3.5.1"}
-  "ocurl"
-  "xmlm"
-  "yojson"
-  "ounit" {with-test}
-  "pa_monad_custom" {with-test}
-]
+name: "gapi-ocaml"
+version: "0.3.4"
 synopsis: "A simple OCaml client for Google Services"
 description: """
 gapi-ocaml is a simple, unofficial, OCaml client for Google Services.
@@ -38,7 +12,33 @@ Speed Online API v1, Blogger API v2, Site Verification API v1, AdSense
 Management API v1.4, BigQuery API v2, Drive API v2, Drive API v3,
 Gmail API v1. Google Data Protocol APIs (GData): Google Documents List
 API v3."""
+maintainer: "Alessandro Strada <alessandro.strada@gmail.com>"
+authors: "Alessandro Strada"
+license: "MIT"
+homepage: "http://gapi-ocaml.forge.ocamlcore.org"
+bug-reports: "https://github.com/astrada/gapi-ocaml/issues"
+depends: [
+  "cryptokit"
+  ("extlib" | "extlib-compat")
+  "ocaml" {>= "3.12.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ocamlnet" {>= "3.5.1"}
+  "ocurl"
+  "ounit" {with-test}
+  "pa_monad_custom" {with-test}
+  "xmlm"
+  "yojson"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "gapi-ocaml"]
+dev-repo: "git+https://github.com/astrada/gapi-ocaml.git"
 url {
   src: "https://github.com/astrada/gapi-ocaml/archive/v0.3.4-fix.tar.gz"
   checksum: "md5=f5c3d0a06454f410c9fa9012d7c9554e"

@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer:    "anil@recoil.org"
-homepage:      "https://github.com/mirage/mirage-console"
-bug-reports:   "https://github.com/mirage/mirage-console/issues"
-dev-repo: "git+https://github.com/mirage/mirage-console.git"
-doc:           "https://mirage.github.io/mirage-console/"
-authors:       [ "Anil Madhavapeddy" "David Scott"]
-tags:          [ "org:mirage" "org:xapi-project"]
-license:       "ISC"
-
-build: [
-  [ "jbuilder" "subst" "-p" name] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "mirage-console-lwt" {>= "2.2.0"}
-  "mirage-console-xen-proto"
-  "xen-evtchn"
-  "xen-gnt"
-  "io-page-xen"
-  "mirage-xen" {>= "3.0.2"}
-]
+name: "mirage-console-xen"
+version: "2.3.4"
 synopsis: "Implementations of Mirage consoles, for Unix and Xen"
 description: """
 The Unix version of the console currently uses standard output. The code is in
@@ -62,6 +40,28 @@ there
 ```
 
 Then hit Control+C and it all cleans up."""
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "David Scott"]
+license: "ISC"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/mirage-console"
+doc: "https://mirage.github.io/mirage-console/"
+bug-reports: "https://github.com/mirage/mirage-console/issues"
+depends: [
+  "io-page-xen"
+  "jbuilder" {build & >= "1.0+beta9"}
+  "mirage-console-lwt" {>= "2.2.0"}
+  "mirage-console-xen-proto"
+  "mirage-xen" {>= "3.0.2"}
+  "ocaml" {>= "4.03.0"}
+  "xen-evtchn"
+  "xen-gnt"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-console.git"
 url {
   src:
     "https://github.com/mirage/mirage-console/releases/download/v2.3.4/mirage-console-2.3.4.tbz"

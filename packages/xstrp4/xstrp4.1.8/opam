@@ -1,23 +1,25 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [
-  ["./configure"]
-  [make "all"]
-]
-remove: [["ocamlfind" "remove" "xstrp4"]]
-patches: ["version.patch"]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "camlp4"
-]
-install: [make "install"]
+name: "xstrp4"
+version: "1.8"
 synopsis: "Brace expansion (alias 'interpolation') performed by camlp4"
 description: """
 This camlp4 syntax extension interprets the dollar notation ${name} in
 strings and in included files.  The syntax extension is available both
 for the old and the new camlp4"""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "camlp4"
+  "ocaml" {< "4.06.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make "all"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "xstrp4"]
+patches: "version.patch"
 extra-files: ["version.patch" "md5=63a906fb28d24565f7ef438c41194041"]
 url {
   src: "http://download.camlcity.org/download/xstrp4-1.8.tar.gz"

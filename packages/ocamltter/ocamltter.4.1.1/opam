@@ -1,36 +1,6 @@
 opam-version: "2.0"
+name: "ocamltter"
 version: "4.1.1"
-authors: [
-  "Yoshihiro Imai" "Jun Furuse"
-]
-maintainer: "jun.furuse@gmail.com"
-homepage: "https://github.com/yoshihiro503/ocamltter"
-bug-reports: "https://github.com/yoshihiro503/ocamltter/issues"
-dev-repo: "git+https://github.com/yoshihiro503/ocamltter/ocamltter.git"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-build" ]
-]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "base64" {< "3.0.0"}
-  "ocamlfind" {build}
-  "omake" {build}
-  "cryptokit"
-  "ocurl" {>= "0.5.3"}
-  "spotlib" {>= "3.0.0"}
-  "ppx_orakuda" {>= "3.0.0"}
-  "ppx_meta_conv" {>= "2.4.0" & < "2.6.0"}
-  "tiny_json"
-  "ppx_monadic"
-]
 synopsis: "The OCAMLTTER OAuth1 library and twitter, flickr clients"
 description: """
 OCAMLTTER is an OAuth1 library with a CUI twitter client and a flickr uploader.
@@ -55,6 +25,33 @@ Common twitter commands are accessible via simple functions like:
            - setup ();;            (re)authorize ocamltter
            - let CMD = ...;;       define a your own command CMD
            - help;;                print the help"""
+maintainer: "jun.furuse@gmail.com"
+authors: ["Jun Furuse" "Yoshihiro Imai"]
+homepage: "https://github.com/yoshihiro503/ocamltter"
+bug-reports: "https://github.com/yoshihiro503/ocamltter/issues"
+depends: [
+  "base64" {< "3.0.0"}
+  "cryptokit"
+  "ocaml" {>= "4.03.0"}
+  "ocamlfind" {build}
+  "ocurl" {>= "0.5.3"}
+  "omake" {build}
+  "ppx_meta_conv" {>= "2.4.0" & < "2.6.0"}
+  "ppx_monadic"
+  "ppx_orakuda" {>= "3.0.0"}
+  "spotlib" {>= "3.0.0"}
+  "tiny_json"
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
+dev-repo: "git+https://github.com/yoshihiro503/ocamltter/ocamltter.git"
 url {
   src: "https://github.com/yoshihiro503/ocamltter/archive/4.1.1.tar.gz"
   checksum: "md5=eb27659f8c95029a8c91cdd2b8e5e62a"

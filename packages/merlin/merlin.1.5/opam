@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "merlin"
+version: "1.5"
+synopsis:
+  "Editor helper, provides completion, typing and sources browsing in Vim and Emacs"
 maintainer: "defree@gmail.com"
+depends: [
+  "menhir"
+  "ocaml" {>= "4.00.1" & < "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "yojson"
+]
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [[make "uninstall"]]
-depends: [
-  "ocaml" {>= "4.00.1" & < "4.02.0"}
-  "ocamlfind"
-  "yojson"
-  "menhir"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/the-lambda-church/merlin"
 install: [make "install"]
-synopsis:
-  "Editor helper, provides completion, typing and sources browsing in Vim and Emacs"
+remove: [make "uninstall"]
+dev-repo: "git://github.com/the-lambda-church/merlin"
 url {
   src: "https://github.com/the-lambda-church/merlin/archive/v1.5.tar.gz"
   checksum: "md5=98f0bfd0e21dcdd03f032b3fa1590a6e"

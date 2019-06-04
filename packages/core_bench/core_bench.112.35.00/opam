@@ -1,28 +1,28 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/core_bench"
-build: [
-  [make]
-]
-remove: [["ocamlfind" "remove" "core_bench"]]
-depends: [
-  "ocaml" {>= "4.02.1" & < "4.03"}
-  "camlp4"
-  "core" {>= "112.35.00" & < "113.01.00"}
-  "bin_prot" {>= "112.35.00" & < "113.01.00"}
-  "sexplib" {>= "112.35.00" & < "113.01.00"}
-  "fieldslib" {>= "109.20.00" & < "113.01.00"}
-  "comparelib" {>= "109.27.00" & < "113.01.00"}
-  "pa_ounit" {>= "112.35.00" & < "113.01.00"}
-  "textutils" {>= "112.17.00" & < "112.18.00"}
-  "ocamlbuild" {build}
-]
-bug-reports: "https://github.com/janestreet/core_bench/issues"
-dev-repo: "git+https://github.com/janestreet/core_bench.git"
-install: [[make "install"]]
+name: "core_bench"
+version: "112.35.00"
 synopsis: "Benchmarking library"
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+homepage: "https://github.com/janestreet/core_bench"
+bug-reports: "https://github.com/janestreet/core_bench/issues"
+depends: [
+  "bin_prot" {>= "112.35.00" & < "113.01.00"}
+  "camlp4"
+  "comparelib" {>= "109.27.00" & < "113.01.00"}
+  "core" {>= "112.35.00" & < "113.01.00"}
+  "fieldslib" {>= "109.20.00" & < "113.01.00"}
+  "ocaml" {>= "4.02.1" & < "4.03"}
+  "ocamlbuild" {build}
+  "pa_ounit" {>= "112.35.00" & < "113.01.00"}
+  "sexplib" {>= "112.35.00" & < "113.01.00"}
+  "textutils" {>= "112.17.00" & < "112.18.00"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "core_bench"]
+dev-repo: "git+https://github.com/janestreet/core_bench.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/112.35/files/core_bench-112.35.00.tar.gz"

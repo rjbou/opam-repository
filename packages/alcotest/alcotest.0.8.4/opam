@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "alcotest"
+version: "0.8.4"
 synopsis: "Alcotest is a lightweight and colourful test framework."
 description: """
 Alcotest exposes simple interface to perform unit tests. It exposes
@@ -17,12 +19,12 @@ homepage: "https://github.com/mirage/alcotest/"
 doc: "https://mirage.github.io/alcotest/"
 bug-reports: "https://github.com/mirage/alcotest/issues/"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "fmt" {>= "0.8.0"}
   "astring"
-  "result"
   "cmdliner"
+  "fmt" {>= "0.8.0"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml" {>= "4.02.3"}
+  "result"
   "uuidm"
 ]
 build: [

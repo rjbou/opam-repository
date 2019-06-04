@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "Christophe Raffalli <raffalli@univ-savoie.fr>"
-bug-reports:  "http://lama.univ-savoie.fr/mantis/search.php?project_id=2"
-authors:
-  [ "Christophe Raffalli <raffalli@univ-savoie.fr>" ]
-homepage: "http://lama.univ-savoie.fr/~raffalli/glsurf.html"
-license: "GPL-3.0"
-dev-repo: "darcs+https://lama.univ-savoie.fr/~raffalli/glsurf/repos"
-build: [make]
-install: [make "install" "BINDIR=%{bin}%" "DOCDIR=%{doc}%"]
-remove: [
-  ["rm" "%{bin}%/glsurf"]
-  ["rm" "-rf" "%{doc}%/glsurf"]
-]
-depends: [
-  "ocaml"
-  "camlimages"
-  "base-bytes"
-  "lablgl"
-  "camlp4" {build}
-  "ocamlfind" {build}
-  "num"
-]
+name: "glsurf"
+version: "3.3.1"
 synopsis: "GlSurf, implicit curves and surfaces drawing and discretization"
 description: """
 GlSurf is a program (similar to Surf) to draw surfaces and curves from
@@ -33,7 +13,28 @@ power of OpenGl to animate the surface, use transparency, etc ...
 
 Authors:
 	Christophe Raffalli"""
+maintainer: "Christophe Raffalli <raffalli@univ-savoie.fr>"
+authors: "Christophe Raffalli <raffalli@univ-savoie.fr>"
+license: "GPL-3.0"
+homepage: "http://lama.univ-savoie.fr/~raffalli/glsurf.html"
+bug-reports: "http://lama.univ-savoie.fr/mantis/search.php?project_id=2"
+depends: [
+  "base-bytes"
+  "camlimages"
+  "camlp4" {build}
+  "lablgl"
+  "num"
+  "ocaml"
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: make
+install: [make "install" "BINDIR=%{bin}%" "DOCDIR=%{doc}%"]
+remove: [
+  ["rm" "%{bin}%/glsurf"]
+  ["rm" "-rf" "%{doc}%/glsurf"]
+]
+dev-repo: "darcs+https://lama.univ-savoie.fr/~raffalli/glsurf/repos"
 url {
   src: "https://lama.univ-savoie.fr/~raffalli/glsurf/glsurf-3.3.1.tar.gz"
   checksum: "md5=f2084bbf0cd0a31dc9c22fe4e9b8b5be"

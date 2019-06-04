@@ -1,43 +1,42 @@
 opam-version: "2.0"
+name: "xenctrl"
+version: "0.9.32"
+synopsis: "Low-level Xen hypercall bindings."
+description:
+  "This package should compile and work against Xen 4.2, 4.3, 4.4, 4.5, 4.6 and 4.7."
 maintainer: "dave@recoil.org"
 authors: [
-  "David Scott"
-  "Jonathan Ludlam"
   "Andrew Cooper"
   "Bob Ball"
+  "David Scott"
   "Euan Harris"
   "John Else"
+  "Jonathan Ludlam"
   "Mike McClurg"
   "Rob Hoes"
   "Si Beaumont"
   "Thomas Sanders"
   "Vincent Bernadoff"
 ]
+license: "LGPL"
+tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/xapi-project/ocaml-xen-lowlevel-libs"
 bug-reports: "https://github.com/xapi-project/ocaml-xen-lowlevel-libs/issues"
-license: "LGPL"
-dev-repo: "git+https://github.com/xapi-project/ocaml-xen-lowlevel-libs.git"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
+depends: [
+  "cmdliner"
+  "lwt"
+  "ocaml" {>= "4.00.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
 ]
 build: [
   ["./configure"]
   [make]
 ]
-install: [
-  [make "install" "BINDIR=%{bin}%"]
-]
+install: [make "install" "BINDIR=%{bin}%"]
 remove: [
   ["./configure"]
   [make "uninstall"]
-]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  "lwt"
-  "cmdliner"
-  "ocamlbuild" {build}
 ]
 depexts: [
   ["libxen-dev" "uuid-dev"] {os-distribution = "debian"}
@@ -45,9 +44,7 @@ depexts: [
   ["xen-devel"] {os-distribution = "centos"}
   ["xen-dom0-libs-devel" "xen-libs-devel"] {os = "xenserver"}
 ]
-synopsis: "Low-level Xen hypercall bindings."
-description:
-  "This package should compile and work against Xen 4.2, 4.3, 4.4, 4.5, 4.6 and 4.7."
+dev-repo: "git+https://github.com/xapi-project/ocaml-xen-lowlevel-libs.git"
 url {
   src:
     "https://github.com/xapi-project/ocaml-xen-lowlevel-libs/archive/v0.9.32.tar.gz"

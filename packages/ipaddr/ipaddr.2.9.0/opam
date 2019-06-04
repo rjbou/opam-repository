@@ -1,7 +1,8 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: ["David Sheets" "Anil Madhavapeddy" "Hugo Heuzard"]
-synopsis: "A library for manipulation of IP (and MAC) address representations"
+name: "ipaddr"
+version: "2.9.0"
+synopsis:
+  "A library for manipulation of IP (and MAC) address representations"
 description: """
 Features:
  * Depends only on sexplib (conditionalization under consideration)
@@ -18,22 +19,22 @@ Features:
  * IPv4-mapped addresses in IPv6 (::ffff:0:0/96) are an embedding of IPv4
  * MAC-48 (Ethernet) address support
  * `Macaddr` is a `Map.OrderedType`
- * All types have sexplib serializers/deserializers
-"""
-
+ * All types have sexplib serializers/deserializers"""
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "David Sheets" "Hugo Heuzard"]
 license: "ISC"
 tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/mirage/ocaml-ipaddr"
 doc: "https://mirage.github.io/ocaml-ipaddr/"
 bug-reports: "https://github.com/mirage/ocaml-ipaddr/issues"
 depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build & >= "1.6.0"}
   "base-bytes"
+  "base-unix"
+  "dune" {build & >= "1.6.0"}
+  "ocaml" {>= "4.03.0"}
+  "ounit" {with-test}
   "ppx_sexp_conv" {>= "v0.9.0" & < "v0.13"}
   "sexplib" {< "v0.13"}
-  "base-unix"
-  "ounit" {with-test}
 ]
 build: [
   ["dune" "subst"] {pinned}

@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "Yann Hamdaoui <yann.hamdaoui@gmail.com>"
-authors: "Yann Hamdaoui <yann.hamdaoui@gmail.com>"
-homepage: "https://github.com/yannham/mechaml"
-bug-reports: "https://github.com/yannham/mechaml/issues"
-license: "LGPL v3"
-dev-repo: "git://github.com/yannham/mechaml.git"
-build: [
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
-  ["./configure" "--enable-tests"] {with-test}
-  [make "test"] {with-test}
-  ["make doc"] {with-doc}
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "mechaml"]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "cohttp" {>= "0.21.0" & < "0.99"}
-  "lwt"
-  "uri"
-  "lambdasoup" {< "0.7.0"}
-  "alcotest" {with-test & < "0.8.0"}
-]
+name: "mechaml"
+version: "0.1"
 synopsis: "A Mechanize-like web scraping library"
 description: """
 Mechaml is a simple web scraping library that allows to :
@@ -36,7 +13,32 @@ Mechaml is built on top of existing libraries that alreay provide most of the
 interesting features : Cohttp and Lwt for asynchronous I/O and HTTP handling,
 and Lambdasoup to parse HTML. It provides an interface that handles the
 interactions between these and add useful features."""
+maintainer: "Yann Hamdaoui <yann.hamdaoui@gmail.com>"
+authors: "Yann Hamdaoui <yann.hamdaoui@gmail.com>"
+license: "LGPL v3"
+homepage: "https://github.com/yannham/mechaml"
+bug-reports: "https://github.com/yannham/mechaml/issues"
+depends: [
+  "alcotest" {with-test & < "0.8.0"}
+  "cohttp" {>= "0.21.0" & < "0.99"}
+  "lambdasoup" {< "0.7.0"}
+  "lwt"
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "uri"
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+  ["./configure" "--enable-tests"] {with-test}
+  [make "test"] {with-test}
+  ["make doc"] {with-doc}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "mechaml"]
+dev-repo: "git://github.com/yannham/mechaml.git"
 url {
   src: "https://github.com/yannham/mechaml/archive/opam-release-0.1.tar.gz"
   checksum: "md5=9294b88d7fe4ce3b42b9de4363827681"

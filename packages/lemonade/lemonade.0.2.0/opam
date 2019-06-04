@@ -1,36 +1,33 @@
 opam-version: "2.0"
+name: "lemonade"
+version: "0.2.0"
+synopsis: "A monad library with bubbles"
+description: "WWW: https://github.com/michipili/lemonade"
 maintainer: "michipili@gmail.com"
 authors: "Michael Grünewald"
 license: "CeCILL-B"
+tags: ["monad" "pattern"]
 homepage: "https://github.com/michipili/lemonade"
 bug-reports: "https://github.com/michipili/lemonade/issues"
-dev-repo: "git+https://github.com/michipili/lemonade.git"
-tags: [
-  "pattern"
-  "monad"
-]
-build: [
-  ["./configure" "--prefix" prefix]
-  [conf-bmake:path "-I%{bsdowl:share}%" "all"]
-]
-install: [
-  [conf-bmake:path "-I%{bsdowl:share}%" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "lemonade"]
-  ["rm" "-rf" "%{share}%/doc/lemonade"]
-]
 depends: [
-  "ocaml"
   "broken" {>= "0.4.2"}
   "bsdowl" {>= "3.0.0"}
   "conf-bmake"
   "mixture" {= "0.2.0"}
+  "ocaml"
   "ocamlfind"
 ]
-synopsis: "A monad library with bubbles"
-description: "WWW: https://github.com/michipili/lemonade"
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [conf-bmake:path "-I%{bsdowl:share}%" "all"]
+]
+install: [conf-bmake:path "-I%{bsdowl:share}%" "install"]
+remove: [
+  ["ocamlfind" "remove" "lemonade"]
+  ["rm" "-rf" "%{share}%/doc/lemonade"]
+]
+dev-repo: "git+https://github.com/michipili/lemonade.git"
 url {
   src:
     "https://github.com/michipili/lemonade/releases/download/v0.2.0/lemonade-0.2.0.tar.xz"

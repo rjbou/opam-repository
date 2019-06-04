@@ -1,11 +1,13 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.04.2+fPIC"
 synopsis: "OCaml 4.04.2 compiled with -fPIC runtime libs"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.04.2" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
   "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.04.2" & post}
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler

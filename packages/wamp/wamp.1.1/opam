@@ -1,10 +1,28 @@
 opam-version: "2.0"
+name: "wamp"
+version: "1.1"
+synopsis: "Web Application Messaging Protocol (WAMP) library"
+description: """
+WAMP is a routed protocol that provides two messaging patterns:
+Publish & Subscribe and routed Remote Procedure Calls.  It is intended
+to connect application components in distributed applications.  WAMP
+uses WebSocket as its default transport, but can be transmitted via
+any other protocol that allows for ordered, reliable, bi-directional,
+and message-oriented communications."""
 maintainer: "Vincent Bernardoff <vb@luminar.eu.org>"
 authors: "Vincent Bernardoff <vb@luminar.eu.org>"
+license: "ISC"
 homepage: "https://github.com/vbmithr/ocaml-wamp"
 bug-reports: "https://github.com/vbmithr/ocaml-wamp/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/vbmithr/ocaml-wamp.git"
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "result"
+  "topkg" {build}
+  "uri"
+]
+depopts: ["msgpck" "yojson"]
 build: [
   "ocaml"
   "pkg/pkg.ml"
@@ -16,23 +34,7 @@ build: [
   "--with-msgpck"
   "%{msgpck:installed}%"
 ]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "result"
-  "uri"
-]
-depopts: ["yojson" "msgpck"]
-synopsis: "Web Application Messaging Protocol (WAMP) library"
-description: """
-WAMP is a routed protocol that provides two messaging patterns:
-Publish & Subscribe and routed Remote Procedure Calls.  It is intended
-to connect application components in distributed applications.  WAMP
-uses WebSocket as its default transport, but can be transmitted via
-any other protocol that allows for ordered, reliable, bi-directional,
-and message-oriented communications."""
+dev-repo: "git+https://github.com/vbmithr/ocaml-wamp.git"
 url {
   src: "https://github.com/vbmithr/ocaml-wamp/archive/1.1.tar.gz"
   checksum: "md5=8bde63fa1d63370da36248501eb3b285"

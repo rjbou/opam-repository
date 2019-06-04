@@ -1,30 +1,6 @@
 opam-version: "2.0"
-maintainer:   "Gabriel Radanne <drupyog@zoho.com>"
-authors:      [ "Thomas Gazagnaire"
-                "Anil Madhavapeddy"
-                "Dave Scott"
-                "Thomas Leonard"
-                "Gabriel Radanne" ]
-homepage:     "https://github.com/mirage/functoria"
-bug-reports:  "https://github.com/mirage/functoria/issues"
-dev-repo: "git+https://github.com/mirage/functoria.git"
-doc:          "https://mirage.github.io/functoria/"
-license:      "ISC"
-tags:         ["org:mirage"]
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.02"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "cmdliner" {>= "0.9.8"}
-  "fmt"
-]
-conflicts: [
-  "functoria" {< "2.0.0"}
-]
+name: "functoria-runtime"
+version: "2.1.0"
 synopsis: "A DSL to organize functor applications"
 description: """
 [![Build Status](https://travis-ci.org/mirage/functoria.svg)](https://travis-ci.org/mirage/functoria)
@@ -144,6 +120,33 @@ Phases 1. to 4. are also applied for the `clean` command.
 
 [mirage]: https://github.com/mirage/mirage
 [mirage-skeleton]: https://github.com/mirage/mirage-skeleton"""
+maintainer: "Gabriel Radanne <drupyog@zoho.com>"
+authors: [
+  "Anil Madhavapeddy"
+  "Dave Scott"
+  "Gabriel Radanne"
+  "Thomas Gazagnaire"
+  "Thomas Leonard"
+]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/functoria"
+doc: "https://mirage.github.io/functoria/"
+bug-reports: "https://github.com/mirage/functoria/issues"
+depends: [
+  "cmdliner" {>= "0.9.8"}
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml" {>= "4.02"}
+]
+conflicts: [
+  "functoria" {< "2.0.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/functoria.git"
 url {
   src:
     "https://github.com/mirage/functoria/releases/download/2.1.0/functoria-2.1.0.tbz"

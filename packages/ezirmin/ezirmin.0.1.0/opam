@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer:   "KC Sivaramakrishnan <sk826@cl.cam.ac.uk>"
-authors:      ["KC Sivaramakrishnan <sk826@cl.cam.ac.uk>"]
-homepage:     "https://github.com/kayceesrk/ezirmin"
-doc:          "https://kayceesrk.github.io/ezirmin/"
-license:      "ISC"
-dev-repo: "git+https://github.com/kayceesrk/ezirmin.git"
-bug-reports:  "https://github.com/kayceesrk/ezirmin/issues"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "lwt"
-  "git-unix" {< "1.10.0"}
-  "irmin" {= "0.12.0"}
-  "irmin-watcher"
-  "ptime"
-  "ppx_jane" {< "v0.13"}
-]
-build: [
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%" ]
+name: "ezirmin"
+version: "0.1.0"
 synopsis: "An easy interface on top of the Irmin library."
 description: """
 Ezirmin is an easy interface on top of the
@@ -101,6 +81,26 @@ The backends available are:
 * Git in-memory backend
 
 Ezirmin is distributed under the ISC license."""
+maintainer: "KC Sivaramakrishnan <sk826@cl.cam.ac.uk>"
+authors: "KC Sivaramakrishnan <sk826@cl.cam.ac.uk>"
+license: "ISC"
+homepage: "https://github.com/kayceesrk/ezirmin"
+doc: "https://kayceesrk.github.io/ezirmin/"
+bug-reports: "https://github.com/kayceesrk/ezirmin/issues"
+depends: [
+  "git-unix" {< "1.10.0"}
+  "irmin" {= "0.12.0"}
+  "irmin-watcher"
+  "lwt"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_jane" {< "v0.13"}
+  "ptime"
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/kayceesrk/ezirmin.git"
 url {
   src:
     "https://github.com/kayceesrk/ezirmin/releases/download/0.1.0/ezirmin-0.1.0.tbz"

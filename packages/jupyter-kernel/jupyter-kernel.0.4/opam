@@ -1,27 +1,29 @@
 opam-version: "2.0"
+name: "jupyter-kernel"
+version: "0.4"
 synopsis: "Library to write jupyter kernels (interactive notebooks)"
 maintainer: "simon.cruanes.2007@m4x.org"
-authors: ["Simon Cruanes" "Andrew Ray"]
-tags: ["jupyter" "ipython"]
+authors: ["Andrew Ray" "Simon Cruanes"]
+tags: ["ipython" "jupyter"]
 homepage: "https://github.com/ocaml-jupyter/jupyter-kernel"
 bug-reports: "https://github.com/ocaml-jupyter/jupyter-kernel/issues"
 depends: [
-  "dune" {build}
-  "odoc" {with-doc}
-  "base-bytes"
-  "result"
-  "base-unix"
-  "zmq"
   "atdgen"
-  "yojson"
-  "uuidm"
-  "lwt"
-  "lwt_ppx"
-  "lwt-zmq"
+  "base-bytes"
+  "base-unix"
   "digestif"
+  "dune" {build}
   "ISO8601"
-  "uutf"
+  "lwt"
+  "lwt-zmq"
+  "lwt_ppx"
   "ocaml" {>= "4.02.0"}
+  "odoc" {with-doc}
+  "result"
+  "uuidm"
+  "uutf"
+  "yojson"
+  "zmq"
 ]
 depopts: ["tyxml"]
 build: [

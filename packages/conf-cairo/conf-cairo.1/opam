@@ -1,29 +1,35 @@
 opam-version: "2.0"
-maintainer: "blue-prawn"
-homepage: "http://cairographics.org/"
-authors: ["Keith Packard" "Carl Worth" "Behdad Esfahbod"]
-license: "LGPL v2.1, or MPL v1.1"
-build: [
-  ["pkg-config" "cairo"] {os != "macos"}
-  ["sh" "-exc"
-   "export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/; pkg-config --libs cairo"]
-   {os = "macos" & os-distribution = "homebrew"}
-]
-depends: ["conf-pkg-config" {build}]
-depexts: [
-  ["libcairo2-dev"] {os-distribution = "debian"}
-  ["libcairo2-dev"] {os-distribution = "ubuntu"}
-  ["libcairo-devel"] {os-distribution = "mageia"}
-  ["cairo" "cairo-devel"] {os-distribution = "centos"}
-  ["cairo-devel"] {os-distribution = "fedora"}
-  ["cairo-devel"] {os-family = "suse"}
-  ["cairo-dev"] {os-distribution = "alpine"}
-  ["graphics/cairo"] {os = "freebsd"}
-  ["graphics/cairo"] {os = "openbsd"}
-  ["cairo"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "conf-cairo"
+version: "1"
 synopsis: "Virtual package relying on a Cairo system installation"
 description:
   "This package can only install if the cairo lib is installed on the system."
+maintainer: "blue-prawn"
+authors: ["Behdad Esfahbod" "Carl Worth" "Keith Packard"]
+license: "LGPL v2.1, or MPL v1.1"
+homepage: "http://cairographics.org/"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: [
+  ["pkg-config" "cairo"] {os != "macos"}
+  [
+    "sh"
+    "-exc"
+    "export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig/; pkg-config --libs cairo"
+  ] {os = "macos" & os-distribution = "homebrew"}
+]
+depexts: [
+  ["cairo"] {os = "macos" & os-distribution = "homebrew"}
+  ["cairo" "cairo-devel"] {os-distribution = "centos"}
+  ["cairo-dev"] {os-distribution = "alpine"}
+  ["cairo-devel"] {os-distribution = "fedora"}
+  ["cairo-devel"] {os-family = "suse"}
+  ["graphics/cairo"] {os = "freebsd"}
+  ["graphics/cairo"] {os = "openbsd"}
+  ["libcairo-devel"] {os-distribution = "mageia"}
+  ["libcairo2-dev"] {os-distribution = "debian"}
+  ["libcairo2-dev"] {os-distribution = "ubuntu"}
+]

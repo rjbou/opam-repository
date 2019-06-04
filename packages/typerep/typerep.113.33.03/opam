@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "typerep"
+version: "113.33.03"
+synopsis: "typerep is a library for runtime types."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
 homepage: "https://github.com/janestreet/typerep"
 bug-reports: "https://github.com/janestreet/typerep/issues"
-dev-repo: "git+https://github.com/janestreet/typerep.git"
-license: "Apache-2.0"
+depends: [
+  "js-build-tools" {build & >= "113.33.04" & < "113.34.00"}
+  "ocaml" {= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.3.2"}
+]
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-depends: [
-  "ocaml" {= "4.02.3"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build & >= "1.3.2"}
-  "js-build-tools" {build & >= "113.33.04" & < "113.34.00"}
-]
-synopsis: "typerep is a library for runtime types."
+dev-repo: "git+https://github.com/janestreet/typerep.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/113.33/files/typerep-113.33.03.tar.gz"

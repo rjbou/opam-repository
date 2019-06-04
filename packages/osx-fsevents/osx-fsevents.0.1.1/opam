@@ -1,26 +1,28 @@
 opam-version: "2.0"
-maintainer: "sheets@alum.mit.edu"
-authors: ["David Sheets" "Thomas Gazagnaire"]
-homepage: "https://github.com/dsheets/ocaml-osx-fsevents"
-bug-reports: "https://github.com/dsheets/ocaml-osx-fsevents/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/dsheets/ocaml-osx-fsevents.git"
-build: [make "build"]
-install: [make "install"]
-remove: [make "uninstall"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "alcotest" {with-test}
-  "ctypes" {>= "0.4.0"}
-  "osx-cf"
-  "cmdliner"
-]
-depopts: "lwt"
-available: os = "macos"
+name: "osx-fsevents"
+version: "0.1.1"
 synopsis: "OS X FSevents bindings"
 description:
   "osx-fsevents includes event stream resumption and an optional lwt sublibrary."
+maintainer: "sheets@alum.mit.edu"
+authors: ["David Sheets" "Thomas Gazagnaire"]
+license: "ISC"
+homepage: "https://github.com/dsheets/ocaml-osx-fsevents"
+bug-reports: "https://github.com/dsheets/ocaml-osx-fsevents/issues"
+depends: [
+  "alcotest" {with-test}
+  "cmdliner"
+  "ctypes" {>= "0.4.0"}
+  "ocaml"
+  "ocamlfind" {build}
+  "osx-cf"
+]
+depopts: ["lwt"]
+available: os = "macos"
+build: [make "build"]
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/dsheets/ocaml-osx-fsevents.git"
 url {
   src: "https://github.com/dsheets/ocaml-osx-fsevents/archive/0.1.1.tar.gz"
   checksum: "md5=ab59150a154ed278921998f41e58260a"

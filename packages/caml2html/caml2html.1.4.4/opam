@@ -1,31 +1,26 @@
 opam-version: "2.0"
+name: "caml2html"
+version: "1.4.4"
+synopsis: "Produce ready-to-go HTML files"
 maintainer: "martin@mjambon.com"
-authors: [
-  "Sébastien Ailleret"
-  "Martin Jambon"
-]
+authors: ["Martin Jambon" "Sébastien Ailleret"]
+license: "GPL"
 homepage: "http://mjambon.com/caml2html.html"
 bug-reports: "https://github.com/mjambon/caml2html/issues"
-dev-repo: "git+https://github.com/mjambon/caml2html.git"
-license: "GPL"
+depends: [
+  "camlmix"
+  "ocaml" {>= "4.00.0" & < "4.07.0"}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["mkdir" "-p" bin]
   [make]
   [make "lib"]
 ]
-install: [
-  [make "install" "PREFIX=%{prefix}%"]
-]
-remove: [
-  ["ocamlfind" "remove" "caml2html"]
-]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.07.0"}
-  "ocamlfind"
-  "camlmix"
-]
-synopsis: "Produce ready-to-go HTML files"
-flags: light-uninstall
+install: [make "install" "PREFIX=%{prefix}%"]
+remove: ["ocamlfind" "remove" "caml2html"]
+dev-repo: "git+https://github.com/mjambon/caml2html.git"
 extra-files: ["caml2html.install" "md5=9c6143ea09a2fd5a79ab26957e528433"]
 url {
   src: "https://github.com/mjambon/caml2html/tarball/v1.4.4"

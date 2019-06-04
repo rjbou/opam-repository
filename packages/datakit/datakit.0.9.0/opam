@@ -1,54 +1,6 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      ["Thomas Leonard" "Magnus Skjegstad"
-               "David Scott" "Thomas Gazagnaire"]
-license:      "Apache"
-homepage:     "https://github.com/docker/datakit"
-bug-reports:  "https://github.com/docker/datakit/issues"
-dev-repo: "git+https://github.com/docker/datakit.git"
-doc:          "https://docker.github.io/datakit/"
-
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "cmdliner" {< "1.0.0"}
-  "rresult"
-  "astring"
-  "fmt"
-  "asetmap"
-  "git" {>= "1.9.3"}
-  "mirage-tc"
-  "uri"
-  "mirage-types" {< "3.0.0"}
-  "irmin" {= "0.12.0"}
-  "camlzip" {>= "1.06"}
-  "cstruct" {>= "2.2"}
-  "result"
-  "lwt" {>= "2.7.0"}
-  "conduit" {< "0.99"}
-  "mirage-flow"
-  "cohttp"
-  "named-pipe" {>= "0.4.0"}
-  "hvsock" {>= "0.8.1" & < "0.14.0"}
-  "logs" {>= "0.5.0"}
-  "win-eventlog"
-  "asl" {>= "0.10"}
-  "mtime" {< "1.0.0"}
-  "irmin-watcher" {>= "0.2.0"}
-  "prometheus-app"
-  "datakit-server" {>= "0.9.0" & < "0.10.0"}
-  "datakit-client" {with-test & >= "0.9.0" & < "0.10.0"}
-  "datakit-github" {with-test & >= "0.9.0" & < "0.10.0"}
-  "alcotest" {with-test & >= "0.7.0" & < "0.8.0"}
-]
+name: "datakit"
+version: "0.9.0"
 synopsis: "Orchestrate applications using a Git-like dataflow"
 description: """
 *DataKit* is a tool to orchestrate applications using a Git-like dataflow. It
@@ -61,6 +13,56 @@ layer for [HyperKit](http://github.com/docker/hyperkit), the
 hypervisor component of
 [Docker for Mac and Windows](https://blog.docker.com/2016/03/docker-for-mac-windows-beta/), and
 for the [DataKitCI][] continuous integration system."""
+maintainer: "thomas@gazagnaire.org"
+authors: [
+  "David Scott" "Magnus Skjegstad" "Thomas Gazagnaire" "Thomas Leonard"
+]
+license: "Apache"
+homepage: "https://github.com/docker/datakit"
+doc: "https://docker.github.io/datakit/"
+bug-reports: "https://github.com/docker/datakit/issues"
+depends: [
+  "alcotest" {with-test & >= "0.7.0" & < "0.8.0"}
+  "asetmap"
+  "asl" {>= "0.10"}
+  "astring"
+  "camlzip" {>= "1.06"}
+  "cmdliner" {< "1.0.0"}
+  "cohttp"
+  "conduit" {< "0.99"}
+  "cstruct" {>= "2.2"}
+  "datakit-client" {with-test & >= "0.9.0" & < "0.10.0"}
+  "datakit-github" {with-test & >= "0.9.0" & < "0.10.0"}
+  "datakit-server" {>= "0.9.0" & < "0.10.0"}
+  "fmt"
+  "git" {>= "1.9.3"}
+  "hvsock" {>= "0.8.1" & < "0.14.0"}
+  "irmin" {= "0.12.0"}
+  "irmin-watcher" {>= "0.2.0"}
+  "logs" {>= "0.5.0"}
+  "lwt" {>= "2.7.0"}
+  "mirage-flow"
+  "mirage-tc"
+  "mirage-types" {< "3.0.0"}
+  "mtime" {< "1.0.0"}
+  "named-pipe" {>= "0.4.0"}
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "prometheus-app"
+  "result"
+  "rresult"
+  "topkg" {build}
+  "uri"
+  "win-eventlog"
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/docker/datakit.git"
 url {
   src:
     "https://github.com/docker/datakit/releases/download/0.9.0/datakit-0.9.0.tbz"

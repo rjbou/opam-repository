@@ -1,26 +1,33 @@
 opam-version: "2.0"
+name: "opam-client"
+version: "2.0.1"
+synopsis: ""
+description: """
+opam 2.0 development libraries
+
+Actions on the opam root, switches, installations, and front-end."""
 maintainer: "opam-devel@lists.ocaml.org"
 authors: [
-  "Vincent Bernardoff <vb@luminar.eu.org>"
+  "Anil Madhavapeddy <anil@recoil.org>"
+  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
+  "Frederic Tuong <tuong@users.gforge.inria.fr>"
+  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
   "Raja Boujbel <raja.boujbel@ocamlpro.com>"
+  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
   "Roberto Di Cosmo <roberto@dicosmo.org>"
   "Thomas Gazagnaire <thomas@gazagnaire.org>"
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
-  "Anil Madhavapeddy <anil@recoil.org>"
-  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
-  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
-  "Frederic Tuong <tuong@users.gforge.inria.fr>"
+  "Vincent Bernardoff <vb@luminar.eu.org>"
 ]
 homepage: "https://opam.ocaml.org/"
 bug-reports: "https://github.com/ocaml/opam/issues"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "opam-state" {= "2.0.1"}
-  "opam-solver" {= "2.0.1"}
-  "re" {>= "1.7.2"}
   "cmdliner" {>= "0.9.8"}
   "jbuilder" {build & >= "1.0+beta20"}
+  "ocaml" {>= "4.02.3"}
+  "opam-solver" {= "2.0.1"}
+  "opam-state" {= "2.0.1"}
+  "re" {>= "1.7.2"}
 ]
 build: [
   ["./configure" "--disable-checks" "--prefix" prefix]
@@ -34,8 +41,3 @@ url {
     "sha512=d71c362d70a6b6cb9fe54cc43bfbea8079cca05d4721a7dda951196f543a1ff5af81399a246e0cd68bc590c7bdca388d96c7127217ed637261957047ce725516"
   ]
 }
-description:"""
-opam 2.0 development libraries
-
-Actions on the opam root, switches, installations, and front-end.
-"""

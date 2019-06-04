@@ -1,28 +1,28 @@
 opam-version: "2.0"
-maintainer:   "Mindy Preston <meetup@yomimono.org>"
-authors:      ["Mindy Preston <meetup@yomimono.org>"]
-homepage:     "https://github.com/mirage/mirage-stack"
-doc:          "https://mirage.github.io/mirage-stack/"
-license:      "ISC"
-dev-repo: "git+https://github.com/mirage/mirage-stack.git"
-bug-reports:  "https://github.com/mirage/mirage-stack/issues"
-tags:         ["org:mirage"]
-
-build: ["ocaml" "pkg/pkg.ml" "build" "-n" name "--pinned" "%{pinned}%" ]
-
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.8.0"}
-  "mirage-stack" {= "1.0.0"}
-  "ipaddr"
-  "lwt"
-  "cstruct" {>= "1.9.0"}
-]
+name: "mirage-stack-lwt"
+version: "1.0.0"
 synopsis: "Module type definitions for network stacks."
 description:
   "This package is primarily useful in the context of Mirage projects."
+maintainer: "Mindy Preston <meetup@yomimono.org>"
+authors: "Mindy Preston <meetup@yomimono.org>"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-stack"
+doc: "https://mirage.github.io/mirage-stack/"
+bug-reports: "https://github.com/mirage/mirage-stack/issues"
+depends: [
+  "cstruct" {>= "1.9.0"}
+  "ipaddr"
+  "lwt"
+  "mirage-stack" {= "1.0.0"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build & >= "0.8.0"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "-n" name "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/mirage/mirage-stack.git"
 url {
   src:
     "https://github.com/mirage/mirage-stack/releases/download/1.0.0/mirage-stack-lwt-1.0.0.tbz"

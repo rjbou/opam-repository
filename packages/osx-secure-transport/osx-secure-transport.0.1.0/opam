@@ -1,27 +1,27 @@
 opam-version: "2.0"
+name: "osx-secure-transport"
+version: "0.1.0"
+synopsis: "macos/ios SecureTransport TLS OSX implementation API for OCaml"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "Romain Beauxis <toots@rastageeks.org>"
+license: "WTFPL"
 homepage: "https://github.com/toots/ocaml-osx-secure-transport"
 bug-reports: "https://github.com/toots/ocaml-osx-secure-transport/issues"
-license: "WTFPL"
-dev-repo: "git+https://github.com/toots/ocaml-osx-secure-transport.git"
+depends: [
+  "ctypes" {>= "0.4"}
+  "ctypes-foreign"
+  "ocaml" {< "4.06.0"}
+  "ocamlfind" {build}
+]
+available: os = "macos"
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "osx-secure-transport"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ctypes" {>= "0.4"}
-  "ctypes-foreign"
-  "ocamlfind" {build}
-]
-available: os = "macos"
-synopsis: "macos/ios SecureTransport TLS OSX implementation API for OCaml"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "osx-secure-transport"]
+dev-repo: "git+https://github.com/toots/ocaml-osx-secure-transport.git"
 url {
   src:
     "https://github.com/toots/ocaml-osx-secure-transport/releases/download/0.1.0/osx-secure-transport-0.1.0.tar.gz"

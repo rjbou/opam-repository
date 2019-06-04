@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "Damien Pous <Damien.Pous@ens-lyon.fr>"
-authors: "Damien Pous <Damien.Pous@ens-lyon.fr>"
 name: "symkat"
 version: "1.3"
-homepage: "http://perso.ens-lyon.fr/damien.pous/symkat/"
-license: "GNU LGPL v3"
-build: [make "PREFIX=%{prefix}%"]
-install: [make "PREFIX=%{prefix}%" "install"]
-remove: [make "PREFIX=%{prefix}%" "uninstall"]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "safa" {= "1.3"}
-  "ocamlbuild" {build}
-]
 synopsis: "Symbolic Algorithms for Kleene algebra with Tests (KAT)"
 description: """
 This OCaml library contains several constructions for Kleene algebra
@@ -25,6 +12,19 @@ These constructions are described in the following paper,
 in Proc. POPL'15 ; 
 http://doi.acm.org/10.1145/2676726.2677007
 https://hal.archives-ouvertes.fr/hal-01021497v2/document"""
+maintainer: "Damien Pous <Damien.Pous@ens-lyon.fr>"
+authors: "Damien Pous <Damien.Pous@ens-lyon.fr>"
+license: "GNU LGPL v3"
+homepage: "http://perso.ens-lyon.fr/damien.pous/symkat/"
+depends: [
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "safa" {= "1.3"}
+]
+build: [make "PREFIX=%{prefix}%"]
+install: [make "PREFIX=%{prefix}%" "install"]
+remove: [make "PREFIX=%{prefix}%" "uninstall"]
 url {
   src: "http://perso.ens-lyon.fr/damien.pous/symkat/symkat-1.3.tgz"
   checksum: "md5=8e1ef90db0be25d435f6dc51a06377ab"

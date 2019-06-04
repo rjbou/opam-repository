@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "Seb Mondet <seb@mondet.org>"
-authors: [
-  "Seb Mondet <seb@mondet.org>"
-]
-homepage: "https://gitlab.com/smondet/vecosek"
-bug-reports: "https://gitlab.com/smondet/vecosek/issues"
-dev-repo: "git+https://gitlab.com/smondet/vecosek.git"
-license: "ISC"
+name: "vecosek-scene"
 version: "0.0.0"
-build: [
-  ["ocaml" "please.ml" "configure"]
-  ["jbuilder" "build" "-p" "vecosek-scene" "-j" jobs ]
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta20"}
-  "nonstd"
-  "sosa"
-  "yojson"
-  "atdgen"
-]
 synopsis: ""
 description: """
 Vecosek is a MIDI sequencer designed for live, interactive performance settings,
@@ -27,6 +8,24 @@ with arbitrarily *complex* music.
 
 vecosek-scene is a library defining the scene format (JSON & Biniou)
 as a well as basic contructors to build scenes from an EDSL."""
+maintainer: "Seb Mondet <seb@mondet.org>"
+authors: "Seb Mondet <seb@mondet.org>"
+license: "ISC"
+homepage: "https://gitlab.com/smondet/vecosek"
+bug-reports: "https://gitlab.com/smondet/vecosek/issues"
+depends: [
+  "atdgen"
+  "jbuilder" {build & >= "1.0+beta20"}
+  "nonstd"
+  "ocaml" {>= "4.03.0"}
+  "sosa"
+  "yojson"
+]
+build: [
+  ["ocaml" "please.ml" "configure"]
+  ["jbuilder" "build" "-p" "vecosek-scene" "-j" jobs]
+]
+dev-repo: "git+https://gitlab.com/smondet/vecosek.git"
 url {
   src: "https://gitlab.com/smondet/vecosek/-/archive/0.0.0/vecosek-0.0.0.zip"
   checksum: "md5=bf77dc7c5a8d8efeff67b8eb43ef2dd0"

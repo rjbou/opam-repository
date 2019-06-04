@@ -1,25 +1,27 @@
 opam-version: "2.0"
-authors: ["Benoît Vaugon"]
+name: "obytelib"
+version: "1.5"
+synopsis:
+  "OCaml bytecode library tools to read, write and evaluate OCaml bytecode files"
+maintainer: "benoit.vaugon@gmail.com"
+authors: "Benoît Vaugon"
+license: "CeCILL-B v2"
 homepage: "https://github.com/bvaugon/obytelib"
 bug-reports: "https://github.com/bvaugon/obytelib/issues"
-dev-repo: "git+ssh://git@github.com/bvaugon/obytelib.git"
-maintainer: "benoit.vaugon@gmail.com"
-license: "CeCILL-B v2"
-build: [
-  ["./configure" "-prefix" prefix]
-  [make "all"]
-]
-remove: [
-  ["./configure" "-prefix" prefix]
-  [make "uninstall"]
-]
 depends: [
   "ocaml" {>= "4.07.0"}
   "ocamlbuild" {build}
 ]
+build: [
+  ["./configure" "-prefix" prefix]
+  [make "all"]
+]
 install: [make "install"]
-synopsis:
-  "OCaml bytecode library tools to read, write and evaluate OCaml bytecode files"
+remove: [
+  ["./configure" "-prefix" prefix]
+  [make "uninstall"]
+]
+dev-repo: "git+ssh://git@github.com/bvaugon/obytelib.git"
 url {
   src: "https://github.com/bvaugon/obytelib/archive/1.5.tar.gz"
   checksum: "md5=98825775219d1e6e9dde62bbeffb3fd2"

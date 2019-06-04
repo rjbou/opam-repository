@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer:   "datakit@docker.com"
-authors:      ["Thomas Leonard"]
-license:      "Apache"
-homepage:     "https://github.com/mirage/prometheus"
-bug-reports:  "https://github.com/mirage/prometheus/issues"
-dev-repo: "git+https://github.com/mirage/prometheus.git"
-doc:          "https://mirage.github.io/prometheus/"
-
-build: [
-  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"
-  "-n" "prometheus"
-]
-
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "astring"
-  "asetmap"
-  "fmt"
-  "lwt" {>= "2.5.0"}
-  "alcotest" {with-test}
-]
+name: "prometheus"
+version: "0.1"
 synopsis: "Client library for Prometheus monitoring"
 description: """
 To run services reliably, it is useful if they can report various metrics
@@ -32,6 +12,33 @@ or to help debug problems quickly.
 It can also be used to send alerts if a service is down or behaving poorly.
 
 This repository contains code to report metrics to a Prometheus monitoring server."""
+maintainer: "datakit@docker.com"
+authors: "Thomas Leonard"
+license: "Apache"
+homepage: "https://github.com/mirage/prometheus"
+doc: "https://mirage.github.io/prometheus/"
+bug-reports: "https://github.com/mirage/prometheus/issues"
+depends: [
+  "alcotest" {with-test}
+  "asetmap"
+  "astring"
+  "fmt"
+  "lwt" {>= "2.5.0"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlfind" {build}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--tests"
+  "false"
+  "-n"
+  "prometheus"
+]
+dev-repo: "git+https://github.com/mirage/prometheus.git"
 url {
   src:
     "https://github.com/mirage/prometheus/releases/download/v0.1/prometheus-0.1.tbz"

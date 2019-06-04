@@ -1,29 +1,35 @@
 opam-version: "2.0"
-maintainer:   [ "Eyyüb Sari <eyyub.sari@epitech.eu>"
-                "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-authors:      [ "Eyyüb Sari <eyyub.sari@epitech.eu>"
-                "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-homepage:     "https://github.com/mirage/digestif"
-bug-reports:  "https://github.com/mirage/digestif/issues"
-dev-repo: "git+https://github.com/mirage/digestif.git"
-doc:          "https://mirage.github.io/digestif/"
-license:      "MIT"
-
-build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false" ]
-
-depends: [
-  "ocaml" {>= "4.03.0" & < "4.08.0"}
-  "ocamlbuild" {build & >= "0.11.0"}
-  "ocamlfind" {build}
-  "topkg" {build}
-  "base-bytes"
-]
+name: "digestif"
+version: "0.6"
 synopsis: "Hash algorithms in OCaml"
 description: """
 Digestif (and Rakia) provid some hashes functions in OCaml. Rakia provides
 theses functions by a C stub and Digestif is a pure implementation in OCaml of
 theses hashes. So these hashes functions can be used in an
 OCaml/Mirage/JavasScript world."""
+maintainer: [
+  "Eyyüb Sari <eyyub.sari@epitech.eu>"
+  "Romain Calascibetta <romain.calascibetta@gmail.com>"
+]
+authors: [
+  "Eyyüb Sari <eyyub.sari@epitech.eu>"
+  "Romain Calascibetta <romain.calascibetta@gmail.com>"
+]
+license: "MIT"
+homepage: "https://github.com/mirage/digestif"
+doc: "https://mirage.github.io/digestif/"
+bug-reports: "https://github.com/mirage/digestif/issues"
+depends: [
+  "base-bytes"
+  "ocaml" {>= "4.03.0" & < "4.08.0"}
+  "ocamlbuild" {build & >= "0.11.0"}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+build: [
+  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"
+]
+dev-repo: "git+https://github.com/mirage/digestif.git"
 url {
   src:
     "https://github.com/mirage/digestif/releases/download/v0.6/digestif-0.6.tbz"

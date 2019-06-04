@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "Leonid Rozenberg <leonidr@gmail.com>"
-authors: "Leonid Rozenberg <leonidr@gmail.com>"
-homepage: "https://github.com/rleonid/bau/"
-bug-reports: "https://github.com/rleonid/bau/issues"
-license: "Apache2"
-dev-repo: "git+https://github.com/rleonid/bau.git"
-build: [make]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "bau"]
-depends: [
-  "ocaml" {>= "4.03.0" & < "4.05"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
+name: "bau"
+version: "0.0.3"
 synopsis: "Bigarray utilities"
 description: """
 A hodge-podge of capabilities to make working with Bigarrays easier.
@@ -21,7 +9,21 @@ currently there is support for:
 - Better pretty printing
 - Random generators
 - Creating faster folds/iters"""
+maintainer: "Leonid Rozenberg <leonidr@gmail.com>"
+authors: "Leonid Rozenberg <leonidr@gmail.com>"
+license: "Apache2"
+homepage: "https://github.com/rleonid/bau/"
+bug-reports: "https://github.com/rleonid/bau/issues"
+depends: [
+  "ocaml" {>= "4.03.0" & < "4.05"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "bau"]
+dev-repo: "git+https://github.com/rleonid/bau.git"
 url {
   src: "http://github.com/rleonid/bau/archive/0.0.3.tar.gz"
   checksum: "md5=461aa6152098a812e216119b261c6411"

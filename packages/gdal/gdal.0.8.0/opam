@@ -1,33 +1,31 @@
 opam-version: "2.0"
 name: "gdal"
 version: "0.8.0"
+synopsis: "Bindings to the GDAL and OGR libraries"
 maintainer: "hez@0ok.org"
 authors: "Hezekiah M. Carty"
 license: "MIT"
 homepage: "https://github.com/hcarty/ocaml-gdal"
 bug-reports: "https://github.com/hcarty/ocaml-gdal/issues"
-dev-repo: "git+https://github.com/hcarty/ocaml-gdal.git"
+depends: [
+  "ctypes" {>= "0.4.0"}
+  "ctypes-foreign" {>= "0.4.0"}
+  "ocaml" {>= "4.02.1" & < "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
 install: ["ocaml" "setup.ml" "-install"]
-
 remove: ["ocamlfind" "remove" "gdal"]
-
-depends: [
-  "ocaml" {>= "4.02.1" & < "4.03"}
-  "ocamlfind" {build}
-  "ctypes" {>= "0.4.0"}
-  "ctypes-foreign" {>= "0.4.0"}
-  "ocamlbuild" {build}
-]
 depexts: [
   ["libgdal-dev"] {os-distribution = "debian"}
   ["libgdal-dev"] {os-distribution = "ubuntu"}
 ]
-synopsis: "Bindings to the GDAL and OGR libraries"
-flags: light-uninstall
+dev-repo: "git+https://github.com/hcarty/ocaml-gdal.git"
 url {
   src: "https://github.com/hcarty/ocaml-gdal/archive/v0.8.0.tar.gz"
   checksum: "md5=0370ae5a548e7e28bab0115d0332a845"

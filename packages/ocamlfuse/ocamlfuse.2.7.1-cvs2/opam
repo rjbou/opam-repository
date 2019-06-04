@@ -1,32 +1,27 @@
 opam-version: "2.0"
+name: "ocamlfuse"
+version: "2.7.1-cvs2"
+synopsis: "OCaml bindings for FUSE (Filesystem in UserSpacE)"
 maintainer: "alessandro.strada@gmail.com"
-authors: [ "Vincenzo Ciancia" ]
+authors: "Vincenzo Ciancia"
 license: "GPL-2"
 homepage: "http://sourceforge.net/apps/mediawiki/ocamlfuse"
 bug-reports: "http://sourceforge.net/p/ocamlfuse/mailman/ocamlfuse-devel/"
-# dev-repo: "cvs://pserver:anonymous@ocamlfuse.cvs.sourceforge.net/cvsroot/ocamlfuse"
-build: [
-  [make "-C" "lib" "INCDIRS=%{lib}%/camlidl"]
-]
-install: [
-  [make "-C" "lib" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "Fuse"]
-]
 depends: [
-  "ocaml" {>= "3.08.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
   "camlidl"
+  "ocaml" {>= "3.08.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
 ]
+available: os != "macos"
+flags: light-uninstall
+build: [make "-C" "lib" "INCDIRS=%{lib}%/camlidl"]
+install: [make "-C" "lib" "install"]
+remove: ["ocamlfind" "remove" "Fuse"]
 depexts: [
   ["libfuse-dev"] {os-distribution = "debian"}
   ["libfuse-dev"] {os-distribution = "ubuntu"}
 ]
-available: os != "macos"
-synopsis: "OCaml bindings for FUSE (Filesystem in UserSpacE)"
-flags: light-uninstall
 url {
   src:
     "https://download.ocamlcore.org/gdfuse/ocamlfuse/2.7.1-cvs2/ocamlfuse-2.7.1_cvs2.tar.gz"

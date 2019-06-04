@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/asetmap"
-doc: "http://erratique.ch/software/asetmap/doc"
-license: "ISC"
-dev-repo: "git+http://erratique.ch/repos/asetmap.git"
-bug-reports: "https://github.com/dbuenzli/asetmap/issues"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-]
-build: [
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%" ]
+name: "asetmap"
+version: "0.8.0"
 synopsis: "Alternative, compatible, OCaml standard library Sets and Maps"
 description: """
 asetmap provides slightly tweaked OCaml standard library Set and Map
@@ -23,6 +9,20 @@ library. It essentially gets rid of `Not_found` exceptions and provide
 pretty-printers for the data types.
 
 asetmap has no dependency is distributed under the ISC license."""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+homepage: "http://erratique.ch/software/asetmap"
+doc: "http://erratique.ch/software/asetmap/doc"
+bug-reports: "https://github.com/dbuenzli/asetmap/issues"
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+http://erratique.ch/repos/asetmap.git"
 url {
   src: "http://erratique.ch/software/asetmap/releases/asetmap-0.8.0.tbz"
   checksum: "md5=5bebd8ab267d3b9d10f83ae8739a09c2"

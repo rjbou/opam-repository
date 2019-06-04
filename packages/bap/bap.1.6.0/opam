@@ -1,15 +1,28 @@
 opam-version: "2.0"
 name: "bap"
 version: "1.6.0"
+synopsis: "Binary Analysis Platform"
+description: """
+The Carnegie Mellon University Binary Analysis Platform (CMU BAP) is a
+reverse engineering and program analysis platform that works with
+binary code and doesn't require the source code. BAP supports multiple
+architectures: ARM, x86, x86-64, PowerPC, and MIPS. BAP disassembles
+and lifts binary code into the RISC-like BAP Instruction Language
+(BIL). Program analysis is performed using the BIL representation and
+is architecture independent in a sense that it will work equally well
+for all supported architectures. The main purpose of BAP is to provide
+a toolkit for implementing automated program analysis. BAP is written
+in OCaml and it is the preferred language to write analysis, but we
+have bindings to C, Python and Rust. The Primus Framework also provide
+a Lisp-like DSL for writing program analysis tools.
+
+This is a meta package that installs essential parts of BAP."""
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
-
 depends: [
-  "ocaml" {>= "4.04.1" & < "4.08.0"}
   "bap-abi" {= "1.6.0"}
   "bap-api" {= "1.6.0"}
   "bap-arm" {= "1.6.0"}
@@ -18,14 +31,15 @@ depends: [
   "bap-byteweight" {= "1.6.0"}
   "bap-c" {= "1.6.0"}
   "bap-cache" {= "1.6.0"}
-  "bap-cxxfilt" {= "1.6.0"}
   "bap-callsites" {= "1.6.0"}
   "bap-constant-tracker" {= "1.6.0"}
+  "bap-cxxfilt" {= "1.6.0"}
   "bap-demangle" {= "1.6.0"}
   "bap-dump-symbols" {= "1.6.0"}
   "bap-elf" {= "1.6.0"}
-  "bap-frontend" {= "1.6.0"}
+  "bap-emacs-goodies"
   "bap-frontc" {= "1.6.0"}
+  "bap-frontend" {= "1.6.0"}
   "bap-llvm" {= "1.6.0"}
   "bap-mc" {= "1.6.0"}
   "bap-microx" {= "1.6.0"}
@@ -56,24 +70,9 @@ depends: [
   "bap-trivial-condition-form" {= "1.6.0"}
   "bap-warn-unused" {= "1.6.0"}
   "bap-x86" {= "1.6.0"}
-  "bap-emacs-goodies"
+  "ocaml" {>= "4.04.1" & < "4.08.0"}
 ]
-synopsis: "Binary Analysis Platform"
-description: """
-The Carnegie Mellon University Binary Analysis Platform (CMU BAP) is a
-reverse engineering and program analysis platform that works with
-binary code and doesn't require the source code. BAP supports multiple
-architectures: ARM, x86, x86-64, PowerPC, and MIPS. BAP disassembles
-and lifts binary code into the RISC-like BAP Instruction Language
-(BIL). Program analysis is performed using the BIL representation and
-is architecture independent in a sense that it will work equally well
-for all supported architectures. The main purpose of BAP is to provide
-a toolkit for implementing automated program analysis. BAP is written
-in OCaml and it is the preferred language to write analysis, but we
-have bindings to C, Python and Rust. The Primus Framework also provide
-a Lisp-like DSL for writing program analysis tools.
-
-This is a meta package that installs essential parts of BAP."""
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.6.0.tar.gz"
   checksum: "md5=0ccf6571613c0666a37d154c7f70af4f"

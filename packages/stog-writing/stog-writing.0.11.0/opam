@@ -1,22 +1,24 @@
 opam-version: "2.0"
-maintainer: "zoggy@bat8.org"
-authors: ["Maxence Guesdon"]
-homepage: "http://zoggy.github.io/stog/plugins/writing.html"
-license: "GNU General Public License version 3"
-doc: ["http://zoggy.github.io/stog/plugins/writing.html"]
-tags: ["publication" "web" "blog" "bibliography"]
-build: [make "all"]
-remove: [["ocamlfind" "remove" "stog-writing"]]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "stog" {>= "0.11.0" & < "0.12"}
-  "menhir" {>= "20120123"}
-]
-install: [make "install"]
+name: "stog-writing"
+version: "0.11.0"
 synopsis:
   "Plugin for Stog. Allow adding footnotes and bibliographies in stog-generated"
 description: "web sites."
+maintainer: "zoggy@bat8.org"
+authors: "Maxence Guesdon"
+license: "GNU General Public License version 3"
+tags: ["bibliography" "blog" "publication" "web"]
+homepage: "http://zoggy.github.io/stog/plugins/writing.html"
+doc: "http://zoggy.github.io/stog/plugins/writing.html"
+depends: [
+  "menhir" {>= "20120123"}
+  "ocaml" {>= "4.00.0"}
+  "stog" {>= "0.11.0" & < "0.12"}
+]
 flags: light-uninstall
+build: [make "all"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "stog-writing"]
 url {
   src: "http://zoggy.github.com/stog/plugins/stog-writing-0.11.0.tar.gz"
   checksum: "md5=1ff0f4208bb33021a8810ddcb7f6620b"

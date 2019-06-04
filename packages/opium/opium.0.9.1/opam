@@ -1,32 +1,6 @@
 opam-version: "2.0"
-maintainer: "rudi.grinberg@gmail.com"
-authors: ["Rudi Grinberg"]
-license: "MIT"
-
-build: [
-  [make "configure-no-tests"]
-  [make "build"]
-]
-remove: [
-  ["ocamlfind" "remove" "opium_rock"]
-  ["ocamlfind" "remove" "opium"]
-]
-
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
-  "cohttp" {>= "0.10.0" & < "0.12.0"}
-  "oasis"
-  "async" {< "v0.13"}
-  "core" {< "v0.13"}
-  "fieldslib" {< "113.01.00"}
-  "sexplib" {< "113.01.00"}
-  "humane-re"
-  "cow" {>= "0.10.0"}
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/rgrinberg/opium"
-install: [make "install"]
+name: "opium"
+version: "0.9.1"
 synopsis: "Sinatra like web toolkit based on Async + Cohttp"
 description: """
 Opium is a minimalistic library for quickly binding functions
@@ -38,7 +12,33 @@ to http routes. Its features include (but not limited to):
 
 Note: This library is still at an early stage so expect breakages
 until 1.0"""
+maintainer: "rudi.grinberg@gmail.com"
+authors: "Rudi Grinberg"
+license: "MIT"
+depends: [
+  "async" {< "v0.13"}
+  "cohttp" {>= "0.10.0" & < "0.12.0"}
+  "core" {< "v0.13"}
+  "cow" {>= "0.10.0"}
+  "fieldslib" {< "113.01.00"}
+  "humane-re"
+  "oasis"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "sexplib" {< "113.01.00"}
+]
 flags: light-uninstall
+build: [
+  [make "configure-no-tests"]
+  [make "build"]
+]
+install: [make "install"]
+remove: [
+  ["ocamlfind" "remove" "opium_rock"]
+  ["ocamlfind" "remove" "opium"]
+]
+dev-repo: "git://github.com/rgrinberg/opium"
 url {
   src: "https://github.com/rgrinberg/opium/archive/v0.9.1.tar.gz"
   checksum: "md5=f2c37f28545818d343af4a6b8595d19f"

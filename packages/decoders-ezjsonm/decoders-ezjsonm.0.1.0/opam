@@ -1,5 +1,6 @@
 opam-version: "2.0"
 name: "decoders-ezjsonm"
+version: "0.1.0"
 synopsis: "Elm-inspired decoders for Ocaml"
 description: """
 A combinator library for "decoding" JSON-like values into your own Ocaml types, inspired by Elm's `Json.Decode` and `Json.Encode`.
@@ -164,11 +165,11 @@ homepage: "https://github.com/mattjbray/ocaml-decoders"
 doc: "https://mattjbray.github.io/ocaml-decoders/decoders-ezjsonm"
 bug-reports: "https://github.com/mattjbray/ocaml-decoders/issues"
 depends: [
-  "ocaml"
-  "jbuilder" {build}
-  "ounit" {with-test}
   "decoders"
   "ezjsonm" {>= "0.4.0"}
+  "jbuilder" {build}
+  "ocaml"
+  "ounit" {with-test}
 ]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]

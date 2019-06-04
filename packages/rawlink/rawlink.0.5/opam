@@ -1,23 +1,6 @@
 opam-version: "2.0"
 name: "rawlink"
-maintainer: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
-authors: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
-license: "ISC"
-homepage: "https://github.com/haesbaert/rawlink"
-bug-reports: "https://github.com/haesbaert/rawlink/issues"
-dev-repo: "git+https://github.com/haesbaert/rawlink.git"
-doc: "https://haesbaert.github.io/rawlink/api"
-build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
-depends: [
-  "ocaml" {>= "4.03.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  "topkg" {build}
-  "lwt" {>= "2.4.7" & < "4.0.0"}
-  "cstruct" {>= "1.9" & < "3.0.0"}
-  "ppx_cstruct"
-  "ocamlbuild" {build}
-]
-depexts: ["linux-headers"] {os-distribution = "alpine"}
+version: "0.5"
 synopsis: "Portable library to read and write raw packets."
 description: """
 [![Build Status](https://travis-ci.org/haesbaert/rawlink.svg)](https://travis-ci.org/haesbaert/rawlink)
@@ -48,6 +31,24 @@ Rawlink.send_packet link buf
 ```
 
 Check the mli interface for more options."""
+maintainer: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
+authors: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
+license: "ISC"
+homepage: "https://github.com/haesbaert/rawlink"
+doc: "https://haesbaert.github.io/rawlink/api"
+bug-reports: "https://github.com/haesbaert/rawlink/issues"
+depends: [
+  "cstruct" {>= "1.9" & < "3.0.0"}
+  "lwt" {>= "2.4.7" & < "4.0.0"}
+  "ocaml" {>= "4.03.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_cstruct"
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+depexts: ["linux-headers"] {os-distribution = "alpine"}
+dev-repo: "git+https://github.com/haesbaert/rawlink.git"
 url {
   src:
     "https://github.com/haesbaert/rawlink/releases/download/v0.5/rawlink-0.5.tbz"

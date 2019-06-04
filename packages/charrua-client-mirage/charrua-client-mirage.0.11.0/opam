@@ -1,41 +1,41 @@
 opam-version: "2.0"
-maintainer:   ["Mindy Preston"]
-authors   :   ["Mindy Preston"]
-homepage:     "https://github.com/mirage/charrua-core"
-bug-reports:  "https://github.com/mirage/charrua-core/issues"
-dev-repo:     "git+https://github.com/mirage/charrua-core.git"
-tags:         [ "org:mirage"]
-doc:          "https://docs.mirage.io"
-
+name: "charrua-client-mirage"
+version: "0.11.0"
+synopsis: "A DHCP client for MirageOS"
+description: """
+`charrua-client-mirage` exposes an additional `Dhcp_client_mirage` for direct use
+with the [MirageOS library operating system](https://github.com/mirage/mirage)."""
+maintainer: "Mindy Preston"
+authors: "Mindy Preston"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/charrua-core"
+doc: "https://docs.mirage.io"
+bug-reports: "https://github.com/mirage/charrua-core/issues"
+depends: [
+  "charrua-client" {>= "0.11.0" & < "0.12.0"}
+  "charrua-client-lwt" {>= "0.11.0" & < "0.12.0"}
+  "charrua-core" {>= "0.11.0" & < "0.12.0"}
+  "cstruct" {>= "3.0.2"}
+  "duration"
+  "fmt"
+  "ipaddr"
+  "jbuilder" {build & >= "1.0+beta9"}
+  "logs"
+  "lwt"
+  "mirage-clock"
+  "mirage-random" {>= "1.0.0"}
+  "mirage-types-lwt" {>= "3.0.0"}
+  "ocaml" {>= "4.04.2"}
+  "rresult"
+  "tcpip" {>= "3.5.0" & < "3.6.0"}
+]
 build: [
   ["jbuilder" "subst" "-n" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
 ]
-
-depends: [
-  "jbuilder" {build & >= "1.0+beta9"}
-  "ocaml" {>= "4.04.2"}
-  "charrua-core" {>= "0.11.0" & < "0.12.0"}
-  "charrua-client-lwt" {>= "0.11.0" & < "0.12.0"}
-  "charrua-client" {>= "0.11.0" & < "0.12.0"}
-  "cstruct" {>="3.0.2"}
-  "ipaddr"
-  "rresult"
-  "mirage-random" {>= "1.0.0"}
-  "mirage-clock"
-  "duration"
-  "logs"
-  "tcpip" {>= "3.5.0" & < "3.6.0"}
-  "fmt"
-  "lwt"
-  "mirage-types-lwt" {>="3.0.0"}
-]
-synopsis: "A DHCP client for MirageOS"
-description: """
-`charrua-client-mirage` exposes an additional `Dhcp_client_mirage` for direct use
-with the [MirageOS library operating system](https://github.com/mirage/mirage).
-"""
+dev-repo: "git+https://github.com/mirage/charrua-core.git"
 url {
-archive: "https://github.com/mirage/charrua-core/releases/download/v0.11.0/charrua-core-0.11.0.tbz"
-checksum: "f4bb1ac3d1443a576982eae49d0eb7d8"
+  src:
+    "https://github.com/mirage/charrua-core/releases/download/v0.11.0/charrua-core-0.11.0.tbz"
+  checksum: "md5=f4bb1ac3d1443a576982eae49d0eb7d8"
 }

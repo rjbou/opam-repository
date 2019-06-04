@@ -1,19 +1,21 @@
 opam-version: "2.0"
-maintainer: "seb@mondet.org"
-homepage: "http://seb.mondet.org/software/atd2cconv/index.html"
-build: [make "-f" "Makefile-ocamlbuild"]
-remove: [make "-f" "Makefile-ocamlbuild" "uninstall" "BINDIR=%{bin}%"]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
-  "nonstd"
-  "smart-print"
-  "atd" {< "1.13.0"}
-]
-dev-repo: "git://github.com/smondet/atd2cconv"
-install: [make "-f" "Makefile-ocamlbuild" "install" "BINDIR=%{bin}%"]
+name: "atd2cconv"
+version: "0.0.0"
 synopsis:
   "Convert ATD definitions to OCaml code that uses the CConv 0.1 library"
+maintainer: "seb@mondet.org"
+homepage: "http://seb.mondet.org/software/atd2cconv/index.html"
+depends: [
+  "atd" {< "1.13.0"}
+  "nonstd"
+  "ocaml" {>= "4.01.0"}
+  "ocamlfind"
+  "smart-print"
+]
+build: [make "-f" "Makefile-ocamlbuild"]
+install: [make "-f" "Makefile-ocamlbuild" "install" "BINDIR=%{bin}%"]
+remove: [make "-f" "Makefile-ocamlbuild" "uninstall" "BINDIR=%{bin}%"]
+dev-repo: "git://github.com/smondet/atd2cconv"
 url {
   src: "https://github.com/smondet/atd2cconv/archive/atd2cconv.0.0.0.tar.gz"
   checksum: "md5=7fa2ec65acf3a2eed28322afd3cecebf"

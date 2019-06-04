@@ -1,18 +1,22 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://www.libsdl.org/projects/SDL_net/"
-license: "Zlib"
-build: [["pkg-config" "SDL2_net"]]
-depexts: [
-  ["sdl2_net-dev"] {os-distribution = "alpine"}
-  ["libsdl2-net-dev"] {os-distribution = "debian"}
-  ["libsdl2-net-dev"] {os-distribution = "ubuntu"}
-  ["libsdl2_net-devel"] {os-distribution = "mageia"}
-]
+name: "conf-sdl2-net"
+version: "1"
 synopsis: "Virtual package relying on a sdl2-net system installation"
 description:
   "This package can only install if libsdl2-net is installed on the system."
-depends: ["conf-pkg-config" {build}]
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
 authors: "Sam Lantinga"
+license: "Zlib"
+homepage: "http://www.libsdl.org/projects/SDL_net/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "SDL2_net"]
+depexts: [
+  ["libsdl2-net-dev"] {os-distribution = "debian"}
+  ["libsdl2-net-dev"] {os-distribution = "ubuntu"}
+  ["libsdl2_net-devel"] {os-distribution = "mageia"}
+  ["sdl2_net-dev"] {os-distribution = "alpine"}
+]

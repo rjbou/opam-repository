@@ -1,33 +1,25 @@
 opam-version: "2.0"
+name: "rpc"
+version: "2.2.0"
+synopsis: "A library to deal with RPCs in OCaml"
+description: """
+This library provides a PPX and a deprecated camlp4 syntax extension to generate functions
+to convert values of a given type to and from their RPC representations. In
+order to do so, it is sufficient to add `[@@deriving rpc]` (or `with rpc` in
+case of camlp4) to the corresponding type definition."""
 maintainer: "xen-api@list.xen.org"
 authors: "Thomas Gazagnaire, Jon Ludlam"
+tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/mirage/ocaml-rpc"
 bug-reports: "https://github.com/mirage/ocaml-rpc/issues"
-dev-repo: "git://github.com/mirage/ocaml-rpc"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [
-  [make]
-  [make] {with-test}
-  [make "test"] {with-test}
-]
-install: [
-  [make "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "rpclib"]
-  ["ocamlfind" "remove" "ppx_deriving_rpc"]
-]
 depends: [
-  "ocaml" {< "4.06.0"}
-  "oasis" {build}
-  "cppo" {build}
   "async" {< "v0.10.0"}
   "cmdliner"
   "cow"
+  "cppo" {build}
   "lwt"
+  "oasis" {build}
+  "ocaml" {< "4.06.0"}
   "ocamlfind"
   "ppx_deriving"
   "rresult"
@@ -35,14 +27,19 @@ depends: [
   "xmlm"
   "yojson"
 ]
-depopts: [ "js_of_ocaml" ]
-synopsis: "A library to deal with RPCs in OCaml"
-description: """
-This library provides a PPX and a deprecated camlp4 syntax extension to generate functions
-to convert values of a given type to and from their RPC representations. In
-order to do so, it is sufficient to add `[@@deriving rpc]` (or `with rpc` in
-case of camlp4) to the corresponding type definition."""
+depopts: ["js_of_ocaml"]
 flags: light-uninstall
+build: [
+  [make]
+  [make] {with-test}
+  [make "test"] {with-test}
+]
+install: [make "install"]
+remove: [
+  ["ocamlfind" "remove" "rpclib"]
+  ["ocamlfind" "remove" "ppx_deriving_rpc"]
+]
+dev-repo: "git://github.com/mirage/ocaml-rpc"
 url {
   src: "https://github.com/mirage/ocaml-rpc/archive/v2.2.0.tar.gz"
   checksum: "md5=5eb085431917bed5a4f4c3293db774b6"

@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "kkdstryker@gmail.com"
-authors: "Robert Toth"
-homepage: "https://github.com/StrykerKKD/SandDB"
-bug-reports: "https://github.com/StrykerKKD/SandDB/issues"
-license: "MIT"
-dev-repo: "git+http://github.com/StrykerKKD/SandDB.git"
-build: [
-  "jbuilder" "build" "--only" "sanddb" "--root" "." "-j" jobs "@install"
-]
-depends: [
-  "ocaml" {>= "4.04.2"}
-  "jbuilder" {build}
-  "atdgen" {>= "1.12.0"}
-  "lwt" {>= "3.3.0"}
-  "uuidm" {>= "0.9.6"}
-  "base" {>= "v0.11.0" & < "v0.13"}
-]
+name: "sanddb"
+version: "0.1"
 synopsis: "A simple immutable database for the masses"
 description: """
 SandDB is a simple immutable database, which is also:
@@ -27,6 +12,23 @@ SandDB is a simple immutable database, which is also:
  - Version keeping: Every update and delete operation will produce a new version of the affected record, without modifying the original, so you will have all versions of your data.
  - Concurrent: SandDB is based on lwt, so every database operation is asynchronous.
  - Supports multiple serializers: SandDB supports both json and biniou serialization format thanks to the atdgen library."""
+maintainer: "kkdstryker@gmail.com"
+authors: "Robert Toth"
+license: "MIT"
+homepage: "https://github.com/StrykerKKD/SandDB"
+bug-reports: "https://github.com/StrykerKKD/SandDB/issues"
+depends: [
+  "atdgen" {>= "1.12.0"}
+  "base" {>= "v0.11.0" & < "v0.13"}
+  "jbuilder" {build}
+  "lwt" {>= "3.3.0"}
+  "ocaml" {>= "4.04.2"}
+  "uuidm" {>= "0.9.6"}
+]
+build: [
+  "jbuilder" "build" "--only" "sanddb" "--root" "." "-j" jobs "@install"
+]
+dev-repo: "git+http://github.com/StrykerKKD/SandDB.git"
 url {
   src: "https://github.com/StrykerKKD/SandDB/archive/0.1.tar.gz"
   checksum: "md5=f2c4f595965f941367cc6987bb20f167"

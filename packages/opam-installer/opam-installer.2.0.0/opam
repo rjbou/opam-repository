@@ -1,32 +1,6 @@
 opam-version: "2.0"
-maintainer: "opam-devel@lists.ocaml.org"
-authors: [
-  "Vincent Bernardoff <vb@luminar.eu.org>"
-  "Raja Boujbel <raja.boujbel@ocamlpro.com>"
-  "Roberto Di Cosmo <roberto@dicosmo.org>"
-  "Thomas Gazagnaire <thomas@gazagnaire.org>"
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
-  "Anil Madhavapeddy <anil@recoil.org>"
-  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
-  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
-  "Frederic Tuong <tuong@users.gforge.inria.fr>"
-]
-homepage: "https://opam.ocaml.org/"
-bug-reports: "https://github.com/ocaml/opam/issues"
-dev-repo: "git+https://github.com/ocaml/opam.git"
-build: [
-  ["./configure" "--disable-checks" "--prefix" prefix]
-  ["touch" "src/tools/.merlin-exists"]
-  # ^ see https://github.com/janestreet/jbuilder/issues/257
-  [make "%{name}%.install"]
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "opam-format" {= "2.0.0"}
-  "cmdliner" {>= "0.9.8"}
-  "jbuilder" {build & >= "1.0+beta17"}
-]
+name: "opam-installer"
+version: "2.0.0"
 synopsis: "Installation of files to a prefix, following opam conventions"
 description: """
 opam-installer is a small tool that can read *.install files, as defined by
@@ -34,6 +8,33 @@ opam [1], and execute them to install or remove package files without going
 through opam.
 
 [1] http://opam.ocaml.org/doc/2.0/Manual.html#lt-pkgname-gt-install"""
+maintainer: "opam-devel@lists.ocaml.org"
+authors: [
+  "Anil Madhavapeddy <anil@recoil.org>"
+  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
+  "Frederic Tuong <tuong@users.gforge.inria.fr>"
+  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+  "Raja Boujbel <raja.boujbel@ocamlpro.com>"
+  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
+  "Roberto Di Cosmo <roberto@dicosmo.org>"
+  "Thomas Gazagnaire <thomas@gazagnaire.org>"
+  "Vincent Bernardoff <vb@luminar.eu.org>"
+]
+homepage: "https://opam.ocaml.org/"
+bug-reports: "https://github.com/ocaml/opam/issues"
+depends: [
+  "cmdliner" {>= "0.9.8"}
+  "jbuilder" {build & >= "1.0+beta17"}
+  "ocaml" {>= "4.02.3"}
+  "opam-format" {= "2.0.0"}
+]
+build: [
+  ["./configure" "--disable-checks" "--prefix" prefix]
+  ["touch" "src/tools/.merlin-exists"]
+  [make "%{name}%.install"]
+]
+dev-repo: "git+https://github.com/ocaml/opam.git"
 url {
   src: "https://github.com/ocaml/opam/archive/2.0.0-rc4.tar.gz"
   checksum: "md5=385612adf8733f6816cfcbc39e3e1b50"

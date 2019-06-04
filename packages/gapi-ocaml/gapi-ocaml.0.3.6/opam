@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer: "Alessandro Strada <alessandro.strada@gmail.com>"
-authors: [ "Alessandro Strada" ]
-license: "MIT"
-homepage: "https://github.com/astrada/gapi-ocaml"
-dev-repo: "git+https://github.com/astrada/gapi-ocaml.git"
-bug-reports: "https://github.com/astrada/gapi-ocaml/issues"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "cryptokit"
-  ("extlib" | "extlib-compat")
-  "jbuilder" {build}
-  "ocamlnet" {>= "4.1.4"}
-  "ocurl"
-  "xmlm"
-  "ounit" {with-test}
-  "yojson"
-]
-depopts: [
-  "ppx_monadic"
-]
+name: "gapi-ocaml"
+version: "0.3.6"
 synopsis: "A simple OCaml client for Google Services."
 description: """
 gapi-ocaml is a simple, unofficial, OCaml client for Google Services. The
@@ -33,6 +11,28 @@ Google Analytics API v3, Page Speed Online API v1, Blogger API v2, Site
 Verification API v1, AdSense Management API v1.4, BigQuery API v2, Drive API v2,
 Drive API v3, Gmail API v1. Google Data Protocol APIs (GData): Google Documents
 List API v3."""
+maintainer: "Alessandro Strada <alessandro.strada@gmail.com>"
+authors: "Alessandro Strada"
+license: "MIT"
+homepage: "https://github.com/astrada/gapi-ocaml"
+bug-reports: "https://github.com/astrada/gapi-ocaml/issues"
+depends: [
+  "cryptokit"
+  ("extlib" | "extlib-compat")
+  "jbuilder" {build}
+  "ocaml" {>= "4.02.3"}
+  "ocamlnet" {>= "4.1.4"}
+  "ocurl"
+  "ounit" {with-test}
+  "xmlm"
+  "yojson"
+]
+depopts: ["ppx_monadic"]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/astrada/gapi-ocaml.git"
 url {
   src: "https://github.com/astrada/gapi-ocaml/archive/v0.3.6.tar.gz"
   checksum: "md5=b8759b3a9010769db86786141ed374dd"

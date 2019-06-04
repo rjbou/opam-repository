@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/ocaml-ppx/ppxlib"
-bug-reports: "https://github.com/ocaml-ppx/ppxlib/issues"
-dev-repo: "git+https://github.com/ocaml-ppx/ppxlib.git"
-doc: "https://ocaml-ppx.github.io/ppxlib/"
-license: "MIT"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.1" & < "4.08.0"}
-  "base" {>= "v0.11.0" & < "v0.13"}
-  "jbuilder" {build & >= "1.0+beta18.1"}
-  "ocaml-compiler-libs" {>= "v0.11.0"}
-  "ocaml-migrate-parsetree" {>= "1.0.9"}
-  "ppx_derivers" {>= "1.0"}
-  "stdio" {>= "v0.11.0" & < "v0.13"}
-]
+name: "ppxlib"
+version: "0.2.2"
 synopsis: "A comprehensive toolbox for ppx development. It features:"
 description: """
 - a OCaml AST / parser / pretty-printer snapshot,to create a full
@@ -28,6 +11,23 @@ description: """
 - a quotation mechanism allowing  to write values representing the
    OCaml AST in the OCaml syntax;
 - a generator of open recursion classes from type definitions."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "MIT"
+homepage: "https://github.com/ocaml-ppx/ppxlib"
+doc: "https://ocaml-ppx.github.io/ppxlib/"
+bug-reports: "https://github.com/ocaml-ppx/ppxlib/issues"
+depends: [
+  "base" {>= "v0.11.0" & < "v0.13"}
+  "jbuilder" {build & >= "1.0+beta18.1"}
+  "ocaml" {>= "4.04.1" & < "4.08.0"}
+  "ocaml-compiler-libs" {>= "v0.11.0"}
+  "ocaml-migrate-parsetree" {>= "1.0.9"}
+  "ppx_derivers" {>= "1.0"}
+  "stdio" {>= "v0.11.0" & < "v0.13"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/ocaml-ppx/ppxlib.git"
 url {
   src:
     "https://github.com/ocaml-ppx/ppxlib/releases/download/0.2.2/ppxlib-0.2.2.tbz"

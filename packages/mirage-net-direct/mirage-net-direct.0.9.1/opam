@@ -1,22 +1,21 @@
 opam-version: "2.0"
+name: "mirage-net-direct"
+version: "0.9.1"
+synopsis: "TCP/IP networking stack in pure OCaml"
 maintainer: "anil@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [make "direct-build" "PREFIX=%{prefix}%"]
-remove: [["ocamlfind" "remove" "mirage-net"]]
+tags: ["org:mirage" "org:xapi-project"]
 depends: [
-  "ocaml"
   "mirage" {= "0.9.1"}
-  "ocamlfind"
+  "ocaml"
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
 conflicts: ["mirage-net-socket"]
-dev-repo: "git://github.com/mirage/mirage-tcpip"
-install: [make "direct-install" "PREFIX=%{prefix}%"]
-synopsis: "TCP/IP networking stack in pure OCaml"
 flags: light-uninstall
+build: [make "direct-build" "PREFIX=%{prefix}%"]
+install: [make "direct-install" "PREFIX=%{prefix}%"]
+remove: ["ocamlfind" "remove" "mirage-net"]
+dev-repo: "git://github.com/mirage/mirage-tcpip"
 url {
   src:
     "https://github.com/mirage/mirage-tcpip/archive/mirage-net-0.9.1.tar.gz"

@@ -1,33 +1,6 @@
 opam-version: "2.0"
+name: "rashell"
 version: "0.1.0"
-maintainer: "michipili@gmail.com"
-authors: "Michael Grünewald"
-license: "LGPL"
-homepage: "https://github.com/michipili/rashell"
-bug-reports: "https://github.com/michipili/rashell/issues"
-dev-repo: "git+https://github.com/michipili/rashell.git"
-tags: [
-  "shell"
-]
-build: [
-  ["./configure" "--prefix" prefix]
-  [conf-bmake:path "-I%{bsdowl:share}%" "all"]
-]
-install: [
-  [conf-bmake:path "-I%{bsdowl:share}%" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "rashell"]
-  ["rm" "-rf" "%{share}%/doc/rashell"]
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind"
-  "broken" {>= "0.4.2"}
-  "conf-bmake"
-  "bsdowl" {>= "3.0.0"}
-  "lwt" {>= "2.5.0" & < "3.2.0"}
-]
 synopsis: "A resilient and replicant shell programming library"
 description: """
 As discussed by Lowell Jay Arthur in “Unix shell programming”
@@ -48,7 +21,31 @@ Rashell is based on the excellent Lwt library and its Lwt_process
 module.
 
 WWW: https://github.com/michipili/rashell"""
+maintainer: "michipili@gmail.com"
+authors: "Michael Grünewald"
+license: "LGPL"
+tags: "shell"
+homepage: "https://github.com/michipili/rashell"
+bug-reports: "https://github.com/michipili/rashell/issues"
+depends: [
+  "broken" {>= "0.4.2"}
+  "bsdowl" {>= "3.0.0"}
+  "conf-bmake"
+  "lwt" {>= "2.5.0" & < "3.2.0"}
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [conf-bmake:path "-I%{bsdowl:share}%" "all"]
+]
+install: [conf-bmake:path "-I%{bsdowl:share}%" "install"]
+remove: [
+  ["ocamlfind" "remove" "rashell"]
+  ["rm" "-rf" "%{share}%/doc/rashell"]
+]
+dev-repo: "git+https://github.com/michipili/rashell.git"
 url {
   src:
     "https://github.com/michipili/rashell/releases/download/v0.1.0/rashell-0.1.0.tar.xz"

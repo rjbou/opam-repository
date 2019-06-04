@@ -1,21 +1,21 @@
 opam-version: "2.0"
-maintainer: "Vincent Jacques <vincent@vincent-jacques.net>"
-authors: [
-    "Bob Friesenhahn"
-    "Lee Howard"
-    "Frank Warmerdam"
-]
-homepage: "http://libjpeg.sourceforge.net/"
-license: "BSD-like"
-build: ["pkg-config" "libjpeg"]
-depends: ["conf-pkg-config" {build}]
-depexts: [
-  ["libjpeg-dev"] {os-distribution = "debian"}
-  ["libjpeg-dev"] {os-distribution = "ubuntu"}
-  ["jpeg"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "conf-libjpeg"
+version: "1"
 synopsis: "Virtual package relying on a libjpeg system installation"
 description:
   "This package can only install if the libjpeg is installed on the system."
+maintainer: "Vincent Jacques <vincent@vincent-jacques.net>"
+authors: ["Bob Friesenhahn" "Frank Warmerdam" "Lee Howard"]
+license: "BSD-like"
+homepage: "http://libjpeg.sourceforge.net/"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "libjpeg"]
+depexts: [
+  ["jpeg"] {os = "macos" & os-distribution = "homebrew"}
+  ["libjpeg-dev"] {os-distribution = "debian"}
+  ["libjpeg-dev"] {os-distribution = "ubuntu"}
+]

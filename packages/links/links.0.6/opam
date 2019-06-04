@@ -1,31 +1,6 @@
 opam-version: "2.0"
-maintainer: "Jan Stolarek <jan.stolarek@ed.ac.uk>"
-authors: "The Links Team <links-dev@inf.ed.ac.uk>"
-homepage: "http://www.links-lang.org"
-bug-reports: "https://github.com/links-lang/links/issues"
-license: "GPL-2"
-dev-repo: "git+https://github.com/links-lang/links.git"
-build: [make "nc"]
-install: [
-  ["cp" "links" "%{links:bin}%"]
-  ["mkdir" "-p" "%{links:lib}%"]
-  ["cp" "prelude.links" "%{links:lib}%"]
-  ["./links" "%{links:lib}%/prelude.links"]
-]
-remove: [
-  ["rm" "-f" "%{links:bin}%/links"]
-  ["rm" "-rf" "%{links:lib}%"]
-]
-depends: [
-  "ocaml" {>= "4.04" & < "4.06.0"}
-  "ocamlfind" {build}
-  "deriving" {build}
-  "lwt"
-  "cgi"
-  "base64" {< "3.0.0"}
-  "cohttp" {< "0.99.0"}
-]
-depopts: ["mysql" "postgresql" "sqlite3"]
+name: "links"
+version: "0.6"
 synopsis:
   "Links is a functional programming language designed to make web programming easier."
 description: """
@@ -51,7 +26,34 @@ Links incorporates proven ideas from other programming languages:
 database-query support from Kleisli, web-interaction proposals from PLT Scheme,
 and distributed-computing support from Erlang. On top of this, it adds some new
 web-centric features of its own."""
+maintainer: "Jan Stolarek <jan.stolarek@ed.ac.uk>"
+authors: "The Links Team <links-dev@inf.ed.ac.uk>"
+license: "GPL-2"
+homepage: "http://www.links-lang.org"
+bug-reports: "https://github.com/links-lang/links/issues"
+depends: [
+  "base64" {< "3.0.0"}
+  "cgi"
+  "cohttp" {< "0.99.0"}
+  "deriving" {build}
+  "lwt"
+  "ocaml" {>= "4.04" & < "4.06.0"}
+  "ocamlfind" {build}
+]
+depopts: ["mysql" "postgresql" "sqlite3"]
 flags: light-uninstall
+build: [make "nc"]
+install: [
+  ["cp" "links" "%{links:bin}%"]
+  ["mkdir" "-p" "%{links:lib}%"]
+  ["cp" "prelude.links" "%{links:lib}%"]
+  ["./links" "%{links:lib}%/prelude.links"]
+]
+remove: [
+  ["rm" "-f" "%{links:bin}%/links"]
+  ["rm" "-rf" "%{links:lib}%"]
+]
+dev-repo: "git+https://github.com/links-lang/links.git"
 url {
   src: "https://github.com/links-lang/links/archive/v0.6.tar.gz"
   checksum: "md5=946128c93a53fe85cddccc43b0ed89a4"

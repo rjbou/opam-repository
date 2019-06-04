@@ -1,32 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/logs"
-doc: "http://erratique.ch/software/logs"
-dev-repo: "git+http://erratique.ch/repos/logs.git"
-bug-reports: "https://github.com/dbuenzli/logs/issues"
-tags: [ "log" "system" "org:erratique" ]
-license: "BSD-3-Clause"
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.04.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "mtime" {with-test}
-  "result"
-]
-depopts: [ "js_of_ocaml" "fmt" "cmdliner" "lwt" ]
-conflicts: [ "cmdliner" {< "0.9.8"} ]
-build: ["ocaml" "pkg/git.ml"]
-install: [
-  "ocaml"
-  "pkg/build.ml"
-  "native=%{ocaml:native}%"
-  "native-dynlink=%{ocaml:native-dynlink}%"
-  "jsoo=%{js_of_ocaml:installed}%"
-  "fmt=%{fmt:installed}%"
-  "cmdliner=%{cmdliner:installed}%"
-  "lwt=%{lwt:installed}%"
-]
+name: "logs"
+version: "0.5.0"
 synopsis: "Logging infrastructure for OCaml"
 description: """
 Logs provides a logging infrastructure for OCaml. Logging is performed
@@ -50,6 +24,36 @@ Logs and its reporters are distributed under the BSD3 license.
 [2]: http://erratique.ch/software/fmt
 [3]: http://erratique.ch/software/cmdliner
 [4]: http://ocsigen.org/lwt/"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD-3-Clause"
+tags: ["log" "org:erratique" "system"]
+homepage: "http://erratique.ch/software/logs"
+doc: "http://erratique.ch/software/logs"
+bug-reports: "https://github.com/dbuenzli/logs/issues"
+depends: [
+  "mtime" {with-test}
+  "ocaml" {>= "4.01.0" & < "4.04.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "result"
+]
+depopts: ["cmdliner" "fmt" "js_of_ocaml" "lwt"]
+conflicts: [
+  "cmdliner" {< "0.9.8"}
+]
+build: ["ocaml" "pkg/git.ml"]
+install: [
+  "ocaml"
+  "pkg/build.ml"
+  "native=%{ocaml:native}%"
+  "native-dynlink=%{ocaml:native-dynlink}%"
+  "jsoo=%{js_of_ocaml:installed}%"
+  "fmt=%{fmt:installed}%"
+  "cmdliner=%{cmdliner:installed}%"
+  "lwt=%{lwt:installed}%"
+]
+dev-repo: "git+http://erratique.ch/repos/logs.git"
 url {
   src: "http://erratique.ch/software/logs/releases/logs-0.5.0.tbz"
   checksum: "md5=f5a882164b986456c3178d7e50774394"

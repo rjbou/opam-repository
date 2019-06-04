@@ -1,9 +1,27 @@
 opam-version: "2.0"
+name: "dns"
+version: "0.6.0"
+synopsis: "DNS client and server implementation"
 maintainer: "anil@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
+tags: ["org:mirage" "org:xapi-project"]
+depends: [
+  "cmdliner"
+  "cryptokit"
+  "cstruct" {>= "0.6.0" & < "1.0.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "re"
+  "uri"
 ]
+depopts: ["lwt" "mirage-net"]
+conflicts: [
+  "lwt" {< "2.4.1"}
+  "lwt" {>= "3.0.0"}
+  "mirage-net" {> "0.9.4"}
+  "mirage-net" {< "0.5.2"}
+]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -17,28 +35,9 @@ build: [
   ]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "dns"]]
-depends: [
-  "ocaml"
-  "cstruct" {>= "0.6.0" & < "1.0.0"}
-  "ocamlfind"
-  "cryptokit"
-  "re"
-  "uri"
-  "cmdliner"
-  "ocamlbuild" {build}
-]
-depopts: ["lwt" "mirage-net"]
-conflicts: [
-  "lwt" {< "2.4.1"}
-  "lwt" {>= "3.0.0"}
-  "mirage-net" {> "0.9.4"}
-  "mirage-net" {< "0.5.2"}
-]
-dev-repo: "git://github.com/mirage/ocaml-dns"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "DNS client and server implementation"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "dns"]
+dev-repo: "git://github.com/mirage/ocaml-dns"
 url {
   src: "https://github.com/mirage/ocaml-dns/archive/ocaml-dns-0.6.0.tar.gz"
   checksum: "md5=b6dbe81ddefa538f8c12245691b80ac7"

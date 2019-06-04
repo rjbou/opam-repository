@@ -1,28 +1,27 @@
 opam-version: "2.0"
-name:         "pecu"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/dinosaure/pecu"
-bug-reports:  "https://github.com/dinosaure/pecu/issues"
-dev-repo:     "git+https://github.com/dinosaure/pecu.git"
-doc:          "https://dinosaure.github.io/pecu/"
-license:      "MIT"
-synopsis:     "Encoder/Decoder of Quoted-Printable (RFC2045)"
-
+name: "pecu"
+version: "0.2"
+synopsis: "Encoder/Decoder of Quoted-Printable (RFC2045)"
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/pecu"
+doc: "https://dinosaure.github.io/pecu/"
+bug-reports: "https://github.com/dinosaure/pecu/issues"
+depends: [
+  "alcotest" {with-test}
+  "cmdliner"
+  "dune" {build}
+  "fmt"
+  "ocaml" {>= "4.03.0"}
+  "rresult"
+]
 build: [
   ["dune" "subst"]
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "fmt"
-  "rresult"
-  "cmdliner"
-  "alcotest" {with-test}
-]
+dev-repo: "git+https://github.com/dinosaure/pecu.git"
 url {
   src:
     "https://github.com/dinosaure/pecu/releases/download/v0.2/pecu-v0.2.tbz"

@@ -1,10 +1,20 @@
 opam-version: "2.0"
+name: "kyotocabinet"
+version: "0.1"
+synopsis: "OCaml bindings for Kyoto Cabinet DBM"
+description: """
+Kyoto Cabinet is a key-value store featuring
+both B+ tree and hash databases
+with either in-memory or on-disk persistence."""
 maintainer: "Didier Wenzek <didier.wenzek@acidalie.com>"
 authors: "Didier Wenzek <didier.wenzek@acidalie.com>"
+license: "GPL"
 homepage: "https://github.com/didier-wenzek/ocaml-kyotocabinet"
 bug-reports: "https://github.com/didier-wenzek/ocaml-kyotocabinet/issues"
-license: "GPL"
-dev-repo: "git+https://github.com/didier-wenzek/ocaml-kyotocabinet.git"
+depends: [
+  "jbuilder" {build}
+  "ocaml"
+]
 build: [
   [
     "jbuilder"
@@ -19,22 +29,14 @@ build: [
   ]
   ["jbuilder" "runtest" "-p" name] {with-test}
 ]
-depends: [
-  "ocaml"
-  "jbuilder" {build}
-]
 depexts: [
-  ["libkyotocabinet-dev"] {os-distribution = "ubuntu"}
-  ["libkyotocabinet-dev"] {os-distribution = "debian"}
-  ["kyotocabinet-devel"] {os-distribution = "fedora"}
   ["kyoto-cabinet"] {os = "macos" & os-distribution = "homebrew"}
   ["kyotocabinet"] {os = "macos" & os-distribution = "macports"}
+  ["kyotocabinet-devel"] {os-distribution = "fedora"}
+  ["libkyotocabinet-dev"] {os-distribution = "ubuntu"}
+  ["libkyotocabinet-dev"] {os-distribution = "debian"}
 ]
-synopsis: "OCaml bindings for Kyoto Cabinet DBM"
-description: """
-Kyoto Cabinet is a key-value store featuring
-both B+ tree and hash databases
-with either in-memory or on-disk persistence."""
+dev-repo: "git+https://github.com/didier-wenzek/ocaml-kyotocabinet.git"
 url {
   src:
     "https://github.com/didier-wenzek/ocaml-kyotocabinet/archive/1.0.tar.gz"

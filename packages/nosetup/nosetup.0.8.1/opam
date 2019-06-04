@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "Marek Kubica <marek@xivilization.net>"
-homepage: "https://github.com/Leonidas-from-XIV/nosetup"
-doc: "https://leonidas-from-xiv.github.io/nosetup/api"
-bug-reports: "https://github.com/Leonidas-from-XIV/nosetup/issues"
-dev-repo: "git+https://github.com/Leonidas-from-XIV/nosetup.git"
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "angstrom" {< "0.7.0"}
-  "containers"
-]
-build: [
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%" ]
+name: "nosetup"
+version: "0.8.1"
 synopsis:
   "An `.ocamlinit` helper to `#require` packages in an OCaml toplevels"
 description: """
@@ -27,7 +13,21 @@ to load it into your toplevel session.
 Currently it supports Merlin's `.merlin` files, though there is no limitation
 of which files *could* be supported as long as the `findlib` package names can
 be parsed."""
+maintainer: "Marek Kubica <marek@xivilization.net>"
 authors: "Marek Kubica <marek@xivilization.net>"
+homepage: "https://github.com/Leonidas-from-XIV/nosetup"
+doc: "https://leonidas-from-xiv.github.io/nosetup/api"
+bug-reports: "https://github.com/Leonidas-from-XIV/nosetup/issues"
+depends: [
+  "angstrom" {< "0.7.0"}
+  "containers"
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/Leonidas-from-XIV/nosetup.git"
 url {
   src:
     "https://github.com/Leonidas-from-XIV/nosetup/releases/download/v0.8.1/nosetup-0.8.1.tbz"

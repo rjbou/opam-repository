@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/configurator"
-bug-reports: "https://github.com/janestreet/configurator/issues"
-dev-repo: "git+https://github.com/janestreet/configurator.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-conflicts: [ "jbuilder" { = "1.0+beta19" } ]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "base" {>= "v0.11"}
-  "stdio" {>= "v0.11"}
-  "jbuilder" {build & >= "1.0+beta18.1"}
-]
+name: "configurator"
+version: "v0.11.0"
 synopsis: "Helper library for gathering system configuration"
 description: """
 Configurator is a small library that helps writing OCaml scripts that
@@ -26,6 +12,22 @@ Configurator allows one to:
 - query pkg-config
 - import #define from OCaml header files
 - generate config.h file"""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/configurator"
+bug-reports: "https://github.com/janestreet/configurator/issues"
+depends: [
+  "base" {>= "v0.11"}
+  "jbuilder" {build & >= "1.0+beta18.1"}
+  "ocaml" {>= "4.04.1"}
+  "stdio" {>= "v0.11"}
+]
+conflicts: [
+  "jbuilder" {= "1.0+beta19"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/configurator.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.11/files/configurator-v0.11.0.tar.gz"

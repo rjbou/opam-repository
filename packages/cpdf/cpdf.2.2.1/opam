@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "cpdf"
+version: "2.2.1"
+synopsis: "High-level pdf tools based on CamlPDF"
 maintainer: "contact@coherentgraphics.co.uk"
-build: make
-remove: [["ocamlfind" "remove" "cpdf"]]
+authors: "John Whitington"
+homepage: "http://github.com/johnwhitington/cpdf-source"
+bug-reports: "http://github.com/johnwhitington/cpdf-source/issues"
 depends: [
+  "camlpdf" {>= "2.2.1"}
   "ocaml" {>= "4.00.0" & < "4.06.0"}
   "ocamlfind"
-  "camlpdf" {>= "2.2.1"}
 ]
-homepage: "http://github.com/johnwhitington/cpdf-source"
-authors: ["John Whitington"]
-bug-reports: "http://github.com/johnwhitington/cpdf-source/issues"
-dev-repo: "git://github.com/johnwhitington/cpdf-source"
-install: [make "install"]
-synopsis: "High-level pdf tools based on CamlPDF"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "cpdf"]
+dev-repo: "git://github.com/johnwhitington/cpdf-source"
 extra-files: ["cpdf.install" "md5=aca30b2d4fec0e5a38374cfefee70a33"]
 url {
   src: "https://github.com/johnwhitington/cpdf-source/archive/v2.2.1.zip"

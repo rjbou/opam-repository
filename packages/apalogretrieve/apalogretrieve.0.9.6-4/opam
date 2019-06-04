@@ -1,7 +1,6 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://www.first.in-berlin.de/software/tools/apalogretrieve/"
-build: [["sh" "compile.native"]]
+name: "apalogretrieve"
+version: "0.9.6-4"
 synopsis:
   "Retrieve data from an Apache logfile with a syntax derived from the SQL language."
 description: """
@@ -9,9 +8,12 @@ What apalogretrieve makes possible here is to retrieve the fields by their name
 and use filters (WHERE-clause) as well as boolean operators (AND, OR, NOT). You 
 also have a simple regular expression mechanism, like the like-operator from 
 SQL."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+homepage: "http://www.first.in-berlin.de/software/tools/apalogretrieve/"
 depends: [
   "ocaml" {< "4.06.0"}
 ]
+build: ["sh" "compile.native"]
 extra-files: [
   "apalogretrieve.install" "md5=bdeaf9cf86a3d8dca0a61aae40858778"
 ]

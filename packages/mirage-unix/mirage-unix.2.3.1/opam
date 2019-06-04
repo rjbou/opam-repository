@@ -1,26 +1,28 @@
 opam-version: "2.0"
+name: "mirage-unix"
+version: "2.3.1"
+synopsis: "MirageOS library for Unix compilation"
 maintainer: "anil@recoil.org"
 authors: "The MirageOS team"
 homepage: "https://github.com/mirage/mirage-platform"
 bug-reports: "https://github.com/mirage/mirage-platform/issues/"
-dev-repo: "git+https://github.com/mirage/mirage-platform.git"
+depends: [
+  "conf-which" {build}
+  "cstruct" {>= "1.0.1" & <= "1.9.0"}
+  "io-page" {>= "1.5.0" & < "2.0.0"}
+  "lwt" {>= "2.4.3" & < "4.0.0"}
+  "mirage-clock-unix" {>= "1.0.0" & < "1.1"}
+  "mirage-profile" {>= "0.3"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "shared-memory-ring" {>= "1.0.0"}
+  "type_conv"
+]
 build: [make "unix-build"]
 install: [make "unix-install" "PREFIX=%{prefix}%"]
 remove: [make "unix-uninstall" "PREFIX=%{prefix}%"]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "cstruct" {>= "1.0.1" & <= "1.9.0"}
-  "type_conv"
-  "conf-which" {build}
-  "ocamlfind"
-  "lwt" {>= "2.4.3" & < "4.0.0"}
-  "io-page" {>= "1.5.0" & < "2.0.0"}
-  "mirage-clock-unix" {>= "1.0.0" & < "1.1"}
-  "shared-memory-ring" {>= "1.0.0"}
-  "mirage-profile" {>= "0.3"}
-  "ocamlbuild" {build}
-]
-synopsis: "MirageOS library for Unix compilation"
+dev-repo: "git+https://github.com/mirage/mirage-platform.git"
 url {
   src: "https://github.com/mirage/mirage-platform/archive/v2.3.1.tar.gz"
   checksum: "md5=4d2918daafd0dc192d537f8422bf43cb"

@@ -1,30 +1,18 @@
 opam-version: "2.0"
+name: "frenetic"
+version: "2.0.0"
+synopsis: "The Frenetic SDN Controller Platform"
 maintainer: "seliopou@gmail.com"
-build: [
-  [
-    "ocaml"
-    "setup.ml"
-    "-configure"
-    "--prefix"
-    prefix
-    "--%{async:enable}%-async"
-    "--%{quickcheck:enable}%-quickcheck"
-  ]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocamlfind" "remove" "netkat"]
-]
 depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
   "core" {< "v0.13"}
   "fieldslib" {< "113.01.00"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
   "openflow" {>= "0.3.0" & < "0.4.0"}
   "ounit"
   "sexplib" {< "113.01.00"}
   "topology" {>= "0.1.0"}
-  "ocamlbuild" {build}
 ]
 depopts: [
   "async" {< "v0.13"}
@@ -37,10 +25,22 @@ conflicts: [
   "packet" {< "0.2.1"}
   "topology" {< "0.1.0"}
 ]
-dev-repo: "git://github.com/frenetic-lang/frenetic"
-install: ["ocaml" "setup.ml" "-install"]
-synopsis: "The Frenetic SDN Controller Platform"
 flags: light-uninstall
+build: [
+  [
+    "ocaml"
+    "setup.ml"
+    "-configure"
+    "--prefix"
+    prefix
+    "--%{async:enable}%-async"
+    "--%{quickcheck:enable}%-quickcheck"
+  ]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "netkat"]
+dev-repo: "git://github.com/frenetic-lang/frenetic"
 url {
   src: "https://github.com/frenetic-lang/frenetic/archive/v2.0.0.tar.gz"
   checksum: "md5=8081b846213885392d89b914e7db0ef3"

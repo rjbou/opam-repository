@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/bos"
-doc: "http://erratique.ch/software/bos"
-dev-repo: "git+http://erratique.ch/repos/bos.git"
-bug-reports: "https://github.com/dbuenzli/bos/issues"
-tags: [ "os" "system" "cli" "command" "file" "path" "log" "unix" "org:erratique" ]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.7.5"}
-  "conf-which"
-  "base-unix"
-  "rresult"
-  "astring"
-  "fpath"
-  "fmt" {>= "0.8.0"}
-  "logs"
-  "mtime" {with-test}
-]
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+name: "bos"
+version: "0.1.1"
 synopsis: "Basic OS interaction for OCaml"
 description: """
 Bos provides support for basic and robust interaction with the
@@ -40,6 +19,31 @@ distributed under the ISC license.
 [fmt]: http://erratique.ch/software/fmt
 [fpath]: http://erratique.ch/software/fpath
 [logs]: http://erratique.ch/software/logs"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+tags: [
+  "cli" "command" "file" "log" "org:erratique" "os" "path" "system" "unix"
+]
+homepage: "http://erratique.ch/software/bos"
+doc: "http://erratique.ch/software/bos"
+bug-reports: "https://github.com/dbuenzli/bos/issues"
+depends: [
+  "astring"
+  "base-unix"
+  "conf-which"
+  "fmt" {>= "0.8.0"}
+  "fpath"
+  "logs"
+  "mtime" {with-test}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "rresult"
+  "topkg" {build & >= "0.7.5"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+http://erratique.ch/repos/bos.git"
 url {
   src: "http://erratique.ch/software/bos/releases/bos-0.1.1.tbz"
   checksum: "md5=5e38108b9958307b6e1894084695d7dd"

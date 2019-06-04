@@ -1,13 +1,32 @@
 opam-version: "2.0"
+name: "reason"
+version: "1.4.0"
+synopsis: "Reason: Meta Language Toolchain"
+description: """
+reason allows development of Meta Language syntax trees in non-text format. It
+allows a development model that is equivalent to collaborating on syntax trees
+that have been committed to a source code repository."""
 maintainer: "Jordan Walke <jordojw@gmail.com>"
 authors: "Jordan Walke <jordojw@gmail.com>"
-homepage: "https://github.com/facebook/reason"
-bug-reports: "https://github.com/facebook/reason/issues"
 license: "BSD"
-doc: "http://facebook.github.io/reason"
 tags: "syntax"
-dev-repo: "git://github.com/facebook/reason.git"
-substs: "pkg/META"
+homepage: "https://github.com/facebook/reason"
+doc: "http://facebook.github.io/reason"
+bug-reports: "https://github.com/facebook/reason/issues"
+depends: [
+  "BetterErrors" {>= "0.0.1"}
+  "easy-format" {>= "1.2.0"}
+  "menhir" {>= "20160303"}
+  "merlin" {>= "2.5.0"}
+  "merlin-extend" {>= "0.3"}
+  "ocaml" {= "4.02.3"}
+  "ocamlfind" {build}
+  "re" {>= "1.5.0"}
+  "utop" {>= "1.17" & < "2.0"}
+]
+conflicts: [
+  "utop" {< "1.17"}
+]
 build: [
   [make "compile_error"]
   [
@@ -25,25 +44,8 @@ build: [
     "--"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {= "4.02.3"}
-  "easy-format" {>= "1.2.0"}
-  "ocamlfind" {build}
-  "utop" {>= "1.17" & < "2.0"}
-  "BetterErrors" {>= "0.0.1"}
-  "menhir" {>= "20160303"}
-  "merlin" {>= "2.5.0"}
-  "merlin-extend" {>= "0.3"}
-  "re" {>= "1.5.0"}
-]
-conflicts: [
-  "utop" {< "1.17"}
-]
-synopsis: "Reason: Meta Language Toolchain"
-description: """
-reason allows development of Meta Language syntax trees in non-text format. It
-allows a development model that is equivalent to collaborating on syntax trees
-that have been committed to a source code repository."""
+substs: "pkg/META"
+dev-repo: "git://github.com/facebook/reason.git"
 url {
   src: "https://github.com/facebook/reason/archive/1.4.0.zip"
   checksum: "md5=b1445f4e44b394afee3bd9a838df7270"

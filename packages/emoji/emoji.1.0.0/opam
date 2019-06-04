@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
-authors: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
-homepage: "https://github.com/fxfactorial/ocaml-emoji"
-bug-reports: "https://github.com/fxfactorial/ocaml-emoji/issues"
-license: "BSD-3-clause"
-dev-repo: "git+https://github.com/fxfactorial/ocaml-emoji.git"
-build: [
-  ["oasis" "setup"]
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["oasis" "setup"] {with-test}
-  ["ocaml" "setup.ml" "-configure" "--enable-tests"] {with-test}
-  ["ocaml" "setup.ml" "-build"] {with-test}
-  ["ocaml" "setup.ml" "-test"] {with-test}
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: ["ocamlfind" "remove" "emoji"]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "oasis" {build & >= "0.4.7"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
+name: "emoji"
+version: "1.0.0"
 synopsis: "Use emojis by name"
 description: """
 Names for byte code sequences of common emojis
@@ -37,7 +16,30 @@ let () =
   done;
   print_endline Emoji.dromedary_camel
 ```"""
+maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
+authors: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
+license: "BSD-3-clause"
+homepage: "https://github.com/fxfactorial/ocaml-emoji"
+bug-reports: "https://github.com/fxfactorial/ocaml-emoji/issues"
+depends: [
+  "oasis" {build & >= "0.4.7"}
+  "ocaml" {>= "4.04.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["oasis" "setup"]
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["oasis" "setup"] {with-test}
+  ["ocaml" "setup.ml" "-configure" "--enable-tests"] {with-test}
+  ["ocaml" "setup.ml" "-build"] {with-test}
+  ["ocaml" "setup.ml" "-test"] {with-test}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "emoji"]
+dev-repo: "git+https://github.com/fxfactorial/ocaml-emoji.git"
 url {
   src: "https://github.com/fxfactorial/ocaml-emoji/archive/v1.0.0.tar.gz"
   checksum: "md5=0702667c61e135022f58bfc545f745b3"

@@ -1,14 +1,22 @@
 opam-version: "2.0"
+name: "ocaml-http"
+version: "0.1.5"
+synopsis: "Library freely inspired from Perl's HTTP::Daemon module"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "camlp4"
+  "ocaml" {< "4.06.0"}
+  "ocamlfind"
+  "ocamlnet"
+  "pcre"
+]
+flags: light-uninstall
 build: [
   [make "all"]
   [make "opt"]
 ]
-remove: [["ocamlfind" "remove" "http"]]
-depends: ["ocaml" {<"4.06.0"} "ocamlfind" "camlp4" "ocamlnet" "pcre"]
 install: [make "install"]
-synopsis: "Library freely inspired from Perl's HTTP::Daemon module"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "http"]
 url {
   src:
     "https://download.ocamlcore.org/ocaml-http/ocaml-http/0.1.5/ocaml-http-0.1.5.tar.gz"

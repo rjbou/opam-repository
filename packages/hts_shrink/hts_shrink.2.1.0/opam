@@ -1,27 +1,8 @@
 opam-version: "2.0"
-authors: "Francois Berenger"
-maintainer: "unixjunkie@sdf.org"
-homepage: "https://github.com/UnixJunkie/hts_shrink"
-bug-reports: "https://github.com/UnixJunkie/hts_shrink/issues"
-dev-repo: "git+https://github.com/UnixJunkie/hts_shrink.git"
-license: "BSD-3"
-build: ["dune" "build" "-p" name "-j" jobs]
-depends: [
-  "dune" {build}
-  "batteries"
-  "dolog"
-  "parmap"
-  "parany"
-  "minicli"
-  "bitv"
-  "bst"
-  "ocamlgraph"
-  "ptmap"
-  "get_line" {with-test}
-  "ocaml" {>= "4.03"}
-]
+name: "hts_shrink"
+version: "2.1.0"
 synopsis:
-"Distance-Based Boolean Applicability Domain for High Throughput Screening data"
+  "Distance-Based Boolean Applicability Domain for High Throughput Screening data"
 description: """
 Reference implementation of the Distance-Based Boolean Applicability Domain
 (DBBAD).
@@ -30,8 +11,28 @@ For more information, and if you use the software, please cite:
 High Throughput Screening Data"
 Francois Berenger and Yoshihiro Yamanishi.
 Journal of Chemical Information and Modeling:
-https://pubs.acs.org/doi/10.1021/acs.jcim.8b00499
-"""
+https://pubs.acs.org/doi/10.1021/acs.jcim.8b00499"""
+maintainer: "unixjunkie@sdf.org"
+authors: "Francois Berenger"
+license: "BSD-3"
+homepage: "https://github.com/UnixJunkie/hts_shrink"
+bug-reports: "https://github.com/UnixJunkie/hts_shrink/issues"
+depends: [
+  "batteries"
+  "bitv"
+  "bst"
+  "dolog"
+  "dune" {build}
+  "get_line" {with-test}
+  "minicli"
+  "ocaml" {>= "4.03"}
+  "ocamlgraph"
+  "parany"
+  "parmap"
+  "ptmap"
+]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/UnixJunkie/hts_shrink.git"
 url {
   src: "https://github.com/UnixJunkie/hts_shrink/archive/v2.1.0.tar.gz"
   checksum: "md5=47250c8677294cbd70f9d3e60d02b04b"

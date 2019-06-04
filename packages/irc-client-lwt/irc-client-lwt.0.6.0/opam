@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "irc-client-lwt"
+version: "0.6.0"
+synopsis: "IRC client library - Lwt implementation"
+maintainer: "john.else@gmail.com"
 authors: ["John Else" "Simon Cruanes"]
 homepage: "https://github.com/johnelse/ocaml-irc-client"
 bug-reports: "https://github.com/johnelse/ocaml-irc-client/issues"
-dev-repo: "git://github.com/johnelse/ocaml-irc-client"
-maintainer: "john.else@gmail.com"
+depends: [
+  "irc-client"
+  "jbuilder" {build}
+  "lwt"
+  "ocaml" {>= "4.02.0"}
+  "ounit" {with-test}
+]
 build: [
   ["jbuilder" "build" "@install" "-p" name]
   ["jbuilder" "runtest" "-p" name] {with-test}
   ["jbuilder" "build" "@doc" "-p" name] {with-doc}
 ]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "jbuilder" {build}
-  "irc-client"
-  "lwt"
-  "ounit" {with-test}
-]
-synopsis: "IRC client library - Lwt implementation"
+dev-repo: "git://github.com/johnelse/ocaml-irc-client"
 url {
   src:
     "https://github.com/johnelse/ocaml-irc-client/archive/irc-client.0.6.0.tar.gz"

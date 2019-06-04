@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "sheets@alum.mit.edu"
-authors: ["David Sheets" "Jeremy Yallop"]
-homepage: "https://github.com/dsheets/ocaml-unix-dirent"
-bug-reports: "https://github.com/dsheets/ocaml-unix-dirent/issues"
-license: "ISC"
-tags: ["unix" "posix" "dirent" "syscall" "readdir"]
-dev-repo: "git+https://github.com/dsheets/ocaml-unix-dirent.git"
-build: [make "build"]
-install: [make "install"]
-remove: [make "uninstall"]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "alcotest" {with-test}
-  "base-bytes"
-]
-depopts: [
-  "base-unix" "unix-type-representations" "ctypes" "unix-errno" "lwt"
-]
-conflicts: [
-  "ctypes" {< "0.4.0"}
-  "ctypes" {>= "0.6.0"}
-  "unix-errno" {< "0.4.0"}
-]
+name: "unix-dirent"
+version: "0.3.1"
 synopsis:
   "ocaml-unix-dirent provides access to the features exposed in dirent.h"
 description: """
@@ -38,6 +15,31 @@ comprehensive range of file kinds than the corresponding functions in the
 standard OCaml Unix module.  The Dirent_unix_lwt module exports non-blocking
 versions of the functions in Dirent_unix based on the Lwt cooperative
 threading library."""
+maintainer: "sheets@alum.mit.edu"
+authors: ["David Sheets" "Jeremy Yallop"]
+license: "ISC"
+tags: ["dirent" "posix" "readdir" "syscall" "unix"]
+homepage: "https://github.com/dsheets/ocaml-unix-dirent"
+bug-reports: "https://github.com/dsheets/ocaml-unix-dirent/issues"
+depends: [
+  "alcotest" {with-test}
+  "base-bytes"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+depopts: [
+  "base-unix" "ctypes" "lwt" "unix-errno" "unix-type-representations"
+]
+conflicts: [
+  "ctypes" {< "0.4.0"}
+  "ctypes" {>= "0.6.0"}
+  "unix-errno" {< "0.4.0"}
+]
+build: [make "build"]
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/dsheets/ocaml-unix-dirent.git"
 url {
   src: "https://github.com/dsheets/ocaml-unix-dirent/archive/0.3.1.tar.gz"
   checksum: "md5=5afe4589cf5dcbc81bfb25cb540d2eb3"

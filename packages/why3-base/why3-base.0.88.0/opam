@@ -1,25 +1,45 @@
 opam-version: "2.0"
+name: "why3-base"
+version: "0.88.0"
+synopsis: "Why3 environment for deductive program verification (base)"
+description: """
+This package is for advanced users only, normal users should use the
+full why3 package."""
 maintainer: "guillaume.melquiond@inria.fr"
 authors: [
-  "François Bobot"
-  "Jean-Christophe Filliâtre"
-  "Claude Marché"
-  "Guillaume Melquiond"
   "Andrei Paskevich"
+  "Claude Marché"
+  "François Bobot"
+  "Guillaume Melquiond"
+  "Jean-Christophe Filliâtre"
 ]
-
-homepage: "http://why3.lri.fr/"
 license: "GNU Lesser General Public License version 2.1"
-doc: "http://why3.lri.fr/#documentation"
-bug-reports: "https://gforge.inria.fr/tracker/?func=browse&group_id=2990&atid=10293"
-dev-repo: "git+https://scm.gforge.inria.fr/anonscm/git/why3/why3.git"
 tags: [
-  "deductive"
-  "program verification"
-  "formal specification"
   "automated theorem prover"
+  "deductive"
+  "formal specification"
   "interactive theorem prover"
+  "program verification"
 ]
+homepage: "http://why3.lri.fr/"
+doc: "http://why3.lri.fr/#documentation"
+bug-reports:
+  "https://gforge.inria.fr/tracker/?func=browse&group_id=2990&atid=10293"
+depends: [
+  "menhir"
+  "ocaml" {>= "4.02.3" & < "4.06.0"}
+  "ocamlfind"
+]
+depopts: [
+  "camlzip" "conf-gtksourceview" "coq" "lablgtk" "ocamlgraph" "zarith"
+]
+conflicts: [
+  "coq" {< "8.4"}
+  "coq" {>= "8.7"}
+  "lablgtk" {< "2.14.2"}
+  "ocamlgraph" {< "1.8.2"}
+]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -40,32 +60,7 @@ remove: [
   ["rm" "-r" "%{lib}%/why3"]
   ["rm" "-r" "%{share}%/why3"]
 ]
-
-depends: [
-  "ocaml" {>= "4.02.3" & < "4.06.0"}
-  "ocamlfind"
-  "menhir"
-]
-depopts: [
-  "lablgtk"
-  "conf-gtksourceview"
-  "zarith"
-  "camlzip"
-  "ocamlgraph"
-  "coq"
-]
-
-conflicts: [
-  "lablgtk" {< "2.14.2"}
-  "ocamlgraph" {< "1.8.2"}
-  "coq" {< "8.4"}
-  "coq" {>= "8.7"}
-]
-synopsis: "Why3 environment for deductive program verification (base)"
-description: """
-This package is for advanced users only, normal users should use the
-full why3 package."""
-flags: light-uninstall
+dev-repo: "git+https://scm.gforge.inria.fr/anonscm/git/why3/why3.git"
 url {
   src:
     "https://gforge.inria.fr/frs/download.php/file/37147/why3-0.88.0.tar.gz"

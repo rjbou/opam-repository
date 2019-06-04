@@ -1,10 +1,28 @@
 opam-version: "2.0"
+name: "podge"
+version: "0.2"
+synopsis: "Shortcuts and helpers for common tasks in OCaml ecosystem"
+description: """
+If you're doing any modern OCaml then you're doubtlessly annoyed by
+the state of libraries and committing to one of the big ones can be
+restricting. Podge is a single module containing specialized modules
+for their respectives usages for seemingly common tasks."""
 maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
-authors: [ "Edgar Aroutiounian <edgar.factorial@gmail.com>" ]
+authors: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
 license: "GPL-3.0"
 homepage: "http://hyegar.com"
 bug-reports: "https://github.com/fxfactorial/podge/issues"
-dev-repo: "git+http://github.com/fxfactorial/podge.git"
+depends: [
+  "base-unix"
+  "cohttp" {>= "0.9.7"}
+  "oasis" {build & >= "0.4"}
+  "ocaml" {>= "4.02.2"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "tyxml" {< "4.0.0"}
+  "yojson"
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
@@ -16,23 +34,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "podge"]
-depends: [
-  "ocaml" {>= "4.02.2"}
-  "base-unix"
-  "cohttp" {>= "0.9.7"}
-  "oasis" {build & >= "0.4"}
-  "ocamlfind" {build}
-  "tyxml" {< "4.0.0"}
-  "yojson"
-  "ocamlbuild" {build}
-]
-synopsis: "Shortcuts and helpers for common tasks in OCaml ecosystem"
-description: """
-If you're doing any modern OCaml then you're doubtlessly annoyed by
-the state of libraries and committing to one of the big ones can be
-restricting. Podge is a single module containing specialized modules
-for their respectives usages for seemingly common tasks."""
-flags: light-uninstall
+dev-repo: "git+http://github.com/fxfactorial/podge.git"
 url {
   src: "https://github.com/fxfactorial/podge/archive/v0.0.2.tar.gz"
   checksum: "md5=29cbcc1d3f025b840a9ef3254b6d8ff2"

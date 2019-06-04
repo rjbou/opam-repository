@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: [ "Anil Madhavapeddy" ]
-license: "ISC"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-remove: [
-  ["ocamlfind" "remove" "ezxmlm"]
-]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlfind"
-  "xmlm" {>= "1.1.0"}
-  "ocamlbuild" {build}
-]
-tags: [
-  "org:mirage"
-  "org:ocamllabs"
-]
-dev-repo: "git://github.com/avsm/ezxmlm"
-homepage: "https://github.com/avsm/ezxmlm"
-install: ["ocaml" "setup.ml" "-install"]
+name: "ezxmlm"
+version: "1.0.0"
 synopsis: "Combinators to use with XMLM for parsing and selection"
 description: """
 An "easy" interface on top of the Xmlm [1] library.  This version provides more
@@ -54,7 +32,26 @@ been post-processed into valid XML using `xmllint --html --xmlout`.
 Ez peezy lemon squeezy!
 
 [1] https://github.com/dbuenzli/xmlm"""
+maintainer: "anil@recoil.org"
+authors: "Anil Madhavapeddy"
+license: "ISC"
+tags: ["org:mirage" "org:ocamllabs"]
+homepage: "https://github.com/avsm/ezxmlm"
+depends: [
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "xmlm" {>= "1.1.0"}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "ezxmlm"]
+dev-repo: "git://github.com/avsm/ezxmlm"
 url {
   src: "https://github.com/avsm/ezxmlm/archive/v1.0.0.tar.gz"
   checksum: "md5=dbb527de4a8231d29a80d33f6175875c"

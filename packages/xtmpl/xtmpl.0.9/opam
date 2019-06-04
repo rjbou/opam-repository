@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "xtmpl"
+version: "0.9"
+synopsis: "Small XML templating library."
 maintainer: "zoggy@bat8.org"
-authors: ["Maxence Guesdon"]
-homepage: "http://zoggy.github.io/xtmpl/"
+authors: "Maxence Guesdon"
 license: "GNU Lesser General Public License version 3"
-doc: ["http://zoggy.github.io/xtmpl/"]
-build: [make "all"]
-remove: [["ocamlfind" "remove" "xtmpl"]]
+homepage: "http://zoggy.github.io/xtmpl/"
+doc: "http://zoggy.github.io/xtmpl/"
 depends: [
   "ocaml" {< "4.02.0"}
   "ocamlfind"
   "xmlm"
 ]
-install: [make "install"]
-synopsis: "Small XML templating library."
 flags: light-uninstall
+build: [make "all"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "xtmpl"]
 url {
   src: "http://zoggy.github.com/xtmpl/xtmpl-0.9.tar.gz"
   checksum: "md5=8659b35b25966363e9f7ed5df6f43866"

@@ -1,36 +1,6 @@
 opam-version: "2.0"
+name: "gasoline"
 version: "0.3.0"
-maintainer: "michipili@gmail.com"
-authors: "Michael Grünewald"
-license: "CeCILL-B"
-homepage: "https://github.com/michipili/gasoline"
-bug-reports: "https://github.com/michipili/gasoline/issues"
-dev-repo: "git+https://github.com/michipili/gasoline.git"
-tags: [
-  "application"
-]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.06.0"}
-  "broken" {>= "0.4.2"}
-  "bsdowl" {>= "3.0.0"}
-  "camomile" {>= "0.8.5"}
-  "conf-bmake"
-  "configuration" {>= "0.4.1"}
-  "getopts" {>= "0.3.2"}
-  "lemonade" {>= "0.2.1" & < "0.4.0"}
-  "ocamlfind"
-]
-build: [
-  ["./configure" "--prefix" prefix]
-  [conf-bmake:path "-I%{bsdowl:share}%" "all"]
-]
-install: [
-  [conf-bmake:path "-I%{bsdowl:share}%" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "gasoline"]
-  ["rm" "-rf" "%{share}%/doc/gasoline"]
-]
 synopsis: "Unix-ish application development framework"
 description: """
 The Gasoline project aims at implementing a Unix-ish application
@@ -50,7 +20,34 @@ Users of Gasoline should be enabled to:
 - Use common file formats such as CSV or JSON in their applications.
 
 WWW: https://github.com/michipili/gasoline"""
+maintainer: "michipili@gmail.com"
+authors: "Michael Grünewald"
+license: "CeCILL-B"
+tags: "application"
+homepage: "https://github.com/michipili/gasoline"
+bug-reports: "https://github.com/michipili/gasoline/issues"
+depends: [
+  "broken" {>= "0.4.2"}
+  "bsdowl" {>= "3.0.0"}
+  "camomile" {>= "0.8.5"}
+  "conf-bmake"
+  "configuration" {>= "0.4.1"}
+  "getopts" {>= "0.3.2"}
+  "lemonade" {>= "0.2.1" & < "0.4.0"}
+  "ocaml" {>= "4.02.0" & < "4.06.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [conf-bmake:path "-I%{bsdowl:share}%" "all"]
+]
+install: [conf-bmake:path "-I%{bsdowl:share}%" "install"]
+remove: [
+  ["ocamlfind" "remove" "gasoline"]
+  ["rm" "-rf" "%{share}%/doc/gasoline"]
+]
+dev-repo: "git+https://github.com/michipili/gasoline.git"
 url {
   src:
     "https://github.com/michipili/gasoline/releases/download/v0.3.0/gasoline-0.3.0.tar.xz"

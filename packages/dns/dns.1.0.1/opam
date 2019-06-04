@@ -1,35 +1,6 @@
 opam-version: "2.0"
-maintainer:   "anil@recoil.org"
-homepage:     "https://github.com/mirage/ocaml-dns"
-dev-repo: "git+https://github.com/mirage/ocaml-dns.git"
-bug-reports:  "https://github.com/mirage/ocaml-dns/issues"
-doc:          "https://mirage.github.io/ocaml-dns/"
-authors: [
-  "Anil Madhavapeddy" "Tim Deegan" "Richard Mortier"
-  "Haris Rotsos" "David Sheets" "Thomas Gazagnaire"
-  "Luke Dunstan" "David Scott"
-]
-license: "ISC"
-tags: [ "org:mirage" "org:xapi-project" ]
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "base-bytes"
-  "jbuilder" {build & >= "1.0+beta9"}
-  "cstruct" {>= "3.0.2"}
-  "ppx_cstruct"
-  "re"
-  "ipaddr" {>= "2.6.0"}
-  "uri" {>= "1.7.0"}
-  "base64" {>= "2.0.0" & < "3.0.0"}
-  "hashcons"
-  "result"
-]
+name: "dns"
+version: "1.0.1"
 synopsis: "DNS client and server implementation in pure OCaml"
 description: """
 This is a pure OCaml implementation of the DNS protocol.  It is intended to be
@@ -59,6 +30,40 @@ Areas that need work:
 * DNSSEC extensions (using [nocrypto](https://github.com/mirleft/ocaml-nocrypto/))
 * TC bit and TCP fallback
 * mDNS resolver"""
+maintainer: "anil@recoil.org"
+authors: [
+  "Anil Madhavapeddy"
+  "David Scott"
+  "David Sheets"
+  "Haris Rotsos"
+  "Luke Dunstan"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Tim Deegan"
+]
+license: "ISC"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/ocaml-dns"
+doc: "https://mirage.github.io/ocaml-dns/"
+bug-reports: "https://github.com/mirage/ocaml-dns/issues"
+depends: [
+  "base-bytes"
+  "base64" {>= "2.0.0" & < "3.0.0"}
+  "cstruct" {>= "3.0.2"}
+  "hashcons"
+  "ipaddr" {>= "2.6.0"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "ocaml" {>= "4.03.0"}
+  "ppx_cstruct"
+  "re"
+  "result"
+  "uri" {>= "1.7.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/ocaml-dns.git"
 url {
   src:
     "https://github.com/mirage/ocaml-dns/releases/download/v1.0.1/dns-1.0.1.tbz"

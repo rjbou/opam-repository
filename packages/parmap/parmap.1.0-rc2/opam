@@ -1,38 +1,6 @@
 opam-version: "2.0"
-authors: "Roberto Di Cosmo <roberto.org>"
-maintainer: "roberto@dicosmo.org"
-homepage: "https://github.com/rdicosmo/parmap"
-bug-reports: "https://github.com/rdicosmo/parmap/issues"
-dev-repo: "git://github.com/rdicosmo/parmap"
-build: [
-  ["aclocal" "-I" "m4"]
-  ["autoconf"]
-  ["autoheader"]
-  ["./configure"] 
-  [make "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib" ]
-]
-install: [
-  [make "install" "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
-]
-remove: [
-  ["aclocal" "-I" "m4"]
-  ["autoconf"]
-  ["autoheader"]
-  ["./configure"] 
-  [make "uninstall" "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "camlp4"
-  "ocamlbuild" {build}
-  "conf-autoconf"
-  "conf-aclocal"
-]
-depexts: [
-  ["autoconf"] {os-distribution = "ubuntu"}
-  ["autoconf"] {os-distribution = "debian"}
-]
+name: "parmap"
+version: "1.0-rc2"
 synopsis: "Minimalistic library allowing to exploit multicore architecture"
 description: """
 Parmap is a minimalistic library allowing to exploit multicore
@@ -42,6 +10,38 @@ to be a map, fold or map/fold (map-reduce), just use Parmap’s parmap,
 parfold and parmapfold primitives in place of the standard List.map
 and friends, and specify the number of subprocesses to use by the
 optional parameter ~ncores."""
+maintainer: "roberto@dicosmo.org"
+authors: "Roberto Di Cosmo <roberto.org>"
+homepage: "https://github.com/rdicosmo/parmap"
+bug-reports: "https://github.com/rdicosmo/parmap/issues"
+depends: [
+  "camlp4"
+  "conf-aclocal"
+  "conf-autoconf"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+build: [
+  ["aclocal" "-I" "m4"]
+  ["autoconf"]
+  ["autoheader"]
+  ["./configure"]
+  [make "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
+]
+install: [make "install" "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
+remove: [
+  ["aclocal" "-I" "m4"]
+  ["autoconf"]
+  ["autoheader"]
+  ["./configure"]
+  [make "uninstall" "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
+]
+depexts: [
+  ["autoconf"] {os-distribution = "ubuntu"}
+  ["autoconf"] {os-distribution = "debian"}
+]
+dev-repo: "git://github.com/rdicosmo/parmap"
 url {
   src: "https://github.com/rdicosmo/parmap/tarball/1.0-rc2"
   checksum: "md5=1d68204d3bae2b8e6119528cf69552c4"

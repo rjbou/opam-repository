@@ -1,27 +1,26 @@
 opam-version: "2.0"
+name: "cubicle"
+version: "1.1.2"
+synopsis: "SMT based model checker for parameterized systems"
 maintainer: "alainmebsout@gmail.com"
-authors: [
-  "Sylvain Conchon"
-  "Alain Mebsout"
-]
-homepage: "http://cubicle.lri.fr"
+authors: ["Alain Mebsout" "Sylvain Conchon"]
 license: "Apache Software License version 2.0"
+homepage: "http://cubicle.lri.fr"
 bug-reports: "https://github.com/cubicle-model-checker/cubicle/issues"
-dev-repo: "git+https://github.com/cubicle-model-checker/cubicle.git"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
 depends: [
+  "num"
   "ocaml" {>= "4.03.0"}
   "ocamlfind"
-  "num"
 ]
 depopts: ["functory"]
 conflicts: [
   "functory" {< "0.5"}
 ]
-synopsis: "SMT based model checker for parameterized systems"
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+dev-repo: "git+https://github.com/cubicle-model-checker/cubicle.git"
 extra-files: ["cubicle.install" "md5=ba6d18615d00544948c96638b6c8d900"]
 url {
   src:

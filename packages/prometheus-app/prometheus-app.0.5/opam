@@ -1,30 +1,6 @@
 opam-version: "2.0"
-maintainer:   "datakit@docker.com"
-authors:      ["Thomas Leonard" "David Scott"]
-license:      "Apache"
-homepage:     "https://github.com/mirage/prometheus"
-bug-reports:  "https://github.com/mirage/prometheus/issues"
-dev-repo: "git+https://github.com/mirage/prometheus.git"
-doc:          "https://mirage.github.io/prometheus/"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "prometheus" {>= "0.5"}
-  "fmt"
-  "re"
-  "cohttp" {>= "1.0.0"}
-  "cohttp-lwt"
-  "cohttp-lwt-unix"
-  "lwt" {>= "2.5.0"}
-  "cmdliner"
-  "alcotest" {with-test}
-]
+name: "prometheus-app"
+version: "0.5"
 synopsis: "Client library for Prometheus monitoring"
 description: """
 To run services reliably, it is useful if they can report various metrics
@@ -97,6 +73,31 @@ Unikernels can use `Prometheus_app` instead of `Prometheus_unix` to avoid the `U
 ### API docs
 
 Generated API documentation is available at <https://mirage.github.io/prometheus/>."""
+maintainer: "datakit@docker.com"
+authors: ["David Scott" "Thomas Leonard"]
+license: "Apache"
+homepage: "https://github.com/mirage/prometheus"
+doc: "https://mirage.github.io/prometheus/"
+bug-reports: "https://github.com/mirage/prometheus/issues"
+depends: [
+  "alcotest" {with-test}
+  "cmdliner"
+  "cohttp" {>= "1.0.0"}
+  "cohttp-lwt"
+  "cohttp-lwt-unix"
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta10"}
+  "lwt" {>= "2.5.0"}
+  "ocaml" {>= "4.02.3"}
+  "prometheus" {>= "0.5"}
+  "re"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/prometheus.git"
 url {
   src:
     "https://github.com/mirage/prometheus/releases/download/v0.5/prometheus-0.5.tbz"

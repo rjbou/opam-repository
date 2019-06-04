@@ -1,24 +1,24 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/async_find"
-license: "Apache-2.0"
-build: [
-  [make]
-]
-remove: [["ocamlfind" "remove" "async_find"]]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.03"}
-  "camlp4"
-  "async" {>= "109.15.00" & < "113.01.00"}
-  "sexplib" {>= "109.15.00" & < "113.01.00"}
-  "ocamlbuild" {build}
-]
-bug-reports: "https://github.com/janestreet/async_find/issues"
-dev-repo: "git+https://github.com/janestreet/async_find.git"
-install: [[make "install"]]
+name: "async_find"
+version: "111.28.00"
 synopsis: "Directory traversal with Async"
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/async_find"
+bug-reports: "https://github.com/janestreet/async_find/issues"
+depends: [
+  "async" {>= "109.15.00" & < "113.01.00"}
+  "camlp4"
+  "ocaml" {>= "4.00.0" & < "4.03"}
+  "ocamlbuild" {build}
+  "sexplib" {>= "109.15.00" & < "113.01.00"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "async_find"]
+dev-repo: "git+https://github.com/janestreet/async_find.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/111.28.00/individual/async_find-111.28.00.tar.gz"

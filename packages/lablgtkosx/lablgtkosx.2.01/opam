@@ -1,26 +1,26 @@
 opam-version: "2.0"
+name: "lablgtkosx"
+version: "2.01"
+synopsis: "Lablgtkosx binds gOSX_application on top of lablgtk"
+description: "It provides functions specific to the MacOS aqua gtk backend."
 maintainer: "pierre.boutillier@laposte.net"
+authors: "Pierre BOutillier"
 license: "LGPL-2.1+ with OCaml linking exception"
 homepage: "https://github.com/pirbo/lablGtkOSXApplication"
-bug-reports: "https://github.com/pirbo/lablGtkOSXApplication/issues"
-dev-repo: "git+https://github.com/pirbo/lablGtkOSXApplication.git"
 doc: "https://pirbo.github.io/lablGtkOSXApplication/"
-
+bug-reports: "https://github.com/pirbo/lablGtkOSXApplication/issues"
+depends: ["lablgtk" "ocaml"]
+available: os = "macos"
+flags: light-uninstall
 build: [
   ["./configure"]
   [make]
 ]
-remove: [ [ "ocamlfind" "remove" "lablgtkosx" ] ]
-depends: ["ocaml" "lablgtk"]
 install: [make "install"]
-
+remove: ["ocamlfind" "remove" "lablgtkosx"]
 depexts:
   ["gtk-mac-integration"] {os-distribution = "homebrew" & os = "macos"}
-available: os = "macos"
-synopsis: "Lablgtkosx binds gOSX_application on top of lablgtk"
-description: "It provides functions specific to the MacOS aqua gtk backend."
-authors: "Pierre BOutillier"
-flags: light-uninstall
+dev-repo: "git+https://github.com/pirbo/lablGtkOSXApplication.git"
 url {
   src:
     "https://github.com/pirbo/lablGtkOSXApplication/releases/download/v2.01/lablgtkosx-2.01.tar.bz2"

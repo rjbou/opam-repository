@@ -1,23 +1,26 @@
 opam-version: "2.0"
+name: "jingoo"
+version: "1.3.0"
+synopsis:
+  "Template engine almost compatible with Jinja2(python template engine)"
 maintainer: "Masaki WATANABE <lambda.watanabe@gmail.com>"
 authors: "Masaki WATANABE <lambda.watanabe@gmail.com>"
+license: "BSD-3"
 homepage: "https://github.com/tategakibunko/jingoo"
 bug-reports: "https://github.com/tategakibunko/jingoo/issues"
-dev-repo: "git+https://github.com/tategakibunko/jingoo.git"
-license: "BSD-3"
-synopsis: "Template engine almost compatible with Jinja2(python template engine)"
+depends: [
+  "dune" {build & >= "1.4.0"}
+  "ocaml" {>= "4.04.0"}
+  "ounit" {with-test & >= "2.0.0"}
+  "ppx_deriving"
+  "re"
+  "uucp"
+  "uutf" {>= "0.9.4"}
+]
 build: [make "all"]
 install: [make "install"]
 remove: [make "uninstall"]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "dune" {build & >= "1.4.0"}
-  "ppx_deriving"
-  "re"
-  "uutf" {>= "0.9.4"}
-  "uucp"
-  "ounit" {with-test & >= "2.0.0"}
-]
+dev-repo: "git+https://github.com/tategakibunko/jingoo.git"
 url {
   src: "https://github.com/tategakibunko/jingoo/archive/v1.3.0.tar.gz"
   checksum: "md5=33a8c829206b229ea9d41d4f8b0c310c"

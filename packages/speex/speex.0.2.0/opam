@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "speex"
+version: "0.2.0"
+synopsis:
+  "Bindings for the speex library to decode audio files in speex format"
 maintainer: "smimram@gmail.com"
+depends: ["ocaml" "ocamlfind" "ogg"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "speex"]]
-depends: ["ocaml" "ocamlfind" "ogg"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "speex"]
 depexts: [
   ["libspeex-dev"] {os-distribution = "ubuntu"}
   ["libspeex-dev"] {os-distribution = "debian"}
 ]
-install: [make "install"]
-synopsis:
-  "Bindings for the speex library to decode audio files in speex format"
-flags: light-uninstall
 url {
   src:
     "http://downloads.sourceforge.net/project/savonet/ocaml-speex/0.2.0/ocaml-speex-0.2.0.tar.gz"

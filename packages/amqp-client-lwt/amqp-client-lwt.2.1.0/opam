@@ -1,26 +1,29 @@
 opam-version: "2.0"
+name: "amqp-client-lwt"
+version: "2.1.0"
+synopsis: "Amqp client library, lwt version"
 maintainer: "Anders Fugmann <anders@fugmann.net>"
-authors: [ "Anders Fugmann" ]
-homepage: "https://github.com/andersfugmann/amqp-client"
-bug-reports: "https://github.com/andersfugmann/amqp-client/issues"
-dev-repo: "git+https://github.com/andersfugmann/amqp-client.git"
-doc: "https://andersfugmann.github.io/amqp-client/amqp-client-lwt/Amqp_client_lwt/"
+authors: "Anders Fugmann"
 license: "BSD3"
+homepage: "https://github.com/andersfugmann/amqp-client"
+doc:
+  "https://andersfugmann.github.io/amqp-client/amqp-client-lwt/Amqp_client_lwt/"
+bug-reports: "https://github.com/andersfugmann/amqp-client/issues"
+depends: [
+  "amqp-client" {= "2.1.0"}
+  "dune" {build}
+  "lwt" {>= "2.4.6"}
+  "lwt_log"
+  "ocaml" {>= "4.04.0"}
+  "ocplib-endian" {>= "0.6"}
+  "uri"
+  "xml-light" {build}
+]
 build: [
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "dune" {build}
-  "xml-light" {build}
-  "amqp-client" {= "2.1.0"}
-  "ocplib-endian" {>= "0.6"}
-  "lwt" {>= "2.4.6"}
-  "lwt_log"
-  "uri"
-]
-synopsis: "Amqp client library, lwt version"
+dev-repo: "git+https://github.com/andersfugmann/amqp-client.git"
 url {
   src: "https://github.com/andersfugmann/amqp-client/archive/2.1.0.tar.gz"
   checksum: [

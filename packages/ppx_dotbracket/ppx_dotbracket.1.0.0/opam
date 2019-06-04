@@ -1,21 +1,13 @@
 opam-version: "2.0"
+name: "ppx_dotbracket"
 version: "1.0.0"
-authors: "Jun Furuse"
+synopsis:
+  "ppx extension for rebinding dot-bracket expressions such as a.[x], a.(x), a.{x}"
 maintainer: "jun.furuse@gmail.com"
+authors: "Jun Furuse"
 homepage: "https://bitbucket.org/camlspotter/ppx_dotbracket"
-bug-reports: "https://bitbucket.org/camlspotter/ppx_dotbracket/issues?status=new&status=open"
-dev-repo: "hg+https://bitbucket.org/camlspotter/ppx_dotbracket"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-build" ]
-]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
+bug-reports:
+  "https://bitbucket.org/camlspotter/ppx_dotbracket/issues?status=new&status=open"
 depends: [
   "ocaml" {>= "4.03.0"}
   "ocamlfind" {build}
@@ -23,8 +15,16 @@ depends: [
   "ppx_tools_versioned"
   "ppxx" {>= "2.3.0" & < "2.4.0"}
 ]
-synopsis:
-  "ppx extension for rebinding dot-bracket expressions such as a.[x], a.(x), a.{x}"
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
+dev-repo: "hg+https://bitbucket.org/camlspotter/ppx_dotbracket"
 url {
   src: "https://bitbucket.org/camlspotter/ppx_dotbracket/get/1.0.0.tar.gz"
   checksum: "md5=bf72213cae0a9a140fa2831e9c390544"

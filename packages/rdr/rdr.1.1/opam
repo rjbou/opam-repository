@@ -1,18 +1,6 @@
 opam-version: "2.0"
-license: "BSD"
-maintainer: "m4b <m4b.github.io@gmail.com>"
-authors: "m4b <m4b.github.io@gmail.com>"
-bug-reports: "m4b.github.io@gmail.com"
-dev-repo: "git://github.com/m4b/rdr"
-homepage: "http://www.m4b.io"
-build: [
-  [make "build"]
-]
-depends: [
-  "ocaml" {>= "4.02"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
+name: "rdr"
+version: "1.1"
 synopsis:
   "Rdr is a cross-platform binary analysis and reverse engineering tool, utilizing a unique symbol map for global analysis."
 description: """
@@ -28,6 +16,18 @@ Features:
 * Searchable symbol-map of all the symbols on your system, including binary offset, size, and exporting library
 * Print imports and exports of binaries
 * Make pretty graphs, at the binary or symbol map level"""
+maintainer: "m4b <m4b.github.io@gmail.com>"
+authors: "m4b <m4b.github.io@gmail.com>"
+license: "BSD"
+homepage: "http://www.m4b.io"
+bug-reports: "m4b.github.io@gmail.com"
+depends: [
+  "ocaml" {>= "4.02"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+build: [make "build"]
+dev-repo: "git://github.com/m4b/rdr"
 url {
   src: "https://github.com/m4b/rdr/archive/v1.1.tar.gz"
   checksum: "md5=ac168972caecb7fca0d1f73480e30aea"

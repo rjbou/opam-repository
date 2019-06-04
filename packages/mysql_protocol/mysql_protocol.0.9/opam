@@ -1,22 +1,25 @@
 opam-version: "2.0"
+name: "mysql_protocol"
+version: "0.9"
+synopsis: "Implementation of MySQL Protocol with the Bitstring library"
 maintainer: "stephleg@free.fr"
 authors: "Stéphane Legrand <slegrand45@gmail.com>"
 homepage: "https://github.com/slegrand45/mysql_protocol"
 bug-reports: "https://github.com/slegrand45/mysql_protocol/issues"
-dev-repo: "git+https://github.com/slegrand45/mysql_protocol.git"
-build: [make "all"]
-remove: [[make "deinstall"]]
 depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocamlfind"
-  "cryptokit"
   "bitstring" {< "3.0.0"}
-  "ocamlbuild" {build}
+  "cryptokit"
   "num"
+  "ocaml" {>= "4.00.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
 ]
+build: [make "all"]
 install: [make "install"]
-synopsis: "Implementation of MySQL Protocol with the Bitstring library"
+remove: [make "deinstall"]
+dev-repo: "git+https://github.com/slegrand45/mysql_protocol.git"
 url {
-  src: "https://download.ocamlcore.org/ocmysqlprotocol/ocmp/ocmp-0.9/ocmp-0.9.tgz"
+  src:
+    "https://download.ocamlcore.org/ocmysqlprotocol/ocmp/ocmp-0.9/ocmp-0.9.tgz"
   checksum: "md5=80ece3c0e9a6e271ab7006e5e25da948"
 }

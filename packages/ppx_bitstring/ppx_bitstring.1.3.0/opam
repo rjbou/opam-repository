@@ -1,12 +1,24 @@
 opam-version: "2.0"
 name: "ppx_bitstring"
 version: "1.3.0"
+synopsis: "PPX extension for the bitstring library."
 maintainer: "Xavier Guérin <github@applepine.org>"
 authors: "Xavier Guérin <github@applepine.org>"
-homepage: "https://github.com/xguerin/ppx_bitstring"
-dev-repo: "git+https://github.com/xguerin/ppx_bitstring.git"
-bug-reports: "https://github.com/xguerin/ppx_bitstring/issues"
 license: "ISC"
+homepage: "https://github.com/xguerin/ppx_bitstring"
+bug-reports: "https://github.com/xguerin/ppx_bitstring/issues"
+depends: [
+  "bitstring" {build & < "3.0.0"}
+  "js-build-tools" {build}
+  "ocaml" {>= "4.03" & < "4.04"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {build}
+  "ppx_core" {build}
+  "ppx_driver" {build & < "v0.9.0"}
+  "ppx_tools"
+]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -19,23 +31,9 @@ build: [
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-test"] {with-test}
 ]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
-depends: [
-  "ocaml" {>= "4.03" & < "4.04"}
-  "bitstring" {build & < "3.0.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "ppx_tools"
-  "ppx_driver" {build & < "v0.9.0"}
-  "ppx_core" {build}
-  "ounit" {build}
-  "js-build-tools" {build}
-]
+install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "ppx_bitstring"]
-synopsis: "PPX extension for the bitstring library."
-flags: light-uninstall
+dev-repo: "git+https://github.com/xguerin/ppx_bitstring.git"
 url {
   src: "https://github.com/xguerin/ppx_bitstring/archive/v1.3.0.tar.gz"
   checksum: "md5=d53dd3c69b15d62bcba60775a9044615"

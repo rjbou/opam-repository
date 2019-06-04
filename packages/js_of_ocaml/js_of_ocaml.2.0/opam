@@ -1,25 +1,28 @@
 opam-version: "2.0"
-maintainer:   "dev@ocsigen.org"
-authors:      "Ocsigen team"
-bug-reports:  "https://github.com/ocsigen/js_of_ocaml/issues"
-homepage:     "http://ocsigen.org/js_of_ocaml"
-dev-repo: "git+https://github.com/ocsigen/js_of_ocaml.git"
-build:   [make]
-install: [make "install-lib" "BINDIR=%{bin}%"]
-remove:  ["ocamlfind" "remove" "js_of_ocaml"]
-
+name: "js_of_ocaml"
+version: "2.0"
+synopsis: "Compiler from OCaml bytecode to Javascript"
+maintainer: "dev@ocsigen.org"
+authors: "Ocsigen team"
+homepage: "http://ocsigen.org/js_of_ocaml"
+bug-reports: "https://github.com/ocsigen/js_of_ocaml/issues"
 depends: [
-  "ocaml" {<= "4.01.0"}
-  "ocamlfind"
+  "camlp4"
   "lwt" {>= "2.4"}
   "menhir"
-  "camlp4"
+  "ocaml" {<= "4.01.0"}
   "ocamlbuild"
+  "ocamlfind"
 ]
 depopts: ["deriving"]
-conflicts: ["deriving" {< "0.6"}]
-synopsis: "Compiler from OCaml bytecode to Javascript"
+conflicts: [
+  "deriving" {< "0.6"}
+]
 flags: light-uninstall
+build: make
+install: [make "install-lib" "BINDIR=%{bin}%"]
+remove: ["ocamlfind" "remove" "js_of_ocaml"]
+dev-repo: "git+https://github.com/ocsigen/js_of_ocaml.git"
 extra-files: ["js_of_ocaml.install" "md5=9693c4c6ec26305451a05aa9e6650406"]
 url {
   src: "http://ocsigen.org/download/js_of_ocaml-2.00.tar.gz"

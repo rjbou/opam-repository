@@ -1,4 +1,9 @@
 opam-version: "2.0"
+name: "conf-libsodium"
+version: "1"
+synopsis: "Virtual package relying on a libsodium system installation"
+description:
+  "This package can only install if the libsodium is installed on the system."
 maintainer: "Grégoire Henry <gregoire.henry@ocamlpro.com>"
 authors: [
   "Adam Langley"
@@ -16,19 +21,18 @@ authors: [
   "Tanja Lange"
   "Zooko Wilcox-O'Hearn"
 ]
-homepage: "https://download.libsodium.org/doc/"
 license: "ISC"
-build: [["pkg-config" "libsodium"]]
-depends: ["conf-pkg-config" {build}]
+homepage: "https://download.libsodium.org/doc/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
+flags: conf
+build: ["pkg-config" "libsodium"]
 depexts: [
+  ["libsodium"] {os-distribution = "homebrew" & os = "macos"}
   ["libsodium-dev"] {os-distribution = "debian"}
   ["libsodium-dev"] {os-distribution = "ubuntu"}
-  ["security/libsodium"] {os = "freebsd"}
-  ["libsodium"] {os-distribution = "homebrew" & os = "macos"}
   ["libsodium-dev"] {os-distribution = "alpine"}
+  ["security/libsodium"] {os = "freebsd"}
 ]
-synopsis: "Virtual package relying on a libsodium system installation"
-description:
-  "This package can only install if the libsodium is installed on the system."
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-flags: conf

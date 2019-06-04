@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: "Anil Madhavapeddy <anil@recoil.org>"
-license: "ISC"
-tags: "org:ocamllabs"
-homepage: "https://github.com/avsm/ocaml-version"
-doc: "https://avsm.github.io/ocaml-version/doc"
-bug-reports: "https://github.com/avsm/ocaml-version/issues"
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-]
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-]
-dev-repo: "git+https://github.com/avsm/ocaml-version.git"
+name: "ocaml-version"
+version: "2.0.0"
 synopsis: "Manipulate, parse and generate OCaml compiler version strings"
 description: """
 This library provides facilities to parse version numbers of the OCaml
@@ -38,8 +24,23 @@ details.
 - **Discussion:** Post on <https://discuss.ocaml.org/> with the `ocaml` tag under
   the Ecosystem category.
 - **Bugs:** <https://github.com/avsm/ocaml-version/issues>
-- **Docs:** <http://docs.mirage.io/ocaml-version>
-"""
+- **Docs:** <http://docs.mirage.io/ocaml-version>"""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+tags: "org:ocamllabs"
+homepage: "https://github.com/avsm/ocaml-version"
+doc: "https://avsm.github.io/ocaml-version/doc"
+bug-reports: "https://github.com/avsm/ocaml-version/issues"
+depends: [
+  "dune" {build}
+  "ocaml" {>= "4.03.0"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/avsm/ocaml-version.git"
 url {
   src:
     "https://github.com/avsm/ocaml-version/releases/download/v2.0.0/ocaml-version-v2.0.0.tbz"

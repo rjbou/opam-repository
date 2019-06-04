@@ -1,30 +1,28 @@
+opam-version: "2.0"
+name: "earley"
+version: "2.0.0"
 synopsis: "Parsing library based on Earley Algorithm"
-description:
-"""
+description: """
 Earley is a parser combinator library base on Earley's algorithm. It
 is intended to be used in conjunction with an OCaml syntax extension
 which allows the definition of parsers inside the language. There is
-also support for writing OCaml syntax extensions in a camlp4 style.
-"""
-
-opam-version: "2.0"
+also support for writing OCaml syntax extensions in a camlp4 style."""
 maintainer: "Rodolphe Lepigre <rodolphe.lepigre@inria.fr>"
-bug-reports: "https://github.com/rlepigre/ocaml-earley/issues"
-homepage: "https://github.com/rlepigre/ocaml-earley"
-dev-repo: "git+https://github.com/rlepigre/ocaml-earley.git"
 authors: [
   "Christophe Raffalli <christophe@raffalli.eu>"
-  "Rodolphe Lepigre <rodolphe.lepigre@inria.fr>" ]
-license: "CeCILL-B_V1"
-doc: "https://rlepigre.github.io/ocaml-earley/"
-
-depends: [
-  "ocaml" { >= "4.03.0" & <= "4.07.1" }
-  "dune"  { build & >= "1.2.0" }
+  "Rodolphe Lepigre <rodolphe.lepigre@inria.fr>"
 ]
-
-build: [ [ "dune" "build" "-p" name "-j" jobs ] ]
-run-test: [ [ "dune" "runtest" "-p" name "-j" jobs ] ]
+license: "CeCILL-B_V1"
+homepage: "https://github.com/rlepigre/ocaml-earley"
+doc: "https://rlepigre.github.io/ocaml-earley/"
+bug-reports: "https://github.com/rlepigre/ocaml-earley/issues"
+depends: [
+  "dune" {build & >= "1.2.0"}
+  "ocaml" {>= "4.03.0" & <= "4.07.1"}
+]
+build: ["dune" "build" "-p" name "-j" jobs]
+run-test: ["dune" "runtest" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/rlepigre/ocaml-earley.git"
 url {
   src:
     "https://github.com/rlepigre/ocaml-earley/releases/download/2.0.0/earley-2.0.0.tbz"

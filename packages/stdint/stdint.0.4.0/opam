@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "Andre Nathan <andre@hostnet.com.br>"
-authors: [
-  "Andre Nathan" "Jeff Shaw" "Florian Pichlmeier" "Markus W. Weissmann"
-]
-homepage: "https://github.com/andrenth/ocaml-stdint"
-bug-reports: "https://github.com/andrenth/ocaml-stdint/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/andrenth/ocaml-stdint.git"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  [make]
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "project"]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
+name: "stdint"
+version: "0.4.0"
 synopsis: "signed and unsigned integer types having specified widths"
 description: """
 The stdint library provides signed and unsigned integer types of various
@@ -28,7 +11,26 @@ like maximum and minimum values, infix operators conversion to and from every
 other integer type (including int, float and nativeint), parsing from and
 conversion to readable strings (binary, octal, decimal, hexademical),
 conversion to and from buffers in both big endian and little endian byte order."""
+maintainer: "Andre Nathan <andre@hostnet.com.br>"
+authors: [
+  "Andre Nathan" "Florian Pichlmeier" "Jeff Shaw" "Markus W. Weissmann"
+]
+license: "MIT"
+homepage: "https://github.com/andrenth/ocaml-stdint"
+bug-reports: "https://github.com/andrenth/ocaml-stdint/issues"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "project"]
+dev-repo: "git+https://github.com/andrenth/ocaml-stdint.git"
 url {
   src: "https://github.com/andrenth/ocaml-stdint/archive/0.4.0.tar.gz"
   checksum: "md5=6d058bad24069e1943514e5ebf68daa6"

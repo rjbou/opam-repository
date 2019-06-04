@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "dockerfile-cmd"
+version: "6.0.0"
 synopsis: "Dockerfile eDSL and distribution support"
 description: """
 [Docker](http://docker.com) is a container manager that can build images
@@ -26,14 +28,14 @@ homepage: "https://github.com/avsm/ocaml-dockerfile"
 doc: "https://avsm.github.io/ocaml-dockerfile/doc"
 bug-reports: "https://github.com/avsm/ocaml-dockerfile/issues"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "dune" {build}
-  "dockerfile-opam" {>= "3.0.0"}
+  "bos"
   "cmdliner"
+  "csv"
+  "dockerfile-opam" {>= "3.0.0"}
+  "dune" {build}
   "fmt"
   "logs"
-  "bos"
-  "csv"
+  "ocaml" {>= "4.02.3"}
   "ppx_sexp_conv" {< "v0.13"}
 ]
 build: [

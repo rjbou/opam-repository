@@ -1,28 +1,28 @@
 opam-version: "2.0"
+name: "qrencode"
+version: "0.1"
+synopsis: "Binding to libqrencode (QR-code encoding library)"
 maintainer: "vb@luminar.eu.org"
-authors: ["Vincent Bernardoff"]
+authors: "Vincent Bernardoff"
 homepage: "https://github.com/vbmithr/qrencode-ocaml"
+depends: [
+  "oasis" {build}
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   [make]
 ]
-remove: [
-  ["ocamlfind" "remove" "qrencode"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "oasis" {build}
-]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "qrencode"]
 depexts: [
   ["libqrencode-dev" "libpng-dev"] {os-distribution = "ubuntu"}
   ["libqrencode-dev" "libpng-dev"] {os-distribution = "debian"}
 ]
 dev-repo: "git://github.com/vbmithr/qrencode-ocaml"
-install: [make "install"]
-synopsis: "Binding to libqrencode (QR-code encoding library)"
-flags: light-uninstall
 url {
   src: "https://github.com/vbmithr/qrencode-ocaml/archive/0.1.tar.gz"
   checksum: "md5=f431e395c484a1814f45e4c880f7a612"

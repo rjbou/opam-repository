@@ -1,18 +1,20 @@
 opam-version: "2.0"
+name: "imagemagick"
+version: "0.34"
+synopsis: "Bindings for ImageMagick"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: ["Florent Monnier"]
+authors: "Florent Monnier"
 homepage: "http://www.linux-nantes.org/~fmonnier/OCaml/ImageMagick/"
-build: make
-remove: [["ocamlfind" "remove" "magick"]]
 depends: ["ocaml" "ocamlfind"]
 available: os != "macos"
+flags: light-uninstall
+build: make
+install: [make "find_install"]
+remove: ["ocamlfind" "remove" "magick"]
 depexts: [
   ["libgraphicsmagick1-dev" "libmagickcore-dev"] {os-distribution = "debian"}
   ["libmagickcore-dev"] {os-distribution = "ubuntu"}
 ]
-install: [make "find_install"]
-synopsis: "Bindings for ImageMagick"
-flags: light-uninstall
 url {
   src:
     "http://www.linux-nantes.org/~fmonnier/OCaml/ImageMagick/downloads/OCaml-ImageMagick-0.34.tgz"

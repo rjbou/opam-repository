@@ -1,14 +1,13 @@
 opam-version: "2.0"
+name: "ppx_csv_conv"
+version: "113.24.00"
+synopsis: "Generate functions to read/write records in csv format"
+description: "Part of the Jane Street's PPX rewriters collection."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
 homepage: "https://github.com/janestreet/ppx_csv_conv"
 bug-reports: "https://github.com/janestreet/ppx_csv_conv/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_csv_conv.git"
-license: "Apache-2.0"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
 depends: [
   "ocaml" {>= "4.02.3"}
   "ocamlbuild" {build}
@@ -18,8 +17,11 @@ depends: [
   "ppx_tools"
   "ppx_type_conv" {>= "113.24.00" & < "113.25.00"}
 ]
-synopsis: "Generate functions to read/write records in csv format"
-description: "Part of the Jane Street's PPX rewriters collection."
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+dev-repo: "git+https://github.com/janestreet/ppx_csv_conv.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/113.24/files/ppx_csv_conv-113.24.00.tar.gz"

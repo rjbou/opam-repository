@@ -1,59 +1,6 @@
 opam-version: "2.0"
 name: "frama-c"
 version: "12.1"
-maintainer: "francois.bobot@cea.fr"
-authors: [
-  "Patrick Baudin"
-  "François Bobot"
-  "Richard Bonichon"
-  "David Bühler"
-  "Loïc Correnson"
-  "Pascal Cuoq"
-  "Zaynah Dargaye"
-  "Jean-Christophe Filliâtre"
-  "Philippe Herrmann"
-  "Florent Kirchner"
-  "Matthieu Lemerre"
-  "Claude Marché"
-  "André Maroneze"
-  "Benjamin Monate"
-  "Yannick Moy"
-  "Anne Pacalet"
-  "Valentin Perrelle"
-  "Guillaume Petiot"
-  "Virgile Prevosto"
-  "Armand Puccetti"
-  "Muriel Roger"
-  "Julien Signoles"
-  "Boris Yakobowski"
-]
-homepage: "http://frama-c.com/"
-license: "GNU Lesser General Public License version 2.1"
-doc: ["http://frama-c.com/download/user-manual-Magnesium-20151002.pdf"]
-bug-reports: "https://bts.frama-c.com/"
-tags: [
-  "deductive"
-  "program verification"
-  "formal specification"
-  "automated theorem prover"
-  "interactive theorem prover"
-  "C"
-  "plugins"
-  "abstract interpretation"
-  "slicing"
-  "weakest precondition"
-  "ACSL"
-  "dataflow analysis"
-]
-
-depends: [
-  "ocaml" {>= "3.12" & != "4.02.0"}
-  "frama-c-base" {= "12.1"}
-  "zarith"
-  "lablgtk" {>= "2.18.2"}
-  "conf-gtksourceview"
-  "conf-gnomecanvas"
-]
 synopsis:
   "Platform dedicated to the static analysis of source code written in C"
 description: """
@@ -67,3 +14,55 @@ analyzers in the framework. Thanks to this approach, Frama-C provides
 sophisticated tools, such as a slicer and dependency analysis.
 
 This virtual package forces the installation of frama-C with its IDE."""
+maintainer: "francois.bobot@cea.fr"
+authors: [
+  "André Maroneze"
+  "Anne Pacalet"
+  "Armand Puccetti"
+  "Benjamin Monate"
+  "Boris Yakobowski"
+  "Claude Marché"
+  "David Bühler"
+  "Florent Kirchner"
+  "François Bobot"
+  "Guillaume Petiot"
+  "Jean-Christophe Filliâtre"
+  "Julien Signoles"
+  "Loïc Correnson"
+  "Matthieu Lemerre"
+  "Muriel Roger"
+  "Pascal Cuoq"
+  "Patrick Baudin"
+  "Philippe Herrmann"
+  "Richard Bonichon"
+  "Valentin Perrelle"
+  "Virgile Prevosto"
+  "Yannick Moy"
+  "Zaynah Dargaye"
+]
+license: "GNU Lesser General Public License version 2.1"
+tags: [
+  "ACSL"
+  "C"
+  "abstract interpretation"
+  "automated theorem prover"
+  "dataflow analysis"
+  "deductive"
+  "formal specification"
+  "interactive theorem prover"
+  "plugins"
+  "program verification"
+  "slicing"
+  "weakest precondition"
+]
+homepage: "http://frama-c.com/"
+doc: "http://frama-c.com/download/user-manual-Magnesium-20151002.pdf"
+bug-reports: "https://bts.frama-c.com/"
+depends: [
+  "conf-gnomecanvas"
+  "conf-gtksourceview"
+  "frama-c-base" {= "12.1"}
+  "lablgtk" {>= "2.18.2"}
+  "ocaml" {>= "3.12" & != "4.02.0"}
+  "zarith"
+]

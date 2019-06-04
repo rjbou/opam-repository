@@ -1,24 +1,10 @@
 opam-version: "2.0"
-maintainer: "guillaume.bury@gmail.com"
-license: "BSD-2-clauses"
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" "1"]
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "menhir" {>= "20180523"}
-  "dune" {build}
-]
-tags: [ "parser" "tptp" "logic" "smtlib" "dimacs" ]
-homepage: "https://github.com/Gbury/dolmen"
-doc: "http://gbury.github.io/dolmen"
-bug-reports: "https://github.com/Gbury/dolmen/issues"
-dev-repo: "git+https://github.com/Gbury/dolmen.git"
-authors: "Guillaume Bury"
-synopsis: "A parser library that targets languages used in automated theorem provers"
-description:
-"Dolmen is a parser library. It currently targets languages used in automated theorem provers,
+name: "dolmen"
+version: "0.4"
+synopsis:
+  "A parser library that targets languages used in automated theorem provers"
+description: """
+Dolmen is a parser library. It currently targets languages used in automated theorem provers,
 but may be extended ot other domains.
 
 Dolmen provides functors that takes as arguments a representation of terms and statements,
@@ -27,7 +13,24 @@ of terms or statements. This is meant so that Dolmen can be used as a drop-in re
 parser, in order to factorize parsers among projects.
 
 Additionally, Dolmen also provides a standard implementation of terms and statements that cna be
-used to instantiate its parsers."
+used to instantiate its parsers."""
+maintainer: "guillaume.bury@gmail.com"
+authors: "Guillaume Bury"
+license: "BSD-2-clauses"
+tags: ["dimacs" "logic" "parser" "smtlib" "tptp"]
+homepage: "https://github.com/Gbury/dolmen"
+doc: "http://gbury.github.io/dolmen"
+bug-reports: "https://github.com/Gbury/dolmen/issues"
+depends: [
+  "dune" {build}
+  "menhir" {>= "20180523"}
+  "ocaml" {>= "4.02.3"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" "1"]
+]
+dev-repo: "git+https://github.com/Gbury/dolmen.git"
 url {
   src: "https://github.com/Gbury/dolmen/archive/v0.4.tar.gz"
   checksum: [

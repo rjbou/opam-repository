@@ -1,19 +1,22 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [make "-C" "src"]
-remove: [["ocamlfind" "remove" "macaque"]]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "pgocaml" {< "2.0"}
-  "camlp4"
-  "ocamlbuild" {build}
-]
-install: [make "-C" "src" "install"]
+name: "macaque"
+version: "0.6"
 synopsis:
   "Macaque (Macros for Caml Queries) is a DSL for OCaml, wich produce SQL requests from a comprehension syntax. Macaque can build queries by from simpler components, using phantom types used to ensure safety."
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "camlp4"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "pgocaml" {< "2.0"}
+]
 flags: light-uninstall
+build: [make "-C" "src"]
+install: [make "-C" "src" "install"]
+remove: ["ocamlfind" "remove" "macaque"]
 url {
-  src: "https://download.ocamlcore.org/macaque/macaque/0.6/macaque-0.6.tar.gz"
+  src:
+    "https://download.ocamlcore.org/macaque/macaque/0.6/macaque-0.6.tar.gz"
   checksum: "md5=dd9990a1bab85e0df66dfa0cd6896662"
 }

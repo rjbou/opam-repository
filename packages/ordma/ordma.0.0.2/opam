@@ -1,29 +1,27 @@
 opam-version: "2.0"
 name: "ordma"
 version: "0.0.2"
+synopsis: "ordma provides ocaml bindings to librdmacm (rsocket)"
 maintainer: "Romain Slootmaekers <romain.slootmaekers@openvstorage.com>"
 authors: "Romain Slootmaekers <romain.slootmaekers@openvstorage.com>"
+license: "TBD"
 homepage: "https://github.com/toolslive/ordma"
 bug-reports: "https://github.com/toolslive/ordma/issues"
-license: "TBD"
-dev-repo: "git+https://github.com/toolslive/ordma.git"
-build: [
-  [make lib]
-]
-install: [make "install"]
-remove: ["make uninstall"]
 depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
   "lwt" {>= "2.5.1" & < "4.0.0"}
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
 ]
 available: os = "linux"
+build: [make lib]
+install: [make "install"]
+remove: "make uninstall"
 depexts: [
   ["librdmacm-dev"] {os-distribution = "ubuntu"}
   ["librdmacm-dev"] {os-distribution = "debian"}
 ]
-synopsis: "ordma provides ocaml bindings to librdmacm (rsocket)"
+dev-repo: "git+https://github.com/toolslive/ordma.git"
 url {
   src: "https://github.com/toolslive/ordma/archive/0.0.2.tar.gz"
   checksum: "md5=995a49c777e39fc0c9a5367328151623"

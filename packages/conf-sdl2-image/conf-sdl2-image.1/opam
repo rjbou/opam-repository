@@ -1,18 +1,22 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://www.libsdl.org/projects/SDL_image/"
-license: "Zlib"
-build: [["pkg-config" "SDL2_image"]]
-depexts: [
-  ["sdl2_image-dev"] {os-distribution = "alpine"}
-  ["libsdl2-image-dev"] {os-distribution = "debian"}
-  ["libsdl2-image-dev"] {os-distribution = "ubuntu"}
-  ["libsdl2_image-devel"] {os-distribution = "mageia"}
-]
+name: "conf-sdl2-image"
+version: "1"
 synopsis: "Virtual package relying on a sdl2-image system installation"
 description:
   "This package can only install if libsdl2-image is installed on the system."
-depends: ["conf-pkg-config" {build}]
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
 authors: "Sam Lantinga"
+license: "Zlib"
+homepage: "http://www.libsdl.org/projects/SDL_image/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "SDL2_image"]
+depexts: [
+  ["libsdl2-image-dev"] {os-distribution = "debian"}
+  ["libsdl2-image-dev"] {os-distribution = "ubuntu"}
+  ["libsdl2_image-devel"] {os-distribution = "mageia"}
+  ["sdl2_image-dev"] {os-distribution = "alpine"}
+]

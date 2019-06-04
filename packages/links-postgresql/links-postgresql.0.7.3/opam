@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "Simon Fowler <simon.fowler@ed.ac.uk>"
-authors: "The Links Team <links-dev@inf.ed.ac.uk>"
-homepage: "https://github.com/links-lang/links"
-dev-repo: "git+https://github.com/links-lang/links.git"
-bug-reports: "https://github.com/links-lang/links/issues"
-license: "GPL-2"
-
-build: [
-  [ "jbuilder" "subst" "-p" name ] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.06.0"}
-  "jbuilder" {build}
-  "postgresql"
-  "links"
-]
+name: "links-postgresql"
+version: "0.7.3"
 synopsis: "Linking Theory to Practice for the Web"
 description: """
 [![Build Status](https://travis-ci.org/links-lang/links.svg?branch=master)](https://travis-ci.org/links-lang/links)
@@ -60,6 +44,22 @@ FEATURES
  * An effect system for supporting abstraction over database queries
 whilst guaranteeing that they can be efficiently compiled to SQL
  * Handlers for algebraic effects on the server-side and the client-side"""
+maintainer: "Simon Fowler <simon.fowler@ed.ac.uk>"
+authors: "The Links Team <links-dev@inf.ed.ac.uk>"
+license: "GPL-2"
+homepage: "https://github.com/links-lang/links"
+bug-reports: "https://github.com/links-lang/links/issues"
+depends: [
+  "jbuilder" {build}
+  "links"
+  "ocaml" {>= "4.06.0"}
+  "postgresql"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/links-lang/links.git"
 url {
   src:
     "https://github.com/links-lang/links/releases/download/0.7.3/links-0.7.3.tbz"

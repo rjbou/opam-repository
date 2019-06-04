@@ -1,40 +1,29 @@
 opam-version: "2.0"
 name: "openai-gym"
 version: "0.01"
-maintainer: [
-  "Louis Mandel <lmandel@us.ibm.com>"
-]
-authors: [
-  "Guillaume Baudart"
-  "Louis Mandel"
-]
+synopsis: "OCaml binding for openai Gym toolkit"
+description: """
+openai-gym is an OCaml binding for [openai-gym](https://github.com/openai/gym)
+open-source library. It is built as a client for the [gym-http-api](https://github.com/openai/gym-http-api) REST API."""
+maintainer: "Louis Mandel <lmandel@us.ibm.com>"
+authors: ["Guillaume Baudart" "Louis Mandel"]
+license: "Apache License 2.0"
 homepage: "https://github.com/IBM/openai-gym-ocaml"
 bug-reports: "https://github.com/IBM/openai-gym-ocaml/issues"
-license: "Apache License 2.0"
-dev-repo: "git://github.com/IBM/openai-gym-ocaml.git"
-
+depends: [
+  "atd"
+  "atdgen" {build}
+  "cohttp-lwt-unix" {>= "1.0.0"}
+  "dune" {build}
+  "ocaml" {>= "4.03.0"}
+  "ocaml-migrate-parsetree" {build}
+  "yojson"
+]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
 ]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "ocaml-migrate-parsetree" {build}
-  "atdgen" {build}
-  "atd"
-  "yojson"
-  "cohttp-lwt-unix" {>= "1.0.0"}
-]
-
-synopsis: "OCaml binding for openai Gym toolkit"
-
-description: """
-openai-gym is an OCaml binding for [openai-gym](https://github.com/openai/gym)
-open-source library. It is built as a client for the [gym-http-api](https://github.com/openai/gym-http-api) REST API.
-"""
-
+dev-repo: "git://github.com/IBM/openai-gym-ocaml.git"
 url {
   src: "https://github.com/IBM/openai-gym-ocaml/archive/0.01.tar.gz"
   checksum: "md5=e74f45cdf57969d4758b9d40274cb7a4"

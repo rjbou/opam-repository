@@ -1,35 +1,34 @@
 opam-version: "2.0"
+name: "mindstorm"
+version: "0.8"
+synopsis: "Drive Lego Mindstorms bricks from OCaml"
+description: """
+This library allows you to communicate with your Lego Mindstorms brick
+via bluetooth, enable the motors and retrieve data from various
+sensors."""
 maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler"
-           "Julie De Pril"
-           "Marc Ducobu"
-           "Dany Maslowski" ]
+authors: [
+  "Christophe Troestler" "Dany Maslowski" "Julie De Pril" "Marc Ducobu"
+]
 license: "LGPL-2.1 with OCaml linking exception"
+tags: ["clib:bluetooth" "clib:usb" "lego" "mindstorms" "robotics"]
 homepage: "https://github.com/Chris00/ocaml-mindstorm"
-dev-repo: "git+https://github.com/Chris00/ocaml-mindstorm.git"
-bug-reports: "https://github.com/Chris00/ocaml-mindstorm/issues"
 doc: "https://Chris00.github.io/ocaml-mindstorm/doc"
-tags: [ "lego" "robotics" "mindstorms"
-        "clib:usb" "clib:bluetooth" ]
+bug-reports: "https://github.com/Chris00/ocaml-mindstorm/issues"
+depends: [
+  "base-bytes"
+  "base-unix"
+  "conf-bluetooth" {os = "linux"}
+  "cppo" {build}
+  "dune" {build}
+  "ocaml" {>= "4.04.1"}
+]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "dune" {build}
-  "cppo" {build}
-  "base-bytes"
-  "base-unix"
-  "conf-bluetooth" {os = "linux"}
-]
-synopsis: "Drive Lego Mindstorms bricks from OCaml"
-description: """
-This library allows you to communicate with your Lego Mindstorms brick
-via bluetooth, enable the motors and retrieve data from various
-sensors.
-"""
+dev-repo: "git+https://github.com/Chris00/ocaml-mindstorm.git"
 url {
   src:
     "https://github.com/Chris00/ocaml-mindstorm/releases/download/0.8/mindstorm-0.8.tbz"

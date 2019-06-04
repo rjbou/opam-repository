@@ -1,28 +1,7 @@
 opam-version: "2.0"
-maintainer: "Andreas Garnaes <andreas.garnaes@gmail.com>"
-authors: "Andreas Garnaes <andreas.garnaes@gmail.com>"
-homepage: "https://github.com/andreas/ocaml-graphql-server"
-doc: "https://andreas.github.io/ocaml-graphql-server/"
-bug-reports: "https://github.com/andreas/ocaml-graphql-server/issues"
-dev-repo: "git+https://github.com/andreas/ocaml-graphql-server.git"
-
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
-]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "graphql_parser"
-  "yojson"
-  "rresult"
-  "seq"
-  "alcotest" {with-test}
-]
-
+name: "graphql"
+version: "0.8.0"
 synopsis: "Build GraphQL schemas and execute queries against them"
-
 description: """
 `graphql` is a package for creating GraphQL servers. Current feature set includes:
 
@@ -39,8 +18,27 @@ Supporting packages:
 - Use `graphql-lwt` for Lwt support.
 - Use `graphql-async` for Async support.
 - Use `graphql-cohttp` to run a GraphQL server with `cohttp`."""
-
+maintainer: "Andreas Garnaes <andreas.garnaes@gmail.com>"
+authors: "Andreas Garnaes <andreas.garnaes@gmail.com>"
+homepage: "https://github.com/andreas/ocaml-graphql-server"
+doc: "https://andreas.github.io/ocaml-graphql-server/"
+bug-reports: "https://github.com/andreas/ocaml-graphql-server/issues"
+depends: [
+  "alcotest" {with-test}
+  "dune" {build}
+  "graphql_parser"
+  "ocaml" {>= "4.03.0"}
+  "rresult"
+  "seq"
+  "yojson"
+]
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/andreas/ocaml-graphql-server.git"
 url {
-archive: "https://github.com/andreas/ocaml-graphql-server/releases/download/0.8.0/graphql-0.8.0.tbz"
-checksum: "582564e3de2095ce7512cee28b406920"
+  src:
+    "https://github.com/andreas/ocaml-graphql-server/releases/download/0.8.0/graphql-0.8.0.tbz"
+  checksum: "md5=582564e3de2095ce7512cee28b406920"
 }

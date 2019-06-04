@@ -1,23 +1,23 @@
 opam-version: "2.0"
+name: "topology"
+version: "0.2.0"
+synopsis: "A library for working with network topologies."
 maintainer: "seliopou@gmail.com"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ocamlgraph" {< "1.8.6"}
+  "packet" {>= "0.2.0"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [
-  ["ocamlfind" "remove" "topology"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "ocamlgraph" {< "1.8.6"}
-  "packet" {>= "0.2.0"}
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/frenetic-lang/ocaml-topology"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "A library for working with network topologies."
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "topology"]
+dev-repo: "git://github.com/frenetic-lang/ocaml-topology"
 url {
   src:
     "https://github.com/frenetic-lang/ocaml-topology/archive/v0.2.0.tar.gz"

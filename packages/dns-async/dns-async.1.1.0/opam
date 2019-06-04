@@ -1,30 +1,31 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: [
-  "Anil Madhavapeddy"
-  "Tim Deegan"
-  "Richard Mortier"
-  "Haris Rotsos"
-  "David Sheets"
-  "Thomas Gazagnaire"
-  "Luke Dunstan"
-  "David Scott"
-]
+name: "dns-async"
+version: "1.1.0"
 synopsis: "DNS implementation using the Async concurrency framework"
 description: """
 This is an implementation of the DNS protocol and a client
-and server resolver using the Jane Street Async library.
-"""
+and server resolver using the Jane Street Async library."""
+maintainer: "anil@recoil.org"
+authors: [
+  "Anil Madhavapeddy"
+  "David Scott"
+  "David Sheets"
+  "Haris Rotsos"
+  "Luke Dunstan"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Tim Deegan"
+]
 license: "ISC"
 tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/mirage/ocaml-dns"
 doc: "https://mirage.github.io/ocaml-dns/"
 bug-reports: "https://github.com/mirage/ocaml-dns/issues"
 depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "dns" {>="1.1.0"}
   "async" {>= "v0.9.0" & < "v0.13"}
+  "dns" {>= "1.1.0"}
+  "dune" {build}
+  "ocaml" {>= "4.03.0"}
 ]
 build: [
   ["dune" "subst"] {pinned}

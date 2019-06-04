@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzli i@erratique.ch>"]
-homepage: "http://erratique.ch/software/gg"
-license: "BSD3"
-doc: ["http://erratique.ch/software/gg/doc/Gg"]
-tags: [
-  "matrix"
-  "vector"
-  "color"
-  "data-structure"
-  "graphics"
-]
-build: [
-  ["./pkg/pkg-git"]
-  ["./pkg/build" "true"]
-]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
+name: "gg"
+version: "0.8.0"
 synopsis: "Basic types for computer graphics in OCaml"
 description: """
 Gg is an OCaml module providing basic types for computer graphics.
@@ -30,6 +11,21 @@ raster data.
 
 Gg is made of a single, independent, module and distributed under the
 BSD3 license."""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzli i@erratique.ch>"
+license: "BSD3"
+tags: ["color" "data-structure" "graphics" "matrix" "vector"]
+homepage: "http://erratique.ch/software/gg"
+doc: "http://erratique.ch/software/gg/doc/Gg"
+depends: [
+  "ocaml" {>= "4.00.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+build: [
+  ["./pkg/pkg-git"]
+  ["./pkg/build" "true"]
+]
 url {
   src: "http://erratique.ch/software/gg/releases/gg-0.8.0.tbz"
   checksum: "md5=edc888e16eaa90d7eade80aaf60dfee4"

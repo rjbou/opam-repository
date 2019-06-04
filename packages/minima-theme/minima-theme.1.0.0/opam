@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: "Anil Madhavapeddy <anil@recoil.org>"
-homepage: "https://github.com/avsm/ocaml-minima-theme"
-bug-reports: "https://github.com/avsm/ocaml-minima-theme/issues"
-license: "ISC"
-doc: "http://docs.mirage.io/minima-theme/"
-tags: ["org:mirage" "org:ocamllabs"]
-dev-repo: "git+https://github.com/avsm/ocaml-minima-theme.git"
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "fmt"
-  "lambdasoup"
-  "uri"
-  "ptime"
-  "bos"
-]
+name: "minima-theme"
+version: "1.0.0"
 synopsis: "OCaml port of the Jekyll Minima theme"
 description: """
 minima-theme is an OCaml port of the Jekyll Minima that is the default blog
@@ -31,6 +9,30 @@ code.
 
 minima-theme is distributed under the ISC license. The original Minima HTML
 templates bundled with this repository remain under the MIT license."""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+tags: ["org:mirage" "org:ocamllabs"]
+homepage: "https://github.com/avsm/ocaml-minima-theme"
+doc: "http://docs.mirage.io/minima-theme/"
+bug-reports: "https://github.com/avsm/ocaml-minima-theme/issues"
+depends: [
+  "bos"
+  "fmt"
+  "lambdasoup"
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ptime"
+  "topkg" {build}
+  "uri"
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+]
+dev-repo: "git+https://github.com/avsm/ocaml-minima-theme.git"
 url {
   src:
     "https://github.com/avsm/ocaml-minima-theme/releases/download/v1.0.0/minima-theme-1.0.0.tbz"

@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "mccs"
+version: "1.1+9"
 maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
 authors: [
   "Claude Michel <claude.michel@unice.fr>"
@@ -8,9 +10,9 @@ license: "LGPL-2.1 with OCaml linking exception, BSD-3-clause, GPL-3.0"
 homepage: "http://www.i3s.unice.fr/~cpjm/misc/"
 bug-reports: "https://github.com/AltGr/ocaml-mccs/issues"
 depends: [
-  "ocaml"
-  "dune" {build & (< "1.6.0" | > "1.6.1")}
   "cudf" {>= "0.7"}
+  "dune" {build & (< "1.6.0" | > "1.6.1")}
+  "ocaml"
 ]
 build: [
   ["dune" "build" "-p" name]

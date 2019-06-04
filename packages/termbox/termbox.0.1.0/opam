@@ -1,21 +1,21 @@
 opam-version: "2.0"
+name: "termbox"
+version: "0.1.0"
+synopsis:
+  "Bindings for the termbox library, minimalistic API for creating text-based interfaces."
 maintainer: "Nick Zalutskiy <nick@zalutskiy.com>"
+license: "BSD-2-Clause"
 homepage: "https://github.com/pacemkr/ocaml-termbox"
 doc: "http://pacemkr.github.io/ocaml-termbox/"
-license: "BSD-2-Clause"
-build: make
-remove: [
-  ["ocamlfind" "remove" "termbox"]
-]
 depends: ["ocaml" "ocamlfind"]
+flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "termbox"]
 depexts: [
   ["python"] {os-distribution = "ubuntu"}
   ["python"] {os-distribution = "debian"}
 ]
-install: [make "install"]
-synopsis:
-  "Bindings for the termbox library, minimalistic API for creating text-based interfaces."
-flags: light-uninstall
 url {
   src: "https://github.com/pacemkr/ocaml-termbox/tarball/v0.1.0"
   checksum: "md5=3013e202a71b02c209777b2bd34fdb6e"

@@ -1,24 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-homepage: "http://erratique.ch/software/otfm"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-doc: "http://erratique.ch/software/otfm/doc/Otfm"
-dev-repo: "git+http://erratique.ch/repos/otfm.git"
-bug-reports: "https://github.com/dbuenzli/otfm/issues"
-tags: [ "OpenType" "ttf" "font" "decoder" "graphics" "org:erratique" ]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "result"
-  "uchar"
-  "uutf" {>= "1.0.0"}
-]
-build: [[
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%" ]]
+name: "otfm"
+version: "0.3.0"
 synopsis: "OpenType font decoder for OCaml"
 description: """
 Release %%VERSION%%
@@ -31,6 +13,24 @@ Otfm is made of a single module and depends on [Uutf][1]. It is distributed
 under the ISC license.
 
 [1]: http://erratique.ch/software/uutf"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+tags: ["OpenType" "decoder" "font" "graphics" "org:erratique" "ttf"]
+homepage: "http://erratique.ch/software/otfm"
+doc: "http://erratique.ch/software/otfm/doc/Otfm"
+bug-reports: "https://github.com/dbuenzli/otfm/issues"
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "result"
+  "topkg" {build}
+  "uchar"
+  "uutf" {>= "1.0.0"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+http://erratique.ch/repos/otfm.git"
 url {
   src: "http://erratique.ch/software/otfm/releases/otfm-0.3.0.tbz"
   checksum: "md5=e8e0ecb91048983b09a7fbe593042c89"

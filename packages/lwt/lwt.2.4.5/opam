@@ -1,5 +1,30 @@
 opam-version: "2.0"
+name: "lwt"
+version: "2.4.5"
+synopsis: "A cooperative threads library for OCaml"
+description: """
+This library is part of the Ocsigen project. See:
+
+http://ocsigen.org/lwt"""
 maintainer: "jeremie@dimino.org"
+authors: ["Jérémie Dimino" "Jérôme Vouillon"]
+homepage: "http://github.com/ocsigen/lwt"
+depends: [
+  "camlp4"
+  "conf-ncurses" {build}
+  "ocaml" {>= "3.12.1" & < "4.05.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+depopts: [
+  "base-threads" "base-unix" "conf-libev" "lablgtk" "react" "ssl" "text"
+]
+conflicts: [
+  "ocaml-variants" {= "4.02.1+BER"}
+  "react" {< "1.0.0"}
+  "ssl" {>= "0.5.0"}
+]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -14,41 +39,9 @@ build: [
   ]
   [make "build"]
 ]
-remove: [["ocamlfind" "remove" "lwt"]]
-depends: [
-  "ocaml" {>= "3.12.1" & < "4.05.0"}
-  "ocamlfind"
-  "camlp4"
-  "ocamlbuild" {build}
-  "conf-ncurses" {build}
-]
-depopts: [
-  "base-threads"
-  "base-unix"
-  "conf-libev"
-  "ssl"
-  "react"
-  "lablgtk"
-  "text"
-]
-conflicts: [
-  "ocaml-variants" {= "4.02.1+BER"}
-  "react" {< "1.0.0"}
-  "ssl" {>= "0.5.0"}
-]
-authors: [
-  "Jérôme Vouillon"
-  "Jérémie Dimino"
-]
-homepage: "http://github.com/ocsigen/lwt"
-dev-repo: "git://github.com/ocsigen/lwt"
 install: [make "install"]
-synopsis: "A cooperative threads library for OCaml"
-description: """
-This library is part of the Ocsigen project. See:
-
-http://ocsigen.org/lwt"""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "lwt"]
+dev-repo: "git://github.com/ocsigen/lwt"
 url {
   src: "https://github.com/ocsigen/lwt/archive/2.4.5.tar.gz"
   checksum: "md5=9a9b4c92bd4bf321a4fb9804be75d168"

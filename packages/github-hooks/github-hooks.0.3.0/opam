@@ -1,38 +1,31 @@
 opam-version: "2.0"
+name: "github-hooks"
+version: "0.3.0"
+synopsis: "GitHub API web hook listener library"
+description: "Library to create GitHub webhook server."
 maintainer: "sheets@alum.mit.edu"
-authors: [
-  "David Sheets"
-  "Thomas Gazagnaire"
-]
+authors: ["David Sheets" "Thomas Gazagnaire"]
+tags: ["git" "github"]
 homepage: "https://github.com/dsheets/ocaml-github-hooks"
-bug-reports: "https://github.com/dsheets/ocaml-github-hooks/issues"
-dev-repo: "git+https://github.com/dsheets/ocaml-github-hooks.git"
 doc: "https://dsheets.github.io/ocaml-github-hooks/"
-
-tags: [
-  "git"
-  "github"
+bug-reports: "https://github.com/dsheets/ocaml-github-hooks/issues"
+depends: [
+  "cohttp-lwt" {>= "0.99.0"}
+  "cstruct"
+  "fmt"
+  "github" {>= "3.0.1"}
+  "hex"
+  "jbuilder" {build & >= "1.0+beta9"}
+  "logs"
+  "lwt" {< "4.0.0"}
+  "nocrypto"
+  "ocaml" {>= "4.02.0"}
 ]
-
 build: [
   ["jbuilder" "subst" "-p" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
 ]
-
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "fmt"
-  "logs"
-  "lwt" {< "4.0.0"}
-  "cohttp-lwt" {>= "0.99.0"}
-  "github" {>= "3.0.1"}
-  "nocrypto"
-  "cstruct"
-  "hex"
-]
-synopsis: "GitHub API web hook listener library"
-description: "Library to create GitHub webhook server."
+dev-repo: "git+https://github.com/dsheets/ocaml-github-hooks.git"
 url {
   src:
     "https://github.com/dsheets/ocaml-github-hooks/releases/download/0.3.0/github-hooks-0.3.0.tbz"

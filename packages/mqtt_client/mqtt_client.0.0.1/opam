@@ -1,25 +1,23 @@
 opam-version: "2.0"
+name: "mqtt_client"
+version: "0.0.1"
+synopsis: "MQTT pub/sub transport protocol client written in OCaml"
 maintainer: "philtomson@gmail.com"
-authors: ["Phil Tomson"]
+authors: "Phil Tomson"
 license: "MIT"
-
-build: [make "all"]
-remove: [
-  ["ocamlfind" "remove" "mqtt_client"]
-]
-
 depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlfind"
-  "oasis"
   "async" {< "v0.10"}
   "core" {< "v0.13"}
+  "oasis"
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
-dev-repo: "git://github.com/philtomson/mqtt_client"
-install: [make "install"]
-synopsis: "MQTT pub/sub transport protocol client written in OCaml"
 flags: light-uninstall
+build: [make "all"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "mqtt_client"]
+dev-repo: "git://github.com/philtomson/mqtt_client"
 url {
   src: "https://github.com/philtomson/mqtt_client/archive/v0.0.1.tar.gz"
   checksum: "md5=01be0e6e52726b02ac9c09c8ffdd1152"

@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "pad@fb.com"
-homepage: "https://github.com/facebook/pfff/wiki/Main"
-build: [
-  ["./configure" "--novisual" "--nocmt" "--nobytecode"]
-  [make "depend"]
-  [make]
-  [make "opt"]
-]
-remove: [[make "uninstall-findlib"]]
-depends: [
-  "ocaml" {>= "3.12.1" & < "4.02.0"}
-  "ocamlfind"
-  "camlp4"
-  "num"
-]
-dev-repo: "git://github.com/facebook/pfff"
-install: [make "install-findlib"]
+name: "pfff"
+version: "0.27.3"
 synopsis:
   "Tools and APIs for program analysis, code visualization, refactoring"
 description: """
@@ -30,6 +15,23 @@ even TeX. There is also very good support for OCaml and noweb
 itself.
 
 For more information see https://github.com/facebook/pfff/wiki/Main"""
+maintainer: "pad@fb.com"
+homepage: "https://github.com/facebook/pfff/wiki/Main"
+depends: [
+  "camlp4"
+  "num"
+  "ocaml" {>= "3.12.1" & < "4.02.0"}
+  "ocamlfind"
+]
+build: [
+  ["./configure" "--novisual" "--nocmt" "--nobytecode"]
+  [make "depend"]
+  [make]
+  [make "opt"]
+]
+install: [make "install-findlib"]
+remove: [make "uninstall-findlib"]
+dev-repo: "git://github.com/facebook/pfff"
 url {
   src: "https://github.com/facebook/pfff/archive/v0.27.3.tar.gz"
   checksum: "md5=98b133830db8fd6a16cffe00cf14c790"

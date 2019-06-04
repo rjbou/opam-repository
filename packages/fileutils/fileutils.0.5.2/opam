@@ -1,28 +1,29 @@
 opam-version: "2.0"
+name: "fileutils"
+version: "0.5.2"
+synopsis: "Functions to manipulate real file (POSIX like) and filename."
 maintainer: "Sylvain Le Gall <sylvain+ocaml@le-gall.net>"
-authors: [ "Sylvain Le Gall" ]
-homepage: "http://ocaml-fileutils.forge.ocamlcore.org/"
+authors: "Sylvain Le Gall"
 license: "LGPL-2.1 with OCaml linking exception"
-dev-repo: "git+https://github.com/gildor478/ocaml-fileutils.git"
-bug-reports: "https://forge.ocamlcore.org/tracker/?func=add&group_id=128&atid=589"
+homepage: "http://ocaml-fileutils.forge.ocamlcore.org/"
+bug-reports:
+  "https://forge.ocamlcore.org/tracker/?func=add&group_id=128&atid=589"
+depends: [
+  "base-unix"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test & >= "2.0.0"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "fileutils"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "base-unix"
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "ounit" {with-test & >= "2.0.0"}
-]
-synopsis: "Functions to manipulate real file (POSIX like) and filename."
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "fileutils"]
+dev-repo: "git+https://github.com/gildor478/ocaml-fileutils.git"
 url {
   src:
     "https://download.ocamlcore.org/ocaml-fileutils/ocaml-fileutils/0.5.2/ocaml-fileutils-0.5.2.tar.gz"

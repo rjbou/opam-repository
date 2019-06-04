@@ -1,10 +1,16 @@
 opam-version: "2.0"
-authors: ["Bertrand Jeannet" "Antoine Miné"]
-homepage: "http://apron.cri.ensmp.fr/library/"
+name: "apron"
+version: "20151015"
+synopsis: "APRON numerical abstract domain library"
 maintainer: "Nicolas Berthier <m@nberth.space>"
-# dev-repo: "svn+ssh://scm.gforge.inria.fr/svnroot/apron/apron/trunk"
-bug-reports: "https://gforge.inria.fr/tracker/?atid=8946&group_id=2625&func=browse"
+authors: ["Antoine Miné" "Bertrand Jeannet"]
 license: "LGPL-2.1 with linking exception"
+homepage: "http://apron.cri.ensmp.fr/library/"
+bug-reports:
+  "https://gforge.inria.fr/tracker/?atid=8946&group_id=2625&func=browse"
+depends: ["camlidl" "conf-perl" "mlgmpidl" "ocaml" "ocamlfind"]
+depopts: ["conf-ppl"]
+flags: light-uninstall
 build: [
   [
     "sh"
@@ -17,22 +23,12 @@ build: [
   ]
   [make "-j%{jobs}%"]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: [
   ["ocamlfind" "remove" "apron"]
   ["rm" "-r" "-f" "%{share}%/apron"]
 ]
-depends: ["ocaml" "ocamlfind" "camlidl" "mlgmpidl" "conf-perl"]
-depopts: [
-  "conf-ppl"
-]
-patches: [
-  "docker-workaround.diff" { os = "linux" }
-]
-synopsis: "APRON numerical abstract domain library"
-flags: light-uninstall
+patches: "docker-workaround.diff" {os = "linux"}
 extra-files: [
   "docker-workaround.diff" "md5=949015a9862a3d8ced04b04d42a4a144"
 ]

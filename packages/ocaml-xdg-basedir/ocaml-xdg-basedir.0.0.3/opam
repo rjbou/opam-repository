@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "Sylvain Le Gall <sylvain@le-gall.net>"
-authors: [ "Sylvain Le Gall" ]
-homepage: "https://github.com/gildor478/ocaml-xdg-basedir"
-bug-reports: "https://github.com/gildor478/ocaml-xdg-basedir/issues"
-dev-repo: "git+https://github.com/gildor478/ocaml-xdg-basedir.git"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "xdg-basedir"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "fileutils"
-  "ounit"
-  "ocamlbuild" {build}
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "ocaml-xdg-basedir"
+version: "0.0.3"
 synopsis: "xdg-basedir specification implementation"
 description: """
 This library implements the xdg-basedir specification. It helps to
@@ -24,7 +8,25 @@ define standard locations for configuration, cache and data files in
 the user directory and on the system.
 
 http://standards.freedesktop.org/basedir-spec/basedir-spec-latest.html"""
+maintainer: "Sylvain Le Gall <sylvain@le-gall.net>"
+authors: "Sylvain Le Gall"
+homepage: "https://github.com/gildor478/ocaml-xdg-basedir"
+bug-reports: "https://github.com/gildor478/ocaml-xdg-basedir/issues"
+depends: [
+  "fileutils"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ounit"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "xdg-basedir"]
+dev-repo: "git+https://github.com/gildor478/ocaml-xdg-basedir.git"
 url {
   src:
     "https://download.ocamlcore.org/xdg-basedir/ocaml-xdg-basedir/0.0.3/ocaml-xdg-basedir-0.0.3.tar.gz"

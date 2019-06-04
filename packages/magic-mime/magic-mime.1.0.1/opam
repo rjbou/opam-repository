@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: "Anil Madhavapeddy <anil@recoil.org>"
-homepage: "https://github.com/mirage/ocaml-magic-mime"
-bug-reports: "https://github.com/mirage/ocaml-magic-mime/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-magic-mime.git"
-doc: "https://mirage.github.io/ocaml-magic-mime"
-license: "ISC"
-
-build: [
-  [ "jbuilder" "subst" "-p" name] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "jbuilder" {build & >= "1.0+beta9"}
-]
+name: "magic-mime"
+version: "1.0.1"
 synopsis: "Convert file extensions to MIME types"
 description: """
 This library contains a database of MIME types that maps filename extensions
@@ -38,6 +22,22 @@ More information:
 * WWW: <https://github.com/mirage/ocaml-magic-mime>
 * E-mail: <mirageos-devel@lists.xenproject.org>
 * Issues <https://github.com/mirage/ocaml-magic-mime/issues>"""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-magic-mime"
+doc: "https://mirage.github.io/ocaml-magic-mime"
+bug-reports: "https://github.com/mirage/ocaml-magic-mime/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta9"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlfind" {build}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/ocaml-magic-mime.git"
 url {
   src:
     "https://github.com/mirage/ocaml-magic-mime/releases/download/1.0.1/magic-mime-1.0.1.tbz"

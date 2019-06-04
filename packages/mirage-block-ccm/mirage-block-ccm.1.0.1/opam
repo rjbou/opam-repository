@@ -1,11 +1,26 @@
 opam-version: "2.0"
 name: "mirage-block-ccm"
-homepage: "https://github.com/sg2342/mirage-block-ccm"
-dev-repo: "git+https://github.com/sg2342/mirage-block-ccm.git"
-bug-reports: "https://github.com/sg2342/mirage-block-ccm/issues"
-authors: ["Stefan Grundmann <sg2342@googlemail.com>"]
-maintainer: ["Stefan Grundmann <sg2342@googlemail.com>"]
+version: "1.0.1"
+synopsis: "AES-CCM encrypted Mirage V1.BLOCK storage"
+maintainer: "Stefan Grundmann <sg2342@googlemail.com>"
+authors: "Stefan Grundmann <sg2342@googlemail.com>"
 license: "ISC"
+homepage: "https://github.com/sg2342/mirage-block-ccm"
+bug-reports: "https://github.com/sg2342/mirage-block-ccm/issues"
+depends: [
+  "bisect" {with-test}
+  "cstruct" {>= "1.0.1"}
+  "cstruct-lwt"
+  "io-page" {>= "1.0.0" & < "2.0.0"}
+  "lwt" {>= "2.4.3"}
+  "mirage-types-lwt" {< "3.0.0"}
+  "nocrypto" {>= "0.5.1"}
+  "ocaml" {> "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -15,21 +30,7 @@ build: [
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "mirage-block-ccm"]
-depends: [
-  "ocaml" {> "4.02.0"}
-  "ocamlfind" {build}
-  "cstruct" {>= "1.0.1"}
-  "cstruct-lwt"
-  "lwt" {>= "2.4.3"}
-  "mirage-types-lwt" {< "3.0.0"}
-  "nocrypto" {>= "0.5.1"}
-  "io-page" {>= "1.0.0" & <"2.0.0"}
-  "ounit" {with-test}
-  "bisect" {with-test}
-  "ocamlbuild" {build}
-]
-synopsis: "AES-CCM encrypted Mirage V1.BLOCK storage"
-flags: light-uninstall
+dev-repo: "git+https://github.com/sg2342/mirage-block-ccm.git"
 url {
   src: "https://github.com/sg2342/mirage-block-ccm/archive/1.0.1.tar.gz"
   checksum: "md5=da9d83ab184f6fdea7465638ee0c4ff5"

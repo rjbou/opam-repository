@@ -1,14 +1,16 @@
 opam-version: "2.0"
+name: "xtmpl"
+version: "0.3"
+synopsis: "Small XML templating library."
 maintainer: "zoggy@bat8.org"
-build: [make "all"]
-remove: [[make "uninstall"]]
 depends: [
   "ocaml" {< "4.02.0"}
   "ocamlfind"
   "xmlm"
 ]
+build: [make "all"]
 install: [make "install"]
-synopsis: "Small XML templating library."
+remove: [make "uninstall"]
 url {
   src: "http://zoggy.github.com/xtmpl/xtmpl-0.3.tar.gz"
   checksum: "md5=ce84ec66ef3198a036e0d2b01ecc1015"

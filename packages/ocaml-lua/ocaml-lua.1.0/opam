@@ -1,25 +1,31 @@
 opam-version: "2.0"
+name: "ocaml-lua"
+version: "1.0"
+synopsis: "OCaml-lua provides bindings to the Lua programming language."
+description: """
+Lua is a scripting language particularly useful when you need to embed
+a language in your application. This project provides the bindings
+required to embed Lua."""
 maintainer: "p.donadeo@gmail.com"
+authors: ["Paolo Donadeo" "Sylvain Le Gall"]
 homepage: "https://pdonadeo.github.io/ocaml-lua/"
 bug-reports: "https://github.com/pdonadeo/ocaml-lua/issues"
-dev-repo: "git+https://github.com/pdonadeo/ocaml-lua.git"
-authors: [
-  "Paolo Donadeo"
-  "Sylvain Le Gall"
+depends: [
+  "ocaml" {>= "3.12.1" & < "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind"
 ]
+available: os = "linux"
+flags: light-uninstall
 build: [
   ["./configure" "--docdir" doc]
   [make]
   [make "doc"]
 ]
+install: [make "install"]
 remove: [
-    ["ocamlfind" "remove" "lua"]
-    ["rm" "-R" "%{doc}%/ocaml-lua"]
-]
-depends: [
-  "ocaml" {>= "3.12.1" & < "4.03"}
-  "ocamlfind"
-  "ocamlbuild" {build}
+  ["ocamlfind" "remove" "lua"]
+  ["rm" "-R" "%{doc}%/ocaml-lua"]
 ]
 depexts: [
   ["liblua5.1-0-dev"] {os-distribution = "debian"}
@@ -27,14 +33,7 @@ depexts: [
   ["lua-dev"] {os-distribution = "alpine"}
   ["lua51-devel"] {os-family = "suse"}
 ]
-available: os = "linux"
-install: [make "install"]
-synopsis: "OCaml-lua provides bindings to the Lua programming language."
-description: """
-Lua is a scripting language particularly useful when you need to embed
-a language in your application. This project provides the bindings
-required to embed Lua."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/pdonadeo/ocaml-lua.git"
 url {
   src: "https://github.com/pdonadeo/ocaml-lua/archive/v1.0.tar.gz"
   checksum: "md5=88f186db5c7c9154477350483c1bf2a6"

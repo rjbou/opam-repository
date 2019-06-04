@@ -1,25 +1,27 @@
 opam-version: "2.0"
-authors: "ygrek@autistici.org"
+name: "snappy"
+version: "0.0.1"
+synopsis: "Bindings to snappy - fast compression/decompression library"
 maintainer: "ygrek@autistici.org"
+authors: "ygrek@autistici.org"
 homepage: "http://ygrek.org.ua/p/ocaml-snappy/"
-doc: ["http://ygrek.org.ua/p/ocaml-snappy/api/index.html"]
+doc: "http://ygrek.org.ua/p/ocaml-snappy/api/index.html"
 bug-reports: "https://github.com/ygrek/ocaml-snappy/issues"
-dev-repo: "git://github.com/ygrek/ocaml-snappy"
+depends: [
+  "conf-snappy"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+available: false
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "snappy"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "conf-snappy"
-]
 install: ["ocaml" "setup.ml" "-install"]
-available:[false]
-synopsis: "Bindings to snappy - fast compression/decompression library"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "snappy"]
+dev-repo: "git://github.com/ygrek/ocaml-snappy"
 url {
   src:
     "https://download.ocamlcore.org/snappy/ocaml-snappy/0.0.1/ocaml-snappy-0.0.1.tar.gz"

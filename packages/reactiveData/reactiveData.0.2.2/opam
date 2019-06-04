@@ -1,21 +1,20 @@
 opam-version: "2.0"
+name: "reactiveData"
+version: "0.2.2"
 synopsis: "Declarative events and signals for OCaml"
-description: "React is an OCaml module for functional reactive programming (FRP). It provides support to program with time varying values : declarative events and signals. React doesn't define any primitive event or signal, it lets the client chooses the concrete timeline."
+description:
+  "React is an OCaml module for functional reactive programming (FRP). It provides support to program with time varying values : declarative events and signals. React doesn't define any primitive event or signal, it lets the client chooses the concrete timeline."
 maintainer: "dev@ocsigen.org"
-authors: ["Hugo Heuzard <hugo.heuzard@gmail.com>"]
-homepage: "https://github.com/ocsigen/reactiveData"
-dev-repo: "git+https://github.com/ocsigen/reactiveData.git"
-bug-reports: "https://github.com/ocsigen/reactiveData/issues"
-
-doc:"http://ocsigen.github.io/reactiveData/dev/"
-
-tags: [ "reactive" "declarative" "signal" "event" "frp" ]
+authors: "Hugo Heuzard <hugo.heuzard@gmail.com>"
 license: "LGPL-3.0 with OCaml linking exception"
-
+tags: ["declarative" "event" "frp" "reactive" "signal"]
+homepage: "https://github.com/ocsigen/reactiveData"
+doc: "http://ocsigen.github.io/reactiveData/dev/"
+bug-reports: "https://github.com/ocsigen/reactiveData/issues"
 depends: [
   "ocaml" {>= "4.06.1"}
   "ocamlfind"
-  "react" {>= "1.2.1" < "1.3"}
+  "react" {>= "1.2.1" & < "1.3"}
 ]
 build: [
   [
@@ -26,6 +25,7 @@ build: [
   ]
   ["ocamlbuild" "-use-ocamlfind" "src/api.docdir/index.html"] {with-doc}
 ]
+dev-repo: "git+https://github.com/ocsigen/reactiveData.git"
 url {
   src: "https://github.com/ocsigen/reactiveData/archive/0.2.2.tar.gz"
   checksum: [

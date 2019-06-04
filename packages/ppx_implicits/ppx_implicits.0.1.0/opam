@@ -1,27 +1,6 @@
 opam-version: "2.0"
-authors: "Jun Furuse"
-maintainer: "jun.furuse@gmail.com"
-bug-reports: "https://bitbucket.org/camlspotter/ppx_implicits/issues?status=new&status=open"
-dev-repo: "hg+https://bitbucket.org/camlspotter/ppx_implicits"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-build" ]
-]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
-depends: [
-  "ocaml" {>= "4.02.2" & < "4.03.0"}
-  "ocamlfind" {build}
-  "omake" {build & < "0.10.1"}
-  "ppx_tools"
-  "re"
-]
-homepage: "http://bitbucket.org/camlspotter/ppx_implicits"
+name: "ppx_implicits"
+version: "0.1.0"
 synopsis:
   "ppx_implicits: ppx extension for implicits, overloading and type classes."
 description: """
@@ -37,6 +16,28 @@ ppx_implicits  is a PPX syntax extension for
 * Type classes
 
 Note: ppx_implicits works only with `ocamlc` and `ocamlopt`. It does not work with REPL (`ocaml`)."""
+maintainer: "jun.furuse@gmail.com"
+authors: "Jun Furuse"
+homepage: "http://bitbucket.org/camlspotter/ppx_implicits"
+bug-reports:
+  "https://bitbucket.org/camlspotter/ppx_implicits/issues?status=new&status=open"
+depends: [
+  "ocaml" {>= "4.02.2" & < "4.03.0"}
+  "ocamlfind" {build}
+  "omake" {build & < "0.10.1"}
+  "ppx_tools"
+  "re"
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
+dev-repo: "hg+https://bitbucket.org/camlspotter/ppx_implicits"
 url {
   src: "https://bitbucket.org/camlspotter/ppx_implicits/get/0.1.0.tar.gz"
   checksum: "md5=20387c4b55a60b8574ecc56703674f00"

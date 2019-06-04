@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer:   "Mindy Preston <meetup@yomimono.org>"
-authors:      ["Mindy Preston <meetup@yomimono.org>"]
-homepage:     "https://github.com/mirage/mirage-stack"
-doc:          "https://mirage.github.io/mirage-stack/"
-license:      "ISC"
-dev-repo: "git+https://github.com/mirage/mirage-stack.git"
-bug-reports:  "https://github.com/mirage/mirage-stack/issues"
-tags:         ["org:mirage"]
-
-build: [
-  [ "jbuilder" "subst" "-p" name ] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-
-depends: [
-  "ocaml" {>= "4.04.2"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "mirage-stack" {>= "1.3.0"}
-  "ipaddr"
-  "lwt"
-  "cstruct" {>= "2.4.0"}
-]
+name: "mirage-stack-lwt"
+version: "1.3.0"
 synopsis: "MirageOS signatures for network stacks"
 description: """
 mirage-stack provides a set of module types which libraries intended to be used as MirageOS network stacks should implement.
@@ -33,6 +13,26 @@ mirage-stack is distributed under the ISC license.
 
 [stackv4]: http://docs.mirage.io/mirage-stack/Mirage_stack/module-type-V4/index.html
 [stackv4-lwt]: http://docs.mirage.io/mirage-stack-lwt/Mirage_stack_lwt/module-type-V4/index.html"""
+maintainer: "Mindy Preston <meetup@yomimono.org>"
+authors: "Mindy Preston <meetup@yomimono.org>"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-stack"
+doc: "https://mirage.github.io/mirage-stack/"
+bug-reports: "https://github.com/mirage/mirage-stack/issues"
+depends: [
+  "cstruct" {>= "2.4.0"}
+  "ipaddr"
+  "jbuilder" {build & >= "1.0+beta9"}
+  "lwt"
+  "mirage-stack" {>= "1.3.0"}
+  "ocaml" {>= "4.04.2"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-stack.git"
 url {
   src:
     "https://github.com/mirage/mirage-stack/releases/download/v1.3.0/mirage-stack-1.3.0.tbz"

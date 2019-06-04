@@ -1,9 +1,10 @@
 opam-version: "2.0"
-maintainer: "romain.beauxis@gmail.com"
-homepage: "https://github.com/savonet/liquidsoap"
-authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+name: "sdl-liquidsoap"
+version: "1"
 synopsis: "Virtual package installing liquidsoap's sdl dependencies"
-description:
-  "This package installs SDL dependencies for liquidsoap."
-depends: ["conf-sdl-image" "conf-sdl-mixer" "conf-sdl-ttf" "ocamlsdl"]
+description: "This package installs SDL dependencies for liquidsoap."
+maintainer: "romain.beauxis@gmail.com"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/liquidsoap"
 bug-reports: "https://github.com/savonet/liquidsoap/issues"
+depends: ["conf-sdl-image" "conf-sdl-mixer" "conf-sdl-ttf" "ocamlsdl"]

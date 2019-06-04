@@ -1,18 +1,20 @@
 opam-version: "2.0"
-authors: ["Jeffrey Dean" "Sanjay Ghemawat" "Google Inc."]
-maintainer: "mfp@acm.org"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://code.google.com/p/leveldb/"
-license: "BSD"
-build: [["cc" "-c" "test.cc"]]
-depexts: [
-  ["libleveldb-dev"] {os-distribution = "debian"}
-  ["libleveldb-dev"] {os-distribution = "ubuntu"}
-  ["leveldb"] {os = "macos" & os-distribution = "homebrew"}
-  ["leveldb-devel"] {os-distribution = "centos"}
-]
+name: "conf-leveldb"
+version: "1"
 synopsis: "Virtual package relying on a LevelDB lib system installation"
 description:
   "This package can only install if the LevelDB lib is installed on the system."
-extra-files: ["test.cc" "md5=10b6f9d2e02bdee700ad6cb387f3a0a8"]
+maintainer: "mfp@acm.org"
+authors: ["Google Inc." "Jeffrey Dean" "Sanjay Ghemawat"]
+license: "BSD"
+homepage: "http://code.google.com/p/leveldb/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
 flags: conf
+build: ["cc" "-c" "test.cc"]
+depexts: [
+  ["leveldb"] {os = "macos" & os-distribution = "homebrew"}
+  ["leveldb-devel"] {os-distribution = "centos"}
+  ["libleveldb-dev"] {os-distribution = "debian"}
+  ["libleveldb-dev"] {os-distribution = "ubuntu"}
+]
+extra-files: ["test.cc" "md5=10b6f9d2e02bdee700ad6cb387f3a0a8"]

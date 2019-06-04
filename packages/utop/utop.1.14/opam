@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "jeremie@dimino.org"
-authors: ["Jérémie Dimino"]
-homepage: "https://github.com/diml/utop"
-license: "BSD3"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-remove: [["ocamlfind" "remove" "utop"]]
-depends: [
-  "ocaml" {>= "3.12" & < "4.01"}
-  "ocamlfind" {< "1.5.6"}
-  "lambda-term" {>= "1.2" & < "2.0"}
-  "lwt"
-  "react" {>= "1.0.0"}
-  "camlp4"
-  "ocamlbuild" {build}
-]
-bug-reports: "https://github.com/diml/utop/issues"
-dev-repo: "git://github.com/diml/utop.git"
-install: [[make "install"]]
+name: "utop"
+version: "1.14"
 synopsis: "Universal toplevel for OCaml"
 description: """
 utop is an improved toplevel for OCaml. It can run in a terminal or in
@@ -28,7 +8,29 @@ Emacs. It supports line edition, history, real-time and context
 sensitive completion, colors, and more.
 
 It integrates with the tuareg mode in Emacs."""
+maintainer: "jeremie@dimino.org"
+authors: "Jérémie Dimino"
+license: "BSD3"
+homepage: "https://github.com/diml/utop"
+bug-reports: "https://github.com/diml/utop/issues"
+depends: [
+  "camlp4"
+  "lambda-term" {>= "1.2" & < "2.0"}
+  "lwt"
+  "ocaml" {>= "3.12" & < "4.01"}
+  "ocamlbuild" {build}
+  "ocamlfind" {< "1.5.6"}
+  "react" {>= "1.0.0"}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "utop"]
+dev-repo: "git://github.com/diml/utop.git"
 extra-files: ["utop.install" "md5=706ad83234dd0b1d24961a8d9b6bac50"]
 url {
   src: "https://github.com/diml/utop/archive/1.14.tar.gz"

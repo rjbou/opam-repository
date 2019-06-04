@@ -1,25 +1,22 @@
 opam-version: "2.0"
+name: "ocamldbi"
+version: "0.9.11"
+synopsis: "Database independent layer patterned upon Perl DBI"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: make
-remove: [["ocamlfind" "remove" "ocamldbi"]]
 depends: [
+  "num"
   "ocaml" {< "4.06.0"}
   "ocamlfind"
   "pcre"
-  "num"
 ]
-depopts: [
-  "postgresql"
-  "mysql"
-]
-conflicts: [
-  "freetds"
-]
+depopts: ["mysql" "postgresql"]
+conflicts: ["freetds"]
+flags: light-uninstall
+build: make
 install: [
   make "install" "OCAMLDBIDIR=%{lib}%/ocamldbi" "DOCDIR=%{doc}%/ocamldbi"
 ]
-synopsis: "Database independent layer patterned upon Perl DBI"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "ocamldbi"]
 url {
   src:
     "http://download.savannah.gnu.org/releases/modcaml/ocamldbi-0.9.11.tar.gz"

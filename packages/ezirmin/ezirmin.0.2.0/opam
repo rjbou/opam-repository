@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer:   "KC Sivaramakrishnan <sk826@cl.cam.ac.uk>"
-authors:      ["KC Sivaramakrishnan" "Thomas Gazagnaire" "Benjamin Farinier"]
-homepage:     "https://github.com/kayceesrk/ezirmin"
-doc:          "https://kayceesrk.github.io/ezirmin/"
-license:      "ISC"
-dev-repo: "git+https://github.com/kayceesrk/ezirmin.git"
-bug-reports:  "https://github.com/kayceesrk/ezirmin/issues"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "lwt"
-  "git-unix" {< "1.10.0"}
-  "irmin" {= "0.12.0"}
-  "irmin-watcher"
-  "ptime"
-  "ppx_jane" {< "v0.13"}
-]
-build: [
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%" ]
+name: "ezirmin"
+version: "0.2.0"
 synopsis: "An easy interface on top of the Irmin library."
 description: """
 Ezirmin is an easy interface on top of the
@@ -77,6 +57,26 @@ utop # merge wip_t1 ~into:m;;
 utop # to_list m ["home"; "todo"];;
 - : string list = ["walk dog"; "take out trash"]
 ```"""
+maintainer: "KC Sivaramakrishnan <sk826@cl.cam.ac.uk>"
+authors: ["Benjamin Farinier" "KC Sivaramakrishnan" "Thomas Gazagnaire"]
+license: "ISC"
+homepage: "https://github.com/kayceesrk/ezirmin"
+doc: "https://kayceesrk.github.io/ezirmin/"
+bug-reports: "https://github.com/kayceesrk/ezirmin/issues"
+depends: [
+  "git-unix" {< "1.10.0"}
+  "irmin" {= "0.12.0"}
+  "irmin-watcher"
+  "lwt"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_jane" {< "v0.13"}
+  "ptime"
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/kayceesrk/ezirmin.git"
 url {
   src:
     "https://github.com/kayceesrk/ezirmin/releases/download/0.2.0/ezirmin-0.2.0.tbz"

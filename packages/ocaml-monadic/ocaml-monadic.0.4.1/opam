@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "ocaml-monadic"
+version: "0.4.1"
 synopsis: "A PPX extension to provide an OCaml-friendly monadic syntax"
 maintainer: "JHU PL Lab <pl.cs@jhu.edu>"
 authors: "JHU PL Lab <pl.cs@jhu.edu>"
@@ -7,9 +9,9 @@ homepage: "http://github.com/zepalmer/ocaml-monadic"
 bug-reports: "https://github.com/zepalmer/ocaml-monadic/issues"
 depends: [
   "dune" {build & >= "1.0.0"}
+  "ocaml" {>= "4.04.0"}
   "ocaml-migrate-parsetree"
   "ppx_tools_versioned"
-  "ocaml" {>= "4.04.0"}
 ]
 build: ["dune" "build" "-p" name "-j" jobs]
 run-test: ["dune" "runtest" "-p" name "-j" jobs]

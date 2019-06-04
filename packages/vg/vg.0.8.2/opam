@@ -1,32 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-homepage: "http://erratique.ch/software/vg"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-doc: "http://erratique.ch/software/vg/doc/Vg"
-dev-repo: "git+http://erratique.ch/repos/vg.git"
-bug-reports: "https://github.com/dbuenzli/vg/issues"
-tags: [ "pdf" "svg" "html-canvas" "declarative" "graphics" "org:erratique" ]
-license: "BSD-3-Clause"
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.06.0"}
-  "ocamlfind"
-  "gg" {>= "0.9.0"}
-  "ocamlbuild" {build}
-]
-depopts: [ "uutf" "otfm" "js_of_ocaml" "cairo2" ]
-conflicts: [ "uutf" {> "0.9.4"}
-             "js_of_ocaml" {>= "3.0"} ]
-build: ["ocaml" "pkg/git.ml"]
-install: [
-  "ocaml"
-  "pkg/build.ml"
-  "native=%{ocaml:native}%"
-  "native-dynlink=%{ocaml:native-dynlink}%"
-  "uutf=%{uutf:installed}%"
-  "otfm=%{otfm:installed}%"
-  "cairo2=%{cairo2:installed}%"
-  "jsoo=%{js_of_ocaml:installed}%"
-]
+name: "vg"
+version: "0.8.2"
 synopsis: "Declarative 2D vector graphics for OCaml"
 description: """
 Vg is an OCaml module for declarative 2D vector graphics. In Vg,
@@ -48,6 +22,36 @@ license.
 [3]: http://erratique.ch/software/otfm
 [4]: http://ocsigen.org/js_of_ocaml/ 
 [5]: https://forge.ocamlcore.org/projects/cairo/"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD-3-Clause"
+tags: ["declarative" "graphics" "html-canvas" "org:erratique" "pdf" "svg"]
+homepage: "http://erratique.ch/software/vg"
+doc: "http://erratique.ch/software/vg/doc/Vg"
+bug-reports: "https://github.com/dbuenzli/vg/issues"
+depends: [
+  "gg" {>= "0.9.0"}
+  "ocaml" {>= "4.02.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+depopts: ["cairo2" "js_of_ocaml" "otfm" "uutf"]
+conflicts: [
+  "js_of_ocaml" {>= "3.0"}
+  "uutf" {> "0.9.4"}
+]
+build: ["ocaml" "pkg/git.ml"]
+install: [
+  "ocaml"
+  "pkg/build.ml"
+  "native=%{ocaml:native}%"
+  "native-dynlink=%{ocaml:native-dynlink}%"
+  "uutf=%{uutf:installed}%"
+  "otfm=%{otfm:installed}%"
+  "cairo2=%{cairo2:installed}%"
+  "jsoo=%{js_of_ocaml:installed}%"
+]
+dev-repo: "git+http://erratique.ch/repos/vg.git"
 url {
   src: "http://erratique.ch/software/vg/releases/vg-0.8.2.tbz"
   checksum: "md5=f8e7efd20d6ffd5f50ea78f993d28b9e"

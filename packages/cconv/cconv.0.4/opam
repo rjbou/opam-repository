@@ -1,11 +1,39 @@
 opam-version: "2.0"
+name: "cconv"
+version: "0.4"
+synopsis:
+  "Combinators for Type Conversion in OCaml, and ppx_deriving plugin."
+description: """
+CConv provides type-safe combinators for describing how to read/build OCaml
+values of a given type. Those combinators can be used for serializing and
+deserializing the values into several formats. The library ships with
+conversion to Json (yojson), S-expressions (sexplib) and B-encode.
+
+The library cconv.ppx contains a ppx_deriving plugin for automatically derive
+encoders and decoders."""
 maintainer: "simon.cruanes.2007@m4x.org"
 authors: "Simon Cruanes"
-homepage: "https://github.com/c-cube/cconv/"
-bug-reports: "https://github.com/c-cube/cconv/issues/"
-doc: "http://cedeela.fr/~simon/software/cconv/"
 tags: ["conversion" "gadt" "serialization"]
-dev-repo: "git+https://github.com/c-cube/cconv.git"
+homepage: "https://github.com/c-cube/cconv/"
+doc: "http://cedeela.fr/~simon/software/cconv/"
+bug-reports: "https://github.com/c-cube/cconv/issues/"
+depends: [
+  "cppo" {build}
+  "cppo_ocamlbuild" {build}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+depopts: [
+  "bencode"
+  "ppx_deriving"
+  "sexplib" {< "v0.13"}
+  "yojson"
+]
+conflicts: [
+  "ppx_deriving" {< "2.0"}
+]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -22,33 +50,7 @@ build: [
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "cconv"]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlbuild" {build}
-  "cppo" {build}
-  "cppo_ocamlbuild" {build}
-  "ocamlfind" {build}
-]
-depopts: [
-    "bencode"
-    "sexplib" {< "v0.13"}
-    "yojson"
-    "ppx_deriving"
-]
-conflicts: [
-  "ppx_deriving" {< "2.0"}
-]
-synopsis:
-  "Combinators for Type Conversion in OCaml, and ppx_deriving plugin."
-description: """
-CConv provides type-safe combinators for describing how to read/build OCaml
-values of a given type. Those combinators can be used for serializing and
-deserializing the values into several formats. The library ships with
-conversion to Json (yojson), S-expressions (sexplib) and B-encode.
-
-The library cconv.ppx contains a ppx_deriving plugin for automatically derive
-encoders and decoders."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/c-cube/cconv.git"
 url {
   src: "https://github.com/c-cube/cconv/archive/0.4.tar.gz"
   checksum: "md5=25d873aa26a0521ab3b015fdb7f26e28"

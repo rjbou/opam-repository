@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "lambda-term"
+version: "1.2"
+synopsis: "terminal management library"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "lwt" {< "3.0.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "react" {< "1.0.0"}
+  "zed" {< "2.0"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "lambda-term"]]
-depends: [
-  "ocaml"
-  "zed" {< "2.0"}
-  "lwt" {< "3.0.0"}
-  "ocamlfind"
-  "react" {< "1.0.0"}
-  "ocamlbuild" {build}
-]
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "terminal management library"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "lambda-term"]
 url {
   src:
     "https://download.ocamlcore.org/lambda-term/lambda-term/1.2/lambda-term-1.2.tar.gz"

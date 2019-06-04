@@ -1,10 +1,39 @@
 opam-version: "2.0"
+name: "ocsigenserver"
+version: "2.7"
+synopsis: "A full-featured and extensible Web server"
+description: """
+Ocsigen Server implements most features of the HTTP protocol, and has
+a very powerful extension mechanism that makes it very easy to plug
+your own OCaml modules for generating pages. Many extensions are
+already implemented, like a reverse proxy, content compression, access
+control, authentication, etc."""
 maintainer: "dev@ocsigen.org"
 authors: "dev@ocsigen.org"
+license: "LGPL-2.1 with OCaml linking exception"
 homepage: "http://ocsigen.org/ocsigenserver/"
 bug-reports: "https://github.com/ocsigen/ocsigenserver/issues/"
-license: "LGPL-2.1 with OCaml linking exception"
-dev-repo: "git+https://github.com/ocsigen/ocsigenserver.git"
+depends: [
+  "base-threads"
+  "base-unix"
+  "camlp4"
+  "cryptokit"
+  ("dbm" | "sqlite3")
+  "ipaddr" {>= "2.1"}
+  "lwt" {>= "2.5.0" & < "3.0.0"}
+  "ocaml" {< "4.08.0"}
+  "ocamlfind"
+  "ocamlnet" {>= "4.0.2"}
+  "pcre"
+  "react"
+  "ssl"
+  "tyxml" {>= "3.4.0" & < "4.0.0"}
+]
+depopts: ["camlzip"]
+conflicts: [
+  "camlzip" {< "1.04"}
+]
+flags: light-uninstall
 build: [
   [
     "sh"
@@ -40,34 +69,7 @@ remove: [
   ["rm" "-rf" "%{doc}%/ocsigenserver"]
   ["rm" "-f" "%{man}%/man1/ocsigenserver.1"]
 ]
-depends: [
-  "ocaml" {< "4.08.0"}
-  "ocamlfind"
-  "base-unix"
-  "base-threads"
-  "react"
-  "ssl"
-  "lwt" {>= "2.5.0" & < "3.0.0"}
-  "ocamlnet" {>= "4.0.2"}
-  "pcre"
-  "cryptokit"
-  "tyxml" {>= "3.4.0" & < "4.0.0"}
-  ("dbm" | "sqlite3")
-  "ipaddr" {>= "2.1"}
-  "camlp4"
-]
-depopts: "camlzip"
-conflicts: [
-  "camlzip" {< "1.04"}
-]
-synopsis: "A full-featured and extensible Web server"
-description: """
-Ocsigen Server implements most features of the HTTP protocol, and has
-a very powerful extension mechanism that makes it very easy to plug
-your own OCaml modules for generating pages. Many extensions are
-already implemented, like a reverse proxy, content compression, access
-control, authentication, etc."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/ocsigen/ocsigenserver.git"
 url {
   src: "https://github.com/ocsigen/ocsigenserver/archive/2.7.tar.gz"
   checksum: "md5=c918913321572a412f872640824c3530"

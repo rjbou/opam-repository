@@ -1,29 +1,31 @@
 opam-version: "2.0"
+name: "stationary"
+version: "0.0.1"
+synopsis: "Static site generator"
+description: """
+Stationary is an OCaml static-site-generator library. Essentially,
+you use it to describe the directory structure of your site, which
+may contain HTML files generated when your program runs."""
 maintainer: "Izaak Meckler <ihmeckler@gmail.com>"
 authors: "Izaak Meckler <ihmeckler@gmail.com>"
+license: "MIT"
 homepage: "https://github.com/imeckler/stationary"
 bug-reports: "https://github.com/imeckler/stationary/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/imeckler/stationary.git"
+depends: [
+  "async" {< "v0.10"}
+  "core" {< "v0.13"}
+  "oasis" {build}
+  "ocaml" {>= "4.03"}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   [make]
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "stationary"]
-depends: [
-  "ocaml" {>= "4.03"}
-  "ocamlfind" {build}
-  "oasis" {build}
-  "core" {< "v0.13"}
-  "async" {< "v0.10"}
-]
-synopsis: "Static site generator"
-description: """
-Stationary is an OCaml static-site-generator library. Essentially,
-you use it to describe the directory structure of your site, which
-may contain HTML files generated when your program runs."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/imeckler/stationary.git"
 url {
   src:
     "https://github.com/imeckler/stationary/archive/stationary-0.0.1.tar.gz"

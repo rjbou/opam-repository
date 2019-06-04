@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "juergen@hoetzel.info"
-authors: [
-  "Jürgen Hötzel <juergen@hoetzel.info>"
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-]
-homepage: "https://www.cis.upenn.edu/~bcpierce/unison/"
-bug-reports: "mailto:unison-users@yahoogroups.com "
-# dev-repo: "https://webdav.seas.upenn.edu/svn/unison"
-depends: [
-  "ocaml" {< "4.03.0"}
-  "lablgtk"
-]
-patches: ["opam.patch"]
-install: [make "install" "OCAMLLIBDIR=%{lib}%" "HOME=%{prefix}%"]
+name: "unison"
+version: "2.48.3"
 synopsis: "File-synchronization tool for Unix and Windows"
 description: """
 Unison is a file-synchronization tool for Unix and Windows. It allows
@@ -20,9 +8,22 @@ two replicas of a collection of files and directories to be stored on
 different hosts (or different disks on the same host), modified
 separately, and then brought up to date by propagating the changes in
 each replica to the other."""
+maintainer: "juergen@hoetzel.info"
+authors: [
+  "Jürgen Hötzel <juergen@hoetzel.info>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+]
+homepage: "https://www.cis.upenn.edu/~bcpierce/unison/"
+bug-reports: "mailto:unison-users@yahoogroups.com "
+depends: [
+  "lablgtk"
+  "ocaml" {< "4.03.0"}
+]
+install: [make "install" "OCAMLLIBDIR=%{lib}%" "HOME=%{prefix}%"]
+patches: "opam.patch"
 extra-files: [
-  ["unison.install" "md5=31b234e8f9c19d3f9fab9f072e4b076a"]
   ["opam.patch" "md5=6156ee245485c824b582d69527a2aa71"]
+  ["unison.install" "md5=31b234e8f9c19d3f9fab9f072e4b076a"]
 ]
 url {
   src:

@@ -1,21 +1,21 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/ppx_traverse_builtins"
-bug-reports: "https://github.com/janestreet/ppx_traverse_builtins/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_traverse_builtins.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "jbuilder" {build & >= "1.0+beta12"}
-]
+name: "ppx_traverse_builtins"
+version: "v0.10.0"
 synopsis: "Builtins for Ppx_traverse"
 description: """
 This library defines the default methods for builtin types (int,
 string, list, ...) for Ppx_traverse."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/ppx_traverse_builtins"
+bug-reports: "https://github.com/janestreet/ppx_traverse_builtins/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta12"}
+  "ocaml" {>= "4.04.1"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/ppx_traverse_builtins.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.10/files/ppx_traverse_builtins-v0.10.0.tar.gz"

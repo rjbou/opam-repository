@@ -1,16 +1,27 @@
 opam-version: "2.0"
+name: "mlpost"
+version: "0.8.2"
+synopsis: "Interface to Metapost"
 maintainer: "filliatr@lri.fr"
 authors: [
-  "Romain Bardou"
   "Francois Bobot"
   "Jean-Christophe Filliâtre"
   "Johannes Kanig"
+  "Romain Bardou"
   "Stephane Lescuyer"
 ]
-homepage: "http://mlpost.lri.fr/index.fr.html"
-dev-repo: "git://github.com/backtracking/mlpost"
-bug-reports: "https://github.com/backtracking/mlpost/issues"
 license: "LGPL-2.1"
+homepage: "http://mlpost.lri.fr/index.fr.html"
+bug-reports: "https://github.com/backtracking/mlpost/issues"
+depends: [
+  "bitstring"
+  "cairo" {= "1.2.0"}
+  "conf-autoconf" {build}
+  "ocaml" {>= "4.04.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix "--mandir" man]
   [make]
@@ -25,16 +36,7 @@ remove: [
   ["ocamlfind" "remove" "mlpost"]
   ["ocamlfind" "remove" "mlpost_lablgtk"] {"%{cairo:installed}%"}
 ]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "ocamlfind"
-  "bitstring"
-  "cairo" {= "1.2.0"}
-  "ocamlbuild" {build}
-  "conf-autoconf" {build}
-]
-synopsis: "Interface to Metapost"
-flags: light-uninstall
+dev-repo: "git://github.com/backtracking/mlpost"
 extra-files: ["mlpost.install" "md5=44b10147a8e97efd1286ee03f4ba50e9"]
 url {
   src: "http://mlpost.lri.fr/download/mlpost-0.8.2.tar.gz"

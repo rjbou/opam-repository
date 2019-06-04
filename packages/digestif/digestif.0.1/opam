@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer:   [ "Eyyüb Sari <eyyub.sari@epitech.eu>"
-                "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-authors:      [ "Eyyüb Sari <eyyub.sari@epitech.eu>"
-                "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-homepage:     "https://github.com/mirage/digestif"
-bug-reports:  "https://github.com/mirage/digestif/issues"
-dev-repo: "git+https://github.com/mirage/digestif.git"
-doc:          "https://mirage.github.io/digestif/"
-license:      "MIT"
-
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "topkg" {build}
-  "base-bytes"
-  "alcotest" {with-test & < "0.8.0"}
-]
+name: "digestif"
+version: "0.1"
 synopsis: "Hash algorithms in OCaml"
 description: """
 [![Build Status](https://travis-ci.org/oklm-wsh/Digestif.svg?branch=master)](https://travis-ci.org/oklm-wsh/Digestif)
@@ -101,6 +79,33 @@ functions. Finally, you can use `nocrypto` _and_ `digestif` together (no clash
 name in the C stub, don't worry).
 
 So, yes, it's redundant but deal with it!"""
+maintainer: [
+  "Eyyüb Sari <eyyub.sari@epitech.eu>"
+  "Romain Calascibetta <romain.calascibetta@gmail.com>"
+]
+authors: [
+  "Eyyüb Sari <eyyub.sari@epitech.eu>"
+  "Romain Calascibetta <romain.calascibetta@gmail.com>"
+]
+license: "MIT"
+homepage: "https://github.com/mirage/digestif"
+doc: "https://mirage.github.io/digestif/"
+bug-reports: "https://github.com/mirage/digestif/issues"
+depends: [
+  "alcotest" {with-test & < "0.8.0"}
+  "base-bytes"
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/digestif.git"
 url {
   src:
     "https://github.com/mirage/digestif/releases/download/v0.1/digestif-0.1.tbz"

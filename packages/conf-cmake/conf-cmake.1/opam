@@ -1,29 +1,31 @@
 opam-version: "2.0"
+name: "conf-cmake"
+version: "1"
+synopsis: "Virtual package relying on cmake"
+description:
+  "This package can only install if cmake is installed on the system."
 maintainer: "Kate <kit.ty.kate@disroot.org>"
 authors: "Kitware, Inc. and Contributors"
+license: "BSD"
 homepage: "https://cmake.org/"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "BSD"
+flags: conf
 build: ["bash" "-ex" "configure.sh"]
 depexts: [
   ["cmake"] {os-distribution = "homebrew" & os = "macos"}
   ["cmake"] {os-distribution = "macports" & os = "macos"}
   ["cmake"] {os-distribution = "debian"}
   ["cmake"] {os-distribution = "ubuntu"}
-  ["cmake3" "epel-release"] {os-distribution = "centos"}
   ["cmake"] {os-distribution = "fedora"}
   ["cmake"] {os-distribution = "alpine"}
   ["cmake"] {os-distribution = "arch"}
   ["cmake"] {os-family = "suse"}
   ["cmake"] {os-distribution = "ol"}
+  ["cmake3" "epel-release"] {os-distribution = "centos"}
   ["dev-util/cmake"] {os-distribution = "gentoo"}
   ["devel/cmake"] {os = "freebsd"}
   ["devel/cmake"] {os = "openbsd"}
   ["devel/cmake"] {os = "netbsd"}
   ["devel/cmake"] {os = "dragonfly"}
 ]
-synopsis: "Virtual package relying on cmake"
-description:
-  "This package can only install if cmake is installed on the system."
 extra-files: ["configure.sh" "md5=0cae8434c6b69725503c46525063c505"]
-flags: conf

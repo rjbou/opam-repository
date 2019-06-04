@@ -1,5 +1,12 @@
 opam-version: "2.0"
+name: "wyrd"
+version: "1.4.5"
+synopsis:
+  "Text-based front-end to Remind, a sophisticated calendar and alarm program"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "ocaml" {= "3.12.1"}
+]
 build: [
   [
     "./configure"
@@ -17,11 +24,6 @@ build: [
   [make]
 ]
 install: [make "install"]
-synopsis:
-  "Text-based front-end to Remind, a sophisticated calendar and alarm program"
-depends: [
-  "ocaml" {= "3.12.1"}
-]
 extra-files: ["wyrd.install" "md5=cb866bfdfc06f8d236079fdc745ac648"]
 url {
   src:

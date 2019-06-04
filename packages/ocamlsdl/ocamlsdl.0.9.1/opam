@@ -1,5 +1,21 @@
 opam-version: "2.0"
+name: "ocamlsdl"
+version: "0.9.1"
+synopsis: "Interface between OCaml and SDL"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+authors: [
+  "Frederic Brunel <brunel@mail.dotcom.fr>"
+  "Julien Boulnois <jboulnois@gmail.com>"
+  "Luc Mazardo <luc@mazardo.com>"
+  "Olivier Andrieu <oliv__a@users.sourceforge.net>"
+  "Sami Mäkelä <sajuma@utu.fi>"
+]
+homepage: "http://ocamlsdl.sourceforge.net/"
+depends: ["ocaml" "ocamlfind"]
+depopts: [
+  "conf-sdl-gfx" "conf-sdl-image" "conf-sdl-mixer" "conf-sdl-ttf" "lablgl"
+]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -8,32 +24,14 @@ build: [
   ]
   [make]
 ]
-remove: [["ocamlfind" "remove" "sdl"]]
-depends: ["ocaml" "ocamlfind"]
-depopts: [
-  "lablgl"
-  "conf-sdl-gfx"
-  "conf-sdl-image"
-  "conf-sdl-mixer"
-  "conf-sdl-ttf"
-]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "sdl"]
+patches: "safe-string.diff" {ocaml:version >= "4.06.0"}
 depexts: [
   ["libsdl1.2-dev"] {os-distribution = "debian"}
   ["libsdl1.2-dev"] {os-distribution = "ubuntu"}
   ["sdl"] {os = "macos" & os-distribution = "homebrew"}
 ]
-install: [make "install"]
-patches: "safe-string.diff" {ocaml:version >= "4.06.0"}
-authors: [
-  "Frederic Brunel <brunel@mail.dotcom.fr>"
-  "Luc Mazardo <luc@mazardo.com>"
-  "Sami Mäkelä <sajuma@utu.fi>"
-  "Olivier Andrieu <oliv__a@users.sourceforge.net>"
-  "Julien Boulnois <jboulnois@gmail.com>"
-]
-homepage: "http://ocamlsdl.sourceforge.net/"
-synopsis: "Interface between OCaml and SDL"
-flags: light-uninstall
 extra-files: ["safe-string.diff" "md5=7e25d6d167e6aec7668bf40eec1889c8"]
 url {
   src:

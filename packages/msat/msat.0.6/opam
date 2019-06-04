@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: ["guillaume.bury@gmail.com" "simon.cruanes@inria.fr"]
-authors: [
-  "Sylvain Conchon"
-  "Alain Mebsout"
-  "Stephane Lecuyer"
-  "Simon Cruanes"
-  "Guillaume Bury"
-]
-homepage: "https://github.com/Gbury/mSAT"
-bug-reports: "https://github.com/Gbury/mSAT/issues/"
-license: "Apache"
-tags: ["sat" "smt"]
-dev-repo: "git+https://github.com/Gbury/mSAT.git"
-build: [
-  [make "disable_log"]
-  [make "lib"]
-  [make "doc"] {with-doc}
-]
-install: [make "DOCDIR=%{msat:doc}%" "install"]
-remove: [make "uninstall"]
-depends: [
-  "ocaml" {>= "4.00.1"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
+name: "msat"
+version: "0.6"
 synopsis: "Modular sat/smt solver"
 description: """
 This library provides functor to easily build a SAT, SMT and/or McSAT solver given an implementation of terms. Current features of the solver are:
@@ -32,6 +9,31 @@ This library provides functor to easily build a SAT, SMT and/or McSAT solver giv
 - CNF transformation tools
 
 This project derives from [Alt-Ergo Zero](http://cubicle.lri.fr/alt-ergo-zero), but does not provide any built-in theories, it is designed to let the users use their own implementation of terms and theories."""
+maintainer: ["guillaume.bury@gmail.com" "simon.cruanes@inria.fr"]
+authors: [
+  "Alain Mebsout"
+  "Guillaume Bury"
+  "Simon Cruanes"
+  "Stephane Lecuyer"
+  "Sylvain Conchon"
+]
+license: "Apache"
+tags: ["sat" "smt"]
+homepage: "https://github.com/Gbury/mSAT"
+bug-reports: "https://github.com/Gbury/mSAT/issues/"
+depends: [
+  "ocaml" {>= "4.00.1"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+build: [
+  [make "disable_log"]
+  [make "lib"]
+  [make "doc"] {with-doc}
+]
+install: [make "DOCDIR=%{msat:doc}%" "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/Gbury/mSAT.git"
 url {
   src: "https://github.com/Gbury/mSAT/archive/v0.6.tar.gz"
   checksum: "md5=614f47053a4d7589075914885619a209"

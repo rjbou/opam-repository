@@ -1,27 +1,6 @@
 opam-version: "2.0"
-name:         "salsa20"
-homepage:     "https://github.com/abeaumont/ocaml-salsa20"
-dev-repo: "git+https://github.com/abeaumont/ocaml-salsa20.git"
-bug-reports:  "https://github.com/abeaumont/ocaml-salsa20/issues"
-maintainer:   "Alfredo Beaumont <alfredo.beaumont@gmail.com>"
-license:      "BSD2"
-
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "cstruct" {>= "1.7.0"}
-  "nocrypto" {>= "0.5.3"}
-  "salsa20-core" {>= "0.1.0"}
-  "alcotest" {with-test}
-]
+name: "salsa20"
+version: "0.1.0"
 synopsis: "Family of encryption functions, in pure OCaml"
 description: """
 A pure OCaml implementation of [Salsa20](http://cr.yp.to/salsa20.html) encryption function family.
@@ -53,7 +32,28 @@ utop[7]> Salsa20.encrypt (Cstruct.of_string "My secret text") state |> Cstruct.t
 * Key can either 32 (recommended) or 16 bytes
 * Salsa20 state may use a different hashing function,
   the recommended [`Salsa20_core.salsa20_20_core`](https://abeaumont.github.io/ocaml-salsa20-core/Salsa20_core.html#VALsalsa20_20_core) is used by default."""
+maintainer: "Alfredo Beaumont <alfredo.beaumont@gmail.com>"
 authors: "Alfredo Beaumont <alfredo.beaumont@gmail.com>"
+license: "BSD2"
+homepage: "https://github.com/abeaumont/ocaml-salsa20"
+bug-reports: "https://github.com/abeaumont/ocaml-salsa20/issues"
+depends: [
+  "alcotest" {with-test}
+  "cstruct" {>= "1.7.0"}
+  "nocrypto" {>= "0.5.3"}
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "salsa20-core" {>= "0.1.0"}
+  "topkg" {build}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/abeaumont/ocaml-salsa20.git"
 url {
   src: "https://github.com/abeaumont/ocaml-salsa20/archive/0.1.0.tar.gz"
   checksum: "md5=473a7d5e6cf73e4095e5007af56c836b"

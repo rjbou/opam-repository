@@ -1,22 +1,22 @@
 opam-version: "2.0"
-authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
+name: "mirage-clock-unix"
+version: "1.2.0"
+synopsis: "A Mirage-compatible Clock library for Unix"
 maintainer: "anil@recoil.org"
-homepage: "https://github.com/mirage/mirage-clock"
-bug-reports: "https://github.com/mirage/mirage-clock/issues"
-dev-repo: "git://github.com/mirage/mirage-clock"
-doc: "https://mirage.github.io/mirage-clock/"
-
+authors: ["Anil Madhavapeddy" "Daniel C. Bünzli" "Matthew Gray"]
 license: "ISC"
-tags: ["org:mirage"]
-
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-clock"
+doc: "https://mirage.github.io/mirage-clock/"
+bug-reports: "https://github.com/mirage/mirage-clock/issues"
 depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.8.0"}
-  "mirage-clock" {>= "1.2.0" & <"1.3.0"} 
-  "mirage-clock-lwt" {>= "1.2.0" & <"1.3.0"}
   "lwt"
+  "mirage-clock" {>= "1.2.0" & < "1.3.0"}
+  "mirage-clock-lwt" {>= "1.2.0" & < "1.3.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build & >= "0.8.0"}
 ]
 build: [
   [
@@ -43,7 +43,7 @@ build: [
   ] {with-test}
   ["ocaml" "pkg/pkg.ml" "test" "-n" name] {with-test}
 ]
-synopsis: "A Mirage-compatible Clock library for Unix"
+dev-repo: "git://github.com/mirage/mirage-clock"
 url {
   src:
     "https://github.com/mirage/mirage-clock/releases/download/1.2.0/mirage-clock-unix-1.2.0.tbz"

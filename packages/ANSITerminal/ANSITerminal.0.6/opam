@@ -1,11 +1,25 @@
 opam-version: "2.0"
+name: "ANSITerminal"
+version: "0.6"
+synopsis: "Allow to use the colors and cursor movements on ANSI terminals"
+description: """
+ANSITerminal is a module allowing to use the colors and cursor
+movements on ANSI terminals. It also works on the windows shell (but
+this part is currently work in progress)."""
 maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler" ]
+authors: "Christophe Troestler"
 license: "LGPL-3.0 with OCaml linking exception"
+tags: "terminal"
 homepage: "https://github.com/Chris00/ANSITerminal"
-dev-repo: "git+https://github.com/Chris00/ANSITerminal.git"
 bug-reports: "https://github.com/Chris00/ANSITerminal/issues"
-tags: [ "terminal"  ]
+depends: [
+  "oasis" {build & >= "0.3.0" & < "0.4.7"}
+  "ocaml" {< "4.05.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["rm" "setup.ml"] {ocaml:version >= "4.00.0"}
   ["oasis" "setup"] {ocaml:version >= "4.00.0"}
@@ -13,20 +27,8 @@ build: [
   ["ocaml" "setup.ml" "-build"]
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [["ocamlfind" "remove" "ANSITerminal"]]
-depends: [
-  "ocaml" {< "4.05.0"}
-  "ocamlfind"
-  "oasis" {build & >= "0.3.0" & < "0.4.7"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
-synopsis: "Allow to use the colors and cursor movements on ANSI terminals"
-description: """
-ANSITerminal is a module allowing to use the colors and cursor
-movements on ANSI terminals. It also works on the windows shell (but
-this part is currently work in progress)."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "ANSITerminal"]
+dev-repo: "git+https://github.com/Chris00/ANSITerminal.git"
 url {
   src:
     "https://download.ocamlcore.org/ansiterminal/ansiterminal/0.6/ANSITerminal-0.6.tar.gz"

@@ -1,33 +1,31 @@
 opam-version: "2.0"
+name: "orocksdb"
+version: "0.2.2"
+synopsis: "ctypes based bindings for rocksdb"
 maintainer: "Jan Doms <jan.doms@openvstorage.com>"
 authors: "Jan Doms <jan.doms@openvstorage.com>"
+license: "MIT"
 homepage: "https://github.com/domsj/orocksdb"
 bug-reports: "https://github.com/domsj/orocksdb"
-license: "MIT"
-dev-repo: "git+https://github.com/domsj/orocksdb.git"
-build: [
-  [make]
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "rocks"]
 depends: [
-  "ocaml" {>= "4.02.1"}
-  "ocamlfind" {build}
   "conf-rocksdb"
   "ctypes" {>= "0.4.0"}
   "ctypes-foreign" {>= "0.4.0"}
+  "ocaml" {>= "4.02.1"}
   "ocamlbuild" {build}
+  "ocamlfind" {build}
 ]
 available: opam-version >= "1.2"
-post-messages: [
-  "
-  This package requires rocksdb library installed in /usr/local/lib.
-  Tentative instructions : https://gist.githubusercontent.com/domsj/9a28ba5a523a3420ded8/raw/dc6ebd8768a87dee285e84438dc733dfc58e037f/gistfile1.txt
-  "
-  {failure}
-]
-synopsis: "ctypes based bindings for rocksdb"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "rocks"]
+post-messages:
+  """
+This package requires rocksdb library installed in /usr/local/lib.
+  Tentative instructions : https://gist.githubusercontent.com/domsj/9a28ba5a523a3420ded8/raw/dc6ebd8768a87dee285e84438dc733dfc58e037f/gistfile1.txt"""
+    {failure}
+dev-repo: "git+https://github.com/domsj/orocksdb.git"
 url {
   src: "https://github.com/domsj/orocksdb/archive/0.2.2.tar.gz"
   checksum: "md5=03aa04d8ddb0a2a8c2193d579c6c5cc4"

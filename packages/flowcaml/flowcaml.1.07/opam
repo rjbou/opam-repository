@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "prashanth.mundkur@gmail.com"
-authors: "Vincent.Simonet@vtst.net"
-homepage: "http://www.normalesup.org/~simonet/soft/flowcaml/"
-build: [
-  [
-    "sh"
-    "-c"
-    "cd src-flowcaml && ./configure --prefix %{prefix}% --with-runlib=%{lib}%/flowcaml"
-  ]
-  ["sh" "-c" "cd src-flowcaml && %{make}% world"]
-]
-remove: [
-  ["sh" "-c" "cd src-flowcaml && ./configure --prefix %{prefix}% --with-runlib=%{lib}%/flowcaml"]
-  ["sh" "-c" "cd src-flowcaml && %{make}% uninstall"]
-]
-install: ["sh" "-c" "cd src-flowcaml && %{make}% install"]
+name: "flowcaml"
+version: "1.07"
 synopsis:
   "Flow Caml is an extension of OCaml with a type system tracing information flow."
 description: """
@@ -27,8 +13,28 @@ convey.  Because it has full type inference, the system verifies,
 without requiring source code annotations, that every information flow
 caused by the analyzed program is legal with regard to the security
 policy specified by the programmer."""
+maintainer: "prashanth.mundkur@gmail.com"
+authors: "Vincent.Simonet@vtst.net"
+homepage: "http://www.normalesup.org/~simonet/soft/flowcaml/"
 depends: [
   "ocaml" {< "4.06.0"}
+]
+build: [
+  [
+    "sh"
+    "-c"
+    "cd src-flowcaml && ./configure --prefix %{prefix}% --with-runlib=%{lib}%/flowcaml"
+  ]
+  ["sh" "-c" "cd src-flowcaml && %{make}% world"]
+]
+install: ["sh" "-c" "cd src-flowcaml && %{make}% install"]
+remove: [
+  [
+    "sh"
+    "-c"
+    "cd src-flowcaml && ./configure --prefix %{prefix}% --with-runlib=%{lib}%/flowcaml"
+  ]
+  ["sh" "-c" "cd src-flowcaml && %{make}% uninstall"]
 ]
 url {
   src:

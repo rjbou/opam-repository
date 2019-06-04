@@ -1,10 +1,23 @@
 opam-version: "2.0"
+name: "argon2"
+version: "0.2"
+synopsis: "OCaml bindings to Argon2"
+description:
+  "Original C implementation: https://github.com/P-H-C/phc-winner-argon2"
 maintainer: "Louis Roché <louis@louisroche.net>"
 authors: "Louis Roché <louis@louisroche.net>"
+license: "MIT"
 homepage: "https://github.com/Khady/ocaml-argon2"
 bug-reports: "https://github.com/Khady/ocaml-argon2/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/Khady/ocaml-argon2.git"
+depends: [
+  "ctypes" {>= "0.4.1"}
+  "ctypes-foreign"
+  "ocaml" {>= "4.02.1" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_deriving" {>= "2.0"}
+  "result"
+]
 build: [
   [
     "ocaml"
@@ -14,18 +27,7 @@ build: [
   ]
   [make "doc"] {with-doc}
 ]
-depends: [
-  "ocaml" {>= "4.02.1" & < "4.06.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "ctypes" {>= "0.4.1"}
-  "ctypes-foreign"
-  "result"
-  "ppx_deriving" {>= "2.0"}
-]
-synopsis: "OCaml bindings to Argon2"
-description:
-  "Original C implementation: https://github.com/P-H-C/phc-winner-argon2"
+dev-repo: "git+https://github.com/Khady/ocaml-argon2.git"
 url {
   src: "https://github.com/Khady/ocaml-argon2/archive/v0.2.zip"
   checksum: "md5=f4a910560d06ac5210e445bcaccda986"

@@ -1,27 +1,6 @@
 opam-version: "2.0"
-name:         "salsa20-core"
-homepage:     "https://github.com/abeaumont/ocaml-salsa20-core"
-dev-repo: "git+https://github.com/abeaumont/ocaml-salsa20-core.git"
-bug-reports:  "https://github.com/abeaumont/ocaml-salsa20-core/issues"
-maintainer:   "Alfredo Beaumont <alfredo.beaumont@gmail.com>"
-license:      "BSD2"
-
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "ocb-stubblr" {build}
-  "cstruct" {>= "1.7.0"}
-  "nocrypto" {with-test}
-  "alcotest" {with-test}
-]
+name: "salsa20-core"
+version: "0.2.0"
 synopsis: "Salsa20 core functions, in OCaml"
 description: """
 An OCaml implementation of [Salsa20 Core](http://cr.yp.to/salsa20.html) functions, both Salsa20/20 Core and the reduced Salsa20/8 Core and Salsa20/12 Core functions.
@@ -48,7 +27,28 @@ utop[1]> 0
 - : string =
 "\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000\\000"
 ```"""
+maintainer: "Alfredo Beaumont <alfredo.beaumont@gmail.com>"
 authors: "Alfredo Beaumont <alfredo.beaumont@gmail.com>"
+license: "BSD2"
+homepage: "https://github.com/abeaumont/ocaml-salsa20-core"
+bug-reports: "https://github.com/abeaumont/ocaml-salsa20-core/issues"
+depends: [
+  "alcotest" {with-test}
+  "cstruct" {>= "1.7.0"}
+  "nocrypto" {with-test}
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ocb-stubblr" {build}
+  "topkg" {build}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/abeaumont/ocaml-salsa20-core.git"
 url {
   src: "https://github.com/abeaumont/ocaml-salsa20-core/archive/0.2.0.tar.gz"
   checksum: "md5=495ad44e06e44c85cc61f5b27a4fa6e0"

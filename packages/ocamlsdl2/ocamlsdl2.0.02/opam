@@ -1,30 +1,26 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: [
-  "Florent Monnier"
-  "Piotr Mardziel"
-  "David Cadé"
-]
-license: "restrictionless Zlib"
-homepage: "https://github.com/fccm/OCamlSDL2"
-bug-reports: "https://github.com/fccm/OCamlSDL2/issues"
-dev-repo: "git+https://github.com/fccm/OCamlSDL2.git"
-doc: "http://www.linux-nantes.org/~fmonnier/ocaml/sdl2/doc/"
-tags: [
-  "bindings" "graphics" "audio" "multimedia" "opengl"
-  "cross-platform"
-]
+name: "ocamlsdl2"
+version: "0.02"
 synopsis: "Interface to the SDL2 library"
-description: """
-An OCaml interface to the SDL2 multimedia library for Linux and Windows."""
+description:
+  "An OCaml interface to the SDL2 multimedia library for Linux and Windows."
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+authors: ["David Cadé" "Florent Monnier" "Piotr Mardziel"]
+license: "restrictionless Zlib"
+tags: ["audio" "bindings" "cross-platform" "graphics" "multimedia" "opengl"]
+homepage: "https://github.com/fccm/OCamlSDL2"
+doc: "http://www.linux-nantes.org/~fmonnier/ocaml/sdl2/doc/"
+bug-reports: "https://github.com/fccm/OCamlSDL2/issues"
 depends: [
+  "conf-sdl2"
   "ocaml" {>= "4.03.0"}
   "ocamlfind" {build}
-  "conf-sdl2"
 ]
 build: [
-  ["cp" "src/Makefile.config.unix" "src/Makefile.config"] {"%{os}%" != "win32"}
-  ["cp" "src/Makefile.config.win32" "src/Makefile.config"] {"%{os}%" = "win32"}
+  ["cp" "src/Makefile.config.unix" "src/Makefile.config"]
+    {"%{os}%" != "win32"}
+  ["cp" "src/Makefile.config.win32" "src/Makefile.config"]
+    {"%{os}%" = "win32"}
   [make "-C" "src" "gen"]
   [make "-C" "src" "dep"]
   [make "-C" "src" "opt"]
@@ -34,9 +30,8 @@ install: [
   [make "-C" "src" "findinstall"]
   [make "-C" "src" "findinstall_h"]
 ]
-remove: [
-  ["ocamlfind" "remove" "sdl2"]
-]
+remove: ["ocamlfind" "remove" "sdl2"]
+dev-repo: "git+https://github.com/fccm/OCamlSDL2.git"
 url {
   src: "https://github.com/fccm/OCamlSDL2/archive/v0.02.tar.gz"
   checksum: "md5=6c13de0e9ba191494bee860e8e383278"

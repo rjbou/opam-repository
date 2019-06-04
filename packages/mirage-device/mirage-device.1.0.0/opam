@@ -1,27 +1,36 @@
 opam-version: "2.0"
-maintainer:    "thomas@gazagnaire.org"
-homepage:      "https://github.com/mirage/mirage-device"
-bug-reports:   "https://github.com/mirage/mirage-device/issues"
-dev-repo: "git+https://github.com/mirage/mirage-device.git"
-doc:           "https://mirage.github.io/mirage-device/"
-authors:       ["Thomas Gazagnaire" "Anil Madhavapeddy" "Gabriel Radanne"
-               "Mindy Preston" "Thomas Leonard" "Nicolas Ojeda Bar"
-               "Dave Scott" "David Kaloper" "Hannes Mehnert" "Richard Mortier"]
-tags:          [ "org:mirage"]
-license:       "ISC"
-
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.7.3"}
-  "fmt"
-]
+name: "mirage-device"
+version: "1.0.0"
 synopsis: "Foundational module types for devices."
 description:
   "This package is primarily useful in the context of a Mirage project."
+maintainer: "thomas@gazagnaire.org"
+authors: [
+  "Anil Madhavapeddy"
+  "Dave Scott"
+  "David Kaloper"
+  "Gabriel Radanne"
+  "Hannes Mehnert"
+  "Mindy Preston"
+  "Nicolas Ojeda Bar"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Thomas Leonard"
+]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-device"
+doc: "https://mirage.github.io/mirage-device/"
+bug-reports: "https://github.com/mirage/mirage-device/issues"
+depends: [
+  "fmt"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build & >= "0.7.3"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/mirage/mirage-device.git"
 url {
   src:
     "https://github.com/mirage/mirage-device/releases/download/1.0.0/mirage-device-1.0.0.tbz"

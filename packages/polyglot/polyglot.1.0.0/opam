@@ -1,32 +1,34 @@
 opam-version: "2.0"
+name: "polyglot"
+version: "1.0.0"
+synopsis: "Filters to convert XHTML into polyglot HTML5"
+description: """
+polyglot is a MirageOS-compatible library and a command line filter
+which converts XHTML into HTML5 which is still valid XML (so-called
+Polyglot Markup)."""
 maintainer: "sheets@alum.mit.edu"
 authors: "David Sheets"
+license: "ISC"
 homepage: "https://github.com/dsheets/polyglot"
 bug-reports: "https://github.com/dsheets/polyglot/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/dsheets/polyglot.git"
-substs: ["lib/META" "polyglot.version"]
+depends: [
+  "alcotest" {with-test}
+  "ocaml" {>= "4.00.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "xmlm"
+]
+depopts: ["base-unix" "cmdliner"]
+available: opam-version >= "1.2"
+flags: light-uninstall
 build: [
   [make "lib"]
   [make "tool"] {cmdliner:installed & base-unix:installed}
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "polyglot"]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocamlfind" {build}
-  "xmlm"
-  "alcotest" {with-test}
-  "ocamlbuild" {build}
-]
-depopts: ["cmdliner" "base-unix"]
-available: opam-version >= "1.2"
-synopsis: "Filters to convert XHTML into polyglot HTML5"
-description: """
-polyglot is a MirageOS-compatible library and a command line filter
-which converts XHTML into HTML5 which is still valid XML (so-called
-Polyglot Markup)."""
-flags: light-uninstall
+substs: ["lib/META" "polyglot.version"]
+dev-repo: "git+https://github.com/dsheets/polyglot.git"
 url {
   src: "https://github.com/dsheets/polyglot/archive/1.0.0.tar.gz"
   checksum: "md5=3726118bf51ea1ba8183526ca810a834"

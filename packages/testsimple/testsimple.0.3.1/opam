@@ -1,29 +1,29 @@
 opam-version: "2.0"
+name: "testsimple"
+version: "0.3.1"
+synopsis: "A simple unit testing framework"
 maintainer: "hez@0ok.org"
-authors: [ "Stevan Little" ]
+authors: "Stevan Little"
 license: "LGPL-2.1 with OCaml linking exception"
 homepage: "https://github.com/hcarty/ocaml-testsimple"
+depends: [
+  "batteries"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [
-  ["ocamlfind" "remove" "testsimple"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "batteries"
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "testsimple"]
 depexts: [
   ["perl"] {os-distribution = "debian"}
   ["perl"] {os-distribution = "ubuntu"}
 ]
 dev-repo: "git://github.com/hcarty/ocaml-testsimple"
-install: ["ocaml" "setup.ml" "-install"]
-synopsis: "A simple unit testing framework"
-flags: light-uninstall
 url {
   src: "https://github.com/hcarty/ocaml-testsimple/archive/v0.3.1.tar.gz"
   checksum: "md5=44412a6418b819f247b89439b7a6386d"

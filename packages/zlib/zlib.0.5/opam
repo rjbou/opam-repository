@@ -1,10 +1,25 @@
 opam-version: "2.0"
+name: "zlib"
+version: "0.5"
+synopsis: "Bindings to the zlib compression library"
+description: """
+providing deflate compression with or without zlib or gzip headers.
+
+This library uses bigarrays as buffers and can therefore release the OCaml
+runtime during (de)compression, allowing other OCaml threads to continue."""
 maintainer: "Christopher Zimmermann <christopher@gmerlin.de>"
 authors: "Christopher Zimmermann <christopher@gmerlin.de>"
-homepage: "https://github.com/madroach/ocaml-zlib"
-dev-repo: "git+https://github.com/madroach/ocaml-zlib.git"
-bug-reports: "https://github.com/madroach/ocaml-zlib/issues"
 license: "ISC"
+homepage: "https://github.com/madroach/ocaml-zlib"
+bug-reports: "https://github.com/madroach/ocaml-zlib/issues"
+depends: [
+  "base-bigarray"
+  "conf-zlib"
+  "ocaml" {< "4.08.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-doc"] {ocaml:version >= "4.00"}
@@ -12,20 +27,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" name]
-depends: [
-  "ocaml" {< "4.08.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "base-bigarray"
-  "conf-zlib"
-]
-synopsis: "Bindings to the zlib compression library"
-description: """
-providing deflate compression with or without zlib or gzip headers.
-
-This library uses bigarrays as buffers and can therefore release the OCaml
-runtime during (de)compression, allowing other OCaml threads to continue."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/madroach/ocaml-zlib.git"
 url {
   src: "https://github.com/madroach/ocaml-zlib/archive/0.5.tar.gz"
   checksum: "md5=8a3e7f0447c68a2bd2c60e1879705536"

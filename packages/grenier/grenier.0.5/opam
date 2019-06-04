@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "Frederic Bour <frederic.bour@lakaban.net>"
-authors: "Frederic Bour <frederic.bour@lakaban.net>"
-homepage: "https://github.com/let-def/grenier"
-bug-reports: "https://github.com/let-def/grenier"
-license: "ISC"
-dev-repo: "git+https://github.com/let-def/grenier.git"
-build: [
-  [make]
-  [make "test"] {with-test}
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "grenier"]
-depends: [
-  "ocaml" {>= "4.02" & < "4.06.0"}
-  "ocamlfind" {build}
-]
+name: "grenier"
+version: "0.5"
 synopsis: "Collection of algorithms (HyperLogLog, order maintenance, ...)"
 description: """
 Included:
@@ -26,7 +12,23 @@ Included:
 - hll : HyperLogLog
 - jmphash : Jump consistent hashing
 - physh : Physical hashtable"""
+maintainer: "Frederic Bour <frederic.bour@lakaban.net>"
+authors: "Frederic Bour <frederic.bour@lakaban.net>"
+license: "ISC"
+homepage: "https://github.com/let-def/grenier"
+bug-reports: "https://github.com/let-def/grenier"
+depends: [
+  "ocaml" {>= "4.02" & < "4.06.0"}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  [make]
+  [make "test"] {with-test}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "grenier"]
+dev-repo: "git+https://github.com/let-def/grenier.git"
 url {
   src: "https://github.com/let-def/grenier/archive/v0.5.tar.gz"
   checksum: "md5=1eeffa93453f549b6f89b8c016c90c77"

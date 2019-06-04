@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "thomas@gazagnaire.org"
-authors: ["Thomas Gazagnaire"]
-license: "ISC"
-homepage: "https://github.com/mirage/mirage-flow-rawlink"
-dev-repo: "git+https://github.com/mirage/mirage-flow-rawlink.git"
-bug-reports: "https://github.com/mirage/mirage-flow-rawlink/issues"
-doc: "https://mirage.github.io/mirage-flow-rawlink/"
-
-build: [
-  ["jbuilder" "subst" "-p" name]
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "mirage-flow-lwt" {>= "1.2.0"}
-  "rawlink" {>= "0.5" & < "1.0"}
-  "cstruct" {>= "3.0.2"}
-  "lwt"
-]
-tags: "org:mirage"
+name: "mirage-flow-rawlink"
+version: "1.0.0"
 synopsis: "Expose rawlink interfaces as MirageOS flows"
 description: """
 Allow to use rawlink interfaces as MirageOS flows.
@@ -35,6 +15,26 @@ An example:
   | Ok (`Data buf) ->
   ...
 ```"""
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-flow-rawlink"
+doc: "https://mirage.github.io/mirage-flow-rawlink/"
+bug-reports: "https://github.com/mirage/mirage-flow-rawlink/issues"
+depends: [
+  "cstruct" {>= "3.0.2"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "lwt"
+  "mirage-flow-lwt" {>= "1.2.0"}
+  "ocaml" {>= "4.02.0"}
+  "rawlink" {>= "0.5" & < "1.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name]
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-flow-rawlink.git"
 url {
   src:
     "https://github.com/mirage/mirage-flow-rawlink/releases/download/1.0.0/mirage-flow-rawlink-1.0.0.tbz"

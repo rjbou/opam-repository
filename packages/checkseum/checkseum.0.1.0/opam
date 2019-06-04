@@ -1,47 +1,40 @@
 opam-version: "2.0"
-name:         "checkseum"
-maintainer:   [ "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-authors:      [ "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-homepage:     "https://github.com/dinosaure/checkseum"
-bug-reports:  "https://github.com/dinosaure/checkseum/issues"
-dev-repo:     "git+https://github.com/dinosaure/checkseum.git"
-doc:          "https://dinosaure.github.io/checkseum/"
-license:      "MIT"
-synopsis:     "Adler-32, CRC32 and CRC32-C implementation in C and OCaml"
+name: "checkseum"
+version: "0.1.0"
+synopsis: "Adler-32, CRC32 and CRC32-C implementation in C and OCaml"
 description: """
 Checkseum is a library to provide implementation of Adler-32, CRC32 and CRC32-C in C and OCaml.
 
 This library use the linking trick to choose between the C implementation (checkseum.c) or the OCaml implementation (checkseum.ocaml).
-This library is on top of optint to get the best representation of an int32.
-"""
-
-build: [
-  [ "dune" "subst" ]
-  [ "dune" "build" "-p" name "-j" jobs ]
-  [ "dune" "runtest" "-p" name "-j" jobs ] {with-test}
-]
-
+This library is on top of optint to get the best representation of an int32."""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/checkseum"
+doc: "https://dinosaure.github.io/checkseum/"
+bug-reports: "https://github.com/dinosaure/checkseum/issues"
 depends: [
-  "ocaml"         {>= "4.03.0"}
-  "dune"          {build & >= "1.9.2"}
-  "optint"
-  "base-bytes"
+  "alcotest" {with-test}
   "base-bigarray"
-  "fmt"
-  "rresult"
+  "base-bytes"
   "cmdliner"
-  "alcotest"      {with-test}
+  "dune" {build & >= "1.9.2"}
+  "fmt"
+  "ocaml" {>= "4.03.0"}
+  "optint"
+  "rresult"
 ]
-
-depopts: [
-  "ocaml-freestanding"
-  "mirage-xen-posix"
-]
-
+depopts: ["mirage-xen-posix" "ocaml-freestanding"]
 conflicts: [
   "mirage-xen-posix" {< "3.1.0"}
   "ocaml-freestanding" {< "0.4.1"}
 ]
+build: [
+  ["dune" "subst"]
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/dinosaure/checkseum.git"
 url {
   src:
     "https://github.com/dinosaure/checkseum/releases/download/v0.1.0/checkseum-v0.1.0.tbz"

@@ -1,24 +1,30 @@
 opam-version: "2.0"
+name: "cmdtui"
+version: "0.3.0"
+synopsis: "Interactive command completion and execution for building REPLs"
+description: """
+cmdtui is a module for declaring commands with completions and actions.
+It can return a dynamically generated list of completions based on partial user
+input.
+The base module doesn't depend on a particular terminal control library,
+and support for `lambda-term` based REPLs is provided in the `cmdtui.lambda-term` subpackage.
+
+cmdtui is distributed under the ISC license."""
 maintainer: "Török Edwin <edwin@skylable.com>"
-authors: ["Török Edwin <edwin@skylable.com>"]
+authors: "Török Edwin <edwin@skylable.com>"
+license: "ISC"
 homepage: "https://gitlab.com/edwintorok/cmdtui"
 doc: "https://edwintorok.gitlab.io/cmdtui/doc"
-license: "ISC"
-dev-repo: "git+https://gitlab.com/edwintorok/cmdtui.git"
 bug-reports: "https://gitlab.com/edwintorok/cmdtui/issues"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
   "astring" {>= "0.8.3"}
   "fmt" {>= "0.8.0"}
+  "ocaml" {>= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
 ]
-depopts: [
-  "lambda-term"
-  "cmdliner"
-  "logs"
-]
+depopts: ["cmdliner" "lambda-term" "logs"]
 build: [
   [
     "ocaml"
@@ -52,15 +58,7 @@ build: [
   ] {with-test}
   ["ocaml" "pkg/pkg.ml" "test"] {with-test}
 ]
-synopsis: "Interactive command completion and execution for building REPLs"
-description: """
-cmdtui is a module for declaring commands with completions and actions.
-It can return a dynamically generated list of completions based on partial user
-input.
-The base module doesn't depend on a particular terminal control library,
-and support for `lambda-term` based REPLs is provided in the `cmdtui.lambda-term` subpackage.
-
-cmdtui is distributed under the ISC license."""
+dev-repo: "git+https://gitlab.com/edwintorok/cmdtui.git"
 url {
   src:
     "https://gitlab.com/edwintorok/cmdtui/uploads/d8ed8d08f98a8d3481121df4b9fc13cd/cmdtui-0.3.0.tbz"

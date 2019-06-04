@@ -1,15 +1,17 @@
 opam-version: "2.0"
-maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-authors: [
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-  "David Sheets <sheets@alum.mit.edu>"
-]
-homepage: "http://opam.ocaml.org"
-bug-reports: "https://github.com/OCamlPro/opam-publish/issues"
-license: "LGPL-3.0 with OCaml linking exception"
-dev-repo: "git+https://github.com/OCamlPro/opam-publish.git"
-depends: ["ocaml" "publish"]
+name: "opam-publish"
+version: "0.3.0+transition"
 synopsis: "opam-publish transition package"
 description: """
 The package has been renamed to just 'publish'. You can safely remove this
 package."""
+maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+authors: [
+  "David Sheets <sheets@alum.mit.edu>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+]
+license: "LGPL-3.0 with OCaml linking exception"
+homepage: "http://opam.ocaml.org"
+bug-reports: "https://github.com/OCamlPro/opam-publish/issues"
+depends: ["ocaml" "publish"]
+dev-repo: "git+https://github.com/OCamlPro/opam-publish.git"

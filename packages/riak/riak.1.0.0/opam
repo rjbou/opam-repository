@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "riak"
+version: "1.0.0"
+synopsis: "A Riak OCaml client"
 maintainer: "dparfitt@basho.com"
-build: [
-  ["./configure"]
-  [make]
-]
-remove: [["ocamlfind" "remove" "riak"]]
 depends: [
+  "lwt"
   "ocaml"
+  "ocamlbuild" {build}
   "ocamlfind"
   "ounit"
   "piqi"
   "riak-pb"
-  "lwt"
-  "ocamlbuild" {build}
 ]
-dev-repo: "git://github.com/metadave/riak-ocaml-client"
-install: [make "install"]
-synopsis: "A Riak OCaml client"
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "riak"]
+dev-repo: "git://github.com/metadave/riak-ocaml-client"
 url {
   src:
     "https://github.com/metadave/riak-ocaml-client/archive/riak-1.0.0.tar.gz"

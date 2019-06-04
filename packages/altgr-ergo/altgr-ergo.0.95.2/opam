@@ -1,39 +1,33 @@
 opam-version: "2.0"
+name: "altgr-ergo"
+version: "0.95.2"
+synopsis:
+  "Automatic theorem prover based on SMT technology and dedicated to program verification: Graphical interface"
 maintainer: "alt-ergo@ocamlpro.com"
 authors: "Alt-Ergo developers"
 license: "CeCILL-C"
 homepage: "http://alt-ergo.ocamlpro.com/"
 bug-reports: "https://github.com/OCamlPro/alt-ergo/issues"
-
-build:
-[
-	["./configure" "-prefix" "%{prefix}%"]
-	[make "gui"]
-]
-
-install:
-[
-	[make "install-gui" "MANDIR=%{man}%"]
-]
-
-remove:
-[
-	["rm" "%{prefix}%/bin/altgr-ergo"]
-	["rm" "%{share}%/alt-ergo/gtksourceview-2.0/language-specs/alt-ergo.lang"]
-]
-
 depends: [
-  "ocaml"
-  "zarith"
-  "ocamlgraph" {>= "1.8.2"}
-  "lablgtk"
   "conf-gtksourceview" {= "2"}
+  "lablgtk"
   "num"
+  "ocaml"
+  "ocamlgraph" {>= "1.8.2"}
+  "zarith"
 ]
-messages: [ "This release is too old. Please consider using version 1.30 that fixes many soundness bugs and brings a lot of improvements" ]
-synopsis:
-  "Automatic theorem prover based on SMT technology and dedicated to program verification: Graphical interface"
 flags: light-uninstall
+build: [
+  ["./configure" "-prefix" "%{prefix}%"]
+  [make "gui"]
+]
+install: [make "install-gui" "MANDIR=%{man}%"]
+remove: [
+  ["rm" "%{prefix}%/bin/altgr-ergo"]
+  ["rm" "%{share}%/alt-ergo/gtksourceview-2.0/language-specs/alt-ergo.lang"]
+]
+messages:
+  "This release is too old. Please consider using version 1.30 that fixes many soundness bugs and brings a lot of improvements"
 extra-files: ["altgr-ergo.install" "md5=c59c2adf7b617042496fe7025fdc6e2e"]
 url {
   src:

@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "Roma Sokolov <sokolov.r.v@gmail.com>"
-authors: [ "Roma Sokolov <sokolov.r.v@gmail.com>" ]
-license: "MIT"
-homepage: "https://github.com/little-arhat/ppx_jsobject_conv"
-bug-reports: "https://github.com/little-arhat/ppx_jsobject_conv/issues"
-dev-repo: "git://github.com/little-arhat/ppx_jsobject_conv.git"
-tags: [ "syntax" "jsoo" "javascript"]
-substs: [ "pkg/META" ]
-build: [
-  "ocaml"
-  "pkg/build.ml"
-  "native=%{ocaml:native}%"
-  "native-dynlink=%{ocaml:native-dynlink}%"
-]
-depends: [
-  "ocaml" {>= "4.02.3" & < "4.03.0"}
-  "js_of_ocaml" {< "3.4.0"}
-  "result"
-  "ppx_type_conv" {>= "113.24.00"}
-  "ppx_driver"
-  "ppx_core"
-  "ppx_deriving"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
+name: "ppx_jsobject_conv"
+version: "0.1.1"
 synopsis:
   "Ppx plugin for Typeconv to derive conversion from ocaml types to js objects to use with js_of_ocaml."
 description: """
@@ -31,6 +8,31 @@ For types annotated with [@@deriving jsobject], plugin will generate pair of fun
 to convert from/to JavaScript objects. This allows one to use clean OCaml types to describe their logic, while having ability
 to easy go down to js types. Easy conversion from js objects to OCaml types means also, one can use fast native JSON.parse to
 convert JSON to OCaml types."""
+maintainer: "Roma Sokolov <sokolov.r.v@gmail.com>"
+authors: "Roma Sokolov <sokolov.r.v@gmail.com>"
+license: "MIT"
+tags: ["javascript" "jsoo" "syntax"]
+homepage: "https://github.com/little-arhat/ppx_jsobject_conv"
+bug-reports: "https://github.com/little-arhat/ppx_jsobject_conv/issues"
+depends: [
+  "js_of_ocaml" {< "3.4.0"}
+  "ocaml" {>= "4.02.3" & < "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_core"
+  "ppx_deriving"
+  "ppx_driver"
+  "ppx_type_conv" {>= "113.24.00"}
+  "result"
+]
+build: [
+  "ocaml"
+  "pkg/build.ml"
+  "native=%{ocaml:native}%"
+  "native-dynlink=%{ocaml:native-dynlink}%"
+]
+substs: "pkg/META"
+dev-repo: "git://github.com/little-arhat/ppx_jsobject_conv.git"
 url {
   src:
     "https://github.com/little-arhat/ppx_jsobject_conv/archive/v0.1.1.tar.gz"

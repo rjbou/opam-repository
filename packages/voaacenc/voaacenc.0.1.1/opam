@@ -1,26 +1,26 @@
 opam-version: "2.0"
+name: "voaacenc"
+version: "0.1.1"
+synopsis:
+  "Bindings for the voaacenc library to encode audio files in AAC format"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-voaacenc"
+bug-reports: "https://github.com/savonet/ocaml-voaacenc/issues"
+depends: ["conf-pkg-config" "ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "voaacenc"]
-depends: ["ocaml" "ocamlfind" "conf-pkg-config"]
 depexts: [
+  ["libvo-aacenc"] {os = "macos" & os-distribution = "homebrew"}
   ["libvo-aacenc-dev"] {os-distribution = "debian"}
   ["libvo-aacenc-dev"] {os-distribution = "ubuntu"}
-  ["libvo-aacenc"] {os = "macos" & os-distribution = "homebrew"}
 ]
-bug-reports: "https://github.com/savonet/ocaml-voaacenc/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-voaacenc.git"
-synopsis:
-  "Bindings for the voaacenc library to encode audio files in AAC format"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-voaacenc/releases/download/0.1.1/ocaml-voaacenc-0.1.1.tar.gz"

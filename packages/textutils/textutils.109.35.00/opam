@@ -1,18 +1,20 @@
 opam-version: "2.0"
+name: "textutils"
+version: "109.35.00"
+synopsis: "Text output utilities"
 maintainer: "opensource@janestreet.com"
-build: make
-remove: [["ocamlfind" "remove" "textutils"]]
 depends: [
-  "ocaml"
   "camlp4"
   "core" {= "109.35.00"}
-  "sexplib" {= "109.20.00"}
-  "pa_ounit" {>= "109.18.00" & <= "109.34.00"}
+  "ocaml"
   "ocamlbuild" {build}
+  "pa_ounit" {>= "109.18.00" & <= "109.34.00"}
+  "sexplib" {= "109.20.00"}
 ]
-install: [make "install"]
-synopsis: "Text output utilities"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "textutils"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.35.00/individual/textutils-109.35.00.tar.gz"

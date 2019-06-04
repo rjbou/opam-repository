@@ -1,30 +1,25 @@
 opam-version: "2.0"
-maintainer:   ["hannes@mehnert.org"]
-homepage:     "https://github.com/mirage/mirage-bootvar-unix"
-bug-reports:  "https://github.com/mirage/mirage-bootvar-unix/issues/"
-dev-repo:     "git+https://github.com/mirage/mirage-bootvar-unix.git"
-license:      "ISC"
-authors: [
-  "Hannes Mehnert <hannes@mehnert.org>"
-]
-tags: [
-  "org:mirage"
-]
-build: [
-  ["dune" "subst"]{pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-]
-
+name: "mirage-bootvar-unix"
+version: "0.1.0"
+synopsis: "Unix implementation of MirageOS Bootvar interface"
+description: "Library for passing boot parameters from Solo5 to MirageOS."
+maintainer: "hannes@mehnert.org"
+authors: "Hannes Mehnert <hannes@mehnert.org>"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-bootvar-unix"
+bug-reports: "https://github.com/mirage/mirage-bootvar-unix/issues/"
 depends: [
   "dune" {build}
   "lwt"
-  "parse-argv"
   "ocaml" {>= "4.04.2"}
+  "parse-argv"
 ]
-synopsis: "Unix implementation of MirageOS Bootvar interface"
-description: """
-Library for passing boot parameters from Solo5 to MirageOS.
-"""
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/mirage-bootvar-unix.git"
 url {
   src:
     "https://github.com/mirage/mirage-bootvar-unix/releases/download/0.1.0/mirage-bootvar-unix-0.1.0.tbz"

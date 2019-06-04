@@ -1,9 +1,25 @@
 opam-version: "2.0"
+name: "tensorflow"
+version: "0.0.10"
+synopsis: "TensorFlow bindings for OCaml"
+description: """
+The tensorflow-ocaml project provides some OCaml bindings for TensorFlow, a machine learning framework.
+These bindings are in an early stage of their development. Some operators are not supported and the API is likely to change in the future. You may also encounter some segfaults. That being said they already contain the necessary to train a convolution network using various optimizers."""
 maintainer: "Laurent Mazare <lmazare@gmail.com>"
 authors: ["Laurent Mazare" "Nicolas Oury"]
 homepage: "https://github.com/LaurentMazare/tensorflow-ocaml"
 bug-reports: "https://github.com/LaurentMazare/tensorflow-ocaml/issues"
-dev-repo: "git+https://github.com/LaurentMazare/tensorflow-ocaml.git"
+depends: [
+  "base" {< "v0.11.0"}
+  "cmdliner"
+  "ctypes" {>= "0.5"}
+  "ctypes-foreign"
+  "jbuilder" {build}
+  "ocaml" {>= "4.03" & < "4.06.0"}
+  "ocamlfind" {build}
+  "stdio" {< "v0.13"}
+]
+depopts: ["gnuplot"]
 build: [
   "jbuilder"
   "build"
@@ -15,21 +31,7 @@ build: [
   jobs
   "@install"
 ]
-depends: [
-  "ocaml" {>= "4.03" & < "4.06.0"}
-  "cmdliner"
-  "base" {< "v0.11.0"}
-  "stdio" {< "v0.13"}
-  "ctypes" {>= "0.5"}
-  "ctypes-foreign"
-  "ocamlfind" {build}
-  "jbuilder" {build}
-]
-depopts: "gnuplot"
-synopsis: "TensorFlow bindings for OCaml"
-description: """
-The tensorflow-ocaml project provides some OCaml bindings for TensorFlow, a machine learning framework.
-These bindings are in an early stage of their development. Some operators are not supported and the API is likely to change in the future. You may also encounter some segfaults. That being said they already contain the necessary to train a convolution network using various optimizers."""
+dev-repo: "git+https://github.com/LaurentMazare/tensorflow-ocaml.git"
 url {
   src:
     "https://github.com/LaurentMazare/tensorflow-ocaml/archive/0.0.10.1.tar.gz"

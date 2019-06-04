@@ -1,10 +1,29 @@
 opam-version: "2.0"
+name: "crowbar"
+version: "0.1"
+synopsis: "write tests, let a fuzzer find failing cases"
+description: """
+Crowbar is a library for testing code, combining QuickCheck-style
+property-based testing and the magical bug-finding powers of
+[afl-fuzz](http://lcamtuf.coredump.cx/afl/)."""
 maintainer: "stephen.dolan@cl.cam.ac.uk"
-authors: ["Stephen Dolan"]
+authors: "Stephen Dolan"
+license: "MIT"
 homepage: "https://github.com/stedolan/crowbar"
 bug-reports: "https://github.com/stedolan/crowbar/issues"
-dev-repo: "git+https://github.com/stedolan/crowbar.git"
-license: "MIT"
+depends: [
+  "afl-persistent" {>= "1.1"}
+  "calendar" {with-test}
+  "cmdliner"
+  "fpath" {with-test}
+  "jbuilder" {build}
+  "ocaml" {>= "4.03"}
+  "ocplib-endian"
+  "uucp" {with-test}
+  "uunf" {with-test}
+  "uutf" {with-test}
+  "xmldiff" {with-test}
+]
 build: [
   [
     "jbuilder"
@@ -29,24 +48,7 @@ build: [
     "@runtest"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.03"}
-  "jbuilder" {build}
-  "ocplib-endian"
-  "cmdliner"
-  "afl-persistent" {>= "1.1"}
-  "calendar" {with-test}
-  "xmldiff" {with-test}
-  "fpath" {with-test}
-  "uucp" {with-test}
-  "uunf" {with-test}
-  "uutf" {with-test}
-]
-synopsis: "write tests, let a fuzzer find failing cases"
-description: """
-Crowbar is a library for testing code, combining QuickCheck-style
-property-based testing and the magical bug-finding powers of
-[afl-fuzz](http://lcamtuf.coredump.cx/afl/)."""
+dev-repo: "git+https://github.com/stedolan/crowbar.git"
 url {
   src: "https://github.com/stedolan/crowbar/archive/v0.1.tar.gz"
   checksum: "md5=cb7379d5182b56a18aba11aa40ed279a"

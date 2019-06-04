@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "bun"
+version: "0.3.1"
+synopsis: "simple management of afl-fuzz processes"
 maintainer: "maintenance@identity-function.com"
-authors: ["Mindy Preston"]
+authors: "Mindy Preston"
+license: "MIT"
 homepage: "https://github.com/yomimono/ocaml-bun"
 bug-reports: "https://github.com/yomimono/ocaml-bun/issues"
-dev-repo: "git+https://github.com/yomimono/ocaml-bun.git"
-license: "MIT"
-build: [[ "jbuilder" "build" "-p" name "-j" jobs ]]
 depends: [
-  "ocaml" {>= "4.05"}
-  "jbuilder" {build}
+  "afl" {= "2.52b"}
+  "astring"
   "bos" {>= "0.2.0"}
   "cmdliner" {>= "1.0.0"}
   "fpath"
+  "jbuilder" {build}
+  "ocaml" {>= "4.05"}
   "rresult" {>= "0.3.0"}
-  "astring"
   "spawn" {>= "v0.10.1" & < "v0.12"}
-  "afl" {= "2.52b"}
 ]
-synopsis: "simple management of afl-fuzz processes"
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/yomimono/ocaml-bun.git"
 url {
   src:
     "https://github.com/yomimono/ocaml-bun/releases/download/v0.3.1/bun-0.3.1.tbz"

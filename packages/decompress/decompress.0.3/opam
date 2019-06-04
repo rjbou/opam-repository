@@ -1,26 +1,28 @@
 opam-version: "2.0"
+name: "decompress"
+version: "0.3"
+synopsis: "Pure OCaml implementation of Zlib"
+description: "Pure OCaml implementation of Zlib"
 maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
 authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
 homepage: "https://github.com/oklm-wsh/Decompress"
 bug-reports: "https://github.com/oklm-wsh/Decompress/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/oklm-wsh/Decompress.git"
+depends: [
+  "base-bytes"
+  "ocaml" {>= "4.02.0" & < "4.08.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+depopts: ["base-unix"]
+flags: light-uninstall
 build: [
   ["./configure" "--%{base-unix:enable}%-unix" "--prefix=%{prefix}%"]
   [make]
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "decompress"]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.08.0"}
-  "base-bytes"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
-depopts: "base-unix"
-synopsis: "Pure OCaml implementation of Zlib"
-description: "Pure OCaml implementation of Zlib"
-flags: light-uninstall
+dev-repo: "git+https://github.com/oklm-wsh/Decompress.git"
 url {
   src:
     "https://github.com/mirage/decompress/releases/download/0.3/decompress-0.3.tbz"

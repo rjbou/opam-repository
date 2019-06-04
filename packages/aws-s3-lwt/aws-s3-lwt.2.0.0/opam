@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anders Fugmann <anders@fugmann.net>"
-authors: "Anders Fugmann"
-license: "BSD-3"
-homepage: "https://github.com/andersfugmann/aws-s3"
-dev-repo: "git+https://github.com/andersfugmann/aws-s3"
-bug-reports: "https://github.com/andersfugmann/aws-s3/issues"
-build: [["jbuilder" "build" "-p" name "-j" jobs]]
+name: "aws-s3-lwt"
 version: "2.0.0"
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "jbuilder" {build}
-  "aws-s3" {= "2.0.0"}
-  "tls" | "ssl"
-  "lwt"
-  "cohttp-lwt-unix"
-]
 synopsis: "Ocaml library for accessing Amazon S3 - Lwt version."
 description: """
 This library provides access to Amazon Simple Storage Solution (S3).
@@ -25,6 +11,21 @@ The library supports:
 * Fetching credentials (though IAM)
 
 This library uses lwt for concurrency"""
+maintainer: "Anders Fugmann <anders@fugmann.net>"
+authors: "Anders Fugmann"
+license: "BSD-3"
+homepage: "https://github.com/andersfugmann/aws-s3"
+bug-reports: "https://github.com/andersfugmann/aws-s3/issues"
+depends: [
+  "aws-s3" {= "2.0.0"}
+  "cohttp-lwt-unix"
+  "jbuilder" {build}
+  "lwt"
+  "ocaml" {>= "4.04.0"}
+  ("ssl" | "tls")
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/andersfugmann/aws-s3"
 url {
   src: "https://github.com/andersfugmann/aws-s3/archive/2.0.0.tar.gz"
   checksum: "md5=7c9d952fa97d243bdfab37b49ab150e6"

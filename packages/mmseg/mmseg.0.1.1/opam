@@ -1,10 +1,23 @@
 opam-version: "2.0"
+name: "mmseg"
+version: "0.1.1"
+synopsis:
+  "A word identification system based on the maximum matching algorithm."
+description:
+  "The full technology page of the MMSEG system is available on http://technology.chtsai.org/mmseg/"
 maintainer: "zandoye@gmail.com"
-authors: [ "ZAN DoYe" ]
+authors: "ZAN DoYe"
+license: "MIT"
 homepage: "https://bitbucket.org/zandoye/mmseg/"
 bug-reports: "https://bitbucket.org/zandoye/mmseg/issues"
-license: "MIT"
-dev-repo: "hg+https://bitbucket.org/zandoye/mmseg"
+depends: [
+  "camomile"
+  "core_kernel" {< "v0.13"}
+  "ocaml" {>= "4.00.1"}
+  "ocamlfind" {build}
+  "trie"
+]
+flags: light-uninstall
 build: [
   [make]
   [make "doc"] {with-doc}
@@ -17,18 +30,7 @@ remove: [
   ["ocamlfind" "remove" "mmseg"]
   ["rm" "-rf" "%{doc}%/mmseg"]
 ]
-depends: [
-  "ocaml" {>= "4.00.1"}
-  "ocamlfind" {build}
-  "core_kernel" {< "v0.13"}
-  "trie"
-  "camomile"
-]
-synopsis:
-  "A word identification system based on the maximum matching algorithm."
-description:
-  "The full technology page of the MMSEG system is available on http://technology.chtsai.org/mmseg/"
-flags: light-uninstall
+dev-repo: "hg+https://bitbucket.org/zandoye/mmseg"
 url {
   src: "https://bitbucket.org/zandoye/mmseg/get/0.1.1.tar.gz"
   checksum: "md5=ce5379abe367f6c2db15f9efb8bfea23"

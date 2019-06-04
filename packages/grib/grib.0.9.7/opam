@@ -1,24 +1,28 @@
 opam-version: "2.0"
+name: "grib"
+version: "0.9.7"
+synopsis: "Bindings for the ECMWF GRIB API"
 maintainer: "hez@0ok.org"
-authors: [ "Hezekiah M. Carty" ]
+authors: "Hezekiah M. Carty"
 license: "MIT"
+tags: [
+  "clib:grib" "clib:jasper" "clib:jpeg" "clib:m" "clib:openjpeg" "clib:png"
+]
 homepage: "https://github.com/hcarty/ocaml-grib"
-tags: [ "clib:png" "clib:openjpeg" "clib:m" "clib:jpeg" "clib:jasper"
-        "clib:grib"  ]
+depends: [
+  "batteries"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "pcre"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [
-  ["ocamlfind" "remove" "grib"]
-]
-depends: [
-  "ocaml"
-  "batteries"
-  "ocamlfind"
-  "pcre"
-  "ocamlbuild" {build}
-]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "grib"]
 depexts: [
   [
     "libjpeg-dev"
@@ -36,9 +40,6 @@ depexts: [
   ] {os-distribution = "ubuntu"}
 ]
 dev-repo: "git://github.com/hcarty/ocaml-grib"
-install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Bindings for the ECMWF GRIB API"
-flags: light-uninstall
 url {
   src: "https://github.com/hcarty/ocaml-grib/archive/v0.9.7.tar.gz"
   checksum: "md5=80016011743fbfce450d27f74be849f0"

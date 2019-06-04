@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "contact@afiniate.com"
-homepage: "https://github.com/afiniate/vrt"
-bug-reports: "https://github.com/afiniate/vrt/issues"
-license: "Apache v2"
-dev-repo: "git+ssh://git@github.com/afiniate/vrt.git"
-build: [
-  [make "build"]
-]
-install: [make "install" "PREFIX=%{prefix}%"]
-remove: [make "remove" "PREFIX=%{prefix}%"]
-depends: [
-  "ocaml" {>= "4.02"}
-  "ocamlfind" {build}
-  "core" {< "v0.13"}
-  "async" {< "v0.13"}
-  "async_shell" {< "v0.13"}
-  "async_unix" {< "v0.13"}
-  "async_extra" {< "v0.13"}
-  "sexplib" {< "113.09.00"}
-  "camlp4" {build}
-  "type_conv" {build}
-  "async_shell" {< "v0.13"}
-  "core_extended" {< "v0.13"}
-  "async_find" {< "v0.13"}
-]
+name: "vrt"
+version: "0.1.0"
 synopsis:
   "A setup command line tools to help with development on remote AWS desktops"
 description: """
@@ -32,7 +9,30 @@ system. Vrt itself doesn't provide any commands. It consists of
 command groups that provide subcommands for the various areas of
 tooling. A good example of this is the `build` subcommand group. That
 consists of all the tooling related to build and development."""
+maintainer: "contact@afiniate.com"
 authors: "contact@afiniate.com"
+license: "Apache v2"
+homepage: "https://github.com/afiniate/vrt"
+bug-reports: "https://github.com/afiniate/vrt/issues"
+depends: [
+  "async" {< "v0.13"}
+  "async_extra" {< "v0.13"}
+  "async_find" {< "v0.13"}
+  "async_shell" {< "v0.13"}
+  "async_shell" {< "v0.13"}
+  "async_unix" {< "v0.13"}
+  "camlp4" {build}
+  "core" {< "v0.13"}
+  "core_extended" {< "v0.13"}
+  "ocaml" {>= "4.02"}
+  "ocamlfind" {build}
+  "sexplib" {< "113.09.00"}
+  "type_conv" {build}
+]
+build: [make "build"]
+install: [make "install" "PREFIX=%{prefix}%"]
+remove: [make "remove" "PREFIX=%{prefix}%"]
+dev-repo: "git+ssh://git@github.com/afiniate/vrt.git"
 url {
   src: "https://github.com/afiniate/vrt/archive/0.1.0.tar.gz"
   checksum: "md5=be3bd2fdc543d2dab7accd7390d3b1e4"

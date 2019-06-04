@@ -1,24 +1,26 @@
 opam-version: "2.0"
 name: "bap-ssa"
 version: "1.6.0"
+synopsis: "A BAP plugin, that translates a program into the SSA form"
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
+depends: [
+  "bap-std" {= "1.6.0"}
+  "ocaml" {>= "4.04.1" & < "4.08.0"}
+]
 build: [
   ["./configure" "--prefix=%{prefix}%" "--enable-ssa"]
   [make]
 ]
-install: [[make "install"]]
-remove: [["ocamlfind" "remove" "bap-plugin-ssa"]
-         ["bapbundle" "remove" "ssa.plugin"]]
-depends: [
-  "ocaml" {>= "4.04.1" & < "4.08.0"}
-  "bap-std" {= "1.6.0"}
+install: [make "install"]
+remove: [
+  ["ocamlfind" "remove" "bap-plugin-ssa"]
+  ["bapbundle" "remove" "ssa.plugin"]
 ]
-synopsis: "A BAP plugin, that translates a program into the SSA form"
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.6.0.tar.gz"
   checksum: "md5=0ccf6571613c0666a37d154c7f70af4f"

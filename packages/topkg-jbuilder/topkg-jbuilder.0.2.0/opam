@@ -1,25 +1,26 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      ["Jérémie Dimino"]
-license:      "BSD3"
-homepage:     "https://github.com/samoht/topkg-jbuilder"
-bug-reports:  "https://github.com/samoht/utop/topkg-jbuilder"
-dev-repo: "git+https://github.com/samoht/topkg-jbuilder.git"
-doc:          "https://samoht.github.io/topkg-jbuilder/"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta7"}
-  "topkg"
-]
+name: "topkg-jbuilder"
+version: "0.2.0"
 synopsis: "Helpers for using topkg with jbuilder"
 description: """
 Topkg-jbuilder exposes helpers for using topkg-care in projects using
 Jbuilder."""
+maintainer: "thomas@gazagnaire.org"
+authors: "Jérémie Dimino"
+license: "BSD3"
+homepage: "https://github.com/samoht/topkg-jbuilder"
+doc: "https://samoht.github.io/topkg-jbuilder/"
+bug-reports: "https://github.com/samoht/utop/topkg-jbuilder"
+depends: [
+  "jbuilder" {build & >= "1.0+beta7"}
+  "ocaml"
+  "topkg"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/samoht/topkg-jbuilder.git"
 url {
   src:
     "https://github.com/samoht/topkg-jbuilder/releases/download/0.2.0/topkg-jbuilder-0.2.0.tbz"

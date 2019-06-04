@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer:   "Christophe Raffalli <christophe.raffalli@univ-savoie.fr>"
-bug-reports:  "https://github.com/rlepigre/ocaml-bindlib/issues"
-authors:
-  [ "Christophe Raffalli <christophe.raffalli@univ-savoie.fr>"
-    "Rodolphe Lepigre <rodolphe.lepigre@univ-savoie.fr>" ]
-homepage: "https://rlepigre.github.io/ocaml-bindlib/"
-license: "LGPL-3.0"
-dev-repo: "git+https://github.com/rlepigre/ocaml-bindlib.git"
-build: [make]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "bindlib"]
-depends: [
-  "ocaml" {>= "3.12.1"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
+name: "bindlib"
+version: "4.0.4"
 synopsis: "OCaml Bindlib library for bound variables"
 description: """
 Bindlib is a library allowing the manipulation of data structures
@@ -25,7 +11,24 @@ for programming languages, but also for manipulating terms of the
 Authors:
  - Christophe Raffalli <christophe.raffalli@univ-savoie.fr>
  - Rodolphe Lepigre <rodolphe.lepigre@univ-savoie.fr>"""
+maintainer: "Christophe Raffalli <christophe.raffalli@univ-savoie.fr>"
+authors: [
+  "Christophe Raffalli <christophe.raffalli@univ-savoie.fr>"
+  "Rodolphe Lepigre <rodolphe.lepigre@univ-savoie.fr>"
+]
+license: "LGPL-3.0"
+homepage: "https://rlepigre.github.io/ocaml-bindlib/"
+bug-reports: "https://github.com/rlepigre/ocaml-bindlib/issues"
+depends: [
+  "ocaml" {>= "3.12.1"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "bindlib"]
+dev-repo: "git+https://github.com/rlepigre/ocaml-bindlib.git"
 url {
   src:
     "https://github.com/rlepigre/ocaml-bindlib/archive/ocaml-bindlib_4.0.4.tar.gz"

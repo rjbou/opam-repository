@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "Romain Beauxis <toots@rastageeks.org>"
-authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
-homepage: "https://github.com/savonet/ocaml-dtools"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-install: [
-  [make "install"]
-]
-remove: ["ocamlfind" "remove" "dtools"]
-depends: ["ocaml" "ocamlfind"]
-bug-reports: "https://github.com/savonet/ocaml-dtools/issues"
-dev-repo: "git+https://github.com/savonet/ocaml-dtools.git"
+name: "dtools"
+version: "0.3.3"
 synopsis: "Library providing various helper functions to make daemons"
 description: """
 A set of useful functions for writing daemon services in OCaml.
@@ -22,7 +10,19 @@ It includes support for:
  * logging
  * detaching and writing PID file
  * start-up and shutdown task manager"""
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
+homepage: "https://github.com/savonet/ocaml-dtools"
+bug-reports: "https://github.com/savonet/ocaml-dtools/issues"
+depends: ["ocaml" "ocamlfind"]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "dtools"]
+dev-repo: "git+https://github.com/savonet/ocaml-dtools.git"
 url {
   src:
     "https://github.com/savonet/ocaml-dtools/releases/download/0.3.3/ocaml-dtools-0.3.3.tar.gz"

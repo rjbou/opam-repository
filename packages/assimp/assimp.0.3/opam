@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "Frederic Bour <frederic.bour@lakaban.net>"
-authors: "Frederic Bour <frederic.bour@lakaban.net>"
-homepage: "https://github.com/def-lkb/assimp"
-bug-reports: "https://github.com/def-lkb/assimp"
-license: "CC0"
-dev-repo: "git+https://github.com/def-lkb/assimp.git"
-build: [make]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "assimp"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "result"
-]
-depexts: [
-  ["libassimp-dev"] {os-distribution = "debian"}
-  ["libassimp-dev"] {os-distribution = "ubuntu"}
-  ["assimp"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "assimp"
+version: "0.3"
 synopsis: "OCaml bindings to Assimp, Open Asset Import Library"
 description: """
 Assimp homepage: http://assimp.sourceforge.net/
@@ -25,7 +8,26 @@ Assimp is licensed under 3-clause BSD.
 This binding is licensed under CC0.
 
 Assimp needs to be installed first."""
+maintainer: "Frederic Bour <frederic.bour@lakaban.net>"
+authors: "Frederic Bour <frederic.bour@lakaban.net>"
+license: "CC0"
+homepage: "https://github.com/def-lkb/assimp"
+bug-reports: "https://github.com/def-lkb/assimp"
+depends: [
+  "ocaml"
+  "ocamlfind" {build}
+  "result"
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "assimp"]
+depexts: [
+  ["assimp"] {os = "macos" & os-distribution = "homebrew"}
+  ["libassimp-dev"] {os-distribution = "debian"}
+  ["libassimp-dev"] {os-distribution = "ubuntu"}
+]
+dev-repo: "git+https://github.com/def-lkb/assimp.git"
 url {
   src: "https://github.com/let-def/assimp/archive/v0.3.tar.gz"
   checksum: "md5=810fb0f99e0708a1d83e0474fc90a432"

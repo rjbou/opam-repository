@@ -1,27 +1,25 @@
 opam-version: "2.0"
+name: "hashset"
+version: "1.0.0"
+synopsis: "Sets as hash tables"
 maintainer: "Jean-Christophe.Filliatre@lri.fr"
-authors: ["Jean-Christophe Filliâtre"]
+authors: "Jean-Christophe Filliâtre"
+license: "LGPL-2.1"
 homepage: "https://www.lri.fr/~filliatr/software.en.html"
 bug-reports: "https://github.com/UnixJunkie/hashset/issues"
-dev-repo: "git+https://github.com/UnixJunkie/hashset.git"
-license: "LGPL-2.1"
+depends: [
+  "obuild" {build}
+  "ocaml"
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["obuild" "configure"]
   ["obuild" "build" "lib-hashset"]
 ]
-install: [
-  ["obuild" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "hashset"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "obuild" {build}
-]
-synopsis: "Sets as hash tables"
-flags: light-uninstall
+install: ["obuild" "install"]
+remove: ["ocamlfind" "remove" "hashset"]
+dev-repo: "git+https://github.com/UnixJunkie/hashset.git"
 url {
   src: "https://github.com/UnixJunkie/hashset/archive/v1.0.0.tar.gz"
   checksum: "md5=171ec866aa8038fff803f26803aa2561"

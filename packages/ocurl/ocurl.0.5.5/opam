@@ -1,25 +1,27 @@
 opam-version: "2.0"
-maintainer: "vb@luminar.eu.org"
-build: [
-  ["./configure"]
-  [make]
-]
-remove: [["ocamlfind" "remove" "curl"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-]
-depexts: [
-  ["libcurl4-gnutls-dev"] {os-distribution = "debian"}
-  ["libcurl4-gnutls-dev"] {os-distribution = "ubuntu"}
-  ["libcurl-devel" "openssl-devel"] {os-distribution = "centos"}
-]
-install: [make "install"]
+name: "ocurl"
+version: "0.5.5"
 synopsis: "Bindings to libcurl"
 description: """
 Client-side URL transfer library, supporting HTTP and a multitude of
 other network protocols."""
+maintainer: "vb@luminar.eu.org"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "curl"]
+depexts: [
+  ["libcurl-devel" "openssl-devel"] {os-distribution = "centos"}
+  ["libcurl4-gnutls-dev"] {os-distribution = "debian"}
+  ["libcurl4-gnutls-dev"] {os-distribution = "ubuntu"}
+]
 url {
   src: "https://download.ocamlcore.org/ocurl/ocurl/0.5.5/ocurl-0.5.5.tar.gz"
   checksum: "md5=5bb45c4e25691675f186096be4ae1df6"

@@ -1,13 +1,6 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: make
-depends: [
-  "ocaml" {= "3.12.1"}
-  "cduce"
-  "ocurl"
-  "ocaml-src"
-]
-install: [make "install"]
+name: "cduce_ws"
+version: "0.1"
 synopsis: "Library fo Web Services creation"
 description: """
 CDuce_WS is library for Web Services creation. It can be used alone
@@ -18,6 +11,15 @@ structures (SOAP Envelope, SOAP Encoding, etc.) with some helper
 functions to ease the programmation of Web Services. Additionally, a
 WSDL structure is also provided, as well as some functions (adapted
 from OCSoap) to extract useful information from a WSDL file."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "cduce"
+  "ocaml" {= "3.12.1"}
+  "ocaml-src"
+  "ocurl"
+]
+build: make
+install: [make "install"]
 url {
   src: "http://www.cduce.org/download/cduce_ws-0.1.tar.gz"
   checksum: "md5=0ec07973db62cf3ffa4bb3c9ce2c1b6c"

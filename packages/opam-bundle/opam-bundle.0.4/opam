@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-authors: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-license: "GPL-3"
-tags: "org:ocamlpro"
-homepage: "https://github.com/AltGr/opam-bundle"
-bug-reports: "https://github.com/AltGr/opam-bundle/issues"
-depends: [
-  "ocaml" {build}
-  "ocamlfind" {build}
-  "cmdliner" {>= "1.0.0"}
-  "opam-client" {>= "2.0.0"}
-]
-build: make
-dev-repo: "git+https://github.com/AltGr/opam-bundle"
-flags: plugin
+name: "opam-bundle"
+version: "0.4"
 synopsis: "A tool that creates stand-alone source bundles from opam packages"
 description: """
 opam-bundle is a command-line tool that, given a selection of packages,
@@ -27,8 +14,22 @@ sources, and everything needed to bootstrap and compile them:
   put wrapper scripts within your PATH
 
 This is expected to be done as normal user, with constrained calls to `sudo`
-when needed for depexts and wrappers installation.
-"""
+when needed for depexts and wrappers installation."""
+maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+authors: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+license: "GPL-3"
+tags: "org:ocamlpro"
+homepage: "https://github.com/AltGr/opam-bundle"
+bug-reports: "https://github.com/AltGr/opam-bundle/issues"
+depends: [
+  "cmdliner" {>= "1.0.0"}
+  "ocaml" {build}
+  "ocamlfind" {build}
+  "opam-client" {>= "2.0.0"}
+]
+flags: plugin
+build: make
+dev-repo: "git+https://github.com/AltGr/opam-bundle"
 url {
   src: "https://github.com/AltGr/opam-bundle/archive/0.4.tar.gz"
   checksum: [

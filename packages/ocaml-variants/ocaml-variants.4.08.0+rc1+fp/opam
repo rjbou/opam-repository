@@ -1,22 +1,21 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.08.0+rc1+fp"
 synopsis: "first release candidate for 4.08.0, with frame pointers"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.08.0" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
   "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.08.0" & post}
   "ocaml-beta"
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler
 setenv: CAML_LD_LIBRARY_PATH = "%{lib}%/stublibs"
 build: [
-  [
-    "./configure"
-    "--prefix=%{prefix}%"
-    "--enable-frame-pointers"
-  ] {os != "openbsd" & os != "freebsd" & os != "macos"}
+  ["./configure" "--prefix=%{prefix}%" "--enable-frame-pointers"]
+    {os != "openbsd" & os != "freebsd" & os != "macos"}
   [
     "./configure"
     "--prefix=%{prefix}%"

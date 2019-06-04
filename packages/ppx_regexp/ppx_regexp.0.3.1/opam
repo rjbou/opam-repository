@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "paurkedal@gmail.com"
-authors: "Petter A. Urkedal <paurkedal@gmail.com>"
-homepage: "https://github.com/paurkedal/ppx_regexp"
-bug-reports: "https://github.com/paurkedal/ppx_regexp/issues"
-license: "LGPL-3 with OCaml linking exception"
-dev-repo: "git+https://github.com/paurkedal/ppx_regexp.git"
-build: ["jbuilder" "build" "--root" "." "-j" jobs "@install"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build}
-  "ocaml-migrate-parsetree"
-  "re" {< "1.7.2~"}
-  "ppx_tools_versioned"
-  "topkg-jbuilder" {build}
-]
+name: "ppx_regexp"
+version: "0.3.1"
 synopsis: "Matching Regular Expressions with OCaml Patterns"
 description: """
 This syntax extension turns
@@ -38,6 +25,21 @@ strings of the form accepted by `Re_pcre`, with the following additions:
 A variable is allowed for the universal case and is bound to the matched
 string.  A regular alias is currently not allowed for patterns, since it is
 not obvious whether is should bind the full string or group 0."""
+maintainer: "paurkedal@gmail.com"
+authors: "Petter A. Urkedal <paurkedal@gmail.com>"
+license: "LGPL-3 with OCaml linking exception"
+homepage: "https://github.com/paurkedal/ppx_regexp"
+bug-reports: "https://github.com/paurkedal/ppx_regexp/issues"
+depends: [
+  "jbuilder" {build}
+  "ocaml" {>= "4.02.3"}
+  "ocaml-migrate-parsetree"
+  "ppx_tools_versioned"
+  "re" {< "1.7.2~"}
+  "topkg-jbuilder" {build}
+]
+build: ["jbuilder" "build" "--root" "." "-j" jobs "@install"]
+dev-repo: "git+https://github.com/paurkedal/ppx_regexp.git"
 url {
   src:
     "https://github.com/paurkedal/ppx_regexp/releases/download/v0.3.1/ppx_regexp-0.3.1.tbz"

@@ -1,30 +1,30 @@
 opam-version: "2.0"
-name:         "parse-argv"
-maintainer:   ["Mindy Preston <mindy.preston@docker.com>"]
-authors:      ["Jon Ludlam" "Magnus Skjegstad" "Mindy Preston"]
-homepage:     "https://github.com/mirage/parse-argv"
-bug-reports:  "https://github.com/mirage/parse-argv/issues"
-dev-repo: "git+https://github.com/mirage/parse-argv.git"
-tags:         [ "org:mirage"]
-doc:          "https://docs.mirage.io"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "ounit" {with-test}
-  "astring"
-  "result"
-]
+name: "parse-argv"
+version: "0.1.0"
 synopsis: "Process strings into sets of command-line arguments"
 description: """
 parse-argv is a small implementation of a simple argv parser.
 
 This code was factored out of [mirage-bootvar-xen](https://github.com/mirage/mirage-bootvar-xen) and [mirage-bootvar-solo5](https://github.com/mirage/mirage-bootvar-solo5)."""
+maintainer: "Mindy Preston <mindy.preston@docker.com>"
+authors: ["Jon Ludlam" "Magnus Skjegstad" "Mindy Preston"]
+tags: "org:mirage"
+homepage: "https://github.com/mirage/parse-argv"
+doc: "https://docs.mirage.io"
+bug-reports: "https://github.com/mirage/parse-argv/issues"
+depends: [
+  "astring"
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml" {>= "4.02.3"}
+  "ounit" {with-test}
+  "result"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest"] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/parse-argv.git"
 url {
   src:
     "https://github.com/mirage/parse-argv/releases/download/v0.1.0/parse-argv-0.1.0.tbz"

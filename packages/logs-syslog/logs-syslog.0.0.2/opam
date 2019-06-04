@@ -1,36 +1,6 @@
 opam-version: "2.0"
-maintainer: "Hannes Mehnert <hannes@mehnert.org>"
-authors: ["Hannes Mehnert <hannes@mehnert.org>"]
-homepage: "https://github.com/hannesm/logs-syslog"
-doc: "https://hannesm.github.io/logs-syslog/doc"
-dev-repo: "git+https://github.com/hannesm/logs-syslog.git"
-bug-reports: "https://github.com/hannesm/logs-syslog/issues"
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "logs"
-  "ptime"
-  "syslog-message" {= "0.0.2"}
-  "result"
-]
-depopts: [
-  "lwt" "x509" "tls" "mirage-types" "cstruct" "ipaddr" "io-page"
-]
-
-conflicts: [
-  "lwt" {>= "4.0.0"}
-  "mirage-types" {>= "3.0.0"}
-]
-
-build: [
-  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"
-    "--with-lwt" "%{lwt:installed}%"
-    "--with-mirage" "%{mirage-types+lwt+cstruct+ipaddr+io-page:installed}%"
-    "--with-tls" "%{x509+tls+cstruct:installed}%" ]
-]
+name: "logs-syslog"
+version: "0.0.2"
 synopsis: "Logs output via syslog"
 description: """
 This library provides log reporters over syslog with various effectful layers:
@@ -46,6 +16,41 @@ dependency Unix `Logs-syslog-unix`, a Lwt one `Logs-syslog-lwt`, another one
 with Lwt and TLS ([RFC 5425](https://tools.ietf.org/html/rfc5425)) support
 `Logs-syslog-lwt-tls`, a MirageOS one `Logs-syslog-mirage`, and a MirageOS one
 using TLS `Logs-syslog-mirage-tls`."""
+maintainer: "Hannes Mehnert <hannes@mehnert.org>"
+authors: "Hannes Mehnert <hannes@mehnert.org>"
+license: "ISC"
+homepage: "https://github.com/hannesm/logs-syslog"
+doc: "https://hannesm.github.io/logs-syslog/doc"
+bug-reports: "https://github.com/hannesm/logs-syslog/issues"
+depends: [
+  "logs"
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ptime"
+  "result"
+  "syslog-message" {= "0.0.2"}
+  "topkg" {build}
+]
+depopts: ["cstruct" "io-page" "ipaddr" "lwt" "mirage-types" "tls" "x509"]
+conflicts: [
+  "lwt" {>= "4.0.0"}
+  "mirage-types" {>= "3.0.0"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--with-lwt"
+  "%{lwt:installed}%"
+  "--with-mirage"
+  "%{mirage-types+lwt+cstruct+ipaddr+io-page:installed}%"
+  "--with-tls"
+  "%{x509+tls+cstruct:installed}%"
+]
+dev-repo: "git+https://github.com/hannesm/logs-syslog.git"
 url {
   src:
     "https://github.com/hannesm/logs-syslog/releases/download/0.0.2/logs-syslog-0.0.2.tbz"

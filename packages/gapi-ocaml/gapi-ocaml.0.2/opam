@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "alessandro.strada@gmail.com"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "gapi-ocaml"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind" {build}
-  "extlib" | "extlib-compat"
-  "ocamlnet"
-  "ocurl"
-  "cryptokit"
-  "yojson"
-  "xmlm"
-  "ocamlbuild" {build}
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "gapi-ocaml"
+version: "0.2"
 synopsis: "Google APIs Client library for OCaml"
 description: """
 gapi-ocaml is a simple, unofficial, OCaml client for Google Services. The
@@ -26,7 +10,25 @@ Discovery Service v1, URL Shortener API v1, OAuth2 API v2, Custom Search API
 v1, Google Analytics API v3, Page Speed Online API v1, Blogger API v2, Site
 Verification API v1, AdSense Management API v1.1, BigQuery API v2, Drive API
 v2. Google Data Protocol APIs (GData): Google Documents List API v3."""
+maintainer: "alessandro.strada@gmail.com"
+depends: [
+  "cryptokit"
+  ("extlib" | "extlib-compat")
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ocamlnet"
+  "ocurl"
+  "xmlm"
+  "yojson"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "gapi-ocaml"]
 url {
   src:
     "https://download.ocamlcore.org/gapi-ocaml/gapi-ocaml/0.2/gapi-ocaml-0.2.tar.gz"

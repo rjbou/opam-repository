@@ -1,25 +1,26 @@
 opam-version: "2.0"
+name: "mesh-display"
+version: "0.8.9"
+synopsis: "Triangular mesh representation using the graphics module"
 maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler" ]
+authors: "Christophe Troestler"
 license: "LGPL-2.1 with OCaml linking exception"
 homepage: "https://github.com/Chris00/mesh"
-dev-repo: "git+https://github.com/Chris00/mesh.git"
 bug-reports: "https://github.com/Chris00/mesh/issues"
-#doc: ""
+depends: [
+  "configurator" {build & < "v0.13"}
+  "graphics"
+  "jbuilder" {build}
+  "mesh" {= "0.8.9"}
+  "ocaml"
+  "ocamlfind" {build & >= "1.5"}
+]
 build: [
   ["jbuilder" "subst" "-p" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml"
-  "ocamlfind" {build & >= "1.5"}
-  "jbuilder" {build}
-  "configurator" {build & < "v0.13"}
-  "mesh" {= "0.8.9"}
-  "graphics"
-]
-synopsis: "Triangular mesh representation using the graphics module"
+dev-repo: "git+https://github.com/Chris00/mesh.git"
 url {
   src:
     "https://github.com/Chris00/mesh/releases/download/0.8.9/mesh-0.8.9.tbz"

@@ -1,13 +1,26 @@
 opam-version: "2.0"
 name: "pxp"
 version: "1.2.8"
+synopsis: "Polymorphic XML Parser"
+description: """
+PXP is an XML parser for OCaml. It represents the parsed document
+either as tree or as stream of events. In tree mode, it is possible to
+validate the XML document against a DTD.
+
+The acronym PXP means Polymorphic XML Parser. This name reflects the
+ability to create XML trees with polymorphic type parameters."""
 maintainer: "codinuum@me.com"
 authors: "Gerd Stolpmann <gerd@gerd-stolpmann.de>"
-homepage: "http://projects.camlcity.org/projects/pxp.html"
-dev-repo: "git+https://gitlab.camlcity.org/gerd/lib-pxp.git"
-bug-reports: "ocaml-pxp-users@orcaware.com"
 license: "MIT/X11"
-patches: "rm-dup-exc.patch" {ocaml:version >= "4.03.0"}
+homepage: "http://projects.camlcity.org/projects/pxp.html"
+bug-reports: "ocaml-pxp-users@orcaware.com"
+depends: [
+  "ocaml" {>= "4.01"}
+  "ocamlfind"
+  "ocamlnet" {>= "4.1.0"}
+  "ulex"
+]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -28,21 +41,8 @@ remove: [
   ["ocamlfind" "remove" "pxp-ulex-utf8"]
   ["ocamlfind" "remove" "pxp"]
 ]
-depends: [
-  "ocaml" {>= "4.01"}
-  "ocamlfind"
-  "ocamlnet" {>= "4.1.0"}
-  "ulex"
-]
-synopsis: "Polymorphic XML Parser"
-description: """
-PXP is an XML parser for OCaml. It represents the parsed document
-either as tree or as stream of events. In tree mode, it is possible to
-validate the XML document against a DTD.
-
-The acronym PXP means Polymorphic XML Parser. This name reflects the
-ability to create XML trees with polymorphic type parameters."""
-flags: light-uninstall
+patches: "rm-dup-exc.patch" {ocaml:version >= "4.03.0"}
+dev-repo: "git+https://gitlab.camlcity.org/gerd/lib-pxp.git"
 extra-files: ["rm-dup-exc.patch" "md5=4d49e1b3db581732a5e24740cebe1c29"]
 url {
   src: "http://download.camlcity.org/download/pxp-1.2.8.tar.gz"

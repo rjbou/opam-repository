@@ -1,20 +1,20 @@
 opam-version: "2.0"
+name: "fstar"
+version: "0.9.0"
+synopsis: "An ML-like language with a type system for program verification."
 maintainer: "protz@microsoft.com"
 authors: "Nik Swamy <nswamy@microsoft.com>"
-homepage: "http://fstar-lang.org"
 license: "Apache"
+homepage: "http://fstar-lang.org"
 depends: [
-  "ocaml" {>= "4.02.1" & < "4.06.0"}
-  "ocamlfind"
   "batteries"
-  "ocamlbuild" {build}
   "num"
+  "ocaml" {>= "4.02.1" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
 ]
-build: [
-  [make "-C" "src/ocaml-output"]
-]
+build: [make "-C" "src/ocaml-output"]
 dev-repo: "git://github.com/FStarLang/FStar"
-synopsis: "An ML-like language with a type system for program verification."
 extra-files: ["fstar.install" "md5=9d34aa38cf9efa5c93a3de1d985b0d41"]
 url {
   src: "https://github.com/FStarLang/FStar/archive/v0.9.0.tar.gz"

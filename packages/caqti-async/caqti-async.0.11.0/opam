@@ -1,26 +1,26 @@
 opam-version: "2.0"
 name: "caqti-async"
+version: "0.11.0"
+synopsis: "Async support for Caqti"
 maintainer: "Petter A. Urkedal <paurkedal@gmail.com>"
+authors: "Petter A. Urkedal <paurkedal@gmail.com>"
+license: "LGPL-3 with OCaml linking exception"
 homepage: "https://github.com/paurkedal/ocaml-caqti/"
 bug-reports: "https://github.com/paurkedal/ocaml-caqti/issues"
-dev-repo: "git+https://github.com/paurkedal/ocaml-caqti.git"
-license: "LGPL-3 with OCaml linking exception"
-
+depends: [
+  "async" {>= "v0.11.0" & < "v0.13"}
+  "caqti" {= "0.11.0"}
+  "caqti-driver-sqlite3" {with-test & = "0.11.0"}
+  "caqti-dynload" {with-test & = "0.11.0"}
+  "core" {< "v0.13"}
+  "jbuilder" {build & >= "1.0+beta19"}
+  "ocaml"
+]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml"
-  "async" {>= "v0.11.0" & < "v0.13"}
-  "caqti" {= "0.11.0"}
-  "caqti-dynload" {with-test & = "0.11.0"}
-  "caqti-driver-sqlite3" {with-test & = "0.11.0"}
-  "core" {< "v0.13"}
-  "jbuilder" {build & >= "1.0+beta19"}
-]
-synopsis: "Async support for Caqti"
-authors: "Petter A. Urkedal <paurkedal@gmail.com>"
+dev-repo: "git+https://github.com/paurkedal/ocaml-caqti.git"
 url {
   src:
     "https://github.com/paurkedal/ocaml-caqti/releases/download/v0.11.0/caqti-0.11.0.tbz"

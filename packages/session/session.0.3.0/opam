@@ -1,11 +1,38 @@
 opam-version: "2.0"
 name: "session"
+version: "0.3.0"
+synopsis: "A session manager for your everyday needs"
+description: """
+ocaml-session is an session manager that handles cookie headers and
+backend storage for HTTP servers. The library supports CoHTTP and
+Webmachine; Async and Lwt; and pluggable backing stores based on a
+functor interface."""
 maintainer: "Spiros Eliopoulos <spiros@inhabitedtype.com>"
-authors: [ "Spiros Eliopoulos <spiros@inhabitedtype.com>" ]
+authors: "Spiros Eliopoulos <spiros@inhabitedtype.com>"
 license: "BSD-3-clause"
 homepage: "https://github.com/inhabitedtype/ocaml-session"
-dev-repo: "git+https://github.com/inhabitedtype/ocaml-session.git"
 bug-reports: "https://github.com/inhabitedtype/ocaml-session/issues"
+depends: [
+  "nocrypto"
+  "ocaml"
+  "ocamlfind" {build}
+  "ounit" {with-test & >= "1.0.2"}
+  "result"
+]
+depopts: [
+  "async" {< "v0.13"}
+  "base-threads"
+  "cohttp"
+  "lwt"
+  "postgresql"
+  "redis"
+  "webmachine"
+]
+conflicts: [
+  "cohttp" {>= "0.99.0"}
+  "redis" {>= "0.3.4"}
+]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -38,36 +65,8 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "session"]
-]
-depends: [
-  "ocaml"
-  "nocrypto"
-  "ocamlfind" {build}
-  "ounit" {with-test & >= "1.0.2"}
-  "result"
-]
-depopts: [
-  "async" {< "v0.13"}
-  "base-threads"
-  "cohttp"
-  "lwt"
-  "postgresql"
-  "redis"
-  "webmachine"
-]
-conflicts: [
-  "redis" {>="0.3.4"}
-  "cohttp" {>= "0.99.0"}
-]
-synopsis: "A session manager for your everyday needs"
-description: """
-ocaml-session is an session manager that handles cookie headers and
-backend storage for HTTP servers. The library supports CoHTTP and
-Webmachine; Async and Lwt; and pluggable backing stores based on a
-functor interface."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "session"]
+dev-repo: "git+https://github.com/inhabitedtype/ocaml-session.git"
 url {
   src: "https://github.com/inhabitedtype/ocaml-session/archive/0.3.0.tar.gz"
   checksum: "md5=33d9f878831aab96f266e446252e5fa4"

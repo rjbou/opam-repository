@@ -1,21 +1,23 @@
 opam-version: "2.0"
-maintainer: "Anders Fugmann <anders@fugmann.net>"
-authors: "Anders Fugmann"
-homepage: "https://github.com/andersfugmann/ppx_protocol_conv"
-dev-repo: "git+https://github.com/andersfugmann/ppx_protocol_conv"
-bug-reports: "https://github.com/andersfugmann/ppx_protocol_conv/issues"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml" {>= "4.04"}
-  "ppx_protocol_conv" {>= "2.0.0" & <= "3.1.1"}
-  "base" {< "v0.13"}
-  "yojson" {< "1.6.0"}
-  "jbuilder" {build}
-]
+name: "ppx_protocol_conv_json"
+version: "2.0.0"
 synopsis: "Json driver for Ppx_protocol_conv"
 description: """
 This package provides a driver for json (Yojson.Safe.json)
 serialization and de-serialization using the yojson library"""
+maintainer: "Anders Fugmann <anders@fugmann.net>"
+authors: "Anders Fugmann"
+homepage: "https://github.com/andersfugmann/ppx_protocol_conv"
+bug-reports: "https://github.com/andersfugmann/ppx_protocol_conv/issues"
+depends: [
+  "base" {< "v0.13"}
+  "jbuilder" {build}
+  "ocaml" {>= "4.04"}
+  "ppx_protocol_conv" {>= "2.0.0" & <= "3.1.1"}
+  "yojson" {< "1.6.0"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/andersfugmann/ppx_protocol_conv"
 url {
   src:
     "https://github.com/andersfugmann/ppx_protocol_conv/archive/2.0.0.tar.gz"

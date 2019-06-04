@@ -1,16 +1,32 @@
 opam-version: "2.0"
+name: "trakeva"
+version: "0.1.0"
+synopsis:
+  "Transactions, Keys, and Values: Common interface to various databases"
 maintainer: "Sebastien Mondet <seb@mondet.org>"
-authors: [ "Sebastien Mondet <seb@mondet.org>" ]
+authors: "Sebastien Mondet <seb@mondet.org>"
 license: "Apache-2.0"
 homepage: "http://seb.mondet.org/software/trakeva/index.html"
 bug-reports: "https://github.com/smondet/trakeva/issues"
-dev-repo: "git+https://github.com/smondet/trakeva.git"
+depends: [
+  "base-threads"
+  "nonstd"
+  "oasis" {build & >= "0.4"}
+  "ocaml"
+  "ocamlfind" {build}
+  "pvem_lwt_unix"
+  "uri"
+]
+depopts: ["postgresql" "sqlite3"]
+flags: light-uninstall
 build: [
-  ["./configure" 
+  [
+    "./configure"
     "--%{sqlite3:enable}%-sqlite"
     "--%{postgresql:enable}%-postgresql"
     "--disable-test"
-    prefix]
+    prefix
+  ]
   ["ocaml" "setup.ml" "-build"]
 ]
 install: ["ocaml" "setup.ml" "-install"]
@@ -20,22 +36,7 @@ remove: [
   ["ocamlfind" "remove" "trakeva_postgresql"]
   ["ocamlfind" "remove" "trakeva_of_uri"]
 ]
-depends: [
-  "ocaml"
-  "base-threads"
-  "nonstd"
-  "oasis" {build & >= "0.4"}
-  "ocamlfind" {build}
-  "pvem_lwt_unix"
-  "uri"
-]
-depopts: [
-  "postgresql"
-  "sqlite3"
-]
-synopsis:
-  "Transactions, Keys, and Values: Common interface to various databases"
-flags: light-uninstall
+dev-repo: "git+https://github.com/smondet/trakeva.git"
 url {
   src: "https://github.com/smondet/trakeva/archive/trakeva.0.1.0.tar.gz"
   checksum: "md5=919e8429eb79f5f9f49a2b87bf8060d1"

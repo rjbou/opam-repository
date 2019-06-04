@@ -1,10 +1,20 @@
 opam-version: "2.0"
+name: "valentine"
+version: "1.0.0"
+synopsis: "Validate HTML from command line"
+description: "Simple tool to validate HTML according to spec"
 maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
 authors: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
+license: "BSD-3-clause"
 homepage: "https://github.com/fxfactorial/valentine"
 bug-reports: "https://github.com/fxfactorial/valentine/issues"
-license: "BSD-3-clause"
-dev-repo: "git+https://github.com/fxfactorial/valentine.git"
+depends: [
+  "cmdliner" {build}
+  "markup" {build}
+  "oasis" {build & >= "0.4"}
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind" {build}
+]
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
@@ -16,18 +26,10 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocaml" "%{etc}%/valentine/_oasis_remove_.ml" "%{etc}%/valentine"]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "cmdliner" {build}
-  "markup" {build}
-  "oasis" {build & >= "0.4"}
-  "ocamlfind" {build}
-]
-synopsis: "Validate HTML from command line"
-description: "Simple tool to validate HTML according to spec"
+dev-repo: "git+https://github.com/fxfactorial/valentine.git"
 extra-files: [
-  ["valentine.install" "md5=0d1b822c897681cf54b3e1aed52dda99"]
   ["_oasis_remove_.ml" "md5=6100ca146fa97d2196eb49a2631d0796"]
+  ["valentine.install" "md5=0d1b822c897681cf54b3e1aed52dda99"]
 ]
 url {
   src: "https://github.com/fxfactorial/valentine/archive/v1.0.0.tar.gz"

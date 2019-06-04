@@ -1,24 +1,24 @@
 opam-version: "2.0"
-maintainer:   "Thomas Gazagnaire <thomas@gazagnaire.org>"
-authors:      ["Thomas Gazagnaire <thomas@gazagnaire.org>"]
-homepage:     "https://github.com/mirage/mirage-kv"
-doc:          "https://mirage.github.io/mirage-kv/"
-license:      "ISC"
-dev-repo: "git+https://github.com/mirage/mirage-kv.git"
-bug-reports:  "https://github.com/mirage/mirage-kv/issues"
-tags:         ["org:mirage"]
-
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" ]
-
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.8.0"}
-  "mirage-device" {>= "1.0.0"}
-  "fmt"
-]
+name: "mirage-kv"
+version: "1.0.0"
 synopsis: "MirageOS utilities for interfacing with key-value stores."
+maintainer: "Thomas Gazagnaire <thomas@gazagnaire.org>"
+authors: "Thomas Gazagnaire <thomas@gazagnaire.org>"
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-kv"
+doc: "https://mirage.github.io/mirage-kv/"
+bug-reports: "https://github.com/mirage/mirage-kv/issues"
+depends: [
+  "fmt"
+  "mirage-device" {>= "1.0.0"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build & >= "0.8.0"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/mirage/mirage-kv.git"
 url {
   src:
     "https://github.com/mirage/mirage-kv/releases/download/1.0.0/mirage-kv-1.0.0.tbz"

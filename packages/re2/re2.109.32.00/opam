@@ -1,20 +1,22 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-build: make
-remove: [["ocamlfind" "remove" "re2"]]
-depends: [
-  "ocaml"
-  "camlp4"
-  "core" {>= "109.32.00" & <= "109.38.00"}
-  "sexplib" {= "109.20.00"}
-  "bin_prot" {>= "109.15.01" & <= "109.30.00"}
-  "comparelib" {>= "109.15.00" & <= "109.27.00"}
-  "pa_ounit" {>= "109.18.00" & <= "109.36.00"}
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "re2"
+version: "109.32.00"
 synopsis: "OCaml bindings for RE2, Google's regular expression library"
+maintainer: "opensource@janestreet.com"
+depends: [
+  "bin_prot" {>= "109.15.01" & <= "109.30.00"}
+  "camlp4"
+  "comparelib" {>= "109.15.00" & <= "109.27.00"}
+  "core" {>= "109.32.00" & <= "109.38.00"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "pa_ounit" {>= "109.18.00" & <= "109.36.00"}
+  "sexplib" {= "109.20.00"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "re2"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.32.00/individual/re2-109.32.00.tar.gz"

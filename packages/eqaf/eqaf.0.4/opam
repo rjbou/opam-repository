@@ -1,28 +1,27 @@
 opam-version: "2.0"
-name:         "eqaf"
-maintainer:   [ "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-authors:      [ "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-homepage:     "https://github.com/mirage/eqaf"
-bug-reports:  "https://github.com/mirage/eqaf/issues"
-dev-repo:     "git+https://github.com/mirage/eqaf.git"
-doc:          "https://mirage.github.io/eqaf/"
-license:      "MIT"
-synopsis:     "Constant-time equal function on string"
-description: """
-This package provides an equal function on string in constant-time to avoid timing-attack with crypto stuff.
-"""
-
-build: [
-  [ "dune" "subst" ] {pinned}
-  [ "dune" "build" "-p" name "-j" jobs ]
-  [ "dune" "runtest" "-p" name "-j" jobs "--no-buffer" "--verbose" ] {with-test}
-]
-
+name: "eqaf"
+version: "0.4"
+synopsis: "Constant-time equal function on string"
+description:
+  "This package provides an equal function on string in constant-time to avoid timing-attack with crypto stuff."
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/mirage/eqaf"
+doc: "https://mirage.github.io/eqaf/"
+bug-reports: "https://github.com/mirage/eqaf/issues"
 depends: [
-  "ocaml"          {>= "4.03.0"}
-  "dune"           {build}
-  "crowbar"        {with-test}
+  "crowbar" {with-test}
+  "dune" {build}
+  "ocaml" {>= "4.03.0"}
 ]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs "--no-buffer" "--verbose"]
+    {with-test}
+]
+dev-repo: "git+https://github.com/mirage/eqaf.git"
 url {
   src: "https://github.com/mirage/eqaf/releases/download/v0.4/eqaf-v0.4.tbz"
   checksum: [

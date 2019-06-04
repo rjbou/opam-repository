@@ -1,50 +1,48 @@
 opam-version: "2.0"
+name: "xapi-rrdd"
+version: "1.2.1"
+synopsis: "Performance monitoring daemon for xapi"
+description: """
+This daemon monitors "datasources" i.e. time-varying values such as
+performance counters and records the samples in RRD archives. These
+archives can be used to examine historical performance trends."""
 maintainer: "xen-api@lists.xen.org"
-authors: [ "Jon Ludlam" ]
+authors: "Jon Ludlam"
+tags: "org:xapi-project"
 homepage: "https://github.com/xapi-project/xcp-rrdd"
 bug-reports: "https://github.com/xapi-project/xcp-rrdd/issues"
-dev-repo: "git+https://github.com/xapi-project/xcp-rrdd.git"
-tags: [
-  "org:xapi-project"
+depends: [
+  "inotify"
+  "io-page"
+  "ocaml"
+  "ocaml-systemd" {>= "1.2"}
+  "ocamlfind" {build}
+  "oclock"
+  "ounit"
+  "xapi-backtrace" {= "0.4"}
+  "xapi-forkexecd" {= "1.4.0"}
+  "xapi-idl" {= "1.14.0"}
+  "xapi-inventory" {= "1.0.2"}
+  "xapi-libs-transitional" {= "1.0.1"}
+  "xapi-rrd-transport" {= "1.2.0"}
+  "xapi-stdext" {= "2.1.0"}
+  "xapi-xenops" {= "1.0.1"}
+  "xen-gnt-unix"
+  "xenctrl"
+  "xenstore_transport"
 ]
 build: [
   ["oasis" "setup"]
   [make]
   [make "test"] {with-test}
 ]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
+install: ["ocaml" "setup.ml" "-install"]
 remove: [
-    [make "uninstall"]
-    ["ocamlfind" "remove" "rrdd-libs"]
+  [make "uninstall"]
+  ["ocamlfind" "remove" "rrdd-libs"]
 ]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "xapi-backtrace" {= "0.4"}
-  "xapi-idl" {= "1.14.0"}
-  "xapi-libs-transitional" {= "1.0.1"}
-  "xapi-inventory" {= "1.0.2"}
-  "xapi-stdext" {= "2.1.0"}
-  "xapi-forkexecd" {= "1.4.0"}
-  "xenctrl"
-  "xenstore_transport"
-  "xapi-xenops" {= "1.0.1"}
-  "io-page"
-  "inotify"
-  "xen-gnt-unix"
-  "xapi-rrd-transport" {= "1.2.0"}
-  "oclock"
-  "ounit"
-  "ocaml-systemd" {>= "1.2"}
-]
-patches: [ "use-xen-gnt-unix.patch" ]
-synopsis: "Performance monitoring daemon for xapi"
-description: """
-This daemon monitors "datasources" i.e. time-varying values such as
-performance counters and records the samples in RRD archives. These
-archives can be used to examine historical performance trends."""
+patches: "use-xen-gnt-unix.patch"
+dev-repo: "git+https://github.com/xapi-project/xcp-rrdd.git"
 extra-files: [
   "use-xen-gnt-unix.patch" "md5=9d6563fc04c03f3c955ec37511505231"
 ]

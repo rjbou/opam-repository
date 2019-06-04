@@ -1,11 +1,20 @@
 opam-version: "2.0"
-maintainer:   "Thomas Gazagnaire <thomas@gazagnaire.org>"
-homepage:     "http://projects.camlcity.org/projects/findlib.html"
-bug-reports:  "https://gitlab.camlcity.org/gerd/lib-findlib/issues"
-dev-repo: "git+https://gitlab.camlcity.org/gerd/lib-findlib.git"
-patches: [
-  "check-num-in-sitelib.patch"
-  "no-awk-check.patch"
+name: "ocamlfind"
+version: "1.7.3"
+synopsis: "A library manager for OCaml"
+description: """
+Findlib is a library manager for OCaml. It provides a convention how
+to store libraries, and a file format ("META") to describe the
+properties of libraries. There is also a tool (ocamlfind) for
+interpreting the META files, so that it is very easy to use libraries
+in programs and scripts."""
+maintainer: "Thomas Gazagnaire <thomas@gazagnaire.org>"
+authors: "Gerd Stolpmann <gerd@gerd-stolpmann.de>"
+homepage: "http://projects.camlcity.org/projects/findlib.html"
+bug-reports: "https://gitlab.camlcity.org/gerd/lib-findlib/issues"
+depends: [
+  "conf-m4" {build}
+  "ocaml" {>= "3.12.0" & < "4.07"}
 ]
 build: [
   [
@@ -47,23 +56,13 @@ remove: [
   [make "uninstall"]
   ["rm" "-f" "%{bin}%/ocaml"] {ocaml:preinstalled}
 ]
-depends: [
-  "ocaml" {>= "3.12.0" & < "4.07"}
-  "conf-m4" {build}
-]
-synopsis: "A library manager for OCaml"
-description: """
-Findlib is a library manager for OCaml. It provides a convention how
-to store libraries, and a file format ("META") to describe the
-properties of libraries. There is also a tool (ocamlfind) for
-interpreting the META files, so that it is very easy to use libraries
-in programs and scripts."""
-authors: "Gerd Stolpmann <gerd@gerd-stolpmann.de>"
+patches: ["check-num-in-sitelib.patch" "no-awk-check.patch"]
+dev-repo: "git+https://gitlab.camlcity.org/gerd/lib-findlib.git"
 extra-files: [
-  ["ocamlfind.install" "md5=06f2c282ab52d93aa6adeeadd82a2543"]
-  ["ocaml-stub" "md5=181f259c9e0bad9ef523e7d4abfdf87a"]
   ["check-num-in-sitelib.patch" "md5=0ced9df5a3235cc6dbf0bb41b180e72d"]
   ["no-awk-check.patch" "md5=0378123bf1a45fccdea434c053ddb687"]
+  ["ocaml-stub" "md5=181f259c9e0bad9ef523e7d4abfdf87a"]
+  ["ocamlfind.install" "md5=06f2c282ab52d93aa6adeeadd82a2543"]
 ]
 url {
   src: "http://download.camlcity.org/download/findlib-1.7.3.tar.gz"

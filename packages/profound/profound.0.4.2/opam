@@ -1,24 +1,26 @@
 opam-version: "2.0"
+name: "profound"
+version: "0.4.2"
+synopsis: "Interactive proof exploration based on formula linking"
 maintainer: "kaustuv@chaudhuri.info"
-homepage: "http://chaudhuri.info/software/profound/"
 license: "MIT"
+homepage: "http://chaudhuri.info/software/profound/"
+depends: [
+  "batteries" {>= "2.0.0"}
+  "lablgtk"
+  "menhir" {>= "20120123"}
+  "ocaml" {>= "4.00.1"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   [make]
   ["mkdir" "-p" "%{share}%/profound"]
 ]
-remove: [["rm" "-rf" "%{share}%/profound/"]]
-depends: [
-  "ocaml" {>= "4.00.1"}
-  "ocamlfind"
-  "lablgtk"
-  "menhir" {>= "20120123"}
-  "batteries" {>= "2.0.0"}
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/chaudhuri/profound"
 install: ["cp" "share/profound/wash_form.tex" "%{share}%/profound/"]
-synopsis: "Interactive proof exploration based on formula linking"
-flags: light-uninstall
+remove: ["rm" "-rf" "%{share}%/profound/"]
+dev-repo: "git://github.com/chaudhuri/profound"
 extra-files: ["profound.install" "md5=7d991eed37b18dba464b98e4f640a74c"]
 url {
   src: "https://github.com/chaudhuri/profound/archive/v0.4.2.tar.gz"

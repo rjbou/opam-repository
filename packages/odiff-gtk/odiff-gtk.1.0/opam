@@ -1,27 +1,25 @@
 opam-version: "2.0"
-maintainer: "zoggy@bat8.org"
-authors: ["Maxence Guesdon"]
-homepage: "http://zoggy.github.io/odiff-gtk"
-license: "GNU Lesser General Public License version 3"
-doc: ["http://zoggy.github.io/odiff-gtk/index.html"]
-tags: [
-  "diff"
-  "gtk"
-  "merge"
-]
-build: [make "all"]
-remove: [["ocamlfind" "remove" "diff-gtk"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "lablgtk"
-  "ocamldiff" {>= "1.1"}
-]
-install: [make "install"]
+name: "odiff-gtk"
+version: "1.0"
 synopsis: "OCaml library to display and merge diffs using Lablgtk."
 description:
   "Odiff-gtk was previously part of OCamldiff but is now developped separately."
+maintainer: "zoggy@bat8.org"
+authors: "Maxence Guesdon"
+license: "GNU Lesser General Public License version 3"
+tags: ["diff" "gtk" "merge"]
+homepage: "http://zoggy.github.io/odiff-gtk"
+doc: "http://zoggy.github.io/odiff-gtk/index.html"
+depends: [
+  "lablgtk"
+  "ocaml" {< "4.06.0"}
+  "ocamldiff" {>= "1.1"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [make "all"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "diff-gtk"]
 url {
   src: "http://zoggy.github.io/odiff-gtk/odiff-gtk-1.0.tar.gz"
   checksum: "md5=00fd5f39b6aa0cf146fc52c599eb68c5"

@@ -1,17 +1,17 @@
 opam-version: "2.0"
+name: "gadelac"
+version: "0.6.1"
+synopsis: "Preprocessor for the Game Description Language."
 maintainer: "abdallah.saffidine@gmail.com"
-authors: ["Abdallah Saffidine"]
+authors: "Abdallah Saffidine"
 license: "BSD2"
-build: [
-  [make "gadelac"]
-]
 depends: [
-  "ocaml" {>= "3.12.1"}
   "base-unix"
   "menhir"
+  "ocaml" {>= "3.12.1"}
   "ocamlbuild" {build}
 ]
-synopsis: "Preprocessor for the Game Description Language."
+build: [make "gadelac"]
 extra-files: ["gadelac.install" "md5=6f4e673cc399c6fdee3bc2845fcaf5dc"]
 url {
   src: "https://bitbucket.org/Abdallah/gadelac/get/v0.6.1.tar.gz"

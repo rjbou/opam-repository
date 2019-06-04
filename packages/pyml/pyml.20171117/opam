@@ -1,20 +1,28 @@
 opam-version: "2.0"
+name: "pyml"
+version: "20171117"
+synopsis: "OCaml bindings for Python"
 maintainer: "Thierry Martinez <martinez@nsup.org>"
 authors: "Thierry Martinez <martinez@nsup.org>"
+license: "BSD"
 homepage: "http://pyml.gforge.inria.fr"
 bug-reports: "http://pyml.gforge.inria.fr/tracker"
-license: "BSD"
-dev-repo: "git+https://scm.gforge.inria.fr/anonscm/git/pyml/pyml.git"
-build: [make "all" "pymltop" "pymlutop" {utop:installed} "PREFIX=%{prefix}%"]
-install: [make "install" "PREFIX=%{prefix}%"]
-remove: [make "uninstall" "PREFIX=%{prefix}%"]
 depends: [
   "ocaml" {>= "3.12.1" & < "4.07.0"}
   "ocamlfind" {build}
   "stdcompat" {>= "1"}
 ]
 depopts: ["utop"]
-synopsis: "OCaml bindings for Python"
+build: [
+  make
+  "all"
+  "pymltop"
+  "pymlutop" {utop:installed}
+  "PREFIX=%{prefix}%"
+]
+install: [make "install" "PREFIX=%{prefix}%"]
+remove: [make "uninstall" "PREFIX=%{prefix}%"]
+dev-repo: "git+https://scm.gforge.inria.fr/anonscm/git/pyml/pyml.git"
 url {
   src: "http://pyml.gforge.inria.fr/pyml-20171117.tar.gz"
   checksum: "md5=285ba07b973f713c66991faf5382814d"

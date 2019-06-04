@@ -1,19 +1,20 @@
 opam-version: "2.0"
 name: "cdrom"
-maintainer: "xen-api@list.xen.org"
-homepage: "https://github.com/xapi-project/cdrom"
-dev-repo: "git+https://github.com/xapi-project/cdrom.git"
-bug-reports: "https://github.com/xapi-project/cdrom/issues"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta10"}
-]
-depexts: ["linux-headers"] {os-distribution = "alpine"}
-available: [ os = "linux" ]
-tags: [ "org:xapi-project" ]
+version: "0.9.3"
 synopsis: "Query the state and contents of CDROM devices under Linux."
+maintainer: "xen-api@list.xen.org"
 authors: "Dave Scott <dave@recoil.org>"
+tags: "org:xapi-project"
+homepage: "https://github.com/xapi-project/cdrom"
+bug-reports: "https://github.com/xapi-project/cdrom/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml"
+]
+available: os = "linux"
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+depexts: ["linux-headers"] {os-distribution = "alpine"}
+dev-repo: "git+https://github.com/xapi-project/cdrom.git"
 url {
   src: "https://github.com/xapi-project/cdrom/archive/v0.9.3.tar.gz"
   checksum: "md5=9713a6df129c4c79481de8555ad20cef"

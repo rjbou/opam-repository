@@ -1,28 +1,26 @@
 opam-version: "2.0"
+name: "ptmap"
+version: "2.0.2"
+synopsis: "Maps over integers implemented as Patricia trees"
 maintainer: "Jean-Christophe.Filliatre@lri.fr"
-authors: ["Jean-Christophe Filliâtre"]
+authors: "Jean-Christophe Filliâtre"
+license: "GPL-2.1"
 homepage: "https://www.lri.fr/~filliatr/software.en.html"
 bug-reports: "https://github.com/backtracking/ptmap/issues"
-dev-repo: "git+https://github.com/backtracking/ptmap.git"
-license: "GPL-2.1"
+depends: [
+  "obuild" {build}
+  "ocaml" {< "4.06.0"}
+  "ocamlfind" {build}
+  "qtest" {>= "2.2"}
+]
+flags: light-uninstall
 build: [
   ["obuild" "configure"]
   ["obuild" "build" "lib-ptmap"]
 ]
-install: [
-  ["obuild" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "ptmap"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind" {build}
-  "obuild" {build}
-  "qtest" {>= "2.2"}
-]
-synopsis: "Maps over integers implemented as Patricia trees"
-flags: light-uninstall
+install: ["obuild" "install"]
+remove: ["ocamlfind" "remove" "ptmap"]
+dev-repo: "git+https://github.com/backtracking/ptmap.git"
 url {
   src: "https://github.com/backtracking/ptmap/archive/v2.0.2.tar.gz"
   checksum: "md5=67d6d169872c4ccedb28e163c8ddc45b"

@@ -1,24 +1,24 @@
 opam-version: "2.0"
+name: "ocp-index-top"
+version: "0.5.0"
+synopsis: "Documentation in the OCaml toplevel"
 maintainer: "Reynir Björnsson <reynir@reynir.dk>"
-dev-repo: "git+https://github.com/reynir/ocp-index-top.git"
-homepage: "https://github.com/reynir/ocp-index-top/"
-bug-reports:  "https://github.com/reynir/ocp-index-top/issues"
-doc: "https://reynir.github.io/ocp-index-top/"
+authors: "Reynir Björnsson <reynir@reynir.dk>"
 license: "BSD-2-clause"
-build: [
-  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"
-]
+homepage: "https://github.com/reynir/ocp-index-top/"
+doc: "https://reynir.github.io/ocp-index-top/"
+bug-reports: "https://github.com/reynir/ocp-index-top/issues"
 depends: [
-  "ocaml" {> "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
   "cppo" {build}
   "cppo_ocamlbuild" {build}
+  "ocaml" {> "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
   "ocp-index"
+  "topkg" {build}
 ]
-synopsis: "Documentation in the OCaml toplevel"
-authors: "Reynir Björnsson <reynir@reynir.dk>"
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/reynir/ocp-index-top.git"
 url {
   src:
     "https://github.com/reynir/ocp-index-top/releases/download/v0.5.0/ocp-index-top-0.5.0.tbz"

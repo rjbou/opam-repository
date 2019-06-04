@@ -1,42 +1,43 @@
 opam-version: "2.0"
-maintainer: "john.else@citrix.com"
-authors: [
-  "Anil Madhavapeddy"
-  "John Else"
-  "Thomas Leonard"
-  "Andrew Cooper"
-  "David Scott"
-]
-homepage: "https://github.com/mirage/ocaml-gnt"
-doc: "https://mirage.github.io/ocaml-gnt/"
-bug-reports: "https://github.com/mirage/ocaml-gnt/issues"
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build & >= "1.0"}
-  "xen-gnt"
-  "io-page-unix" {>= "2.0.0"}
-]
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-]
-depexts: [
-  ["xen-dev"] {os-distribution = "alpine"}
-  ["libxen-dev"] {os-distribution = "debian"}
-  ["libxen-dev"] {os-distribution = "ubuntu"}
-  ["xen-devel"] {os-distribution = "centos"}
-  ["xen-devel"] {os-distribution = "fedora"}
-  ["xenstore"] {os-distribution = "archlinux"}
-]
-dev-repo: "git+https://github.com/mirage/ocaml-gnt.git"
+name: "xen-gnt-unix"
+version: "3.1.0"
 synopsis: "Xen grant table bindings for OCaml"
 description: """
 These are used to create Xen device driver "backends" (servers)
 and "frontends" (clients).
 
 This library can be used in both kernelspace (via Mirage) or in userspace
-(on Linux). To see a concrete example, have a look at [mirage/ocaml-vchan]
-"""
+(on Linux). To see a concrete example, have a look at [mirage/ocaml-vchan]"""
+maintainer: "john.else@citrix.com"
+authors: [
+  "Andrew Cooper"
+  "Anil Madhavapeddy"
+  "David Scott"
+  "John Else"
+  "Thomas Leonard"
+]
+homepage: "https://github.com/mirage/ocaml-gnt"
+doc: "https://mirage.github.io/ocaml-gnt/"
+bug-reports: "https://github.com/mirage/ocaml-gnt/issues"
+depends: [
+  "dune" {build & >= "1.0"}
+  "io-page-unix" {>= "2.0.0"}
+  "ocaml" {>= "4.03.0"}
+  "xen-gnt"
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+depexts: [
+  ["libxen-dev"] {os-distribution = "debian"}
+  ["libxen-dev"] {os-distribution = "ubuntu"}
+  ["xen-dev"] {os-distribution = "alpine"}
+  ["xen-devel"] {os-distribution = "centos"}
+  ["xen-devel"] {os-distribution = "fedora"}
+  ["xenstore"] {os-distribution = "archlinux"}
+]
+dev-repo: "git+https://github.com/mirage/ocaml-gnt.git"
 url {
   src:
     "https://github.com/mirage/ocaml-gnt/releases/download/v3.1.0/xen-gnt-v3.1.0.tbz"

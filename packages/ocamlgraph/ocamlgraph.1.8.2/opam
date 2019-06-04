@@ -1,24 +1,22 @@
 opam-version: "2.0"
+name: "ocamlgraph"
+version: "1.8.2"
+synopsis: "A generic graph library for OCaml"
 maintainer: "filliatr@lri.fr"
-authors: [
-  "Sylvain Conchon"
-  "Jean-Christophe Filliâtre"
-  "Julien Signoles"
-]
-homepage: "http://ocamlgraph.lri.fr/"
+authors: ["Jean-Christophe Filliâtre" "Julien Signoles" "Sylvain Conchon"]
 license: "GNU Library General Public License version 2.1"
-build: [
-  ["./configure"]
-  [make]
-]
-remove: [["ocamlfind" "remove" "ocamlgraph"]]
+homepage: "http://ocamlgraph.lri.fr/"
 depends: [
   "ocaml" {< "4.06.0"}
   "ocamlfind"
 ]
-install: [make "install-findlib"]
-synopsis: "A generic graph library for OCaml"
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make]
+]
+install: [make "install-findlib"]
+remove: ["ocamlfind" "remove" "ocamlgraph"]
 extra-files: ["ocamlgraph.install" "md5=e0b715868e84ec4df4d6cdda25843466"]
 url {
   src: "http://ocamlgraph.lri.fr/download/ocamlgraph-1.8.2.tar.gz"

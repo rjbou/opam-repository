@@ -1,29 +1,31 @@
 opam-version: "2.0"
+name: "ocaml_plugin"
+version: "113.00.00"
+synopsis: "Automatically build and dynlink OCaml source files"
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
 homepage: "https://github.com/janestreet/ocaml_plugin"
+bug-reports: "https://github.com/janestreet/ocaml_plugin/issues"
+depends: [
+  "async" {>= "113.00.00" & < "113.01.00"}
+  "bin_prot" {>= "113.00.00" & < "113.01.00"}
+  "camlp4"
+  "comparelib" {>= "113.00.00" & < "113.01.00"}
+  "fieldslib" {>= "113.00.00" & < "113.01.00"}
+  "herelib" {>= "112.35.00" & < "112.36.00"}
+  "ocaml" {>= "4.02.1" & < "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "sexplib" {>= "113.00.00" & < "113.01.00"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "ocaml_plugin"]]
-depends: [
-  "ocaml" {>= "4.02.1" & < "4.03"}
-  "camlp4"
-  "ocamlfind"
-  "async" {>= "113.00.00" & < "113.01.00"}
-  "sexplib" {>= "113.00.00" & < "113.01.00"}
-  "comparelib" {>= "113.00.00" & < "113.01.00"}
-  "bin_prot" {>= "113.00.00" & < "113.01.00"}
-  "fieldslib" {>= "113.00.00" & < "113.01.00"}
-  "herelib" {>= "112.35.00" & < "112.36.00"}
-  "ocamlbuild" {build}
-]
-bug-reports: "https://github.com/janestreet/ocaml_plugin/issues"
+install: [make "install"]
+remove: ["ocamlfind" "remove" "ocaml_plugin"]
 dev-repo: "git+https://github.com/janestreet/ocaml_plugin.git"
-install: [[make "install"]]
-synopsis: "Automatically build and dynlink OCaml source files"
-flags: light-uninstall
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/113.00/files/ocaml_plugin-113.00.00.tar.gz"

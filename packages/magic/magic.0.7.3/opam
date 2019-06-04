@@ -1,25 +1,27 @@
 opam-version: "2.0"
+name: "magic"
+version: "0.7.3"
+synopsis: "Bindings for libmagic (to determine the type of files)"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: ["ocaml" "ocamlfind"]
 build: [
   ["./configure" "--prefix" prefix "--datarootdir" prefix]
   [make "byte" "opt"]
 ]
+install: [make "install"]
 remove: [
   ["./configure" "--prefix" prefix "--datarootdir" prefix]
   [make "uninstall"]
 ]
-depends: ["ocaml" "ocamlfind"]
 depexts: [
   ["file-dev"] {os-distribution = "alpine"}
   ["file-devel"] {os-distribution = "centos"}
   ["file-devel"] {os-distribution = "fedora"}
   ["file-devel"] {os-family = "suse"}
+  ["libmagic"] {os = "macos" & os-distribution = "homebrew"}
   ["libmagic-dev"] {os-distribution = "debian"}
   ["libmagic-dev"] {os-distribution = "ubuntu"}
-  ["libmagic"] {os = "macos" & os-distribution = "homebrew"}
 ]
-install: [make "install"]
-synopsis: "Bindings for libmagic (to determine the type of files)"
 url {
   src:
     "http://downloads.sourceforge.net/project/ocaml-magic/ocaml-magic/0.7/ocaml-magic-0.7.3.tar.gz"

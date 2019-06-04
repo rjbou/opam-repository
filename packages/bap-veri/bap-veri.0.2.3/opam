@@ -1,44 +1,40 @@
 opam-version: "2.0"
 name: "bap-veri"
 version: "0.2.3"
-maintainer: "Ivan Gotovchits <ivg@ieee.org>"
-authors: "BAP Team"
-homepage: "https://github.com/BinaryAnalysisPlatform/bap-veri/"
-bug-reports: "https://github.com/BinaryAnalysisPlatform/bap-veri/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap-veri/"
-license: "MIT"
-
-build: [
-  ["oasis" "setup"]
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
-]
-
-install: [[make "install"]]
-
-remove: [
-  ["ocamlfind" "remove" "bap-veri"]
-  ["rm" "-f" "%{bin}%/bap-veri"]
-]
-
-depends: [
-  "ocaml" {>= "4.04.1" & < "4.08.0"}
-  "bap-std" {= "1.6.0"}
-  "bap-traces" {= "1.6.0"}
-  "cmdliner"
-  "oasis" {build}
-  "ounit"
-  "pcre"
-  "core_kernel" {>= "v0.11" & < "v0.12"}
-  "textutils"   {>= "v0.11" & < "v0.12"}
-  "uri"
-]
 synopsis: "BAP Instruction Semantics Verification Tool"
 description: """
 Verifies that our understaning of instruction semantics is correct, or
 at least the same as in QEMU by checking if our execution bisimulates
 the QEMU."""
+maintainer: "Ivan Gotovchits <ivg@ieee.org>"
+authors: "BAP Team"
+license: "MIT"
+homepage: "https://github.com/BinaryAnalysisPlatform/bap-veri/"
+bug-reports: "https://github.com/BinaryAnalysisPlatform/bap-veri/issues"
+depends: [
+  "bap-std" {= "1.6.0"}
+  "bap-traces" {= "1.6.0"}
+  "cmdliner"
+  "core_kernel" {>= "v0.11" & < "v0.12"}
+  "oasis" {build}
+  "ocaml" {>= "4.04.1" & < "4.08.0"}
+  "ounit"
+  "pcre"
+  "textutils" {>= "v0.11" & < "v0.12"}
+  "uri"
+]
 flags: light-uninstall
+build: [
+  ["oasis" "setup"]
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove: [
+  ["ocamlfind" "remove" "bap-veri"]
+  ["rm" "-f" "%{bin}%/bap-veri"]
+]
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap-veri/"
 url {
   src:
     "https://github.com/BinaryAnalysisPlatform/bap-veri/archive/v0.2.3.tar.gz"

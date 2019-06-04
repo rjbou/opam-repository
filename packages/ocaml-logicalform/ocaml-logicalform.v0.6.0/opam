@@ -1,25 +1,23 @@
 opam-version: "2.0"
 name: "ocaml-logicalform"
-maintainer: "Saswat Padhi <saswat.sourav@gmail.com>"
-authors: "Saswat Padhi <saswat.sourav@gmail.com>"
-homepage: "https://github.com/SaswatPadhi/ocaml-logicalform/"
-
-license: "MIT"
-bug-reports: "https://github.com/SaswatPadhi/ocaml-logicalform/issues"
-dev-repo: "git+https://github.com:SaswatPadhi/ocaml-logicalform.git"
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "odoc" {with-doc}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "ppx_sexp_conv" {>= "v0.9" & < "v0.13"}
-  "base" {>= "v0.9" & < "v0.13"}
-]
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
+version: "v0.6.0"
 synopsis:
   "`LogicalForm` provides modules for efficient and intuitive manipulation"
 description: "of logical expressions."
+maintainer: "Saswat Padhi <saswat.sourav@gmail.com>"
+authors: "Saswat Padhi <saswat.sourav@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/SaswatPadhi/ocaml-logicalform/"
+bug-reports: "https://github.com/SaswatPadhi/ocaml-logicalform/issues"
+depends: [
+  "base" {>= "v0.9" & < "v0.13"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml" {>= "4.04.0"}
+  "odoc" {with-doc}
+  "ppx_sexp_conv" {>= "v0.9" & < "v0.13"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com:SaswatPadhi/ocaml-logicalform.git"
 url {
   src:
     "https://github.com/SaswatPadhi/ocaml-logicalform/archive/v0.6.0.tar.gz"

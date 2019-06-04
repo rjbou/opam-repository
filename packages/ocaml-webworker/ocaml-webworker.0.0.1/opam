@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "ocaml-webworker"
+version: "0.0.1"
+synopsis:
+  "A webworker for the web that runs OCaml code which includes a modified version of Merlin to run on the web."
 maintainer: "sandermail@gmail.com"
 authors: "Sander Spies"
+license: "MIT"
 homepage: "https://github.com/SanderSpies/ocaml-gist"
 bug-reports: "https://github.com/SanderSpies/ocaml-gist/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/SanderSpies/ocaml-gist.git"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
 depends: [
-  "ocaml" {= "4.04.2"}
   "jbuilder" {build & >= "1.0+beta10"}
-  "ocamlfind"
   "js_of_ocaml" {< "3.4.0"}
   "js_of_ocaml-compiler" {< "3.4.0"}
   "js_of_ocaml-toplevel" {< "3.4.0"}
+  "ocaml" {= "4.04.2"}
+  "ocamlfind"
   "yojson"
 ]
-synopsis:
-  "A webworker for the web that runs OCaml code which includes a modified version of Merlin to run on the web."
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/SanderSpies/ocaml-gist.git"
 url {
   src: "https://github.com/SanderSpies/ocaml-gist/archive/0.0.2.tar.gz"
   checksum: "md5=54b32dd6ea42e2a3c395db67df1ed60b"

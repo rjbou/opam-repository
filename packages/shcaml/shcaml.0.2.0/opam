@@ -1,30 +1,34 @@
 opam-version: "2.0"
-authors: "Jesse A. Tov <jesse.tov@gmail.com>"
+name: "shcaml"
+version: "0.2.0"
+synopsis: "Library for Unix shell programming"
 maintainer: "Armael <armael@isomorphis.me>"
-homepage: "https://github.com/tov/shcaml"
-dev-repo: "git+https://github.com/tov/shcaml.git"
-bug-reports: "https://github.com/tov/shcaml/issues"
-doc: "https://tov.github.io/shcaml/doc"
+authors: "Jesse A. Tov <jesse.tov@gmail.com>"
 license: "MIT"
+homepage: "https://github.com/tov/shcaml"
+doc: "https://tov.github.io/shcaml/doc"
+bug-reports: "https://github.com/tov/shcaml/issues"
 depends: [
-  "ocaml" {>= "4.02.0" & < "4.06"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.9.0"}
   "cppo" {build}
   "cppo_ocamlbuild" {build}
-  "pcre"
   "hmap"
+  "ocaml" {>= "4.02.0" & < "4.06"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "pcre"
+  "topkg" {build & >= "0.9.0"}
 ]
-depopts: [ "lwt" "base-unix" ]
-build:
-[
-  [ "ocaml" "pkg/pkg.ml" "build"
-      "--dev-pkg" "%{pinned}%"
-      "--with-lwt" "%{lwt+base-unix:installed}%"
-  ]
+depopts: ["base-unix" "lwt"]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--dev-pkg"
+  "%{pinned}%"
+  "--with-lwt"
+  "%{lwt+base-unix:installed}%"
 ]
-synopsis: "Library for Unix shell programming"
+dev-repo: "git+https://github.com/tov/shcaml.git"
 url {
   src:
     "https://github.com/tov/shcaml/releases/download/0.2.0/shcaml-0.2.0.tbz"

@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      "Thomas Gazagnaire"
-license:      "ISC"
-homepage:     "https://github.com/mirage/ocaml-git"
-bug-reports:  "https://github.com/mirage/ocaml-git/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-git.git"
-doc:          "https://mirage.github.io/ocaml-git/"
-
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "-n" name]
-
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "mstruct" {>= "1.3.1"}
-  "ocamlgraph"
-  "uri" {>= "1.3.12"}
-  "lwt" {>= "2.4.7"}
-  "logs"
-  "fmt"
-  "hex"
-  "astring"
-  "ocplib-endian" {>= "0.6.0"}
-]
-conflicts: [ "cstruct"  {> "3.1.1"} ]
+name: "git"
+version: "1.10.0"
 synopsis: "Git format and protocol in pure OCaml"
 description: """
 Support for on-disk and in-memory Git stores. Can read and write all
@@ -35,6 +14,29 @@ possible to make a pack file position independent (as the Zlib
 compression might change the relative offsets between the packed
 objects), to generate pack indexes from pack files, or to expand
 the filesystem of a given commit."""
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire"
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-git"
+doc: "https://mirage.github.io/ocaml-git/"
+bug-reports: "https://github.com/mirage/ocaml-git/issues"
+depends: [
+  "astring"
+  "fmt"
+  "hex"
+  "logs"
+  "lwt" {>= "2.4.7"}
+  "mstruct" {>= "1.3.1"}
+  "ocaml" {>= "4.02.3"}
+  "ocamlgraph"
+  "ocplib-endian" {>= "0.6.0"}
+  "uri" {>= "1.3.12"}
+]
+conflicts: [
+  "cstruct" {> "3.1.1"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "-n" name]
+dev-repo: "git+https://github.com/mirage/ocaml-git.git"
 url {
   src:
     "https://github.com/mirage/ocaml-git/releases/download/1.10.0/git-1.10.0.tbz"

@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: ["Anil Madhavapeddy <anil@recoil.org>"]
-homepage: "https://github.com/ocaml/obi"
-doc: "https://ocaml.github.io/obi/"
-license: "ISC"
-dev-repo: "git+https://github.com/ocaml/obi.git"
-bug-reports: "https://github.com/ocaml/obi/issues"
-tags: "org:ocamllabs"
-depends: [
-  "ocaml" {>= "4.05.0"}
-  "jbuilder" {build & >= "1.0+beta17"}
-  "obi"
-  "bos"
-  "cmdliner"
-  "fmt"
-  "logs"
-  "rresult"
-  "textwrap"
-]
-build: [
-  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
+name: "opam-ci"
+version: "1.0.0"
 synopsis: "query the opam package build status"
 description: """
 The opam-ci tool provides an interface to the opam 2.0 continuous
@@ -60,7 +39,30 @@ opam ci logs mirage-xen
 
 See the `--help` pages for the subcommands below for more detailed
 information."""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+tags: "org:ocamllabs"
+homepage: "https://github.com/ocaml/obi"
+doc: "https://ocaml.github.io/obi/"
+bug-reports: "https://github.com/ocaml/obi/issues"
+depends: [
+  "bos"
+  "cmdliner"
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta17"}
+  "logs"
+  "obi"
+  "ocaml" {>= "4.05.0"}
+  "rresult"
+  "textwrap"
+]
 flags: plugin
+build: [
+  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/ocaml/obi.git"
 url {
   src: "https://github.com/ocaml/obi/releases/download/v1.0.0/obi-1.0.0.tbz"
   checksum: "md5=ec811f2e406f9bea44549bb2a331a70b"

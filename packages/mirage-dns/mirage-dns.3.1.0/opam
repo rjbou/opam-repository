@@ -1,31 +1,32 @@
 opam-version: "2.0"
+name: "mirage-dns"
+version: "3.1.0"
+synopsis: "DNS implementation for the MirageOS unikernel framework"
+description: """
+This is an implementation of a DNS server and client resolver
+for the [MirageOS unikernel framework](https://mirage.io)."""
 maintainer: "anil@recoil.org"
 authors: [
   "Anil Madhavapeddy"
-  "Tim Deegan"
-  "Richard Mortier"
-  "Haris Rotsos"
   "David Sheets"
-  "Thomas Gazagnaire"
+  "Haris Rotsos"
   "Luke Dunstan"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Tim Deegan"
 ]
 license: "ISC"
 homepage: "https://github.com/mirage/ocaml-dns"
 bug-reports: "https://github.com/mirage/ocaml-dns/issues"
-synopsis: "DNS implementation for the MirageOS unikernel framework"
-description: """
-This is an implementation of a DNS server and client resolver
-for the [MirageOS unikernel framework](https://mirage.io).
-"""
 depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
   "dns-lwt" {>= "1.1.0"}
+  "dune" {build}
   "duration"
-  "mirage-stack-lwt"
   "mirage-kv-lwt" {< "2.0.0"}
-  "mirage-time-lwt"
   "mirage-profile" {>= "0.8.0"}
+  "mirage-stack-lwt"
+  "mirage-time-lwt"
+  "ocaml" {>= "4.03.0"}
 ]
 build: [
   ["dune" "subst"] {pinned}

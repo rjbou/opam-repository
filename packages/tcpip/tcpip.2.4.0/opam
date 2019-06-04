@@ -1,45 +1,47 @@
 opam-version: "2.0"
+name: "tcpip"
+version: "2.4.0"
+synopsis: "Userlevel TCP/IP stack"
+description: """
+The library provides a networking stack for the MirageOS library
+operating system that supports IPv4, IPv6, ARPv4, DHCPv4 and TCP/IP."""
 maintainer: "anil@recoil.org"
 authors: [
   "Anil Madhavapeddy"
   "Balraj Singh"
-  "Richard Mortier"
   "Nicolas Ojeda Bar"
+  "Richard Mortier"
   "Thomas Gazagnaire"
 ]
+tags: "org:mirage"
 homepage: "https://github.com/mirage/mirage-tcpip"
 bug-reports: "https://github.com/mirage/mirage-tcpip/issues"
-tags: "org:mirage"
-dev-repo: "git+https://github.com/mirage/mirage-tcpip.git"
+depends: [
+  "cstruct" {>= "1.0.1" & <= "1.9.0"}
+  "ipaddr" {>= "2.2.0" & < "3.0.0"}
+  "mirage-clock-unix" {>= "1.0.0" & < "1.2.0"}
+  "mirage-console" {< "2.2.0"}
+  "mirage-net-unix" {>= "1.1.0" & < "2.3.0"}
+  "mirage-profile" {< "0.8.0"}
+  "mirage-types-lwt" {>= "2.2.0" & < "2.6.0"}
+  "mirage-unix" {>= "1.1.0" & <= "2.6.0"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "type_conv"
+]
+depopts: ["mirage-xen"]
+conflicts: [
+  "lwt" {>= "3.0.0"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix "--%{mirage-xen:enable}%-xen"]
   [make]
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "tcpip"]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "cstruct" {>= "1.0.1" & <= "1.9.0"}
-  "type_conv"
-  "mirage-types-lwt" {>= "2.2.0" & < "2.6.0"}
-  "mirage-unix" {>= "1.1.0" & <= "2.6.0"}
-  "mirage-console" {< "2.2.0"}
-  "mirage-clock-unix" {>= "1.0.0" & < "1.2.0"}
-  "mirage-net-unix" {>= "1.1.0" & < "2.3.0"}
-  "ipaddr" {>= "2.2.0" & < "3.0.0"}
-  "mirage-profile" {< "0.8.0"}
-  "ocamlbuild" {build}
-]
-depopts: "mirage-xen"
-conflicts: [
-  "lwt" {>= "3.0.0"}
-]
-synopsis: "Userlevel TCP/IP stack"
-description: """
-The library provides a networking stack for the MirageOS library
-operating system that supports IPv4, IPv6, ARPv4, DHCPv4 and TCP/IP."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/mirage/mirage-tcpip.git"
 url {
   src: "https://github.com/mirage/mirage-tcpip/archive/v2.4.0.tar.gz"
   checksum: "md5=dc132f2b17a6afd486dcc04a45088d45"

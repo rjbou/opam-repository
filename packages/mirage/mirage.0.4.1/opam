@@ -1,22 +1,21 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [make "all"]
-remove: [["ocamlfind" "remove" "mirage"]]
-depends: [
-  "ocaml" {>= "4.00.1" & < "4.06.0"}
-  "cstruct" {< "0.6.0"}
-  "ocamlfind"
-  "lwt"
-  "xenstore"
-  "ocamlbuild" {build}
-]
-install: [make "install" "PREFIX=%{prefix}%"]
+name: "mirage"
+version: "0.4.1"
 synopsis: "MirageOS core libraries"
+maintainer: "anil@recoil.org"
+tags: ["org:mirage" "org:xapi-project"]
+depends: [
+  "cstruct" {< "0.6.0"}
+  "lwt"
+  "ocaml" {>= "4.00.1" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "xenstore"
+]
 flags: light-uninstall
+build: [make "all"]
+install: [make "install" "PREFIX=%{prefix}%"]
+remove: ["ocamlfind" "remove" "mirage"]
 url {
   src:
     "https://github.com/mirage/mirage-platform/tarball/mirage-platform-0.4.1"

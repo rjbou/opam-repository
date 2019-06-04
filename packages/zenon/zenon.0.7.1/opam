@@ -1,30 +1,32 @@
 opam-version: "2.0"
-homepage: "http://zenon-prover.org/"
-dev-repo: "git+https://scm.gforge.inria.fr/anonscm/git/zenon/zenon.git"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: [ "R. Bonichon" "D. Delahaye" "D. Doligez" ]
-bug-reports: "zenon.prover at gmail.com"
-depends: [
-  "ocaml" {< "4.06.0"}
-  "coq"
-]
-build: [
-  ["mkdir" "-p" "%{zenon:lib}%" ] # Needed otherwise configure fails
-  ["./configure" "--prefix" "%{prefix}%" "--tools_prefix" "%{zenon:lib}%"]
-  [make]
-]
-install: [[make "install"]]
-remove:  [
-  ["mkdir" "-p" "%{zenon:lib}%" ] # Needed otherwise configure fails
-  ["./configure" "--prefix" "%{prefix}%" "--tools_prefix" "%{zenon:lib}%"]
-  [make "uninstall"]
-]
+name: "zenon"
+version: "0.7.1"
 synopsis: "An Extensible Automated Theorem Prover Producing Checkable Proofs"
 description: """
 Automated theorem prover for first order classical logic (with
 equality), based on the tableau method. Zenon handles first-order
 logic with equality. Its most important feature is that it outputs the
 proofs of the theorems, in Coq-checkable form."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+authors: ["D. Delahaye" "D. Doligez" "R. Bonichon"]
+homepage: "http://zenon-prover.org/"
+bug-reports: "zenon.prover at gmail.com"
+depends: [
+  "coq"
+  "ocaml" {< "4.06.0"}
+]
+build: [
+  ["mkdir" "-p" "%{zenon:lib}%"]
+  ["./configure" "--prefix" "%{prefix}%" "--tools_prefix" "%{zenon:lib}%"]
+  [make]
+]
+install: [make "install"]
+remove: [
+  ["mkdir" "-p" "%{zenon:lib}%"]
+  ["./configure" "--prefix" "%{prefix}%" "--tools_prefix" "%{zenon:lib}%"]
+  [make "uninstall"]
+]
+dev-repo: "git+https://scm.gforge.inria.fr/anonscm/git/zenon/zenon.git"
 url {
   src:
     "http://pkgs.fedoraproject.org/repo/pkgs/zenon/zenon-0.7.1.tar.xz/cb8b35e2d55dabcc7d8a1e8b3600f68a/zenon-0.7.1.tar.xz"

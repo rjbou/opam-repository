@@ -1,38 +1,41 @@
 opam-version: "2.0"
+name: "hardcaml"
+version: "1.2.0"
+synopsis: "Register Transfer Level hardware design in OCaml"
 maintainer: "andy.ray@ujamjar.com"
 authors: "andy.ray@ujamjar.com"
 homepage: "https://github.com/ujamjar/hardcaml"
-dev-repo: "git+https://github.com/ujamjar/hardcaml.git"
 bug-reports: "https://github.com/ujamjar/hardcaml/issues"
-build: [ 
-  ["ocaml" "pkg/pkg.ml" "build"
-    "--with-ctypes" "%{ctypes:installed}%"
-    "--with-ctypes-foreign" "%{ctypes-foreign:installed}%"
-    "--with-camlp4" "%{camlp4:installed}%"
-    "--with-js_of_ocaml" "true"
-    "--with-lwt" "%{lwt:installed}%"
-  ] 
-]
 depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
+  "astring"
+  "base-bytes"
+  "base-unix"
   "camlp4"
   "js_of_ocaml"
   "js_of_ocaml-camlp4"
-  "topkg" {build}
-  "base-bytes"
-  "base-unix"
-  "astring"
   "num"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
 ]
-depopts: [ 
-  "ctypes"
-  "ctypes-foreign" 
-  "lwt"
+depopts: ["ctypes" "ctypes-foreign" "lwt"]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--with-ctypes"
+  "%{ctypes:installed}%"
+  "--with-ctypes-foreign"
+  "%{ctypes-foreign:installed}%"
+  "--with-camlp4"
+  "%{camlp4:installed}%"
+  "--with-js_of_ocaml"
+  "true"
+  "--with-lwt"
+  "%{lwt:installed}%"
 ]
-
-synopsis: "Register Transfer Level hardware design in OCaml"
+dev-repo: "git+https://github.com/ujamjar/hardcaml.git"
 url {
   src: "https://github.com/ujamjar/hardcaml/archive/v1.2.0.tar.gz"
   checksum: "md5=5bcb9e6198ba1c6e834adc752121e880"

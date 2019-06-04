@@ -1,4 +1,7 @@
 opam-version: "2.0"
+name: "mirage-console-xen-backend"
+version: "2.4.1"
+synopsis: "Implementation of Mirage console backend for Xen"
 maintainer: "anil@recoil.org"
 authors: ["Anil Madhavapeddy" "David Scott"]
 license: "ISC"
@@ -7,23 +10,22 @@ homepage: "https://github.com/mirage/mirage-console"
 doc: "https://mirage.github.io/mirage-console/"
 bug-reports: "https://github.com/mirage/mirage-console/issues"
 depends: [
-  "ocaml" {>= "4.04.2"}
   "dune" {build & >= "1.0"}
+  "io-page-xen" {>= "2.0.0"}
+  "lwt"
   "mirage-console-lwt" {>= "2.2.0"}
   "mirage-console-xen-proto"
-  "lwt"
-  "io-page-xen" {>= "2.0.0"}
-  "xenstore"
+  "ocaml" {>= "4.04.2"}
+  "shared-memory-ring-lwt"
   "xen-evtchn"
   "xen-gnt"
-  "shared-memory-ring-lwt"
+  "xenstore"
 ]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
 ]
 dev-repo: "git+https://github.com/mirage/mirage-console.git"
-synopsis: "Implementation of Mirage console backend for Xen"
 url {
   src:
     "https://github.com/mirage/mirage-console/releases/download/v2.4.1/mirage-console-v2.4.1.tbz"

@@ -1,5 +1,24 @@
 opam-version: "2.0"
+name: "lwt"
+version: "2.4.2"
+synopsis: "A cooperative threads library for OCaml"
+description: """
+This library is part of the Ocsigen project. See:
+
+http://ocsigen.org/lwt"""
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "camlp4"
+  "ocaml" {< "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+depopts: ["base-threads" "base-unix" "conf-libev" "lablgtk" "react" "ssl"]
+conflicts: [
+  "react" {>= "1.0.0"}
+  "ssl" {>= "0.5.0"}
+]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -13,32 +32,8 @@ build: [
   ]
   [make "build"]
 ]
-remove: [["ocamlfind" "remove" "lwt"]]
-depends: [
-  "ocaml" {< "4.01.0"}
-  "ocamlfind"
-  "camlp4"
-  "ocamlbuild" {build}
-]
-depopts: [
-  "base-threads"
-  "base-unix"
-  "conf-libev"
-  "ssl"
-  "react"
-  "lablgtk"
-]
-conflicts: [
-  "react" {>="1.0.0"}
-  "ssl" {>="0.5.0"}
-]
 install: [make "install"]
-synopsis: "A cooperative threads library for OCaml"
-description: """
-This library is part of the Ocsigen project. See:
-
-http://ocsigen.org/lwt"""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "lwt"]
 url {
   src: "http://ocsigen.org/download/lwt-2.4.2.tar.gz"
   checksum: "md5=0d6eeaa295d62aefaf39e034460bc7b4"

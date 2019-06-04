@@ -1,25 +1,25 @@
 opam-version: "2.0"
+name: "textutils"
+version: "112.17.00"
+synopsis: "Text output utilities"
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/textutils"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
 license: "Apache-2.0"
-build: [
-  [make]
-]
-remove: [["ocamlfind" "remove" "textutils"]]
+homepage: "https://github.com/janestreet/textutils"
+bug-reports: "https://github.com/janestreet/textutils/issues"
 depends: [
-  "ocaml" {>= "4.02.1" & < "4.03"}
   "camlp4"
   "core" {>= "112.17.00" & < "113.01.00"}
-  "sexplib" {>= "112.17.00" & < "113.01.00"}
-  "pa_ounit" {>= "112.17.00" & < "113.01.00"}
+  "ocaml" {>= "4.02.1" & < "4.03"}
   "ocamlbuild" {build}
+  "pa_ounit" {>= "112.17.00" & < "113.01.00"}
+  "sexplib" {>= "112.17.00" & < "113.01.00"}
 ]
-bug-reports: "https://github.com/janestreet/textutils/issues"
-dev-repo: "git+https://github.com/janestreet/textutils.git"
-install: [[make "install"]]
-synopsis: "Text output utilities"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "textutils"]
+dev-repo: "git+https://github.com/janestreet/textutils.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/112.17/files/textutils-112.17.00.tar.gz"

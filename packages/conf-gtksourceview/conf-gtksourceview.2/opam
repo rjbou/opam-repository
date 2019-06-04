@@ -1,24 +1,28 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: "The gtksourceview programmers"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-homepage: "https://projects.gnome.org/gtksourceview/"
-license: "LGPL 2.1"
-build: [["pkg-config" "--short-errors" "--print-errors" "gtksourceview-2.0"]]
-depends: ["conf-pkg-config" {build}]
-depexts: [
-  ["gtksourceview2-dev"] {os-distribution = "alpine"}
-  ["gtksourceview2"] {os-distribution = "arch"}
-  ["epel-release" "gtksourceview2-devel"] {os-distribution = "centos"}
-  ["libgtksourceview2.0-dev"] {os-distribution = "debian"}
-  ["gtksourceview2-devel"] {os-distribution = "fedora"}
-  ["gtksourceview2"] {os = "freebsd"}
-  ["gtksourceview"] {os = "openbsd"}
-  ["gtksourceview2-devel"] {os-family = "suse"}
-  ["libgtksourceview2.0-dev"] {os-distribution = "ubuntu"}
-  ["gtksourceview" "libxml2"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "conf-gtksourceview"
+version: "2"
 synopsis: "Virtual package relying on a GtkSourceView system installation"
 description:
   "This package can only install if libgtksourceview2.0-dev is installed on the system."
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+authors: "The gtksourceview programmers"
+license: "LGPL 2.1"
+homepage: "https://projects.gnome.org/gtksourceview/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "--short-errors" "--print-errors" "gtksourceview-2.0"]
+depexts: [
+  ["epel-release" "gtksourceview2-devel"] {os-distribution = "centos"}
+  ["gtksourceview"] {os = "openbsd"}
+  ["gtksourceview" "libxml2"] {os = "macos" & os-distribution = "homebrew"}
+  ["gtksourceview2"] {os-distribution = "arch"}
+  ["gtksourceview2"] {os = "freebsd"}
+  ["gtksourceview2-dev"] {os-distribution = "alpine"}
+  ["gtksourceview2-devel"] {os-distribution = "fedora"}
+  ["gtksourceview2-devel"] {os-family = "suse"}
+  ["libgtksourceview2.0-dev"] {os-distribution = "debian"}
+  ["libgtksourceview2.0-dev"] {os-distribution = "ubuntu"}
+]

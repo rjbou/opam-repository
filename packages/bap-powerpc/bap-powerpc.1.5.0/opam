@@ -1,31 +1,30 @@
 opam-version: "2.0"
 name: "bap-powerpc"
 version: "1.5.0"
+synopsis: "BAP PowerPC lifter"
+description: "Provides support for PPC and PPC64 architectures."
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
+depends: [
+  "bap-abi" {= "1.5.0"}
+  "bap-c" {= "1.5.0"}
+  "bap-primus" {= "1.5.0"}
+  "ocaml" {>= "4.03" & < "4.06"}
+  "zarith"
+]
 build: [
   ["./configure" "--prefix=%{prefix}%" "--enable-powerpc"]
   [make]
 ]
-
-install: [[make "install"]]
-
-remove: [["ocamlfind" "remove" "bap-plugin-powerpc"]
-         ["bapbundle" "remove" "powerpc.plugin"]]
-
-depends: [
-  "ocaml" {>= "4.03" & < "4.06"}
-  "bap-abi" {= "1.5.0"}
-  "bap-c" {= "1.5.0"}
-  "bap-primus" {= "1.5.0"}
-  "zarith"
+install: [make "install"]
+remove: [
+  ["ocamlfind" "remove" "bap-plugin-powerpc"]
+  ["bapbundle" "remove" "powerpc.plugin"]
 ]
-synopsis: "BAP PowerPC lifter"
-description: "Provides support for PPC and PPC64 architectures."
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.5.0.tar.gz"
   checksum: "md5=9eed04fda6610dd4a8aa83948abfffc3"

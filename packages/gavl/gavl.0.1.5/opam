@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "gavl"
+version: "0.1.5"
+synopsis:
+  "Bindings for the gavl library which provides functions for converting images formats, colorspaces, etc."
 maintainer: "smimram@gmail.com"
+depends: ["ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "gavl"]]
-depends: ["ocaml" "ocamlfind"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "gavl"]
 depexts: [
   ["libgavl-dev"] {os-distribution = "debian"}
   ["libgavl-dev"] {os-distribution = "ubuntu"}
 ]
-install: [make "install"]
-synopsis:
-  "Bindings for the gavl library which provides functions for converting images formats, colorspaces, etc."
-flags: light-uninstall
 url {
   src:
     "http://downloads.sourceforge.net/project/savonet/ocaml-gavl/0.1.5/ocaml-gavl-0.1.5.tar.gz"

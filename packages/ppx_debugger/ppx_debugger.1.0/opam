@@ -1,28 +1,30 @@
 opam-version: "2.0"
-maintainer: "xvw <xavier.vdw@gmail.com>"
-authors: "xvw <xavier.vdw@gmail.com>"
-homepage: "https://github.com/xvw/ppx_debugger"
-bug-reports: "https://github.com/xvw/ppx_debugger/issues"
-license: "GPL3"
-dev-repo: "git+https://github.com/xvw/ppx_debugger.git"
-build: [
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "ppx_debugger"]
-depends: [
-  "ocaml" {>= "4.02.2" & < "4.03.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
+name: "ppx_debugger"
+version: "1.0"
 synopsis:
   "ppx_debugger is a small semi-interactive for debugging OCaml execution"
 description: """
 This syntactic extension provide some primitive for interactive debugging
 in OCaml. log, breakpoint and catch. See more information on
 https://github.com/xvw/ppx_debugger/README.md"""
+maintainer: "xvw <xavier.vdw@gmail.com>"
+authors: "xvw <xavier.vdw@gmail.com>"
+license: "GPL3"
+homepage: "https://github.com/xvw/ppx_debugger"
+bug-reports: "https://github.com/xvw/ppx_debugger/issues"
+depends: [
+  "ocaml" {>= "4.02.2" & < "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "ppx_debugger"]
+dev-repo: "git+https://github.com/xvw/ppx_debugger.git"
 url {
   src:
     "https://github.com/xvw/ppx_debugger/releases/download/v1.0/ppx_debugger.tar.gz"

@@ -1,36 +1,34 @@
 opam-version: "2.0"
-authors: ["Julia Lawall et. al."]
-homepage: "http://coccinelle.lip6.fr/"
+name: "coccinelle"
+version: "1.0.0-rc24"
+synopsis: "Coccinelle is a C source code matching and transformation engine."
+description: """
+Coccinelle provides the language SmPL (Semantic Patch Language) for specifying
+desired matches and transformations in C code."""
+authors: "Julia Lawall et. al."
 license: "GPL"
+homepage: "http://coccinelle.lip6.fr/"
+depends: [
+  "camlp4"
+  "conf-pkg-config"
+  "conf-python-2-7"
+  "conf-python-2-7-dev"
+  "menhir" {= "20140422"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "parmap"
+  "pcre" {<= "7.1.1"}
+]
 build: [
   ["./configure" "--enable-release" "--prefix" prefix]
   [make "clean"]
   [make "all.opt"]
 ]
-remove: [
-  [make "uninstall"]
-]
-depends: [
-  "ocaml"
-  "camlp4"
-  "menhir" {= "20140422"}
-  "ocamlfind"
-  "pcre" {<= "7.1.1"}
-  "conf-pkg-config"
-  "conf-python-2-7"
-  "conf-python-2-7-dev"
-  "parmap"
-  "ocamlbuild" {build}
-]
-patches: [
-  "opam.patch"
-]
-dev-repo: "git://github.com/coccinelle/coccinelle"
 install: [make "install"]
-synopsis: "Coccinelle is a C source code matching and transformation engine."
-description: """
-Coccinelle provides the language SmPL (Semantic Patch Language) for specifying
-desired matches and transformations in C code."""
+remove: [make "uninstall"]
+patches: "opam.patch"
+dev-repo: "git://github.com/coccinelle/coccinelle"
 extra-files: ["opam.patch" "md5=33cbcaad19968ea269e5c32877b99f98"]
 url {
   src:

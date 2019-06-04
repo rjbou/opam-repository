@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocamlfind"
-  "sexplib" {< "113.01.00"}
-  "lwt"
-  "cstruct" {>= "1.4.0"}
-  "io-page"
-  "ipaddr"
-  "mirage-types" {= "2.0.0"}
-]
+name: "mirage-types-lwt"
+version: "2.0.0"
 synopsis: "Lwt module type definitions for Mirage-compatible applications"
 description: """
 This is a virtual package that pulls in all the concrete
@@ -28,3 +15,15 @@ for several that are left abstract in `mirage-types`:
 - `type buffer = Cstruct.t`
 - `type macaddr = Macaddr.t`
 - `type ipv4addr = Ipaddr.V4.t`"""
+maintainer: "anil@recoil.org"
+tags: ["org:mirage" "org:xapi-project"]
+depends: [
+  "cstruct" {>= "1.4.0"}
+  "io-page"
+  "ipaddr"
+  "lwt"
+  "mirage-types" {= "2.0.0"}
+  "ocaml" {>= "4.00.0"}
+  "ocamlfind"
+  "sexplib" {< "113.01.00"}
+]

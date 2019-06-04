@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-homepage: "http://erratique.ch/software/otfm"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-doc: "http://erratique.ch/software/otfm/doc/Otfm"
-#dev-repo: "http://erratique.ch/repos/otfm.git"
-#bug-reports: "https://github.com/dbuenzli/otfm/issues"
-tags: [ "OpenType" "ttf" "font" "decoder" "graphics" "org:erratique" ]
-license: "BSD3"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
-  "uutf" {<= "0.9.4"}
-  "ocamlbuild" {build}
-]
-build: 
-[
-  [ "ocaml" "pkg/git.ml" ]
-  [ "ocaml" "pkg/build.ml" "native=true" # TODO fixme
-                           "native-dynlink=true" # TODO fixme
-                           ]
-]
+name: "otfm"
+version: "0.2.0"
 synopsis: "OpenType font decoder for OCaml"
 description: """
 Otfm is an in-memory decoder for the OpenType font data format. It
@@ -30,6 +11,22 @@ Otfm is made of a single module and depends on [Uutf][1]. It is distributed
 under the BSD3 license.
 
 [1]: http://erratique.ch/software/uutf"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD3"
+tags: ["OpenType" "decoder" "font" "graphics" "org:erratique" "ttf"]
+homepage: "http://erratique.ch/software/otfm"
+doc: "http://erratique.ch/software/otfm/doc/Otfm"
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "uutf" {<= "0.9.4"}
+]
+build: [
+  ["ocaml" "pkg/git.ml"]
+  ["ocaml" "pkg/build.ml" "native=true" "native-dynlink=true"]
+]
 url {
   src: "http://erratique.ch/software/otfm/releases/otfm-0.2.0.tbz"
   checksum: "md5=bdb84bb7e37f4ef6d2e74ecb8e0ef533"

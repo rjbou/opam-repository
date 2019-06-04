@@ -1,17 +1,14 @@
 opam-version: "2.0"
+name: "ppx_yojson"
+version: "0.1.0"
+synopsis: ""
+description: "PPX extension for Yojson literals and patterns"
 maintainer: "Nathan Rebours <nathan.p.rebours@gmail.com>"
-author: "Nathan Rebours <nathan.p.rebours@gmail.com>"
-homepage: "https://github.com/NathanReb/ppx_yojson"
-bug-reports: "https://github.com/NathanReb/ppx_yojson/issues"
+authors: "Nathan Rebours <nathan.p.rebours@gmail.com>"
 license: "BSD-2"
-dev-repo: "git+https://github.com/NathanReb/ppx_yojson.git"
+homepage: "https://github.com/NathanReb/ppx_yojson"
 doc: "https://nathanreb.github.io/ppx_yojson/doc"
-build: [
-  [ "dune" "build" "-p" name "-j" jobs ]
-]
-run-test: [
-  [ "dune" "runtest" "-p" name "-j" jobs ]
-]
+bug-reports: "https://github.com/NathanReb/ppx_yojson/issues"
 depends: [
   "dune" {build}
   "ocaml" {>= "4.04.2"}
@@ -19,10 +16,11 @@ depends: [
   "ppxlib" {>= "0.3.0" & < "0.9.0"}
   "yojson" {with-test}
 ]
-description: """
-PPX extension for Yojson literals and patterns
-"""
+build: ["dune" "build" "-p" name "-j" jobs]
+run-test: ["dune" "runtest" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/NathanReb/ppx_yojson.git"
 url {
- src: "https://github.com/NathanReb/ppx_yojson/releases/download/0.1.0/ppx_yojson-0.1.0.tbz"
+  src:
+    "https://github.com/NathanReb/ppx_yojson/releases/download/0.1.0/ppx_yojson-0.1.0.tbz"
   checksum: "md5=39c9a36ad76a6d5ff657b8b290fb39c4"
 }

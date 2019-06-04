@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "Frédéric Bour <frederic.bour@lakaban.net>"
-authors: ["Frédéric Bour <frederic.bour@lakaban.net>"]
-homepage: "https://github.com/let-def/sturgeon"
-doc: "https://let-def.github.io/sturgeon/doc"
-license: "ISC"
-dev-repo: "git+https://github.com/let-def/sturgeon.git"
-bug-reports: "https://github.com/let-def/sturgeon/issues"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "inuit"
-  "result"
-]
-build:
-[[ "ocaml" "pkg/pkg.ml" "build"
-           "--pinned" "%{pinned}%" ]]
+name: "sturgeon"
+version: "0.2"
 synopsis: "A toolkit for communicating with Emacs"
 description: """
 Sturgeon implements various tools for manipulating Emacs from OCaml:
@@ -26,6 +10,22 @@ Sturgeon implements various tools for manipulating Emacs from OCaml:
 - `Sturgeon_recipes_*` offers different "rendez-vous" points to connect to Emacs
 
 Sturgeon is distributed under the ISC license."""
+maintainer: "Frédéric Bour <frederic.bour@lakaban.net>"
+authors: "Frédéric Bour <frederic.bour@lakaban.net>"
+license: "ISC"
+homepage: "https://github.com/let-def/sturgeon"
+doc: "https://let-def.github.io/sturgeon/doc"
+bug-reports: "https://github.com/let-def/sturgeon/issues"
+depends: [
+  "inuit"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "result"
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/let-def/sturgeon.git"
 url {
   src:
     "https://github.com/let-def/sturgeon/releases/download/v0.2/sturgeon-0.2.tbz"

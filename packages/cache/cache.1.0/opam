@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "cache"
+version: "1.0"
+synopsis:
+  "Implements a caching service for storing arbitrary strings that can be located by string keys"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: ["Gerd Stolpmann"]
-homepage: "http://projects.camlcity.org/projects/cache.html"
+authors: "Gerd Stolpmann"
 license: "BSD-3-Clause"
+homepage: "http://projects.camlcity.org/projects/cache.html"
+depends: [
+  "ocaml" {< "4.02.0"}
+  "ocamlfind"
+  "ocamlnet" {>= "3.6.0" & < "4.0"}
+  "omake"
+]
+flags: light-uninstall
 build: [
   [make "all"]
   [make "opt"]
 ]
-remove: [["ocamlfind" "remove" "cache"]]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind"
-  "omake"
-  "ocamlnet" {>= "3.6.0" & < "4.0"}
-]
 install: [make "install"]
-synopsis:
-  "Implements a caching service for storing arbitrary strings that can be located by string keys"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "cache"]
 url {
   src: "http://download.camlcity.org/download/cache-1.0.tar.gz"
   checksum: "md5=32b50c1d835b96677acbb5efdd00bf6a"

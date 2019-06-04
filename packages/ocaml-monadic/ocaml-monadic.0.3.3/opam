@@ -1,10 +1,22 @@
 opam-version: "2.0"
+name: "ocaml-monadic"
+version: "0.3.3"
+synopsis: "OCaml monadic syntax extensions"
+description: """
+A simple PPX language extension to include monadic operations that
+blend nicely with OCaml syntax."""
 maintainer: "JHU PL Lab <pl.cs@jhu.edu>"
 authors: "JHU PL Lab <pl.cs@jhu.edu>"
+license: "BSD-3-clause"
 homepage: "http://github.com/zepalmer/ocaml-monadic"
 bug-reports: "https://github.com/zepalmer/ocaml-monadic/issues"
-license: "BSD-3-clause"
-dev-repo: "git+https://github.com/zepalmer/ocaml-monadic.git"
+depends: [
+  "oasis" {build & >= "0.4.7"}
+  "ocaml" {>= "4.02"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_tools"
+]
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
@@ -22,17 +34,7 @@ remove: [
   "%{etc}%/ocaml-monadic"
   "-uninstall"
 ]
-depends: [
-  "ocaml" {>= "4.02"}
-  "oasis" {build & >= "0.4.7"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "ppx_tools"
-]
-synopsis: "OCaml monadic syntax extensions"
-description: """
-A simple PPX language extension to include monadic operations that
-blend nicely with OCaml syntax."""
+dev-repo: "git+https://github.com/zepalmer/ocaml-monadic.git"
 url {
   src:
     "https://github.com/zepalmer/ocaml-monadic/archive/307ea8f294ae075714958cbc546b96a5fc8adfe0.zip"

@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer: "byvoid@byvoid.com"
-authors: ["BYVoid <byvoid@byvoid.com>"]
-homepage: "https://github.com/BYVoid/Batsh"
-license: "MIT"
-build: [
-  ["ocp-build" "init"]
-  ["ocp-build" "build" "batsh" "-njobs" "8"]
-]
-remove: [
-  ["ocp-build" "init"]
-  ["ocp-build" "uninstall"]
-]
-depends: [
-  "ocaml" {>= "4.00.1"}
-  "ocp-build" {= "1.99.8-beta"}
-  "camlp4" {build}
-  "core" {>= "109.47.00" & <= "113.00.00"}
-  "core_kernel" {>= "109.47.00" & <= "113.00.00"}
-  "dlist" {>= "0.0.3"}
-  "cmdliner" {>= "0.9.2"}
-]
-depopts: ["ounit"]
-dev-repo: "git://github.com/BYVoid/Batsh"
-install: ["ocp-build" "install" "batsh-lib" "batsh" "-install-lib" "%{lib}%"]
+name: "batsh"
+version: "0.0.6"
 synopsis:
   "A (C-like syntax) programming language that compiles to Bash and Windows Batch."
 description: """
@@ -39,6 +17,30 @@ Change log:
 * Fix comments win Windows Batch.
 * Add some built-in functions.
 * Fix build issues for ocp-build 1.99.8"""
+maintainer: "byvoid@byvoid.com"
+authors: "BYVoid <byvoid@byvoid.com>"
+license: "MIT"
+homepage: "https://github.com/BYVoid/Batsh"
+depends: [
+  "camlp4" {build}
+  "cmdliner" {>= "0.9.2"}
+  "core" {>= "109.47.00" & <= "113.00.00"}
+  "core_kernel" {>= "109.47.00" & <= "113.00.00"}
+  "dlist" {>= "0.0.3"}
+  "ocaml" {>= "4.00.1"}
+  "ocp-build" {= "1.99.8-beta"}
+]
+depopts: ["ounit"]
+build: [
+  ["ocp-build" "init"]
+  ["ocp-build" "build" "batsh" "-njobs" "8"]
+]
+install: ["ocp-build" "install" "batsh-lib" "batsh" "-install-lib" "%{lib}%"]
+remove: [
+  ["ocp-build" "init"]
+  ["ocp-build" "uninstall"]
+]
+dev-repo: "git://github.com/BYVoid/Batsh"
 url {
   src: "https://github.com/BYVoid/Batsh/archive/v0.0.6.tar.gz"
   checksum: "md5=aeb8a3a6b6c7c9de8b041dc9023b6a1a"

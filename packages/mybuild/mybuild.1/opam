@@ -1,25 +1,21 @@
 opam-version: "2.0"
+name: "mybuild"
+version: "1"
+synopsis: "Collection of ocamlbuild plugins"
 maintainer: "ygrek@autistici.org"
 authors: "ygrek <ygrek@autistici.org>"
 homepage: "https://github.com/ygrek/mybuild"
 bug-reports: "https://github.com/ygrek/mybuild/issues"
-dev-repo: "git://github.com/ygrek/mybuild.git"
-build: [
-  [make]
-]
-install: [
-  [make "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "mybuild"]
-]
 depends: [
   "ocaml"
-  "ocamlfind" {build}
   "ocamlbuild"
+  "ocamlfind" {build}
 ]
-synopsis: "Collection of ocamlbuild plugins"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "mybuild"]
+dev-repo: "git://github.com/ygrek/mybuild.git"
 url {
   src: "https://github.com/ygrek/mybuild/archive/v1.tar.gz"
   checksum: "md5=2b9f19cbe098ec74f49f18da66e6cabf"

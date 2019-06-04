@@ -1,10 +1,21 @@
 opam-version: "2.0"
+name: "eigen"
+version: "0.0.4"
+synopsis: "Owl's OCaml interface to Eigen3 C++ library"
+description:
+  "Eigen is a thin OCaml interface to Eigen3 C++ template library used in Owl to provide basic numerical support for both sparse and dense matrix operations."
 maintainer: "Liang Wang (ryanrhymes@gmail.com)"
-authors: [ "Liang Wang (ryanrhymes@gmail.com)" ]
+authors: "Liang Wang (ryanrhymes@gmail.com)"
 license: "MIT"
 homepage: "https://github.com/ryanrhymes/eigen"
-dev-repo: "git+https://github.com/ryanrhymes/eigen.git"
 bug-reports: "https://github.com/ryanrhymes/eigen/issues"
+depends: [
+  "ctypes" {>= "0.6.0"}
+  "oasis" {build & >= "0.4"}
+  "ocaml" {>= "4.02"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
@@ -16,19 +27,8 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocaml" "%{etc}%/eigen/_oasis_remove_.ml" "%{etc}%/eigen"]
-]
-depends: [
-  "ocaml" {>= "4.02"}
-  "ctypes" {>= "0.6.0"}
-  "oasis" {build & >= "0.4"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
-synopsis: "Owl's OCaml interface to Eigen3 C++ library"
-description:
-  "Eigen is a thin OCaml interface to Eigen3 C++ template library used in Owl to provide basic numerical support for both sparse and dense matrix operations."
+remove: ["ocaml" "%{etc}%/eigen/_oasis_remove_.ml" "%{etc}%/eigen"]
+dev-repo: "git+https://github.com/ryanrhymes/eigen.git"
 extra-files: ["eigen.install" "md5=0d1b822c897681cf54b3e1aed52dda99"]
 url {
   src: "https://github.com/ryanrhymes/eigen/archive/0.0.4.tar.gz"

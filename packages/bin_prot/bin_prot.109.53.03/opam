@@ -1,30 +1,30 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-homepage: "https://github.com/janestreet/bin_prot"
-license: "Apache-2.0"
-build: [
-  [make]
-]
-patches: ["fix-arm-double-field.diff"]
-remove: [["ocamlfind" "remove" "bin_prot"]]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.03"}
-  "camlp4"
-  "ocamlfind"
-  "type_conv" {>= "109.53.00" & <= "109.60.01"}
-  "ocamlbuild" {build}
-]
-bug-reports: "https://github.com/janestreet/bin_prot/issues"
-dev-repo: "git+https://github.com/janestreet/bin_prot.git"
-install: [[make "install"]]
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+name: "bin_prot"
+version: "109.53.03"
 synopsis: "A binary protocol generator"
 description: """
 Part of Jane Street’s Core library
 The Core suite of libraries is an industrial strength alternative to
 OCaml's standard library that was developed by Jane Street, the
 largest industrial user of OCaml."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/bin_prot"
+bug-reports: "https://github.com/janestreet/bin_prot/issues"
+depends: [
+  "camlp4"
+  "ocaml" {>= "4.00.0" & < "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "type_conv" {>= "109.53.00" & <= "109.60.01"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "bin_prot"]
+patches: "fix-arm-double-field.diff"
+dev-repo: "git+https://github.com/janestreet/bin_prot.git"
 extra-files: [
   "fix-arm-double-field.diff" "md5=6ab51f6ae53d8afb0881f98393c3283a"
 ]

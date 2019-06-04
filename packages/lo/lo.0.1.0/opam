@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "lo"
+version: "0.1.0"
+synopsis:
+  "Bindings for the lo library which provides functions for communicating with input controls using the OSC protocol"
 maintainer: "smimram@gmail.com"
+depends: ["ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "lo"]]
-depends: ["ocaml" "ocamlfind"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "lo"]
 depexts: [
   ["liblo-dev"] {os-distribution = "ubuntu"}
   ["liblo-dev"] {os-distribution = "debian"}
 ]
-install: [make "install"]
-synopsis:
-  "Bindings for the lo library which provides functions for communicating with input controls using the OSC protocol"
-flags: light-uninstall
 url {
   src:
     "http://downloads.sourceforge.net/project/savonet/ocaml-lo/0.1.0/ocaml-lo-0.1.0.tar.gz"

@@ -1,24 +1,24 @@
 opam-version: "2.0"
 name: "bap-microx"
 version: "1.2.0"
+synopsis: "A micro execution framework"
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
+depends: [
+  "bap-std" {= "1.2.0"}
+  "ocaml"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix=%{prefix}%" "--enable-microx"]
   [make]
 ]
-install: [[make "install"]]
-remove: [["ocamlfind" "remove" "bap-microx"]]
-depends: [
-  "ocaml"
-  "bap-std" {= "1.2.0"}
-]
-synopsis: "A micro execution framework"
-flags: light-uninstall
+install: [make "install"]
+remove: ["ocamlfind" "remove" "bap-microx"]
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.2.0.tar.gz"
   checksum: "md5=3692c341001760ae8c18d95dec157b78"

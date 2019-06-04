@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-authors: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-homepage: "https://github.com/OCamlPro/opam-user-setup"
-bug-reports: "https://github.com/OCamlPro/opam-user-setup/issues"
-license: "ISC"
-tags: "org:ocamlpro"
-dev-repo: "git+https://github.com/OCamlPro/opam-user-setup.git"
-build: [make]
-depends: [
-  "ocaml" {>= "3.12.1"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "cmdliner"
-  "re"
-]
-depopts: ["tuareg" "merlin" "ocp-indent" "ocp-index"]
-post-messages: [
-  "To setup or update your editors, run 'opam user-setup install'." {success}
-]
+name: "user-setup"
+version: "0.7"
 synopsis:
   "Helper for the configuration of editors for the use of OCaml tools"
 description: """
@@ -33,7 +16,25 @@ Opam-user-setup is designed to be suitable both to beginners not wanting to be
 bothered with configuration files, and to people who manage them carefully.
 
 It's customisable and reversible."""
+maintainer: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+authors: "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+license: "ISC"
+tags: "org:ocamlpro"
+homepage: "https://github.com/OCamlPro/opam-user-setup"
+bug-reports: "https://github.com/OCamlPro/opam-user-setup/issues"
+depends: [
+  "cmdliner"
+  "ocaml" {>= "3.12.1"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "re"
+]
+depopts: ["merlin" "ocp-indent" "ocp-index" "tuareg"]
 flags: plugin
+build: make
+post-messages:
+  "To setup or update your editors, run 'opam user-setup install'." {success}
+dev-repo: "git+https://github.com/OCamlPro/opam-user-setup.git"
 url {
   src: "https://github.com/OCamlPro/opam-user-setup/archive/0.7.tar.gz"
   checksum: "md5=ef0fedc240cd6b852ebc143d4115edaf"

@@ -1,16 +1,33 @@
 opam-version: "2.0"
+name: "archimedes"
+version: "0.4.18"
+synopsis: "Extensible 2D plotting library."
+description: """
+Archimedes is a high quality, platform-independent, extensible 2D
+plotting library. It provides dynamically loaded backends such as
+Graphics and Cairo."""
 maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-           "Pierre Hauweele <pierre@hauweele.net>"
-           "Fabian Pijcke <fabian.pijcke@gmail.com>"
-           "Noémie Meunier <noemie_6462@hotmail.com>"
-           "Bertrand Desmons <bibi-6@hotmail.fr>"
-           "Xavier Deschuyteneer <xavier.deschuyteneer@gmail.com>" ]
+authors: [
+  "Bertrand Desmons <bibi-6@hotmail.fr>"
+  "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
+  "Fabian Pijcke <fabian.pijcke@gmail.com>"
+  "Noémie Meunier <noemie_6462@hotmail.com>"
+  "Pierre Hauweele <pierre@hauweele.net>"
+  "Xavier Deschuyteneer <xavier.deschuyteneer@gmail.com>"
+]
 license: "LGPL-3.0 with OCaml linking exception"
 homepage: "http://forge.ocamlcore.org/projects/archimedes/"
-dev-repo:
-  "git+http://forge.ocamlcore.org/anonscm/git/archimedes/archimedes.git"
 bug-reports: "http://forge.ocamlcore.org/projects/archimedes/"
+depends: [
+  "base-bigarray"
+  "camlp4"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+depopts: [
+  "cairo2" {< "0.6"}
+]
 build: [
   [
     "ocaml"
@@ -35,24 +52,9 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocaml" "%{etc}%/archimedes/_oasis_remove_.ml" "%{etc}%/archimedes"]
-]
-depends: [
-  "ocaml"
-  "base-bigarray"
-  "camlp4"
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
-depopts: [
-  "cairo2" {< "0.6"}
-]
-synopsis: "Extensible 2D plotting library."
-description: """
-Archimedes is a high quality, platform-independent, extensible 2D
-plotting library. It provides dynamically loaded backends such as
-Graphics and Cairo."""
+remove: ["ocaml" "%{etc}%/archimedes/_oasis_remove_.ml" "%{etc}%/archimedes"]
+dev-repo:
+  "git+http://forge.ocamlcore.org/anonscm/git/archimedes/archimedes.git"
 url {
   src:
     "https://download.ocamlcore.org/archimedes/archimedes/0.4.18/archimedes-0.4.18.tar.gz"

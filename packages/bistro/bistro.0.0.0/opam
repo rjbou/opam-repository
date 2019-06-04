@@ -1,31 +1,6 @@
 opam-version: "2.0"
-maintainer: "Philippe Veber <philippe.veber@gmail.com>"
-authors: "Philippe Veber <philippe.veber@gmail.com>"
-homepage: "https://github.com/pveber/bistro/"
-dev-repo: "git+https://github.com/pveber/bistro.git"
-bug-reports: "https://github.com/pveber/bistro/issues"
-license: "GPL"
-build: [
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
-]
-install: [make "install"]
-remove: [
-  ["ocamlfind" "remove" "bistro"]
-  ["ocamlfind" "remove" "ppx_bistro"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "core" {< "v0.13"}
-  "dbm"
-  "lwt"
-  "oasis"
-  "ocamlnet"
-  "pvem"
-  "ppx_tools"
-  "sexplib" {< "113.24.00"}
-]
+name: "bistro"
+version: "0.0.0"
 synopsis: "A library to build and run distributed workflows"
 description: """
 bistro is an OCaml library to build and run computations represented
@@ -47,7 +22,34 @@ The library provides a datatype to represent scripts (including
 metadata and dependencies), an engine to run workflows and a standard
 library providing components for popular tools (although mostly
 related to computational biology and unix for now)."""
+maintainer: "Philippe Veber <philippe.veber@gmail.com>"
+authors: "Philippe Veber <philippe.veber@gmail.com>"
+license: "GPL"
+homepage: "https://github.com/pveber/bistro/"
+bug-reports: "https://github.com/pveber/bistro/issues"
+depends: [
+  "core" {< "v0.13"}
+  "dbm"
+  "lwt"
+  "oasis"
+  "ocaml"
+  "ocamlfind" {build}
+  "ocamlnet"
+  "ppx_tools"
+  "pvem"
+  "sexplib" {< "113.24.00"}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove: [
+  ["ocamlfind" "remove" "bistro"]
+  ["ocamlfind" "remove" "ppx_bistro"]
+]
+dev-repo: "git+https://github.com/pveber/bistro.git"
 url {
   src: "https://github.com/pveber/bistro/archive/v0.0.0.tar.gz"
   checksum: "md5=65500009ee598dee04788edbb224dca8"

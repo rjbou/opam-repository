@@ -1,54 +1,6 @@
 opam-version: "2.0"
 name: "sundialsml"
-maintainer: "tim@tbrk.org"
-authors: [
-    "Timothy Bourke <tim@tbrk.org>"
-    "Jun Inoue <Jun.Lambda@gmail.com>"
-    "Marc Pouzet <Marc.Pouzet@ens.fr>"
-]
-homepage: "http://inria-parkas.github.io/sundialsml/"
-bug-reports: "https://github.com/inria-parkas/sundialsml/issues"
-doc: "http://inria-parkas.github.io/sundialsml/"
-tags: [
-    "numerical"
-    "simulation"
-    "mathematics"
-    "science"
-]
-license: "BSD3"
-build: [
-  [
-    "./configure"
-    "--stubdir=%{stublibs}%/"
-    "--libdir=%{lib}%/"
-    "--docdir=%{doc}%/"
-  ]
-  [make "tests.opt.log"] {with-test}
-  [make "doc"] {with-doc}
-]
-install: [
-  [make "install-findlib"]
-  [make "install-doc"] {with-doc}
-]
-remove: [["ocamlfind" "remove" "sundialsml"]]
-depends: [
-  "ocaml" {>= "3.12.1"}
-  "base-bigarray"
-  "ocamlfind"
-]
-depopts: [
-    "mpi"
-]
-depexts: [
-  ["libsundials-serial-dev"] {os-distribution = "debian"}
-  ["libsundials-serial-dev"] {os-distribution = "ubuntu"}
-  ["lapack-devel" "sundials-devel"] {os-distribution = "fedora"}
-  ["epel-release" "lapack-devel" "sundials-devel"]
-    {os-distribution = "centos"}
-  ["homebrew/science/sundials"] {os = "macos" & os-distribution = "homebrew"}
-  ["sundials"] {os = "macos" & os-distribution = "macports"}
-]
-dev-repo: "git://github.com/inria-parkas/sundialsml"
+version: "2.7.0p0"
 synopsis:
   "Sundials/ML is an interface to the Sundials suite of numerical solvers."
 description: """
@@ -80,7 +32,49 @@ The OCaml documentation contains extensive cross-links to the original
 documentation. OCaml versions of the standard examples usually have an
 overhead of about 30% compared to the original C versions, and almost never
 more than 50%."""
+maintainer: "tim@tbrk.org"
+authors: [
+  "Jun Inoue <Jun.Lambda@gmail.com>"
+  "Marc Pouzet <Marc.Pouzet@ens.fr>"
+  "Timothy Bourke <tim@tbrk.org>"
+]
+license: "BSD3"
+tags: ["mathematics" "numerical" "science" "simulation"]
+homepage: "http://inria-parkas.github.io/sundialsml/"
+doc: "http://inria-parkas.github.io/sundialsml/"
+bug-reports: "https://github.com/inria-parkas/sundialsml/issues"
+depends: [
+  "base-bigarray"
+  "ocaml" {>= "3.12.1"}
+  "ocamlfind"
+]
+depopts: ["mpi"]
 flags: light-uninstall
+build: [
+  [
+    "./configure"
+    "--stubdir=%{stublibs}%/"
+    "--libdir=%{lib}%/"
+    "--docdir=%{doc}%/"
+  ]
+  [make "tests.opt.log"] {with-test}
+  [make "doc"] {with-doc}
+]
+install: [
+  [make "install-findlib"]
+  [make "install-doc"] {with-doc}
+]
+remove: ["ocamlfind" "remove" "sundialsml"]
+depexts: [
+  ["epel-release" "lapack-devel" "sundials-devel"]
+    {os-distribution = "centos"}
+  ["homebrew/science/sundials"] {os = "macos" & os-distribution = "homebrew"}
+  ["lapack-devel" "sundials-devel"] {os-distribution = "fedora"}
+  ["libsundials-serial-dev"] {os-distribution = "debian"}
+  ["libsundials-serial-dev"] {os-distribution = "ubuntu"}
+  ["sundials"] {os = "macos" & os-distribution = "macports"}
+]
+dev-repo: "git://github.com/inria-parkas/sundialsml"
 url {
   src: "https://github.com/inria-parkas/sundialsml/archive/v2.7.0p0.zip"
   checksum: "md5=bf22a8235c5ba25e4c3e5428ca876dbb"

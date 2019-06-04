@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "David Kaloper Meršinjak <david@numm.org>"
-authors: ["David Kaloper Meršinjak <david@numm.org>"]
-homepage: "https://github.com/pqwy/sendmsg"
-doc: "https://pqwy.github.io/sendmsg/doc"
-license: "ISC"
-dev-repo: "git+https://github.com/pqwy/sendmsg.git"
-bug-reports: "https://github.com/pqwy/sendmsg/issues"
-build: [
-  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"
-          "--with-lwt" "%{lwt:installed}%"
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "ocb-stubblr" {build}
-  "alcotest" {with-test}
-]
-depopts: [ "lwt" ]
-conflicts: [ "ocb-stubblr" {<"0.1.0"} ]
+name: "sendmsg"
+version: "0.0.2"
 synopsis: "π-calculus? In _my_ kernel?"
 description: """
 Higher-order sockets, oh my!
@@ -29,6 +10,34 @@ sendmsg is a straightforward OCaml binding to POSIX `sendmsg(3)` and `recvmsg(3)
 API. Provides scatter-gather IO and passing file descriptors as ancillary data.
 
 sendmsg is distributed under the ISC license."""
+maintainer: "David Kaloper Meršinjak <david@numm.org>"
+authors: "David Kaloper Meršinjak <david@numm.org>"
+license: "ISC"
+homepage: "https://github.com/pqwy/sendmsg"
+doc: "https://pqwy.github.io/sendmsg/doc"
+bug-reports: "https://github.com/pqwy/sendmsg/issues"
+depends: [
+  "alcotest" {with-test}
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ocb-stubblr" {build}
+  "topkg" {build}
+]
+depopts: ["lwt"]
+conflicts: [
+  "ocb-stubblr" {< "0.1.0"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--with-lwt"
+  "%{lwt:installed}%"
+]
+dev-repo: "git+https://github.com/pqwy/sendmsg.git"
 url {
   src:
     "https://github.com/pqwy/sendmsg/releases/download/v0.0.2/sendmsg-0.0.2.tbz"

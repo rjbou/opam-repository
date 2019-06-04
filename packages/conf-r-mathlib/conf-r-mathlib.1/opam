@@ -1,26 +1,30 @@
 opam-version: "2.0"
-maintainer: "Philippe Veber <philippe.veber@gmail.com>"
-homepage: "https://www.r-project.org/"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "GPL"
-build: [["pkg-config" "libRmath"]]
-depends: ["conf-pkg-config" {build}]
-depexts: [
-  ["r-mathlib"] {os-distribution = "debian"}
-  ["libRmath-devel"] {os-distribution = "mageia"}
-  ["r-mathlib"] {os-distribution = "ubuntu"}
-  ["libRmath-devel"] {os-distribution = "centos"}
-  ["libRmath-devel"] {os-distribution = "fedora"}
-  ["libRmath-devel"] {os-distribution = "rhel"}
-  ["R-mathlib"] {os-distribution = "alpine"}
-  ["R-base"] {os-family = "suse"}
-  ["libRmath"] {os = "freebsd"}
-  ["r"] {os = "macos" & os-distribution = "homebrew"}
-  ["r"] {os-distribution = "arch"}
-]
+name: "conf-r-mathlib"
+version: "1"
 synopsis:
   "Virtual package relying on a system installation of R Standalone Mathlib"
 description:
   "This package can only install if R Standalone Mathlib is installed on the system."
+maintainer: "Philippe Veber <philippe.veber@gmail.com>"
 authors: "https://www.r-project.org/contributors.html"
+license: "GPL"
+homepage: "https://www.r-project.org/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "libRmath"]
+depexts: [
+  ["R-base"] {os-family = "suse"}
+  ["R-mathlib"] {os-distribution = "alpine"}
+  ["libRmath"] {os = "freebsd"}
+  ["libRmath-devel"] {os-distribution = "mageia"}
+  ["libRmath-devel"] {os-distribution = "centos"}
+  ["libRmath-devel"] {os-distribution = "fedora"}
+  ["libRmath-devel"] {os-distribution = "rhel"}
+  ["r"] {os = "macos" & os-distribution = "homebrew"}
+  ["r"] {os-distribution = "arch"}
+  ["r-mathlib"] {os-distribution = "debian"}
+  ["r-mathlib"] {os-distribution = "ubuntu"}
+]

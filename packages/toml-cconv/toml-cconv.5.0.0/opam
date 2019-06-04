@@ -1,27 +1,29 @@
 opam-version: "2.0"
-maintainer: "support@toml.epimeros.org"
-authors: [
-  "Julien Sagot"
-  "Emmanuel Surleau"
-  "mackwic"
-  "Andrew Rudenko"
-  "orbifx"
-  "c-cube"
-]
-homepage: "http://mackwic.github.io/To.ml/"
-bug-reports: "https://github.com/mackwic/To.ml/issues"
-dev-repo: "git+https://github.com/mackwic/To.ml.git"
-build: ["dune" "build" "-p" name]
-license: "LGPL3"
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "dune" {build}
-  "toml"
-  "cconv"
-]
+name: "toml-cconv"
+version: "5.0.0"
 synopsis: "Interface between cconv and toml"
 description:
   "Allows to use TOML encoding/decoding with [cconv](https://github.com/c-cube/cconv)"
+maintainer: "support@toml.epimeros.org"
+authors: [
+  "Andrew Rudenko"
+  "Emmanuel Surleau"
+  "Julien Sagot"
+  "c-cube"
+  "mackwic"
+  "orbifx"
+]
+license: "LGPL3"
+homepage: "http://mackwic.github.io/To.ml/"
+bug-reports: "https://github.com/mackwic/To.ml/issues"
+depends: [
+  "cconv"
+  "dune" {build}
+  "ocaml" {>= "4.02.0"}
+  "toml"
+]
+build: ["dune" "build" "-p" name]
+dev-repo: "git+https://github.com/mackwic/To.ml.git"
 url {
   src: "https://github.com/ocaml-toml/to.ml/archive/v5.0.0.tar.gz"
   checksum: "md5=e68d21fdbb6b255909305f8707a54951"

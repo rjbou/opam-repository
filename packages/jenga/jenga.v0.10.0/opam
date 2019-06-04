@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/jenga"
-bug-reports: "https://github.com/janestreet/jenga/issues"
-dev-repo: "git+https://github.com/janestreet/jenga.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "async" {>= "v0.10" & < "v0.11"}
-  "async_inotify" {>= "v0.10" & < "v0.11"}
-  "command_rpc" {>= "v0.10" & < "v0.11"}
-  "core" {>= "v0.10" & < "v0.11"}
-  "fieldslib" {>= "v0.10" & < "v0.11"}
-  "ocaml_plugin" {>= "v0.10" & < "v0.11"}
-  "ppx_driver" {>= "v0.10" & < "v0.11"}
-  "ppx_jane" {>= "v0.10" & < "v0.11"}
-  "sexplib" {>= "v0.10" & < "v0.11"}
-  "jbuilder" {build & >= "1.0+beta12"}
-  "ocaml-migrate-parsetree" {>= "0.4"}
-]
+name: "jenga"
+version: "v0.10.0"
 synopsis: "Industrial strength, full-featured build system"
 description: """
 Jenga is an executable and library for building build systems. It is
@@ -46,6 +25,27 @@ dependency free build system that takes the hassle out of OCaml
 development. Hopefully soon, there will be a bridge between jbuilder
 and jenga, allowing jbuilder projects to build with jenga out of the
 box."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/jenga"
+bug-reports: "https://github.com/janestreet/jenga/issues"
+depends: [
+  "async" {>= "v0.10" & < "v0.11"}
+  "async_inotify" {>= "v0.10" & < "v0.11"}
+  "command_rpc" {>= "v0.10" & < "v0.11"}
+  "core" {>= "v0.10" & < "v0.11"}
+  "fieldslib" {>= "v0.10" & < "v0.11"}
+  "jbuilder" {build & >= "1.0+beta12"}
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "0.4"}
+  "ocaml_plugin" {>= "v0.10" & < "v0.11"}
+  "ppx_driver" {>= "v0.10" & < "v0.11"}
+  "ppx_jane" {>= "v0.10" & < "v0.11"}
+  "sexplib" {>= "v0.10" & < "v0.11"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/jenga.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.10/files/jenga-v0.10.0.tar.gz"

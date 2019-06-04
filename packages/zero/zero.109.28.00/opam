@@ -1,14 +1,16 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Capital LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/zero"
-license: "Apache-2.0"
-bug-reports: "https://github.com/janestreet/zero/issues"
-dev-repo: "git+https://github.com/janestreet/zero.git"
+name: "zero"
+version: "109.28.00"
 synopsis: "Deprecated, merged into core_kernel"
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Capital LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/zero"
+bug-reports: "https://github.com/janestreet/zero/issues"
 depends: [
   "ocaml" {>= "4.00.0" & < "4.03"}
 ]
+dev-repo: "git+https://github.com/janestreet/zero.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.28.00/individual/zero-109.28.00.tar.gz"

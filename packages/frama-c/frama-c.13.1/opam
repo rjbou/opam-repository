@@ -1,67 +1,6 @@
 opam-version: "2.0"
 name: "frama-c"
 version: "13.1"
-maintainer: "francois.bobot@cea.fr"
-authors: [
-  "Patrick Baudin"
-  "François Bobot"
-  "Richard Bonichon"
-  "David Bühler"
-  "Loïc Correnson"
-  "Julien Crétin"
-  "Pascal Cuoq"
-  "Zaynah Dargaye"
-  "Jean-Christophe Filliâtre"
-  "Philippe Herrmann"
-  "Florent Kirchner"
-  "Matthieu Lemerre"
-  "David Maison"
-  "Claude Marché"
-  "André Maroneze"
-  "Benjamin Monate"
-  "Yannick Moy"
-  "Anne Pacalet"
-  "Valentin Perrelle"
-  "Guillaume Petiot"
-  "Virgile Prevosto"
-  "Armand Puccetti"
-  "Muriel Roger"
-  "Julien Signoles"
-  "Boris Yakobowski"
-]
-homepage: "http://frama-c.com/"
-license: "GNU Lesser General Public License version 2.1"
-dev-repo: "git+https://github.com/Frama-C/Frama-C-snapshot.git"
-doc: ["http://frama-c.com/download/user-manual-Aluminium-20160501.pdf"]
-bug-reports: "https://bts.frama-c.com/"
-tags: [
-  "deductive"
-  "program verification"
-  "formal specification"
-  "automated theorem prover"
-  "interactive theorem prover"
-  "C"
-  "plugins"
-  "abstract interpretation"
-  "slicing"
-  "weakest precondition"
-  "ACSL"
-  "dataflow analysis"
-]
-
-depends: [
-  "ocaml" {>= "4.00.1" & != "4.02.0" & != "4.02.2"}
-  "frama-c-base" {= "13.1"}
-  "zarith"
-  "lablgtk" {>= "2.18.2"}
-  "conf-gtksourceview"
-  "conf-gnomecanvas"
-  "alt-ergo"
-  "altgr-ergo"
-]
-messages: [
-   "Alt-Ergo Graphical Interface can be used by the WP plug-in" { !altgr-ergo:installed }
-]
 synopsis:
   "Platform dedicated to the analysis of source code written in C. Aluminium version."
 description: """
@@ -79,3 +18,63 @@ These plug-ins communicate between each other via the Frama-C API
 and via ACSL (ANSI/ISO C Specification Language) properties.
 
 This virtual package forces the installation of frama-C with its IDE."""
+maintainer: "francois.bobot@cea.fr"
+authors: [
+  "André Maroneze"
+  "Anne Pacalet"
+  "Armand Puccetti"
+  "Benjamin Monate"
+  "Boris Yakobowski"
+  "Claude Marché"
+  "David Bühler"
+  "David Maison"
+  "Florent Kirchner"
+  "François Bobot"
+  "Guillaume Petiot"
+  "Jean-Christophe Filliâtre"
+  "Julien Crétin"
+  "Julien Signoles"
+  "Loïc Correnson"
+  "Matthieu Lemerre"
+  "Muriel Roger"
+  "Pascal Cuoq"
+  "Patrick Baudin"
+  "Philippe Herrmann"
+  "Richard Bonichon"
+  "Valentin Perrelle"
+  "Virgile Prevosto"
+  "Yannick Moy"
+  "Zaynah Dargaye"
+]
+license: "GNU Lesser General Public License version 2.1"
+tags: [
+  "ACSL"
+  "C"
+  "abstract interpretation"
+  "automated theorem prover"
+  "dataflow analysis"
+  "deductive"
+  "formal specification"
+  "interactive theorem prover"
+  "plugins"
+  "program verification"
+  "slicing"
+  "weakest precondition"
+]
+homepage: "http://frama-c.com/"
+doc: "http://frama-c.com/download/user-manual-Aluminium-20160501.pdf"
+bug-reports: "https://bts.frama-c.com/"
+depends: [
+  "alt-ergo"
+  "altgr-ergo"
+  "conf-gnomecanvas"
+  "conf-gtksourceview"
+  "frama-c-base" {= "13.1"}
+  "lablgtk" {>= "2.18.2"}
+  "ocaml" {>= "4.00.1" & != "4.02.0" & != "4.02.2"}
+  "zarith"
+]
+messages:
+  "Alt-Ergo Graphical Interface can be used by the WP plug-in"
+    {!altgr-ergo:installed}
+dev-repo: "git+https://github.com/Frama-C/Frama-C-snapshot.git"

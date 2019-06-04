@@ -1,18 +1,6 @@
 opam-version: "2.0"
-maintainer: "Emmanuel PINEAU <epineau49.dev@gmail.com>"
-homepage: "https://github.com/Emmanuel-PLF/facile"
-authors: [ "ENAC <facile@recherche.enac.fr>" ]
-bug-reports: "https://github.com/Emmanuel-PLF/facile/issues"
-dev-repo: "git+https://github.com/Emmanuel-PLF/facile.git"
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-]
+name: "facile"
+version: "1.1.4"
 synopsis: "A Functional Constraint Library implemented in Objective Caml."
 description: """
 FaCiLe is a constraint programming library on integer and integer set finite
@@ -62,6 +50,20 @@ BUG REPORTS AND USER FEEDBACK:
 Send bug reports by E-mail to:
 
         facile@recherche.enac.fr"""
+maintainer: "Emmanuel PINEAU <epineau49.dev@gmail.com>"
+authors: "ENAC <facile@recherche.enac.fr>"
+homepage: "https://github.com/Emmanuel-PLF/facile"
+bug-reports: "https://github.com/Emmanuel-PLF/facile/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml" {>= "4.03.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/Emmanuel-PLF/facile.git"
 url {
   src:
     "https://github.com/Emmanuel-PLF/facile/releases/download/1.1.4/facile-1.1.4.tbz"

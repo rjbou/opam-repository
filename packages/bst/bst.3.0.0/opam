@@ -1,15 +1,6 @@
 opam-version: "2.0"
-maintainer: "unixjunkie@sdf.org"
-authors: ["Francois BERENGER"]
-homepage: "https://github.com/UnixJunkie/bisec-tree"
-bug-reports: "https://github.com/UnixJunkie/bisec-tree/issues"
-dev-repo: "git+https://github.com/UnixJunkie/bisec-tree.git"
-license: "BSD-3"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml"
-  "jbuilder" {build}
-]
+name: "bst"
+version: "3.0.0"
 synopsis: "Bisector tree implementation in OCaml."
 description: """
 A bisector tree allows to do fast but exact nearest neighbor searches
@@ -21,6 +12,17 @@ Cf. this article for details:
 "A Data Structure and an Algorithm for the Nearest Point Problem";
 Iraj Kalaranti and Gerard McDonald.
 ieeexplore.ieee.org/iel5/32/35936/01703102.pdf"""
+maintainer: "unixjunkie@sdf.org"
+authors: "Francois BERENGER"
+license: "BSD-3"
+homepage: "https://github.com/UnixJunkie/bisec-tree"
+bug-reports: "https://github.com/UnixJunkie/bisec-tree/issues"
+depends: [
+  "jbuilder" {build}
+  "ocaml"
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/UnixJunkie/bisec-tree.git"
 url {
   src: "https://github.com/UnixJunkie/bisec-tree/archive/v3.0.0.tar.gz"
   checksum: "md5=5b0caca38e7fd24170efcfda50362b7d"

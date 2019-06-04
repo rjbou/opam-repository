@@ -1,24 +1,24 @@
 opam-version: "2.0"
+name: "conf-glpk"
+version: "1"
+synopsis: "Virtual package for GLPK (GNU Linear Programming Kit)"
+description: """
+This package relies on GLPK being installed on the system. It requires static
+libraries to be available."""
 maintainer: "louis.gesbert@ocamlpro.com"
-homepage: "https://www.gnu.org/software/glpk/"
-bug-reports: "mailto:bug-glpk@gnu.org"
 authors: ["Andrew Makhorin" "GNU"]
 license: "GPL-v3"
-build: [
-  ["cc" "-c" "-l:libglpk.a"]
-]
+homepage: "https://www.gnu.org/software/glpk/"
+bug-reports: "mailto:bug-glpk@gnu.org"
+flags: conf
+build: ["cc" "-c" "-l:libglpk.a"]
 depexts: [
-  ["libglpk-dev"] {os-distribution = "debian"}
-  ["libglpk-dev"] {os-distribution = "ubuntu"}
   ["glpk"] {os-distribution = "fedora"}
   ["glpk"] {os-distribution = "centos"}
   ["glpk"] {os-distribution = "rhel"}
   ["glpk"] {os-family = "suse"}
   ["glpk"] {os-distribution = "arch"}
   ["glpk"] {os-distribution = "homebrew"}
+  ["libglpk-dev"] {os-distribution = "debian"}
+  ["libglpk-dev"] {os-distribution = "ubuntu"}
 ]
-synopsis: "Virtual package for GLPK (GNU Linear Programming Kit)"
-description: """
-This package relies on GLPK being installed on the system. It requires static
-libraries to be available."""
-flags: conf

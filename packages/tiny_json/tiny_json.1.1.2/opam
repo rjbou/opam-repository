@@ -1,28 +1,29 @@
 opam-version: "2.0"
+name: "tiny_json"
+version: "1.1.2"
+synopsis: "A small Json library from OCAMLTTER"
+description:
+  "This is a small Json printer/parser library extracted Yoshihiro IMAI's OCAMLTTER twitter client."
 maintainer: "jun.furuse@gmail.com"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-build" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
+authors: "Jun Furuse"
+homepage: "https://camlspotter@bitbucket.org/camlspotter/tiny_json"
+bug-reports:
+  "https://bitbucket.org/camlspotter/tiny_json/issues?status=new&status=open"
 depends: [
   "ocaml" {>= "4.0.0" & < "4.6.0"}
   "ocamlfind" {build}
   "omake" {build & < "0.10"}
 ]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
 ]
-authors: "Jun Furuse"
-homepage: "https://camlspotter@bitbucket.org/camlspotter/tiny_json"
-bug-reports: "https://bitbucket.org/camlspotter/tiny_json/issues?status=new&status=open"
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
 dev-repo: "hg+https://bitbucket.org/camlspotter/tiny_json"
-synopsis: "A small Json library from OCAMLTTER"
-description:
-  "This is a small Json printer/parser library extracted Yoshihiro IMAI's OCAMLTTER twitter client."
 url {
   src: "https://bitbucket.org/camlspotter/tiny_json/get/1.1.2.tar.gz"
   checksum: "md5=85de5705bb6bda5d5f35267347b3799e"

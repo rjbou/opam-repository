@@ -1,28 +1,30 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-build: make
-remove: [["ocamlfind" "remove" "core"]]
-depends: [
-  "ocaml" {< "4.00.1"}
-  "camlp4"
-  "ocamlfind"
-  "bin_prot" {= "108.00.02"}
-  "fieldslib" {= "108.00.02"}
-  "pa_ounit" {= "108.00.02"}
-  "pipebang" {= "108.00.02"}
-  "sexplib" {= "108.00.02"}
-  "variantslib" {= "108.00.02"}
-  "res"
-  "ounit"
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "core"
+version: "108.00.02"
 synopsis: "Industrial strength alternative to OCaml's standard library"
 description: """
 The Core suite of libraries is an industrial strength alternative to
 OCaml's standard library that was developed by Jane Street, the
 largest industrial user of OCaml."""
+maintainer: "opensource@janestreet.com"
+depends: [
+  "bin_prot" {= "108.00.02"}
+  "camlp4"
+  "fieldslib" {= "108.00.02"}
+  "ocaml" {< "4.00.1"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ounit"
+  "pa_ounit" {= "108.00.02"}
+  "pipebang" {= "108.00.02"}
+  "res"
+  "sexplib" {= "108.00.02"}
+  "variantslib" {= "108.00.02"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "core"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/108.00.02/individual/core-108.00.02.tar.gz"

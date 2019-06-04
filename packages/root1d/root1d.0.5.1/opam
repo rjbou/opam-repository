@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-           "Edgar Friendly <thelema314@gmail.com>" ]
-tags: ["scientfic" "root finding"]
-license: "ISC"
-homepage: "https://github.com/Chris00/root1d"
-dev-repo: "git+https://github.com/Chris00/root1d.git"
-bug-reports: "https://github.com/Chris00/root1d/issues"
-doc: "https://chris00.github.io/root1d/doc/"
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "dune" {build}
-  "benchmark" {with-test}
-]
+name: "root1d"
+version: "0.5.1"
 synopsis: "Find roots of 1D functions"
 description: """
 The module `Root1D` provides a collection of functions to seek roots
@@ -44,6 +27,27 @@ Documentation
 
 See the [signature of `Root1D`](src/Root1D.mli).  It can also be
 consulted rendered to [HTML](https://chris00.github.io/root1d/doc/)."""
+maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
+authors: [
+  "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
+  "Edgar Friendly <thelema314@gmail.com>"
+]
+license: "ISC"
+tags: ["root finding" "scientfic"]
+homepage: "https://github.com/Chris00/root1d"
+doc: "https://chris00.github.io/root1d/doc/"
+bug-reports: "https://github.com/Chris00/root1d/issues"
+depends: [
+  "benchmark" {with-test}
+  "dune" {build}
+  "ocaml" {>= "4.02.0"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/Chris00/root1d.git"
 url {
   src:
     "https://github.com/Chris00/root1d/releases/download/0.5.1/root1d-0.5.1.tbz"

@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "email_message"
+version: "109.42.alpha1"
+synopsis: "E-mail message parser"
 maintainer: "opensource@janestreet.com"
-build: make
-remove: [["ocamlfind" "remove" "email_message"]]
 depends: [
-  "ocaml"
-  "camlp4"
   "async" {>= "109.42.00" & < "112.18.00"}
+  "camlp4"
   "core" {>= "109.42.00" & < "112.18.00"}
   "core_extended" {>= "109.42.00" & < "112.18.00"}
-  "re2" {>= "109.32.00" & < "112.07.00"}
-  "pa_ounit" {>= "109.36.00" & < "112.18.00"}
-  "sexplib" {>= "109.20.00" & < "112.18.00"}
   "fieldslib" {>= "109.20.00" & < "109.21.00"}
+  "ocaml"
   "ocamlbuild" {build}
+  "pa_ounit" {>= "109.36.00" & < "112.18.00"}
+  "re2" {>= "109.32.00" & < "112.07.00"}
+  "sexplib" {>= "109.20.00" & < "112.18.00"}
 ]
-dev-repo: "git://github.com/janestreet-alpha/email_message"
-install: [make "install"]
-synopsis: "E-mail message parser"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "email_message"]
+dev-repo: "git://github.com/janestreet-alpha/email_message"
 url {
   src:
     "https://github.com/janestreet/email_message/archive/109.42.alpha1.tar.gz"

@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anders Fugmann <anders@fugmann.net>"
-authors: "Anders Fugmann"
-homepage: "https://github.com/andersfugmann/ppx-deriving-protocol"
-dev-repo: "git+https://github.com/andersfugmann/ppx-deriving-protocol"
-bug-reports: "https://github.com/andersfugmann/ppx-deriving-protocol/issues"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
+name: "ppx_protocol_conv"
 version: "1.0.0"
-depends: [
-  "ocaml" {>= "4.04"}
-  "yojson" {< "1.6.0"}
-  "xml-light"
-  "msgpck"
-  "base" {< "v0.11"}
-  "ppx_type_conv"
-  "ppx_driver" {>= "v0.10.1"}
-  "ppx_core"
-  "jbuilder" {build}
-  "ppx_metaquot" {build}
-]
 synopsis:
   "Serialization and de-serialization of ocaml types to/from json, msgpack and xml_light."
 description: """
@@ -34,6 +14,27 @@ and deserialization:
  * json (Yojson.Safe.json)
  * xml_light (Xml.xml)
  * msgpack (Msgpck.t)"""
+maintainer: "Anders Fugmann <anders@fugmann.net>"
+authors: "Anders Fugmann"
+homepage: "https://github.com/andersfugmann/ppx-deriving-protocol"
+bug-reports: "https://github.com/andersfugmann/ppx-deriving-protocol/issues"
+depends: [
+  "base" {< "v0.11"}
+  "jbuilder" {build}
+  "msgpck"
+  "ocaml" {>= "4.04"}
+  "ppx_core"
+  "ppx_driver" {>= "v0.10.1"}
+  "ppx_metaquot" {build}
+  "ppx_type_conv"
+  "xml-light"
+  "yojson" {< "1.6.0"}
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/andersfugmann/ppx-deriving-protocol"
 url {
   src:
     "https://github.com/andersfugmann/ppx_protocol_conv/archive/1.0.0.tar.gz"

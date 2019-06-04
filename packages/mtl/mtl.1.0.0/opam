@@ -1,27 +1,25 @@
 opam-version: "2.0"
+name: "mtl"
+version: "1.0.0"
+synopsis: "A Monad Transformers Library for OCaml"
+description:
+  "Based on the original work at: http://lambda.jimpryor.net/monad_library/"
 maintainer: "rudi.grinberg@gmail.com"
-authors: ["Rudi Grinberg"]
+authors: "Rudi Grinberg"
 license: "MIT"
-
+depends: [
+  "obuild"
+  "ocaml" {>= "4.01.0"}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   [make "configure"]
   [make "build"]
 ]
-remove: [
-  ["ocamlfind" "remove" "mtl"]
-]
-
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
-  "obuild"
-]
-dev-repo: "git://github.com/rgrinberg/ocaml-mtl"
 install: [make "install"]
-synopsis: "A Monad Transformers Library for OCaml"
-description:
-  "Based on the original work at: http://lambda.jimpryor.net/monad_library/"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "mtl"]
+dev-repo: "git://github.com/rgrinberg/ocaml-mtl"
 url {
   src: "https://github.com/rgrinberg/ocaml-mtl/archive/v1.0.0.tar.gz"
   checksum: "md5=705ec4ca36ed5ab8f4bde4d8f8537f7d"

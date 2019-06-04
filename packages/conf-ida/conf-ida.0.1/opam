@@ -1,28 +1,24 @@
 opam-version: "2.0"
 name: "conf-ida"
 version: "0.1"
-maintainer: "Ivan Gotovchits <ivg@ieee.org>"
-authors: "BAP Team"
-homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
-bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
-build: [
-  ["ocaml" "find-ida.ml"]
-]
-depends: [
-   "ocaml"
-   "base-unix"
-   "conf-which" {build}
-]
-substs: [ "find-ida.ml" ]
-flags: [ conf ]
-
 synopsis: "Checks that IDA Pro is installed"
 description: """
 A path to ida can be hinted by setting opam config variable:
 $: opam config set ida-path <path-to-ida>
 
 Also can be hinted with IDA_PATH environment variable, e.g.,
-$: IDA_PATH=<path-to-ida> opam install conf-ida
-"""
+$: IDA_PATH=<path-to-ida> opam install conf-ida"""
+maintainer: "Ivan Gotovchits <ivg@ieee.org>"
+authors: "BAP Team"
+license: "MIT"
+homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
+bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
+depends: [
+  "base-unix"
+  "conf-which" {build}
+  "ocaml"
+]
+flags: conf
+build: ["ocaml" "find-ida.ml"]
+substs: "find-ida.ml"
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"

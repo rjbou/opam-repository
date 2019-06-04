@@ -1,22 +1,6 @@
 opam-version: "2.0"
 name: "lambdasoup"
 version: "0.5.1"
-maintainer: "Anton Bachin <antonbachin@yahoo.com>"
-authors: "Anton Bachin <antonbachin@yahoo.com>"
-homepage: "https://github.com/aantron/lambda-soup"
-bug-reports: "https://github.com/aantron/lambda-soup/issues"
-dev-repo: "git+https://github.com/aantron/lambda-soup.git"
-license: "BSD"
-build: [
-  [make "build"]
-]
-install: [make "ocamlfind-install"]
-remove: ["ocamlfind" "remove" "lambdasoup"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
 synopsis: "Easy functional HTML scraping and manipulation with CSS selectors"
 description: """
 Lambda Soup is an HTML scraping library inspired by Python's Beautiful Soup. It
@@ -29,7 +13,21 @@ scripts. Lambda Soup rewrites its own ocamldoc page this way.
 
 A major goal of Lambda Soup is to be easy to use, including in interactive
 sessions, and to have a minimal learning curve. It is a very simple library."""
+maintainer: "Anton Bachin <antonbachin@yahoo.com>"
+authors: "Anton Bachin <antonbachin@yahoo.com>"
+license: "BSD"
+homepage: "https://github.com/aantron/lambda-soup"
+bug-reports: "https://github.com/aantron/lambda-soup/issues"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [make "build"]
+install: [make "ocamlfind-install"]
+remove: ["ocamlfind" "remove" "lambdasoup"]
+dev-repo: "git+https://github.com/aantron/lambda-soup.git"
 url {
   src: "https://github.com/aantron/lambda-soup/archive/0.5.1.tar.gz"
   checksum: "md5=2cec1e6325c48f23f3a952c6a55876e8"

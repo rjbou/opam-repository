@@ -1,28 +1,6 @@
 opam-version: "2.0"
 name: "elpi"
-maintainer: "Enrico Tassi <enrico.tassi@inria.fr>"
-authors: [ "Claudio Sacerdoti Coen" "Enrico Tassi" ]
-license: "LGPL 2.1+"
-homepage: "https://github.com/LPCIC/elpi"
-doc: "https://github.com/LPCIC/elpi"
-dev-repo: "git+https://github.com/LPCIC/elpi.git"
-bug-reports: "https://github.com/LPCIC/elpi/issues"
-
-build: [ [ make ] [ make "byte" ] ]
-install: [ 
-	[ make "install" ]
-	[ make "install-bin" "BIN=%{bin}%" ]
-]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "camlp5"
-  "ppx_tools_versioned"
-  "ppx_deriving"
-  "ocaml-migrate-parsetree"
-  "re" {>= "1.7.2"}
-]
+version: "1.2.0"
 synopsis: "ELPI - Embeddable λProlog Interpreter"
 description: """
 ELPI implements a variant of λProlog enriched with Constraint Handling Rules,
@@ -72,7 +50,31 @@ The ELPI programming language has the following features:
   "compilation" time by accumulating files.
 
 ELPI is free software released under the terms of LGPL 2.1 or above."""
+maintainer: "Enrico Tassi <enrico.tassi@inria.fr>"
+authors: ["Claudio Sacerdoti Coen" "Enrico Tassi"]
+license: "LGPL 2.1+"
+homepage: "https://github.com/LPCIC/elpi"
+doc: "https://github.com/LPCIC/elpi"
+bug-reports: "https://github.com/LPCIC/elpi/issues"
+depends: [
+  "camlp5"
+  "ocaml" {>= "4.03.0"}
+  "ocaml-migrate-parsetree"
+  "ocamlfind" {build}
+  "ppx_deriving"
+  "ppx_tools_versioned"
+  "re" {>= "1.7.2"}
+]
+build: [
+  [make]
+  [make "byte"]
+]
+install: [
+  [make "install"]
+  [make "install-bin" "BIN=%{bin}%"]
+]
+dev-repo: "git+https://github.com/LPCIC/elpi.git"
 url {
   src: "https://github.com/LPCIC/elpi/archive/v1.2.0.tar.gz"
-  checksum: "b55fc75513bdbd3ba097ee480e30d0b9"
+  checksum: "md5=b55fc75513bdbd3ba097ee480e30d0b9"
 }

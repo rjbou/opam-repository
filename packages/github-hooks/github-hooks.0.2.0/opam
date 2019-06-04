@@ -1,36 +1,6 @@
 opam-version: "2.0"
-maintainer: "sheets@alum.mit.edu"
-authors: [
-  "David Sheets"
-  "Thomas Gazagnaire"
-]
-homepage: "https://github.com/dsheets/ocaml-github-hooks"
-bug-reports: "https://github.com/dsheets/ocaml-github-hooks/issues"
-dev-repo: "git+https://github.com/dsheets/ocaml-github-hooks.git"
-doc: "https://dsheets.github.io/ocaml-github-hooks/"
-
-tags: [
-  "git"
-  "github"
-]
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "fmt"
-  "logs"
-  "lwt" {< "4.0.0"}
-  "cohttp-lwt" {>= "0.99.0" & < "1.0.0"}
-  "github" {>= "3.0.1"}
-  "nocrypto"
-  "cstruct"
-  "hex"
-]
+name: "github-hooks"
+version: "0.2.0"
 synopsis: "GitHub API web hook listener library"
 description: """
 Library to create GitHub webhook server.
@@ -67,6 +37,29 @@ repository `test-github-hooks` in the process of running. If the tests
 fail, you may have to remove the cloned repository called
 `test-github-hooks` and the GitHub repository `[GitHub token
 username]/test-github-hooks`."""
+maintainer: "sheets@alum.mit.edu"
+authors: ["David Sheets" "Thomas Gazagnaire"]
+tags: ["git" "github"]
+homepage: "https://github.com/dsheets/ocaml-github-hooks"
+doc: "https://dsheets.github.io/ocaml-github-hooks/"
+bug-reports: "https://github.com/dsheets/ocaml-github-hooks/issues"
+depends: [
+  "cohttp-lwt" {>= "0.99.0" & < "1.0.0"}
+  "cstruct"
+  "fmt"
+  "github" {>= "3.0.1"}
+  "hex"
+  "jbuilder" {build & >= "1.0+beta9"}
+  "logs"
+  "lwt" {< "4.0.0"}
+  "nocrypto"
+  "ocaml" {>= "4.02.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/dsheets/ocaml-github-hooks.git"
 url {
   src:
     "https://github.com/dsheets/ocaml-github-hooks/releases/download/0.2.0/github-hooks-0.2.0.tbz"

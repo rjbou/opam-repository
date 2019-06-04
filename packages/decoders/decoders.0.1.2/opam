@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "decoders"
+version: "0.1.2"
 synopsis: "Elm-inspired decoders for Ocaml"
 description: """
 A combinator library for "decoding" JSON-like values into your own Ocaml types, inspired by Elm's `Json.Decode` and `Json.Encode`.
@@ -253,9 +255,9 @@ homepage: "https://github.com/mattjbray/ocaml-decoders"
 doc: "https://mattjbray.github.io/ocaml-decoders/decoders"
 bug-reports: "https://github.com/mattjbray/ocaml-decoders/issues"
 depends: [
-  "ocaml"
-  "dune" {build}
   "containers"
+  "dune" {build}
+  "ocaml"
 ]
 build: ["dune" "build" "-p" name "-j" jobs]
 dev-repo: "git+ssh://git@github.com/mattjbray/ocaml-decoders.git"

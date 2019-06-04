@@ -1,23 +1,25 @@
 opam-version: "2.0"
-maintainer: "seb@mondet.org"
-authors: [
-  "Sebastien Mondet <seb@modnet.org>" "Leonid Rozenberg <leonidr@gmail.com>"
-]
-homepage: "https://bitbucket.org/smondet/nonstd"
-bug-reports: "https://bitbucket.org/smondet/nonstd"
-dev-repo: "git+https://bitbucket.org/smondet/nonstd.git"
-build: [
-  "jbuilder" "build" "--only" "nonstd" "--root" "." "-j" jobs "@install"
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind"
-  "jbuilder" {build}
-]
+name: "nonstd"
+version: "0.0.3"
 synopsis: "Non-standard mini-library"
 description: """
 Core-style (labels, exceptionless) pure-OCaml super-light library
 providing basic modules: List, Option, Int. and Float."""
+maintainer: "seb@mondet.org"
+authors: [
+  "Leonid Rozenberg <leonidr@gmail.com>" "Sebastien Mondet <seb@modnet.org>"
+]
+homepage: "https://bitbucket.org/smondet/nonstd"
+bug-reports: "https://bitbucket.org/smondet/nonstd"
+depends: [
+  "jbuilder" {build}
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind"
+]
+build: [
+  "jbuilder" "build" "--only" "nonstd" "--root" "." "-j" jobs "@install"
+]
+dev-repo: "git+https://bitbucket.org/smondet/nonstd.git"
 url {
   src: "https://bitbucket.org/smondet/nonstd/get/nonstd.0.0.3.tar.gz"
   checksum: "md5=784401ed67aa323e03544e0f801abefd"

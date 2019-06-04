@@ -1,14 +1,14 @@
 opam-version: "2.0"
-authors: ["Masateru Kawaguchi"]
-maintainer: "unixjunkie@sdf.org"
-homepage: "https://github.com/masateruk/micro-caml"
-license: "BSD-3"
-build: [
-  [make]
-]
-dev-repo: "git://github.com/masateruk/micro-caml"
+name: "ucaml"
+version: "0.1"
 synopsis: "Translate OCaml code into C code"
+maintainer: "unixjunkie@sdf.org"
+authors: "Masateru Kawaguchi"
+license: "BSD-3"
+homepage: "https://github.com/masateruk/micro-caml"
 depends: ["ocaml"]
+build: make
+dev-repo: "git://github.com/masateruk/micro-caml"
 extra-files: ["ucaml.install" "md5=25d555ca28a54aded0ee7aba4ab80d83"]
 url {
   src: "https://github.com/masateruk/micro-caml/archive/v0.1.tar.gz"

@@ -1,27 +1,28 @@
 opam-version: "2.0"
+name: "ppx_sexp_value"
+version: "v0.12.0"
+synopsis:
+  "A ppx rewriter that simplifies building s-expressions from ocaml values"
+description: "Part of the Jane Street's PPX rewriters collection."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/ppx_sexp_value"
-bug-reports: "https://github.com/janestreet/ppx_sexp_value/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_sexp_value.git"
-doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_sexp_value/index.html"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
 license: "MIT"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
+homepage: "https://github.com/janestreet/ppx_sexp_value"
+doc:
+  "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_sexp_value/index.html"
+bug-reports: "https://github.com/janestreet/ppx_sexp_value/issues"
 depends: [
-  "ocaml"         {>= "4.04.2"}
-  "base"          {>= "v0.12" & < "v0.13"}
-  "ppx_here"      {>= "v0.12" & < "v0.13"}
+  "base" {>= "v0.12" & < "v0.13"}
+  "dune" {build & >= "1.5.1"}
+  "ocaml" {>= "4.04.2"}
+  "ppx_here" {>= "v0.12" & < "v0.13"}
   "ppx_sexp_conv" {>= "v0.12" & < "v0.13"}
-  "dune"          {build & >= "1.5.1"}
-  "ppxlib"        {>= "0.5.0" & < "0.9.0"}
+  "ppxlib" {>= "0.5.0" & < "0.9.0"}
 ]
-synopsis: "A ppx rewriter that simplifies building s-expressions from ocaml values"
-description: "
-Part of the Jane Street's PPX rewriters collection.
-"
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/ppx_sexp_value.git"
 url {
-  src: "https://ocaml.janestreet.com/ocaml-core/v0.12/files/ppx_sexp_value-v0.12.0.tar.gz"
+  src:
+    "https://ocaml.janestreet.com/ocaml-core/v0.12/files/ppx_sexp_value-v0.12.0.tar.gz"
   checksum: "md5=83c668e03cf6e25be45ffd2b3f62bc25"
 }

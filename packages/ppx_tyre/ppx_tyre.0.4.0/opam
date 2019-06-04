@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "Petter A. Urkedal <paurkedal@gmail.com>"
-authors: [
-  "Gabriel Radanne <drupyog@zoho.com>"
-  "Petter A. Urkedal <paurkedal@gmail.com>"
-]
-homepage: "https://github.com/paurkedal/ppx_regexp"
-bug-reports: "https://github.com/paurkedal/ppx_regexp/issues"
-dev-repo: "git+https://github.com/paurkedal/ppx_regexp.git"
-license: "LGPL-3 with OCaml linking exception"
-build: ["dune" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml" {>= "4.06.0"}
-  "dune" {build}
-  "ocaml-migrate-parsetree"
-  "re" {>= "1.7.1"}
-  "ppx_tools_versioned"
-  "tyre" {>= "0.4.1"}
-  "qcheck" {with-test}
-]
+name: "ppx_tyre"
+version: "0.4.0"
 synopsis: "PPX syntax for tyre regular expressions and routes"
 description: """
 This PPX compiles
@@ -46,6 +29,25 @@ expressed in a slightly extended subset of PCRE.  The interpretations are:
   variant where each constructor `` `v`` receives what `re` extracts as its
   argument.
 - `(?&v:qname)` is a shortcut for `(?<v>(?&qname))`."""
+maintainer: "Petter A. Urkedal <paurkedal@gmail.com>"
+authors: [
+  "Gabriel Radanne <drupyog@zoho.com>"
+  "Petter A. Urkedal <paurkedal@gmail.com>"
+]
+license: "LGPL-3 with OCaml linking exception"
+homepage: "https://github.com/paurkedal/ppx_regexp"
+bug-reports: "https://github.com/paurkedal/ppx_regexp/issues"
+depends: [
+  "dune" {build}
+  "ocaml" {>= "4.06.0"}
+  "ocaml-migrate-parsetree"
+  "ppx_tools_versioned"
+  "qcheck" {with-test}
+  "re" {>= "1.7.1"}
+  "tyre" {>= "0.4.1"}
+]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/paurkedal/ppx_regexp.git"
 url {
   src:
     "https://github.com/paurkedal/ppx_regexp/releases/download/v0.4.0/ppx_regexp-0.4.0.tbz"

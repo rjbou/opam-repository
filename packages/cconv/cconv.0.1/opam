@@ -1,7 +1,27 @@
 opam-version: "2.0"
+name: "cconv"
+version: "0.1"
+synopsis: "Combinators for Type Conversion in OCaml."
+description: """
+CConv provides type-safe combinators for describing how to read/build OCaml
+values of a given type. Those combinators can be used for serializing and
+deserializing the values into several formats. The library ships with
+conversion to Json (yojson), S-expressions (sexplib) and B-encode."""
 maintainer: "simon.cruanes@inria.fr"
-homepage: "https://github.com/c-cube/cconv"
 license: "BSD2"
+tags: ["conversion" "gadt" "serialization"]
+homepage: "https://github.com/c-cube/cconv"
+depends: [
+  "ocaml" {>= "4.00.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+depopts: [
+  "bencode"
+  "sexplib" {< "v0.13"}
+  "yojson"
+]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -15,27 +35,9 @@ build: [
   ]
   [make "all"]
 ]
-tags: ["conversion" "gadt" "serialization"]
-remove: [["ocamlfind" "remove" "cconv"]]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-depopts: [
-  "bencode"
-  "sexplib" {< "v0.13"}
-  "yojson"
-]
-dev-repo: "git://github.com/c-cube/cconv"
 install: [make "install"]
-synopsis: "Combinators for Type Conversion in OCaml."
-description: """
-CConv provides type-safe combinators for describing how to read/build OCaml
-values of a given type. Those combinators can be used for serializing and
-deserializing the values into several formats. The library ships with
-conversion to Json (yojson), S-expressions (sexplib) and B-encode."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "cconv"]
+dev-repo: "git://github.com/c-cube/cconv"
 url {
   src: "https://github.com/c-cube/cconv/archive/0.1.tar.gz"
   checksum: "md5=1ec069ac54f4ec4fd4cd3501039b0b69"

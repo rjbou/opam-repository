@@ -1,36 +1,6 @@
 opam-version: "2.0"
-maintainer: ["anil@recoil.org" "thomas@gazagnaire.org"]
-authors: [
-  "Anil Madhavapeddy" "Thomas Gazagnaire" "Dave Scott" "Richard Mortier"
-]
-homepage: "https://mirage.io"
-bug-reports: "https://github.com/mirage/mirage/issues/"
-tags: ["org:mirage" "org:xapi-project"]
-dev-repo: "git+https://github.com/mirage/mirage.git"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix "--bindir" bin]
-  [make]
-]
-install: [make "install"]
-remove: [
-  ["rm" "-f" "%{bin}%/mirage"]
-  ["ocamlfind" "remove" "mirage"]
-]
-depends: [
-  "ocaml" {>= "4.02.3" & < "4.07.0"}
-  "mirage-types-lwt" {< "3.0.0"}
-  "mirage-types" {>= "2.8.0" & < "3.0.0"}
-  "ipaddr" {>= "2.6.0" & < "3.0.0"}
-  "functoria" {>= "1.1.0" & < "2.0.0"}
-  "astring"
-  "logs"
-]
-conflicts: [
-  "nocrypto" {< "0.4.0"}
-  "cstruct" {< "1.0.1"}
-  "io-page" {< "1.4.0"}
-  "crunch" {< "1.2.2"}
-]
+name: "mirage"
+version: "2.9.0"
 synopsis: "The MirageOS library operating system"
 description: """
 MirageOS is a library operating system that constructs unikernels for
@@ -43,7 +13,39 @@ hypervisor.
 Since Xen powers most public cloud computing infrastructure such as
 Amazon EC2 or Rackspace, this lets your servers run more cheaply,
 securely and with finer control than with a full software stack."""
+maintainer: ["anil@recoil.org" "thomas@gazagnaire.org"]
+authors: [
+  "Anil Madhavapeddy" "Dave Scott" "Richard Mortier" "Thomas Gazagnaire"
+]
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://mirage.io"
+bug-reports: "https://github.com/mirage/mirage/issues/"
+depends: [
+  "astring"
+  "functoria" {>= "1.1.0" & < "2.0.0"}
+  "ipaddr" {>= "2.6.0" & < "3.0.0"}
+  "logs"
+  "mirage-types" {>= "2.8.0" & < "3.0.0"}
+  "mirage-types-lwt" {< "3.0.0"}
+  "ocaml" {>= "4.02.3" & < "4.07.0"}
+]
+conflicts: [
+  "crunch" {< "1.2.2"}
+  "cstruct" {< "1.0.1"}
+  "io-page" {< "1.4.0"}
+  "nocrypto" {< "0.4.0"}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix "--bindir" bin]
+  [make]
+]
+install: [make "install"]
+remove: [
+  ["rm" "-f" "%{bin}%/mirage"]
+  ["ocamlfind" "remove" "mirage"]
+]
+dev-repo: "git+https://github.com/mirage/mirage.git"
 url {
   src: "https://github.com/mirage/mirage/archive/v2.9.0.tar.gz"
   checksum: "md5=d888922a18f4341b9ef9a7c9b5696464"

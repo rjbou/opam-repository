@@ -1,32 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: ["Anil Madhavapeddy <anil@recoil.org>"]
-homepage: "https://github.com/avsm/jekyll-format"
-doc: "https://avsm.github.io/jekyll-format/doc"
-license: "ISC"
-dev-repo: "git+https://github.com/avsm/jekyll-format.git"
-bug-reports: "https://github.com/avsm/jekyll-format/issues"
-tags: ["org:ocamllabs" "org:mirage"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "result"
-  "astring"
-  "omd"
-  "fmt"
-  "rresult"
-  "ptime"
-  "fpath"
-  "alcotest" {with-test & >= "0.7.0"}
-  "bos" {with-test}
-]
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-]
+name: "jekyll-format"
+version: "0.1.0"
 synopsis: "Jekyll post parsing library"
 description: """
 [Jekyll](https://jekyllrb.com) is a simple, blog-aware static site
@@ -35,6 +9,34 @@ a website. This library exists to parse those blog posts and make them
 easy to manipulate from OCaml code.
 
 jekyll-format is distributed under the ISC license."""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+tags: ["org:mirage" "org:ocamllabs"]
+homepage: "https://github.com/avsm/jekyll-format"
+doc: "https://avsm.github.io/jekyll-format/doc"
+bug-reports: "https://github.com/avsm/jekyll-format/issues"
+depends: [
+  "alcotest" {with-test & >= "0.7.0"}
+  "astring"
+  "bos" {with-test}
+  "fmt"
+  "fpath"
+  "ocaml" {>= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "omd"
+  "ptime"
+  "result"
+  "rresult"
+  "topkg" {build}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+]
+dev-repo: "git+https://github.com/avsm/jekyll-format.git"
 url {
   src:
     "https://github.com/avsm/jekyll-format/releases/download/v0.1.0/jekyll-format-0.1.0.tbz"

@@ -1,39 +1,6 @@
 opam-version: "2.0"
-maintainer: "sheets@alum.mit.edu"
-authors: [
-  "Anil Madhavapeddy"
-  "David Sheets"
-  "Andy Ray"
-  "Jeff Hammerbacher"
-  "Thomas Gazagnaire"
-  "Rudi Grinberg"
-  "Qi Li"
-  "Jeremy Yallop"
-  "Dave Tucker"
-]
-homepage: "https://github.com/mirage/ocaml-github"
-bug-reports: "https://github.com/mirage/ocaml-github/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-github.git"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-  "git"
-]
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "uri" {>= "1.9.0"}
-  "cohttp" {>= "0.17.0" & < "0.99"}
-  "lwt" {>= "2.4.4"}
-  "atdgen" {>= "1.10.0" & < "1.13.0"}
-  "yojson" {>= "1.2.0"}
-  "stringext"
-]
+name: "github"
+version: "3.0.0"
 synopsis: "GitHub APIv3 OCaml Library"
 description: """
 [![Build Status](https://travis-ci.org/mirage/ocaml-github.svg)](https://travis-ci.org/mirage/ocaml-github)
@@ -57,6 +24,37 @@ stored tokens.
 
 If you are interested in easily using this library to listen for GitHub
 web hook events, you should look at [dsheets/ocaml-github-hooks](https://github.com/dsheets/ocaml-github-hooks)."""
+maintainer: "sheets@alum.mit.edu"
+authors: [
+  "Andy Ray"
+  "Anil Madhavapeddy"
+  "Dave Tucker"
+  "David Sheets"
+  "Jeff Hammerbacher"
+  "Jeremy Yallop"
+  "Qi Li"
+  "Rudi Grinberg"
+  "Thomas Gazagnaire"
+]
+tags: ["git" "org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/ocaml-github"
+bug-reports: "https://github.com/mirage/ocaml-github/issues"
+depends: [
+  "atdgen" {>= "1.10.0" & < "1.13.0"}
+  "cohttp" {>= "0.17.0" & < "0.99"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "lwt" {>= "2.4.4"}
+  "ocaml" {>= "4.03.0"}
+  "stringext"
+  "uri" {>= "1.9.0"}
+  "yojson" {>= "1.2.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/ocaml-github.git"
 url {
   src:
     "https://github.com/mirage/ocaml-github/releases/download/v3.0.0/github-3.0.0.tbz"

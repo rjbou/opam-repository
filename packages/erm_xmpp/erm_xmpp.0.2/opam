@@ -1,25 +1,27 @@
 opam-version: "2.0"
+name: "erm_xmpp"
+version: "0.2"
+synopsis: "XMPP protocol implementation"
 maintainer: "ygrek@autistici.org"
-homepage: "https://github.com/ermine/xmpp"
 license: "BSD3"
+homepage: "https://github.com/ermine/xmpp"
+depends: [
+  "camlp4"
+  "cryptokit" {>= "1.5"}
+  "erm_xml" {>= "0.3"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-test"] {with-test}
 ]
-remove: [["ocamlfind" "remove" "erm_xmpp"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "erm_xml" {>= "0.3"}
-  "cryptokit" {>= "1.5"}
-  "camlp4"
-  "ocamlbuild" {build}
-]
-patches: ["disable_tests.patch"]
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "XMPP protocol implementation"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "erm_xmpp"]
+patches: "disable_tests.patch"
 extra-files: ["disable_tests.patch" "md5=e3fc660ac92a4e473fac47f47fda5f42"]
 url {
   src: "https://github.com/ermine/xmpp/tarball/v0.2"

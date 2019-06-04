@@ -1,33 +1,6 @@
 opam-version: "2.0"
-maintainer:   "mirageos-devel@lists.xenproject.org"
-authors: [
-  "Thomas Gazagnaire"
-  "Anil Madhavapeddy"
-  "Dave Scott"
-  "Thomas Leonard"
-  "Gabriel Radanne"
-]
-homepage: "https://github.com/mirage/functoria"
-bug-reports: "https://github.com/mirage/functoria/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/mirage/functoria.git"
-build: [
-  ["./configure" "--prefix=%{prefix}%" "--%{ounit:enable}%-tests"]
-  [make]
-  [make "test"] {with-test}
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "functoria"]
-depends: [
-  "ocaml" {>= "4.01" & < "4.03"}
-  "ocamlfind" {build}
-  "base-unix"
-  "cmdliner" {>= "0.9.8"}
-  "rresult"
-  "fmt"
-  "ocamlgraph"
-  "ounit" {with-test & >= "2.0.0"}
-]
+name: "functoria"
+version: "1.0.0"
 synopsis: "A DSL to organize functor applications."
 description: """
 Functoria is a DSL to describe a set of modules and functors, their
@@ -37,7 +10,36 @@ application.
 The main use case is mirage. See the mirage repository for details:
 
     https://github.com/mirage/mirage"""
+maintainer: "mirageos-devel@lists.xenproject.org"
+authors: [
+  "Anil Madhavapeddy"
+  "Dave Scott"
+  "Gabriel Radanne"
+  "Thomas Gazagnaire"
+  "Thomas Leonard"
+]
+license: "ISC"
+homepage: "https://github.com/mirage/functoria"
+bug-reports: "https://github.com/mirage/functoria/issues"
+depends: [
+  "base-unix"
+  "cmdliner" {>= "0.9.8"}
+  "fmt"
+  "ocaml" {>= "4.01" & < "4.03"}
+  "ocamlfind" {build}
+  "ocamlgraph"
+  "ounit" {with-test & >= "2.0.0"}
+  "rresult"
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix=%{prefix}%" "--%{ounit:enable}%-tests"]
+  [make]
+  [make "test"] {with-test}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "functoria"]
+dev-repo: "git+https://github.com/mirage/functoria.git"
 url {
   src: "https://github.com/mirage/functoria/archive/1.0.0.tar.gz"
   checksum: "md5=aa8010220b57abadf8add9942c493204"

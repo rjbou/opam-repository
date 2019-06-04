@@ -1,20 +1,22 @@
 opam-version: "2.0"
+name: "bolt"
+version: "1.2"
+synopsis: "Logging tool"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "camlp4"
+  "ocaml" {= "3.12.1"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["sh" "configure" "-ocaml-prefix" prefix "-ocamlfind" "%{bin}%/ocamlfind"]
   [make]
 ]
-remove: [["ocamlfind" "remove" "bolt"]]
-depends: [
-  "ocaml" {= "3.12.1"}
-  "ocamlfind"
-  "camlp4"
-  "ocamlbuild" {build}
-]
-patches: ["opam.patch"]
 install: [make "install"]
-synopsis: "Logging tool"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "bolt"]
+patches: "opam.patch"
 extra-files: ["opam.patch" "md5=b4bd58c4c3af3c30d85e7c6e85e35184"]
 url {
   src: "http://bolt.x9c.fr/distrib/bolt-1.2.tar.gz"

@@ -1,27 +1,35 @@
 opam-version: "2.0"
+name: "opam-core"
+version: "2.0.4"
+synopsis: ""
+description: """
+opam 2.0 development libraries
+
+Small standard library extensions, and generic system interaction modules used
+by opam."""
 maintainer: "opam-devel@lists.ocaml.org"
 authors: [
-  "Vincent Bernardoff <vb@luminar.eu.org>"
+  "Anil Madhavapeddy <anil@recoil.org>"
+  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
+  "Frederic Tuong <tuong@users.gforge.inria.fr>"
+  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
   "Raja Boujbel <raja.boujbel@ocamlpro.com>"
+  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
   "Roberto Di Cosmo <roberto@dicosmo.org>"
   "Thomas Gazagnaire <thomas@gazagnaire.org>"
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
-  "Anil Madhavapeddy <anil@recoil.org>"
-  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
-  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
-  "Frederic Tuong <tuong@users.gforge.inria.fr>"
+  "Vincent Bernardoff <vb@luminar.eu.org>"
 ]
 homepage: "https://opam.ocaml.org/"
 bug-reports: "https://github.com/ocaml/opam/issues"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "base-unix"
   "base-bigarray"
+  "base-unix"
+  "cppo" {build}
+  "dune" {build & >= "1.2.1"}
+  "ocaml" {>= "4.02.3"}
   "ocamlgraph"
   "re" {>= "1.5.0"}
-  "dune" {build & >= "1.2.1"}
-  "cppo" {build}
 ]
 conflicts: ["extlib-compat"]
 build: [
@@ -36,9 +44,3 @@ url {
     "sha512=bb00c35aa0f7541d05749f62718a20c474d97ea29ec51ec30df12d2ae71cc0974234d36e509d24895576e0c1ef03390536619d94269488c07895e649bfa6f9af"
   ]
 }
-description:"""
-opam 2.0 development libraries
-
-Small standard library extensions, and generic system interaction modules used
-by opam.
-"""

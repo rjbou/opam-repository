@@ -1,32 +1,31 @@
 opam-version: "2.0"
-maintainer: "opam-devel@lists.ocaml.org"
-authors: ["Xavier Leroy"]
-bug-reports: "https://forge.ocamlcore.org/tracker/?group_id=133"
-homepage: "https://forge.ocamlcore.org/projects/cryptokit/"
-remove: [["ocamlfind" "remove" "cryptokit"]]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "conf-zlib"
-  "conf-gmp-powm-sec"
-  "zarith" {>= "1.4"}
-]
-patches: [
-  "aesni-detect.patch"
-  "aesni-align.patch"
-]
-build: make
-install: [make "install"]
+name: "cryptokit"
+version: "1.11"
 synopsis: "Cryptographic primitives library."
 description: """
 Cryptokit includes block ciphers (AES, DES, 3DES), stream ciphers (ARCfour),
 public-key crypto (RSA, DH), hashes (SHA-1, SHA-256), MACs, random number
 generation -- all presented with a compositional, extensible interface."""
+maintainer: "opam-devel@lists.ocaml.org"
+authors: "Xavier Leroy"
+homepage: "https://forge.ocamlcore.org/projects/cryptokit/"
+bug-reports: "https://forge.ocamlcore.org/tracker/?group_id=133"
+depends: [
+  "conf-gmp-powm-sec"
+  "conf-zlib"
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "zarith" {>= "1.4"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "cryptokit"]
+patches: ["aesni-detect.patch" "aesni-align.patch"]
 extra-files: [
-  ["aesni-detect.patch" "md5=3784e2496e42df30e39a9eb9906d6082"]
   ["aesni-align.patch" "md5=2d06282cde3943b4daed6eba3ea6c05e"]
+  ["aesni-detect.patch" "md5=3784e2496e42df30e39a9eb9906d6082"]
 ]
 url {
   src:

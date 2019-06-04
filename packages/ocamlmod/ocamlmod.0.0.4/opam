@@ -1,17 +1,19 @@
 opam-version: "2.0"
+name: "ocamlmod"
+version: "0.0.4"
+synopsis: "Generate OCaml modules from source files"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "fileutils"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "fileutils"
-  "ocamlbuild" {build}
-]
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Generate OCaml modules from source files"
 extra-files: ["ocamlmod.install" "md5=db6d5efdd322f1916ae243d65937d587"]
 url {
   src:

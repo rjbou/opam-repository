@@ -1,17 +1,16 @@
 opam-version: "2.0"
+name: "zxcvbn"
+version: "2.0+2"
+synopsis: "Bindings for the zxcvbn password strength estimation library"
+description:
+  "This library provides functions to estimate the strength of a password."
 maintainer: "Nathan Rebours <nathan@cryptosense.com>"
 authors: "Nathan Rebours <nathan@cryptosense.com>"
-homepage: "https://github.com/cryptosense/ocaml-zxcvbn"
-bug-reports: "https://github.com/cryptosense/ocaml-zxcvbn/issues"
 license: "BSD-2"
-dev-repo: "git+https://github.com/cryptosense/ocaml-zxcvbn.git"
+tags: "org:cryptosense"
+homepage: "https://github.com/cryptosense/ocaml-zxcvbn"
 doc: "https://cryptosense.github.io/ocaml-zxcvbn/doc"
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
+bug-reports: "https://github.com/cryptosense/ocaml-zxcvbn/issues"
 depends: [
   "ocaml" {>= "4.02.0"}
   "ocamlbuild" {build}
@@ -20,10 +19,13 @@ depends: [
   "ppx_deriving" {>= "4.0" & < "5.0"}
   "topkg" {build}
 ]
-tags: ["org:cryptosense"]
-synopsis: "Bindings for the zxcvbn password strength estimation library"
-description:
-  "This library provides functions to estimate the strength of a password."
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/cryptosense/ocaml-zxcvbn.git"
 url {
   src:
     "https://github.com/cryptosense/ocaml-zxcvbn/releases/download/v2.0%2B2/zxcvbn-2.0.2.tbz"

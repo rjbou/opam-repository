@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "Ben Greenman"
-authors: "Ben Greenman"
-homepage: "http://github.com/bennn/spreadsheet"
-bug-reports: "http://github.com/bennn/spreadsheet/issues"
-license: "LGPL"
-doc: "Functor for parsing and building spreadsheets"
-dev-repo: "git+http://github.com/bennn/spreadsheet.git"
-build: [
-  ["ocaml" "setup.ml" "-configure"]
-  [make "all"]
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "spreadsheet"]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
+name: "spreadsheet"
+version: "0.1"
 synopsis: "Functor for parsing and building spreadsheets."
 description: """
 Defines a spreadsheet functor and `RowSpec` module type.
@@ -26,7 +10,25 @@ The programmer must provide a `RowSpec` module, which is essentially:
 - An OCaml type to describe spreadsheet rows.
 - Coercions from the row type to/from `string`.
 - A `string list` title describing each column of the spreadsheet."""
+maintainer: "Ben Greenman"
+authors: "Ben Greenman"
+license: "LGPL"
+homepage: "http://github.com/bennn/spreadsheet"
+doc: "Functor for parsing and building spreadsheets"
+bug-reports: "http://github.com/bennn/spreadsheet/issues"
+depends: [
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure"]
+  [make "all"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "spreadsheet"]
+dev-repo: "git+http://github.com/bennn/spreadsheet.git"
 url {
   src: "https://github.com/bennn/spreadsheet/archive/0.1.zip"
   checksum: "md5=c3bdce5e5b379f5333d466fcf5e6ac8f"

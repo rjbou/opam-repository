@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/dinosaure/duff"
-bug-reports:  "https://github.com/dinosaure/duff/issues"
-dev-repo: "git+https://github.com/dinosaure/duff.git"
-doc:          "https://dinosaure.github.io/duff/"
-license:      "MIT"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "fmt"
-  "cstruct"
-  "cmdliner" {>= "1.0.2"}
-  "logs" {>= "0.6.2"}
-  "fmt" {>= "0.8.5"}
-  "bos" {>= "0.2.0"}
-  "fpath" {>= "0.7.0"}
-  "alcotest" {with-test}
-]
+name: "duff"
+version: "0.1"
 synopsis: "LibXdiff implementation in OCaml"
 description: """
 Duff is a little library to implement
@@ -31,6 +8,30 @@ Duff is a little library to implement
 a part of the [ocaml-git](https://github.com/mirage/ocaml-git) project. This
 code is a translation of `diff-delta.c` available on the git project in OCaml.
 So, it respects some git's constraints unlike libXdiff."""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/duff"
+doc: "https://dinosaure.github.io/duff/"
+bug-reports: "https://github.com/dinosaure/duff/issues"
+depends: [
+  "alcotest" {with-test}
+  "bos" {>= "0.2.0"}
+  "cmdliner" {>= "1.0.2"}
+  "cstruct"
+  "fmt"
+  "fmt" {>= "0.8.5"}
+  "fpath" {>= "0.7.0"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "logs" {>= "0.6.2"}
+  "ocaml" {>= "4.03.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/dinosaure/duff.git"
 url {
   src:
     "https://github.com/dinosaure/duff/releases/download/v0.1/duff-0.1.tbz"

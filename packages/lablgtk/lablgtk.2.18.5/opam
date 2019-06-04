@@ -1,39 +1,25 @@
 opam-version: "2.0"
+name: "lablgtk"
+version: "2.18.5"
+synopsis: "OCaml interface to GTK+"
 maintainer: "garrigue@math.nagoya-u.ac.jp"
-authors: ["Jacques Garrigue et al., Nagoya University"]
+authors: "Jacques Garrigue et al., Nagoya University"
+license: "LGPL with linking exception"
 homepage: "http://lablgtk.forge.ocamlcore.org/"
 bug-reports: "https://forge.ocamlcore.org/tracker/?group_id=220"
-dev-repo: "git+https://github.com/garrigue/lablgtk.git"
-license: "LGPL with linking exception"
-build: [
-  ["./configure" "--prefix" prefix "LABLGLDIR=%{lib}%/lablgl"]
-  [make "world"]
-]
-install: [
-  [make "install"]
-]
-remove: [["ocamlfind" "remove" "lablgtk2"]]
 depends: [
   "ocaml" {>= "3.11.0" & < "4.06"}
   "ocamlfind" {>= "1.2.1"}
 ]
-depopts: [
-  "conf-gtksourceview"
-  "conf-gnomecanvas"
-  "conf-glade"
-  "lablgl"
+depopts: ["conf-glade" "conf-gnomecanvas" "conf-gtksourceview" "lablgl"]
+flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix "LABLGLDIR=%{lib}%/lablgl"]
+  [make "world"]
 ]
-depexts: [
-  ["libgtk2.0-dev" "libexpat1-dev"] {os-distribution = "debian"}
-  ["libgtk2.0-dev" "libexpat1-dev"] {os-distribution = "ubuntu"}
-  ["gtk" "expat"] {os-distribution = "homebrew" & os = "macos"}
-  ["gtk2-devel"] {os-distribution = "centos"}
-  ["gtk2-devel"] {os-distribution = "fedora"}
-  ["gtk2-devel"] {os-distribution = "ol"}
-  ["gtk+2.0-dev"] {os-distribution = "alpine"}
-  ["gtk2-devel"] {os-family = "suse"}
-]
-patches: ["lablgldir.patch"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "lablgtk2"]
+patches: "lablgldir.patch"
 post-messages: [
   "This package requires gtk+ 2.0 development packages installed on your system"
     {failure}
@@ -42,11 +28,20 @@ To solve pkg-config issues, you may need to do
 'export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig' and retry"""
     {failure & os = "macos"}
 ]
-synopsis: "OCaml interface to GTK+"
-flags: light-uninstall
+depexts: [
+  ["gtk" "expat"] {os-distribution = "homebrew" & os = "macos"}
+  ["gtk+2.0-dev"] {os-distribution = "alpine"}
+  ["gtk2-devel"] {os-distribution = "centos"}
+  ["gtk2-devel"] {os-distribution = "fedora"}
+  ["gtk2-devel"] {os-distribution = "ol"}
+  ["gtk2-devel"] {os-family = "suse"}
+  ["libgtk2.0-dev" "libexpat1-dev"] {os-distribution = "debian"}
+  ["libgtk2.0-dev" "libexpat1-dev"] {os-distribution = "ubuntu"}
+]
+dev-repo: "git+https://github.com/garrigue/lablgtk.git"
 extra-files: [
-  ["lablgtk.install" "md5=1a3468258dd50aab33b9844db158b11a"]
   ["lablgldir.patch" "md5=8cf5f3efbcb7bb8294424c30f77ea81f"]
+  ["lablgtk.install" "md5=1a3468258dd50aab33b9844db158b11a"]
 ]
 url {
   src:

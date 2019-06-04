@@ -1,10 +1,16 @@
 opam-version: "2.0"
+name: "conf-m4"
+version: "1"
+synopsis: "Virtual package relying on m4"
+description:
+  "This package can only install if the m4 binary is installed on the system."
 maintainer: "tim@gfxmonk.net"
-homepage: "http://www.gnu.org/software/m4/m4.html"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
 authors: "GNU Project"
 license: "GPL-3"
-build: [["sh" "-exc" "echo | m4"]]
+homepage: "http://www.gnu.org/software/m4/m4.html"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+flags: conf
+build: ["sh" "-exc" "echo | m4"]
 depexts: [
   ["m4"] {os-distribution = "debian"}
   ["m4"] {os-distribution = "ubuntu"}
@@ -17,7 +23,3 @@ depexts: [
   ["m4"] {os-distribution = "ol"}
   ["m4"] {os-distribution = "arch"}
 ]
-synopsis: "Virtual package relying on m4"
-description:
-  "This package can only install if the m4 binary is installed on the system."
-flags: conf

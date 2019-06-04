@@ -1,7 +1,14 @@
 opam-version: "2.0"
+name: "lo"
+version: "0.1.1"
+synopsis:
+  "Bindings for the lo library which provides functions for communicating with input controls using the OSC protocol"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-lo"
+bug-reports: "https://github.com/savonet/ocaml-lo/issues"
+depends: ["ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix] {os != "macos"}
   [
@@ -14,21 +21,14 @@ build: [
   ] {os = "macos"}
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "lo"]
-depends: ["ocaml" "ocamlfind"]
 depexts: [
+  ["liblo"] {os = "macos" & os-distribution = "homebrew"}
   ["liblo-dev"] {os-distribution = "ubuntu"}
   ["liblo-dev"] {os-distribution = "debian"}
-  ["liblo"] {os = "macos" & os-distribution = "homebrew"}
 ]
-bug-reports: "https://github.com/savonet/ocaml-lo/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-lo.git"
-synopsis:
-  "Bindings for the lo library which provides functions for communicating with input controls using the OSC protocol"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-lo/releases/download/0.1.1/ocaml-lo-0.1.1.tar.gz"

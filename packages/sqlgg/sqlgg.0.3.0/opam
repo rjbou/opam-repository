@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "ygrek@autistici.org"
-homepage: "http://ygrek.org.ua/p/sqlgg/"
-dev-repo: "git+https://github.com/ygrek/sqlgg.git"
-bug-reports: "https://github.com/ygrek/sqlgg/issues"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocamlfind" "remove" "sqlgg"]
-  ["rm" "-f" "%{bin}%/sqlgg" "%{bin}%/sqlgg.exe"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "menhir"
-  "deriving"
-  ("extlib" | "extlib-compat")
-  "ounit"
-  "ocamlbuild" {build}
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "sqlgg"
+version: "0.3.0"
 synopsis: "SQL Guided (code) Generator"
 description: """
 sqlgg is an SQL query parser and binding code generator for C#, C++, Java, OCaml.
@@ -33,7 +13,29 @@ with corresponding native data types.
 SQL and code sides, being as unobtrusive as possible. So the choice of the specific
 database and API is a programmer's choice. Similarly, queries to the database are expressed
 in plain SQL, so that the generator can be easily plugged in any existing project."""
+maintainer: "ygrek@autistici.org"
+homepage: "http://ygrek.org.ua/p/sqlgg/"
+bug-reports: "https://github.com/ygrek/sqlgg/issues"
+depends: [
+  "deriving"
+  ("extlib" | "extlib-compat")
+  "menhir"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ounit"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocamlfind" "remove" "sqlgg"]
+  ["rm" "-f" "%{bin}%/sqlgg" "%{bin}%/sqlgg.exe"]
+]
+dev-repo: "git+https://github.com/ygrek/sqlgg.git"
 url {
   src: "http://ygrek.org.ua/p/release/sqlgg/sqlgg-0.3.0.tar.gz"
   checksum: "md5=d2cad313ad67365e86e6a7e85f002216"

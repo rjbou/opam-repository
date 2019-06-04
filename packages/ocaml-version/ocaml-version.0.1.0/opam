@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: ["Anil Madhavapeddy <anil@recoil.org>"]
-homepage: "https://github.com/avsm/ocaml-version"
-doc: "http://docs.mirage.io/ocaml-version"
-license: "ISC"
-dev-repo: "git+https://github.com/avsm/ocaml-version.git"
-bug-reports: "https://github.com/avsm/ocaml-version/issues"
-tags: ["org:ocamllabs"]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "base-bytes"
-]
-build: [
-  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
+name: "ocaml-version"
+version: "0.1.0"
 synopsis: "Manipulate, parse and generate OCaml compiler version strings"
 description: """
 This library provides facilities to parse version numbers of the OCaml
@@ -52,6 +37,23 @@ please get in touch with any particular comments you might have.
 - Add more features to the opam variants list (such as `Since.safe_string`)
 - Generate the core opam compiler package set purely from this library, so that
   it remains in sync with the library description."""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+tags: "org:ocamllabs"
+homepage: "https://github.com/avsm/ocaml-version"
+doc: "http://docs.mirage.io/ocaml-version"
+bug-reports: "https://github.com/avsm/ocaml-version/issues"
+depends: [
+  "base-bytes"
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml" {>= "4.03.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/avsm/ocaml-version.git"
 url {
   src:
     "https://github.com/avsm/ocaml-version/releases/download/v0.1.0/ocaml-version-0.1.0.tbz"

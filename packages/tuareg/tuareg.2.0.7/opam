@@ -1,13 +1,15 @@
 opam-version: "2.0"
-maintainer: "Christophe.Troestler@umons.ac.be"
-remove: [[make "uninstall"]]
-install: [make "install" "INSTALL_DIR=%{prefix}%/share/tuareg"]
+name: "tuareg"
+version: "2.0.7"
 synopsis: "OCaml mode for GNU Emacs and XEmacs."
 description: """
 Tuareg handles automatic indentation of OCaml and Camllight codes.
 Key parts of the code are highlighted using Font-Lock.  Support to run
 an interactive OCaml toplevel and debugger is provided."""
-depends: ["ocaml" "conf-emacs"]
+maintainer: "Christophe.Troestler@umons.ac.be"
+depends: ["conf-emacs" "ocaml"]
+install: [make "install" "INSTALL_DIR=%{prefix}%/share/tuareg"]
+remove: [make "uninstall"]
 url {
   src:
     "https://download.ocamlcore.org/tuareg/tuareg/2.0.7/tuareg-2.0.7.tar.gz"

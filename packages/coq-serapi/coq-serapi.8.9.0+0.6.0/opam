@@ -1,30 +1,30 @@
-synopsis:     "Sexp-based serialization library and protocol for machine interaction with the Coq proof assistant"
-description:  "Sexp-based serialization library and protocol for machine interaction with the Coq proof assistant"
-name:         "coq-serapi"
 opam-version: "2.0"
-maintainer:   "e@x80.org"
-authors:      "Emilio Jesús Gallego Arias"
-homepage:     "https://github.com/ejgallego/coq-serapi"
-bug-reports:  "https://github.com/ejgallego/coq-serapi/issues"
-dev-repo:     "git+https://github.com/ejgallego/coq-serapi.git"
-license:      "GPL 3"
-doc:          "https://ejgallego.github.io/coq-serapi/doc"
-
+name: "coq-serapi"
+version: "8.9.0+0.6.0"
+synopsis:
+  "Sexp-based serialization library and protocol for machine interaction with the Coq proof assistant"
+description:
+  "Sexp-based serialization library and protocol for machine interaction with the Coq proof assistant"
+maintainer: "e@x80.org"
+authors: "Emilio Jesús Gallego Arias"
+license: "GPL 3"
+homepage: "https://github.com/ejgallego/coq-serapi"
+doc: "https://ejgallego.github.io/coq-serapi/doc"
+bug-reports: "https://github.com/ejgallego/coq-serapi/issues"
 depends: [
-  "ocaml"         { >= "4.06.0"           }
-  "coq"           { >= "8.9.0" & < "8.10" }
-  "cmdliner"      { >= "1.0.0"            }
-  "ocamlfind"     { >= "1.8.0"            }
-  "sexplib"       { >= "v0.11.0" & < "v0.13"}
-  "dune"          { build & >= "1.2.0"    }
-  "ppx_import"    { build & >= "1.5-3"    }
-  "ppx_deriving"  { build & >= "4.2.1"    }
-  "ppx_sexp_conv" { build & >= "v0.11.0" & < "v0.13"}
+  "cmdliner" {>= "1.0.0"}
+  "coq" {>= "8.9.0" & < "8.10"}
+  "dune" {build & >= "1.2.0"}
+  "ocaml" {>= "4.06.0"}
+  "ocamlfind" {>= "1.8.0"}
+  "ppx_deriving" {build & >= "4.2.1"}
+  "ppx_import" {build & >= "1.5-3"}
+  "ppx_sexp_conv" {build & >= "v0.11.0" & < "v0.13"}
+  "sexplib" {>= "v0.11.0" & < "v0.13"}
 ]
-
-build: [ "dune" "build" "-p" name "-j" jobs ]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/ejgallego/coq-serapi.git"
 url {
-  src:
-    "https://github.com/ejgallego/coq-serapi/archive/8.9.0+0.6.0.tar.gz"
+  src: "https://github.com/ejgallego/coq-serapi/archive/8.9.0+0.6.0.tar.gz"
   checksum: "md5=8b52f643a3c9019c551e0757e1b3b569"
 }

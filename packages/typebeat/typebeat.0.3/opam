@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/mirage/typebeat"
-bug-reports:  "https://github.com/mirage/typebeat/issues"
-dev-repo: "git+https://github.com/mirage/typebeat.git"
-doc:          "https://mirage.github.io/typebeat/"
-license:      "MIT"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "angstrom" {>= "0.9.0"}
-  "alcotest" {with-test}
-]
+name: "typebeat"
+version: "0.3"
 synopsis: "Agnostic parser of the `Content-Type` in OCaml"
 description: """
 [![Build Status](https://travis-ci.org/mirage/typebeat.svg?branch=master)](https://travis-ci.org/mirage/typebeat)
@@ -32,6 +15,24 @@ So it's a common library if you want to know the value of the `Content-Type` and
 don't worry, we respect the standard. We saved
 the [IANA](https://www.iana.org/assignments/media-types/media-types.xhtml)
 database too."""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/mirage/typebeat"
+doc: "https://mirage.github.io/typebeat/"
+bug-reports: "https://github.com/mirage/typebeat/issues"
+depends: [
+  "alcotest" {with-test}
+  "angstrom" {>= "0.9.0"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "ocaml" {>= "4.03.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/typebeat.git"
 url {
   src:
     "https://github.com/mirage/typebeat/releases/download/v0.3/typebeat-0.3.tbz"

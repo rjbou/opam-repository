@@ -1,19 +1,21 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [
-  [make "all"]
-  [make "opt"]
-]
-remove: ["ocamlfind" "remove" "xml-light"]
-depends: ["ocaml" "ocamlfind"]
-install: [make "install_ocamlfind"]
+name: "xml-light"
+version: "2.3"
 synopsis: "Xml-Light is a minimal XML parser & printer for OCaml"
 description: """
 It provide functions to parse an XML document into an OCaml data
 structure, work with it, and print it back to an XML document. It
 support also DTD parsing and checking, and is entirely written in
 OCaml, hence it does not require additional C library."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: ["ocaml" "ocamlfind"]
 flags: light-uninstall
+build: [
+  [make "all"]
+  [make "opt"]
+]
+install: [make "install_ocamlfind"]
+remove: ["ocamlfind" "remove" "xml-light"]
 url {
   src:
     "https://github.com/bguil/ocamllibs/releases/download/xml-light.2.3/xml-light.2.3.tar.gz"

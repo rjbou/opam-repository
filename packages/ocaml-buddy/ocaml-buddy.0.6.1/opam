@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "ocaml-buddy"
+version: "0.6.1"
+synopsis: "Bindings for the Buddy BDD library."
 maintainer: "pietro.abate@pps.jussieu.fr"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 build: [
   [make "all"]
   [make "opt"]
 ]
-remove: [[make "uninstall"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
+install: [make "install"]
+remove: [make "uninstall"]
 depexts: [
   ["libbdd-dev"] {os-distribution = "debian"}
   ["libbdd-dev"] {os-distribution = "ubuntu"}
 ]
 dev-repo: "git://github.com/abate/ocaml-buddy"
-install: [make "install"]
-synopsis: "Bindings for the Buddy BDD library."
 url {
   src: "https://github.com/abate/ocaml-buddy/archive/0.6.1.tar.gz"
   checksum: "md5=23b5d83b2341d34045378428f8e0758e"

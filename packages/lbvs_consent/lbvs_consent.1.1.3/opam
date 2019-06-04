@@ -1,36 +1,6 @@
 opam-version: "2.0"
 name: "lbvs_consent"
-authors: "Francois BERENGER"
-maintainer: "unixjunkie@sdf.org"
-homepage: "https://github.com/UnixJunkie/consent"
-bug-reports: "https://github.com/UnixJunkie/consent/issues"
-dev-repo: "git+https://github.com/UnixJunkie/consent.git"
-license: "GPL"
-build: [
-  [make "obmaccs"]
-  ["obuild" "configure"]
-  ["obuild" "build" "exe-lbvs_consent"]
-  ["obuild" "build" "exe-lbvs_consent_mop2di"]
-  ["obuild" "build" "exe-lbvs_consent_mop2de"]
-]
-depends: [
-  "ocaml"
-  "batteries"
-  "bitv" {>= "1.2"}
-  "camlzip" {>= "1.06"}
-  "conf-boost"
-  "conf-openbabel"
-  "conf-python-2-7"
-  "conf-rdkit"
-  "cpm"
-  "dolog"
-  "minivpt"
-  "minicli"
-  "obuild" {build}
-  "parmap"
-  "qcheck" {build}
-  "qtest" {build}
-]
+version: "1.1.3"
 synopsis:
   "Chemoinformatics software for Ligand-Based Virtual Screening (LBVS) using consensus queries."
 description: """
@@ -40,6 +10,37 @@ Details can be found in the paper:
 "Consensus queries in ligand-based virtual screening experiments".
 F. Berenger, O. Vu and J., Meiler.
 Journal of Cheminformatics, November 2017."""
+maintainer: "unixjunkie@sdf.org"
+authors: "Francois BERENGER"
+license: "GPL"
+homepage: "https://github.com/UnixJunkie/consent"
+bug-reports: "https://github.com/UnixJunkie/consent/issues"
+depends: [
+  "batteries"
+  "bitv" {>= "1.2"}
+  "camlzip" {>= "1.06"}
+  "conf-boost"
+  "conf-openbabel"
+  "conf-python-2-7"
+  "conf-rdkit"
+  "cpm"
+  "dolog"
+  "minicli"
+  "minivpt"
+  "obuild" {build}
+  "ocaml"
+  "parmap"
+  "qcheck" {build}
+  "qtest" {build}
+]
+build: [
+  [make "obmaccs"]
+  ["obuild" "configure"]
+  ["obuild" "build" "exe-lbvs_consent"]
+  ["obuild" "build" "exe-lbvs_consent_mop2di"]
+  ["obuild" "build" "exe-lbvs_consent_mop2de"]
+]
+dev-repo: "git+https://github.com/UnixJunkie/consent.git"
 extra-files: ["lbvs_consent.install" "md5=7d9d2bbfc6cbd3e03eb2ab9218c55780"]
 url {
   src: "https://github.com/UnixJunkie/consent/archive/v1.1.3.tar.gz"

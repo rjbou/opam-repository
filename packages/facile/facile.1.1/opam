@@ -1,21 +1,20 @@
 opam-version: "2.0"
+name: "facile"
+version: "1.1"
+synopsis: "Constraint programming library over integer finite domains"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: ["ocaml"]
 build: [
   ["./configure" "-faciledir" "%{lib}%/facile"]
   [make]
 ]
-patches: [
-  "ocaml_4.00.patch"
-  "bsdmake.patch"
-]
 install: [make "install"]
-synopsis: "Constraint programming library over integer finite domains"
-depends: ["ocaml"]
+patches: ["ocaml_4.00.patch" "bsdmake.patch"]
 extra-files: [
-  ["ocaml_4.00.patch" "md5=cbc214d5dd007d1062821b4d96e85ad0"]
-  ["facile.install" "md5=a03d20fcd54d7277982caf03b05354fa"]
-  ["bsdmake.patch" "md5=5bcbc3047b5444be7df9da4a53930b8e"]
   ["META" "md5=1cdbcb37fafa3e9fc20c8effd43e268f"]
+  ["bsdmake.patch" "md5=5bcbc3047b5444be7df9da4a53930b8e"]
+  ["facile.install" "md5=a03d20fcd54d7277982caf03b05354fa"]
+  ["ocaml_4.00.patch" "md5=cbc214d5dd007d1062821b4d96e85ad0"]
 ]
 url {
   src: "http://opti.recherche.enac.fr/facile/distrib/facile-1.1.tar.gz"

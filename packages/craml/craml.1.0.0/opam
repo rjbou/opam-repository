@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer:   "Thomas Gazagnaire <thomas@gazagnaire.org>"
-authors:      ["Thomas Gazagnaire <thomas@gazagnaire.org"]
-homepage:     "https://github.com/realworldocaml/craml"
-license:      "ISC"
-dev-repo: "git+https://github.com/realworldocaml/craml.git"
-bug-reports:  "https://github.com/realworldocaml/craml/issues"
-doc:          "https://realworldocaml.github.io/craml/"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name] {with-test}
-]
-depends: [
-  "ocaml"
-  "jbuilder" {build}
-  "fmt" {>= "0.8.5"}
-  "astring"
-  "logs"
-  "cmdliner"
-]
+name: "craml"
+version: "1.0.0"
 synopsis: "A CRAM-testing framework for testing command line applications"
 description: """
 CRAM is a is functional testing framework for command line
@@ -80,6 +61,26 @@ back to the default behaviour.
   $ <command>
   <output>
 ```"""
+maintainer: "Thomas Gazagnaire <thomas@gazagnaire.org>"
+authors: "Thomas Gazagnaire <thomas@gazagnaire.org"
+license: "ISC"
+homepage: "https://github.com/realworldocaml/craml"
+doc: "https://realworldocaml.github.io/craml/"
+bug-reports: "https://github.com/realworldocaml/craml/issues"
+depends: [
+  "astring"
+  "cmdliner"
+  "fmt" {>= "0.8.5"}
+  "jbuilder" {build}
+  "logs"
+  "ocaml"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/realworldocaml/craml.git"
 url {
   src:
     "https://github.com/realworldocaml/craml/releases/download/1.0.0/craml-1.0.0.tbz"

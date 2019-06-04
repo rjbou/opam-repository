@@ -1,21 +1,6 @@
 opam-version: "2.0"
 name: "minicli"
-maintainer: "unixjunkie@sdf.org"
-authors: "Francois Berenger"
-homepage: "https://github.com/UnixJunkie/minicli"
-bug-reports: "https://github.com/UnixJunkie/minicli/issues"
-dev-repo: "git+https://github.com/UnixJunkie/minicli.git"
-build: [
-  ["obuild" "configure"]
-  ["obuild" "build" "lib-minicli"]
-]
-install: ["obuild" "install"]
-remove: ["ocamlfind" "remove" "minicli"]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "obuild" {build}
-]
+version: "4.0.0"
 synopsis: "Minimalist library for command line parsing."
 description: """
 minicli provides the CLI module.
@@ -24,7 +9,23 @@ the command line to their program. minicli is intended at
 people who develop software fast but who don't want to break things.
 minicli can throw a variety of informative exceptions to the end user
 when the command line interface is not being used correctly."""
+maintainer: "unixjunkie@sdf.org"
+authors: "Francois Berenger"
+homepage: "https://github.com/UnixJunkie/minicli"
+bug-reports: "https://github.com/UnixJunkie/minicli/issues"
+depends: [
+  "obuild" {build}
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["obuild" "configure"]
+  ["obuild" "build" "lib-minicli"]
+]
+install: ["obuild" "install"]
+remove: ["ocamlfind" "remove" "minicli"]
+dev-repo: "git+https://github.com/UnixJunkie/minicli.git"
 url {
   src: "https://github.com/UnixJunkie/minicli/archive/v4.0.0.tar.gz"
   checksum: "md5=d9aee047e9aa90460a5f6321da3b9273"

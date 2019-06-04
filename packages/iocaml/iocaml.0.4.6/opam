@@ -1,34 +1,36 @@
 opam-version: "2.0"
-authors: "Andrew Ray <andy.ray@ujamjar.com>"
+name: "iocaml"
+version: "0.4.6"
+synopsis: "A webserver for iocaml-kernel and iocamljs-kernel."
 maintainer: "andy.ray@ujamjar.com"
-dev-repo: "git+https://github.com/andrewray/iocamlserver.git"
-bug-reports: "https://github.com/andrewray/iocamlserver/issues"
+authors: "Andrew Ray <andy.ray@ujamjar.com>"
 homepage: "https://github.com/andrewray/iocamlserver"
-build: [
-  ["cp" "config.darwin.ml" "config.ml"] {os = "macos"}
-  [make "all"]
-]
-patches: ["chromium-bug.patch"]
+bug-reports: "https://github.com/andrewray/iocamlserver/issues"
 depends: [
-  "ocaml" {>= "4.00.1"}
-  "ocamlfind"
-  "uuidm"
-  "yojson"
-  "cow" {< "2.0.0"}
-  "lwt" {>= "2.4" & < "3.0.0"}
-  "websocket" {= "0.8.1"}
   "cohttp" {>= "0.10.0"}
+  "cow" {< "2.0.0"}
   "crunch"
   "ctypes" {>= "0.3"}
   "ctypes-foreign"
   "iocaml-kernel" {= "0.4.6"}
   "iocamljs-kernel" {= "0.4.6"}
+  "lwt" {>= "2.4" & < "3.0.0"}
+  "ocaml" {>= "4.00.1"}
   "ocamlbuild" {build}
+  "ocamlfind"
+  "uuidm"
+  "websocket" {= "0.8.1"}
+  "yojson"
 ]
-synopsis: "A webserver for iocaml-kernel and iocamljs-kernel."
+build: [
+  ["cp" "config.darwin.ml" "config.ml"] {os = "macos"}
+  [make "all"]
+]
+patches: "chromium-bug.patch"
+dev-repo: "git+https://github.com/andrewray/iocamlserver.git"
 extra-files: [
-  ["iocaml.install" "md5=3b7af60d88c424b24aaa6582a9845fa0"]
   ["chromium-bug.patch" "md5=82c05bfa801855ab5d20e8a895cd2217"]
+  ["iocaml.install" "md5=3b7af60d88c424b24aaa6582a9845fa0"]
 ]
 url {
   src: "https://github.com/andrewray/iocamlserver/archive/v0.4.6.tar.gz"

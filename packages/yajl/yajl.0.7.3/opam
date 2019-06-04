@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "yajl"
+version: "0.7.3"
+synopsis: "bindings to the YAJL streaming JSON library"
+description: "https://github.com/mlin/yajl-ocaml"
 maintainer: "mlin@mlin.net"
-remove: [["ocamlfind" "remove" "yajl"]]
 depends: [
   "ocaml"
-  "ocamlfind"
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
+flags: light-uninstall
+install: [make "install"]
+remove: ["ocamlfind" "remove" "yajl"]
 depexts: [
   ["cmake"] {os-distribution = "debian"}
   ["cmake"] {os-distribution = "ubuntu"}
 ]
-install: [make "install"]
-synopsis: "bindings to the YAJL streaming JSON library"
-description: "https://github.com/mlin/yajl-ocaml"
-flags: light-uninstall
 url {
   src:
     "https://raw.github.com/mlin/yajl-ocaml/tarball/yajl-ocaml-0.7.3.tar.gz"

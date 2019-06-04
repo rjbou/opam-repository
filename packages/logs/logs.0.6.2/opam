@@ -1,35 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/logs"
-doc: "http://erratique.ch/software/logs/doc"
-dev-repo: "git+http://erratique.ch/repos/logs.git"
-bug-reports: "https://github.com/dbuenzli/logs/issues"
-tags: [ "log" "system" "org:erratique" ]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "result"
-  "mtime" {with-test}
-]
-depopts: [
-  "js_of_ocaml"
-  "fmt"
-  "cmdliner"
-  "lwt" ]
-conflicts: [
-  "cmdliner" {< "0.9.8"}
-  "js_of_ocaml" {>= "3.4.0"} ]
-build: [[
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%"
-          "--with-js_of_ocaml" "%{js_of_ocaml:installed}%"
-          "--with-fmt" "%{fmt:installed}%"
-          "--with-cmdliner" "%{cmdliner:installed}%"
-          "--with-lwt" "%{lwt:installed}%" ]]
+name: "logs"
+version: "0.6.2"
 synopsis: "Logging infrastructure for OCaml"
 description: """
 Logs provides a logging infrastructure for OCaml. Logging is performed
@@ -53,6 +24,42 @@ Logs and its reporters are distributed under the ISC license.
 [jsoo]: http://ocsigen.org/js_of_ocaml/
 [cmdliner]: http://erratique.ch/software/cmdliner
 [lwt]: http://ocsigen.org/lwt/"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+tags: ["log" "org:erratique" "system"]
+homepage: "http://erratique.ch/software/logs"
+doc: "http://erratique.ch/software/logs/doc"
+bug-reports: "https://github.com/dbuenzli/logs/issues"
+depends: [
+  "mtime" {with-test}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "result"
+  "topkg" {build}
+]
+depopts: ["cmdliner" "fmt" "js_of_ocaml" "lwt"]
+conflicts: [
+  "cmdliner" {< "0.9.8"}
+  "js_of_ocaml" {>= "3.4.0"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--with-js_of_ocaml"
+  "%{js_of_ocaml:installed}%"
+  "--with-fmt"
+  "%{fmt:installed}%"
+  "--with-cmdliner"
+  "%{cmdliner:installed}%"
+  "--with-lwt"
+  "%{lwt:installed}%"
+]
+dev-repo: "git+http://erratique.ch/repos/logs.git"
 url {
   src: "http://erratique.ch/software/logs/releases/logs-0.6.2.tbz"
   checksum: "md5=19f824c02c83c6dddc3bfb6459e4743e"

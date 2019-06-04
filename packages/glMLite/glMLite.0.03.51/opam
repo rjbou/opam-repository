@@ -1,24 +1,26 @@
 opam-version: "2.0"
+name: "glMLite"
+version: "0.03.51"
+synopsis: "OpenGL bindings for OCaml"
+description: """
+Provide bindings for GL, Glu and Glut, GLE, FTGL, and also some
+small image loader modules for different image file formats."""
 maintainer: "acieroid@awesom.eu"
-homepage: "http://www.linux-nantes.org/~fmonnier/OCaml/GL/"
 authors: "Florent Monnier"
-build: make
-remove: [["ocamlfind" "remove" "glMLite"]]
+homepage: "http://www.linux-nantes.org/~fmonnier/OCaml/GL/"
 depends: [
   "ocaml" {< "4.04.0"}
   "ocamlfind"
 ]
+flags: light-uninstall
+build: make
 install: [make "install" "PREFIX=%{lib}%/glMLite"]
+remove: ["ocamlfind" "remove" "glMLite"]
 depexts: [
   ["freeglut3-dev"] {os-distribution = "debian"}
   ["freeglut3-dev"] {os-distribution = "ubuntu"}
   ["homebrew/x11/freeglut"] {os = "macos" & os-distribution = "homebrew"}
 ]
-synopsis: "OpenGL bindings for OCaml"
-description: """
-Provide bindings for GL, Glu and Glut, GLE, FTGL, and also some
-small image loader modules for different image file formats."""
-flags: light-uninstall
 url {
   src:
     "http://www.linux-nantes.org/~fmonnier/OCaml/GL/download/glMLite-0.03.51.tgz"

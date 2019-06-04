@@ -1,30 +1,32 @@
 opam-version: "2.0"
+name: "zbar"
+version: "0.9"
+synopsis: "Binding to ZBar (QR-code scanning library)"
 maintainer: "vb@luminar.eu.org"
-authors: ["Vincent Bernardoff"]
+authors: "Vincent Bernardoff"
 homepage: "http://github.com/vbmithr/ocaml-zbar"
+depends: [
+  "lwt"
+  "oasis" {build}
+  "ocaml"
+  "ocamlbuild" {build}
+]
+depopts: ["ctypes" "ctypes-foreign"]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   [make "PREFIX=%{prefix}%"]
 ]
+install: [make "PREFIX=%{prefix}%" "install"]
 remove: [
   ["ocamlfind" "remove" "zbar"]
   ["ocamlfind" "remove" "zbar_ctypes"]
 ]
-depends: [
-  "ocaml"
-  "lwt"
-  "ocamlbuild" {build}
-  "oasis" {build}
-]
-depopts: ["ctypes" "ctypes-foreign"]
 depexts: [
   ["libzbar-dev"] {os-distribution = "ubuntu"}
   ["libzbar-dev"] {os-distribution = "debian"}
 ]
 dev-repo: "git://github.com/vbmithr/ocaml-zbar"
-install: [make "PREFIX=%{prefix}%" "install"]
-synopsis: "Binding to ZBar (QR-code scanning library)"
-flags: light-uninstall
 url {
   src: "https://github.com/vbmithr/ocaml-zbar/archive/0.9.tar.gz"
   checksum: "md5=76c2c625cc5b8c4f258a0202a2acb283"

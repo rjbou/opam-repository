@@ -1,7 +1,24 @@
 opam-version: "2.0"
+name: "themoviedb"
+version: "0.8"
+synopsis: "API for TheMovieDb.org website"
 maintainer: "opam-devel@lists.ocaml.org"
-authors: ["Marc Simon marc.simon42@gmail.com"]
+authors: "Marc Simon marc.simon42@gmail.com"
 license: "GPL-3"
+depends: [
+  "deriving-yojson"
+  "lwt"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ocsigenserver"
+  "yojson"
+]
+depopts: ["ounit"]
+conflicts: [
+  "ounit" {< "2.0.0"}
+]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -14,24 +31,9 @@ build: [
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
-remove: [["ocamlfind" "remove" "theMovieDb"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocsigenserver"
-  "deriving-yojson"
-  "yojson"
-  "lwt"
-  "ocamlbuild" {build}
-]
-depopts: ["ounit"]
-conflicts: [
-  "ounit" {< "2.0.0"}
-]
-dev-repo: "git://github.com/msimon/the_movie_db"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "API for TheMovieDb.org website"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "theMovieDb"]
+dev-repo: "git://github.com/msimon/the_movie_db"
 url {
   src: "https://github.com/msimon/the_movie_db/archive/v0.8.tar.gz"
   checksum: "md5=2f8905655b59e704ba20caaca1f91cdb"

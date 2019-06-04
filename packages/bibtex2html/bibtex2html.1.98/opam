@@ -1,27 +1,24 @@
 opam-version: "2.0"
+name: "bibtex2html"
+version: "1.98"
+synopsis: "BibTeX to HTML translator"
 maintainer: "filliatr@lri.fr"
-authors: [
-  "Jean-Christophe Filliâtre"
-  "Claude Marché"
-]
-homepage: "https://www.lri.fr/~filliatr/bibtex2html/"
-dev-repo: "git+https://github.com/backtracking/bibtex2html.git"
-bug-reports: "https://github.com/backtracking/bibtex2html/issues"
+authors: ["Claude Marché" "Jean-Christophe Filliâtre"]
 license: "GNU General Public License version 2"
+homepage: "https://www.lri.fr/~filliatr/bibtex2html/"
+bug-reports: "https://github.com/backtracking/bibtex2html/issues"
+depends: [
+  "hevea"
+  "ocaml" {< "4.06.0"}
+]
 build: [
   ["./configure" "--prefix=%{prefix}%"]
   [make]
 ]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "hevea"
-]
 install: [make "install"]
 remove: [make "uninstall"]
-patches: [
-  "make-uninstall.patch"
-]
-synopsis: "BibTeX to HTML translator"
+patches: "make-uninstall.patch"
+dev-repo: "git+https://github.com/backtracking/bibtex2html.git"
 extra-files: ["make-uninstall.patch" "md5=9b4962f579a48817413af55901dc1db1"]
 url {
   src: "http://www.lri.fr/~filliatr/ftp/bibtex2html/bibtex2html-1.98.tar.gz"

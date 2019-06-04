@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "Ion Alberdi <nolaridebi@gmail.com>"
-authors: "Ion Alberdi <nolaridebi@gmail.com>"
-homepage: "https://github.com/yetanotherion/ml2mxml"
-bug-reports: "https://github.com/yetanotherion/ml2mxml/issues"
-license: "Apache Version 2.0"
-dev-repo: "git+https://github.com/yetanotherion/ml2mxml.git"
-build: [
-  ["omake"]
-  ["omake" "test"] {with-test}
-]
-install: ["omake" "install"]
-remove: ["ocamlfind" "remove" "ml2mxml"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "cow" {>= "1.2.1" & < "2.0.0"}
-  "ounit" {>= "2.0.0"}
-  "omake" {>= "0.9.8"}
-]
+name: "ml2mxml"
+version: "0.2"
 synopsis: "Generate musicxml files from OCaml"
 description: """
 ml2mxml is an OCaml library to generate
@@ -34,7 +17,26 @@ With that library, music can be written as:
 - compile/execute it (% omake ex),
 - open the generated musicxml file, with for example a midi
   player that understands the format (see http://www.musicxml.com/software/)."""
+maintainer: "Ion Alberdi <nolaridebi@gmail.com>"
+authors: "Ion Alberdi <nolaridebi@gmail.com>"
+license: "Apache Version 2.0"
+homepage: "https://github.com/yetanotherion/ml2mxml"
+bug-reports: "https://github.com/yetanotherion/ml2mxml/issues"
+depends: [
+  "cow" {>= "1.2.1" & < "2.0.0"}
+  "ocaml"
+  "ocamlfind" {build}
+  "omake" {>= "0.9.8"}
+  "ounit" {>= "2.0.0"}
+]
 flags: light-uninstall
+build: [
+  ["omake"]
+  ["omake" "test"] {with-test}
+]
+install: ["omake" "install"]
+remove: ["ocamlfind" "remove" "ml2mxml"]
+dev-repo: "git+https://github.com/yetanotherion/ml2mxml.git"
 url {
   src: "https://github.com/yetanotherion/ml2mxml/archive/v0.2.tar.gz"
   checksum: "md5=a3c3ee3829163314e11e07248358cfc7"

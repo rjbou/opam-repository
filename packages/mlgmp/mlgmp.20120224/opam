@@ -1,7 +1,24 @@
 opam-version: "2.0"
-authors: ["David Monniaux"]
+name: "mlgmp"
+version: "20120224"
+synopsis: "Interface of GNU MP and MPFR"
+description:
+  "An extended precision computation library (integers, rationals, floats) in OCaml."
 maintainer: "Nicolas Berthier <m@nberth.space>"
+authors: "David Monniaux"
 homepage: "http://www-verimag.imag.fr/~monniaux/download/"
+depends: [
+  "conf-gmp"
+  "conf-mpfr"
+  "oasis" {build}
+  "ocaml" {< "4.06.0"}
+  "ocamlfind" {build}
+]
+conflicts: [
+  "apron" {= "20140725"}
+  "apron" {= "20150518"}
+]
+flags: light-uninstall
 build: [
   ["sh" "-c" "rm -f *.cmo *.cmi *.cma *.cmxa *.o *.a *.cmx *.cmxs"]
   ["oasis" "setup"]
@@ -10,31 +27,12 @@ build: [
   ["cp" "conversions.c" "_build/conversions.c"]
   ["ocaml" "setup.ml" "-build"]
 ]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
-remove: [
-  ["ocamlfind" "remove" "gmp"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "conf-gmp"
-  "conf-mpfr"
-  "oasis" {build}
-  "ocamlfind" {build}
-]
-conflicts: [
-  "apron" {= "20140725"}
-  "apron" {= "20150518"}
-]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "gmp"]
 patches: "fix-extern-declarations.diff" {ocaml:version >= "4.03"}
-synopsis: "Interface of GNU MP and MPFR"
-description:
-  "An extended precision computation library (integers, rationals, floats) in OCaml."
-flags: light-uninstall
 extra-files: [
-  ["fix-extern-declarations.diff" "md5=fb74354949e8e793bf1ba6ae968d2a76"]
   ["_oasis" "md5=6c79896a85fe20d7de50d2d01d64c6b4"]
+  ["fix-extern-declarations.diff" "md5=fb74354949e8e793bf1ba6ae968d2a76"]
 ]
 url {
   src: "http://www-verimag.imag.fr/~monniaux/download/mlgmp_20120224.tar.gz"

@@ -1,10 +1,23 @@
 opam-version: "2.0"
+name: "pla"
+version: "1.1"
+synopsis: "Ppx templating library using verbatim strings."
+description:
+  "Pla is a simple library and ppx syntax extension to create composable templates based on verbatim strings"
 maintainer: "Leonardo Laguna Ruiz <modlfo@gmail.com>"
 authors: "Leonardo Laguna Ruiz <modlfo@gmail.com>"
+license: "MIT"
 homepage: "https://modlfo.github.io/pla/"
 bug-reports: "https://github.com/modlfo/pla/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/modlfo/pla.git"
+depends: [
+  "cppo" {build}
+  "cppo_ocamlbuild" {build}
+  "ocaml" {>= "4.02.1"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.6.0"}
+]
+available: opam-version >= "1.2"
+flags: light-uninstall
 build: [
   ["./configure" "--prefix=%{prefix}%"]
   [make]
@@ -12,18 +25,7 @@ build: [
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "pla"]
-depends: [
-  "ocaml" {>= "4.02.1"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build & >= "1.6.0"}
-  "cppo" {build}
-  "cppo_ocamlbuild" {build}
-]
-available: opam-version >= "1.2"
-synopsis: "Ppx templating library using verbatim strings."
-description:
-  "Pla is a simple library and ppx syntax extension to create composable templates based on verbatim strings"
-flags: light-uninstall
+dev-repo: "git+https://github.com/modlfo/pla.git"
 url {
   src: "https://github.com/modlfo/pla/archive/v1.1.tar.gz"
   checksum: "md5=c308189bcd816f4e07d7d8282adc46f8"

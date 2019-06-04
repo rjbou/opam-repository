@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "uritemplate"
+version: "0.0.1"
 synopsis: "OCaml implementation of URI templates (RFC6570)"
 maintainer: "Corin Chaplin <git@corinchaplin.co.uk>"
 authors: "Corin Chaplin <git@corinchaplin.co.uk>"
@@ -7,8 +9,8 @@ homepage: "https://github.com/CorinChappy/uritemplate-ocaml"
 bug-reports: "https://github.com/CorinChappy/uritemplate-ocaml/issues"
 depends: [
   "dune" {build}
-  "stdcompat" {>= "5"}
   "ounit" {with-test}
+  "stdcompat" {>= "5"}
 ]
 build: [
   ["dune" "subst"] {pinned}

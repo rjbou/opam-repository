@@ -1,18 +1,22 @@
 opam-version: "2.0"
-maintainer: "fxfactorial"
-authors: "The Brotli Authors"
-homepage: "https://github.com/google/brotli"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "MIT"
-build: [ "pkg-config" "libbrotlidec" "libbrotlienc" ]
-depexts: [
-  ["libbrotli-dev"] {os-distribution = "debian"}
-  ["libbrotli"] {os = "freebsd"}
-  ["brotli"] {os-distribution = "homebrew" & os = "macos"}
-  ["libbrotli-dev"] {os-distribution = "ubuntu"}
-]
+name: "conf-brotli"
+version: "0.0.1"
 synopsis: "Virtual package relying on a brotli system installation"
 description:
   "This package can only install if libbrotli is installed on the system."
-depends: ["conf-pkg-config" {build}]
+maintainer: "fxfactorial"
+authors: "The Brotli Authors"
+license: "MIT"
+homepage: "https://github.com/google/brotli"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "libbrotlidec" "libbrotlienc"]
+depexts: [
+  ["brotli"] {os-distribution = "homebrew" & os = "macos"}
+  ["libbrotli"] {os = "freebsd"}
+  ["libbrotli-dev"] {os-distribution = "debian"}
+  ["libbrotli-dev"] {os-distribution = "ubuntu"}
+]

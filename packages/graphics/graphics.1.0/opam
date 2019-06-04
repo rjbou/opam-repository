@@ -1,10 +1,11 @@
 opam-version: "2.0"
-maintainer: "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
-homepage: "http://www.ocaml.org/"
-license: "LGPL+EXN-BIN"
-build: [["ocamlc" "-custom" "graphics.cma" "-o" "test"]]
-post-messages: [
-  "This package checks whether the Graphics library was compiled." {failure}
-]
+name: "graphics"
+version: "1.0"
 synopsis: "Virtual package to check the availability of the Graphics library"
+maintainer: "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
+license: "LGPL+EXN-BIN"
+homepage: "http://www.ocaml.org/"
 depends: ["ocaml"]
+build: ["ocamlc" "-custom" "graphics.cma" "-o" "test"]
+post-messages:
+  "This package checks whether the Graphics library was compiled." {failure}

@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "dockerfile-cmd"
+version: "6.1.1"
 synopsis: "Dockerfile eDSL - generation support"
 description: """
 This library provides a typed OCaml interface to generating Dockerfiles
@@ -15,13 +17,13 @@ homepage: "https://github.com/avsm/ocaml-dockerfile"
 doc: "https://avsm.github.io/ocaml-dockerfile/doc"
 bug-reports: "https://github.com/avsm/ocaml-dockerfile/issues"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "dune" {build}
-  "dockerfile-opam" {>= "3.0.0"}
+  "bos"
   "cmdliner"
+  "dockerfile-opam" {>= "3.0.0"}
+  "dune" {build}
   "fmt"
   "logs"
-  "bos"
+  "ocaml" {>= "4.02.3"}
   "ppx_sexp_conv"
 ]
 build: [

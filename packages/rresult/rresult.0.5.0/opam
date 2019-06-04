@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/rresult"
-doc: "http://erratique.ch/software/rresult"
-dev-repo: "git+http://erratique.ch/repos/rresult.git"
-bug-reports: "https://github.com/dbuenzli/rresult/issues"
-tags: [ "result" "error" "declarative" "org:erratique" ]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "result"
-]
-build:[[
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%" ]]
+name: "rresult"
+version: "0.5.0"
 synopsis: "Result value combinators for OCaml"
 description: """
 Rresult is an OCaml module for handling computation results and errors
@@ -26,6 +10,22 @@ available from OCaml 4.03 in the standard library.
 
 Rresult depends on the compatibility `result` package and is
 distributed under the ISC license."""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+tags: ["declarative" "error" "org:erratique" "result"]
+homepage: "http://erratique.ch/software/rresult"
+doc: "http://erratique.ch/software/rresult"
+bug-reports: "https://github.com/dbuenzli/rresult/issues"
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "result"
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+http://erratique.ch/repos/rresult.git"
 url {
   src: "http://erratique.ch/software/rresult/releases/rresult-0.5.0.tbz"
   checksum: "md5=2aa904e5f1707903da68d80d71c85637"

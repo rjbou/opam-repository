@@ -1,13 +1,6 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://cristal.inria.fr/~fpottier/alphaCaml/"
-build: make
-remove: [["ocamlfind" "remove" "alphaLib"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-]
-install: [make "install" "PREFIX=%{prefix}%"]
+name: "alphaCaml"
+version: "20061214"
 synopsis:
   "Turns a so-called \"binding specification\" into an OCaml compilation unit"
 description: """
@@ -16,7 +9,16 @@ Cαml (pronounced: "alphaCaml") is a tool that turns a so-called
 writers of interpreters, compilers, or other
 programs-that-manipulate-programs deal with α-conversion in a safe and
 concise style."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+homepage: "http://cristal.inria.fr/~fpottier/alphaCaml/"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: make
+install: [make "install" "PREFIX=%{prefix}%"]
+remove: ["ocamlfind" "remove" "alphaLib"]
 extra-files: ["alphaCaml.install" "md5=7adafc06c5a3cf909d38c23cc0703a32"]
 url {
   src:

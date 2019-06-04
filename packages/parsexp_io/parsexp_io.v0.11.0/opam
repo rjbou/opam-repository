@@ -1,26 +1,26 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/parsexp_io"
-bug-reports: "https://github.com/janestreet/parsexp_io/issues"
-dev-repo: "git+https://github.com/janestreet/parsexp_io.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "base" {>= "v0.11" & < "v0.12"}
-  "parsexp" {>= "v0.11" & < "v0.12"}
-  "ppx_js_style" {>= "v0.11" & < "v0.12"}
-  "stdio" {>= "v0.11" & < "v0.12"}
-  "jbuilder" {build & >= "1.0+beta18.1"}
-  "ocaml-migrate-parsetree" {>= "1.0"}
-  "ppxlib" {>= "0.1.0" & < "0.9.0"}
-]
+name: "parsexp_io"
+version: "v0.11.0"
 synopsis: "S-expression parsing library (IO functions)"
 description:
   "Parsexp_io provides functions for loading s-expressions from files."
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/parsexp_io"
+bug-reports: "https://github.com/janestreet/parsexp_io/issues"
+depends: [
+  "base" {>= "v0.11" & < "v0.12"}
+  "jbuilder" {build & >= "1.0+beta18.1"}
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "1.0"}
+  "parsexp" {>= "v0.11" & < "v0.12"}
+  "ppx_js_style" {>= "v0.11" & < "v0.12"}
+  "ppxlib" {>= "0.1.0" & < "0.9.0"}
+  "stdio" {>= "v0.11" & < "v0.12"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/parsexp_io.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.11/files/parsexp_io-v0.11.0.tar.gz"

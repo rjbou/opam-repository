@@ -1,13 +1,21 @@
 opam-version: "2.0"
+name: "mustache"
+version: "2.2.0"
+synopsis: "Mustache logic-less templates in OCaml"
+description:
+  "Read and write mustache templates and render them by providing a json object"
 maintainer: "rudi.grinberg@gmail.com"
-authors: ["Rudi Grinberg"]
+authors: "Rudi Grinberg"
 license: "MIT"
-
 homepage: "https://github.com/rgrinberg/ocaml-mustache"
-bug-reports: "https://github.com/rgrinberg/ocaml-mustache/issues"
-dev-repo: "git+https://github.com/rgrinberg/ocaml-mustache.git"
 doc: "http://mustache.github.io/mustache.5.html"
-
+bug-reports: "https://github.com/rgrinberg/ocaml-mustache/issues"
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--disable-cli"]
   ["ocaml" "setup.ml" "-build"]
@@ -17,20 +25,8 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-
-remove: [
-  ["ocamlfind" "remove" "mustache"]
-]
-
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
-synopsis: "Mustache logic-less templates in OCaml"
-description:
-  "Read and write mustache templates and render them by providing a json object"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "mustache"]
+dev-repo: "git+https://github.com/rgrinberg/ocaml-mustache.git"
 url {
   src: "https://github.com/rgrinberg/ocaml-mustache/archive/v2.2.0.tar.gz"
   checksum: "md5=974400382290d3668814ef75d293c123"

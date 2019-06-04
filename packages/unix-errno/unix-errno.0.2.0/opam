@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "sheets@alum.mit.edu"
-authors: "David Sheets <sheets@alum.mit.edu>"
-homepage: "https://github.com/dsheets/ocaml-unix-errno"
-bug-reports: "https://github.com/dsheets/ocaml-unix-errno/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/dsheets/ocaml-unix-errno.git"
-build: [make "build"]
-install: [make "install"]
-remove: [make "uninstall"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ctypes" {>= "0.4.0" & < "0.6.0"}
-  "rresult"
-  "ocamlbuild" {build}
-]
+name: "unix-errno"
+version: "0.2.0"
 synopsis: "Unix errno types, maps, and support"
 description: """
 unix-errno provides an errno variant similar to Unix.error but including
@@ -25,6 +11,22 @@ Errno and are independent of any Unix bindings. This makes the library's
 types usable from MirageOS on top of Xen. Errno_unix provides maps to
 and from Unix.error, the present host's errno map, an errno exception
 Error, and higher-order errno checking functions."""
+maintainer: "sheets@alum.mit.edu"
+authors: "David Sheets <sheets@alum.mit.edu>"
+license: "ISC"
+homepage: "https://github.com/dsheets/ocaml-unix-errno"
+bug-reports: "https://github.com/dsheets/ocaml-unix-errno/issues"
+depends: [
+  "ctypes" {>= "0.4.0" & < "0.6.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "rresult"
+]
+build: [make "build"]
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/dsheets/ocaml-unix-errno.git"
 url {
   src: "https://github.com/dsheets/ocaml-unix-errno/archive/0.2.0.tar.gz"
   checksum: "md5=afda858f0936c37043c1f6fce04cf315"

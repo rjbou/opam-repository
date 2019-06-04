@@ -1,16 +1,18 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: make
-remove: [["ocamlfind" "remove" "text"]]
-depends: [
-  "ocaml" {= "3.12.1"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "text"
+version: "0.5"
 synopsis:
   "Library for dealing with \"text\", i.e. sequence of unicode characters, in a convenient way"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "ocaml" {= "3.12.1"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "text"]
 url {
   src:
     "https://download.ocamlcore.org/ocaml-text/ocaml-text/0.5/ocaml-text-0.5.tar.gz"

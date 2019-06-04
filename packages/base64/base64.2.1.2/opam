@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "mirageos-devel@lists.xenproject.org"
-authors: [ "Thomas Gazagnaire"
-           "Anil Madhavapeddy"
-           "Peter Zotov" ]
-license: "ISC"
-homepage: "https://github.com/mirage/ocaml-base64"
-doc: "http://mirage.github.io/ocaml-base64/"
-bug-reports: "https://github.com/mirage/ocaml-base64/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-base64.git"
-depends: [
-  "ocaml"
-  "base-bytes"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "bos" {with-test}
-  "rresult" {with-test}
-  "alcotest" {with-test & >= "0.4.0"}
-]
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
+name: "base64"
+version: "2.1.2"
 synopsis: "For OCaml"
 description: """
 Base64 is a group of similar binary-to-text encoding schemes that represent
@@ -34,6 +11,29 @@ See also [documentation][docs].
 
 [rfc4648]: https://tools.ietf.org/html/rfc4648
 [docs]: http://mirage.github.io/ocaml-base64"""
+maintainer: "mirageos-devel@lists.xenproject.org"
+authors: ["Anil Madhavapeddy" "Peter Zotov" "Thomas Gazagnaire"]
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-base64"
+doc: "http://mirage.github.io/ocaml-base64/"
+bug-reports: "https://github.com/mirage/ocaml-base64/issues"
+depends: [
+  "alcotest" {with-test & >= "0.4.0"}
+  "base-bytes"
+  "bos" {with-test}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "rresult" {with-test}
+  "topkg" {build}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/ocaml-base64.git"
 url {
   src:
     "https://github.com/mirage/ocaml-base64/releases/download/v2.1.2/base64-2.1.2.tbz"

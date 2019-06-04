@@ -1,24 +1,7 @@
 opam-version: "2.0"
+name: "interface-prime-lwt"
+version: "0.1"
 synopsis: "Interfaces for common design patterns (LWT implementation)"
-maintainer: "Dorian Peake <dorian@vereia.com>"
-authors: "Dorian Peake <dorian@vereia.com>"
-homepage: "https://github.com/dozzman/interface-prime"
-bug-reports: "https://github.com/dozzman/interface-prime/issues"
-tags: [
-  "interface"
-  "monad"
-  "io"
-  "lwt"
-]
-depends: [
-  "ocaml" {>= "4.03"}
-  "dune" {build & >= "1.6.2"}
-  "lwt" {>= "4.1.0"}
-  "interface-prime" {>= "0.1"}
-]
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
 description: """
 Interface' (pron. Interface Prime) provides an abstraction for common design patterns
 (e.g. monads) which can be implemented by your favourite libraries (e.g. lwt and async) to
@@ -28,8 +11,19 @@ reduce the coupling between your code and your dependencies.
 I've seen in many libraries the redefininition the same standard functions for monadic
 operations, e.g. bind/(>>=), fmap/(>|=)/(>>|). To simplify this NxN problem, Interface'
 aims to act as an abstraction over common design patterns like monads to allow a bit more
-flexibility between the code you write and the libraries you use.
-"""
+flexibility between the code you write and the libraries you use."""
+maintainer: "Dorian Peake <dorian@vereia.com>"
+authors: "Dorian Peake <dorian@vereia.com>"
+tags: ["interface" "io" "lwt" "monad"]
+homepage: "https://github.com/dozzman/interface-prime"
+bug-reports: "https://github.com/dozzman/interface-prime/issues"
+depends: [
+  "dune" {build & >= "1.6.2"}
+  "interface-prime" {>= "0.1"}
+  "lwt" {>= "4.1.0"}
+  "ocaml" {>= "4.03"}
+]
+build: ["dune" "build" "-p" name "-j" jobs]
 dev-repo: "git+https://github.com:dozzman/interface-prime.git"
 url {
   src: "https://github.com/dozzman/interface-prime/archive/0.1.tar.gz"

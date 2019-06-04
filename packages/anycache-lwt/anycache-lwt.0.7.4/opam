@@ -1,24 +1,6 @@
 opam-version: "2.0"
-maintainer: "Török Edwin <edwin@etorok.net>"
-authors: ["Török Edwin <edwin@etorok.net>"]
-homepage: "https://gitlab.com/edwintorok/ocaml-anycache"
-doc: "https://edwintorok.gitlab.io/ocaml-anycache/doc"
-license: "ISC"
-dev-repo: "git+https://gitlab.com/edwintorok/ocaml-anycache.git"
-bug-reports: "https://gitlab.com/edwintorok/ocaml-anycache/issues"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "topkg-jbuilder" {build}
-  "alcotest" {with-test & >= "0.7.2"}
-  "base-bytes"
-  "anycache"
-  "lwt"
-]
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
+name: "anycache-lwt"
+version: "0.7.4"
 synopsis: "Scan-resistant LRU/2Q cache"
 description: """
 anycache is a scan-resistant LRU/2Q cache.
@@ -27,6 +9,26 @@ See the [documentation][basics] for details on the algorithm used.
 [basics]: https://edwintorok.gitlab.io/ocaml-anycache/doc/Anycache.html#basics
 
 anycache is distributed under the ISC license."""
+maintainer: "Török Edwin <edwin@etorok.net>"
+authors: "Török Edwin <edwin@etorok.net>"
+license: "ISC"
+homepage: "https://gitlab.com/edwintorok/ocaml-anycache"
+doc: "https://edwintorok.gitlab.io/ocaml-anycache/doc"
+bug-reports: "https://gitlab.com/edwintorok/ocaml-anycache/issues"
+depends: [
+  "alcotest" {with-test & >= "0.7.2"}
+  "anycache"
+  "base-bytes"
+  "lwt"
+  "ocaml" {>= "4.01.0"}
+  "topkg-jbuilder" {build}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://gitlab.com/edwintorok/ocaml-anycache.git"
 url {
   src:
     "https://gitlab.com/edwintorok/ocaml-anycache/uploads/47d27fb2e3ac835994d7b546872b12cb/anycache-0.7.4.tbz"

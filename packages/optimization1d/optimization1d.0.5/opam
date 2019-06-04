@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "optimization1d"
+version: "0.5"
+synopsis:
+  "Collection of functions to find the minimum or maximum of functions float -> float"
+description: "Pure OCaml code."
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "oasis" {>= "0.3.0" & < "0.4.7"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["rm" "setup.ml"] {ocaml:version >= "4.00.0"}
   ["oasis" "setup"] {ocaml:version >= "4.00.0"}
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "optimization1d"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "oasis" {>= "0.3.0" & < "0.4.7"}
-  "ocamlbuild" {build}
-]
 install: ["ocaml" "setup.ml" "-install"]
-synopsis:
-  "Collection of functions to find the minimum or maximum of functions float -> float"
-description: "Pure OCaml code."
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "optimization1d"]
 url {
   src:
     "https://download.ocamlcore.org/optimization1d/optimization1d/0.5/optimization1d-0.5.tar.gz"

@@ -1,33 +1,6 @@
 opam-version: "2.0"
-bug-reports: "https://bitbucket.org/libra-tk/libra-tk/issues"
-maintainer: [
-  "Daniel Lowd <lowd@cs.uoregon.edu>"
-  "Amirmohammad (Pedram) Rooshenas <pedram@cs.uoregon.edu>"
-]
-authors: [
-  "Daniel Lowd <lowd@cs.uoregon.edu>"
-  "Amirmohammad (Pedram) Rooshenas <pedram@cs.uoregon.edu>"
-]
-homepage: "http://libra.cs.uoregon.edu"
-license: "BSD-2-clause"
-tags: "clib:expat"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-uninstall"]
-]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.03.0"}
-  "base-unix"
-  "ocamlfind"
-  "ocaml-expat"
-  "ocamlbuild" {build}
-]
+name: "libra-tk"
+version: "1.1.2"
 synopsis: "Learning and inference with discrete probabilistic models"
 description: """
 The Libra Toolkit is a collection of algorithms for learning and
@@ -39,6 +12,35 @@ especially for tractable models in which exact inference is efficient.
 Each algorithm in Libra is implemented as a command-line program
 suitable for interactive use or scripting, with consistent options and
 file formats throughout the toolkit."""
+maintainer: [
+  "Daniel Lowd <lowd@cs.uoregon.edu>"
+  "Amirmohammad (Pedram) Rooshenas <pedram@cs.uoregon.edu>"
+]
+authors: [
+  "Amirmohammad (Pedram) Rooshenas <pedram@cs.uoregon.edu>"
+  "Daniel Lowd <lowd@cs.uoregon.edu>"
+]
+license: "BSD-2-clause"
+tags: "clib:expat"
+homepage: "http://libra.cs.uoregon.edu"
+bug-reports: "https://bitbucket.org/libra-tk/libra-tk/issues"
+depends: [
+  "base-unix"
+  "ocaml" {>= "4.00.0" & < "4.03.0"}
+  "ocaml-expat"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
 url {
   src: "http://libra.cs.uoregon.edu/libra-tk-1.1.2d.tar.gz"
   checksum: "md5=a53e35d844ba391d5053416696c48168"

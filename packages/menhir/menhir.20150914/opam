@@ -1,20 +1,20 @@
 opam-version: "2.0"
+name: "menhir"
+version: "20150914"
+synopsis: "LR(1) parser generator"
 maintainer: "opam-devel@lists.ocaml.org"
+depends: [
+  "ocaml" {>= "4.02"}
+  "ocamlbuild" {build & < "0.9.1"}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   make
   "PREFIX=%{prefix}%"
   "docdir=%{doc}%/menhir"
   "libdir=%{lib}%/menhir"
   "mandir=%{man}%/man1"
-]
-remove: [["ocamlfind" "remove" "menhirLib"]]
-depends: [
-  "ocaml" {>= "4.02"}
-  "ocamlfind"
-  "ocamlbuild" {build & < "0.9.1"}
-]
-patches: [
-  "warn_error.patch"
 ]
 install: [
   make
@@ -24,11 +24,11 @@ install: [
   "libdir=%{lib}%/menhir"
   "mandir=%{man}%/man1"
 ]
-synopsis: "LR(1) parser generator"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "menhirLib"]
+patches: "warn_error.patch"
 extra-files: [
-  ["warn_error.patch" "md5=b2405cd1e69ed40668a268e68d3968b6"]
   ["menhir.install" "md5=625cece5f684bf14fcc2b0e9dc26cedd"]
+  ["warn_error.patch" "md5=b2405cd1e69ed40668a268e68d3968b6"]
 ]
 url {
   src: "http://gallium.inria.fr/~fpottier/menhir/menhir-20150914.tar.gz"

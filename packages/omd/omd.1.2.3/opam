@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "philippe.wang@gmail.com"
-authors: [ "Philippe Wang <philippe.wang@gmail.com>" ]
-license: "ISC"
-homepage: "https://github.com/ocaml/omd"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocamlfind" "remove" "omd"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "base-bigarray"
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-tags: [
-  "org:ocamllabs"
-  "org:mirage"
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "omd"
+version: "1.2.3"
 synopsis: "A Markdown frontend in pure OCaml."
 description: """
 This Markdown library is implemented using only pure OCaml (including
@@ -29,7 +9,24 @@ OMD is meant to be as faithful as possible to the original Markdown.
 Additionally, OMD implements a few Github markdown features, an
 extension mechanism, and some other features. Note that the opam
 package installs both the OMD library and the command line tool `omd`."""
+maintainer: "philippe.wang@gmail.com"
+authors: "Philippe Wang <philippe.wang@gmail.com>"
+license: "ISC"
+tags: ["org:mirage" "org:ocamllabs"]
+homepage: "https://github.com/ocaml/omd"
+depends: [
+  "base-bigarray"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "omd"]
 extra-files: ["omd.install" "md5=0395736894a46f718a77f59ec6fbf1fd"]
 url {
   src: "http://pw374.github.io/distrib/omd/omd-1.2.3.tar.gz"

@@ -1,24 +1,33 @@
 opam-version: "2.0"
+name: "opam-devel"
+version: "2.0.2"
+synopsis: ""
+description: """
+opam 2.0.0 development version
+
+This package compiles (bootstraps) opam 2.0.0. For consistency and safety of the
+installation, the binaries are not installed into the PATH, but into
+lib/opam-devel, from where the user can manually install them system-wide."""
 maintainer: "opam-devel@lists.ocaml.org"
 authors: [
-  "Vincent Bernardoff <vb@luminar.eu.org>"
+  "Anil Madhavapeddy <anil@recoil.org>"
+  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
+  "Frederic Tuong <tuong@users.gforge.inria.fr>"
+  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
   "Raja Boujbel <raja.boujbel@ocamlpro.com>"
+  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
   "Roberto Di Cosmo <roberto@dicosmo.org>"
   "Thomas Gazagnaire <thomas@gazagnaire.org>"
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
-  "Anil Madhavapeddy <anil@recoil.org>"
-  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
-  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
-  "Frederic Tuong <tuong@users.gforge.inria.fr>"
+  "Vincent Bernardoff <vb@luminar.eu.org>"
 ]
 homepage: "https://opam.ocaml.org"
 bug-reports: "https://github.com/ocaml/opam/issues"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "opam-client" {= "2.0.2"}
   "cmdliner" {>= "0.9.8"}
   "dune" {build & >= "1.2.1"}
+  "ocaml" {>= "4.02.3"}
+  "opam-client" {= "2.0.2"}
 ]
 build: [
   ["./configure" "--disable-checks" "--prefix" prefix]
@@ -41,10 +50,3 @@ url {
     "sha512=5c30ec0a09981860453972a351e27f6e882f023041514ecdc48702de40aa770d3e54931dfb2f9e8070f4233fd5e9bf5bfae6b2797b1b2068a49cab9f5784bafc"
   ]
 }
-description:"""
-opam 2.0.0 development version
-
-This package compiles (bootstraps) opam 2.0.0. For consistency and safety of the
-installation, the binaries are not installed into the PATH, but into
-lib/opam-devel, from where the user can manually install them system-wide.
-"""

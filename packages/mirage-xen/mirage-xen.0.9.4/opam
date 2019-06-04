@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "mirage-xen"
+version: "0.9.4"
+synopsis: "MirageOS platform library for Xen compilation"
 maintainer: "anil@recoil.org"
-build: [make "xen-build"]
-remove: [[make "xen-uninstall" "PREFIX=%{prefix}%"]]
 depends: [
-  "ocaml" {>= "4.00.1" & < "4.02.0"}
   "cstruct" {>= "0.7.1"}
-  "ocamlfind"
   "lwt" {>= "2.4.0"}
+  "ocaml" {>= "4.00.1" & < "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
   "shared-memory-ring" {>= "0.4.1" & < "2.0.0"}
   "xenstore" {= "1.2.2"}
-  "ocamlbuild" {build}
 ]
 conflicts: ["mirage-unix"]
-dev-repo: "git://github.com/mirage/mirage-platform"
 available: false
+build: [make "xen-build"]
 install: [make "xen-install" "PREFIX=%{prefix}%"]
-synopsis: "MirageOS platform library for Xen compilation"
+remove: [make "xen-uninstall" "PREFIX=%{prefix}%"]
+dev-repo: "git://github.com/mirage/mirage-platform"
 url {
   src: "https://github.com/mirage/mirage-platform/archive/v0.9.4.tar.gz"
   checksum: "md5=b2fb35fc8d8cec9e6367635cba6d0f12"

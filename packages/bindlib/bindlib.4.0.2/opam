@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "Christophe Raffalli <raffalli@univ-savoie.fr>"
-bug-reports:  "http://lama.univ-savoie.fr/mantis/view_all_bug_page.php?project_id=3"
-authors:
-  [ "Christophe Raffalli <raffalli@univ-savoie.fr>"
-    "Rodolphe Lepigre <rodolphe.lepigre@univ-savoie.fr>" ]
-homepage: "http://lama.univ-savoie.fr/~raffalli/bindlib"
-license: "LGPL-3.0"
-dev-repo: "darcs+https://lama.univ-savoie.fr/~raffalli/bindlib/repos"
-build: [make]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "bindlib"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-]
+name: "bindlib"
+version: "4.0.2"
 synopsis: "OCaml Bindlib library for bound variables"
 description: """
 Bindlib is a library for the Objective-Caml language providing
@@ -24,7 +11,24 @@ quite efficient and easy to use.
 Authors
 	* Christophe Raffalli
 	* Rodolphe Lepigre"""
+maintainer: "Christophe Raffalli <raffalli@univ-savoie.fr>"
+authors: [
+  "Christophe Raffalli <raffalli@univ-savoie.fr>"
+  "Rodolphe Lepigre <rodolphe.lepigre@univ-savoie.fr>"
+]
+license: "LGPL-3.0"
+homepage: "http://lama.univ-savoie.fr/~raffalli/bindlib"
+bug-reports:
+  "http://lama.univ-savoie.fr/mantis/view_all_bug_page.php?project_id=3"
+depends: [
+  "ocaml"
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "bindlib"]
+dev-repo: "darcs+https://lama.univ-savoie.fr/~raffalli/bindlib/repos"
 url {
   src: "https://lama.univ-savoie.fr/~raffalli/bindlib/bindlib-4.0.2.tar.gz"
   checksum: "md5=6b37b02a6d1c7e5bb51ba96adbf84afc"

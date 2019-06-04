@@ -1,25 +1,25 @@
 opam-version: "2.0"
+name: "ppx_compare"
+version: "v0.12.0"
+synopsis: "Generation of comparison functions from types"
+description: "Part of the Jane Street's PPX rewriters collection."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/ppx_compare"
-bug-reports: "https://github.com/janestreet/ppx_compare/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_compare.git"
-doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_compare/index.html"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
 license: "MIT"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
+homepage: "https://github.com/janestreet/ppx_compare"
+doc:
+  "https://ocaml.janestreet.com/ocaml-core/latest/doc/ppx_compare/index.html"
+bug-reports: "https://github.com/janestreet/ppx_compare/issues"
 depends: [
-  "ocaml"  {>= "4.04.2"}
-  "base"   {>= "v0.12" & < "v0.13"}
-  "dune"   {build & >= "1.5.1"}
+  "base" {>= "v0.12" & < "v0.13"}
+  "dune" {build & >= "1.5.1"}
+  "ocaml" {>= "4.04.2"}
   "ppxlib" {>= "0.5.0" & < "0.9.0"}
 ]
-synopsis: "Generation of comparison functions from types"
-description: "
-Part of the Jane Street's PPX rewriters collection.
-"
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/ppx_compare.git"
 url {
-  src: "https://ocaml.janestreet.com/ocaml-core/v0.12/files/ppx_compare-v0.12.0.tar.gz"
+  src:
+    "https://ocaml.janestreet.com/ocaml-core/v0.12/files/ppx_compare-v0.12.0.tar.gz"
   checksum: "md5=e50fddd9fd7ece75ec8a861e7c1e7e18"
 }

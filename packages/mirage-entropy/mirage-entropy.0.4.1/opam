@@ -1,41 +1,6 @@
 opam-version: "2.0"
-name:         "mirage-entropy"
-homepage:     "https://github.com/mirage/mirage-entropy"
-dev-repo: "git+https://github.com/mirage/mirage-entropy.git"
-bug-reports:  "https://github.com/mirage/mirage-entropy/issues"
-doc:          "https://mirage.github.io/mirage-entropy/doc"
-maintainer:   "david@numm.org"
-license:      "BSD2"
-
-build: [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"
-          "--with-mirage-xen" "%{mirage-xen:installed}%"
-          "--with-mirage-solo5" "%{mirage-solo5:installed}%"
-          "--with-ocaml-freestanding" "%{ocaml-freestanding:installed}%"
-]
-depends: [
-  "ocaml" {>= "4.04.2"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "ocb-stubblr" {build}
-  "cstruct"
-  "mirage-os-shim"
-  "lwt"
-]
-depopts: [
-  "mirage-solo5"
-  "ocaml-freestanding"
-  "mirage-xen"
-]
-conflicts: [
-  "ocb-stubblr" {<"0.1.0"}
-  "cstruct" {<"1.4.0"}
-  "mirage-xen" {<"2.2.0"}
-]
-tags: [ "org:mirage"]
-available:
-  arch = "arm" | arch = "x86_32" | arch = "x86_64" | arch = "x86_64" |
-  arch = "arm64"
+name: "mirage-entropy"
+version: "0.4.1"
 synopsis: "Entropy source for MirageOS unikernels"
 description: """
 mirage-entropy implements various entropy sources for MirageOS unikernels:
@@ -51,7 +16,48 @@ mirage-entropy implements various entropy sources for MirageOS unikernels:
 * E-mail: <mirageos-devel@lists.xenproject.org>
 * Issues: <https://github.com/mirage/mirage-entropy/issues>
 * IRC: `#mirage` on Freenode"""
-authors: ["Hannes Mehnert" "David Kaloper" "Anil Madhavapeddy" "Dave Scott"]
+maintainer: "david@numm.org"
+authors: ["Anil Madhavapeddy" "Dave Scott" "David Kaloper" "Hannes Mehnert"]
+license: "BSD2"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-entropy"
+doc: "https://mirage.github.io/mirage-entropy/doc"
+bug-reports: "https://github.com/mirage/mirage-entropy/issues"
+depends: [
+  "cstruct"
+  "lwt"
+  "mirage-os-shim"
+  "ocaml" {>= "4.04.2"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ocb-stubblr" {build}
+  "topkg" {build}
+]
+depopts: ["mirage-solo5" "mirage-xen" "ocaml-freestanding"]
+conflicts: [
+  "cstruct" {< "1.4.0"}
+  "mirage-xen" {< "2.2.0"}
+  "ocb-stubblr" {< "0.1.0"}
+]
+available:
+  arch = "arm" | arch = "x86_32" | arch = "x86_64" | arch = "x86_64" |
+  arch = "arm64"
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--tests"
+  "false"
+  "--with-mirage-xen"
+  "%{mirage-xen:installed}%"
+  "--with-mirage-solo5"
+  "%{mirage-solo5:installed}%"
+  "--with-ocaml-freestanding"
+  "%{ocaml-freestanding:installed}%"
+]
+dev-repo: "git+https://github.com/mirage/mirage-entropy.git"
 url {
   src:
     "https://github.com/mirage/mirage-entropy/releases/download/0.4.1/mirage-entropy-0.4.1.tbz"

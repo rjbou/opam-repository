@@ -1,27 +1,28 @@
 opam-version: "2.0"
-maintainer: "Jean-Noel Avila <jn.avila@free.fr>"
-homepage: "https://jnavila.github.io/plotkicadsch/"
-doc: "https://jnavila.github.io/plotkicadsch/index"
+name: "kicadsch"
+version: "0.5.0"
 synopsis: "Library to read and convert Kicad Sch files"
 description: """
 Library able to read Kicad libraries and sch file and
-drive a painter to paint the schematics.
-"""
-bug-reports: "https://github.com/jnavila/plotkicadsch/issues"
+drive a painter to paint the schematics."""
+maintainer: "Jean-Noel Avila <jn.avila@free.fr>"
+authors: "Jean-Noel Avila <jn.avila@free.fr>"
 license: "ISC"
-dev-repo: "git+https://github.com/jnavila/plotkicadsch.git"
-build: [
-  [ "dune" "subst" ] {pinned}
-  [ "dune" "build" "-p" name "-j" jobs ]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
-]
+homepage: "https://jnavila.github.io/plotkicadsch/"
+doc: "https://jnavila.github.io/plotkicadsch/index"
+bug-reports: "https://github.com/jnavila/plotkicadsch/issues"
 depends: [
   "dune" {build}
   "dune-release" {build}
+  "ocaml" {>= "4.05"}
   "ounit" {with-test}
-  "ocaml" {>="4.05"}
 ]
-authors: "Jean-Noel Avila <jn.avila@free.fr>"
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/jnavila/plotkicadsch.git"
 url {
   src:
     "https://github.com/jnavila/plotkicadsch/releases/download/v0.5.0/plotkicadsch-v0.5.0.tbz"

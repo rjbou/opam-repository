@@ -1,33 +1,6 @@
 opam-version: "2.0"
 name: "bap-emacs-goodies"
 version: "0.1"
-maintainer: "Ivan Gotovchits <ivg@ieee.org>"
-authors: [
-  "Thomas Barabosch <thomas.barabosch@fkie.fraunhofer.de>"
-  "Ivan Gotovchits <ivg@ieee.org>"
-]
-homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
-bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
-
-depends: [
-  "ocaml"
-  "bap-emacs-mode" {= "0.1"}
-  "bap-emacs-dot" {= "0.1"}
-]
-post-messages: [
-  " Apppend this to your .emacs:
-  ;; Add opam emacs directory to you load paths:
-  (defun opam-path (path)
-     (let ((opam-share-dir (ignore-errors (car (process-lines \"opam\" \"config\" \"var\" \"share\")))))
-       (concat opam-share-dir \"/\" path)))
-  (add-to-list 'load-path (opam-path \"emacs/site-lisp\"))
-  ;; load bap-emacs-goodies
-  (require \'bap-mode)
-  (require \'dot)
-"
-]
 synopsis: "A collection of useful Emacs tools for BAP"
 description: """
 bap-mode
@@ -40,3 +13,27 @@ https://github.com/fkie-cad/bap-mode
 emacs-dot
 Will automatically detect graph specifications in a dot syntax and display them using overlaying.
 https://github.com/ivg/emacs-dot"""
+maintainer: "Ivan Gotovchits <ivg@ieee.org>"
+authors: [
+  "Ivan Gotovchits <ivg@ieee.org>"
+  "Thomas Barabosch <thomas.barabosch@fkie.fraunhofer.de>"
+]
+license: "MIT"
+homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
+bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/"
+depends: [
+  "bap-emacs-dot" {= "0.1"}
+  "bap-emacs-mode" {= "0.1"}
+  "ocaml"
+]
+post-messages: """
+Apppend this to your .emacs:
+  ;; Add opam emacs directory to you load paths:
+  (defun opam-path (path)
+     (let ((opam-share-dir (ignore-errors (car (process-lines "opam" "config" "var" "share")))))
+       (concat opam-share-dir "/" path)))
+  (add-to-list 'load-path (opam-path "emacs/site-lisp"))
+  ;; load bap-emacs-goodies
+  (require 'bap-mode)
+  (require 'dot)"""
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"

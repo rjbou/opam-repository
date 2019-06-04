@@ -1,20 +1,22 @@
 opam-version: "2.0"
+name: "smtp"
+version: "0.3"
+synopsis: "SMTP library with Unix and Lwt backends"
 maintainer: "Vincent Bernardoff <vb@luminar.eu.org>"
-authors: ["Vincent Bernardoff <vb@luminar.eu.org>"]
+authors: "Vincent Bernardoff <vb@luminar.eu.org>"
+license: "ISC"
+tags: "smtp"
 homepage: "https://github.com/vbmithr/ocaml-smtp"
 bug-reports: "https://github.com/vbmithr/ocaml-smtp/issues"
-license: "ISC"
-tags: [ "smtp" ]
 depends: [
   "ocaml"
-  "ocamlfind" {build}
   "ocamlbuild" {build}
+  "ocamlfind" {build}
 ]
-depopts: ["lwt" "base-unix"]
+depopts: ["base-unix" "lwt"]
 conflicts: [
   "lwt" {>= "4.0.0"}
 ]
-dev-repo: "git://github.com/vbmithr/ocaml-smtp"
 build: [
   "ocaml"
   "pkg/build.ml"
@@ -23,7 +25,7 @@ build: [
   "unix=%{base-unix:installed}%"
   "lwt=%{lwt:installed}%"
 ]
-synopsis: "SMTP library with Unix and Lwt backends"
+dev-repo: "git://github.com/vbmithr/ocaml-smtp"
 url {
   src: "https://github.com/vbmithr/ocaml-smtp/archive/0.3.tar.gz"
   checksum: "md5=181b1ec742b598ad54b1622c5a7d3b6d"

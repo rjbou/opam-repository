@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer: "marek@xivilization.net"
-homepage: "https://github.com/Leonidas-from-XIV/ocaml-wiringpi"
-license: "LGPL-3 with OCaml linking exception"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocamlfind" "remove" "WiringPi"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-post-messages: [
-  "
-  This package requires WiringPi development files installed.
-  Tentative instructions : https://gist.githubusercontent.com/Leonidas-from-XIV/a1a7315ac01f7fbee3f0/raw
-  "
-  {failure}
-]
-available: os = "linux"
-install: ["ocaml" "setup.ml" "-install"]
+name: "wiringpi"
+version: "0.0.1"
 synopsis: "WiringPi for OCaml, low level Raspberry Pi hardware access"
 description: """
 WiringPi is a library that allows easy, Arduino-like access to hardware
@@ -34,7 +12,27 @@ based upon.
 
 Please note that you need to install the WiringPi library first, as it is not
 included in this package. Otherwise compilation will fail."""
+maintainer: "marek@xivilization.net"
+license: "LGPL-3 with OCaml linking exception"
+homepage: "https://github.com/Leonidas-from-XIV/ocaml-wiringpi"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+available: os = "linux"
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "WiringPi"]
+post-messages:
+  """
+This package requires WiringPi development files installed.
+  Tentative instructions : https://gist.githubusercontent.com/Leonidas-from-XIV/a1a7315ac01f7fbee3f0/raw"""
+    {failure}
 url {
   src:
     "https://github.com/Leonidas-from-XIV/ocaml-wiringpi/releases/download/0.0.1/ocaml-wiringpi-0.0.1.tar.gz"

@@ -1,23 +1,25 @@
 opam-version: "2.0"
-maintainer: "jeremie@dimino.org"
-authors: ["Jérémie Dimino"]
-license: "BSD3"
-homepage: "https://github.com/diml/topkg-jbuilder"
-bug-reports: "https://github.com/diml/utop/topkg-jbuilder"
-dev-repo: "git://github.com/diml/topkg-jbuilder.git"
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta7"}
-  "topkg"
-]
+name: "topkg-jbuilder"
+version: "0.1.0"
 synopsis: "Helpers for using topkg with jbuilder"
 description: """
 Topkg-jbuilder exposes helpers for using topkg-care in projects using
 Jbuilder."""
+maintainer: "jeremie@dimino.org"
+authors: "Jérémie Dimino"
+license: "BSD3"
+homepage: "https://github.com/diml/topkg-jbuilder"
+bug-reports: "https://github.com/diml/utop/topkg-jbuilder"
+depends: [
+  "jbuilder" {build & >= "1.0+beta7"}
+  "ocaml"
+  "topkg"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git://github.com/diml/topkg-jbuilder.git"
 url {
   src:
     "https://github.com/diml/topkg-jbuilder/releases/download/0.1.0/topkg-jbuilder-0.1.0.tbz"

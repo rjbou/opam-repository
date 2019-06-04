@@ -1,26 +1,6 @@
 opam-version: "2.0"
+name: "vimebac"
 version: "0.0.0"
-maintainer: "Sebastien Mondet <seb@mondet.org>"
-authors: ["Sebastien Mondet <seb@mondet.org>"]
-homepage: "https://gitlab.com/smondet/vimebac"
-bug-reports: "https://gitlab.com/smondet/vimebac/issues"
-dev-repo: "git+https://gitlab.com/smondet/vimebac.git"
-license: "ISC"
-build: [
-  ["jbuilder" "build" "-p" "vimebac" "-j" jobs]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "nonstd"
-  "sosa"
-  "cmdliner"
-  "misuja"
-  "wall"
-  "tsdl"
-  "rresult"
-  "tgls"
-  "jbuilder" {build & >= "1.0+beta20"}
-]
 synopsis:
   "Vimebac is graphical metronome and instructions display that interfaces with"
 description: """
@@ -36,6 +16,25 @@ The current features are:
 - The display of arbitrary lines of text, e.g. to give instructions to the
   musician(s).
 - Custom keyboard bindings to send arbitrary MIDI events."""
+maintainer: "Sebastien Mondet <seb@mondet.org>"
+authors: "Sebastien Mondet <seb@mondet.org>"
+license: "ISC"
+homepage: "https://gitlab.com/smondet/vimebac"
+bug-reports: "https://gitlab.com/smondet/vimebac/issues"
+depends: [
+  "cmdliner"
+  "jbuilder" {build & >= "1.0+beta20"}
+  "misuja"
+  "nonstd"
+  "ocaml" {< "4.06.0"}
+  "rresult"
+  "sosa"
+  "tgls"
+  "tsdl"
+  "wall"
+]
+build: ["jbuilder" "build" "-p" "vimebac" "-j" jobs]
+dev-repo: "git+https://gitlab.com/smondet/vimebac.git"
 url {
   src: "https://gitlab.com/smondet/vimebac/-/archive/0.0.0/vimebac-0.0.0.zip"
   checksum: "md5=9d4010d45ea477179fd054a5a6f1a1c0"

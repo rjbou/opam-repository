@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "sheets@alum.mit.edu"
-authors: ["David Sheets" "Jeremy Yallop"]
-homepage: "https://github.com/dsheets/ocaml-unix-fcntl"
-bug-reports: "https://github.com/dsheets/ocaml-unix-fcntl/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/dsheets/ocaml-unix-fcntl.git"
-build: [make "build"]
-install: [make "install"]
-remove: [make "uninstall"]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.05.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "ctypes" {>= "0.4.0" & < "0.6.0"}
-  "unix-errno" {>= "0.2.0" & < "0.4.0"}
-  "alcotest" {with-test}
-  "unix-type-representations"
-]
-depopts: ["lwt" "base-threads"]
+name: "unix-fcntl"
+version: "0.3.0"
 synopsis: "Unix fcntl.h types, maps, and support"
 description: """
 unix-fcntl provides access to the features exposed in fcntl.h in a way
@@ -34,6 +17,25 @@ support a more comprehensive range of flags than the corresponding
 functions in the standard OCaml Unix module. The Fcntl_unix_lwt module
 exports non-blocking versions of the functions in Fcntl_unix based on
 the Lwt cooperative threading library."""
+maintainer: "sheets@alum.mit.edu"
+authors: ["David Sheets" "Jeremy Yallop"]
+license: "ISC"
+homepage: "https://github.com/dsheets/ocaml-unix-fcntl"
+bug-reports: "https://github.com/dsheets/ocaml-unix-fcntl/issues"
+depends: [
+  "alcotest" {with-test}
+  "ctypes" {>= "0.4.0" & < "0.6.0"}
+  "ocaml" {>= "4.02.0" & < "4.05.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "unix-errno" {>= "0.2.0" & < "0.4.0"}
+  "unix-type-representations"
+]
+depopts: ["base-threads" "lwt"]
+build: [make "build"]
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/dsheets/ocaml-unix-fcntl.git"
 url {
   src: "https://github.com/dsheets/ocaml-unix-fcntl/archive/0.3.0.tar.gz"
   checksum: "md5=035da632f38f96770127980de0f99e08"

@@ -1,23 +1,23 @@
 opam-version: "2.0"
 name: "caqti-driver-postgresql"
+version: "0.11.0"
+synopsis: "PostgreSQL driver for Caqti based on C bindings"
 maintainer: "Petter A. Urkedal <paurkedal@gmail.com>"
+authors: "Petter A. Urkedal <paurkedal@gmail.com>"
+license: "LGPL-3 with OCaml linking exception"
 homepage: "https://github.com/paurkedal/ocaml-caqti/"
 bug-reports: "https://github.com/paurkedal/ocaml-caqti/issues"
-dev-repo: "git+https://github.com/paurkedal/ocaml-caqti.git"
-license: "LGPL-3 with OCaml linking exception"
-
+depends: [
+  "caqti" {= "0.11.0"}
+  "jbuilder" {build & >= "1.0+beta19"}
+  "ocaml"
+  "postgresql"
+]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml"
-  "caqti" {= "0.11.0"}
-  "jbuilder" {build & >= "1.0+beta19"}
-  "postgresql"
-]
-synopsis: "PostgreSQL driver for Caqti based on C bindings"
-authors: "Petter A. Urkedal <paurkedal@gmail.com>"
+dev-repo: "git+https://github.com/paurkedal/ocaml-caqti.git"
 url {
   src:
     "https://github.com/paurkedal/ocaml-caqti/releases/download/v0.11.0/caqti-0.11.0.tbz"

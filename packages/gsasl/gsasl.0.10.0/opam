@@ -1,25 +1,25 @@
 opam-version: "2.0"
+name: "gsasl"
+version: "0.10.0"
+synopsis: "Bindings ot the GNU SASL library using Ctypes"
 maintainer: "n.oje.bar@gmail.com"
-authors: [ "Nicolas Ojeda Bar <n.oje.bar@gmail.com>" ]
+authors: "Nicolas Ojeda Bar <n.oje.bar@gmail.com>"
 license: "MIT"
+depends: [
+  "conf-libgsasl"
+  "ctypes" {>= "0.3" & < "0.4.0"}
+  "ctypes-foreign"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [
-  ["ocamlfind" "remove" "gsasl"]
-]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ctypes" {>= "0.3" & < "0.4.0"}
-  "ctypes-foreign"
-  "conf-libgsasl"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/nojb/ocaml-gsasl"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Bindings ot the GNU SASL library using Ctypes"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "gsasl"]
+dev-repo: "git://github.com/nojb/ocaml-gsasl"
 url {
   src: "https://github.com/nojb/ocaml-gsasl/archive/v0.10.0.tar.gz"
   checksum: "md5=bed8838b5407b9f31acdeaccc86da22f"

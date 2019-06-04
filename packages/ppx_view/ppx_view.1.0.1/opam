@@ -1,21 +1,21 @@
 opam-version: "2.0"
-maintainer: "xclerc@janestreet.com"
-authors: ["Xavier Clerc"]
-license: "Apache-2.0"
-homepage: "https://github.com/ocaml-ppx/ppx_view"
-bug-reports: "https://github.com/ocaml-ppx/ppx_view"
-dev-repo: "git+https://github.com/ocaml-ppx/ppx_view.git"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04" & < "4.08.0"}
-  "jbuilder" {build & >= "1.0+beta7"}
-  "ocaml-migrate-parsetree"
-]
+name: "ppx_view"
+version: "1.0.1"
 synopsis:
   "A ppx rewriter that provides pattern matching on abstract types by"
 description: "transforming patterns into views/expressions."
+maintainer: "xclerc@janestreet.com"
+authors: "Xavier Clerc"
+license: "Apache-2.0"
+homepage: "https://github.com/ocaml-ppx/ppx_view"
+bug-reports: "https://github.com/ocaml-ppx/ppx_view"
+depends: [
+  "jbuilder" {build & >= "1.0+beta7"}
+  "ocaml" {>= "4.04" & < "4.08.0"}
+  "ocaml-migrate-parsetree"
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/ocaml-ppx/ppx_view.git"
 url {
   src:
     "https://github.com/ocaml-ppx/ppx_view/releases/download/1.0.1/ppx_view-1.0.1.tbz"

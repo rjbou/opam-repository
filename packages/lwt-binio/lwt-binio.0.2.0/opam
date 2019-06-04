@@ -1,25 +1,27 @@
 opam-version: "2.0"
+name: "lwt-binio"
+version: "0.2.0"
+synopsis: "Asynchronous random access IO for numbers"
 maintainer: "hez@0ok.org"
-authors: ["Hezekiah M. Carty <hez@0ok.org>"]
-homepage: "http://github.com/hcarty/lwt-binio"
+authors: "Hezekiah M. Carty <hez@0ok.org>"
 license: "MIT"
+homepage: "http://github.com/hcarty/lwt-binio"
+depends: [
+  "base-bytes"
+  "lwt"
+  "oasis"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocplib-endian" {>= "0.6"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "lwt-binio"]]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "base-bytes"
-  "lwt"
-  "oasis"
-  "ocplib-endian" {>= "0.6"}
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/hcarty/lwt-binio"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Asynchronous random access IO for numbers"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "lwt-binio"]
+dev-repo: "git://github.com/hcarty/lwt-binio"
 url {
   src: "https://github.com/hcarty/lwt-binio/archive/v0.2.0.tar.gz"
   checksum: "md5=00c333485eef326b6870109d9af35259"

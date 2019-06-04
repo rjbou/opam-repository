@@ -1,25 +1,27 @@
 opam-version: "2.0"
-maintainer: "simon.cruanes.2007@m4x.org"
-authors: "Simon Cruanes"
-homepage: "https://github.com/c-cube/ocaml-bigstring/"
-bug-reports: "https://github.com/c-cube/ocaml-bigstring/issues"
-tags: ["bigstring" "bigarray"]
-dev-repo: "git+https://github.com/c-cube/ocaml-bigstring.git"
-build: [make "all"]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "bigstring"]
-depends: [
-  "ocaml" {< "4.08.0"}
-  "ocamlfind" {build}
-  "base-bigarray"
-  "base-bytes"
-  "ocamlbuild" {build}
-]
+name: "bigstring"
+version: "0.1"
 synopsis: "Bigstring built on top of bigarrays, and convenient functions"
 description: """
 Bigstrings are useful for interfacing with C, low level IO,
 memory-mapping, etc."""
+maintainer: "simon.cruanes.2007@m4x.org"
+authors: "Simon Cruanes"
+tags: ["bigarray" "bigstring"]
+homepage: "https://github.com/c-cube/ocaml-bigstring/"
+bug-reports: "https://github.com/c-cube/ocaml-bigstring/issues"
+depends: [
+  "base-bigarray"
+  "base-bytes"
+  "ocaml" {< "4.08.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [make "all"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "bigstring"]
+dev-repo: "git+https://github.com/c-cube/ocaml-bigstring.git"
 url {
   src: "https://github.com/c-cube/ocaml-bigstring/archive/0.1.tar.gz"
   checksum: "md5=ef0de83233f9d6e2f660ba42f02fed35"

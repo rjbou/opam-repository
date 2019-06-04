@@ -1,27 +1,27 @@
 opam-version: "2.0"
-maintainer: "andy.ray@ujamjar.com"
-homepage: "https://github.com/ujamjar/hardcaml-reedsolomon"
-build: [make "all"]
-remove: [
-  [make "uninstall"]
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind"
-  "hardcaml" {>= "1.1.1" & < "2.0.0"}
-  "hardcaml-waveterm"
-  "hardcaml-examples" {>= "0.2"}
-  "reedsolomon"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/ujamjar/hardcaml-reedsolomon"
-install: [make "install"]
+name: "hardcaml-reedsolomon"
+version: "0.2"
 synopsis: "HardCaml implementation of Reed-Solomon error correction coding."
 description: """
 The HardCamlReedsolomon library provides the hardware design.
 
 The executables hardcaml-rsencode and hardcaml-rsdecode provide
 front ends for netlist generation and simulation."""
+maintainer: "andy.ray@ujamjar.com"
+homepage: "https://github.com/ujamjar/hardcaml-reedsolomon"
+depends: [
+  "hardcaml" {>= "1.1.1" & < "2.0.0"}
+  "hardcaml-examples" {>= "0.2"}
+  "hardcaml-waveterm"
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "reedsolomon"
+]
+build: [make "all"]
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git://github.com/ujamjar/hardcaml-reedsolomon"
 extra-files: [
   "hardcaml-reedsolomon.install" "md5=8ff0c868b2e5e2b85a3c3552f28dd85c"
 ]

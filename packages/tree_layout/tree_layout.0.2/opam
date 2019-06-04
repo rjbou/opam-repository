@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "tree_layout"
+version: "0.2"
 synopsis: "Algorithms to layout trees in a pretty manner"
-maintainer:   "Gabriel Radanne <drupyog@zoho.com>"
-authors:      [ "Gabriel Radanne" ]
-homepage:     "https://github.com/Drup/tree_layout"
-bug-reports:  "https://github.com/Drup/tree_layout/issues"
-dev-repo:     "git+https://github.com/Drup/tree_layout.git"
+maintainer: "Gabriel Radanne <drupyog@zoho.com>"
+authors: "Gabriel Radanne"
+license: "ISC"
+tags: ["drawing" "graph" "tree"]
+homepage: "https://github.com/Drup/tree_layout"
 doc: "https://drup.github.io/tree_layout/0.2.0/"
-license:      "ISC"
-tags: [ "tree" "graph" "drawing" ]
+bug-reports: "https://github.com/Drup/tree_layout/issues"
 depends: [
-  "ocaml" {>= "4.03"}
   "dune" {build}
   "iter"
+  "ocaml" {>= "4.03"}
   "tyxml" {with-test & >= "4.3.0"}
 ]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
 ]
+dev-repo: "git+https://github.com/Drup/tree_layout.git"
 url {
   src:
     "https://github.com/Drup/tree_layout/releases/download/0.2/tree_layout-0.2.tbz"

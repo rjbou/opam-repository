@@ -1,26 +1,6 @@
 opam-version: "2.0"
-name:         "yuscii"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/dinosaure/yuscii"
-bug-reports:  "https://github.com/dinosaure/yuscii/issues"
-dev-repo: "git+https://github.com/dinosaure/yuscii.git"
-doc:          "https://dinosaure.github.io/yuscii/"
-license:      "MIT"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "fmt"
-  "uutf"
-  "rresult"
-  "cmdliner"
-]
+name: "yuscii"
+version: "0.1.0"
 synopsis: "[Yuscii](https://en.wikipedia.org/wiki/YUSCII)"
 description: """
 ----------------------------------------------
@@ -31,6 +11,26 @@ This library does not implement an encoder because, Eh guy, we are in 2018...
 
 Then, it provides a non-blocking decoder to translate UTF-7 codepoint to UTF-8
 codepoint."""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/yuscii"
+doc: "https://dinosaure.github.io/yuscii/"
+bug-reports: "https://github.com/dinosaure/yuscii/issues"
+depends: [
+  "cmdliner"
+  "fmt"
+  "jbuilder" {build}
+  "ocaml" {>= "4.03.0"}
+  "rresult"
+  "uutf"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/dinosaure/yuscii.git"
 url {
   src:
     "https://github.com/dinosaure/yuscii/releases/download/v0.1.0/yuscii-0.1.0.tbz"

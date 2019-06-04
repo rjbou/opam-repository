@@ -1,13 +1,28 @@
 opam-version: "2.0"
+name: "ppx_deriving_yojson"
+version: "3.0"
+synopsis: "JSON codec generator for OCaml >=4.02"
+description: """
+ppx_deriving_yojson is a ppx_deriving plugin that provides
+a JSON codec generator."""
 maintainer: "whitequark <whitequark@whitequark.org>"
 authors: "whitequark <whitequark@whitequark.org>"
-homepage: "https://github.com/whitequark/ppx_deriving_yojson"
-bug-reports: "https://github.com/whitequark/ppx_deriving_yojson/issues"
 license: "MIT"
+tags: ["json" "syntax"]
+homepage: "https://github.com/whitequark/ppx_deriving_yojson"
 doc: "http://whitequark.github.io/ppx_deriving_yojson"
-tags: ["syntax" "json"]
-dev-repo: "git://github.com/whitequark/ppx_deriving_yojson.git"
-substs: "pkg/META"
+bug-reports: "https://github.com/whitequark/ppx_deriving_yojson/issues"
+depends: [
+  "cppo" {build}
+  "cppo_ocamlbuild" {build}
+  "ocaml" {< "4.05.0"}
+  "ocamlfind" {build}
+  "ounit" {with-test & >= "2.0.0"}
+  "ppx_deriving" {>= "4.0" & < "4.3"}
+  "ppx_import" {with-test & >= "1.1" & <= "1.5"}
+  "result"
+  "yojson" {< "1.6.0"}
+]
 build: [
   [
     "ocaml"
@@ -23,21 +38,8 @@ build: [
     "--"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {< "4.05.0"}
-  "yojson" {< "1.6.0"}
-  "result"
-  "ppx_deriving" {>= "4.0" & < "4.3"}
-  "ocamlfind" {build}
-  "cppo" {build}
-  "cppo_ocamlbuild" {build}
-  "ounit" {with-test & >= "2.0.0"}
-  "ppx_import" {with-test & >= "1.1" & <= "1.5"}
-]
-synopsis: "JSON codec generator for OCaml >=4.02"
-description: """
-ppx_deriving_yojson is a ppx_deriving plugin that provides
-a JSON codec generator."""
+substs: "pkg/META"
+dev-repo: "git://github.com/whitequark/ppx_deriving_yojson.git"
 url {
   src:
     "https://github.com/whitequark/ppx_deriving_yojson/archive/v3.0.tar.gz"

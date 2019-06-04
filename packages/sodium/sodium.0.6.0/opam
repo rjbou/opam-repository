@@ -1,14 +1,33 @@
 opam-version: "2.0"
+name: "sodium"
+version: "0.6.0"
+synopsis: "Binding to libsodium UNAUDITED"
+description: """
+Binding to libsodium 1.0.9+, a shared library wrapper for djb's NaCl.
+
+Binding uses ctypes' stub generation system. GNU/Linux, FreeBSD, and OS
+X are supported.
+
+UNAUDITED"""
 maintainer: "sheets@alum.mit.edu"
 authors: [
+  "Benjamin Canou <benjamin@ocamlpro.com>"
   "David Sheets <sheets@alum.mit.edu>"
   "Peter Zotov <whitequark@whitequark.org>"
-  "Benjamin Canou <benjamin@ocamlpro.com>"
 ]
+tags: "org:mirage"
 homepage: "https://github.com/dsheets/ocaml-sodium/"
 bug-reports: "https://github.com/dsheets/ocaml-sodium/issues/"
-tags: "org:mirage"
-dev-repo: "git+https://github.com/dsheets/ocaml-sodium.git"
+depends: [
+  "base-bigarray"
+  "base-bytes"
+  "conf-libsodium"
+  "ctypes" {>= "0.6.0"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   [make] {os != "freebsd"}
   [make "CFLAGS=-I/usr/local/include -L/usr/local/lib"] {os = "freebsd"}
@@ -16,19 +35,8 @@ build: [
   [make "CFLAGS=-I/usr/local/include -L/usr/local/lib" "test"]
     {with-test & os = "freebsd"}
 ]
-install: [
-  [make "PREFIX=%{prefix}%" "install"]
-]
+install: [make "PREFIX=%{prefix}%" "install"]
 remove: ["ocamlfind" "remove" "sodium"]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "base-bigarray"
-  "base-bytes"
-  "ocamlfind" {build}
-  "conf-libsodium"
-  "ctypes" {>= "0.6.0"}
-  "ocamlbuild" {build}
-]
 post-messages: [
   "This package requires installation of libsodium-dev (>= 1.0.9)"
     {failure & os = "debian"}
@@ -41,15 +49,7 @@ post-messages: [
   "This package requires installation of libsodium (>= 1.0.9)"
     {failure & os = "macos"}
 ]
-synopsis: "Binding to libsodium UNAUDITED"
-description: """
-Binding to libsodium 1.0.9+, a shared library wrapper for djb's NaCl.
-
-Binding uses ctypes' stub generation system. GNU/Linux, FreeBSD, and OS
-X are supported.
-
-UNAUDITED"""
-flags: light-uninstall
+dev-repo: "git+https://github.com/dsheets/ocaml-sodium.git"
 url {
   src: "https://github.com/dsheets/ocaml-sodium/archive/0.6.0.tar.gz"
   checksum: "md5=c1e96c0f31fa12fad8b8b431eadc1601"

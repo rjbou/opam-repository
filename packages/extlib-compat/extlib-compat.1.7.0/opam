@@ -1,40 +1,6 @@
 opam-version: "2.0"
-maintainer: "ygrek@autistici.org"
-homepage: "https://github.com/ygrek/ocaml-extlib"
-dev-repo: "git://github.com/ygrek/ocaml-extlib.git"
-bug-reports: "https://github.com/ygrek/ocaml-extlib/issues"
-# doc: ["http://ocaml-extlib.googlecode.com/svn/doc/apiref/index.html"]
-license: "LGPL-2.1 with OCaml linking exception"
-authors: [
-  "Nicolas Cannasse"
-  "Brian Hurt"
-  "Yamagata Yoriyuki"
-  "Markus Mottl"
-  "Jesse Guardiani"
-  "John Skaller"
-  "Bardur Arantsson"
-  "Janne Hellsten"
-  "Richard W.M. Jones"
-  "ygrek"
-  "Gabriel Scherer"
-  "Pietro Abate"
-]
-build: [
-  [make "build"]
-  [make "test"] {with-test}
-  [make "doc"] {with-doc}
-]
-install: [ [make "install"] ]
-remove: [
-  ["ocamlfind" "remove" "extlib"]
-]
-conflicts: ["extlib"]
-depends: [
-  "ocaml" {< "4.05.0"}
-  "ocamlfind" {build}
-  "cppo" {build}
-  "base-bytes" {build}
-]
+name: "extlib-compat"
+version: "1.7.0"
 synopsis:
   "A complete yet small extension for OCaml standard library (full, compatibility)"
 description: """
@@ -42,7 +8,40 @@ The purpose of this library is to add new functions to OCaml standard library
 modules, to modify some functions in order to get better performances or
 safety (tail-recursive) and also to provide new modules which should be useful
 for day to day programming."""
+maintainer: "ygrek@autistici.org"
+authors: [
+  "Bardur Arantsson"
+  "Brian Hurt"
+  "Gabriel Scherer"
+  "Janne Hellsten"
+  "Jesse Guardiani"
+  "John Skaller"
+  "Markus Mottl"
+  "Nicolas Cannasse"
+  "Pietro Abate"
+  "Richard W.M. Jones"
+  "Yamagata Yoriyuki"
+  "ygrek"
+]
+license: "LGPL-2.1 with OCaml linking exception"
+homepage: "https://github.com/ygrek/ocaml-extlib"
+bug-reports: "https://github.com/ygrek/ocaml-extlib/issues"
+depends: [
+  "base-bytes" {build}
+  "cppo" {build}
+  "ocaml" {< "4.05.0"}
+  "ocamlfind" {build}
+]
+conflicts: ["extlib"]
 flags: light-uninstall
+build: [
+  [make "build"]
+  [make "test"] {with-test}
+  [make "doc"] {with-doc}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "extlib"]
+dev-repo: "git://github.com/ygrek/ocaml-extlib.git"
 url {
   src: "https://github.com/ygrek/ocaml-extlib/archive/1.7.0.tar.gz"
   checksum: "md5=b50b02d9e40d35cc20c82d9c881a1bf6"

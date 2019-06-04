@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "martin@mjambon.com"
-authors: ["Martin Jambon"]
-homepage: "http://mjambon.com/yojson.html"
-bug-reports: "https://github.com/mjambon/yojson/issues"
-dev-repo: "git+https://github.com/mjambon/yojson.git"
-build: [
-  [make] {ocaml:native}
-  [make "all"] {!ocaml:native}
-]
-install: [
-  [make "install-lib"]
-]
-remove: [
-  [make "uninstall-lib"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "cppo"
-  "easy-format"
-  "biniou" {>= "1.0.6"}
-]
+name: "yojson"
+version: "1.2.3"
 synopsis:
   "Yojson is an optimized parsing and printing library for the JSON format"
 description: """
@@ -32,6 +12,24 @@ yojson package.
 
 The program atdgen can be used to derive OCaml-JSON serializers and
 deserializers from type definitions."""
+maintainer: "martin@mjambon.com"
+authors: "Martin Jambon"
+homepage: "http://mjambon.com/yojson.html"
+bug-reports: "https://github.com/mjambon/yojson/issues"
+depends: [
+  "biniou" {>= "1.0.6"}
+  "cppo"
+  "easy-format"
+  "ocaml" {< "4.06.0"}
+  "ocamlfind"
+]
+build: [
+  [make] {ocaml:native}
+  [make "all"] {!ocaml:native}
+]
+install: [make "install-lib"]
+remove: [make "uninstall-lib"]
+dev-repo: "git+https://github.com/mjambon/yojson.git"
 extra-files: ["yojson.install" "md5=992a663b313888121778a1b7b18b622c"]
 url {
   src: "https://github.com/mjambon/yojson/archive/v1.2.3.tar.gz"

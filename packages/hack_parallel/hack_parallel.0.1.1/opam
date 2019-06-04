@@ -1,14 +1,15 @@
 opam-version: "2.0"
+name: "hack_parallel"
+version: "0.1.1"
+synopsis: "Parallel and shared memory library"
+description: """
+Parallel and shared memory components used in Facebook's Hack, Flow, and Pyre
+projects."""
 maintainer: "rvantonder@gmail.com"
 authors: "Facebook hackers"
+license: "MIT"
 homepage: "https://github.com/rvantonder/hack-parallel"
 bug-reports: "https://github.com/rvantonder/hack-parallel/issues"
-dev-repo: "git+https://github.com/rvantonder/hack-parallel.git"
-license: "MIT"
-build: [
-  [make "libhp.a"]
-  ["dune" "build" "-p" name "-j" jobs "@install"]
-]
 depends: [
   "core"
   "ocaml" {>= "4.03.0"}
@@ -16,11 +17,11 @@ depends: [
   "ppxlib" {< "0.9.0"}
   "sexplib"
 ]
-synopsis: "Parallel and shared memory library"
-description: """
-Parallel and shared memory components used in Facebook's Hack, Flow, and Pyre
-projects.
-"""
+build: [
+  [make "libhp.a"]
+  ["dune" "build" "-p" name "-j" jobs "@install"]
+]
+dev-repo: "git+https://github.com/rvantonder/hack-parallel.git"
 url {
   src: "https://github.com/rvantonder/hack-parallel/archive/v0.1.1.tar.gz"
   checksum: "md5=5cd57bd53e88aceaafed352ef7817616"

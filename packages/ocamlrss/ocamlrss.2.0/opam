@@ -1,10 +1,6 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://zoggy.github.com/ocamlrss"
-build: make
-remove: [["ocamlfind" "remove" "rss"]]
-depends: ["ocaml" "ocamlfind" "xmlm"]
-install: [make "install"]
+name: "ocamlrss"
+version: "2.0"
 synopsis: "Library providing functions to parse and print RSS 2.0 files"
 description: """
 OCaml-RSS is a small OCaml library providing functions to parse and
@@ -14,7 +10,13 @@ some fields are not taken into account. There is still some work to do
 
 OCaml-RSS was previously part of Cameleon but is now developped
 separately and is findlib compatible."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+homepage: "http://zoggy.github.com/ocamlrss"
+depends: ["ocaml" "ocamlfind" "xmlm"]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "rss"]
 url {
   src: "http://zoggy.github.com/ocamlrss/ocamlrss-2.0.tar.gz"
   checksum: "md5=4cb8fcd7e0950d7da0f2bf87009a836c"

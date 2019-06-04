@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "yallop@gmail.com"
-homepage: "https://github.com/yallop/ocaml-memcpy"
-dev-repo: "git+http://github.com/yallop/ocaml-memcpy.git"
-bug-reports: "http://github.com/yallop/ocaml-memcpy/issues"
-license: "MIT"
-build: [
-  [make]
-  [make "test"] {with-test}
-]
-install: [[make "install"]]
-remove: [["ocamlfind" "remove" "memcpy"]]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ctypes" {>= "0.12.0"}
-  "ounit" {with-test}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
-tags: ["org:mirage"]
+name: "memcpy"
+version: "0.2.1"
 synopsis: "Safe and efficient copying between blocks of memory."
 description: """
 There are several ways of storing and accessing blocks of memory in an OCaml program, including
@@ -28,8 +11,27 @@ There are several ways of storing and accessing blocks of memory in an OCaml pro
 * Ctypes array values that provide bounds-checked access to ptr-addressed memory.
 
 The Memcpy module provides functions for safely and efficiently copying blocks of memory between these different representations."""
+maintainer: "yallop@gmail.com"
 authors: "yallop@gmail.com"
+license: "MIT"
+tags: "org:mirage"
+homepage: "https://github.com/yallop/ocaml-memcpy"
+bug-reports: "http://github.com/yallop/ocaml-memcpy/issues"
+depends: [
+  "ctypes" {>= "0.12.0"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+]
 flags: light-uninstall
+build: [
+  [make]
+  [make "test"] {with-test}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "memcpy"]
+dev-repo: "git+http://github.com/yallop/ocaml-memcpy.git"
 url {
   src: "https://github.com/yallop/ocaml-memcpy/archive/0.2.1.tar.gz"
   checksum: "md5=7179d425b277238f2844e8d94c27aade"

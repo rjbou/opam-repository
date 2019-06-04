@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "thomas@gazagnaire.org"
-authors: "Thomas Gazagnaire"
-homepage: "https://github.com/mirage/mirage-tc"
-bug-reports: "https://github.com/mirage/mirage-tc/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/mirage/mirage-tc.git"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-  ["./configure" "--prefix" "--enable-tests"] {with-test}
-  [make "test"] {with-test}
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "tc"]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ezjsonm" {>= "0.4.0"}
-  "mstruct" {>= "1.3.1"}
-  "cstruct"
-  "bin_prot" {< "v0.13"}
-  "base-bytes"
-  "alcotest" {with-test}
-  "ounit" {with-test}
-  "ocamlbuild" {build}
-]
+name: "mirage-tc"
+version: "0.3.0"
 synopsis: "MirageOS type-classes"
 description: """
 A set of functors and combinators to pretty-print (using sexplib), to
@@ -59,7 +36,32 @@ composition:
 # Tc.write_string (module X) t;;
 - : string = "\\003\\002\\005hello\\005world"
 ```"""
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire"
+license: "ISC"
+homepage: "https://github.com/mirage/mirage-tc"
+bug-reports: "https://github.com/mirage/mirage-tc/issues"
+depends: [
+  "alcotest" {with-test}
+  "base-bytes"
+  "bin_prot" {< "v0.13"}
+  "cstruct"
+  "ezjsonm" {>= "0.4.0"}
+  "mstruct" {>= "1.3.1"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ounit" {with-test}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+  ["./configure" "--prefix" "--enable-tests"] {with-test}
+  [make "test"] {with-test}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "tc"]
+dev-repo: "git+https://github.com/mirage/mirage-tc.git"
 url {
   src: "https://github.com/mirage/mirage-tc/archive//0.3.0.tar.gz"
   checksum: "md5=909caab4b9a99a76b3fb6c1147e1741b"

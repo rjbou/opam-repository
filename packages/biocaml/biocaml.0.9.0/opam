@@ -1,44 +1,41 @@
 opam-version: "2.0"
+name: "biocaml"
+version: "0.9.0"
 synopsis: "The OCaml Bioinformatics Library"
 description: """
 Biocaml aims to be a high-performance user-friendly library for
 Bioinformatics. See the [website](http://biocaml.org) for detailed API
 documentation. We welcome contributors and feedback from users. Please
 contact us with any comments and suggestions for features you would
-like added.
-"""
+like added."""
 maintainer: "biocaml@googlegroups.com"
+authors: [
+  "Alexander Gryzlov"
+  "Ashish Agarwal"
+  "Christophe Troestler"
+  "David Koppstein"
+  "Francois Berenger"
+  "Philippe Veber"
+  "Sebastien Mondet"
+  "Sergei Lebedev"
+]
+license: "LGPL + linking exception"
 homepage: "http://biocaml.org"
 bug-reports: "https://github.com/biocaml/biocaml/issues"
-license: "LGPL + linking exception"
-dev-repo: "git+https://github.com/biocaml/biocaml.git"
-authors: [
-  "Sebastien Mondet"
-  "Ashish Agarwal"
-  "Philippe Veber"
-  "Christophe Troestler"
-  "Sergei Lebedev"
-  "David Koppstein"
-  "Alexander Gryzlov"
-  "Francois Berenger"
-]
-
-build: ["dune" "build" "-p" name "-j" jobs]
-
 depends: [
-  "ocaml"
   "base64" {< "3.0.0"}
-  "dune" {build}
-  "core_kernel" {>= "v0.11.0" & < "v0.12"}
-  "sexplib" {< "v0.12"}
   "camlzip" {>= "1.05"}
-  "xmlm"
   "cfstream"
+  "core_kernel" {>= "v0.11.0" & < "v0.12"}
+  "dune" {build}
+  "ocaml"
   "ppx_compare" {< "v0.12"}
   "ppx_sexp_conv" {< "v0.12"}
   "re"
   "rresult"
+  "sexplib" {< "v0.12"}
   "uri"
+  "xmlm"
 ]
 depopts: [
   "async" {< "v0.12"}
@@ -49,6 +46,8 @@ conflicts: [
   "async" {>= "v0.12"}
   "core" {>= "v0.12"}
 ]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/biocaml/biocaml.git"
 url {
   src: "https://github.com/biocaml/biocaml/archive/v0.9.0.tar.gz"
   checksum: [

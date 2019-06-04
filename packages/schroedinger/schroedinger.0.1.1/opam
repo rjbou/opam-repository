@@ -1,7 +1,14 @@
 opam-version: "2.0"
+name: "schroedinger"
+version: "0.1.1"
+synopsis:
+  "Bindings for the schroedinger library to decode video files in Dirac format"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-schroedinger"
+bug-reports: "https://github.com/savonet/ocaml-schroedinger/issues"
+depends: ["ocaml" "ocamlfind" "ogg"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix] {os != "macos"}
   [
@@ -14,21 +21,14 @@ build: [
   ] {os = "macos"}
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "schroedinger"]
-depends: ["ocaml" "ocamlfind" "ogg"]
 depexts: [
   ["libschroedinger-dev"] {os-distribution = "ubuntu"}
   ["libschroedinger-dev"] {os-distribution = "debian"}
   ["schroedinger"] {os = "macos" & os-distribution = "homebrew"}
 ]
-bug-reports: "https://github.com/savonet/ocaml-schroedinger/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-schroedinger.git"
-synopsis:
-  "Bindings for the schroedinger library to decode video files in Dirac format"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-schroedinger/releases/download/0.1.1/ocaml-schroedinger-0.1.1.tar.gz"

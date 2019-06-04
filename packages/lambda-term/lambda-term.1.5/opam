@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "jeremie@dimino.org"
-authors: ["Jérémie Dimino"]
-homepage: "https://github.com/diml/lambda-term"
-license: "BSD3"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-remove: [["ocamlfind" "remove" "lambda-term"]]
-patches: ["openbsd.diff" {os = "openbsd"}]
-depends: [
-  "ocaml" {>= "3.12"}
-  "ocamlfind"
-  "lwt" {>= "2.4.0" & < "3.0.0"}
-  "zed" {>= "1.2" & < "2.0"}
-  "react" {< "1.0.0"}
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/diml/lambda-term"
-install: ["ocaml" "setup.ml" "-install"]
+name: "lambda-term"
+version: "1.5"
 synopsis: "Terminal manipulation library for OCaml"
 description: """
 Lambda-term is a cross-platform library for manipulating the terminal.
@@ -33,10 +14,31 @@ a C library.
 
 Lambda-term integrates with zed to provide text edition facilities in
 console applications."""
+maintainer: "jeremie@dimino.org"
+authors: "Jérémie Dimino"
+license: "BSD3"
+homepage: "https://github.com/diml/lambda-term"
+depends: [
+  "lwt" {>= "2.4.0" & < "3.0.0"}
+  "ocaml" {>= "3.12"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "react" {< "1.0.0"}
+  "zed" {>= "1.2" & < "2.0"}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "lambda-term"]
+patches: "openbsd.diff" {os = "openbsd"}
+dev-repo: "git://github.com/diml/lambda-term"
 extra-files: [
-  ["openbsd.diff" "md5=90257eb7b8b41cb4ad237cdf188904aa"]
   ["lambda-term.install" "md5=309a7aef785fc38a36bdebdd0cc459b8"]
+  ["openbsd.diff" "md5=90257eb7b8b41cb4ad237cdf188904aa"]
 ]
 url {
   src: "https://github.com/diml/lambda-term/archive/1.5.tar.gz"

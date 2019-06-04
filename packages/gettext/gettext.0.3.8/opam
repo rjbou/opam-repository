@@ -1,10 +1,17 @@
 opam-version: "2.0"
+name: "gettext"
+version: "0.3.8"
+synopsis:
+  "Provides enough service to build a basic internationalized program"
 maintainer: "Sylvain Le Gall <sylvain+ocaml@le-gall.net>"
-authors: [ "Sylvain Le Gall" ]
+authors: "Sylvain Le Gall"
 license: "LGPL-2.1 with OCaml linking exception"
 homepage: "https://github.com/gildor478/ocaml-gettext"
-dev-repo: "git+https://github.com/gildor478/ocaml-gettext.git"
 bug-reports: "https://github.com/gildor478/ocaml-gettext/issues"
+depends: [
+  "base-bytes" "camlp4" "camomile" "fileutils" "ocaml" "ocamlfind" "ounit"
+]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -22,19 +29,14 @@ build: [
   ]
   [make]
 ]
+install: [make "install"]
 remove: [
   ["rm" "-rf" "%{lib}%/gettext/share"]
   ["ocamlfind" "remove" "gettext-camomile"]
   ["ocamlfind" "remove" "gettext-stub"]
   ["ocamlfind" "remove" "gettext"]
 ]
-depends: [
-  "ocaml" "ocamlfind" "ounit" "fileutils" "camomile" "camlp4" "base-bytes"
-]
-install: [make "install"]
-synopsis:
-  "Provides enough service to build a basic internationalized program"
-flags: light-uninstall
+dev-repo: "git+https://github.com/gildor478/ocaml-gettext.git"
 extra-files: ["gettext.install" "md5=e11873c06814eb2a66ebc66a984d3e4e"]
 url {
   src:

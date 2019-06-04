@@ -1,24 +1,30 @@
 opam-version: "2.0"
+name: "xenctrl"
+version: "0.9.26"
+synopsis: "Low-level Xen hypercall bindings."
+description: """
+These are experimental bindings based on the code in xen-unstable.git.
+This package should compile and work against Xen 4.2, 4.3, 4.4 and
+4.5-unstable as of 1/Sept/2014."""
 maintainer: "dave.scott@eu.citrix.com"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
+tags: ["org:mirage" "org:xapi-project"]
+depends: [
+  "cmdliner"
+  "lwt"
+  "ocaml" {>= "4.00.0" & < "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
 ]
+flags: light-uninstall
 build: [
   ["./configure"]
   [make]
 ]
+install: [make "install" "BINDIR=%{bin}%"]
 remove: [
   ["ocamlfind" "remove" "xenctrl"]
   ["ocamlfind" "remove" "xenlight"]
   ["rm" "-f" "%{bin}%/xenguest"]
-]
-depends: [
-  "ocaml" {>= "4.00.0" & < "4.02.0"}
-  "ocamlfind"
-  "lwt"
-  "cmdliner"
-  "ocamlbuild" {build}
 ]
 depexts: [
   ["libxen-dev" "uuid-dev"] {os-distribution = "debian"}
@@ -27,13 +33,6 @@ depexts: [
   ["xen-dom0-libs-devel" "xen-libs-devel"] {os = "xenserver"}
 ]
 dev-repo: "git://github.com/xapi-project/ocaml-xen-lowlevel-libs"
-install: [make "install" "BINDIR=%{bin}%"]
-synopsis: "Low-level Xen hypercall bindings."
-description: """
-These are experimental bindings based on the code in xen-unstable.git.
-This package should compile and work against Xen 4.2, 4.3, 4.4 and
-4.5-unstable as of 1/Sept/2014."""
-flags: light-uninstall
 url {
   src:
     "https://github.com/xapi-project/ocaml-xen-lowlevel-libs/archive/0.9.26.tar.gz"

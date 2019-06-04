@@ -1,20 +1,20 @@
 opam-version: "2.0"
+name: "hardcaml-examples"
+version: "0.2"
+synopsis: "HardCaml example designs"
 maintainer: "andy.ray@ujamjar.com"
 homepage: "https://github.com/ujamjar/hardcaml-examples"
-build: [make "all"]
-remove: [
-  [make "uninstall"]
-]
 depends: [
-  "ocaml" {>= "4.01.0" & < "4.03.0"}
   "hardcaml" {< "2.0.0"}
   "hardcaml-waveterm"
-  "omd"
+  "ocaml" {>= "4.01.0" & < "4.03.0"}
   "ocamlbuild" {build}
+  "omd"
 ]
-dev-repo: "git://github.com/ujamjar/hardcaml-examples"
+build: [make "all"]
 install: [make "install"]
-synopsis: "HardCaml example designs"
+remove: [make "uninstall"]
+dev-repo: "git://github.com/ujamjar/hardcaml-examples"
 url {
   src: "https://github.com/ujamjar/hardcaml-examples/archive/v0.2.tar.gz"
   checksum: "md5=d0b13f99eff1c4c73beca84bf06bb478"

@@ -1,59 +1,6 @@
 opam-version: "2.0"
-maintainer: "Francois.Bobot@cea.fr"
-authors: [
-  "François Bobot"
-  "Jean-Christophe Filliâtre"
-  "Claude Marché"
-  "Guillaume Melquiond"
-  "Andrei Paskevich"
-]
-homepage: "http://why3.lri.fr/"
-license: "GNU Lesser General Public License version 2.1"
-doc: ["http://why3.lri.fr/#documentation"]
-tags: [
-  "deductive"
-  "program verification"
-  "formal specification"
-  "automated theorem prover"
-  "interactive theorem prover"
-]
-build: [
-  [
-    "./configure"
-    "--prefix"
-    prefix
-    "--sbindir=%{lib}%/why3/sbin"
-    "--libexecdir=%{lib}%/why3/libexec"
-    "--sysconfdir=%{lib}%/why3/etc"
-    "--sharedstatedir=%{lib}%/why3/com"
-    "--localstatedir=%{lib}%/why3/var"
-    "--libdir=%{lib}%/why3/lib"
-    "--includedir=%{lib}%/why3/include"
-    "--datarootdir=%{lib}%/why3/share"
-    "--disable-bench"
-  ]
-  [make "opt" "byte"]
-  [make "stdlibdoc" "apidoc"] {with-doc}
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "alt-ergo"
-  "lablgtk" {< "2.18"}
-  "conf-gtksourceview"
-]
-depopts: ["ocamlgraph" "coq"]
-patches: [
-  "Makefile.patch"
-]
-conflicts: [
-  "coq" {< "8.3"}
-  "coq" {>= "8.5"}
-  "ocamlgraph" {< "1.8.2"}
-]
-install: [
-  [make "install" "install-lib"]
-  [make "DOCDIR=%{doc}%/why3" "install-doc"] {with-doc}
-]
+name: "why3"
+version: "0.82"
 synopsis: "Why3 is a platform for deductive program verification."
 description: """
 It provides a rich language for specification and programming, called
@@ -74,6 +21,59 @@ allowing to use Why3 as a software library. An important emphasis is
 put on modularity and genericity, giving the end user a possibility to
 easily reuse Why3 formalizations or to add support for a new external
 prover if wanted."""
+maintainer: "Francois.Bobot@cea.fr"
+authors: [
+  "Andrei Paskevich"
+  "Claude Marché"
+  "François Bobot"
+  "Guillaume Melquiond"
+  "Jean-Christophe Filliâtre"
+]
+license: "GNU Lesser General Public License version 2.1"
+tags: [
+  "automated theorem prover"
+  "deductive"
+  "formal specification"
+  "interactive theorem prover"
+  "program verification"
+]
+homepage: "http://why3.lri.fr/"
+doc: "http://why3.lri.fr/#documentation"
+depends: [
+  "alt-ergo"
+  "conf-gtksourceview"
+  "lablgtk" {< "2.18"}
+  "ocaml" {< "4.06.0"}
+]
+depopts: ["coq" "ocamlgraph"]
+conflicts: [
+  "coq" {< "8.3"}
+  "coq" {>= "8.5"}
+  "ocamlgraph" {< "1.8.2"}
+]
+build: [
+  [
+    "./configure"
+    "--prefix"
+    prefix
+    "--sbindir=%{lib}%/why3/sbin"
+    "--libexecdir=%{lib}%/why3/libexec"
+    "--sysconfdir=%{lib}%/why3/etc"
+    "--sharedstatedir=%{lib}%/why3/com"
+    "--localstatedir=%{lib}%/why3/var"
+    "--libdir=%{lib}%/why3/lib"
+    "--includedir=%{lib}%/why3/include"
+    "--datarootdir=%{lib}%/why3/share"
+    "--disable-bench"
+  ]
+  [make "opt" "byte"]
+  [make "stdlibdoc" "apidoc"] {with-doc}
+]
+install: [
+  [make "install" "install-lib"]
+  [make "DOCDIR=%{doc}%/why3" "install-doc"] {with-doc}
+]
+patches: "Makefile.patch"
 extra-files: ["Makefile.patch" "md5=0cd97fcbd8e4d4abd96edcc2b5c399e7"]
 url {
   src: "https://gforge.inria.fr/frs/download.php/33492/why3-0.82.tar.gz"

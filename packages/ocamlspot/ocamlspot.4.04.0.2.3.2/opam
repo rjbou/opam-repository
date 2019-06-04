@@ -1,19 +1,6 @@
 opam-version: "2.0"
+name: "ocamlspot"
 version: "4.04.0.2.3.2"
-authors: "Jun Furuse"
-maintainer: "jun.furuse@gmail.com"
-homepage: "https://bitbucket.org/camlspotter/ocamlspot/"
-bug-reports: "https://bitbucket.org/camlspotter/ocamlspot/issues?status=new&status=open"
-dev-repo: "hg+https://bitbucket.org/camlspotter/ocamlspot"
-build: [
-  [ make "all" "opt" "BINDIR=%{bin}%" "PREFIX=%{prefix}%" ]
-]
-install: [
-  [ make "install" "BINDIR=%{bin}%" "PREFIX=%{prefix}%" ]
-]
-remove: [
-  [ make "uninstall" "BINDIR=%{bin}%" "PREFIX=%{prefix}%" ]
-]
 synopsis: "OCamlSpotter - OCaml source browsing"
 description: """
 OCamlSpotter is a tool for OCaml source code browsing. 
@@ -25,9 +12,18 @@ OCamlSpotter is a tool for OCaml source code browsing.
 OCamlSpotter uses \\*.cmt and \\*.cmti files created by OCaml compiler 4.00.0 or newer with -bin-annot option.
 
 In OPAM, ocamlspot.el and ocamlspot.vim is %{lib%}/ocamlspot ."""
+maintainer: "jun.furuse@gmail.com"
+authors: "Jun Furuse"
+homepage: "https://bitbucket.org/camlspotter/ocamlspot/"
+bug-reports:
+  "https://bitbucket.org/camlspotter/ocamlspot/issues?status=new&status=open"
 depends: [
   "ocaml" {>= "4.04.0" & < "4.05.0"}
 ]
+build: [make "all" "opt" "BINDIR=%{bin}%" "PREFIX=%{prefix}%"]
+install: [make "install" "BINDIR=%{bin}%" "PREFIX=%{prefix}%"]
+remove: [make "uninstall" "BINDIR=%{bin}%" "PREFIX=%{prefix}%"]
+dev-repo: "hg+https://bitbucket.org/camlspotter/ocamlspot"
 url {
   src: "https://bitbucket.org/camlspotter/ocamlspot/get/4.04.0.2.3.2.tar.gz"
   checksum: "md5=7fef29d3dc907c2e7a14ecc5d8cc7e2b"

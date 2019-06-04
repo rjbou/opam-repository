@@ -1,15 +1,6 @@
 opam-version: "2.0"
-maintainer: "mickael.delahaye@gmail.com"
-authors: ["Mickaël Delahaye"]
-license: "ISC license"
-build: [
-  ["./configure"]
-  [make "all"]
-]
-remove: [["ocamlfind" "remove" "ocamlyices"]]
-depends: ["ocaml" "ocamlfind" "camlidl" "num"]
-dev-repo: "git://github.com/polazarus/ocamlyices"
-install: [make "install"]
+name: "ocamlyices"
+version: "0.7.1"
 synopsis: "Yices SMT solver binding"
 description: """
 Yices is a Satisfiability Modulo Theories (SMT) solver from SRI.
@@ -22,7 +13,18 @@ Install it in  /usr/local  and register the DLL quickly:
 where <yices-XYZ.tar.gz> should be replaced with the path to the
 downloaded tarball. Optionally you can set an installation directory:
   wget -q -O- http://git.io/sWxMmg | sh -s <yices-XYZ.tar.gz> /opt /opt/lib64"""
+maintainer: "mickael.delahaye@gmail.com"
+authors: "Mickaël Delahaye"
+license: "ISC license"
+depends: ["camlidl" "num" "ocaml" "ocamlfind"]
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make "all"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "ocamlyices"]
+dev-repo: "git://github.com/polazarus/ocamlyices"
 url {
   src: "https://github.com/polazarus/ocamlyices/archive/v0.7.1.tar.gz"
   checksum: "md5=0119df97a5809c41c992c38cc7a45225"

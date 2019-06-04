@@ -1,18 +1,20 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "https://github.com/MyLifeLabs/atd"
-build: make
-remove: [["ocamlfind" "remove" "atd"]]
-depends: ["ocaml" "ocamlfind" "menhir" "easy-format"]
-dev-repo: "git://github.com/MyLifeLabs/atd"
-install: [make "install" "BINDIR=%{bin}%"]
+name: "atd"
+version: "1.0.2"
 synopsis: "Parser for the ATD data format description language"
 description: """
 ATD is the OCaml library providing a parser for the ATD language and
 various utilities. ATD stands for Adjustable Type Definitions in
 reference to its main property of supporting annotations that allow a
 good fit with a variety of data formats."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+homepage: "https://github.com/MyLifeLabs/atd"
+depends: ["easy-format" "menhir" "ocaml" "ocamlfind"]
 flags: light-uninstall
+build: make
+install: [make "install" "BINDIR=%{bin}%"]
+remove: ["ocamlfind" "remove" "atd"]
+dev-repo: "git://github.com/MyLifeLabs/atd"
 extra-files: ["atd.install" "md5=e8e10fa0f841eeef31a79df8e78618f0"]
 url {
   src: "https://github.com/mjambon/atd/archive/v1.0.2.tar.gz"

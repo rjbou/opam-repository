@@ -1,21 +1,23 @@
 opam-version: "2.0"
-maintainer: "mmouratov@gmail.com"
-build: [make "build"]
-remove: [["ocamlfind" "remove" "mparser"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "pcre"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/cakeplus/mparser"
-install: [make "install"]
+name: "mparser"
+version: "1.0"
 synopsis: "A simple monadic parser combinator library"
 description: """
 This library implements a rather complete and efficient monadic
 parser combinator library similar to the Parsec library for Haskell by Daan
 Leijen and the FParsec library for FSharp by Stephan Tolksdorf."""
+maintainer: "mmouratov@gmail.com"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "pcre"
+]
 flags: light-uninstall
+build: [make "build"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "mparser"]
+dev-repo: "git://github.com/cakeplus/mparser"
 url {
   src: "https://github.com/cakeplus/mparser/archive/1.0.tar.gz"
   checksum: "md5=36ba9257179c1c13884d713131169141"

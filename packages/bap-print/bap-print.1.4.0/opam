@@ -1,32 +1,28 @@
 opam-version: "2.0"
 name: "bap-print"
 version: "1.4.0"
+synopsis: "Print plugin - print project in various formats"
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
+depends: [
+  "bap-demangle" {= "1.4.0"}
+  "bap-std" {= "1.4.0"}
+  "ocaml" {>= "4.03" & < "4.06"}
+  "text-tags"
+]
 build: [
   ["./configure" "--prefix=%{prefix}%" "--enable-print"]
   [make]
 ]
-
-install: [[make "install"]]
-
+install: [make "install"]
 remove: [
-        ["ocamlfind" "remove" "bap-plugin-print"]
-        ["bapbundle" "remove" "print.plugin"]
-
-        ]
-
-depends: [
-  "ocaml" {>= "4.03" & < "4.06"}
-  "bap-std" {= "1.4.0"}
-  "bap-demangle" {= "1.4.0"}
-  "text-tags"
+  ["ocamlfind" "remove" "bap-plugin-print"]
+  ["bapbundle" "remove" "print.plugin"]
 ]
-synopsis: "Print plugin - print project in various formats"
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.4.0.tar.gz"
   checksum: "md5=b7785715c24645e8e69a8091427d090e"

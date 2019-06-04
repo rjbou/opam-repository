@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "Paolo Donadeo <p.donadeo@gmail.com>"
-authors: [ "Alessandro Strada <alessandro.strada@gmail.com>" ]
-license: "BSD-3-clause"
-homepage: "https://github.com/pdonadeo/ocaml-lens"
-dev-repo: "git+https://github.com/pdonadeo/ocaml-lens.git"
-bug-reports: "https://github.com/pdonadeo/ocaml-lens/issues"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix "--enable-ppx" {ppx_deriving:installed & ppx_tools:installed} ]
-  ["ocaml" "setup.ml" "-build"]
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "lens"]
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "ocamlfind" {build}
-  "ounit" {build}
-]
-depopts: [
-  "ppx_deriving"
-  "ppx_tools"
-]
+name: "lens"
+version: "1.2.0"
 synopsis: "Functional lenses"
 description: """
 Based on F# implementation in https://github.com/fsharp/fsharpx
@@ -31,7 +10,32 @@ see http://stackoverflow.com/questions/8179485/updating-nested-immutable-data-st
 see http://stackoverflow.com/questions/5767129/lenses-fclabels-data-accessor-which-library-for-structure-access-and-mutatio - Haskell libraries for structure access and mutation
 see http://www.youtube.com/watch?v=efv0SQNde5Q - Functional lenses for Scala by Edward Kmett on YouTube
 see http://patternsinfp.wordpress.com/2011/01/31/lenses-are-the-coalgebras-for-the-costate-comonad - Lenses are the coalgebras for the costate comonad by Jeremy Gibbons"""
+maintainer: "Paolo Donadeo <p.donadeo@gmail.com>"
+authors: "Alessandro Strada <alessandro.strada@gmail.com>"
+license: "BSD-3-clause"
+homepage: "https://github.com/pdonadeo/ocaml-lens"
+bug-reports: "https://github.com/pdonadeo/ocaml-lens/issues"
+depends: [
+  "ocaml" {>= "4.02.3"}
+  "ocamlfind" {build}
+  "ounit" {build}
+]
+depopts: ["ppx_deriving" "ppx_tools"]
 flags: light-uninstall
+build: [
+  [
+    "ocaml"
+    "setup.ml"
+    "-configure"
+    "--prefix"
+    prefix
+    "--enable-ppx" {ppx_deriving:installed & ppx_tools:installed}
+  ]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "lens"]
+dev-repo: "git+https://github.com/pdonadeo/ocaml-lens.git"
 url {
   src: "https://github.com/pdonadeo/ocaml-lens/archive/v1.2.0.tar.gz"
   checksum: "md5=1e9a3aa9555949f26f150a70c798b477"

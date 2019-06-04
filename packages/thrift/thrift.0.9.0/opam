@@ -1,16 +1,18 @@
 opam-version: "2.0"
+name: "thrift"
+version: "0.9.0"
+synopsis: "OCaml bindings for the Apache Thrift RPC system"
 maintainer: "vb@luminar.eu.org"
-build: make
-remove: [["ocamlfind" "remove" "thrift"]]
 depends: [
   "ocaml" {< "4.06.0"}
-  "ocamlfind"
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
-dev-repo: "git://github.com/vbmithr/ocaml-thrift-lib"
-install: [make "install"]
-synopsis: "OCaml bindings for the Apache Thrift RPC system"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "thrift"]
+dev-repo: "git://github.com/vbmithr/ocaml-thrift-lib"
 url {
   src: "https://github.com/vbmithr/ocaml-thrift-lib/archive/0.9.0.tar.gz"
   checksum: "md5=e80da38e12a65de81370d71778267d78"

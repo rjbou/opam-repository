@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/uutf"
-doc: "http://erratique.ch/software/uutf/doc/Uutf"
-dev-repo: "git+http://erratique.ch/repos/uutf.git"
-bug-reports: "https://github.com/dbuenzli/uutf/issues"
-tags: [ "unicode" "text" "utf-8" "utf-16" "codec" "org:erratique" ]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "uchar"
-]
-depopts: ["cmdliner"]
-conflicts: ["cmdliner" { < "0.9.6"} ]
-build: [[
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%"
-          "--with-cmdliner" "%{cmdliner:installed}%" ]]
+name: "uutf"
+version: "1.0.1"
 synopsis: "Non-blocking streaming Unicode codec for OCaml"
 description: """
 Uutf is a non-blocking streaming codec to decode and encode the UTF-8,
@@ -32,6 +13,34 @@ OCaml string values and to directly encode characters in OCaml
 Buffer.t values.
 
 Uutf has no dependency and is distributed under the ISC license."""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+tags: ["codec" "org:erratique" "text" "unicode" "utf-16" "utf-8"]
+homepage: "http://erratique.ch/software/uutf"
+doc: "http://erratique.ch/software/uutf/doc/Uutf"
+bug-reports: "https://github.com/dbuenzli/uutf/issues"
+depends: [
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+  "uchar"
+]
+depopts: ["cmdliner"]
+conflicts: [
+  "cmdliner" {< "0.9.6"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--with-cmdliner"
+  "%{cmdliner:installed}%"
+]
+dev-repo: "git+http://erratique.ch/repos/uutf.git"
 url {
   src: "http://erratique.ch/software/uutf/releases/uutf-1.0.1.tbz"
   checksum: "md5=b8535f974027357094c5cdb4bf03a21b"

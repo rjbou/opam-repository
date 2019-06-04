@@ -1,4 +1,7 @@
 opam-version: "2.0"
+name: "mysql"
+version: "1.2.0"
+synopsis: "Bindings to libmysqlclient for interacting with mysql databases"
 maintainer: "ygrek@autistici.org"
 authors: [
   "Christian Lindig <lindig@eecs.harvard.edu>"
@@ -7,25 +10,22 @@ authors: [
 ]
 homepage: "http://ocaml-mysql.forge.ocamlcore.org"
 doc: "http://ocaml-mysql.forge.ocamlcore.org/doc/index.html"
+depends: [
+  "ocaml" {< "4.03"}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" "%{prefix}%"]
   [make]
   [make "htdoc"] {with-doc}
 ]
-remove: [
-  ["ocamlfind" "remove" "mysql"]
-]
-depends: [
-  "ocaml" {< "4.03"}
-  "ocamlfind"
-]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "mysql"]
 depexts: [
   ["libmysqlclient-dev"] {os-distribution = "debian"}
   ["libmysqlclient-dev"] {os-distribution = "ubuntu"}
 ]
-install: [make "install"]
-synopsis: "Bindings to libmysqlclient for interacting with mysql databases"
-flags: light-uninstall
 url {
   src:
     "https://download.ocamlcore.org/ocaml-mysql/ocaml-mysql/1.2.0/ocaml-mysql-1.2.0.tar.gz"

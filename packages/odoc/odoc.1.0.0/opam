@@ -1,35 +1,40 @@
 opam-version: "2.0"
 name: "odoc"
+version: "1.0.0"
+synopsis: "An OCaml API documentation tool"
+description: "`odoc` is an OCaml API documentation tool"
 maintainer: "Thomas Refis <trefis@janestreet.com>"
-doc: "https://ocaml-doc.github.com/odoc/"
-homepage: "http://github.com/ocaml-doc/odoc"
+authors: "Thomas Refis <trefis@janestreet.com>"
 license: "ISC"
-dev-repo: "git+http://github.com/ocaml-doc/odoc.git"
-bug-reports: "https://github.com/ocaml-doc/odoc/issues"
 tags: ["doc" "html" "ocaml" "org:ocaml-doc"]
-
+homepage: "http://github.com/ocaml-doc/odoc"
+doc: "https://ocaml-doc.github.com/odoc/"
+bug-reports: "https://github.com/ocaml-doc/odoc/issues"
 depends: [
-  "ocaml" {>= "4.02.3"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.7.5"}
+  "bos"
+  "cmdliner"
   "doc-ock"
   "doc-ock-html"
   "doc-ock-xml" {< "1.2.0"}
-  "tyxml" {>= "4.0.0"}
-  "bos"
   "fpath"
+  "ocaml" {>= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
   "result"
+  "topkg" {build & >= "0.7.5"}
+  "tyxml" {>= "4.0.0"}
   "xmlm"
-  "cmdliner"
 ]
-build: [[
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pinned" "%{pinned}%"
-          "--etc-dir" "%{odoc:etc}%"]]
-synopsis: "An OCaml API documentation tool"
-description: "`odoc` is an OCaml API documentation tool"
-authors: "Thomas Refis <trefis@janestreet.com>"
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--etc-dir"
+  "%{odoc:etc}%"
+]
+dev-repo: "git+http://github.com/ocaml-doc/odoc.git"
 url {
   src:
     "http://github.com/ocaml-doc/odoc/releases/download/v1.0.0/odoc-1.0.0.tbz"

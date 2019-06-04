@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "vorbis"
+version: "0.6.1"
+synopsis: "Bindings to libvorbis"
 maintainer: "smimram@gmail.com"
+depends: ["ocaml" "ocamlfind" "ogg"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "vorbis"]]
-depends: ["ocaml" "ocamlfind" "ogg"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "vorbis"]
 depexts: [
+  ["libvorbis"] {os = "macos" & os-distribution = "homebrew"}
   ["libvorbis-dev"] {os-distribution = "debian"}
   ["libvorbis-dev"] {os-distribution = "ubuntu"}
-  ["libvorbis"] {os = "macos" & os-distribution = "homebrew"}
 ]
-install: [make "install"]
-synopsis: "Bindings to libvorbis"
-flags: light-uninstall
 url {
   src:
     "http://downloads.sourceforge.net/project/savonet/ocaml-vorbis/0.6.1/ocaml-vorbis-0.6.1.tar.gz"

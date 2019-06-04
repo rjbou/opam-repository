@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "vlq"
+version: "0.2.0"
+synopsis: "A simple library for encoding variable-length quantities."
 maintainer: "Marshall Roch <mroch@fb.com>"
-authors: ["Marshall Roch <mroch@fb.com>"]
+authors: "Marshall Roch <mroch@fb.com>"
+license: "MIT"
 homepage: "https://github.com/flowtype/ocaml-vlq"
 doc: "https://github.com/flowtype/ocaml-vlq"
-license: "MIT"
-dev-repo: "git+https://github.com/flowtype/ocaml-vlq.git"
 bug-reports: "https://github.com/flowtype/ocaml-vlq/issues"
 depends: [
-  "ocaml"
   "jbuilder" {build & >= "1.0+beta7"}
+  "ocaml"
   "ounit" {with-test & >= "2.0.0"}
 ]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-synopsis: "A simple library for encoding variable-length quantities."
+dev-repo: "git+https://github.com/flowtype/ocaml-vlq.git"
 url {
   src:
     "https://github.com/flowtype/ocaml-vlq/releases/download/v0.2.0/vlq-0.2.0.tbz"

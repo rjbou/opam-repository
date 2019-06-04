@@ -1,28 +1,30 @@
 opam-version: "2.0"
+name: "jenga"
+version: "109.15.00"
+synopsis: "Build system"
 maintainer: "opensource@janestreet.com"
+depends: [
+  "async" {= "109.15.00"}
+  "async_inotify" {= "109.15.00"}
+  "async_shell" {= "109.15.00"}
+  "camlp4"
+  "comparelib" {= "109.15.00"}
+  "core" {>= "109.15.00" & <= "109.15.01"}
+  "core_extended" {= "109.15.00"}
+  "fieldslib" {= "109.15.00"}
+  "ocaml"
+  "ocaml_plugin" {= "109.15.00"}
+  "ocamlbuild" {build}
+  "pcre"
+  "sexplib" {= "109.15.00"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "jenga"]]
-depends: [
-  "ocaml"
-  "camlp4"
-  "sexplib" {= "109.15.00"}
-  "fieldslib" {= "109.15.00"}
-  "comparelib" {= "109.15.00"}
-  "core" {>= "109.15.00" & <= "109.15.01"}
-  "core_extended" {= "109.15.00"}
-  "async" {= "109.15.00"}
-  "async_shell" {= "109.15.00"}
-  "async_inotify" {= "109.15.00"}
-  "ocaml_plugin" {= "109.15.00"}
-  "pcre"
-  "ocamlbuild" {build}
-]
 install: [make "install"]
-synopsis: "Build system"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "jenga"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.15.00/individual/jenga-109.15.00.tar.gz"

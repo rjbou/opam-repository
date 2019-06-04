@@ -1,22 +1,22 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/ppx_driver"
-bug-reports: "https://github.com/janestreet/ppx_driver/issues"
-dev-repo: "git+https://github.com/janestreet/ppx_driver.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "ppx_core" {>= "v0.10" & < "v0.11"}
-  "ppx_optcomp" {>= "v0.10" & < "v0.11"}
-  "jbuilder" {build & >= "1.0+beta12"}
-  "ocaml-migrate-parsetree" {>= "1.0"}
-]
+name: "ppx_driver"
+version: "v0.10.0"
 synopsis: "Feature-full driver for OCaml AST transformers"
 description: "Part of the Jane Street's PPX rewriters collection."
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/ppx_driver"
+bug-reports: "https://github.com/janestreet/ppx_driver/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta12"}
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "1.0"}
+  "ppx_core" {>= "v0.10" & < "v0.11"}
+  "ppx_optcomp" {>= "v0.10" & < "v0.11"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/ppx_driver.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.10/files/ppx_driver-v0.10.0.tar.gz"

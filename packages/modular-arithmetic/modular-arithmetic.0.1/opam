@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "modular-arithmetic"
+version: "0.1"
+synopsis:
+  "A library for operations on integers modulo some integer (the modulus)"
 maintainer: "Raphael Sousa Santos <contact@raphaelss.com>"
 authors: "Raphael Sousa Santos <contact@raphaelss.com>"
 license: "MPL-2.0"
 homepage: "https://github.com/sonologico/modular-arithmetic"
 bug-reports: "https://github.com/sonologico/modular-arithmetic/issues"
-dev-repo: "git+https://github.com/sonologico/modular-arithmetic.git"
+depends: [
+  "jbuilder" {build}
+  "ocaml" {>= "4.05"}
+  "ounit" {with-test}
+]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.05"}
-  "jbuilder" {build}
-  "ounit" {with-test}
-]
-synopsis:
-  "A library for operations on integers modulo some integer (the modulus)"
+dev-repo: "git+https://github.com/sonologico/modular-arithmetic.git"
 url {
   src:
     "https://github.com/sonologico/modular-arithmetic/archive/modular-arithmetic-0.1.tar.gz"

@@ -1,22 +1,6 @@
 opam-version: "2.0"
+name: "ppx_overload"
 version: "1.0.0"
-authors: "Jun Furuse"
-maintainer: "jun.furuse@gmail.com"
-homepage: "https://bitbucket.org/camlspotter/compiler-libs-hack"
-bug-reports: "https://bitbucket.org/camlspotter/compiler-libs-hack/issues?status=new&status=open"
-dev-repo: "hg+https://bitbucket.org/camlspotter/compiler-libs-hack"
-build: [
-  [ make "install" "BINDIR=%{bin}%" ]
-]
-install: [
-  [ make "install" "BINDIR=%{bin}%" ]
-]
-remove: [
-  [ make "uninstall" "BINDIR=%{bin}%" ]
-]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.03.0"}
-]
 synopsis: "ppx_overload: SML style simple but user definable overloading"
 description: """
 ppx_overload provides SML style overloading of values and functions. This is not so powerful as the type classes, i.e., the overloaded instances must be resolved locally and you cannot inherit overloading by let-polymorphism. But it is very simple but useful.
@@ -58,6 +42,18 @@ Limitation
 ===========
 
 ppx_overload does not work with toplevel."""
+maintainer: "jun.furuse@gmail.com"
+authors: "Jun Furuse"
+homepage: "https://bitbucket.org/camlspotter/compiler-libs-hack"
+bug-reports:
+  "https://bitbucket.org/camlspotter/compiler-libs-hack/issues?status=new&status=open"
+depends: [
+  "ocaml" {>= "4.02.0" & < "4.03.0"}
+]
+build: [make "install" "BINDIR=%{bin}%"]
+install: [make "install" "BINDIR=%{bin}%"]
+remove: [make "uninstall" "BINDIR=%{bin}%"]
+dev-repo: "hg+https://bitbucket.org/camlspotter/compiler-libs-hack"
 url {
   src:
     "https://bitbucket.org/camlspotter/compiler-libs-hack/get/1.0.0.tar.gz"

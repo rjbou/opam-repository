@@ -1,20 +1,22 @@
 opam-version: "2.0"
+name: "flow"
+version: "0.3"
+synopsis:
+  "Deprecated exceptionless “systems” library on top of Core and Lwt."
 maintainer: "seb@mondet.org"
-build: "omake"
-remove: [["ocamlfind" "remove" "flow"]]
 depends: [
+  "core" {>= "109.36.00" & < "111.17.00"}
+  "lwt" {>= "2.4.0" & < "2.5.0"}
   "ocaml" {>= "4.00.0"}
   "ocamlfind"
   "omake"
-  "lwt" {>= "2.4.0" & < "2.5.0"}
-  "core" {>= "109.36.00" & < "111.17.00"}
   "ssl"
 ]
-dev-repo: "git://github.com/smondet/flow"
-install: ["omake" "install"]
-synopsis:
-  "Deprecated exceptionless “systems” library on top of Core and Lwt."
 flags: light-uninstall
+build: "omake"
+install: ["omake" "install"]
+remove: ["ocamlfind" "remove" "flow"]
+dev-repo: "git://github.com/smondet/flow"
 url {
   src: "https://github.com/smondet/flow/archive/0.3.tar.gz"
   checksum: "md5=f06435af31cc7f1e17a63811a6c14caa"

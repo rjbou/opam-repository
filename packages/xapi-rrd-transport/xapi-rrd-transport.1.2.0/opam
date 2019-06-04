@@ -1,34 +1,32 @@
 opam-version: "2.0"
+name: "xapi-rrd-transport"
+version: "1.2.0"
+synopsis: "Shared-memory protocols for exposing performance counters"
+description: """
+VMs running on a Xen host can use this library to expose performance
+counters which can be sampled by the xapi performance monitoring daemon."""
 maintainer: "xen-api@lists.xen.org"
-authors: [ "Jon Ludlam" ]
+authors: "Jon Ludlam"
+tags: "org:xapi-project"
 homepage: "https://github.com/xapi-project/rrd-transport"
 bug-reports: "https://github.com/xapi-project/rrd-transport/issues"
-dev-repo: "git+https://github.com/xapi-project/rrd-transport.git"
-tags: [
-  "org:xapi-project"
+depends: [
+  "cmdliner"
+  "crc"
+  "cstruct" {< "3.0.0"}
+  "ocaml"
+  "xapi-idl" {= "1.14.0"}
+  "xapi-rrd" {>= "1.0.0"}
+  "xen-gnt-unix"
 ]
 build: [
   [make]
   [make "test"] {with-test}
 ]
-install: [
-  [make "PREFIX=%{prefix}%" "install"]
-]
+install: [make "PREFIX=%{prefix}%" "install"]
 remove: [make "PREFIX=%{prefix}%" "uninstall"]
-depends: [
-  "ocaml"
-  "cmdliner"
-  "cstruct" {< "3.0.0"}
-  "crc"
-  "xapi-idl" {= "1.14.0"}
-  "xapi-rrd" {>= "1.0.0"}
-  "xen-gnt-unix"
-]
-patches: [ "use-xen-gnt-unix.patch" ]
-synopsis: "Shared-memory protocols for exposing performance counters"
-description: """
-VMs running on a Xen host can use this library to expose performance
-counters which can be sampled by the xapi performance monitoring daemon."""
+patches: "use-xen-gnt-unix.patch"
+dev-repo: "git+https://github.com/xapi-project/rrd-transport.git"
 extra-files: [
   "use-xen-gnt-unix.patch" "md5=72eee13be2709148b98a634700321b4b"
 ]

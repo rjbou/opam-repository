@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "dolog"
+version: "0.6"
+synopsis: "the dumb OCaml logger (lazy and optionally colorful)"
 maintainer: "unixjunkie@sdf.org"
-authors: ["Francois Berenger"]
-homepage: "https://github.com/UnixJunkie/dolog"
+authors: "Francois Berenger"
 license: "BSD"
+homepage: "https://github.com/UnixJunkie/dolog"
+depends: [
+  "base-unix"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "dolog"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "base-unix"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/UnixJunkie/dolog"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "the dumb OCaml logger (lazy and optionally colorful)"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "dolog"]
+dev-repo: "git://github.com/UnixJunkie/dolog"
 url {
   src: "https://github.com/UnixJunkie/dolog/archive/v0.6.tar.gz"
   checksum: "md5=4ce7231f74dc283c2454b50089049611"

@@ -1,6 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: ["David Sheets" "Anil Madhavapeddy" "Hugo Heuzard"]
+name: "macaddr"
+version: "3.0.0"
 synopsis: "A library for manipulation of MAC address representations"
 description: """
 Manipulate 48-bit Ethernet MAC addresses using this library.
@@ -10,22 +10,24 @@ package:
 
 - `macaddr`: The `Macaddr` module for MAC address manipulation.
 - `macaddr.top`: Toplevel printers for Macaddr.
-- `macaddr.sexp`: S-expression converters for Macaddr.
-"""
-
+- `macaddr.sexp`: S-expression converters for Macaddr."""
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "David Sheets" "Hugo Heuzard"]
 license: "ISC"
 tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/mirage/ocaml-ipaddr"
 doc: "https://mirage.github.io/ocaml-ipaddr/"
 bug-reports: "https://github.com/mirage/ocaml-ipaddr/issues"
 depends: [
-  "ocaml" {>= "4.04.0"}
   "dune" {build}
-  "sexplib0" {< "v0.13"}
+  "ocaml" {>= "4.04.0"}
   "ounit" {with-test}
   "ppx_sexp_conv" {with-test & < "v0.13"}
+  "sexplib0" {< "v0.13"}
 ]
-conflicts: [ "ipaddr" {< "3.0.0"} ]
+conflicts: [
+  "ipaddr" {< "3.0.0"}
+]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]

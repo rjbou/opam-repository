@@ -1,17 +1,19 @@
 opam-version: "2.0"
+name: "vcardgen"
+version: "1.1"
+synopsis: "Simple OCaml library for generating VCards per RFC-6350."
 maintainer: "lord@crocodile.org"
 authors: "Vadim Zaliva"
+license: "BSD2"
 homepage: "https://github.com/vzaliva/vcardgen"
 bug-reports: "https://github.com/vzaliva/vcardgen/issues"
-license: "BSD2"
-dev-repo: "git+https://github.com/vzaliva/vcardgen.git"
-build: ["jbuilder" "build" "-p" name]
 depends: [
-  "ocaml"
-  "jbuilder" {build}
   "batteries"
+  "jbuilder" {build}
+  "ocaml"
 ]
-synopsis: "Simple OCaml library for generating VCards per RFC-6350."
+build: ["jbuilder" "build" "-p" name]
+dev-repo: "git+https://github.com/vzaliva/vcardgen.git"
 url {
   src: "https://github.com/vzaliva/vcardgen/archive/v1.1.tar.gz"
   checksum: "md5=bdc133f6f45d507cf26d543645f37038"

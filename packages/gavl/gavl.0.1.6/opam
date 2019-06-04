@@ -1,31 +1,31 @@
 opam-version: "2.0"
+name: "gavl"
+version: "0.1.6"
+synopsis:
+  "Bindings for the gavl library which provides functions for converting images formats, colorspaces, etc."
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-gavl"
+bug-reports: "https://github.com/savonet/ocaml-gavl/issues"
+depends: ["ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "gavl"]
-depends: ["ocaml" "ocamlfind"]
 depexts: [
+  ["drfill/liquidsoap/libgavl"] {os = "macos" & os-distribution = "homebrew"}
+  ["gavl"] {os-distribution = "arch"}
   ["gavl-dev"] {os-distribution = "alpine"}
   ["gavl-devel"] {os-distribution = "centos"}
   ["gavl-devel"] {os-distribution = "fedora"}
   ["gavl-devel"] {os-family = "suse"}
   ["libgavl-dev"] {os-distribution = "debian"}
   ["libgavl-dev"] {os-distribution = "ubuntu"}
-  ["drfill/liquidsoap/libgavl"] {os = "macos" & os-distribution = "homebrew"}
-  ["gavl"] {os-distribution = "arch"}
 ]
-bug-reports: "https://github.com/savonet/ocaml-gavl/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-gavl.git"
-synopsis:
-  "Bindings for the gavl library which provides functions for converting images formats, colorspaces, etc."
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-gavl/releases/download/0.1.6/ocaml-gavl-0.1.6.tar.gz"

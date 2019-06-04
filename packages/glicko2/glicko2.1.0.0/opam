@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "Bruce Ricard <bruce.ricard@gmail.com>"
-authors: [
-  "Bruce Ricard <bruce.ricard@gmail.com>"
-  "Jesper Louis Andersen <jesper.louis.andersen@gmail.com>"
-]
-homepage: "https://github.com/bruce-ricard/glicko2"
-bug-reports: "https://github.com/bruce-ricard/glicko2/issues"
-license: "GNU GPLv2"
-dev-repo: "git+ssh://git@github.com/bruce-ricard/glicko2.git"
-build: [
-  [make]
-  ["./configure" "--enable-tests"] {with-test}
-  [make "test"] {with-test}
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "glicko2"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "fmt" {>= "0.0.8"}
-  "logs" {>= "0.6.0"}
-  "ocamlfind" {build & >= "1.7.0"}
-  "alcotest" {with-test & >= "0.7.0"}
-]
+name: "glicko2"
+version: "1.0.0"
 synopsis: "Implementation of the Glicko2 algorithm."
 description: """
 This library implements the Glicko2 algorithm. It is composed of 3 modules to be used independently, depending on your needs:
@@ -32,7 +11,30 @@ This library implements the Glicko2 algorithm. It is composed of 3 modules to be
 
 Wikipedia article: https://en.wikipedia.org/wiki/Glicko_rating_system
 Glicko2 paper: http://www.glicko.net/glicko/glicko2.pdf"""
+maintainer: "Bruce Ricard <bruce.ricard@gmail.com>"
+authors: [
+  "Bruce Ricard <bruce.ricard@gmail.com>"
+  "Jesper Louis Andersen <jesper.louis.andersen@gmail.com>"
+]
+license: "GNU GPLv2"
+homepage: "https://github.com/bruce-ricard/glicko2"
+bug-reports: "https://github.com/bruce-ricard/glicko2/issues"
+depends: [
+  "alcotest" {with-test & >= "0.7.0"}
+  "fmt" {>= "0.0.8"}
+  "logs" {>= "0.6.0"}
+  "ocaml" {>= "4.02.3"}
+  "ocamlfind" {build & >= "1.7.0"}
+]
 flags: light-uninstall
+build: [
+  [make]
+  ["./configure" "--enable-tests"] {with-test}
+  [make "test"] {with-test}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "glicko2"]
+dev-repo: "git+ssh://git@github.com/bruce-ricard/glicko2.git"
 url {
   src: "https://github.com/bruce-ricard/glicko2/archive/v1.0.0.tar.gz"
   checksum: "md5=2cad4ce4dd94dff0e1f37f7bc3658a7a"

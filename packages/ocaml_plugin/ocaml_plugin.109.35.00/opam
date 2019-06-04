@@ -1,25 +1,27 @@
 opam-version: "2.0"
+name: "ocaml_plugin"
+version: "109.35.00"
+synopsis: "Automatically build and dynlink OCaml source files"
 maintainer: "opensource@janestreet.com"
+depends: [
+  "async" {= "109.35.00"}
+  "bin_prot" {= "109.30.00"}
+  "camlp4"
+  "comparelib" {= "109.27.00"}
+  "fieldslib" {= "109.20.00"}
+  "herelib" {= "109.35.00"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "sexplib" {= "109.20.00"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "ocaml_plugin"]]
-depends: [
-  "ocaml"
-  "camlp4"
-  "ocamlfind"
-  "async" {= "109.35.00"}
-  "sexplib" {= "109.20.00"}
-  "comparelib" {= "109.27.00"}
-  "bin_prot" {= "109.30.00"}
-  "fieldslib" {= "109.20.00"}
-  "herelib" {= "109.35.00"}
-  "ocamlbuild" {build}
-]
 install: [make "install"]
-synopsis: "Automatically build and dynlink OCaml source files"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "ocaml_plugin"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.35.00/individual/ocaml_plugin-109.35.00.tar.gz"

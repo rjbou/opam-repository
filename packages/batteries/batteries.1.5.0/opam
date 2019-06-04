@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "batteries"
+version: "1.5.0"
+synopsis: "Community-maintained foundation library"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "camomile"
+  "num"
+  "ocaml" {<= "4.00.1"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
+install: ["ocaml" "setup.ml" "-install"]
 remove: [
   ["ocamlfind" "remove" "estring"]
   ["ocamlfind" "remove" "batteries"]
 ]
-depends: [
-  "ocaml" {<= "4.00.1"}
-  "ocamlfind"
-  "camomile"
-  "ocamlbuild" {build}
-  "num"
-]
-install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Community-maintained foundation library"
-flags: light-uninstall
 url {
   src:
     "https://github.com/ocaml-batteries-team/batteries-included/releases/download/v1.5.0/batteries-1.5.0.tar.gz"

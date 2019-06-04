@@ -1,38 +1,35 @@
 opam-version: "2.0"
 name: "ordma"
+version: "0.0.5"
+synopsis: "Ordma provides OCaml bindings to librdmacm (rsocket)"
 maintainer: "Romain Slootmaekers <romain.slootmaekers@openvstorage.com>"
 authors: "Romain Slootmaekers <romain.slootmaekers@openvstorage.com>"
+license: "TBD"
 homepage: "https://github.com/toolslive/ordma"
 bug-reports: "https://github.com/toolslive/ordma/issues"
-license: "TBD"
-dev-repo:
-  "git+https://github.com/toolslive/ordma.git"
+depends: [
+  "cmdliner" {with-test}
+  "dune" {build}
+  "lwt" {>= "2.5.1"}
+  "lwt_log"
+  "ocaml" {>= "4.02.0"}
+]
+available: os = "linux"
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "build" "@test" "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "dune" {build}
-  "lwt" {>= "2.5.1"}
-  "lwt_log"
-  "cmdliner" {with-test}
-]
+patches: ["version.patch" "unsafe_string.patch"]
 depexts: [
   ["libibverbs-dev" "librdmacm-dev"] {os-distribution = "ubuntu"}
   ["libibverbs-dev" "librdmacm-dev"] {os-distribution = "debian"}
   ["libibverbs-devel" "librdmacm-devel"] {os-distribution = "centos"}
 ]
-patches: [
-  "version.patch"
-  "unsafe_string.patch"
-]
-available: os = "linux"
-synopsis: "Ordma provides OCaml bindings to librdmacm (rsocket)"
+dev-repo: "git+https://github.com/toolslive/ordma.git"
 extra-files: [
-  ["version.patch" "md5=0f23791a7e3e27a36defd11433a75271"]
   ["unsafe_string.patch" "md5=12c517d0348e27540944b56a9251256f"]
+  ["version.patch" "md5=0f23791a7e3e27a36defd11433a75271"]
 ]
 url {
   src: "https://github.com/toolslive/ordma/archive/0.0.5.tar.gz"

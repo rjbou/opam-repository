@@ -1,31 +1,36 @@
 opam-version: "2.0"
+name: "conf-openblas"
+version: "0.2.0"
+synopsis: "Virtual package to install OpenBLAS and LAPACKE"
+description:
+  "The package prepares OpenBLAS (CBLAS) and LAPACKE backend for Owl (OCaml numerical library). It can only be installed if OpenBLAS and LAPACKE are installed on the system."
 maintainer: "Liang Wang <ryanrhymes@gmail.com>"
-authors: [ "Liang Wang" ]
+authors: "Liang Wang"
+license: "BSD"
 homepage: "https://github.com/xianyi/OpenBLAS"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "BSD"
+flags: conf
 build: [
   ["sh" "-exc" "cc $CFLAGS -I/usr/include/openblas test.c -lopenblas"]
-    {os-distribution = "fedora" | os-distribution = "centos" | os-family = "suse"}
+    {os-distribution = "fedora" | os-distribution = "centos" |
+     os-family = "suse"}
   [
     "sh"
     "-exc"
     "cc $CFLAGS -I/usr/local/opt/openblas/include test.c -L/usr/local/opt/openblas/lib -lopenblas"
   ] {os = "macos" & os-distribution = "homebrew"}
   ["sh" "-exc" "cc $CFLAGS test.c -lopenblas"]
-    {os-distribution != "fedora" & os-distribution != "centos" & os-family != "suse" & os != "macos"}
+    {os-distribution != "fedora" & os-distribution != "centos" &
+     os-family != "suse" &
+     os != "macos"}
 ]
 depexts: [
-  ["libc-dev" "openblas-dev"] {os-distribution = "alpine"}
   ["epel-release" "openblas-devel"] {os-distribution = "centos"}
+  ["libc-dev" "openblas-dev"] {os-distribution = "alpine"}
   ["libopenblas-dev" "liblapacke-dev"] {os-distribution = "debian"}
   ["libopenblas-dev" "liblapacke-dev"] {os-distribution = "ubuntu"}
+  ["openblas"] {os = "macos" & os-distribution = "homebrew"}
   ["openblas-devel"] {os-distribution = "fedora"}
   ["openblas-devel"] {os-family = "suse"}
-  ["openblas"] {os = "macos" & os-distribution = "homebrew"}
 ]
-synopsis: "Virtual package to install OpenBLAS and LAPACKE"
-description:
-  "The package prepares OpenBLAS (CBLAS) and LAPACKE backend for Owl (OCaml numerical library). It can only be installed if OpenBLAS and LAPACKE are installed on the system."
 extra-files: ["test.c" "md5=dcf8ee02542457dde43e1e4917897416"]
-flags: conf

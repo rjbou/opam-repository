@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/parsexp"
-bug-reports: "https://github.com/janestreet/parsexp/issues"
-dev-repo: "git+https://github.com/janestreet/parsexp.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.03.0" & < "4.06.0"}
-  "base" {>= "v0.9" & < "v0.10"}
-  "jbuilder" {build & >= "1.0+beta7"}
-  "ppx_compare" {>= "v0.9" & < "v0.10"}
-  "ppx_driver" {>= "v0.9" & < "v0.10"}
-  "ppx_fields_conv" {>= "v0.9" & < "v0.10"}
-  "ppx_js_style" {>= "v0.9" & < "v0.10"}
-  "ppx_sexp_conv" {>= "v0.9" & < "v0.10"}
-  "ppx_sexp_value" {>= "v0.9" & < "v0.10"}
-  "ocaml-migrate-parsetree" {>= "0.4"}
-]
+name: "parsexp"
+version: "v0.9.0"
 synopsis: "S-expression parsing library"
 description: """
 This library provides generic parsers for parsing S-expressions from
@@ -41,6 +22,25 @@ It provides three different class of parsers:
 This library is portable and doesn't provide IO functions. To read
 s-expressions from files or other external sources, you should use
 parsexp_io."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/parsexp"
+bug-reports: "https://github.com/janestreet/parsexp/issues"
+depends: [
+  "base" {>= "v0.9" & < "v0.10"}
+  "jbuilder" {build & >= "1.0+beta7"}
+  "ocaml" {>= "4.03.0" & < "4.06.0"}
+  "ocaml-migrate-parsetree" {>= "0.4"}
+  "ppx_compare" {>= "v0.9" & < "v0.10"}
+  "ppx_driver" {>= "v0.9" & < "v0.10"}
+  "ppx_fields_conv" {>= "v0.9" & < "v0.10"}
+  "ppx_js_style" {>= "v0.9" & < "v0.10"}
+  "ppx_sexp_conv" {>= "v0.9" & < "v0.10"}
+  "ppx_sexp_value" {>= "v0.9" & < "v0.10"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/parsexp.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.9/files/parsexp-v0.9.0.tar.gz"

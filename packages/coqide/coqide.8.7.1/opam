@@ -1,31 +1,41 @@
 opam-version: "2.0"
+name: "coqide"
+version: "8.7.1"
+synopsis: "IDE of the Coq formal proof management system."
 maintainer: "Ralf Jung <post@ralfj.de>"
-authors: "The Coq development team, INRIA, CNRS, University Paris Sud, University Paris 7, Ecole Polytechnique."
+authors:
+  "The Coq development team, INRIA, CNRS, University Paris Sud, University Paris 7, Ecole Polytechnique."
+license: "LGPL-2.1"
 homepage: "https://coq.inria.fr/"
 bug-reports: "https://github.com/coq/coq/issues"
-dev-repo: "git+https://github.com/coq/coq.git"
-license: "LGPL-2.1"
+depends: [
+  "camlp5"
+  "conf-gtksourceview"
+  "coq" {= "8.7.1" | = "8.7.1+1" | = "8.7.1+2"}
+  "lablgtk"
+  "ocaml" {>= "4.02.3"}
+]
+flags: light-uninstall
 build: [
   [
     "./configure"
-    "-configdir" "%{lib}%/coq/config"
-    "-prefix" prefix
-    "-mandir" man
-    "-docdir" doc
-    "-libdir" "%{lib}%/coq"
-    "-datadir" "%{share}%/coq"
-    "-camlp5dir" "%{lib}%/camlp5"
+    "-configdir"
+    "%{lib}%/coq/config"
+    "-prefix"
+    prefix
+    "-mandir"
+    man
+    "-docdir"
+    doc
+    "-libdir"
+    "%{lib}%/coq"
+    "-datadir"
+    "%{share}%/coq"
+    "-camlp5dir"
+    "%{lib}%/camlp5"
   ]
   [make "-j%{jobs}%" "coqide-files"]
   [make "-j%{jobs}%" "coqide-opt"]
-]
-remove: ["rm" "-R" "%{lib}%/coq/ide" "%{doc}%/FAQ-CoqIde"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "camlp5"
-  "coq" {= "8.7.1" | = "8.7.1+1" | = "8.7.1+2"}
-  "lablgtk"
-  "conf-gtksourceview"
 ]
 install: [
   make
@@ -34,8 +44,8 @@ install: [
   "install-ide-info"
   "install-ide-devfiles"
 ]
-synopsis: "IDE of the Coq formal proof management system."
-flags: light-uninstall
+remove: ["rm" "-R" "%{lib}%/coq/ide" "%{doc}%/FAQ-CoqIde"]
+dev-repo: "git+https://github.com/coq/coq.git"
 extra-files: ["coqide.install" "md5=d005cda8cb7888fbea94c5416dcb31bc"]
 url {
   src: "https://github.com/coq/coq/archive/V8.7.1.tar.gz"

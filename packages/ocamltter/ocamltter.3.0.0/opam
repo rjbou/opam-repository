@@ -1,34 +1,6 @@
 opam-version: "2.0"
+name: "ocamltter"
 version: "3.0.0"
-authors: [
-  "Yoshihiro Imai" "Jun Furuse"
-]
-maintainer: "jun.furuse@gmail.com"
-homepage: "https://github.com/yoshihiro503/ocamltter"
-bug-reports: "https://github.com/yoshihiro503/ocamltter/issues"
-dev-repo: "git://github.com/yoshihiro503/ocamltter"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-build" ]
-  [ "ocaml" "setup.ml" "-install" ]
-]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.03.0"}
-  "ocamlfind" {build}
-  "omake" {build}
-  "cryptokit"
-  "ocurl" {>= "0.5.3"}
-  "tiny_json_conv" {>= "1.4.1"}
-  "spotlib" {>= "2.5.0"}
-  "orakuda" {>= "1.2.2" & < "2.0.0"}
-]
 synopsis:
   "OCamltter twitter client, and OAuth framework for Twitter and Flickr"
 description: """
@@ -57,6 +29,31 @@ OCamltter also provides the following libraries:
 * ocamltter_oauth: OAuth library
 * ocamltter_twitter: Twitter API
 * ocamltter_flickr: Flickr API"""
+maintainer: "jun.furuse@gmail.com"
+authors: ["Jun Furuse" "Yoshihiro Imai"]
+homepage: "https://github.com/yoshihiro503/ocamltter"
+bug-reports: "https://github.com/yoshihiro503/ocamltter/issues"
+depends: [
+  "cryptokit"
+  "ocaml" {>= "4.02.0" & < "4.03.0"}
+  "ocamlfind" {build}
+  "ocurl" {>= "0.5.3"}
+  "omake" {build}
+  "orakuda" {>= "1.2.2" & < "2.0.0"}
+  "spotlib" {>= "2.5.0"}
+  "tiny_json_conv" {>= "1.4.1"}
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-install"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
+dev-repo: "git://github.com/yoshihiro503/ocamltter"
 url {
   src: "https://github.com/yoshihiro503/ocamltter/archive/3.0.0.tar.gz"
   checksum: "md5=0bac97decc391f59b53d6d3622ce14c8"

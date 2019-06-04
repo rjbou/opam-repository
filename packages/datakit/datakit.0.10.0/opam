@@ -1,50 +1,6 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      ["Thomas Leonard" "Magnus Skjegstad"
-               "David Scott" "Thomas Gazagnaire"]
-license:      "Apache"
-homepage:     "https://github.com/moby/datakit"
-bug-reports:  "https://github.com/moby/datakit/issues"
-dev-repo: "git+https://github.com/moby/datakit.git"
-doc:          "https://docker.github.io/datakit/"
-
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "tests/%{name}%"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.06.0"}
-  "jbuilder" {build & < "1.0+beta12"}
-  "cmdliner"
-  "rresult"
-  "astring"
-  "fmt"
-  "asetmap"
-  "git" {>= "1.9.3"}
-  "uri"
-  "irmin" {>= "1.1.0" & < "1.2.0"}
-  "irmin-git" {>= "1.0.0"}
-  "camlzip" {>= "1.06"}
-  "cstruct" {>= "2.2"}
-  "result"
-  "lwt" {>= "2.7.1"}
-  "conduit" {< "0.99"}
-  "mirage-flow"
-  "named-pipe" {>= "0.4.0"}
-  "hvsock" {>= "0.8.1"}
-  "logs" {>= "0.5.0"}
-  "win-eventlog"
-  "asl" {>= "0.10"}
-  "mtime" {< "1.0.0"}
-  "irmin-watcher" {>= "0.2.0"}
-  "protocol-9p" {< "0.10.0"}
-  ("io-page" {< "2.0.0"} | "io-page-unix" {>= "2.0.0"})
-  "prometheus-app"
-  "datakit-server" {>= "0.10.0" & < "0.11.0"}
-  "datakit-client" {with-test & >= "0.10.0" & < "0.11.0"}
-  "datakit-github" {with-test & >= "0.10.0" & < "0.11.0"}
-  "alcotest" {with-test & >= "0.7.0" & < "0.8.0"}
-]
+name: "datakit"
+version: "0.10.0"
 synopsis: "Orchestrate applications using a Git-like dataflow"
 description: """
 *DataKit* is a tool to orchestrate applications using a Git-like dataflow. It
@@ -57,6 +13,52 @@ layer for [HyperKit](http://github.com/docker/hyperkit), the
 hypervisor component of
 [Docker for Mac and Windows](https://blog.docker.com/2016/03/docker-for-mac-windows-beta/), and
 for the [DataKitCI][] continuous integration system."""
+maintainer: "thomas@gazagnaire.org"
+authors: [
+  "David Scott" "Magnus Skjegstad" "Thomas Gazagnaire" "Thomas Leonard"
+]
+license: "Apache"
+homepage: "https://github.com/moby/datakit"
+doc: "https://docker.github.io/datakit/"
+bug-reports: "https://github.com/moby/datakit/issues"
+depends: [
+  "alcotest" {with-test & >= "0.7.0" & < "0.8.0"}
+  "asetmap"
+  "asl" {>= "0.10"}
+  "astring"
+  "camlzip" {>= "1.06"}
+  "cmdliner"
+  "conduit" {< "0.99"}
+  "cstruct" {>= "2.2"}
+  "datakit-client" {with-test & >= "0.10.0" & < "0.11.0"}
+  "datakit-github" {with-test & >= "0.10.0" & < "0.11.0"}
+  "datakit-server" {>= "0.10.0" & < "0.11.0"}
+  "fmt"
+  "git" {>= "1.9.3"}
+  "hvsock" {>= "0.8.1"}
+  ("io-page" {< "2.0.0"} | "io-page-unix" {>= "2.0.0"})
+  "irmin" {>= "1.1.0" & < "1.2.0"}
+  "irmin-git" {>= "1.0.0"}
+  "irmin-watcher" {>= "0.2.0"}
+  "jbuilder" {build & < "1.0+beta12"}
+  "logs" {>= "0.5.0"}
+  "lwt" {>= "2.7.1"}
+  "mirage-flow"
+  "mtime" {< "1.0.0"}
+  "named-pipe" {>= "0.4.0"}
+  "ocaml" {>= "4.02.0" & < "4.06.0"}
+  "prometheus-app"
+  "protocol-9p" {< "0.10.0"}
+  "result"
+  "rresult"
+  "uri"
+  "win-eventlog"
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "tests/%{name}%"] {with-test}
+]
+dev-repo: "git+https://github.com/moby/datakit.git"
 url {
   src:
     "https://github.com/moby/datakit/releases/download/0.10.0/datakit-0.10.0.tbz"

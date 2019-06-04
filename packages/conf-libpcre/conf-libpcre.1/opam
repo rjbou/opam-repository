@@ -1,28 +1,29 @@
 opam-version: "2.0"
-maintainer: "blue-prawn"
-authors: [
-  "Philip Hazel"
-  "Zoltan Herczeg"
-]
-homepage: "http://www.pcre.org/"
-dev-repo: "git+https://github.com/mmottl/pcre-ocaml.git"
-license: "BSD-3-Clause"
-build: [["pkg-config" "libpcre"]]
-depends: ["conf-pkg-config" {build}]
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-depexts: [
-  ["libpcre3-dev"] {os-distribution = "debian"}
-  ["libpcre-devel"] {os-distribution = "mageia"}
-  ["libpcre3-dev"] {os-distribution = "ubuntu"}
-  ["pcre-devel"] {os-distribution = "centos"}
-  ["pcre-devel"] {os-distribution = "fedora"}
-  ["pcre-devel"] {os-distribution = "rhel"}
-  ["pcre-dev"] {os-distribution = "alpine"}
-  ["pcre-devel"] {os-family = "suse"}
-  ["pcre"] {os = "freebsd"}
-  ["pcre"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "conf-libpcre"
+version: "1"
 synopsis: "Virtual package relying on a libpcre system installation"
 description:
   "This package can only install if the libpcre is installed on the system."
+maintainer: "blue-prawn"
+authors: ["Philip Hazel" "Zoltan Herczeg"]
+license: "BSD-3-Clause"
+homepage: "http://www.pcre.org/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "libpcre"]
+depexts: [
+  ["libpcre-devel"] {os-distribution = "mageia"}
+  ["libpcre3-dev"] {os-distribution = "debian"}
+  ["libpcre3-dev"] {os-distribution = "ubuntu"}
+  ["pcre"] {os = "freebsd"}
+  ["pcre"] {os = "macos" & os-distribution = "homebrew"}
+  ["pcre-dev"] {os-distribution = "alpine"}
+  ["pcre-devel"] {os-distribution = "centos"}
+  ["pcre-devel"] {os-distribution = "fedora"}
+  ["pcre-devel"] {os-distribution = "rhel"}
+  ["pcre-devel"] {os-family = "suse"}
+]
+dev-repo: "git+https://github.com/mmottl/pcre-ocaml.git"

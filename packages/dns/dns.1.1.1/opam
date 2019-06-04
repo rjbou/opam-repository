@@ -1,16 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: [
-  "Anil Madhavapeddy"
-  "Tim Deegan"
-  "Richard Mortier"
-  "Haris Rotsos"
-  "David Sheets"
-  "Thomas Gazagnaire"
-  "Luke Dunstan"
-  "David Scott"
-]
-license: "ISC"
+name: "dns"
+version: "1.1.1"
 synopsis: "DNS client and server implementation in pure OCaml"
 description: """
 This is a pure OCaml implementation of the DNS protocol.  It is intended to be
@@ -23,23 +13,34 @@ want to use for practical purposes:
 - dns-lwt for the Lwt concurrency library
 - dns-lwt-unix using the Lwt_unix bindings
 - dns-async using the Jane Street Async library
-- mirage-dns for the MirageOS unikernel framework
-"""
+- mirage-dns for the MirageOS unikernel framework"""
+maintainer: "anil@recoil.org"
+authors: [
+  "Anil Madhavapeddy"
+  "David Scott"
+  "David Sheets"
+  "Haris Rotsos"
+  "Luke Dunstan"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Tim Deegan"
+]
+license: "ISC"
 tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/mirage/ocaml-dns"
 doc: "https://mirage.github.io/ocaml-dns/"
 bug-reports: "https://github.com/mirage/ocaml-dns/issues"
 depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "cstruct" {>= "3.0.2"}
-  "ppx_cstruct"
-  "re" {>="1.7.2"}
-  "ipaddr" {>= "2.6.0"}
-  "uri" {>= "1.7.0"}
   "base64" {>= "3.0.0"}
+  "cstruct" {>= "3.0.2"}
+  "dune" {build}
   "hashcons"
+  "ipaddr" {>= "2.6.0"}
+  "ocaml" {>= "4.03.0"}
+  "ppx_cstruct"
+  "re" {>= "1.7.2"}
   "result"
+  "uri" {>= "1.7.0"}
 ]
 build: [
   ["dune" "subst"] {pinned}

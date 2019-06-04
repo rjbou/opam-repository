@@ -1,28 +1,6 @@
 opam-version: "2.0"
+name: "spotinstall"
 version: "1.1.0"
-authors: "Jun Furuse"
-maintainer: "jun.furuse@gmail.com"
-homepage: "https://bitbucket.org/camlspotter/spotinstall/"
-bug-reports: "https://bitbucket.org/camlspotter/spotinstall/issues?status=new&status=open"
-dev-repo: "hg+https://bitbucket.org/camlspotter/spotinstall"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-build" ]
-]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "ocamlfind" {build}
-  "spotlib" {= "2.1.0"}
-  "omake" {build & < "0.10.1"}
-  "orakuda" {< "2.0.0"}
-]
 synopsis:
   "A tool to facilitate the installation of OCaml annotation files (.cmt, .cmti, .spot, .spit)."
 description: """
@@ -53,6 +31,28 @@ For the first workaround, you need a small patch available from::
 or included in this source package, ocaml-annot-<version>.patch.
 
 For the second one, you can use SpotInstall. This tool."""
+maintainer: "jun.furuse@gmail.com"
+authors: "Jun Furuse"
+homepage: "https://bitbucket.org/camlspotter/spotinstall/"
+bug-reports:
+  "https://bitbucket.org/camlspotter/spotinstall/issues?status=new&status=open"
+depends: [
+  "ocaml" {>= "4.00.0"}
+  "ocamlfind" {build}
+  "omake" {build & < "0.10.1"}
+  "orakuda" {< "2.0.0"}
+  "spotlib" {= "2.1.0"}
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
+dev-repo: "hg+https://bitbucket.org/camlspotter/spotinstall"
 url {
   src: "https://bitbucket.org/camlspotter/spotinstall/get/1.1.0.tar.gz"
   checksum: "md5=814bdd644b9413c839da41af9d6973b5"

@@ -1,44 +1,6 @@
 opam-version: "2.0"
-maintainer: "Claude.Marche@inria.fr"
-authors: [
-  "Jean-Christophe Filliâtre"
-  "Claude Marché"
-  "Yannick Moy"
-  "Romain Bardou"
-]
-homepage: "http://krakatoa.lri.fr/"
-doc: ["http://krakatoa.lri.fr/"]
-bug-reports: "https://gforge.inria.fr/tracker/?atid=4012&group_id=999&func=browse"
-dev-repo: "git+https://scm.gforge.inria.fr/anonscm/git/why/why.git"
-license: "LGPL-2.1"
-tags: [
-  "deductive"
-  "program verification"
-  "specification"
-  "automated theorem prover"
-  "interactive theorem prover"
-  "Java"
-  "JML"
-  "C"
-  "ACSL"
-]
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-install: [
-  [make "install"]
-]
-remove: [
-  ["rm" "%{prefix}%/bin/jessie"]
-  ["rm" "%{prefix}%/bin/krakatoa"]
-  ["rm" "-rf" "%{prefix}%/lib/why"]
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "why3" {>= "0.86.1" & <= "0.88.3"}
-  "frama-c" {= "17.0"}
-]
+name: "why"
+version: "2.41"
 synopsis: "Why is a software verification platform."
 description: """
 Why is not any longer under active development. Our efforts have moved
@@ -48,7 +10,43 @@ Why is still maintained, in particular to provide the Jessie plug-in
 of Frama-C and the Krakatoa front-end for Java.
 
 This version is compatible with Frama-C version Chlorine"""
+maintainer: "Claude.Marche@inria.fr"
+authors: [
+  "Claude Marché" "Jean-Christophe Filliâtre" "Romain Bardou" "Yannick Moy"
+]
+license: "LGPL-2.1"
+tags: [
+  "ACSL"
+  "C"
+  "JML"
+  "Java"
+  "automated theorem prover"
+  "deductive"
+  "interactive theorem prover"
+  "program verification"
+  "specification"
+]
+homepage: "http://krakatoa.lri.fr/"
+doc: "http://krakatoa.lri.fr/"
+bug-reports:
+  "https://gforge.inria.fr/tracker/?atid=4012&group_id=999&func=browse"
+depends: [
+  "frama-c" {= "17.0"}
+  "ocaml" {>= "4.02.0"}
+  "why3" {>= "0.86.1" & <= "0.88.3"}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+install: [make "install"]
+remove: [
+  ["rm" "%{prefix}%/bin/jessie"]
+  ["rm" "%{prefix}%/bin/krakatoa"]
+  ["rm" "-rf" "%{prefix}%/lib/why"]
+]
+dev-repo: "git+https://scm.gforge.inria.fr/anonscm/git/why/why.git"
 url {
   src: "http://why.lri.fr/download/why-2.41.tar.gz"
   checksum: "md5=9c5c3eb9f421b8dbbf141b153b051a51"

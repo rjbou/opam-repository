@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "hashids"
+version: "1.0.0"
+synopsis:
+  "[hashids](http://hashids.org/): generate short, unique, non-sequential ids from numbers, that you can also decode"
 maintainer: "Vincent Jacques <vincent@vincent-jacques.net>"
 authors: "Vincent Jacques <vincent@vincent-jacques.net>"
-homepage: "https://jacquev6.github.io/hashids-ocaml/"
-bug-reports: "http://github.com/jacquev6/hashids-ocaml/issues/"
 license: "MIT"
+homepage: "https://jacquev6.github.io/hashids-ocaml/"
 doc: "https://jacquev6.github.io/hashids-ocaml/"
-dev-repo: "git+https://github.com/jacquev6/hashids-ocaml.git"
+bug-reports: "http://github.com/jacquev6/hashids-ocaml/issues/"
+depends: [
+  "General" {>= "0.4.0"}
+  "jbuilder" {build}
+  "ocaml" {>= "4.02.3"}
+]
 build: [
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build}
-  "General" {>= "0.4.0"}
-]
-synopsis:
-  "[hashids](http://hashids.org/): generate short, unique, non-sequential ids from numbers, that you can also decode"
+dev-repo: "git+https://github.com/jacquev6/hashids-ocaml.git"
 url {
   src: "https://github.com/jacquev6/hashids-ocaml/archive/1.0.0.tar.gz"
   checksum: "md5=73987f5924ff28825747e0744895f9e7"

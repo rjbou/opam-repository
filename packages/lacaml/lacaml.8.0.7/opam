@@ -1,19 +1,35 @@
 opam-version: "2.0"
+name: "lacaml"
+version: "8.0.7"
+synopsis: "OCaml-bindings to BLAS and LAPACK"
+description: """
+This library interfaces the BLAS-library (Basic Linear Algebra
+Subroutines) and LAPACK-library (Linear Algebra routines), which are
+written in FORTRAN."""
 maintainer: "Markus Mottl <markus.mottl@gmail.com>"
-authors: [ "Egbert Ammicht <eammicht@lucent.com>"
-           "Patrick Cousot <Patrick.Cousot@ens.fr>"
-           "Sam Ehrlichman <sehrlichman@janestreet.com>"
-           "Florent Hoareau <h.florent@gmail.com>"
-           "Markus Mottl <markus.mottl@gmail.com>"
-           "Liam Stewart <liam@cs.toronto.edu>"
-           "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-           "Oleg Trott <ot14@columbia.edu>"
-           "Martin Willensdorfer <ma.wi@gmx.at>" ]
+authors: [
+  "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
+  "Egbert Ammicht <eammicht@lucent.com>"
+  "Florent Hoareau <h.florent@gmail.com>"
+  "Liam Stewart <liam@cs.toronto.edu>"
+  "Markus Mottl <markus.mottl@gmail.com>"
+  "Martin Willensdorfer <ma.wi@gmx.at>"
+  "Oleg Trott <ot14@columbia.edu>"
+  "Patrick Cousot <Patrick.Cousot@ens.fr>"
+  "Sam Ehrlichman <sehrlichman@janestreet.com>"
+]
 license: "LGPL-2.1+ with OCaml linking exception"
+tags: ["clib:blas" "clib:lapack"]
 homepage: "http://mmottl.github.io/lacaml"
-dev-repo: "git+https://github.com/mmottl/lacaml.git"
 bug-reports: "https://github.com/mmottl/lacaml/issues"
-tags: [ "clib:lapack" "clib:blas"  ]
+depends: [
+  "base-bigarray"
+  "base-bytes"
+  "ocaml" {>= "3.12"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.5"}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -23,27 +39,13 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "lacaml"]
-]
-depends: [
-  "ocaml" {>= "3.12"}
-  "base-bigarray"
-  "base-bytes"
-  "ocamlfind" {build & >= "1.5"}
-  "ocamlbuild" {build}
-]
+remove: ["ocamlfind" "remove" "lacaml"]
 depexts: [
+  ["blas-devel" "lapack-devel"] {os-distribution = "centos"}
   ["libblas-dev" "liblapack-dev"] {os-distribution = "debian"}
   ["libblas-dev" "liblapack-dev"] {os-distribution = "ubuntu"}
-  ["blas-devel" "lapack-devel"] {os-distribution = "centos"}
 ]
-synopsis: "OCaml-bindings to BLAS and LAPACK"
-description: """
-This library interfaces the BLAS-library (Basic Linear Algebra
-Subroutines) and LAPACK-library (Linear Algebra routines), which are
-written in FORTRAN."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/mmottl/lacaml.git"
 url {
   src:
     "https://github.com/mmottl/lacaml/releases/download/v8.0.7/lacaml-8.0.7.tar.gz"

@@ -1,10 +1,22 @@
 opam-version: "2.0"
+name: "jsoo_storage"
+version: "1.0"
+synopsis: "A wrapper in Js_of_ocaml for the WebStorage API"
+description:
+  "The Web Storage API provides mechanisms by which browsers can store key/value pairs, in a much more intuitive fashion than using cookies."
 maintainer: "Xavier Van de Woestyne <xaviervdw@gmail.com>"
 authors: "Xavier Van de Woestyne <xaviervdw@gmail.com>"
+license: "MIT"
 homepage: "http://github.com/xvw/jsoo_storage"
 bug-reports: "https://github.com/xvw/jsoo_storage/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/xvw/jsoo_storage.git"
+depends: [
+  "js_of_ocaml" {>= "2.8.4" & < "3.0"}
+  "lwt"
+  "ocaml" {>= "4.02.0" & <= "4.04.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -15,17 +27,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "jsoo_storage"]
-depends: [
-  "ocaml" {>= "4.02.0" & <= "4.04.0"}
-  "js_of_ocaml" {>= "2.8.4" & < "3.0"}
-  "lwt"
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-]
-synopsis: "A wrapper in Js_of_ocaml for the WebStorage API"
-description:
-  "The Web Storage API provides mechanisms by which browsers can store key/value pairs, in a much more intuitive fashion than using cookies."
-flags: light-uninstall
+dev-repo: "git+https://github.com/xvw/jsoo_storage.git"
 url {
   src:
     "https://github.com/xvw/jsoo_storage/releases/download/1.0/jsoo_storage.tar.gz"

@@ -1,20 +1,18 @@
 opam-version: "2.0"
 name: "cloudi"
 version: "1.7.2"
+synopsis: "OCaml CloudI API"
 maintainer: "Michael Truog <mjtruog@gmail.com>"
 authors: "Michael Truog <mjtruog@gmail.com>"
+license: "MIT"
 homepage: "http://cloudi.org/"
 bug-reports: "https://github.com/CloudI/CloudI/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/CloudI/cloudi_api_ocaml.git"
-build: [
-  [make]
-]
 depends: [
   "ocaml" {>= "4.03.0" & < "4.06"}
   "ocamlfind" {build}
 ]
-synopsis: "OCaml CloudI API"
+build: make
+dev-repo: "git+https://github.com/CloudI/cloudi_api_ocaml.git"
 url {
   src: "https://github.com/CloudI/cloudi_api_ocaml/archive/v1.7.2.tar.gz"
   checksum: "md5=64480f31bf82b884a3feee0f4664000f"

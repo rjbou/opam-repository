@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "kaputt"
+version: "1.1"
+synopsis: "Testing tool"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "num"
+  "ocaml" {< "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["sh" "configure"]
   [make]
 ]
 install: [make "install"]
-remove: [["ocamlfind" "remove" "kaputt"]]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "num"
-]
-synopsis: "Testing tool"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "kaputt"]
 url {
   src: "http://kaputt.x9c.fr/distrib/kaputt-1.1.tar.gz"
   checksum: "md5=d96e6b953f118952b517a7ef98dba055"

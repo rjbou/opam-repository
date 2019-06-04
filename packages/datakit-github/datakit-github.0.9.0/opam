@@ -1,32 +1,31 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      ["Thomas Leonard" "Magnus Skjegstad"
-               "David Scott" "Thomas Gazagnaire"]
-license:      "Apache"
-homepage:     "https://github.com/docker/datakit"
-bug-reports:  "https://github.com/docker/datakit/issues"
-dev-repo: "git+https://github.com/docker/datakit.git"
-doc:          "https://docker.github.io/datakit/"
-
-build: [
-  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "-n" name
-]
-
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "cmdliner"
-  "lwt" {>= "2.7.0"}
-  "uri" {>= "1.8.0"}
-  "asetmap"
-  "logs"
-  "fmt"
-  "result"
-  "datakit-client" {>= "0.9.0" & < "0.10.0"}
-]
+name: "datakit-github"
+version: "0.9.0"
 synopsis: "Abstraction of the GitHub API, suitable for DataKit clients"
+maintainer: "thomas@gazagnaire.org"
+authors: [
+  "David Scott" "Magnus Skjegstad" "Thomas Gazagnaire" "Thomas Leonard"
+]
+license: "Apache"
+homepage: "https://github.com/docker/datakit"
+doc: "https://docker.github.io/datakit/"
+bug-reports: "https://github.com/docker/datakit/issues"
+depends: [
+  "asetmap"
+  "cmdliner"
+  "datakit-client" {>= "0.9.0" & < "0.10.0"}
+  "fmt"
+  "logs"
+  "lwt" {>= "2.7.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "result"
+  "topkg" {build}
+  "uri" {>= "1.8.0"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "-n" name]
+dev-repo: "git+https://github.com/docker/datakit.git"
 url {
   src:
     "https://github.com/docker/datakit/releases/download/0.9.0/datakit-0.9.0.tbz"

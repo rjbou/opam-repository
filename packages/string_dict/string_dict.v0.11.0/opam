@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/string_dict"
-bug-reports: "https://github.com/janestreet/string_dict/issues"
-dev-repo: "git+https://github.com/janestreet/string_dict.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "base" {>= "v0.11" & < "v0.12"}
-  "ppx_compare" {>= "v0.11" & < "v0.12"}
-  "ppx_hash" {>= "v0.11" & < "v0.12"}
-  "jbuilder" {build & >= "1.0+beta18.1"}
-  "ocaml-migrate-parsetree" {>= "1.0"}
-]
+name: "string_dict"
+version: "v0.11.0"
 synopsis: "Efficient static string dictionaries"
 description: """
 Efficient static string dictionaries.
@@ -24,6 +9,21 @@ dictionary is created.
 
 This uses the algorithm the OCaml compiler uses for pattern matching
 on strings."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/string_dict"
+bug-reports: "https://github.com/janestreet/string_dict/issues"
+depends: [
+  "base" {>= "v0.11" & < "v0.12"}
+  "jbuilder" {build & >= "1.0+beta18.1"}
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "1.0"}
+  "ppx_compare" {>= "v0.11" & < "v0.12"}
+  "ppx_hash" {>= "v0.11" & < "v0.12"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/string_dict.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.11/files/string_dict-v0.11.0.tar.gz"

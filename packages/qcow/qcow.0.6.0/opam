@@ -1,39 +1,41 @@
 opam-version: "2.0"
+name: "qcow"
+version: "0.6.0"
+synopsis: "Read and write images in Qcow2 format"
+description: """
+If you want to `create`, `read`, `write` or analyse qcow2-formatted
+data in pure OCaml then this library is for you!"""
 maintainer: "dave@recoil.org"
-authors: ["David Scott"]
+authors: "David Scott"
 license: "ISC"
+tags: "org:mirage"
 homepage: "https://github.com/mirage/ocaml-qcow"
-dev-repo: "git+https://github.com/mirage/ocaml-qcow.git"
 bug-reports: "https://github.com/mirage/ocaml-qcow/issues"
-tags: [
-  "org:mirage"
-]
-
 depends: [
-  "ocaml" {>= "4.02.0"}
   "astring"
   "cmdliner"
   "cstruct" {< "4.0.0"}
-  "result"
-  "mirage-types-lwt" {>= "2.6.0" & < "3.0.0"}
-  "lwt" {< "4.0.0"}
-  "mirage-block" {>= "0.2" & < "1.0"}
-  "mirage-block-unix" {>= "2.3.0" & < "2.5.0"}
-  "sexplib" {< "v0.13"}
-  "logs"
+  "ezjsonm" {with-test}
   "fmt" {>= "0.8.2"}
   "io-page"
   "io-page-unix"
+  "logs"
+  "lwt" {< "4.0.0"}
+  "mirage-block" {>= "0.2" & < "1.0"}
+  "mirage-block-ramdisk" {with-test}
+  "mirage-block-unix" {>= "2.3.0" & < "2.5.0"}
+  "mirage-types-lwt" {>= "2.6.0" & < "3.0.0"}
+  "nbd" {with-test & >= "2.0.1"}
+  "ocaml" {>= "4.02.0"}
   "ocamlfind" {build}
-  "topkg" {build}
-  "ppx_tools"
+  "ounit" {with-test}
   "ppx_deriving"
   "ppx_sexp_conv" {< "v0.11.0"}
+  "ppx_tools"
   "ppx_type_conv" {build}
-  "ounit" {with-test}
-  "mirage-block-ramdisk" {with-test}
-  "ezjsonm" {with-test}
-  "nbd" {with-test & >= "2.0.1"}
+  "result"
+  "sexplib" {< "v0.13"}
+  "topkg" {build}
 ]
 build: [
   ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
@@ -41,10 +43,7 @@ build: [
     {with-test}
   ["ocaml" "pkg/pkg.ml" "test"] {with-test}
 ]
-synopsis: "Read and write images in Qcow2 format"
-description: """
-If you want to `create`, `read`, `write` or analyse qcow2-formatted
-data in pure OCaml then this library is for you!"""
+dev-repo: "git+https://github.com/mirage/ocaml-qcow.git"
 url {
   src: "https://github.com/mirage/ocaml-qcow/archive/v0.6.0.tar.gz"
   checksum: "md5=a265f19d8a56503344dd63f7a97b7daf"

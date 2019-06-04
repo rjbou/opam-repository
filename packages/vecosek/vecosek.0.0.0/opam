@@ -1,36 +1,35 @@
 opam-version: "2.0"
-maintainer: "Seb Mondet <seb@mondet.org>"
-authors: [
-  "Seb Mondet <seb@mondet.org>"
-]
-homepage: "https://gitlab.com/smondet/vecosek"
-bug-reports: "https://gitlab.com/smondet/vecosek/issues"
-dev-repo: "git+https://gitlab.com/smondet/vecosek.git"
-license: "ISC"
+name: "vecosek"
 version: "0.0.0"
-build: [
-  ["ocaml" "please.ml" "configure"]
-  ["jbuilder" "build" "-p" "vecosek" "-j" jobs ]
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta20"}
-  "vecosek-engine"
-  "nonstd"
-  "sosa"
-  "yojson"
-  "atd" {>= "1.2.1"}
-  "atdgen" {< "1.13.0"}
-  "rresult"
-  "misuja"
-  "cmdliner"
-]
 synopsis: ""
 description: """
 Vecosek is a MIDI sequencer designed for live, interactive performance settings,
 with arbitrarily *complex* music. 
 
 The vecosek package contains the sequencer executable."""
+maintainer: "Seb Mondet <seb@mondet.org>"
+authors: "Seb Mondet <seb@mondet.org>"
+license: "ISC"
+homepage: "https://gitlab.com/smondet/vecosek"
+bug-reports: "https://gitlab.com/smondet/vecosek/issues"
+depends: [
+  "atd" {>= "1.2.1"}
+  "atdgen" {< "1.13.0"}
+  "cmdliner"
+  "jbuilder" {build & >= "1.0+beta20"}
+  "misuja"
+  "nonstd"
+  "ocaml" {>= "4.03.0"}
+  "rresult"
+  "sosa"
+  "vecosek-engine"
+  "yojson"
+]
+build: [
+  ["ocaml" "please.ml" "configure"]
+  ["jbuilder" "build" "-p" "vecosek" "-j" jobs]
+]
+dev-repo: "git+https://gitlab.com/smondet/vecosek.git"
 url {
   src: "https://gitlab.com/smondet/vecosek/-/archive/0.0.0/vecosek-0.0.0.zip"
   checksum: "md5=bf77dc7c5a8d8efeff67b8eb43ef2dd0"

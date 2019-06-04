@@ -1,16 +1,17 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      ["Thomas Gazagnaire" "Thomas Leonard"]
-license:      "ISC"
-homepage:     "https://github.com/mirage/irmin"
-bug-reports:  "https://github.com/mirage/irmin/issues"
-dev-repo: "git+https://github.com/mirage/irmin.git"
-doc:          "https://mirage.github.io/irmin/"
-
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "irmin" {= "0.12.0"}
-  "git-unix" {< "1.10.0"}
-  "irmin-watcher"
-]
+name: "irmin-unix"
+version: "0.12.0"
 synopsis: "Virtual package for Irmin's Unix support"
+maintainer: "thomas@gazagnaire.org"
+authors: ["Thomas Gazagnaire" "Thomas Leonard"]
+license: "ISC"
+homepage: "https://github.com/mirage/irmin"
+doc: "https://mirage.github.io/irmin/"
+bug-reports: "https://github.com/mirage/irmin/issues"
+depends: [
+  "git-unix" {< "1.10.0"}
+  "irmin" {= "0.12.0"}
+  "irmin-watcher"
+  "ocaml" {>= "4.01.0"}
+]
+dev-repo: "git+https://github.com/mirage/irmin.git"

@@ -1,31 +1,33 @@
 opam-version: "2.0"
+name: "conf-autoconf"
+version: "0.1"
+synopsis: "Virtual package relying on autoconf installation"
+description: """
+This package can only install if the autoconf command
+is available on the system."""
 maintainer: "unixjunkie@sdf.org"
-homepage: "http://www.gnu.org/software/autoconf"
 authors: "https://www.gnu.org/software/autoconf/autoconf.html#maintainer"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
 license: "GPL-3.0"
-build: [
-  ["which" "autoconf"]
+homepage: "http://www.gnu.org/software/autoconf"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-which" {build}
 ]
-depends: ["conf-which" {build}]
+flags: conf
+build: ["which" "autoconf"]
 depexts: [
   ["autoconf"] {os-distribution = "debian"}
   ["autoconf"] {os-distribution = "ubuntu"}
   ["autoconf"] {os-distribution = "centos"}
   ["autoconf"] {os-distribution = "fedora"}
   ["autoconf"] {os-distribution = "arch"}
-  ["sys-devel/autoconf"] {os-distribution = "gentoo"}
   ["autoconf"] {os-distribution = "nixos"}
   ["autoconf"] {os = "macos" & os-distribution = "homebrew"}
-  ["devel/autoconf"] {os = "openbsd"}
   ["autoconf"] {os = "freebsd"}
   ["autoconf"] {os = "netbsd"}
   ["autoconf"] {os-distribution = "alpine"}
   ["autoconf"] {os-distribution = "ol"}
   ["autoconf"] {os-distribution = "rhel"}
+  ["devel/autoconf"] {os = "openbsd"}
+  ["sys-devel/autoconf"] {os-distribution = "gentoo"}
 ]
-synopsis: "Virtual package relying on autoconf installation"
-description: """
-This package can only install if the autoconf command
-is available on the system."""
-flags: conf

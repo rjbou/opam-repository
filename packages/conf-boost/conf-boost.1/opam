@@ -1,26 +1,28 @@
 opam-version: "2.0"
+name: "conf-boost"
+version: "1"
+synopsis: "Virtual package relying on boost"
+description:
+  "This package can only install if the boost library is installed on the system."
 maintainer: "thierry.martinez@inria.fr"
-homepage: "http://www.boost.org"
 authors: "Beman Dawes, David Abrahams, et al."
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
 license: "MIT"
+homepage: "http://www.boost.org"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+flags: conf
 depexts: [
-  ["libboost-dev"] {os-distribution = "debian"}
-  ["libboost-dev"] {os-distribution = "ubuntu"}
   ["boost"] {os-distribution = "nixos"}
+  ["boost"] {os-distribution = "arch"}
+  ["boost"] {os = "macos" & os-distribution = "homebrew"}
+  ["boost"] {os = "netbsd"}
+  ["boost"] {os = "openbsd"}
+  ["boost-all"] {os = "freebsd"}
   ["boost-dev"] {os-distribution = "alpine"}
   ["boost-devel"] {os-distribution = "fedora"}
   ["boost-devel"] {os-distribution = "ol"}
   ["boost-devel"] {os-distribution = "centos"}
   ["boost-devel"] {os-distribution = "rhel"}
   ["boost-devel"] {os-family = "suse"}
-  ["boost"] {os-distribution = "arch"}
-  ["boost"] {os = "macos" & os-distribution = "homebrew"}
-  ["boost-all"] {os = "freebsd"}
-  ["boost"] {os = "netbsd"}
-  ["boost"] {os = "openbsd"}
+  ["libboost-dev"] {os-distribution = "debian"}
+  ["libboost-dev"] {os-distribution = "ubuntu"}
 ]
-synopsis: "Virtual package relying on boost"
-description:
-  "This package can only install if the boost library is installed on the system."
-flags: conf

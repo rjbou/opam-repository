@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "iocamljs-kernel"
+version: "0.4.8"
+synopsis: "An OCaml javascript kernel for the IPython notebook."
 maintainer: "Andy Ray <andy.ray@ujamjar.com>"
 authors: "Andy Ray <andy.ray@ujamjar.com>"
 homepage: "https://github.com/andrewray/iocamljs"
-dev-repo: "git+https://github.com/andrewray/iocamljs.git"
 bug-reports: "https://github.com/andrewray/iocamljs/issues"
-build: [
-  [ make "clean" "min" ]
-  [ make "clean" "full" ]
-]
 depends: [
+  "js_of_ocaml" {>= "2.6" & < "2.8.4"}
+  "lwt" {>= "2.4"}
   "ocaml" {>= "4.02.0"}
   "ocamlfind"
   "optcomp"
-  "lwt" {>= "2.4"}
-  "js_of_ocaml" {>= "2.6" & < "2.8.4"}
 ]
-synopsis: "An OCaml javascript kernel for the IPython notebook."
+build: [
+  [make "clean" "min"]
+  [make "clean" "full"]
+]
+dev-repo: "git+https://github.com/andrewray/iocamljs.git"
 extra-files: [
   "iocamljs-kernel.install" "md5=22e10a0fedc34f3325576da39992fa68"
 ]

@@ -1,41 +1,42 @@
 opam-version: "2.0"
-homepage: "https://github.com/LaurentMazare/ocaml-torch"
+name: "libtorch"
+version: "1.0.0"
+synopsis: "LibTorch library package"
+description: """
+This is used by the torch package to trigger the install of the
+libtorch library."""
 maintainer: "lmazare@gmail.com"
+authors: "Laurent Mazare"
+homepage: "https://github.com/LaurentMazare/ocaml-torch"
 bug-reports: "https://github.com/LaurentMazare/ocaml-torch/issues"
-authors: [
-  "Laurent Mazare"
-]
 install: [
   [
     "sh"
     "-c"
     """
+
 test -d %{lib}%/libtorch/lib/libtorch.so ||
   ( unzip libtorch-linux.zip &&
     mv -f libtorch %{lib}%/
   )
     """
-  ] { os = "linux" }
+  ] {os = "linux"}
   [
     "sh"
     "-c"
     """
+
 test -d %{lib}%/libtorch/lib/libtorch.so ||
   ( unzip libtorch-macos.zip &&
     mv -f libtorch %{lib}%/
   )
     """
-  ] { os = "macos" }
+  ] {os = "macos"}
 ]
-remove: [
-  [ "rm" "-Rf" "%{lib}%/libtorch" ]
-]
-synopsis: "LibTorch library package"
-description: """
-This is used by the torch package to trigger the install of the
-libtorch library."""
+remove: ["rm" "-Rf" "%{lib}%/libtorch"]
 extra-source "libtorch-linux.zip" {
-  src: "https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-1.0.0.zip"
+  src:
+    "https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-1.0.0.zip"
   checksum: "md5=0b9e7a3da5da473760709dbf84c292dc"
 }
 extra-source "libtorch-macos.zip" {

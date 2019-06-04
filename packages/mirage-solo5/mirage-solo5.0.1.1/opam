@@ -1,31 +1,35 @@
 opam-version: "2.0"
-maintainer:   "martin@lucina.net"
-homepage:     "https://github.com/mirage/mirage-solo5"
-bug-reports:  "https://github.com/mirage/mirage-solo5/issues/"
-dev-repo: "git+https://github.com/mirage/mirage-solo5.git"
-authors:       [ "Anil Madhavapeddy <anil@recoil.org>" "Dan Williams <djwillia@us.ibm.com>" "Martin Lucina <martin@lucina.net>" ]
-license:      "ISC"
-
-build:   [make "solo5-build"]
-install: [make "solo5-install"   "PREFIX=%{prefix}%"]
-remove:  [make "solo5-uninstall" "PREFIX=%{prefix}%"]
-
+name: "mirage-solo5"
+version: "0.1.1"
+synopsis: "Platform bindings for Mirage on Solo5"
+description: "This package provides the platform bindings for Mirage/Solo5."
+maintainer: "martin@lucina.net"
+authors: [
+  "Anil Madhavapeddy <anil@recoil.org>"
+  "Dan Williams <djwillia@us.ibm.com>"
+  "Martin Lucina <martin@lucina.net>"
+]
+license: "ISC"
+homepage: "https://github.com/mirage/mirage-solo5"
+bug-reports: "https://github.com/mirage/mirage-solo5/issues/"
 depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind"
   "cstruct" {>= "1.0.1"}
   "lwt" {>= "2.4.3"}
   "mirage-profile" {>= "0.3"}
+  "ocaml" {>= "4.01.0"}
   "ocaml-freestanding" {< "0.3.0"}
+  "ocamlfind"
 ]
 conflicts: [
   "io-page" {>= "2.0.0"}
   "solo5-bindings-hvt"
-  "solo5-bindings-virtio"
   "solo5-bindings-muen"
+  "solo5-bindings-virtio"
 ]
-synopsis: "Platform bindings for Mirage on Solo5"
-description: "This package provides the platform bindings for Mirage/Solo5."
+build: [make "solo5-build"]
+install: [make "solo5-install" "PREFIX=%{prefix}%"]
+remove: [make "solo5-uninstall" "PREFIX=%{prefix}%"]
+dev-repo: "git+https://github.com/mirage/mirage-solo5.git"
 url {
   src: "https://github.com/mirage/mirage-solo5/archive/v0.1.1.tar.gz"
   checksum: "md5=f27fb6ebf3840a5b45fef14e527b59a5"

@@ -1,28 +1,28 @@
 opam-version: "2.0"
-maintainer: "arjun@cs.umass.edu"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--%{quickcheck:enable}%-quickcheck"]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocamlfind" "remove" "packet"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "cstruct" {>= "1.0.1" & < "2.0.0"}
-  "sexplib" {>= "110.01.00" & < "113.01.00"}
-  "type_conv"
-  "ocamlbuild" {build}
-]
-depopts: ["quickcheck"]
-dev-repo: "git://github.com/frenetic-lang/ocaml-packet"
-install: ["ocaml" "setup.ml" "-install"]
+name: "packet"
+version: "0.3.1"
 synopsis: "A serialization library for several common packet formats"
 description: """
 This library includes serializers for ethernet, TCP, IP, ARP, ICMP, and
 others."""
+maintainer: "arjun@cs.umass.edu"
+depends: [
+  "cstruct" {>= "1.0.1" & < "2.0.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "sexplib" {>= "110.01.00" & < "113.01.00"}
+  "type_conv"
+]
+depopts: ["quickcheck"]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--%{quickcheck:enable}%-quickcheck"]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "packet"]
+dev-repo: "git://github.com/frenetic-lang/ocaml-packet"
 url {
   src: "https://github.com/frenetic-lang/ocaml-packet/archive/v0.3.1.tar.gz"
   checksum: "md5=4fd97b9a82f075c018b92482011b81db"

@@ -1,24 +1,22 @@
 opam-version: "2.0"
-authors:      "Vincent Bernardoff <vb@luminar.eu.org>"
-maintainer:   "Vincent Bernardoff <vb@luminar.eu.org>"
-homepage:     "https://github.com/vbmithr/ocaml-websocket"
-bug-reports:  "https://github.com/vbmithr/ocaml-websocket/issues"
-dev-repo:     "git://github.com/vbmithr/ocaml-websocket"
-
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [make]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "lwt" {>= "2.4.7"}
-  "tls" {>= "0.2" & < "0.4"}
-  "cohttp" {>= "0.12.0" & < "0.19.0"}
-  "ocplib-endian" {>= "0.4"}
-  "ocamlbuild" {build}
-]
+name: "websocket"
+version: "0.9.1"
 synopsis: "Websocket library"
+maintainer: "Vincent Bernardoff <vb@luminar.eu.org>"
+authors: "Vincent Bernardoff <vb@luminar.eu.org>"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/vbmithr/ocaml-websocket"
+bug-reports: "https://github.com/vbmithr/ocaml-websocket/issues"
+depends: [
+  "cohttp" {>= "0.12.0" & < "0.19.0"}
+  "lwt" {>= "2.4.7"}
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocplib-endian" {>= "0.4"}
+  "tls" {>= "0.2" & < "0.4"}
+]
+build: make
+dev-repo: "git://github.com/vbmithr/ocaml-websocket"
 url {
   src: "https://github.com/vbmithr/ocaml-websocket/archive/0.9.1.tar.gz"
   checksum: "md5=03358b606f87fd947a2e0a290f1ccca7"

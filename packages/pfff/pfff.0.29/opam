@@ -1,32 +1,6 @@
 opam-version: "2.0"
-maintainer: "pad@fb.com"
-authors: [ "Yoann Padioleau <pad@fb.com>" ]
-homepage: "https://github.com/facebook/pfff/wiki/Main"
-patches: [
-  "lang_js-analyze-module_js.ml-Fix-invalid-documentati.patch"
-  "lang_js-analyze-utils_js.mli.patch"
-]
-build: [
-  ["./configure" "--novisual" "--nocmt" "--nobytecode"]
-  [make "depend"]
-  [make]
-  [make "opt"]
-]
-install: [
-  [make "install-findlib"]
-]
-remove: [
-  ["./configure" "--novisual" "--nocmt" "--nobytecode"]
-  [make "uninstall-findlib"]
-]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.03.0"}
-  "ocamlfind"
-  "camlp4"
-  "num"
-]
-bug-reports: "https://github.com/facebook/pfff/issues"
-dev-repo: "git+https://github.com/facebook/pfff.git"
+name: "pfff"
+version: "0.29"
 synopsis:
   "Tools and APIs for program analysis, code visualization, refactoring"
 description: """
@@ -41,14 +15,40 @@ even TeX. There is also very good support for OCaml and noweb
 itself.
 
 For more information see https://github.com/facebook/pfff/wiki/Main"""
+maintainer: "pad@fb.com"
+authors: "Yoann Padioleau <pad@fb.com>"
+homepage: "https://github.com/facebook/pfff/wiki/Main"
+bug-reports: "https://github.com/facebook/pfff/issues"
+depends: [
+  "camlp4"
+  "num"
+  "ocaml" {>= "4.01.0" & < "4.03.0"}
+  "ocamlfind"
+]
+build: [
+  ["./configure" "--novisual" "--nocmt" "--nobytecode"]
+  [make "depend"]
+  [make]
+  [make "opt"]
+]
+install: [make "install-findlib"]
+remove: [
+  ["./configure" "--novisual" "--nocmt" "--nobytecode"]
+  [make "uninstall-findlib"]
+]
+patches: [
+  "lang_js-analyze-module_js.ml-Fix-invalid-documentati.patch"
+  "lang_js-analyze-utils_js.mli.patch"
+]
+dev-repo: "git+https://github.com/facebook/pfff.git"
 extra-files: [
-  [
-    "lang_js-analyze-utils_js.mli.patch"
-    "md5=c1c5d2e4255135c37c05d3ad89e48209"
-  ]
   [
     "lang_js-analyze-module_js.ml-Fix-invalid-documentati.patch"
     "md5=1336de148a1c754c0511812ccf9d0746"
+  ]
+  [
+    "lang_js-analyze-utils_js.mli.patch"
+    "md5=c1c5d2e4255135c37c05d3ad89e48209"
   ]
 ]
 url {

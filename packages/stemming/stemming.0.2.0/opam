@@ -1,26 +1,28 @@
 opam-version: "2.0"
+name: "stemming"
+version: "0.2.0"
+synopsis: "Collection of stemmers"
 maintainer: "ygrek@autistici.org"
-authors: [ "ygrek" "Mykola Stryebkov" ]
+authors: ["Mykola Stryebkov" "ygrek"]
+license: "LGPL-2.1 with OCaml linking exception"
+tags: "org:ygrek"
 homepage: "https://github.com/ygrek/ocaml-stemming"
 bug-reports: "https://github.com/ygrek/ocaml-stemming/issues"
-dev-repo: "git://github.com/ygrek/ocaml-stemming.git"
-tags: ["org:ygrek"]
-license: "LGPL-2.1 with OCaml linking exception"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-test"] {with-test}
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
-remove: [["ocamlfind" "remove" "stemming"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Collection of stemmers"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "stemming"]
+dev-repo: "git://github.com/ygrek/ocaml-stemming.git"
 url {
   src:
     "http://ygrek.org.ua/p/release/ocaml-stemming/ocaml-stemming-0.2.0.tar.gz"

@@ -1,20 +1,20 @@
 opam-version: "2.0"
+name: "xmlplaylist"
+version: "0.1.4"
+synopsis: "Library to parse various file playlists in XML format"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-xmlplaylist"
+bug-reports: "https://github.com/savonet/ocaml-xmlplaylist/issues"
+depends: ["ocaml" "ocamlfind" "xmlm"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "xmlplaylist"]
-depends: ["ocaml" "ocamlfind" "xmlm"]
-bug-reports: "https://github.com/savonet/ocaml-xmlplaylist/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-xmlplaylist.git"
-synopsis: "Library to parse various file playlists in XML format"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-xmlplaylist/releases/download/0.1.4/ocaml-xmlplaylist-0.1.4.tar.gz"

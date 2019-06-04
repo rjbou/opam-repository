@@ -1,17 +1,19 @@
 opam-version: "2.0"
+name: "async_shell"
+version: "109.15.00"
+synopsis: "Shell helpers for Async"
 maintainer: "opensource@janestreet.com"
-build: make
-remove: [["ocamlfind" "remove" "async_shell"]]
 depends: [
-  "ocaml"
-  "camlp4"
   "async" {= "109.15.00"}
+  "camlp4"
   "core_extended" {= "109.15.00"}
+  "ocaml"
   "ocamlbuild" {build}
 ]
-install: [make "install"]
-synopsis: "Shell helpers for Async"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "async_shell"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/109.15.00/individual/async_shell-109.15.00.tar.gz"

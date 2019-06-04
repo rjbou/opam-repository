@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "patdiff"
+version: "112.24.00"
+synopsis: "File Diff using the Patience Diff algorithm"
 maintainer: "opensource@janestreet.com"
+depends: [
+  "camlp4"
+  "core_extended" {>= "112.24.00" & < "112.36.00"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "patience_diff" {>= "112.24.00" & < "112.25.00"}
+  "pcre"
+]
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-depends: [
-  "ocaml"
-  "camlp4"
-  "core_extended" {>= "112.24.00" & < "112.36.00"}
-  "patience_diff" {>= "112.24.00" & < "112.25.00"}
-  "pcre"
-  "ocamlbuild" {build}
-]
 install: [make "install"]
-synopsis: "File Diff using the Patience Diff algorithm"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/112.24/files/patdiff-112.24.tar.gz"

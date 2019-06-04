@@ -1,23 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/posixat"
-bug-reports: "https://github.com/janestreet/posixat/issues"
-dev-repo: "git+https://github.com/janestreet/posixat.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-conflicts: [ "jbuilder" { = "1.0+beta19" } ]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "base" {>= "v0.11" & < "v0.12"}
-  "ppx_optcomp" {>= "v0.11" & < "v0.12"}
-  "ppx_sexp_conv" {>= "v0.11" & < "v0.12"}
-  "sexplib" {>= "v0.11" & < "v0.12"}
-  "jbuilder" {build & >= "1.0+beta18.1"}
-  "ocaml-migrate-parsetree" {>= "1.0"}
-]
+name: "posixat"
+version: "v0.11.0"
 synopsis: "Bindings to the posix *at functions"
 description: """
 Posixat is a small library that just binds the various *at posix
@@ -26,6 +9,25 @@ functions.
 The posix *at functions takes the current working directory as a file
 descriptor. For instance this allows to reliably maintain several
 working directories inside the same process."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/posixat"
+bug-reports: "https://github.com/janestreet/posixat/issues"
+depends: [
+  "base" {>= "v0.11" & < "v0.12"}
+  "jbuilder" {build & >= "1.0+beta18.1"}
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "1.0"}
+  "ppx_optcomp" {>= "v0.11" & < "v0.12"}
+  "ppx_sexp_conv" {>= "v0.11" & < "v0.12"}
+  "sexplib" {>= "v0.11" & < "v0.12"}
+]
+conflicts: [
+  "jbuilder" {= "1.0+beta19"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/posixat.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.11/files/posixat-v0.11.0.tar.gz"

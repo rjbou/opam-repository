@@ -1,23 +1,24 @@
 opam-version: "2.0"
+name: "calendar"
+version: "2.04"
+synopsis: "Library for handling dates and times in your program"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: ["Julien Signoles"]
-homepage: "http://calendar.forge.ocamlcore.org/"
-bug-reports: "https://forge.ocamlcore.org/tracker/?atid=415&group_id=83&func=browse"
-# SVN repositories not supported (yet).
-# dev-repo: "svn://forge.ocamlcore.org/svn/calendar/trunk"
+authors: "Julien Signoles"
 license: "LGPL-2.1 with OCaml linking exception"
-build: [
-  ["./configure"]
-  [make]
-]
-remove: [["ocamlfind" "remove" "calendar"]]
+homepage: "http://calendar.forge.ocamlcore.org/"
+bug-reports:
+  "https://forge.ocamlcore.org/tracker/?atid=415&group_id=83&func=browse"
 depends: [
   "ocaml"
   "ocamlfind" {build}
 ]
-install: [make "install"]
-synopsis: "Library for handling dates and times in your program"
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "calendar"]
 url {
   src:
     "https://download.ocamlcore.org/calendar/calendar/2.04/calendar-2.04.tar.gz"

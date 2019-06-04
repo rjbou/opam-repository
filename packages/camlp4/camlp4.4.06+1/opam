@@ -1,37 +1,6 @@
 opam-version: "2.0"
-authors: ["Daniel de Rauglaudre" "Nicolas Pouillard"]
-maintainer: "jeremie@dimino.org"
-homepage: "https://github.com/ocaml/camlp4"
-license: "LGPLv2"
-build: [
-  [
-    "./configure"
-    "--bindir=%{bin}%"
-    "--libdir=%{lib}%/ocaml"
-    "--pkgdir=%{lib}%"
-  ]
-  [make "clean"]
-  [make "all"] {ocaml:native-dynlink}
-  [make "byte"] {!ocaml:native-dynlink}
-]
-depends: [
-  "ocaml" {>= "4.06" & < "4.07"}
-  "ocamlbuild" {build}
-]
-install: [
-  [make "install" "install-META"]
-]
-remove: [
-  ["ocamlfind" "remove" "camlp4"]
-  ["rm" "-rf" "%{lib}%/ocaml/camlp4"]
-  ["rm" "-f" "%{bin}%/camlp4"  "%{bin}%/camlp4boot" "%{bin}%/mkcamlp4"
-             "%{bin}%/camlp4r" "%{bin}%/camlp4rf"   "%{bin}%/camlp4orf"
-             "%{bin}%/camlp4o" "%{bin}%/camlp4of"   "%{bin}%/camlp4oof"
-             "%{bin}%/camlp4prof"]
-]
-patches: [ "f0ea53725465260556832398096cef8d3f20b49d.patch" ]
-bug-reports: "https://github.com/ocaml/camlp4/issues"
-dev-repo: "git+https://github.com/ocaml/camlp4.git"
+name: "camlp4"
+version: "4.06+1"
 synopsis:
   "Camlp4 is a system for writing extensible parsers for programming languages"
 description: """
@@ -43,8 +12,49 @@ the definition of domain-specific extensions of the syntax of OCaml.
 Camlp4 was part of the official OCaml distribution until its version 4.01.0.
 Since then it has been replaced by a simpler system which is easier to maintain
 and to learn: ppx rewriters and extension points."""
+maintainer: "jeremie@dimino.org"
+authors: ["Daniel de Rauglaudre" "Nicolas Pouillard"]
+license: "LGPLv2"
+homepage: "https://github.com/ocaml/camlp4"
+bug-reports: "https://github.com/ocaml/camlp4/issues"
+depends: [
+  "ocaml" {>= "4.06" & < "4.07"}
+  "ocamlbuild" {build}
+]
 conflicts: ["ocaml-system"]
 flags: light-uninstall
+build: [
+  [
+    "./configure"
+    "--bindir=%{bin}%"
+    "--libdir=%{lib}%/ocaml"
+    "--pkgdir=%{lib}%"
+  ]
+  [make "clean"]
+  [make "all"] {ocaml:native-dynlink}
+  [make "byte"] {!ocaml:native-dynlink}
+]
+install: [make "install" "install-META"]
+remove: [
+  ["ocamlfind" "remove" "camlp4"]
+  ["rm" "-rf" "%{lib}%/ocaml/camlp4"]
+  [
+    "rm"
+    "-f"
+    "%{bin}%/camlp4"
+    "%{bin}%/camlp4boot"
+    "%{bin}%/mkcamlp4"
+    "%{bin}%/camlp4r"
+    "%{bin}%/camlp4rf"
+    "%{bin}%/camlp4orf"
+    "%{bin}%/camlp4o"
+    "%{bin}%/camlp4of"
+    "%{bin}%/camlp4oof"
+    "%{bin}%/camlp4prof"
+  ]
+]
+patches: "f0ea53725465260556832398096cef8d3f20b49d.patch"
+dev-repo: "git+https://github.com/ocaml/camlp4.git"
 extra-files: [
   "f0ea53725465260556832398096cef8d3f20b49d.patch"
   "md5=4e15b0fb960be4be48b154bfafbb9a16"

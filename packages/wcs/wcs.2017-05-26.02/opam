@@ -1,29 +1,6 @@
 opam-version: "2.0"
 name: "wcs"
 version: "2017-05-26.02"
-maintainer: [
-  "Louis Mandel <lmandel@us.ibm.com>"
-]
-authors: [
-  "Guillaume Baudart"
-  "Louis Mandel"
-  "Jérôme Siméon"
-]
-homepage: "https://github.com/IBM/wcs-ocaml"
-bug-reports: "https://github.com/IBM/wcs-ocaml/issues"
-license: "Apache License 2.0"
-dev-repo: "git+https://github.com/IBM/wcs-ocaml.git"
-build: [
-  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "wcs-lib" {= "2017-05-26.02"}
-  "wcs-api" {= "2017-05-26.02"}
-  "cohttp-lwt-unix"
-]
 synopsis: "Command line interface for Watson Conversation Service"
 description: """
 wcs-ocaml is a command line interface for [Watson Conversation Service
@@ -31,6 +8,23 @@ wcs-ocaml is a command line interface for [Watson Conversation Service
 to program chat bots in OCaml.
 
 * `wcs` is a command line tool that interact with the service."""
+maintainer: "Louis Mandel <lmandel@us.ibm.com>"
+authors: ["Guillaume Baudart" "Jérôme Siméon" "Louis Mandel"]
+license: "Apache License 2.0"
+homepage: "https://github.com/IBM/wcs-ocaml"
+bug-reports: "https://github.com/IBM/wcs-ocaml/issues"
+depends: [
+  "cohttp-lwt-unix"
+  "ocaml" {>= "4.03.0"}
+  "wcs-api" {= "2017-05-26.02"}
+  "wcs-lib" {= "2017-05-26.02"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/IBM/wcs-ocaml.git"
 url {
   src: "https://github.com/IBM/wcs-ocaml/archive/2017-05-26.02.tar.gz"
   checksum: "md5=37f31d43ba562352f2fe03692ba6cedf"

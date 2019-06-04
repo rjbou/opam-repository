@@ -1,37 +1,38 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      ["Thomas Leonard" "Magnus Skjegstad"
-               "David Scott" "Thomas Gazagnaire"]
-license:      "Apache"
-homepage:     "https://github.com/docker/datakit"
-bug-reports:  "https://github.com/docker/datakit/issues"
-dev-repo: "git+https://github.com/docker/datakit.git"
-doc:          "https://docker.github.io/datakit/"
-
-build: [
-  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "-n" "datakit-client"
-]
-
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "base-bytes"
-  "astring"
-  "logs"
-  "uri"
-  "rresult"
-  "cstruct"
-  "fmt"
-  "protocol-9p" {>= "0.7.4" & < "0.10.0"}
-  "cmdliner"
-]
+name: "datakit-client"
+version: "0.7.0"
 synopsis: "A library to connect to datakit servers"
 description: """
 The library currently only provides only a 9p client to talk to
 Datakit, but other filesystem protocols will be available in the
 future."""
+maintainer: "thomas@gazagnaire.org"
+authors: [
+  "David Scott" "Magnus Skjegstad" "Thomas Gazagnaire" "Thomas Leonard"
+]
+license: "Apache"
+homepage: "https://github.com/docker/datakit"
+doc: "https://docker.github.io/datakit/"
+bug-reports: "https://github.com/docker/datakit/issues"
+depends: [
+  "astring"
+  "base-bytes"
+  "cmdliner"
+  "cstruct"
+  "fmt"
+  "logs"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "protocol-9p" {>= "0.7.4" & < "0.10.0"}
+  "rresult"
+  "topkg" {build}
+  "uri"
+]
+build: [
+  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "-n" "datakit-client"
+]
+dev-repo: "git+https://github.com/docker/datakit.git"
 url {
   src:
     "https://github.com/docker/datakit/releases/download/0.7.0/datakit-0.7.0.tbz"

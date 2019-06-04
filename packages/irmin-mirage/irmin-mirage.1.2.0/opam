@@ -1,25 +1,26 @@
 opam-version: "2.0"
-maintainer:   "thomas@gazagnaire.org"
-authors:      "Thomas Gazagnaire"
-license:      "ISC"
-homepage:     "https://github.com/mirage/irmin"
-bug-reports:  "https://github.com/mirage/irmin/issues"
-dev-repo: "git+https://github.com/mirage/irmin.git"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-
+name: "irmin-mirage"
+version: "1.2.0"
+synopsis: "MirageOS-compatible Irmin stores"
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire"
+license: "ISC"
+homepage: "https://github.com/mirage/irmin"
+bug-reports: "https://github.com/mirage/irmin/issues"
 depends: [
-  "ocaml"
-  "jbuilder" {build}
+  "git-mirage" {>= "1.11.0"}
   "irmin" {>= "1.2.0"}
   "irmin-git" {>= "1.2.0"}
   "irmin-mem" {>= "1.2.0"}
-  "git-mirage" {>= "1.11.0"}
-  "ptime"
-  "mirage-kv-lwt" {< "2.0.0"}
+  "jbuilder" {build}
   "mirage-clock"
+  "mirage-kv-lwt" {< "2.0.0"}
+  "ocaml"
+  "ptime"
   "result"
 ]
-synopsis: "MirageOS-compatible Irmin stores"
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/mirage/irmin.git"
 url {
   src:
     "https://github.com/mirage/irmin/releases/download/1.2.0/irmin-1.2.0.tbz"

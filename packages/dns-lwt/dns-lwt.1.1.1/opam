@@ -1,34 +1,35 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: [
-  "Anil Madhavapeddy"
-  "Tim Deegan"
-  "Richard Mortier"
-  "Haris Rotsos"
-  "David Sheets"
-  "Thomas Gazagnaire"
-  "Luke Dunstan"
-  "David Scott"
-]
-license: "ISC"
+name: "dns-lwt"
+version: "1.1.1"
 synopsis: "DNS implementation in portable Lwt"
 description: """
 This is an implementation of the DNS protocol and a client
 and server resolver using the portable Lwt concurrency framework.
 You can find a Unix version of this library in the `dns-lwt-unix`
 opam package, and in theory you could compile this one to JavaScript
-as well using js_of_ocaml.
-"""
+as well using js_of_ocaml."""
+maintainer: "anil@recoil.org"
+authors: [
+  "Anil Madhavapeddy"
+  "David Scott"
+  "David Sheets"
+  "Haris Rotsos"
+  "Luke Dunstan"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Tim Deegan"
+]
+license: "ISC"
 tags: ["org:mirage" "org:xapi-project"]
 homepage: "https://github.com/mirage/ocaml-dns"
 doc: "https://mirage.github.io/ocaml-dns/"
 bug-reports: "https://github.com/mirage/ocaml-dns/issues"
 depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "mirage-profile" {>= "0.8.0"}
-  "lwt" {>= "3.0.0"}
   "dns"
+  "dune" {build}
+  "lwt" {>= "3.0.0"}
+  "mirage-profile" {>= "0.8.0"}
+  "ocaml" {>= "4.03.0"}
 ]
 build: [
   ["dune" "subst"] {pinned}

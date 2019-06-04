@@ -1,8 +1,30 @@
 opam-version: "2.0"
+name: "ocamlformat"
+version: "0.9"
+synopsis: "Auto-formatter for OCaml code"
+description:
+  "OCamlFormat is a tool to automatically format OCaml code in a uniform style."
 maintainer: "OCamlFormat Team <ocamlformat-team@fb.com>"
 authors: "Josh Berdine <jjb@fb.com>"
+license: "MIT"
 homepage: "https://github.com/ocaml-ppx/ocamlformat"
 bug-reports: "https://github.com/ocaml-ppx/ocamlformat/issues"
+depends: [
+  "base" {>= "v0.11.0"}
+  "base-unix"
+  "cmdliner"
+  "dune" {build & >= "1.1.1"}
+  "fpath"
+  "ocaml" {>= "4.06"}
+  "ocaml-migrate-parsetree" {>= "1.0.10"}
+  "octavius" {>= "1.2.0"}
+  "stdio"
+  "uutf"
+]
+build: [
+  ["ocaml" "tools/gen_version.ml" "src/Version.ml" version] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
 dev-repo: "git+https://github.com/ocaml-ppx/ocamlformat.git"
 url {
   src: "https://github.com/ocaml-ppx/ocamlformat/archive/0.9.tar.gz"
@@ -11,22 +33,3 @@ url {
     "sha512=6bedb60073239867caa57171d2537a77e8857a00ce3d8280850a163baf1c4bc8625d6e6bd79cdf8a3d603241224aac5485f1e148d0c0d4144469080cf41fbc6a"
   ]
 }
-license: "MIT"
-build: [
-  ["ocaml" "tools/gen_version.ml" "src/Version.ml" version] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.06"}
-  "base" {>= "v0.11.0"}
-  "base-unix"
-  "cmdliner"
-  "dune" {build & >= "1.1.1"}
-  "fpath"
-  "ocaml-migrate-parsetree" {>= "1.0.10"}
-  "octavius" {>= "1.2.0"}
-  "stdio"
-  "uutf"
-]
-synopsis: "Auto-formatter for OCaml code"
-description: "OCamlFormat is a tool to automatically format OCaml code in a uniform style."

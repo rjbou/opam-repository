@@ -1,10 +1,19 @@
 opam-version: "2.0"
+name: "d3"
+version: "0.2.1"
+synopsis: "OCaml bindings for D3.js"
 maintainer: "Spiros Eliopoulos <seliopou@gmail.com>"
-authors: [ "Spiros Eliopoulos <seliopou@gmail.com>" ]
+authors: "Spiros Eliopoulos <seliopou@gmail.com>"
 license: "BSD-3-clause"
 homepage: "https://github.com/seliopou/ocaml-d3"
-dev-repo: "git+https://github.com/seliopou/ocaml-d3.git"
 bug-reports: "https://github.com/seliopou/ocaml-d3/issues"
+depends: [
+  "js_of_ocaml" {< "3.0"}
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -14,17 +23,8 @@ build: [
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "d3"]
-]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "js_of_ocaml" {< "3.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
-synopsis: "OCaml bindings for D3.js"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "d3"]
+dev-repo: "git+https://github.com/seliopou/ocaml-d3.git"
 url {
   src: "https://github.com/seliopou/ocaml-d3/archive/v0.2.1.tar.gz"
   checksum: "md5=0477becd6ed7dc69ab860fe3d2416b3e"

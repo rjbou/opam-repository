@@ -1,53 +1,48 @@
 opam-version: "2.0"
-license: "MIT"
+name: "labrys"
+version: "0.1"
+synopsis:
+  "A toy language based on LLVM that implements the System Fω type-system"
 maintainer: "Kate <kit.ty.kate@disroot.org>"
 authors: "Kate <kit.ty.kate@disroot.org>"
+license: "MIT"
+tags: ["System F" "System Fω" "compiler" "language" "llvm" "type-system"]
 homepage: "https://github.com/kit-ty-kate/labrys"
-dev-repo: "git+https://github.com/kit-ty-kate/labrys.git"
 bug-reports: "https://github.com/kit-ty-kate/labrys/issues"
+depends: [
+  "base-unix"
+  "cmdliner"
+  "containers" {>= "2.0"}
+  "craml" {with-test}
+  "dune" {build}
+  "llvm" {>= "3.8"}
+  "menhir"
+  "msgpack"
+  "ocaml" {>= "4.04"}
+  "pprint"
+  "re"
+  "uutf" {>= "1.0.0"}
+]
 build: [
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.04"}
-  "dune" {build}
-  "menhir"
-  "base-unix"
-  "cmdliner"
-  "pprint"
-  "re"
-  "msgpack"
-  "uutf" {>= "1.0.0"}
-  "llvm" {>= "3.8"}
-  "containers" {>= "2.0"}
-  "craml" {with-test}
-]
 depexts: [
-  ["libgc-dev"] {os-distribution = "debian"}
-  ["libgc-dev"] {os-distribution = "ubuntu"}
-  ["gc-devel"] {os-distribution = "centos"}
-  ["gc-devel"] {os-distribution = "fedora"}
-  ["gc-devel"] {os-family = "suse"}
-  ["gc"] {os-distribution = "arch"}
-  ["gc-dev"] {os-distribution = "alpine"}
-  ["boehmgc"] {os-distribution = "macports" & os = "macos"}
   ["bdw-gc"] {os-distribution = "homebrew" & os = "macos"}
   ["boehm-gc"] {os-distribution = "gentoo"}
+  ["boehmgc"] {os-distribution = "macports" & os = "macos"}
   ["devel/boehm-gc"] {os = "netbsd"}
   ["devel/boehm-gc"] {os = "openbsd"}
   ["devel/boehm-gc"] {os = "freebsd"}
+  ["gc"] {os-distribution = "arch"}
+  ["gc-dev"] {os-distribution = "alpine"}
+  ["gc-devel"] {os-distribution = "centos"}
+  ["gc-devel"] {os-distribution = "fedora"}
+  ["gc-devel"] {os-family = "suse"}
+  ["libgc-dev"] {os-distribution = "debian"}
+  ["libgc-dev"] {os-distribution = "ubuntu"}
 ]
-tags: [
-  "compiler"
-  "System F"
-  "System Fω"
-  "llvm"
-  "type-system"
-  "language"
-]
-synopsis:
-  "A toy language based on LLVM that implements the System Fω type-system"
+dev-repo: "git+https://github.com/kit-ty-kate/labrys.git"
 url {
   src: "https://github.com/kit-ty-kate/labrys/archive/0.1.tar.gz"
   checksum: "md5=a18d39762a27e18ff4548978536b8477"

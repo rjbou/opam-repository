@@ -1,11 +1,13 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.09.0+trunk"
 synopsis: "latest 4.09 development"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.09.0" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
   "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.09.0" & post}
   "ocaml-beta"
 ]
 conflict-class: "ocaml-core-compiler"
@@ -14,12 +16,8 @@ setenv: CAML_LD_LIBRARY_PATH = "%{lib}%/stublibs"
 build: [
   ["./configure" "--prefix=%{prefix}%"]
     {os != "openbsd" & os != "freebsd" & os != "macos"}
-  [
-    "./configure"
-    "--prefix=%{prefix}%"
-    "CC=cc"
-    "ASPP=cc -c"
-  ] {os = "openbsd" | os = "freebsd" | os = "macos"}
+  ["./configure" "--prefix=%{prefix}%" "CC=cc" "ASPP=cc -c"]
+    {os = "openbsd" | os = "freebsd" | os = "macos"}
   [make "world"]
   [make "world.opt"]
 ]

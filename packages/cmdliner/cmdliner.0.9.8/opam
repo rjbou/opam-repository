@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/cmdliner"
-doc: "http://erratique.ch/software/cmdliner/doc/Cmdliner"
-dev-repo: "git+http://erratique.ch/repos/cmdliner.git"
-bug-reports: "https://github.com/dbuenzli/cmdliner/issues"
-tags: [ "cli" "system" "declarative" "org:erratique" ]
-license: "BSD3"
-build: [
-  ["ocaml" "pkg/git.ml"]
-  [
-    "ocaml"
-    "pkg/build.ml"
-    "native=%{ocaml:native}%"
-    "native-dynlink=%{ocaml:native-dynlink}%"
-  ]
-]
-depends: [
-  "ocaml" {>= "3.12.0" & < "4.06.0"}
-  "ocamlbuild" {build}
-]
+name: "cmdliner"
+version: "0.9.8"
 synopsis: "Declarative definition of command line interfaces for OCaml"
 description: """
 Cmdliner is a module for the declarative definition of command line
@@ -36,6 +17,27 @@ the BSD3 license.
 
 [1]: http://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap12.html
 [2]: http://www.gnu.org/software/libc/manual/html_node/Argument-Syntax.html"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD3"
+tags: ["cli" "declarative" "org:erratique" "system"]
+homepage: "http://erratique.ch/software/cmdliner"
+doc: "http://erratique.ch/software/cmdliner/doc/Cmdliner"
+bug-reports: "https://github.com/dbuenzli/cmdliner/issues"
+depends: [
+  "ocaml" {>= "3.12.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+]
+build: [
+  ["ocaml" "pkg/git.ml"]
+  [
+    "ocaml"
+    "pkg/build.ml"
+    "native=%{ocaml:native}%"
+    "native-dynlink=%{ocaml:native-dynlink}%"
+  ]
+]
+dev-repo: "git+http://erratique.ch/repos/cmdliner.git"
 url {
   src: "http://erratique.ch/software/cmdliner/releases/cmdliner-0.9.8.tbz"
   checksum: "md5=fc67c937447cc223722f1419fa2189da"

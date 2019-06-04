@@ -1,28 +1,6 @@
 opam-version: "2.0"
+name: "ppx_monadic"
 version: "1.0.5"
-authors: "Jun Furuse"
-maintainer: "jun.furuse@gmail.com"
-homepage: "https://bitbucket.org/camlspotter/ppx_monadic"
-bug-reports: "https://bitbucket.org/camlspotter/ppx_monadic/issues?status=new&status=open"
-dev-repo: "hg+https://bitbucket.org/camlspotter/ppx_monadic"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-build" ]
-]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "omake" {build}
-  "ppx_tools"
-  "ppxx" {>= "1.3.0" & < "1.4.0"}
-]
 synopsis:
   "ppx extension for do notation, pattern guards, and monad comprehension"
 description: """
@@ -35,6 +13,28 @@ The sugar is supported inside the following constructs:
 * `do_` sequence notation for monadic bind
 * `when` clause for pattern guards
 * `[%comp e || ..]` for list (and other monadic) comprehensions"""
+maintainer: "jun.furuse@gmail.com"
+authors: "Jun Furuse"
+homepage: "https://bitbucket.org/camlspotter/ppx_monadic"
+bug-reports:
+  "https://bitbucket.org/camlspotter/ppx_monadic/issues?status=new&status=open"
+depends: [
+  "ocaml" {>= "4.03.0"}
+  "ocamlfind" {build}
+  "omake" {build}
+  "ppx_tools"
+  "ppxx" {>= "1.3.0" & < "1.4.0"}
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
+dev-repo: "hg+https://bitbucket.org/camlspotter/ppx_monadic"
 url {
   src: "https://bitbucket.org/camlspotter/ppx_monadic/get/1.0.5.tar.gz"
   checksum: "md5=25fbbc720d3195adafa2eb52eaac3d85"

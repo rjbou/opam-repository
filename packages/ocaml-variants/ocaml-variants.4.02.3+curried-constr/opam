@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.02.3+curried-constr"
 synopsis: "4.02.3+curried-constr"
 description: """
 Variant constructors as functions
@@ -69,11 +71,11 @@ Samples
 You can try examples at `testsuite/curried_constr/test.ml`."""
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.02.3" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
-  "base-threads" {post}
   "base-ocamlbuild" {post}
+  "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.02.3" & post}
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler

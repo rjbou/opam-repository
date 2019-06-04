@@ -1,32 +1,33 @@
 opam-version: "2.0"
-maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler" ]
-license: "LGPL-2.1 with OCaml linking exception"
-homepage: "https://github.com/Chris00/mesh"
-dev-repo: "git+https://github.com/Chris00/mesh.git"
-bug-reports: "https://github.com/Chris00/mesh/issues"
-tags: [ "clib:triangle" ]
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "base-bigarray"
-  "base-bytes"
-  "mesh" {= version}
-  "lacaml" {with-test}
-]
+name: "mesh-triangle"
+version: "0.9.5"
 synopsis: "Binding to the triangle mesh generator"
-description: "
+description: """
 This module is a binding to the [Triangle][] library which was awarded
 the James Hardy Wilkinson Prize in Numerical Software in 2003.  If
 libtriangle-dev is not installed on your system, it will install a
 local copy for this library.
 
-[Triangle]: http://www.cs.cmu.edu/~quake/triangle.html
-"
+[Triangle]: http://www.cs.cmu.edu/~quake/triangle.html"""
+maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
+authors: "Christophe Troestler"
+license: "LGPL-2.1 with OCaml linking exception"
+tags: "clib:triangle"
+homepage: "https://github.com/Chris00/mesh"
+bug-reports: "https://github.com/Chris00/mesh/issues"
+depends: [
+  "base-bigarray"
+  "base-bytes"
+  "dune" {build}
+  "lacaml" {with-test}
+  "mesh" {= version}
+  "ocaml" {>= "4.03.0"}
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/Chris00/mesh.git"
 url {
   src:
     "https://github.com/Chris00/mesh/releases/download/0.9.5/mesh-0.9.5.tbz"

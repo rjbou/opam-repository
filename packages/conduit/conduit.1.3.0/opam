@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "conduit"
+version: "1.3.0"
 synopsis: "An OCaml network connection establishment library"
 description: """
 [![Build Status](https://travis-ci.org/mirage/ocaml-conduit.svg?branch=master)](https://travis-ci.org/mirage/ocaml-conduit)
@@ -38,7 +40,7 @@ are being resolved to.
 * **Bugs:** https://github.com/mirage/ocaml-conduit/issues"""
 maintainer: "anil@recoil.org"
 authors: [
-  "Anil Madhavapeddy" "Thomas Leonard" "Thomas Gazagnaire" "Rudi Grinberg"
+  "Anil Madhavapeddy" "Rudi Grinberg" "Thomas Gazagnaire" "Thomas Leonard"
 ]
 license: "ISC"
 tags: "org:mirage"
@@ -46,15 +48,15 @@ homepage: "https://github.com/mirage/ocaml-conduit"
 doc: "https://mirage.github.io/ocaml-conduit/"
 bug-reports: "https://github.com/mirage/ocaml-conduit/issues"
 depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "ppx_sexp_conv" {< "v0.13"}
-  "sexplib" {< "v0.13"}
   "astring"
-  "uri"
-  "result"
-  "logs" {>= "0.5.0"}
+  "dune" {build}
   "ipaddr" {>= "2.5.0" & < "3.0.0"}
+  "logs" {>= "0.5.0"}
+  "ocaml" {>= "4.03.0"}
+  "ppx_sexp_conv" {< "v0.13"}
+  "result"
+  "sexplib" {< "v0.13"}
+  "uri"
 ]
 build: [
   ["dune" "subst"] {pinned}

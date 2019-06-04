@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
-authors: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
-homepage: "https://github.com/fxfactorial/ocaml-linenoise"
-bug-reports: "https://github.com/fxfactorial/ocaml-linenoise/issues"
-license: "BSD-3-clause"
-dev-repo: "git+https://github.com/fxfactorial/ocaml-linenoise.git"
-build: [
-  ["oasis" "setup"]
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["oasis" "setup"] {with-test}
-  ["ocaml" "setup.ml" "-configure" "--enable-tests"] {with-test}
-  ["ocaml" "setup.ml" "-build"] {with-test}
-  ["ocaml" "setup.ml" "-test"] {with-test}
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: ["ocamlfind" "remove" "linenoise"]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "oasis" {build & >= "0.4"}
-  "ocamlfind" {build}
-]
+name: "linenoise"
+version: "1.0.0"
 synopsis: "Simple readline like functionality with nice hints feature."
 description: """
 These are self contained OCaml bindings to linenoise,
@@ -64,7 +44,29 @@ let () =
 
 and compile with:
 $ ocamlfind ocamlopt ex.ml -package linenoise -linkpkg -o T"""
+maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
+authors: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
+license: "BSD-3-clause"
+homepage: "https://github.com/fxfactorial/ocaml-linenoise"
+bug-reports: "https://github.com/fxfactorial/ocaml-linenoise/issues"
+depends: [
+  "oasis" {build & >= "0.4"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [
+  ["oasis" "setup"]
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["oasis" "setup"] {with-test}
+  ["ocaml" "setup.ml" "-configure" "--enable-tests"] {with-test}
+  ["ocaml" "setup.ml" "-build"] {with-test}
+  ["ocaml" "setup.ml" "-test"] {with-test}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "linenoise"]
+dev-repo: "git+https://github.com/fxfactorial/ocaml-linenoise.git"
 url {
   src: "https://github.com/fxfactorial/ocaml-linenoise/archive/v1.0.0.tar.gz"
   checksum: "md5=ea88336d4231b02c1ae4ed142c66be2c"

@@ -1,24 +1,26 @@
 opam-version: "2.0"
+name: "monomorphic"
+version: "1.1"
+synopsis:
+  "A small library used to shadow polymorphic operators (and functions) contained in the stdlib."
 maintainer: "Kate <kit.ty.kate@disroot.org>"
-authors: ["Kate <kit.ty.kate@disroot.org>"]
+authors: "Kate <kit.ty.kate@disroot.org>"
+license: "MIT"
 homepage: "https://github.com/kit-ty-kate/ocaml-monomorphic"
 bug-reports: "https://github.com/kit-ty-kate/ocaml-monomorphic/issues"
-license: "MIT"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "monomorphic"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/kit-ty-kate/ocaml-monomorphic"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis:
-  "A small library used to shadow polymorphic operators (and functions) contained in the stdlib."
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "monomorphic"]
+dev-repo: "git://github.com/kit-ty-kate/ocaml-monomorphic"
 url {
   src: "https://github.com/kit-ty-kate/ocaml-monomorphic/archive/1.1.tar.gz"
   checksum: "md5=2a0bfe30afce62728d28fb34cb943de7"

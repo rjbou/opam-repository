@@ -1,19 +1,25 @@
 opam-version: "2.0"
+name: "ao"
+version: "0.2.0"
+synopsis:
+  "Bindings for the AO library which provides high-level functions for using soundcards"
 maintainer: "smimram@gmail.com"
+depends: [
+  "conf-pkg-config" {build}
+  "ocaml"
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "ao"]]
-depends: ["ocaml" "ocamlfind" "conf-pkg-config" {build}]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "ao"]
 depexts: [
   ["libao-dev"] {os-distribution = "debian"}
   ["libao-dev"] {os-distribution = "ubuntu"}
 ]
-install: [make "install"]
-synopsis:
-  "Bindings for the AO library which provides high-level functions for using soundcards"
-flags: light-uninstall
 url {
   src:
     "http://downloads.sourceforge.net/project/savonet/ocaml-ao/0.2.0/ocaml-ao-0.2.0.tar.gz"

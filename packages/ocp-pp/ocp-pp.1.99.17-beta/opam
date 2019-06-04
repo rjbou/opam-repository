@@ -1,16 +1,6 @@
 opam-version: "2.0"
-maintainer: "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
-authors: [
-  "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
-  ]
-homepage: "http://www.typerex.org/ocp-build.html"
-dev-repo: "git+https://github.com/OCamlPro/typerex-build.git"
-bug-reports: "https://github.com/OCamlPro/typerex-build/issues"
-depends: [
-  "ocaml" {>= "3.12.0"}
-  "typerex-build" {= "1.99.17-beta"}
-]
-conflicts: [ "typerex"  {< "1.99.7"} ]
+name: "ocp-pp"
+version: "1.99.17-beta"
 synopsis: "A simple preprocessor for OCaml"
 description: """
 Allowed directives:
@@ -19,3 +9,15 @@ Allowed directives:
 #else
 #elif
 #endif"""
+maintainer: "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
+authors: "Fabrice Le Fessant <fabrice.le_fessant@ocamlpro.com>"
+homepage: "http://www.typerex.org/ocp-build.html"
+bug-reports: "https://github.com/OCamlPro/typerex-build/issues"
+depends: [
+  "ocaml" {>= "3.12.0"}
+  "typerex-build" {= "1.99.17-beta"}
+]
+conflicts: [
+  "typerex" {< "1.99.7"}
+]
+dev-repo: "git+https://github.com/OCamlPro/typerex-build.git"

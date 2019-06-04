@@ -1,31 +1,28 @@
-maintainer: "philippe.wang@gmail.com"
-name: "glical"
 opam-version: "2.0"
+name: "glical"
+version: "0.0.7"
+synopsis: "Glical: glancing at iCalendar data."
+description: "A library to glance at iCalendar data using OCaml."
+maintainer: "philippe.wang@gmail.com"
+authors: "Philippe Wang <philippe.wang@gmail.com>"
 license: "ISC"
-authors: [ "Philippe Wang <philippe.wang@gmail.com>" ]
+tags: "org:ocamllabs"
 homepage: "https://github.com/pw374/glical"
-build: [
-  ["./configure" "-prefix" prefix]
-  [make "build"]
-]
-install: [
-  [make "install"]
-]
-remove: [
-  ["./configure" "-prefix" prefix]
-  [make "uninstall"]
-]
+bug-reports: "https://github.com/pw374/glical/issues"
 depends: [
   "ocaml" {>= "3.12.1"}
   "ocamlfind"
 ]
-tags: [
-  "org:ocamllabs"
+build: [
+  ["./configure" "-prefix" prefix]
+  [make "build"]
+]
+install: [make "install"]
+remove: [
+  ["./configure" "-prefix" prefix]
+  [make "uninstall"]
 ]
 dev-repo: "git+https://github.com/pw374/glical.git"
-bug-reports: "https://github.com/pw374/glical/issues"
-synopsis: "Glical: glancing at iCalendar data."
-description: "A library to glance at iCalendar data using OCaml."
 url {
   src: "http://pw374.github.io/distrib/glical/glical-0.0.7.tar.gz"
   checksum: "md5=61fd3daacea83cc5399345711983af57"

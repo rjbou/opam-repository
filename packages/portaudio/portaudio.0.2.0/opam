@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "portaudio"
+version: "0.2.0"
+synopsis:
+  "Bindings for the portaudio library which provides high-level functions for using soundcards"
 maintainer: "smimram@gmail.com"
+depends: ["ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "portaudio"]]
-depends: ["ocaml" "ocamlfind"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "portaudio"]
 depexts: [
   ["portaudio19-dev" "pkg-config"] {os-distribution = "debian"}
   ["portaudio19-dev" "pkg-config"] {os-distribution = "ubuntu"}
 ]
-install: [make "install"]
-synopsis:
-  "Bindings for the portaudio library which provides high-level functions for using soundcards"
-flags: light-uninstall
 url {
   src:
     "http://downloads.sourceforge.net/project/savonet/ocaml-portaudio/0.2.0/ocaml-portaudio-0.2.0.tar.gz"

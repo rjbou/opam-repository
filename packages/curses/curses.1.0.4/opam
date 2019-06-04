@@ -1,24 +1,26 @@
 opam-version: "2.0"
+name: "curses"
+version: "1.0.4"
+synopsis: "Bindings to curses/ncurses"
+description: "Tools for building terminal-based user interfaces"
 maintainer: "ogunden@phauna.org"
-authors: ["Nicolas George"]
+authors: "Nicolas George"
 homepage: "https://www.nongnu.org/ocaml-tmk/"
 bug-reports: "http://savannah.nongnu.org/projects/ocaml-tmk/"
-dev-repo: "git+https://git.savannah.nongnu.org/git/ocaml-tmk.git"
+depends: [
+  "conf-ncurses"
+  "ocaml"
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--enable-widec"]
   [make "OCAMLMAKEFILE=OCamlMakefile" "byte"]
   [make "OCAMLMAKEFILE=OCamlMakefile" "opt"]
 ]
-remove: [["ocamlfind" "remove" "curses"]]
-depends: [
-    "ocaml"
-    "ocamlfind" {build}
-    "conf-ncurses"
-]
 install: [make "OCAMLMAKEFILE=OCamlMakefile" "install"]
-synopsis: "Bindings to curses/ncurses"
-description: "Tools for building terminal-based user interfaces"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "curses"]
+dev-repo: "git+https://git.savannah.nongnu.org/git/ocaml-tmk.git"
 url {
   src: "http://ocaml.phauna.org/distfiles/ocaml-curses-1.0.4.ogunden1.tar.gz"
   checksum: "md5=b734aae5b9087fa482a2b283f9ace328"

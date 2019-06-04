@@ -1,9 +1,31 @@
 opam-version: "2.0"
+name: "nunchaku"
+version: "0.4"
+synopsis: "A counter-example finder for higher-order logic."
+description: """
+Nunchaku is a counter-example finder for higher-order logic, designed to be
+used from various proof assistants, and a spiritual successor to Nitpick. It
+relies encodings and external solvers (CVC4, kodkod, paradox, smbc) to find
+models, thanks to its modular architecture."""
 maintainer: "simon.cruanes@inria.fr"
-authors: ["Simon Cruanes" "Jasmin Blanchette"]
+authors: ["Jasmin Blanchette" "Simon Cruanes"]
 homepage: "https://github.com/nunchaku-inria/nunchaku/"
 bug-reports: "https://github.com/nunchaku-inria/nunchaku/issues"
-dev-repo: "git+https://github.com/nunchaku-inria/nunchaku.git"
+depends: [
+  "base-threads"
+  "base-unix"
+  "containers" {>= "1.0"}
+  "menhir" {build & <= "20181026"}
+  "num"
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "sequence"
+]
+depopts: [
+  "qtest" {with-test}
+]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -20,27 +42,7 @@ build: [
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "nunchaku"]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  "containers" {>= "1.0"}
-  "menhir" {build & <= "20181026"}
-  "sequence"
-  "base-unix"
-  "base-threads"
-  "ocamlbuild" {build}
-  "num"
-]
-depopts: [
-  "qtest" {with-test}
-]
-synopsis: "A counter-example finder for higher-order logic."
-description: """
-Nunchaku is a counter-example finder for higher-order logic, designed to be
-used from various proof assistants, and a spiritual successor to Nitpick. It
-relies encodings and external solvers (CVC4, kodkod, paradox, smbc) to find
-models, thanks to its modular architecture."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/nunchaku-inria/nunchaku.git"
 url {
   src: "https://github.com/nunchaku-inria/nunchaku/archive/0.4.tar.gz"
   checksum: "md5=9faabbe893c651628374f79f56cb74a0"

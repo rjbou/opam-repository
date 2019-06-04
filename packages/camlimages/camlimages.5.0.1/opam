@@ -1,31 +1,32 @@
 opam-version: "2.0"
+name: "camlimages"
 version: "5.0.1"
-maintainer: "jun.furuse@gmail.com"
-authors: ["Jun Furuse" "François Pessaux" "Pierre Weis"]
-homepage: "https://bitbucket.org/camlspotter/camlimages"
-bug-reports:
-  "https://bitbucket.org/camlspotter/camlimages/issues?status=new&status=open"
-license: "LGPL-2 with OCaml linking exception"
-dev-repo: "hg+https://bitbucket.org/camlspotter/camlimages"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
-depends: [
-  "ocaml" {>= "4.06.0"}
-  "ocamlfind" {build}
-  "cppo" {build}
-  "configurator" {build & < "v0.13"}
-  "jbuilder" {build}
-  "base-unix"
-]
-depopts: ["lablgtk" "graphics"]
-conflicts: [
-  "lablgtk" {< "2.18.6"}
-]
 synopsis: "Image processing library"
 description: """
 An image processing library, which provides loading and saving various
 image formats with an interface for the Caml graphics library. It has
 also an interface with the freetype library to draw texts using
 truetype fonts."""
+maintainer: "jun.furuse@gmail.com"
+authors: ["François Pessaux" "Jun Furuse" "Pierre Weis"]
+license: "LGPL-2 with OCaml linking exception"
+homepage: "https://bitbucket.org/camlspotter/camlimages"
+bug-reports:
+  "https://bitbucket.org/camlspotter/camlimages/issues?status=new&status=open"
+depends: [
+  "base-unix"
+  "configurator" {build & < "v0.13"}
+  "cppo" {build}
+  "jbuilder" {build}
+  "ocaml" {>= "4.06.0"}
+  "ocamlfind" {build}
+]
+depopts: ["graphics" "lablgtk"]
+conflicts: [
+  "lablgtk" {< "2.18.6"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "hg+https://bitbucket.org/camlspotter/camlimages"
 url {
   src: "https://bitbucket.org/camlspotter/camlimages/get/5.0.1.tar.gz"
   checksum: "md5=f029ac0bea1bf4462a41ede1db039110"

@@ -1,22 +1,6 @@
 opam-version: "2.0"
-maintainer: "filliatr@lri.fr"
-authors: [
-  "Remy El Sibaie"
-  "Jean-Christophe Filliâtre"
-]
-license: "GNU Library General Public License version 2.1"
-build: [
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
-]
-remove: [["ocamlfind" "remove" "combine"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "menhir"
-  "num"
-]
-dev-repo: "git://github.com/backtracking/combine"
-install: [make "install"]
+name: "combine"
+version: "0.55"
 synopsis: "Combine is a library for combinatorics problem solving."
 description: """
 The Combine library contains four main modules:
@@ -25,7 +9,22 @@ The Combine library contains four main modules:
   - Emc: a common interface to modules Dlx and Zdd to solve the
          Exact Matrix Cover problem
   - Tiling: converts a 2D tiling problem into an EMC problem"""
+maintainer: "filliatr@lri.fr"
+authors: ["Jean-Christophe Filliâtre" "Remy El Sibaie"]
+license: "GNU Library General Public License version 2.1"
+depends: [
+  "menhir"
+  "num"
+  "ocaml" {< "4.06.0"}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "combine"]
+dev-repo: "git://github.com/backtracking/combine"
 url {
   src: "https://github.com/backtracking/combine/archive/opam-packaged.zip"
   checksum: "md5=9545ebb80978d59bb3534b870cb20d2b"

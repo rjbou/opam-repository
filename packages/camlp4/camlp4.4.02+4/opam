@@ -1,39 +1,6 @@
 opam-version: "2.0"
-authors: ["Daniel de Rauglaudre" "Nicolas Pouillard"]
-maintainer: "jeremie@dimino.org"
-homepage: "https://github.com/ocaml/camlp4"
-license: "LGPLv2"
-build: [
-  [
-    "./configure"
-    "--bindir=%{bin}%"
-    "--libdir=%{lib}%/ocaml"
-    "--pkgdir=%{lib}%"
-  ]
-  [make "all"] {ocaml:native-dynlink}
-  [make "byte"] {!ocaml:native-dynlink}
-]
-depends: [
-  "ocaml" {>= "4.02" & < "4.03"}
-  "ocamlfind"
-  "conf-which" {build}
-  "ocamlbuild" {build}
-]
-install: [
-  [make "install" "install-META"]
-]
-remove: [
-  ["rm" "-rf" "%{lib}%/camlp4"]
-  ["rm" "-f" "%{bin}%/camlp4"  "%{bin}%/camlp4boot" "%{bin}%/mkcamlp4"
-             "%{bin}%/camlp4r" "%{bin}%/camlp4rf"   "%{bin}%/camlp4orf"
-             "%{bin}%/camlp4o" "%{bin}%/camlp4of"   "%{bin}%/camlp4oof"
-             "%{bin}%/camlp4prof"  "%{bin}%/camlp4rf.opt"  "%{bin}%/camlp4orf.opt"
-             "%{bin}%/camlp4o.opt" "%{bin}%/camlp4oof.opt" "%{bin}%/camlp4r.opt"
-  ]
-]
-patches: [ "f0ea53725465260556832398096cef8d3f20b49d.patch" ]
-bug-reports: "https://github.com/ocaml/camlp4/issues"
-dev-repo: "git+https://github.com/ocaml/camlp4.git"
+name: "camlp4"
+version: "4.02+4"
 synopsis:
   "Camlp4 is a system for writing extensible parsers for programming languages"
 description: """
@@ -48,8 +15,54 @@ and to learn: ppx rewriters and extension points.
 
 This version of Camlp4 installs using the `ocamlfind` packaging utility.  If
 you were using `+I camlp4` to directly locate Camlp4, this will no longer work."""
+maintainer: "jeremie@dimino.org"
+authors: ["Daniel de Rauglaudre" "Nicolas Pouillard"]
+license: "LGPLv2"
+homepage: "https://github.com/ocaml/camlp4"
+bug-reports: "https://github.com/ocaml/camlp4/issues"
+depends: [
+  "conf-which" {build}
+  "ocaml" {>= "4.02" & < "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 conflicts: ["ocaml-system"]
 flags: light-uninstall
+build: [
+  [
+    "./configure"
+    "--bindir=%{bin}%"
+    "--libdir=%{lib}%/ocaml"
+    "--pkgdir=%{lib}%"
+  ]
+  [make "all"] {ocaml:native-dynlink}
+  [make "byte"] {!ocaml:native-dynlink}
+]
+install: [make "install" "install-META"]
+remove: [
+  ["rm" "-rf" "%{lib}%/camlp4"]
+  [
+    "rm"
+    "-f"
+    "%{bin}%/camlp4"
+    "%{bin}%/camlp4boot"
+    "%{bin}%/mkcamlp4"
+    "%{bin}%/camlp4r"
+    "%{bin}%/camlp4rf"
+    "%{bin}%/camlp4orf"
+    "%{bin}%/camlp4o"
+    "%{bin}%/camlp4of"
+    "%{bin}%/camlp4oof"
+    "%{bin}%/camlp4prof"
+    "%{bin}%/camlp4rf.opt"
+    "%{bin}%/camlp4orf.opt"
+    "%{bin}%/camlp4o.opt"
+    "%{bin}%/camlp4oof.opt"
+    "%{bin}%/camlp4r.opt"
+  ]
+]
+patches: "f0ea53725465260556832398096cef8d3f20b49d.patch"
+dev-repo: "git+https://github.com/ocaml/camlp4.git"
 extra-files: [
   "f0ea53725465260556832398096cef8d3f20b49d.patch"
   "md5=4e15b0fb960be4be48b154bfafbb9a16"

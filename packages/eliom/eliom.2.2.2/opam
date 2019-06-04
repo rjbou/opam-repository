@@ -1,6 +1,26 @@
 opam-version: "2.0"
+name: "eliom"
+version: "2.2.2"
+synopsis:
+  "Framework for programming web sites and client/server web applications"
+description: """
+Eliom is a framework for programming web sites and client/server web
+applications. It uses very new concepts making programming very
+different from all other web programming tools, and allowing to write
+a complex web site in very few lines of code."""
 maintainer: "dev@ocsigen.org"
 homepage: "http://eliom.org"
+depends: [
+  "calendar"
+  "camlp4"
+  "deriving-ocsigen"
+  "js_of_ocaml" {< "2.0"}
+  "ocaml"
+  "ocamlfind"
+  "ocsigenserver" {< "2.3.0"}
+  "tyxml" {< "3.2"}
+]
+flags: light-uninstall
 build: [
   [
     "sh"
@@ -15,26 +35,8 @@ build: [
   ]
   [make]
 ]
-remove: [["rm" "-rf" "%{lib}%/eliom"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "deriving-ocsigen"
-  "js_of_ocaml" {< "2.0"}
-  "calendar"
-  "tyxml" {< "3.2"}
-  "ocsigenserver" {< "2.3.0"}
-  "camlp4"
-]
 install: [make "install"]
-synopsis:
-  "Framework for programming web sites and client/server web applications"
-description: """
-Eliom is a framework for programming web sites and client/server web
-applications. It uses very new concepts making programming very
-different from all other web programming tools, and allowing to write
-a complex web site in very few lines of code."""
-flags: light-uninstall
+remove: ["rm" "-rf" "%{lib}%/eliom"]
 extra-files: ["eliom.install" "md5=7801ca32118f648c842f3586493c994c"]
 url {
   src: "http://ocsigen.org/download/eliom-2.2.2.tar.gz"

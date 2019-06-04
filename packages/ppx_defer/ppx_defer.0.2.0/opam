@@ -1,29 +1,29 @@
 opam-version: "2.0"
 name: "ppx_defer"
 version: "0.2.0"
+synopsis: "A syntax extension to provide a somewhat Go-like defer"
+description: """
+`[%defer e1]; e2` or `[%defer.lwt e1]; e2` will defer the evaluation of `e1`
+until after `e2` is evaluated."""
 maintainer: "Hezekiah M. Carty <hez@0ok.org>"
-authors: [ "Hezekiah M. Carty <hez@0ok.org>" ]
+authors: "Hezekiah M. Carty <hez@0ok.org>"
 license: "MIT"
+tags: "syntax"
 homepage: "https://github.com/hcarty/ppx_defer"
 bug-reports: "https://github.com/hcarty/ppx_defer/issues"
-dev-repo: "git+https://github.com/hcarty/ppx_defer.git"
-tags: [ "syntax" ]
+depends: [
+  "ocaml" {>= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_tools" {>= "0.99.3"}
+]
 build: [
   "ocaml"
   "pkg/build.ml"
   "native=%{ocaml:native}%"
   "native-dynlink=%{ocaml:native-dynlink}%"
 ]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "ppx_tools" {>= "0.99.3"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
-synopsis: "A syntax extension to provide a somewhat Go-like defer"
-description: """
-`[%defer e1]; e2` or `[%defer.lwt e1]; e2` will defer the evaluation of `e1`
-until after `e2` is evaluated."""
+dev-repo: "git+https://github.com/hcarty/ppx_defer.git"
 url {
   src: "https://github.com/hcarty/ppx_defer/archive/v0.2.0.tar.gz"
   checksum: "md5=a9505957d567684a753f661c583c2b8a"

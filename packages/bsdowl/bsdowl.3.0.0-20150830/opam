@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "michipili@gmail.com"
-authors: "Michael Grünewald"
-license: "CeCILL-B"
-homepage: "https://github.com/michipili/bsdowl"
-bug-reports: "https://github.com/michipili/bsdowl/issues"
-dev-repo: "git+https://github.com/michipili/bsdowl.git"
-tags: [
-  "bsd"
-  "bmake"
-  "build"
-]
-build: [
-  ["./configure" "--prefix" prefix]
-  [conf-bmake:path "-r" "build"]
-]
-install: [
-  [conf-bmake:path "install"]
-]
-remove: [
-  ["sh" "%{build}%/opam/files/remove.sh" prefix]
-]
-depends: ["ocaml" "conf-bmake" "ocamlfind"]
+name: "bsdowl"
+version: "3.0.0-20150830"
 synopsis: "This collection of BSD Make directives aims at providing a highly"
 description: """
 portable build system targetting modern UNIX systems and supporting
@@ -55,6 +35,20 @@ project management:
  - Preprocessing with m4
 
 WWW: https://github.com/michipili/bsdowl"""
+maintainer: "michipili@gmail.com"
+authors: "Michael Grünewald"
+license: "CeCILL-B"
+tags: ["bmake" "bsd" "build"]
+homepage: "https://github.com/michipili/bsdowl"
+bug-reports: "https://github.com/michipili/bsdowl/issues"
+depends: ["conf-bmake" "ocaml" "ocamlfind"]
+build: [
+  ["./configure" "--prefix" prefix]
+  [conf-bmake:path "-r" "build"]
+]
+install: [conf-bmake:path "install"]
+remove: ["sh" "%{build}%/opam/files/remove.sh" prefix]
+dev-repo: "git+https://github.com/michipili/bsdowl.git"
 extra-files: ["remove.sh" "md5=9c52ca52cb48936aa45bf99b56fa1497"]
 url {
   src:

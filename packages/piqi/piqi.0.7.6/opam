@@ -1,30 +1,30 @@
 opam-version: "2.0"
+name: "piqi"
+version: "0.7.6"
 synopsis: "Protocol Buffers, JSON and XML serialization system for OCaml"
-authors: "Anton Lavrik <alavrik@piqi.org>"
 maintainer: "Anton Lavrik <alavrik@piqi.org>"
+authors: "Anton Lavrik <alavrik@piqi.org>"
 homepage: "https://github.com/alavrik/piqi-ocaml"
 bug-reports: "https://github.com/alavrik/piqi-ocaml/issues"
+depends: [
+  "num" {with-test}
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind" {build}
+  "piqilib"
+]
+conflicts: [
+  "kinetic-client" {<= "0.0.9"}
+  "piqilib" {<= "0.6.13"}
+]
+flags: light-uninstall
 build: [
   [make]
   [make "test"] {with-test}
 ]
-install: [
-  [make "DESTDIR=%{prefix}%" "install"]
-]
+install: [make "DESTDIR=%{prefix}%" "install"]
 remove: [
   ["rm" "-f" "%{prefix}%/bin/piqic-ocaml"]
   ["ocamlfind" "remove" "piqirun"]
-]
-flags: light-uninstall
-conflicts: [
-    "kinetic-client" {<= "0.0.9"}
-    "piqilib" {<= "0.6.13"}
-]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "piqilib"
-  "num" {with-test}
 ]
 dev-repo: "git://github.com/alavrik/piqi-ocaml"
 url {

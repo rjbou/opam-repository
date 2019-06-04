@@ -1,24 +1,26 @@
 opam-version: "2.0"
+name: "bigstring-unix"
+version: "0.2"
+synopsis: "Unix bindings for bigstrings"
+description: "This includes memory-mapping functions."
 maintainer: "Simon Cruanes <simon.cruanes.2007@m4x.org>"
 authors: "Simon Cruanes <simon.cruanes.2007@m4x.org>"
+tags: ["bigarray" "bigstring"]
 homepage: "https://github.com/c-cube/ocaml-bigstring/"
 bug-reports: "https://github.com/c-cube/ocaml-bigstring/issues"
-tags: ["bigstring" "bigarray"]
-dev-repo: "git://github.com/c-cube/ocaml-bigstring"
+depends: [
+  "base-bigarray"
+  "base-bytes"
+  "base-unix"
+  "bigstring"
+  "jbuilder" {build & >= "1.0+beta19.1"}
+  "ocaml" {>= "4.03.0" & < "4.08.0"}
+]
 build: [
   ["jbuilder" "build" "-j" jobs "-p" name "@install"]
   ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.03.0" & < "4.08.0"}
-  "jbuilder" {build & >= "1.0+beta19.1"}
-  "bigstring"
-  "base-bigarray"
-  "base-bytes"
-  "base-unix"
-]
-synopsis: "Unix bindings for bigstrings"
-description: "This includes memory-mapping functions."
+dev-repo: "git://github.com/c-cube/ocaml-bigstring"
 url {
   src: "https://github.com/c-cube/ocaml-bigstring/archive/0.2.tar.gz"
   checksum: "md5=5582e995b7d4c9e4a2949214756db7dd"

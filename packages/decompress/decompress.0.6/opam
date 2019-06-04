@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/mirage/decompress"
-bug-reports:  "https://github.com/mirage/decompress/issues"
-dev-repo: "git+https://github.com/mirage/decompress.git"
-doc:          "https://mirage.github.io/decompress/"
-license:      "MIT"
-
-build: [
-  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"
-  "--with-cmdliner" "%{cmdliner:installed}%"
-]
-
-depends: [
-  "ocaml" {>= "4.03.0" & < "4.08.0"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build}
-  "topkg" {build}
-  "base-bytes"
-]
-depopts: [
-  "cmdliner"
-]
-
+name: "decompress"
+version: "0.6"
 synopsis: "Pure OCaml implementation of Zlib"
 description: """
 [![Build Status](https://travis-ci.org/oklm-wsh/Decompress.svg?branch=master)](https://travis-ci.org/oklm-wsh/Decompress)
@@ -86,6 +64,32 @@ If you want to compile the test program, you need:
  * `camlzip` to compare `decompress` with `zlib`
  * `re`
  * `alcotest`"""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/mirage/decompress"
+doc: "https://mirage.github.io/decompress/"
+bug-reports: "https://github.com/mirage/decompress/issues"
+depends: [
+  "base-bytes"
+  "ocaml" {>= "4.03.0" & < "4.08.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+depopts: ["cmdliner"]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--tests"
+  "false"
+  "--with-cmdliner"
+  "%{cmdliner:installed}%"
+]
+dev-repo: "git+https://github.com/mirage/decompress.git"
 url {
   src:
     "https://github.com/mirage/decompress/releases/download/v0.6/decompress-0.6.tbz"

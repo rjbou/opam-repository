@@ -1,26 +1,28 @@
 opam-version: "2.0"
+name: "mirage-xen"
+version: "2.0.0"
+synopsis: "MirageOS library for Xen compilation"
 maintainer: "anil@recoil.org"
-build: [make "xen-build"]
-remove: [[make "xen-uninstall" "PREFIX=%{prefix}%"]]
 depends: [
-  "ocaml" {>= "4.01.0" & < "4.02.0"}
+  "conf-pkg-config"
   "cstruct" {>= "1.0.1" & < "1.6.0"}
-  "ocamlfind"
   "io-page" {>= "1.0.1" & <= "1.4.0"}
-  "mirage-clock-xen" {>= "1.0.0"}
   "lwt" {>= "2.4.3"}
+  "mirage-clock-xen" {>= "1.0.0"}
+  "mirage-xen-minios" {>= "0.4.1"}
+  "ocaml" {>= "4.01.0" & < "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
   "shared-memory-ring" {>= "1.0.0" & < "2.0.0"}
-  "xenstore" {>= "1.2.5"}
   "xen-evtchn" {>= "0.9.9"}
   "xen-gnt" {>= "2.0.0"}
-  "mirage-xen-minios" {>= "0.4.1"}
-  "conf-pkg-config"
-  "ocamlbuild" {build}
+  "xenstore" {>= "1.2.5"}
 ]
-dev-repo: "git://github.com/mirage/mirage-platform"
 available: false
+build: [make "xen-build"]
 install: [make "xen-install" "PREFIX=%{prefix}%"]
-synopsis: "MirageOS library for Xen compilation"
+remove: [make "xen-uninstall" "PREFIX=%{prefix}%"]
+dev-repo: "git://github.com/mirage/mirage-platform"
 url {
   src: "https://github.com/mirage/mirage-platform/archive/v2.0.0.tar.gz"
   checksum: "md5=f560b075e102c4517861d89f5282476a"

@@ -1,20 +1,22 @@
 opam-version: "2.0"
+name: "mirage-www"
+version: "0.3.0"
+synopsis: "MirageOS website (written with MirageOS)"
 maintainer: "anil@recoil.org"
 depends: [
-  "ocaml" {>= "4.00.0"}
-  "mirage-net" {>= "0.5.2" & < "0.9.0"}
-  "mirage-fs" {>= "0.4.0" & < "1.0.0"}
-  "ocamlfind"
   "cohttp" {<= "0.9.6"}
-  "mirage" {>= "0.8.0" & <= "0.9.0"}
-  "re"
   "cow" {<= "0.5.3"}
-  "mirari" {= "0.9.1"}
   "cstruct" {>= "0.6.0"}
+  "mirage" {>= "0.8.0" & <= "0.9.0"}
+  "mirage-fs" {>= "0.4.0" & < "1.0.0"}
+  "mirage-net" {>= "0.5.2" & < "0.9.0"}
+  "mirari" {= "0.9.1"}
+  "ocaml" {>= "4.00.0"}
+  "ocamlfind"
+  "re"
 ]
-dev-repo: "git://github.com/mirage/mirage-www"
 install: [make "CONF_FLAGS=--no-install"]
-synopsis: "MirageOS website (written with MirageOS)"
+dev-repo: "git://github.com/mirage/mirage-www"
 extra-files: ["mirage-www.install" "md5=5948253e6f19447e90190f24c0c71116"]
 url {
   src: "https://github.com/mirage/mirage-www/archive/0.3.0.tar.gz"

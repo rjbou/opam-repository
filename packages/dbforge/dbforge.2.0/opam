@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "dbforge"
+version: "2.0"
+synopsis:
+  "A tool to describe database schemas and generate OCaml code to access these databases."
 maintainer: "zoggy@bat8.org"
+depends: [
+  "config-file" {>= "1.1"}
+  "lablgtk" {>= "2.16.0"}
+  "lablgtk-extras" {>= "1.2"}
+  "mysql"
+  "ocaml"
+  "ocamlfind"
+  "xml-light"
+]
 build: [
   ["./configure" "--prefix" prefix]
   [make "all"]
 ]
-remove: [[make "uninstall"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "config-file" {>= "1.1"}
-  "lablgtk-extras" {>= "1.2"}
-  "lablgtk" {>= "2.16.0"}
-  "mysql"
-  "xml-light"
-]
 install: [make "install"]
-synopsis:
-  "A tool to describe database schemas and generate OCaml code to access these databases."
+remove: [make "uninstall"]
 extra-files: ["dbforge.install" "md5=9f4defb2eb0a5be350e947226ac51657"]
 url {
   src: "http://zoggy.github.com/dbforge/dbforge-2.0.tar.gz"

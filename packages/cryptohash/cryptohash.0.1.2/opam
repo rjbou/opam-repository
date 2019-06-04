@@ -1,30 +1,32 @@
 opam-version: "2.0"
+name: "cryptohash"
+version: "0.1.2"
+synopsis: "hash functions for OCaml"
+description: """
+Cryptohash provides OCaml bindings to various cryptographic hash
+functions written in C"""
 maintainer: "andreashauptmann@t-online.de"
 authors: "andreashauptmann@t-online.de"
+license: "MIT"
 homepage: "https://github.com/fdopen/cryptohash"
 bug-reports: "https://github.com/fdopen/cryptohash/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/fdopen/cryptohash.git"
+depends: [
+  "base-bigarray"
+  "base-bytes"
+  "base-unix" {with-test}
+  "ocaml"
+  "ocamlfind" {build}
+  "omake" {build}
+  "ounit" {with-test & >= "2.0"}
+]
+flags: light-uninstall
 build: [
   ["omake" "lib"]
   ["omake" "quick-test"] {with-test}
 ]
 install: ["omake" "install"]
 remove: ["ocamlfind" "remove" "cryptohash"]
-depends: [
-  "ocaml"
-  "base-unix" {with-test}
-  "base-bigarray"
-  "base-bytes"
-  "ocamlfind" {build}
-  "omake" {build}
-  "ounit" {with-test & >= "2.0"}
-]
-synopsis: "hash functions for OCaml"
-description: """
-Cryptohash provides OCaml bindings to various cryptographic hash
-functions written in C"""
-flags: light-uninstall
+dev-repo: "git+https://github.com/fdopen/cryptohash.git"
 url {
   src:
     "https://github.com/fdopen/cryptohash/releases/download/0.1.2/cryptohash-0.1.2.tar.gz"

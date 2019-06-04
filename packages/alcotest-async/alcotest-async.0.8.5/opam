@@ -1,27 +1,26 @@
 opam-version: "2.0"
-maintainer:  "thomas@gazagnaire.org"
-authors:     "Thomas Gazagnaire"
-homepage:    "https://github.com/mirage/alcotest/"
-dev-repo:    "git+https://github.com/mirage/alcotest.git"
+name: "alcotest-async"
+version: "0.8.5"
+synopsis: "Async-based helpers for Alcotest"
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire"
+license: "ISC"
+homepage: "https://github.com/mirage/alcotest/"
+doc: "https://mirage.github.io/alcotest/"
 bug-reports: "https://github.com/mirage/alcotest/issues/"
-license:     "ISC"
-doc:         "https://mirage.github.io/alcotest/"
-
+depends: [
+  "alcotest" {>= "0.8.0"}
+  "async_unix" {>= "v0.9.0" & < "v0.13"}
+  "core_kernel" {>= "v0.9.0" & < "v0.13"}
+  "dune" {build}
+  "ocaml" {>= "4.03.0"}
+]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
-
-depends: [
-  "dune"  {build}
-  "ocaml" {>= "4.03.0"}
-  "alcotest" {>= "0.8.0"}
-  "async_unix" {>= "v0.9.0" & < "v0.13"}
-  "core_kernel" {>= "v0.9.0" & < "v0.13"}
-]
-
-synopsis: "Async-based helpers for Alcotest"
+dev-repo: "git+https://github.com/mirage/alcotest.git"
 url {
   src:
     "https://github.com/mirage/alcotest/releases/download/0.8.5/alcotest-0.8.5.tbz"

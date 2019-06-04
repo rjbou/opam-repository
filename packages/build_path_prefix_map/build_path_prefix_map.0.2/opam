@@ -1,24 +1,26 @@
 opam-version: "2.0"
+name: "build_path_prefix_map"
+version: "0.2"
+synopsis:
+  "An OCaml implementation of the BUILD_PATH_PREFIX_MAP specification"
+description: "https://reproducible-builds.org/specs/build-path-prefix-map/"
 maintainer: "Gabriel Scherer <gabriel.scherer@gmail.com>"
-authors: [ "Gabriel Scherer <gabriel.scherer@gmail.com>" ]
+authors: "Gabriel Scherer <gabriel.scherer@gmail.com>"
 license: "MIT"
 homepage: "https://gitlab.com/gasche/build_path_prefix_map"
 doc: "https://gitlab.com/gasche/build_path_prefix_map/blob/master/README.md"
 bug-reports: "https://gitlab.com/gasche/build_path_prefix_map/issues"
-dev-repo: "git+https://gitlab.com/gasche/build_path_prefix_map.git"
+depends: [
+  "jbuilder" {build}
+  "ocaml" {>= "4.04.0"}
+]
+available: opam-version >= "1.2"
 build: [
   ["jbuilder" "build" "-p" name]
   ["jbuilder" "runtest"] {with-test}
   [make "doc"] {with-doc}
 ]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "jbuilder" {build}
-]
-available: opam-version >= "1.2"
-synopsis:
-  "An OCaml implementation of the BUILD_PATH_PREFIX_MAP specification"
-description: "https://reproducible-builds.org/specs/build-path-prefix-map/"
+dev-repo: "git+https://gitlab.com/gasche/build_path_prefix_map.git"
 url {
   src:
     "https://gitlab.com/gasche/build_path_prefix_map/repository/0.2/archive.tar.gz"

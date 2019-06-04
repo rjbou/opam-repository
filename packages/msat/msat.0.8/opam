@@ -1,18 +1,20 @@
 opam-version: "2.0"
+name: "msat"
+version: "0.8"
 synopsis:
   "Library containing a SAT solver that can be parametrized by a theory"
 maintainer: ["guillaume.bury@gmail.com" "simon.cruanes.2007@m4x.org"]
-authors: ["Simon Cruanes" "Guillaume Bury"]
+authors: ["Guillaume Bury" "Simon Cruanes"]
 license: "Apache"
 tags: ["sat" "smt"]
 homepage: "https://github.com/Gbury/mSAT"
 bug-reports: "https://github.com/Gbury/mSAT/issues/"
 depends: [
-  "ocaml" {>= "4.03"}
+  "containers" {with-test}
   "dune" {build}
   "iter" {>= "1.2"}
-  "containers" {with-test}
   "mdx" {with-test}
+  "ocaml" {>= "4.03"}
 ]
 build: [
   ["dune" "build" "@install" "-p" name "-j" jobs]

@@ -1,38 +1,6 @@
 opam-version: "2.0"
-maintainer:   "talex@gmail.com"
-authors:      ["Thomas Leonard"]
-license:      "BSD-2-Clause"
-homepage:     "https://github.com/talex5/mirage-qubes"
-bug-reports:  "https://github.com/talex5/mirage-qubes/issues"
-dev-repo: "git+https://github.com/talex5/mirage-qubes.git"
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"
-        "--with-ipv4" "%{tcpip+ipaddr+mirage-protocols-lwt:installed}%"
-]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "cstruct" {>= "1.9.0"}
-  "vchan" {>= "2.3.0" & < "3.0.0"}
-  "xen-evtchn"
-  "xen-gnt"
-  "mirage-xen" {>= "3.0.0"}
-  "lwt"
-  "mirage-types-lwt" {>= "3.0.0"}
-  "logs" {>= "0.5.0"}
-]
-depopts: [
-  "ipaddr"
-  "tcpip"
-  "mirage-protocols-lwt"
-]
-conflicts: [
-  "tcpip" {< "3.0.0"}
-  "tcpip" {>= "3.5.0"}
-  "mirage-protocols-lwt" {>= "1.4.0"}
-]
+name: "mirage-qubes"
+version: "0.4"
 synopsis: "Implementations of various QubesOS protocols:"
 description: """
 - `Qubes.RExec`: provide services to other VMs
@@ -42,6 +10,43 @@ description: """
 See [qubes-mirage-skeleton][] for an example using this library.
 
 [qubes-mirage-skeleton]: https://github.com/talex5/qubes-mirage-skeleton"""
+maintainer: "talex@gmail.com"
+authors: "Thomas Leonard"
+license: "BSD-2-Clause"
+homepage: "https://github.com/talex5/mirage-qubes"
+bug-reports: "https://github.com/talex5/mirage-qubes/issues"
+depends: [
+  "cstruct" {>= "1.9.0"}
+  "logs" {>= "0.5.0"}
+  "lwt"
+  "mirage-types-lwt" {>= "3.0.0"}
+  "mirage-xen" {>= "3.0.0"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+  "vchan" {>= "2.3.0" & < "3.0.0"}
+  "xen-evtchn"
+  "xen-gnt"
+]
+depopts: ["ipaddr" "mirage-protocols-lwt" "tcpip"]
+conflicts: [
+  "mirage-protocols-lwt" {>= "1.4.0"}
+  "tcpip" {< "3.0.0"}
+  "tcpip" {>= "3.5.0"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--tests"
+  "false"
+  "--with-ipv4"
+  "%{tcpip+ipaddr+mirage-protocols-lwt:installed}%"
+]
+dev-repo: "git+https://github.com/talex5/mirage-qubes.git"
 url {
   src:
     "https://github.com/mirage/mirage-qubes/releases/download/0.4/mirage-qubes-0.4.tbz"

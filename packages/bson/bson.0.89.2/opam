@@ -1,7 +1,17 @@
 opam-version: "2.0"
+name: "bson"
+version: "0.89.2"
+synopsis: "A bson data structure, including encoding/decoding"
 maintainer: "opam-devel@lists.ocaml.org"
-authors: ["MassD http://massd.github.io/"]
+authors: "MassD http://massd.github.io/"
 license: "GPL-3"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+depopts: ["deriving" "js_of_ocaml"]
+flags: light-uninstall
 build: [
   [
     "ocaml"
@@ -14,20 +24,9 @@ build: [
   ]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "bson"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-depopts: [
-  "deriving"
-  "js_of_ocaml"
-]
-dev-repo: "git://github.com/MassD/bson"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "A bson data structure, including encoding/decoding"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "bson"]
+dev-repo: "git://github.com/MassD/bson"
 url {
   src: "https://github.com/MassD/bson/archive/v0.89.2.tar.gz"
   checksum: "md5=a9f6e2238d0f1ba2f6e94440ed283262"

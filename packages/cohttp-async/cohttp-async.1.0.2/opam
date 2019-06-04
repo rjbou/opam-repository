@@ -1,36 +1,6 @@
 opam-version: "2.0"
-maintainer: "anil@recoil.org"
-authors: [
-  "Anil Madhavapeddy"
-  "Stefano Zacchiroli"
-  "David Sheets"
-  "Thomas Gazagnaire"
-  "David Scott"
-  "Rudi Grinberg"
-  "Andy Ray"
-]
-homepage: "https://github.com/mirage/ocaml-cohttp"
-bug-reports: "https://github.com/mirage/ocaml-cohttp/issues"
-license: "ISC"
-tags: ["org:mirage" "org:xapi-project"]
-dev-repo: "git+https://github.com/mirage/ocaml-cohttp.git"
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "cohttp" {>= "1.0.2"}
-  "conduit-async" {>= "1.0.3"}
-  "async" {>= "v0.10.0" & < "v0.12"}
-  "magic-mime"
-  "logs"
-  "fmt" {>= "0.8.2"}
-  "ounit" {with-test}
-  "uri" {< "2.0.0"}
-]
+name: "cohttp-async"
+version: "1.0.2"
 synopsis: "An OCaml library for HTTP clients and servers"
 description: """
 [![Join the chat at https://gitter.im/mirage/ocaml-cohttp](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/mirage/ocaml-cohttp?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
@@ -57,6 +27,38 @@ You can activate some runtime debugging by setting `COHTTP_DEBUG` to any
 value, and all requests and responses will be written to stderr.  Further
 debugging of the connection layer can be obtained by setting `CONDUIT_DEBUG`
 to any value."""
+maintainer: "anil@recoil.org"
+authors: [
+  "Andy Ray"
+  "Anil Madhavapeddy"
+  "David Scott"
+  "David Sheets"
+  "Rudi Grinberg"
+  "Stefano Zacchiroli"
+  "Thomas Gazagnaire"
+]
+license: "ISC"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/ocaml-cohttp"
+bug-reports: "https://github.com/mirage/ocaml-cohttp/issues"
+depends: [
+  "async" {>= "v0.10.0" & < "v0.12"}
+  "cohttp" {>= "1.0.2"}
+  "conduit-async" {>= "1.0.3"}
+  "fmt" {>= "0.8.2"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "logs"
+  "magic-mime"
+  "ocaml" {>= "4.03.0"}
+  "ounit" {with-test}
+  "uri" {< "2.0.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/ocaml-cohttp.git"
 url {
   src:
     "https://github.com/mirage/ocaml-cohttp/releases/download/v1.0.2/cohttp-1.0.2.tbz"

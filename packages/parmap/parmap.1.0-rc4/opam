@@ -1,33 +1,6 @@
 opam-version: "2.0"
-authors: "Roberto Di Cosmo <roberto.org>"
-maintainer: "roberto@dicosmo.org"
-homepage: "https://github.com/rdicosmo/parmap"
-bug-reports: "https://github.com/rdicosmo/parmap/issues"
-dev-repo: "git://github.com/rdicosmo/parmap"
-build: [
-  ["aclocal" "-I" "m4"]
-  ["autoconf"]
-  ["autoheader"]
-  ["./configure"] 
-  [make "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib" ]
-]
-install: [
-  [make "install" "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
-]
-remove: [
-  ["aclocal" "-I" "m4"]
-  ["autoconf"]
-  ["autoheader"]
-  ["./configure"] 
-  [make "uninstall" "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "conf-autoconf"
-  "conf-aclocal"
-]
+name: "parmap"
+version: "1.0-rc4"
 synopsis: "Minimalistic library allowing to exploit multicore architecture"
 description: """
 Parmap is a minimalistic library allowing to exploit multicore
@@ -37,6 +10,33 @@ to be a map, fold or map/fold (map-reduce), just use Parmap’s parmap,
 parfold and parmapfold primitives in place of the standard List.map
 and friends, and specify the number of subprocesses to use by the
 optional parameter ~ncores."""
+maintainer: "roberto@dicosmo.org"
+authors: "Roberto Di Cosmo <roberto.org>"
+homepage: "https://github.com/rdicosmo/parmap"
+bug-reports: "https://github.com/rdicosmo/parmap/issues"
+depends: [
+  "conf-aclocal"
+  "conf-autoconf"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+build: [
+  ["aclocal" "-I" "m4"]
+  ["autoconf"]
+  ["autoheader"]
+  ["./configure"]
+  [make "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
+]
+install: [make "install" "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
+remove: [
+  ["aclocal" "-I" "m4"]
+  ["autoconf"]
+  ["autoheader"]
+  ["./configure"]
+  [make "uninstall" "DESTDIR=%{prefix}%" "OCAMLLIBDIR=lib"]
+]
+dev-repo: "git://github.com/rdicosmo/parmap"
 url {
   src: "https://github.com/rdicosmo/parmap/archive/1.0-rc4.tar.gz"
   checksum: "md5=5b803ca609852efdef5f3589bdcac73e"

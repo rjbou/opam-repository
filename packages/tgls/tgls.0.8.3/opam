@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-homepage: "http://erratique.ch/software/tgls"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-doc: "http://erratique.ch/software/tgls/doc/"
-dev-repo: "git+http://erratique.ch/repos/tgls.git"
-bug-reports: "https://github.com/dbuenzli/tsdl/issues"
-tags: [ "bindings" "opengl" "opengl-es" "graphics" "org:erratique" ]
-license: "BSD3"
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlfind"
-  "ctypes" {>= "0.4.0"}
-  "ctypes-foreign"
-  "ocamlbuild" {build}
-]
-build: [
-  ["ocaml" "pkg/git.ml"]
-  [
-    "ocaml"
-    "pkg/build.ml"
-    "native=%{ocaml:native}%"
-    "native-dynlink=%{ocaml:native-dynlink}%"
-  ]
-]
+name: "tgls"
+version: "0.8.3"
 synopsis: "Thin bindings to OpenGL {3,4} and OpenGL ES {2,3} for OCaml"
 description: """
 Tgls is a set of independent OCaml libraries providing thin bindings
@@ -33,6 +11,30 @@ Tgls depends on [ocaml-ctypes][1] and the C OpenGL library of your
 platform. It is distributed under the BSD3 license.
           
 [1]: https://github.com/ocamllabs/ocaml-ctypes"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD3"
+tags: ["bindings" "graphics" "opengl" "opengl-es" "org:erratique"]
+homepage: "http://erratique.ch/software/tgls"
+doc: "http://erratique.ch/software/tgls/doc/"
+bug-reports: "https://github.com/dbuenzli/tsdl/issues"
+depends: [
+  "ctypes" {>= "0.4.0"}
+  "ctypes-foreign"
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+build: [
+  ["ocaml" "pkg/git.ml"]
+  [
+    "ocaml"
+    "pkg/build.ml"
+    "native=%{ocaml:native}%"
+    "native-dynlink=%{ocaml:native-dynlink}%"
+  ]
+]
+dev-repo: "git+http://erratique.ch/repos/tgls.git"
 url {
   src: "http://erratique.ch/software/tgls/releases/tgls-0.8.3.tbz"
   checksum: "md5=333e78ef78503d77f49ea9f181e2851a"

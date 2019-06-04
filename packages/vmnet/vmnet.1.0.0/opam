@@ -1,32 +1,6 @@
 opam-version: "2.0"
 name: "vmnet"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: "Anil Madhavapeddy <anil@recoil.org>"
-homepage: "https://github.com/mirage/ocaml-vmnet"
-bug-reports: "https://github.com/mirage/ocaml-vmnet/issues"
-dev-repo: "git+https://github.com/mirage/ocaml-vmnet.git"
-license: "ISC"
-build: [
-  ["./configure" "--prefix=%{prefix}%"]
-  [make]
-]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "vmnet"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "camlp4" {build}
-  "type_conv" {build}
-  "sexplib" {< "113.24.00"}
-  "ipaddr" {>= "2.5.0" & < "3.0.0"}
-  "lwt" {>= "2.4.3" & < "4.0.0"}
-  "cstruct" {>= "1.4.0" & <= "1.9.0"}
-  "ocamlbuild" {build}
-]
-available: os = "macos"
-post-messages: [
-  "This package requires the vmnet.framework plus development headers which are present in Yosemite (10.10.*) and later." {failure}
-]
+version: "1.0.0"
 synopsis: "Userlevel network bridging on MacOS X"
 description: """
 MacOS X 10.10 (Yosemite) introduced the somewhat undocumented `vmnet`
@@ -57,7 +31,34 @@ There are two libraries provided:
   provide a monadic asynchronous I/O interface at a higher level.
 
 Most users should use `Lwt_vmnet` to handle guest traffic."""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-vmnet"
+bug-reports: "https://github.com/mirage/ocaml-vmnet/issues"
+depends: [
+  "camlp4" {build}
+  "cstruct" {>= "1.4.0" & <= "1.9.0"}
+  "ipaddr" {>= "2.5.0" & < "3.0.0"}
+  "lwt" {>= "2.4.3" & < "4.0.0"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "sexplib" {< "113.24.00"}
+  "type_conv" {build}
+]
+available: os = "macos"
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix=%{prefix}%"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "vmnet"]
+post-messages:
+  "This package requires the vmnet.framework plus development headers which are present in Yosemite (10.10.*) and later."
+    {failure}
+dev-repo: "git+https://github.com/mirage/ocaml-vmnet.git"
 url {
   src: "https://github.com/mirage/ocaml-vmnet/archive/v1.0.0.tar.gz"
   checksum: "md5=8107ba7f2fe4f5da17908da07d22c947"

@@ -1,28 +1,30 @@
 opam-version: "2.0"
-maintainer: "blue-prawn"
-authors: ["Xavier Leroy"]
-homepage: "http://forge.ocamlcore.org/projects/ocamlagrep/"
-license: "LGPL"
-build: make
-remove: [["ocamlfind" "remove" "agrep"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-]
-patches: ["find-install.patch"]
-install: [
-  [make "find-install"]
-  [make "find-install" "LIB_EXT=dll"] {os = "win32" | os = "cygwin"}
-]
+name: "agrep"
+version: "1.0"
 synopsis: "String searching with errors"
 description: """
 This library implements the Wu-Manber algorithm for string searching
 with errors, popularized by the "agrep" Unix command and the "glimpse"
 file indexing tool."""
+maintainer: "blue-prawn"
+authors: "Xavier Leroy"
+license: "LGPL"
+homepage: "http://forge.ocamlcore.org/projects/ocamlagrep/"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: make
+install: [
+  [make "find-install"]
+  [make "find-install" "LIB_EXT=dll"] {os = "win32" | os = "cygwin"}
+]
+remove: ["ocamlfind" "remove" "agrep"]
+patches: "find-install.patch"
 extra-files: [
-  ["find-install.patch" "md5=6227abe42030ada662523c49d5042e46"]
   ["META" "md5=9f6b50bcda32bcb5eb6845880a7471a9"]
+  ["find-install.patch" "md5=6227abe42030ada662523c49d5042e46"]
 ]
 url {
   src:

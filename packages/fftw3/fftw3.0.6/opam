@@ -1,5 +1,14 @@
 opam-version: "2.0"
+name: "fftw3"
+version: "0.6"
+synopsis: "Binding to the famous Fast Fourier Transform library FFTW"
 maintainer: "Christophe.Troestler@umons.ac.be"
+depends: [
+  "ocaml" {< "4.02.0"}
+  "ocamlfind"
+]
+depopts: ["archimedes" "lacaml"]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -16,24 +25,14 @@ build: [
   ]
   [make]
 ]
-remove: [["ocamlfind" "remove" "fftw3"]]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind"
-]
-depopts: [
-  "archimedes"
-  "lacaml"
-]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "fftw3"]
 depexts: [
   ["libfftw3-dev"] {os-distribution = "ubuntu"}
   ["libfftw3-dev"] {os-distribution = "debian"}
   ["math/fftw3"] {os = "freebsd"}
   ["math/fftw3"] {os = "openbsd"}
 ]
-install: [make "install"]
-synopsis: "Binding to the famous Fast Fourier Transform library FFTW"
-flags: light-uninstall
 url {
   src:
     "http://sourceforge.net/projects/ocaml-fftw/files/fftw3-ocaml-0.6.tar.gz/download"

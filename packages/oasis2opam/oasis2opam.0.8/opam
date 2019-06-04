@@ -1,11 +1,28 @@
 opam-version: "2.0"
+name: "oasis2opam"
+version: "0.8"
+synopsis: "Tool to convert OASIS metadata to OPAM package descriptions"
+description: """
+Generate OPAM files from _oasis. Most of the metadata supported by
+oasis is translated to OPAM. A simple .install file is written to
+preserve Oasis setup.{ml,data,log} in order to be able to use oasis
+for removal."""
 maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler" ]
+authors: "Christophe Troestler"
 license: "GPL-3 with OCaml linking exception"
+tags: ["build" "install"]
 homepage: "https://github.com/ocaml/oasis2opam"
-dev-repo: "git+https://github.com/ocaml/oasis2opam.git"
 bug-reports: "https://github.com/ocaml/oasis2opam/issues"
-tags: [ "build" "install"  ]
+depends: [
+  "base-bytes" {build}
+  "base-unix" {build}
+  "oasis" {build & >= "0.4.8"}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.5"}
+  "ounit" {with-test & >= "2.0.0"}
+  ("qcheck" {with-test & >= "0.4"} | "qtest" {with-test & >= "0.4"})
+]
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
@@ -17,25 +34,13 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: [
-  ["ocaml" "%{etc}%/oasis2opam/setup.ml" "-C" "%{etc}%/oasis2opam"
-    "-uninstall"]
-]
-depends: [
   "ocaml"
-  "base-bytes" {build}
-  "base-unix" {build}
-  "oasis" {build & >= "0.4.8"}
-  "ocamlbuild" {build}
-  "ocamlfind" {build & >= "1.5"}
-  "ounit" {with-test & >= "2.0.0"}
-  ("qcheck" {with-test & >= "0.4"} | "qtest" {with-test & >= "0.4"})
+  "%{etc}%/oasis2opam/setup.ml"
+  "-C"
+  "%{etc}%/oasis2opam"
+  "-uninstall"
 ]
-synopsis: "Tool to convert OASIS metadata to OPAM package descriptions"
-description: """
-Generate OPAM files from _oasis. Most of the metadata supported by
-oasis is translated to OPAM. A simple .install file is written to
-preserve Oasis setup.{ml,data,log} in order to be able to use oasis
-for removal."""
+dev-repo: "git+https://github.com/ocaml/oasis2opam.git"
 url {
   src: "https://github.com/ocaml/oasis2opam/archive/0.8.tar.gz"
   checksum: "md5=8acd8fe35f2deef6ac617c23942089f2"

@@ -1,30 +1,23 @@
 opam-version: "2.0"
+name: "merlin-of-pds"
+version: "1.4"
+synopsis: "Simple script that turns a pds.conf into a .merlin file"
 maintainer: "orbitz@gmail.com"
-build: [
-  [make "-j%{jobs}%"]
-  [make "-j%{jobs}%" "test"] {with-test}
-]
-install: [
-	[make "PREFIX=%{prefix}%" "install"]
-]
-
-remove: [
-	[make "PREFIX=%{prefix}%" "remove"]
-]
-
+authors: "orbitz@gmail.com"
+homepage: "https://bitbucket.org/acslab/merlin-of-pds"
+bug-reports: "https://bitbucket.org/acslab/merlin-of-pds/issues"
 depends: [
   "ocaml"
   "ocamlfind"
   "pds" {build & (>= "5" & < "6")}
 ]
-authors: [
-	"orbitz@gmail.com"
+build: [
+  [make "-j%{jobs}%"]
+  [make "-j%{jobs}%" "test"] {with-test}
 ]
-
-homepage: "https://bitbucket.org/acslab/merlin-of-pds"
-bug-reports: "https://bitbucket.org/acslab/merlin-of-pds/issues"
+install: [make "PREFIX=%{prefix}%" "install"]
+remove: [make "PREFIX=%{prefix}%" "remove"]
 dev-repo: "git+https://bitbucket.org/acslab/merlin-of-pds.git"
-synopsis: "Simple script that turns a pds.conf into a .merlin file"
 url {
   src: "https://bitbucket.org/acslab/merlin-of-pds/get/1.4.tar.gz"
   checksum: "md5=7392d566419232c46424fab4706570ff"

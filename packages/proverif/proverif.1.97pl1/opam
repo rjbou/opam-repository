@@ -1,34 +1,6 @@
 opam-version: "2.0"
-maintainer:
-  "Bruno Blanchet <bruno.blanchet@inria.fr>, Marc Sylvestre <marc.sylvestre@inria.fr>"
-authors:
-  "Bruno Blanchet <bruno.blanchet@inria.fr>, Vincent Cheval <vincent.cheval@icloud.com>, Ben Smyth <research@bensmyth.com>, Marc Sylvestre <marc.sylvestre@inria.fr>"
-homepage: "http://proverif.inria.fr/"
-bug-reports: "bruno.blanchet@inria.fr"
-license: "GNU General Public License"
-build: [
-  ["./build" "ocb.byte"] {!ocaml:native}
-  ["./build" "ocb.native"] {ocaml:native}
-]
-install: [ "./build" "install" "%{prefix}%" ]
-
-remove: [
-  [ "rm" "-rf"
-      "%{prefix}%/doc/proverif"
-      "%{prefix}%/bin/proverif"
-      "%{prefix}%/bin/proveriftotex"
-      "%{prefix}%/bin/proverif.exe"
-      "%{prefix}%/bin/proveriftotex.exe"
-  ]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild"
-]
-depexts: [
-  [[] ["graphviz"] ]
-]
+name: "proverif"
+version: "1.97pl1"
 synopsis: "ProVerif: Cryptographic protocol verifier in the symbolic model"
 description: """
 ProVerif is an automatic cryptographic protocol verifier, in the symbolic model (so called Dolev-Yao model). This protocol verifier is based on a representation of the protocol by Horn clauses. Its main features are:
@@ -47,7 +19,34 @@ ProVerif can prove the following properties:
 A survey of ProVerif with references to other papers is available at
 
 Bruno Blanchet. Modeling and Verifying Security Protocols with the Applied Pi Calculus and ProVerif. Foundations and Trends in Privacy and Security, 1(1-2):1-135, October 2016. http://dx.doi.org/10.1561/3300000004"""
+maintainer:
+  "Bruno Blanchet <bruno.blanchet@inria.fr>, Marc Sylvestre <marc.sylvestre@inria.fr>"
+authors:
+  "Bruno Blanchet <bruno.blanchet@inria.fr>, Vincent Cheval <vincent.cheval@icloud.com>, Ben Smyth <research@bensmyth.com>, Marc Sylvestre <marc.sylvestre@inria.fr>"
+license: "GNU General Public License"
+homepage: "http://proverif.inria.fr/"
+bug-reports: "bruno.blanchet@inria.fr"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild"
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["./build" "ocb.byte"] {!ocaml:native}
+  ["./build" "ocb.native"] {ocaml:native}
+]
+install: ["./build" "install" "%{prefix}%"]
+remove: [
+  "rm"
+  "-rf"
+  "%{prefix}%/doc/proverif"
+  "%{prefix}%/bin/proverif"
+  "%{prefix}%/bin/proveriftotex"
+  "%{prefix}%/bin/proverif.exe"
+  "%{prefix}%/bin/proveriftotex.exe"
+]
+depexts: "graphviz"
 url {
   src: "http://proverif.inria.fr/proverif1.97pl1.tar.gz"
   checksum: "md5=d41ad700772545c8a5d618c7889a1500"

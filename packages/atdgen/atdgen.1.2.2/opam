@@ -1,22 +1,22 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "https://github.com/MyLifeLabs/atdgen"
-build: make
-remove: [
-    ["ocamlfind" "remove" "atdgen"]
-]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind"
-  "atd" {= "1.0.2" & < "1.13.0"}
-  "biniou"
-  "yojson"
-]
-dev-repo: "git://github.com/MyLifeLabs/atdgen"
-install: [make "install" "BINDIR=%{bin}%"]
+name: "atdgen"
+version: "1.2.2"
 synopsis:
   "Generates efficient JSON serializers, deserializers and validators"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+homepage: "https://github.com/MyLifeLabs/atdgen"
+depends: [
+  "atd" {= "1.0.2" & < "1.13.0"}
+  "biniou"
+  "ocaml" {< "4.02.0"}
+  "ocamlfind"
+  "yojson"
+]
 flags: light-uninstall
+build: make
+install: [make "install" "BINDIR=%{bin}%"]
+remove: ["ocamlfind" "remove" "atdgen"]
+dev-repo: "git://github.com/MyLifeLabs/atdgen"
 extra-files: ["atdgen.install" "md5=8747b34b3b125cc7cdb5ead04902795d"]
 url {
   src: "https://github.com/mjambon/atdgen/archive/v1.2.2.tar.gz"

@@ -1,30 +1,29 @@
 opam-version: "2.0"
-maintainer: "Kate <kit.ty.kate@disroot.org>"
-authors: [
-  "whitequark <whitequark@whitequark.org>"
-  "The LLVM team"
-]
-license: "MIT"
-doc: "http://llvm.moe/ocaml-3.7"
-bug-reports: "http://llvm.org/bugs/"
-dev-repo: "git+http://llvm.org/git/llvm.git"
-homepage: "http://llvm.moe"
-install: [["bash" "-ex" "./install.sh" version make prefix lib]]
-remove: [["ocamlfind" "remove" "llvm"]]
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "ctypes" {>= "0.4"}
-  "ounit" {with-test}
-  "ocamlbuild" {build}
-]
-depexts: [
-  ["llvm-3.7-dev"] {os-distribution = "debian"}
-  ["homebrew/versions/llvm37"] {os = "macos" & os-distribution = "homebrew"}
-]
-available: opam-version >= "1.2"
+name: "llvm"
+version: "3.7"
 synopsis: "The OCaml bindings distributed with LLVM"
 description: "Note: LLVM should be installed first."
+maintainer: "Kate <kit.ty.kate@disroot.org>"
+authors: ["The LLVM team" "whitequark <whitequark@whitequark.org>"]
+license: "MIT"
+homepage: "http://llvm.moe"
+doc: "http://llvm.moe/ocaml-3.7"
+bug-reports: "http://llvm.org/bugs/"
+depends: [
+  "ctypes" {>= "0.4"}
+  "ocaml" {>= "4.00.0"}
+  "ocamlbuild" {build}
+  "ounit" {with-test}
+]
+available: opam-version >= "1.2"
 flags: light-uninstall
+install: ["bash" "-ex" "./install.sh" version make prefix lib]
+remove: ["ocamlfind" "remove" "llvm"]
+depexts: [
+  ["homebrew/versions/llvm37"] {os = "macos" & os-distribution = "homebrew"}
+  ["llvm-3.7-dev"] {os-distribution = "debian"}
+]
+dev-repo: "git+http://llvm.org/git/llvm.git"
 extra-files: ["install.sh" "md5=4207c3705ff9fcda89acabefa25352d9"]
 url {
   src: "http://llvm.org/releases/3.7.0/llvm-3.7.0.src.tar.xz"

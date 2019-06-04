@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer: "sheets@alum.mit.edu"
-authors: "David Sheets <sheets@alum.mit.edu>"
-homepage: "https://github.com/dsheets/ocaml-unix-fcntl"
-bug-reports: "https://github.com/dsheets/ocaml-unix-fcntl/issues"
-license: "ISC"
-dev-repo: "git+https://github.com/dsheets/ocaml-unix-fcntl.git"
-build: [make "build"]
-install: [make "install"]
-remove: [make "uninstall"]
-depends: [
-  "ocaml" {< "4.05.0"}
-  "ocamlfind" {build}
-  "ctypes" {>= "0.4.0" & < "0.6.0"}
-  "unix-errno" {>= "0.2.0" & < "0.3.0"}
-  "ocamlbuild" {build}
-]
+name: "unix-fcntl"
+version: "0.2.0"
 synopsis: "Unix fcntl.h types, maps, and support"
 description: """
 unix-fcntl provides types for manipulating concepts expressed in
@@ -24,6 +10,22 @@ FUSE. The types and their functions reside in Fcntl and are independent
 of any Unix bindings. This makes the library's types usable from
 MirageOS on top of Xen. Fcntl_unix provides maps to and from
 Unix.open_flag, the present host's open flag map, and similar."""
+maintainer: "sheets@alum.mit.edu"
+authors: "David Sheets <sheets@alum.mit.edu>"
+license: "ISC"
+homepage: "https://github.com/dsheets/ocaml-unix-fcntl"
+bug-reports: "https://github.com/dsheets/ocaml-unix-fcntl/issues"
+depends: [
+  "ctypes" {>= "0.4.0" & < "0.6.0"}
+  "ocaml" {< "4.05.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "unix-errno" {>= "0.2.0" & < "0.3.0"}
+]
+build: [make "build"]
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://github.com/dsheets/ocaml-unix-fcntl.git"
 url {
   src: "https://github.com/dsheets/ocaml-unix-fcntl/archive/0.2.0.tar.gz"
   checksum: "md5=b0e7c850d093fe462041beb13827e5ba"

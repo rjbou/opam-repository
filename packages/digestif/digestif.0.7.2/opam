@@ -1,15 +1,7 @@
 opam-version: "2.0"
-name:         "digestif"
-maintainer:   [ "Eyyüb Sari <eyyub.sari@epitech.eu>"
-                "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-authors:      [ "Eyyüb Sari <eyyub.sari@epitech.eu>"
-                "Romain Calascibetta <romain.calascibetta@gmail.com>" ]
-homepage:     "https://github.com/mirage/digestif"
-bug-reports:  "https://github.com/mirage/digestif/issues"
-dev-repo:     "git+https://github.com/mirage/digestif.git"
-doc:          "https://mirage.github.io/digestif/"
-license:      "MIT"
-synopsis:     "Hashes implementations (SHA*, RIPEMD160, BLAKE2* and MD5)"
+name: "digestif"
+version: "0.7.2"
+synopsis: "Hashes implementations (SHA*, RIPEMD160, BLAKE2* and MD5)"
 description: """
 Digestif is a toolbox to provide hashes implementations in C and OCaml.
 
@@ -24,35 +16,40 @@ We provides implementation of:
  * SHA512
  * BLAKE2B
  * BLAKE2S
- * RIPEMD160
-"""
-
-build: [
-  [ "dune" "subst"] {pinned}
-  [ "dune" "build" "-p" name "-j" jobs ]
-  [ "dune" "runtest" "-p" name "-j" jobs ] {with-test}
+ * RIPEMD160"""
+maintainer: [
+  "Eyyüb Sari <eyyub.sari@epitech.eu>"
+  "Romain Calascibetta <romain.calascibetta@gmail.com>"
 ]
-
+authors: [
+  "Eyyüb Sari <eyyub.sari@epitech.eu>"
+  "Romain Calascibetta <romain.calascibetta@gmail.com>"
+]
+license: "MIT"
+homepage: "https://github.com/mirage/digestif"
+doc: "https://mirage.github.io/digestif/"
+bug-reports: "https://github.com/mirage/digestif/issues"
 depends: [
-  "ocaml"          {>= "4.03.0"}
-  "dune"           {build & >= "1.9.2"}
-  "eqaf"
-  "base-bytes"
+  "alcotest" {with-test}
   "base-bigarray"
-  "fmt"            {with-test}
-  "alcotest"       {with-test}
+  "base-bytes"
+  "dune" {build & >= "1.9.2"}
+  "eqaf"
+  "fmt" {with-test}
+  "ocaml" {>= "4.03.0"}
 ]
-
-depopts: [
-  "ocaml-freestanding"
-  "mirage-xen-posix"
-]
-
+depopts: ["mirage-xen-posix" "ocaml-freestanding"]
 conflicts: [
+  "eqaf" {= "0.3"}
   "mirage-xen-posix" {< "3.1.0"}
   "ocaml-freestanding" {< "0.4.1"}
-  "eqaf" {= "0.3"}
 ]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/digestif.git"
 url {
   src:
     "https://github.com/mirage/digestif/releases/download/v0.7.2/digestif-v0.7.2.tbz"

@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/fpath"
-doc: "http://erratique.ch/software/fpath"
-dev-repo: "git+http://erratique.ch/repos/fpath.git"
-bug-reports: "https://github.com/dbuenzli/fpath/issues"
-tags: [ "file" "system" "path" "org:erratique" ]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build & >= "0.7.5"}
-  "result"
-  "astring"
-]
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+name: "fpath"
+version: "0.7.0"
 synopsis: "File system paths for OCaml"
 description: """
 Fpath is an OCaml module for handling file system paths with POSIX or
@@ -26,6 +11,23 @@ Fpath depends on [Astring][astring] and is distributed under the ISC
 license.
 
 [astring]: http://erratique.ch/software/astring"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+tags: ["file" "org:erratique" "path" "system"]
+homepage: "http://erratique.ch/software/fpath"
+doc: "http://erratique.ch/software/fpath"
+bug-reports: "https://github.com/dbuenzli/fpath/issues"
+depends: [
+  "astring"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "result"
+  "topkg" {build & >= "0.7.5"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+http://erratique.ch/repos/fpath.git"
 url {
   src: "http://erratique.ch/software/fpath/releases/fpath-0.7.0.tbz"
   checksum: "md5=865c9e7057626894f0e5a54f07bf8295"

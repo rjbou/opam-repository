@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "sattools"
+version: "0.1.0"
+synopsis:
+  "Ctypes and DIMACs interfaces to minisat, picosat and cryptominisat"
 maintainer: "andy.ray@ujamjar.com"
 authors: "andy.ray@ujamjar.com"
 homepage: "https://github.com/ujamjar/sattools"
-dev-repo: "git+https://github.com/ujamjar/sattools.git"
 bug-reports: "https://github.com/ujamjar/sattools/issues"
-build: [ [make "build"] ]
 depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
+  "astring"
   "base-bytes"
   "base-unix"
-  "ctypes-foreign"
   "ctypes"
-  "astring"
+  "ctypes-foreign"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
 ]
-synopsis:
-  "Ctypes and DIMACs interfaces to minisat, picosat and cryptominisat"
+build: [make "build"]
+dev-repo: "git+https://github.com/ujamjar/sattools.git"
 url {
   src: "https://github.com/ujamjar/sattools/archive/v0.1.0.tar.gz"
   checksum: "md5=3f1f15d5a738ce95c92214a71c532620"

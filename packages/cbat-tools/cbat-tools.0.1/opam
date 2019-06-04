@@ -1,28 +1,24 @@
 opam-version: "2.0"
 name: "cbat-tools"
 version: "0.1"
-maintainer: "The Charles Stark Draper Laboratory, Inc. <github@draper.com>"
-authors: "The Charles Stark Draper Laboratory, Inc. <github@draper.com>"
-homepage: "https://github.com/draperlaboratory/cbat_tools/"
-bug-reports: "https://github.com/draperlaboratory/cbat_tools/issues"
-dev-repo: "git+https://github.com/draperlaboratory/cbat_tools"
-license: "MIT"
-
-depends: [
-  "ocaml" {>= "4.03" & < "4.06"}
-  "bap-std" {= "1.5.0"}
-  "ppx_deriving"
-  "cbat-vsa" {= "0.1"}
-  "cbat-explicit-edge" {= "0.1"}
-]
 synopsis: "Program analysis tools developed at Draper on the CBAT project"
-
 description: """
 This meta package contains two BAP plugins for:
 1) Value set analysis (cbat-vsa)
-2) VSA-based resolving of indirect edges in CFG (cbat-explicit-edge)
-"""
-
+2) VSA-based resolving of indirect edges in CFG (cbat-explicit-edge)"""
+maintainer: "The Charles Stark Draper Laboratory, Inc. <github@draper.com>"
+authors: "The Charles Stark Draper Laboratory, Inc. <github@draper.com>"
+license: "MIT"
+homepage: "https://github.com/draperlaboratory/cbat_tools/"
+bug-reports: "https://github.com/draperlaboratory/cbat_tools/issues"
+depends: [
+  "bap-std" {= "1.5.0"}
+  "cbat-explicit-edge" {= "0.1"}
+  "cbat-vsa" {= "0.1"}
+  "ocaml" {>= "4.03" & < "4.06"}
+  "ppx_deriving"
+]
+dev-repo: "git+https://github.com/draperlaboratory/cbat_tools"
 url {
   src: "https://github.com/draperlaboratory/cbat_tools/archive/v0.1.tar.gz"
   checksum: "md5=f0cce621aba8c83277a54c11f7b3fc67"

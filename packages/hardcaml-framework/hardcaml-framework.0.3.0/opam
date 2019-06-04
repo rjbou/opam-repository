@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "hardcaml-framework"
+version: "0.3.0"
+synopsis: "Framework for generating and simulating HardCaml cores"
+description: "with console or javascript backends."
 maintainer: "andy.ray@ujamjar.com"
 authors: "andy.ray@ujamjar.com"
 homepage: "https://github.com/ujamjar/hardcaml-framework"
-dev-repo: "git+https://github.com/ujamjar/hardcaml-framework.git"
 bug-reports: "https://github.com/ujamjar/hardcaml-framework/issues"
-build: [ [ "ocaml" "pkg/pkg.ml" "build" ] ]
 depends: [
-  "ocaml" {>= "4.01.0"}
+  "astring"
   "hardcaml" {>= "1.2.0" & < "2.0.0"}
   "hardcaml-waveterm" {>= "0.2.0"}
-  "astring"
-  "omd"
-  "lwt"
   "js_of_ocaml"
+  "lwt"
+  "ocaml" {>= "4.01.0"}
+  "omd"
 ]
-synopsis: "Framework for generating and simulating HardCaml cores"
-description: "with console or javascript backends."
+build: ["ocaml" "pkg/pkg.ml" "build"]
+dev-repo: "git+https://github.com/ujamjar/hardcaml-framework.git"
 url {
   src: "https://github.com/ujamjar/hardcaml-framework/archive/v0.3.0.tar.gz"
   checksum: "md5=1a960c0bcc1853661365509079b6c589"

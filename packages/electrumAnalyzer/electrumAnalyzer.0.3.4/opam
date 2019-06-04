@@ -1,12 +1,28 @@
 opam-version: "2.0"
+name: "electrumAnalyzer"
+version: "0.3.4"
+synopsis: "A tool for the analysis of Electrum formal specifications."
+description: """
+Electrum is a formal specification language based upon relational
+first-order logic (RFOL) and linear temporal logic (LTL), mainly
+inspired by Alloy and TLA+.  Electrum Analyzer is a free-software
+prototype for the analysis of Electrum models: as of now, it proceeds
+by translation into SMV models processable by NuSMV and nuXmv."""
 maintainer: "david.chemouil+electrum@onera.fr"
-authors: [ "David Chemouil"
-           "Julien Brunel"
-           "Denis Kuperberg" ]
+authors: ["David Chemouil" "Denis Kuperberg" "Julien Brunel"]
 license: "GPL-3+"
 homepage: "https://forge.onera.fr/projects/electrum"
-dev-repo: "git+https://github.com/grayswandyr/electrumAnalyzer.git"
 bug-reports: "https://forge.onera.fr/projects/electrum"
+depends: [
+  "batteries" {build}
+  (("cmdliner" {build & = "0.9.7"} | "cmdliner" {build & = "0.9.6"}) |
+   "cmdliner" {build & = "0.9.5"})
+  "menhir" {build & >= "20150720"}
+  "ocaml" {>= "4.02"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.5"}
+  "pprint" {build}
+]
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
@@ -16,29 +32,14 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: [
-  ["ocaml" "%{etc}%/electrumAnalyzer/_oasis_remove_.ml"
-    "%{etc}%/electrumAnalyzer"]
+  "ocaml"
+  "%{etc}%/electrumAnalyzer/_oasis_remove_.ml"
+  "%{etc}%/electrumAnalyzer"
 ]
-depends: [
-  "ocaml" {>= "4.02"}
-  "batteries" {build}
-  "cmdliner" {build & = "0.9.7"} | "cmdliner" {build & = "0.9.6"} |
-  "cmdliner" {build & = "0.9.5"}
-  "menhir" {build & >= "20150720"}
-  "ocamlfind" {build & >= "1.5"}
-  "pprint" {build}
-  "ocamlbuild" {build}
-]
-synopsis: "A tool for the analysis of Electrum formal specifications."
-description: """
-Electrum is a formal specification language based upon relational
-first-order logic (RFOL) and linear temporal logic (LTL), mainly
-inspired by Alloy and TLA+.  Electrum Analyzer is a free-software
-prototype for the analysis of Electrum models: as of now, it proceeds
-by translation into SMV models processable by NuSMV and nuXmv."""
+dev-repo: "git+https://github.com/grayswandyr/electrumAnalyzer.git"
 extra-files: [
-  ["electrumAnalyzer.install" "md5=0d1b822c897681cf54b3e1aed52dda99"]
   ["_oasis_remove_.ml" "md5=6100ca146fa97d2196eb49a2631d0796"]
+  ["electrumAnalyzer.install" "md5=0d1b822c897681cf54b3e1aed52dda99"]
 ]
 url {
   src: "https://github.com/grayswandyr/electrumAnalyzer/archive/0.3.4.tar.gz"

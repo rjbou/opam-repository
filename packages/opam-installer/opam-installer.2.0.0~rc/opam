@@ -1,32 +1,6 @@
 opam-version: "2.0"
-maintainer: "opam-devel@lists.ocaml.org"
-authors: [
-  "Thomas Gazagnaire <thomas@gazagnaire.org>"
-  "Anil Madhavapeddy   <anil@recoil.org>"
-  "Fabrice Le Fessant  <Fabrice.Le_fessant@inria.fr>"
-  "Frederic Tuong      <tuong@users.gforge.inria.fr>"
-  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
-  "Guillem Rieu        <guillem.rieu@ocamlpro.com>"
-  "Vincent Bernardoff  <vb@luminar.eu.org>"
-  "Roberto Di Cosmo    <roberto@dicosmo.org>"
-]
-homepage: "https://opam.ocaml.org/"
-bug-reports: "https://github.com/ocaml/opam/issues"
-dev-repo: "git+https://github.com/ocaml/opam.git"
-build: [
-  ["./configure" "--disable-checks" "--prefix" prefix]
-  ["touch" "src/tools/.merlin-exists"]
-  [make "%{name}%.install"]
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "opam-format" {= "2.0.0~rc"}
-  "cmdliner" {>= "0.9.8"}
-  "jbuilder" {build & >= "1.0+beta12"}
-]
-conflicts: [
-  "dune"
-]
+name: "opam-installer"
+version: "2.0.0~rc"
 synopsis: "Installation of files to a prefix, following opam conventions"
 description: """
 opam-installer is a small tool that can read *.install files, as defined by
@@ -34,6 +8,32 @@ opam [1], and execute them to install or remove package files without going
 through opam.
 
 [1] http://opam.ocaml.org/doc/2.0/Manual.html#lt-pkgname-gt-install"""
+maintainer: "opam-devel@lists.ocaml.org"
+authors: [
+  "Anil Madhavapeddy   <anil@recoil.org>"
+  "Fabrice Le Fessant  <Fabrice.Le_fessant@inria.fr>"
+  "Frederic Tuong      <tuong@users.gforge.inria.fr>"
+  "Guillem Rieu        <guillem.rieu@ocamlpro.com>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+  "Roberto Di Cosmo    <roberto@dicosmo.org>"
+  "Thomas Gazagnaire <thomas@gazagnaire.org>"
+  "Vincent Bernardoff  <vb@luminar.eu.org>"
+]
+homepage: "https://opam.ocaml.org/"
+bug-reports: "https://github.com/ocaml/opam/issues"
+depends: [
+  "cmdliner" {>= "0.9.8"}
+  "jbuilder" {build & >= "1.0+beta12"}
+  "ocaml" {>= "4.02.3"}
+  "opam-format" {= "2.0.0~rc"}
+]
+conflicts: ["dune"]
+build: [
+  ["./configure" "--disable-checks" "--prefix" prefix]
+  ["touch" "src/tools/.merlin-exists"]
+  [make "%{name}%.install"]
+]
+dev-repo: "git+https://github.com/ocaml/opam.git"
 url {
   src: "https://github.com/ocaml/opam/archive/2.0.0-rc.tar.gz"
   checksum: "md5=ae216e3ea0a9388cc9f711a2a9925557"

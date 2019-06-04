@@ -1,35 +1,6 @@
 opam-version: "2.0"
-maintainer: "dave@recoil.org"
-authors: [ "David Scott" "Rolf Neugebauer" "Anil Madhavapeddy" "Simon Ferquel"]
-license: "ISC"
-homepage: "https://github.com/mirage/ocaml-hvsock"
-dev-repo: "git+https://github.com/mirage/ocaml-hvsock.git"
-bug-reports: "https://github.com/mirage/ocaml-hvsock/issues"
-doc: "https://mirage.github.io/ocaml-hvsock"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "subst" "-p" name] {with-test & pinned}
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "base-bytes"
-  "base-threads"
-  "base-unix"
-  "lwt" {>= "2.4.7" & < "4.0.0"}
-  "logs"
-  "fmt"
-  "cmdliner"
-  "mirage-flow-lwt" {>= "1.2.0"}
-  "mirage-time-lwt" {>= "1.0.0"}
-  "cstruct" {>= "2.4.0"}
-  "duration"
-  "bos"
-  "jbuilder" {build & >= "1.0+beta10"}
-  "alcotest" {with-test & >= "0.4.0"}
-]
+name: "hvsock"
+version: "1.0.0"
 synopsis: "Bindings for Hyper-V AF_VSOCK"
 description: """
 [![Build Status (Linux)](https://travis-ci.org/mirage/ocaml-hvsock.svg)](https://travis-ci.org/mirage/ocaml-hvsock)
@@ -43,6 +14,38 @@ definition of `AF_HYPERV` is not yet stable. If other address families are merge
 before this one then the value of `AF_HYPERV` will change!
 
 Please read [the API documentation](https://djs55.github.io/ocaml-hvsock/index.html)."""
+maintainer: "dave@recoil.org"
+authors: [
+  "Anil Madhavapeddy" "David Scott" "Rolf Neugebauer" "Simon Ferquel"
+]
+license: "ISC"
+homepage: "https://github.com/mirage/ocaml-hvsock"
+doc: "https://mirage.github.io/ocaml-hvsock"
+bug-reports: "https://github.com/mirage/ocaml-hvsock/issues"
+depends: [
+  "alcotest" {with-test & >= "0.4.0"}
+  "base-bytes"
+  "base-threads"
+  "base-unix"
+  "bos"
+  "cmdliner"
+  "cstruct" {>= "2.4.0"}
+  "duration"
+  "fmt"
+  "jbuilder" {build & >= "1.0+beta10"}
+  "logs"
+  "lwt" {>= "2.4.7" & < "4.0.0"}
+  "mirage-flow-lwt" {>= "1.2.0"}
+  "mirage-time-lwt" {>= "1.0.0"}
+  "ocaml" {>= "4.03.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "subst" "-p" name] {with-test & pinned}
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/ocaml-hvsock.git"
 url {
   src:
     "https://github.com/mirage/ocaml-hvsock/releases/download/v1.0.0/hvsock-1.0.0.tbz"

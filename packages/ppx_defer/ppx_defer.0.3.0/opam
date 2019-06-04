@@ -1,17 +1,6 @@
 opam-version: "2.0"
-maintainer: "Hezekiah M. Carty <hez@0ok.org>"
-authors: [ "Hezekiah M. Carty <hez@0ok.org>" ]
-license: "MIT"
-homepage: "https://github.com/hcarty/ppx_defer"
-bug-reports: "https://github.com/hcarty/ppx_defer/issues"
-dev-repo: "git+https://github.com/hcarty/ppx_defer.git"
-build:[ "jbuilder" "build" "-p" name "-j" jobs ]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta9"}
-  "ocaml-migrate-parsetree"
-  "ppx_tools_versioned"
-]
+name: "ppx_defer"
+version: "0.3.0"
 synopsis: "Go-like `[%defer later]; now` syntax."
 description: """
 This is an OCaml language extension implementing a somewhat Go-ish
@@ -34,6 +23,19 @@ let () =
 ```
 
 See the `examples/` directory for more examples."""
+maintainer: "Hezekiah M. Carty <hez@0ok.org>"
+authors: "Hezekiah M. Carty <hez@0ok.org>"
+license: "MIT"
+homepage: "https://github.com/hcarty/ppx_defer"
+bug-reports: "https://github.com/hcarty/ppx_defer/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta9"}
+  "ocaml" {>= "4.02.3"}
+  "ocaml-migrate-parsetree"
+  "ppx_tools_versioned"
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/hcarty/ppx_defer.git"
 url {
   src:
     "https://github.com/hcarty/ppx_defer/releases/download/v0.3.0/ppx_defer-0.3.0.tbz"

@@ -1,5 +1,6 @@
 opam-version: "2.0"
 name: "salsa20"
+version: "1.0.0"
 synopsis: "Salsa20 family of encryption functions, in pure OCaml"
 description: """
 ```ocaml
@@ -16,28 +17,27 @@ utop[6]> let state = Salsa20.create key nonce;;
 val state : Salsa20.t = <abstr>
 utop[7]> Salsa20.encrypt (Cstruct.of_string "My secret text") state |> Cstruct.to_string;;
 - : string = " 2\\193\\020`\\142\\182\\234\\188H[R\\241V"
-```
-"""
+```"""
 maintainer: "Alfredo Beaumont <alfredo.beaumont@gmail.com>"
 authors: "Alfredo Beaumont <alfredo.beaumont@gmail.com>"
 license: "BSD2"
 homepage: "https://github.com/abeaumont/ocaml-salsa20"
-dev-repo: "git+https://github.com/abeaumont/ocaml-salsa20.git"
-bug-reports: "https://github.com/abeaumont/ocaml-salsa20/issues"
 doc: "https://abeaumont.github.io/ocaml-salsa20/"
+bug-reports: "https://github.com/abeaumont/ocaml-salsa20/issues"
 depends: [
-  "ocaml" {>= "4.02.0"}
-  "dune" {build}
-  "cstruct" {>= "1.7.0"}
-  "nocrypto" {>= "0.5.3"}
-  "salsa20-core" {>= "0.1.0"}
   "alcotest" {with-test}
+  "cstruct" {>= "1.7.0"}
+  "dune" {build}
+  "nocrypto" {>= "0.5.3"}
+  "ocaml" {>= "4.02.0"}
+  "salsa20-core" {>= "0.1.0"}
 ]
 build: [
-  ["dune" "subst" ] {pinned}
-  [ "dune" "build" "-j" jobs "-p" name "@install" ]
-  [ "dune" "runtest" "-j" jobs "-p" name ] {with-test}
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-j" jobs "-p" name "@install"]
+  ["dune" "runtest" "-j" jobs "-p" name] {with-test}
 ]
+dev-repo: "git+https://github.com/abeaumont/ocaml-salsa20.git"
 url {
   src:
     "https://github.com/abeaumont/ocaml-salsa20/releases/download/1.0.0/salsa20-1.0.0.tbz"

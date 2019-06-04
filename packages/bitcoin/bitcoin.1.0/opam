@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "bitcoin"
+version: "1.0"
+synopsis:
+  "Library offering an OCaml interface to the official Bitcoin client API"
 maintainer: "vb@luminar.eu.org"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlnet" {< "4"}
+  "ocsigenserver"
+  "yojson"
+]
 build: [
   ["./configure" "--prefix" prefix]
   [make]
   [make "doc"]
 ]
-remove: [[make "uninstall"]]
-depends: [
-  "ocaml"
-  "yojson"
-  "ocamlnet" {< "4"}
-  "ocsigenserver"
-  "ocamlbuild" {build}
-]
 install: [make "install"]
-synopsis:
-  "Library offering an OCaml interface to the official Bitcoin client API"
+remove: [make "uninstall"]
 url {
   src:
     "https://download.ocamlcore.org/ocaml-bitcoin/ocaml-bitcoin/1.0/ocaml-bitcoin-1.0.tgz"

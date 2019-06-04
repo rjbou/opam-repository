@@ -1,34 +1,6 @@
 opam-version: "2.0"
+name: "markup"
 version: "0.7.6"
-
-maintainer: "Anton Bachin <antonbachin@yahoo.com>"
-authors: "Anton Bachin <antonbachin@yahoo.com>"
-homepage: "https://github.com/aantron/markup.ml"
-doc: "http://aantron.github.io/markup.ml"
-bug-reports: "https://github.com/aantron/markup.ml/issues"
-dev-repo: "git+https://github.com/aantron/markup.ml.git"
-license: "BSD"
-
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta17"}
-  "ounit" {with-test}
-  "uchar"
-  "uutf" {>= "1.0.0"}
-]
-depopts: [
-  "lwt"
-]
-# Markup.ml implicitly requires OCaml 4.02.3, as this is a contraint of
-# Jbuilder. Without that, Markup.ml implicitly requires OCaml 4.01.0, as this is
-# a constraint of Uutf. Without *that*, Markup.ml works on OCaml 3.11 or
-# earlier.
-
-build: [
-  ["ocaml" "src/configure.ml"]
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name] {with-test}
-]
 synopsis: "Error-recovering functional HTML5 and XML parsers and writers"
 description: """
 Markup.ml provides an HTML parser and an XML parser. The parsers are wrapped in
@@ -49,6 +21,26 @@ memory), non-blocking (can be used with threading libraries), lazy (do not
 consume input unless the signal stream is being read), and process the input in
 a single pass. They automatically detect the character encoding of the input
 stream, and convert everything to UTF-8."""
+maintainer: "Anton Bachin <antonbachin@yahoo.com>"
+authors: "Anton Bachin <antonbachin@yahoo.com>"
+license: "BSD"
+homepage: "https://github.com/aantron/markup.ml"
+doc: "http://aantron.github.io/markup.ml"
+bug-reports: "https://github.com/aantron/markup.ml/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta17"}
+  "ocaml"
+  "ounit" {with-test}
+  "uchar"
+  "uutf" {>= "1.0.0"}
+]
+depopts: ["lwt"]
+build: [
+  ["ocaml" "src/configure.ml"]
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name] {with-test}
+]
+dev-repo: "git+https://github.com/aantron/markup.ml.git"
 url {
   src: "https://github.com/aantron/markup.ml/archive/0.7.6.tar.gz"
   checksum: "md5=866dd2cdb3e304787b26fe8ed53f1f67"

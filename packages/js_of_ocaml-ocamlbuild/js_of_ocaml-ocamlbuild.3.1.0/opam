@@ -1,20 +1,18 @@
 opam-version: "2.0"
-maintainer:   "dev@ocsigen.org"
-authors:      "Ocsigen team"
-bug-reports:  "https://github.com/ocsigen/js_of_ocaml/issues"
-homepage:     "http://ocsigen.org/js_of_ocaml"
-dev-repo:     "git+https://github.com/ocsigen/js_of_ocaml.git"
-
 name: "js_of_ocaml-ocamlbuild"
-
-build: [["jbuilder" "build" "-p" name "-j" jobs]]
-
-depends: [
-  "ocaml" {>= "4.00.0"}
-  "jbuilder" {build & >= "1.0+beta17"}
-  ("ocamlbuild" {!= "0"} | ("base-ocamlbuild" "ocamlfind"))
-]
+version: "3.1.0"
 synopsis: "Compiler from OCaml bytecode to Javascript"
+maintainer: "dev@ocsigen.org"
+authors: "Ocsigen team"
+homepage: "http://ocsigen.org/js_of_ocaml"
+bug-reports: "https://github.com/ocsigen/js_of_ocaml/issues"
+depends: [
+  ("base-ocamlbuild" & "ocamlfind" | "ocamlbuild" {!= "0"})
+  "jbuilder" {build & >= "1.0+beta17"}
+  "ocaml" {>= "4.00.0"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/ocsigen/js_of_ocaml.git"
 url {
   src: "https://github.com/ocsigen/js_of_ocaml/archive/3.1.0.tar.gz"
   checksum: "md5=b7a03bea097ac6bda3aaaf4b12b82581"

@@ -1,25 +1,27 @@
 opam-version: "2.0"
+name: "taglog"
+version: "0.3.0"
+synopsis: "Logging library using levels and tags to determine what to log."
 maintainer: "zoggy@bat8.org"
 authors: "Maxence Guesdon"
-homepage: "http://zoggy.github.io/ocaml-taglog/"
-bug-reports: "https://github.com/zoggy/ocaml-taglog/issues"
 license: "GNU Lesser General Public License version 3"
-doc: "http://zoggy.github.io/ocaml-taglog/doc.html"
 tags: "log"
-dev-repo: "git+https://github.com/zoggy/ocaml-taglog.git"
+homepage: "http://zoggy.github.io/ocaml-taglog/"
+doc: "http://zoggy.github.io/ocaml-taglog/doc.html"
+bug-reports: "https://github.com/zoggy/ocaml-taglog/issues"
+depends: [
+  "ocaml" {>= "4.02.1"}
+  "ocamlfind"
+  "ocf" {>= "0.4.0"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make "all"]
 ]
 install: [make "install"]
 remove: ["ocamlfind" "remove" "taglog"]
-depends: [
-  "ocaml" {>= "4.02.1"}
-  "ocamlfind"
-  "ocf" {>= "0.4.0"}
-]
-synopsis: "Logging library using levels and tags to determine what to log."
-flags: light-uninstall
+dev-repo: "git+https://github.com/zoggy/ocaml-taglog.git"
 url {
   src: "https://zoggy.github.io/ocaml-taglog/taglog-0.3.0.tar.gz"
   checksum: "md5=5a92b93659cdb1b0bdd657e1ff9ae2b9"

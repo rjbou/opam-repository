@@ -1,18 +1,23 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx"
-license: "LGPL 2.1"
-build: [["pkg-config" "SDL_gfx"]]
-depexts: [
-  ["libsdl-gfx1.2-dev"] {os-distribution = "debian"}
-  ["libsdl-gfx1.2-dev"] {os-distribution = "ubuntu"}
-  ["libSDL_gfx-devel"] {os-distribution = "mageia"}
-  ["sdl_gfx"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "conf-sdl-gfx"
+version: "1"
 synopsis: "Virtual package relying on a sdl-gfx system installation"
 description:
   "This package can only install if libsdl-gfx is installed on the system."
-depends: ["conf-pkg-config" {build}]
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
 authors: "Sam Lantinga"
+license: "LGPL 2.1"
+homepage:
+  "http://www.ferzkopp.net/joomla/software-mainmenu-14/4-ferzkopps-linux-software/19-sdlgfx"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-pkg-config" {build}
+]
 flags: conf
+build: ["pkg-config" "SDL_gfx"]
+depexts: [
+  ["libSDL_gfx-devel"] {os-distribution = "mageia"}
+  ["libsdl-gfx1.2-dev"] {os-distribution = "debian"}
+  ["libsdl-gfx1.2-dev"] {os-distribution = "ubuntu"}
+  ["sdl_gfx"] {os = "macos" & os-distribution = "homebrew"}
+]

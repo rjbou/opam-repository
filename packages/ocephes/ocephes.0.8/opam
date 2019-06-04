@@ -1,22 +1,24 @@
 opam-version: "2.0"
-maintainer: "Leonid Rozenberg <leonidr@gmail.com>"
-authors: "Leonid Rozenberg <leonidr@gmail.com>"
-homepage: "https://github.com/rleonid/Ocephes"
-bug-reports: "https://github.com/rleonid/Ocephes/issues"
-license: "BSD 3"
-dev-repo: "git+https://github.com/rleonid/Ocephes.git"
-build: [make]
-install: [make "install"]
-remove: ["ocamlfind" "remove" "ocephes"]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "oasis" {build}
-  "ctypes" {< "0.6.0"}
-]
+name: "ocephes"
+version: "0.8"
 synopsis: "Bindings to special math functions from the Cephes library."
 description: "Easy special math functions in OCaml"
+maintainer: "Leonid Rozenberg <leonidr@gmail.com>"
+authors: "Leonid Rozenberg <leonidr@gmail.com>"
+license: "BSD 3"
+homepage: "https://github.com/rleonid/Ocephes"
+bug-reports: "https://github.com/rleonid/Ocephes/issues"
+depends: [
+  "ctypes" {< "0.6.0"}
+  "oasis" {build}
+  "ocaml"
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "ocephes"]
+dev-repo: "git+https://github.com/rleonid/Ocephes.git"
 url {
   src: "https://github.com/rleonid/Ocephes/archive/0.8.tar.gz"
   checksum: "md5=dd0a046fa89746cb62b1005cc0a6d28e"

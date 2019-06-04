@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "pa_typerep_conv"
+version: "113.00.00"
+synopsis: "typerep is a library for runtime types."
 maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage:    "https://github.com/janestreet/pa_typerep_conv"
-bug-reports: "https://github.com/janestreet/pa_typerep_conv/issues"
-dev-repo: "git+https://github.com/janestreet/pa_typerep_conv.git"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
 license: "Apache-2.0"
-build:   [[make]]
-install: [[make "install"]]
-remove:  [["ocamlfind" "remove" "pa_typerep_conv"]]
+homepage: "https://github.com/janestreet/pa_typerep_conv"
+bug-reports: "https://github.com/janestreet/pa_typerep_conv/issues"
 depends: [
-  "ocaml" {>= "4.02.1" & < "4.03"}
   "camlp4"
+  "oasis" {build}
+  "ocaml" {>= "4.02.1" & < "4.03"}
+  "ocamlbuild" {build}
   "ocamlfind" {>= "1.3.2"}
   "type_conv" {>= "113.00.00" & < "113.01.00"}
-  "ocamlbuild" {build}
-  "oasis" {build}
 ]
-synopsis: "typerep is a library for runtime types."
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "pa_typerep_conv"]
+dev-repo: "git+https://github.com/janestreet/pa_typerep_conv.git"
 url {
   src:
     "https://github.com/janestreet/pa_typerep_conv/archive/113.00.00.tar.gz"

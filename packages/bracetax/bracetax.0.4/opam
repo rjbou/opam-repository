@@ -1,28 +1,28 @@
 opam-version: "2.0"
+name: "bracetax"
+version: "0.4"
+synopsis: "Simple and deterministic text processing syntax"
 maintainer: "ygrek@autistici.org"
-authors: ["Sebastien Mondet"]
+authors: "Sebastien Mondet"
 homepage: "https://smondet.github.io/bracetax/"
-dev-repo: "git+https://github.com/smondet/bracetax.git"
 bug-reports: "https://github.com/smondet/bracetax/issues"
+depends: [
+  "base-bytes"
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
+install: ["ocaml" "setup.ml" "-install"]
 remove: [
   ["ocamlfind" "remove" "bracetax"]
   ["rm" "-f" "%{bin}%/brtx" "%{bin}%/brtx.exe"]
 ]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "base-bytes"
-]
-synopsis: "Simple and deterministic text processing syntax"
-flags: light-uninstall
+dev-repo: "git+https://github.com/smondet/bracetax.git"
 url {
   src:
     "https://github.com/smondet/bracetax/releases/download/v0.4/bracetax-0.4.tar.gz"

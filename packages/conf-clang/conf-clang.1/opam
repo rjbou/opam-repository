@@ -1,9 +1,15 @@
 opam-version: "2.0"
+name: "conf-clang"
+version: "1"
+synopsis: "Virtual package relying on clang"
+description:
+  "This package can only install if the clang binary is installed on the system."
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "https://clang.llvm.org/"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
 authors: "The LLVM devs"
 license: "University of Illinois/NCSA Open Source License"
+homepage: "https://clang.llvm.org/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+flags: conf
 build: ["clang" "--version"]
 depexts: [
   ["clang"] {os-distribution = "debian"}
@@ -16,7 +22,3 @@ depexts: [
   ["clang"] {os-distribution = "ol"}
   ["clang"] {os-distribution = "arch"}
 ]
-synopsis: "Virtual package relying on clang"
-description:
-  "This package can only install if the clang binary is installed on the system."
-flags: conf

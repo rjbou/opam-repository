@@ -1,16 +1,18 @@
 opam-version: "2.0"
-maintainer: "fferre8@cs.cmgill.ca"
-build: [["omake" "NATIVE_ENABLED=true"]]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind"
-  ("extlib" | "extlib-compat")
-  "ulex"
-  "omake"
-  "ounit"
-]
+name: "beluga"
+version: "0.5"
 synopsis:
   "A Language for programming and reasoning using Higher-Order Abstract Syntax"
+maintainer: "fferre8@cs.cmgill.ca"
+depends: [
+  ("extlib" | "extlib-compat")
+  "ocaml" {< "4.02.0"}
+  "ocamlfind"
+  "omake"
+  "ounit"
+  "ulex"
+]
+build: ["omake" "NATIVE_ENABLED=true"]
 extra-files: ["beluga.install" "md5=a49e7c297536db228e125ee677e49c1d"]
 url {
   src: "http://complogic.cs.mcgill.ca/beluga/beluga-0.5-20130207.tar.gz"

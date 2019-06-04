@@ -1,34 +1,33 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/jst-config"
-bug-reports: "https://github.com/janestreet/jst-config/issues"
-dev-repo: "git+https://github.com/janestreet/jst-config.git"
-doc: "https://ocaml.janestreet.com/ocaml-core/latest/doc/jst-config/index.html"
-license: "MIT"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml"             {>= "4.04.2"}
-  "base"              {>= "v0.12" & < "v0.13"}
-  "ppx_assert"        {>= "v0.12" & < "v0.13"}
-  "stdio"             {>= "v0.12" & < "v0.13"}
-  "dune"              {build & >= "1.5.1"}
-]
-depopts: [
-  "base-native-int63"
-]
+name: "jst-config"
+version: "v0.12.0"
 synopsis: "Compile-time configuration for Jane Street libraries"
-description: "
+description: """
 Defines compile-time constants used in Jane Street libraries such as Base, Core, and
 Async.
 
 This package has an unstable interface; it is intended only to share configuration between
 different packages from Jane Street. Future updates may not be backward-compatible, and we
-do not recommend using this package directly.
-"
+do not recommend using this package directly."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "MIT"
+homepage: "https://github.com/janestreet/jst-config"
+doc:
+  "https://ocaml.janestreet.com/ocaml-core/latest/doc/jst-config/index.html"
+bug-reports: "https://github.com/janestreet/jst-config/issues"
+depends: [
+  "base" {>= "v0.12" & < "v0.13"}
+  "dune" {build & >= "1.5.1"}
+  "ocaml" {>= "4.04.2"}
+  "ppx_assert" {>= "v0.12" & < "v0.13"}
+  "stdio" {>= "v0.12" & < "v0.13"}
+]
+depopts: ["base-native-int63"]
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/jst-config.git"
 url {
-  src: "https://ocaml.janestreet.com/ocaml-core/v0.12/files/jst-config-v0.12.0.tar.gz"
+  src:
+    "https://ocaml.janestreet.com/ocaml-core/v0.12/files/jst-config-v0.12.0.tar.gz"
   checksum: "md5=c91b626b2187d29fade6d61d4413c735"
 }

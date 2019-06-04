@@ -1,32 +1,28 @@
 opam-version: "2.0"
 name: "nanomsg"
 version: "1.0"
-
+synopsis: "Ctypes based bindings to nanomsg"
 maintainer: "Vincent Bernardoff <vb@luminar.eu.org>"
 authors: [
-  "Vincent Bernardoff <vb@luminar.eu.org>"
   "Rudi Grinberg <rgrinberg@gmail.com>"
+  "Vincent Bernardoff <vb@luminar.eu.org>"
 ]
-
+license: "WTFPL"
 homepage: "http://github.com/rgrinberg/onanomsg"
 bug-reports: "http://github.com/rgrinberg/onanomsg/issues"
-dev-repo: "git://github.com/rgrinberg/onanomsg"
-license: "WTFPL"
-
 depends: [
-  "ocaml" {>= "4.02.0"}
   "conf-nanomsg"
-  "ocamlfind" {build}
+  "containers" {>= "0.7"}
   "ctypes" {>= "0.2"}
   "ctypes-foreign"
-  "containers" {>= "0.7"}
   "ipaddr" {>= "2.2.0"}
-  "ppx_deriving" {>= "1.0" & < "3.0"}
-  "ocamlbuild" {build}
   "lwt" {with-test}
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_deriving" {>= "1.0" & < "3.0"}
 ]
-depopts: [ "lwt" "ounit" ]
-
+depopts: ["lwt" "ounit"]
 install: [
   "ocaml"
   "pkg/build.ml"
@@ -35,7 +31,7 @@ install: [
   "lwt=%{lwt:installed}%"
   "ounit=%{ounit:installed}%"
 ]
-synopsis: "Ctypes based bindings to nanomsg"
+dev-repo: "git://github.com/rgrinberg/onanomsg"
 url {
   src: "http://github.com/rgrinberg/onanomsg/archive/1.0.tar.gz"
   checksum: "md5=5590f8df8accfc38e015032f794cca68"

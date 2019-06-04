@@ -1,16 +1,6 @@
 opam-version: "2.0"
-maintainer: "jeremie@dimino.org"
-homepage: "https://github.com/ocaml/camlp4"
-license: "LGPLv2"
-build: [
-  ["sh" "./make.sh"]
-]
-bug-reports: "https://github.com/ocaml/camlp4/issues"
-dev-repo: "git+https://github.com/ocaml/camlp4.git"
-depexts: [
-  ["camlp4-extra"] {os-distribution = "debian"}
-  ["camlp4-extra"] {os-distribution = "ubuntu"}
-]
+name: "camlp4"
+version: "4.01+system"
 synopsis:
   "Camlp4 is a system for writing extensible parsers for programming languages"
 description: """
@@ -22,10 +12,20 @@ the definition of domain-specific extensions of the syntax of OCaml.
 Camlp4 was part of the official OCaml distribution until its version 4.01.0.
 This package is therefore a dummy package that uses the existing camlp4
 from the compiler."""
+maintainer: "jeremie@dimino.org"
+license: "LGPLv2"
+homepage: "https://github.com/ocaml/camlp4"
+bug-reports: "https://github.com/ocaml/camlp4/issues"
 depends: [
   "ocaml" {< "4.02"}
   "ocaml-system"
 ]
+build: ["sh" "./make.sh"]
+depexts: [
+  ["camlp4-extra"] {os-distribution = "debian"}
+  ["camlp4-extra"] {os-distribution = "ubuntu"}
+]
+dev-repo: "git+https://github.com/ocaml/camlp4.git"
 url {
   src: "https://github.com/ocaml/camlp4/archive/system.1.tar.gz"
   checksum: "md5=c87c2e45b76d16f8ca7bbb5512eee981"

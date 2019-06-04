@@ -1,14 +1,42 @@
 opam-version: "2.0"
+name: "ketrew"
+version: "2.0.0"
+synopsis: "Ketrew: Keep Track of Experimental Workflows"
 maintainer: "seb@mondet.org"
-authors : [
-  "Sebastien Mondet <seb@mondet.org>"
-  "Leonid Rozenberg <leonidr@gmail.com>"
+authors: [
   "Ahuja <aahuja11@gmail.com>"
   "Jeff Hammerbacher <jeff.hammerbacher@gmail.com>"
+  "Leonid Rozenberg <leonidr@gmail.com>"
+  "Sebastien Mondet <seb@mondet.org>"
 ]
 homepage: "http://seb.mondet.org/software/ketrew"
-dev-repo: "git+https://github.com/hammerlab/ketrew.git"
 bug-reports: "https://github.com/hammerlab/ketrew/issues"
+depends: [
+  "cmdliner"
+  "cohttp" {>= "0.17.0" & < "0.99"}
+  "conduit"
+  "docout"
+  "js_of_ocaml" {>= "2.6" & < "3.0"}
+  "lwt" {< "2.5.0"}
+  "nonstd"
+  "ocaml" {>= "4.02.2"}
+  "ocamlfind"
+  "ocamlify"
+  "omake"
+  "ppx_deriving" {>= "3.0"}
+  "ppx_deriving_yojson" {>= "2.3" & <= "2.4"}
+  "pvem"
+  "pvem_lwt_unix"
+  "reactiveData"
+  "sosa"
+  "sqlite3"
+  "ssl"
+  "trakeva"
+  "tyxml" {<= "3.5.0"}
+  "uri"
+  "yojson"
+]
+flags: light-uninstall
 install: [
   ["omake"]
   ["omake" "install" "BINDIR=%{bin}%"]
@@ -18,33 +46,7 @@ remove: [
   ["ocamlfind" "remove" "ketrew_pure"]
   ["rm" "-f" "%{bin}%/ketrew"]
 ]
-depends: [
-  "ocaml" {>= "4.02.2"}
-  "omake"
-  "ocamlfind"
-  "ocamlify"
-  "trakeva"
-  "sqlite3"
-  "sosa"
-  "nonstd"
-  "docout"
-  "pvem"
-  "pvem_lwt_unix"
-  "cmdliner"
-  "yojson"
-  "uri"
-  "ppx_deriving" {>= "3.0"}
-  "ppx_deriving_yojson" {>= "2.3" & <= "2.4"}
-  "cohttp" {>= "0.17.0" & < "0.99"}
-  "lwt" {< "2.5.0"}
-  "ssl"
-  "conduit"
-  "js_of_ocaml" {>= "2.6" & < "3.0"}
-  "tyxml" {<= "3.5.0"}
-  "reactiveData"
-]
-synopsis: "Ketrew: Keep Track of Experimental Workflows"
-flags: light-uninstall
+dev-repo: "git+https://github.com/hammerlab/ketrew.git"
 url {
   src: "https://github.com/hammerlab/ketrew/archive/ketrew.2.0.0.tar.gz"
   checksum: "md5=e25c98359a4cd7de8fb8a3934a902aeb"

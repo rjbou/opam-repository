@@ -1,28 +1,6 @@
 opam-version: "2.0"
-maintainer: "dave@recoil.org"
-authors: ["Dave Scott" "Jon Ludlam"]
-tags: ["org:mirage" "org:xapi-project"]
-homepage: "https://github.com/mirage/ocaml-vhd"
-doc: "https://mirage.github.io/ocaml-vhd/"
-bug-reports: "https://github.com/mirage/ocaml-vhd/issues"
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "cstruct"
-  "lwt" {>= "3.2.0"}
-  "mirage-block"
-  "mirage-types-lwt" {>= "3.0.0"}
-  "ounit"
-  "vhd-format"
-  "io-page-unix" {with-test}
-  "dune" {build & >= "1.0"}
-]
-available: os = "linux" | os = "macos"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depexts: ["linux-headers"] {os-distribution = "alpine"}
-dev-repo: "git+https://github.com/mirage/ocaml-vhd.git"
+name: "vhd-format-lwt"
+version: "0.12.0"
 synopsis: "Lwt interface to read/write VHD format data"
 description: """
 A pure OCaml library to read and write
@@ -31,8 +9,31 @@ simple command-line tool which allows vhd files to be interrogated,
 manipulated, format-converted and streamed to and from files and remote
 servers.
 
-This package provides an Lwt compatible interface to the library.
-"""
+This package provides an Lwt compatible interface to the library."""
+maintainer: "dave@recoil.org"
+authors: ["Dave Scott" "Jon Ludlam"]
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/ocaml-vhd"
+doc: "https://mirage.github.io/ocaml-vhd/"
+bug-reports: "https://github.com/mirage/ocaml-vhd/issues"
+depends: [
+  "cstruct"
+  "dune" {build & >= "1.0"}
+  "io-page-unix" {with-test}
+  "lwt" {>= "3.2.0"}
+  "mirage-block"
+  "mirage-types-lwt" {>= "3.0.0"}
+  "ocaml" {>= "4.02.3"}
+  "ounit"
+  "vhd-format"
+]
+available: os = "linux" | os = "macos"
+build: [
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+depexts: ["linux-headers"] {os-distribution = "alpine"}
+dev-repo: "git+https://github.com/mirage/ocaml-vhd.git"
 url {
   src:
     "https://github.com/mirage/ocaml-vhd/releases/download/v0.12.0/vhd-format-v0.12.0.tbz"

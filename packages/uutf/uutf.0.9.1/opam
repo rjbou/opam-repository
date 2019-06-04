@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "opam-devel@lists.ocaml.org"
-authors: ["Daniel Bünzli <daniel.buenzli at erratique.ch>"]
-homepage: "http://erratique.ch/software/uutf"
-license: "BSD3"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "uutf"]]
-depends: [
-  "ocaml" {>= "3.12.0" & < "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "uutf"
+version: "0.9.1"
 synopsis: "Non-blocking streaming Unicode codec for OCaml"
 description: """
 Uutf is a non-blocking streaming codec to decode and encode the UTF-8,
@@ -27,7 +14,22 @@ Buffer.t values.
 
 Uutf is made of a single, independent, module and distributed under
 the BSD3 license."""
+maintainer: "opam-devel@lists.ocaml.org"
+authors: "Daniel Bünzli <daniel.buenzli at erratique.ch>"
+license: "BSD3"
+homepage: "http://erratique.ch/software/uutf"
+depends: [
+  "ocaml" {>= "3.12.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "uutf"]
 extra-files: ["uutf.install" "md5=e4f5a72fa18c9a166d6600172541c57f"]
 url {
   src: "http://erratique.ch/software/uutf/releases/uutf-0.9.1.tbz"

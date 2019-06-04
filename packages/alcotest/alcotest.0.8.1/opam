@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "thomas@gazagnaire.org"
-authors:     "Thomas Gazagnaire"
-homepage:    "https://github.com/mirage/alcotest/"
-dev-repo: "git+https://github.com/mirage/alcotest.git"
-bug-reports: "https://github.com/mirage/alcotest/issues/"
-license:     "ISC"
-doc:         "https://mirage.github.io/alcotest/"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "jbuilder" {build & >= "1.0+beta10"}
-  "fmt" {>= "0.8.0"}
-  "astring"
-  "result"
-  "cmdliner"
-]
+name: "alcotest"
+version: "0.8.1"
 synopsis:
   "Logo](https://raw.githubusercontent.com/mirage/alcotest/master/alcotest-logo.png)"
 description: """
@@ -82,6 +63,26 @@ Test Successful in 0.001s. 2 tests run.
 
 See the [examples](https://github.com/mirage/alcotest/tree/master/examples)
 folder for more examples."""
+maintainer: "thomas@gazagnaire.org"
+authors: "Thomas Gazagnaire"
+license: "ISC"
+homepage: "https://github.com/mirage/alcotest/"
+doc: "https://mirage.github.io/alcotest/"
+bug-reports: "https://github.com/mirage/alcotest/issues/"
+depends: [
+  "astring"
+  "cmdliner"
+  "fmt" {>= "0.8.0"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml" {>= "4.02.3"}
+  "result"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/alcotest.git"
 url {
   src:
     "https://github.com/mirage/alcotest/releases/download/0.8.1/alcotest-0.8.1.tbz"

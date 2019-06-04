@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer:   "anil@recoil.org"
-authors:      ["Anil Madhavapeddy" "Thomas Gazagnaire"]
-homepage:     "https://github.com/mirage/ocaml-crunch"
-bug-reports:  "https://github.com/mirage/ocaml-crunch/issues"
-license:      "ISC"
-dev-repo: "git+https://github.com/mirage/ocaml-crunch.git"
-tags:         ["org:mirage" "org:xapi-project"]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "cmdliner"
-  "jbuilder" {build & >= "1.0+beta10"}
-  "cstruct" {with-test}
-  "lwt" {with-test}
-  "mirage-kv-lwt" {with-test & >= "1.0.0" & < "2.0.0"}
-  "io-page-unix" {with-test}
-]
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
+name: "crunch"
+version: "2.1.0"
 synopsis: "Convert a filesystem into a static OCaml module"
 description: """
 `ocaml-crunch` takes a directory of files and compiles them into a standalone
@@ -63,6 +44,27 @@ OPTIONS
 BUGS
        Email bug reports to <mirage-devel@lists.xenproject.org>.
 ```"""
+maintainer: "anil@recoil.org"
+authors: ["Anil Madhavapeddy" "Thomas Gazagnaire"]
+license: "ISC"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/ocaml-crunch"
+bug-reports: "https://github.com/mirage/ocaml-crunch/issues"
+depends: [
+  "cmdliner"
+  "cstruct" {with-test}
+  "io-page-unix" {with-test}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "lwt" {with-test}
+  "mirage-kv-lwt" {with-test & >= "1.0.0" & < "2.0.0"}
+  "ocaml" {>= "4.03.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/ocaml-crunch.git"
 url {
   src:
     "https://github.com/mirage/ocaml-crunch/releases/download/v2.1.0/crunch-2.1.0.tbz"

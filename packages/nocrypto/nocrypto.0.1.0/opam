@@ -1,31 +1,31 @@
 opam-version: "2.0"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [
-  ["ocamlfind" "remove" "nocrypto"]
-]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.02.0"}
-  "ocamlfind" {build}
-  "cstruct" {>= "1.2.0"}
-  "zarith"
-  "sexplib" {< "113.01.00"}
-  "type_conv"
-  "camlp4" {build}
-  "ocamlbuild" {build}
-]
-tags: [ "org:mirage"]
-dev-repo: "git://github.com/mirleft/ocaml-nocrypto"
-install: ["ocaml" "setup.ml" "-install"]
+name: "nocrypto"
+version: "0.1.0"
 synopsis: "Small functional-style crypto library."
 description: """
 Ciphers: AES, 3DES, RC4.
 Hashes: MD5, SHA1, SHA2.
 Pubkey: RSA, DH.
 Rng: Fortuna."""
+tags: "org:mirage"
+depends: [
+  "camlp4" {build}
+  "cstruct" {>= "1.2.0"}
+  "ocaml" {>= "4.01.0" & < "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "sexplib" {< "113.01.00"}
+  "type_conv"
+  "zarith"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "nocrypto"]
+dev-repo: "git://github.com/mirleft/ocaml-nocrypto"
 url {
   src: "https://github.com/mirleft/ocaml-nocrypto/archive/0.1.0.tar.gz"
   checksum: "md5=5685748db4f1025325e8fb96b169d317"

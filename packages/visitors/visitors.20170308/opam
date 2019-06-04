@@ -1,31 +1,25 @@
 opam-version: "2.0"
-maintainer: "francois.pottier@inria.fr"
-authors: [
-  "François Pottier <francois.pottier@inria.fr>"
-]
-homepage: "https://gitlab.inria.fr/fpottier/visitors"
-dev-repo: "git+https://gitlab.inria.fr/fpottier/visitors.git"
-bug-reports: "francois.pottier@inria.fr"
-build: [
-  [make]
-]
-install: [
-  [make "install"]
-]
-remove: [
-  [make "uninstall"]
-]
-depends: [
-  "ocaml" {>= "4.03" & < "4.05"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "ppx_tools"
-  "ppx_deriving" {>= "4.0"}
-]
+name: "visitors"
+version: "20170308"
 synopsis:
   "An OCaml syntax extension (technically, a ppx_deriving plugin) which generates"
 description:
   "object-oriented visitors for traversing and transforming data structures."
+maintainer: "francois.pottier@inria.fr"
+authors: "François Pottier <francois.pottier@inria.fr>"
+homepage: "https://gitlab.inria.fr/fpottier/visitors"
+bug-reports: "francois.pottier@inria.fr"
+depends: [
+  "ocaml" {>= "4.03" & < "4.05"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ppx_deriving" {>= "4.0"}
+  "ppx_tools"
+]
+build: make
+install: [make "install"]
+remove: [make "uninstall"]
+dev-repo: "git+https://gitlab.inria.fr/fpottier/visitors.git"
 url {
   src: "http://gallium.inria.fr/~fpottier/visitors/visitors-20170308.tar.gz"
   checksum: "md5=68a637eaeef994ac0b2584cef4189b47"

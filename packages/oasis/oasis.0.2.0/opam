@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: [
-  ["rm" "test/TestMETA.ml"]
-  ["touch" "test/TestMETA.ml"]
-  ["rm" "test/test.ml"]
-  ["touch" "test/test.ml"]
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-depends: [
-  "ocaml" {< "4.00.0"}
-  "ocamlfind" {build}
-  "extlib" {= "1.5.3"}
-  "ocamlgraph" {= "1.8.2"}
-  "fileutils"
-  "ocamlify"
-  "ounit"
-  "ocaml-data-notation"
-  "pcre"
-  "expect"
-  "ocamlbuild"
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "oasis"
+version: "0.2.0"
 synopsis: "Architecture for building OCaml libraries and applications"
 description: """
 OASIS is a tool to integrate a configure, build and install system in
@@ -30,6 +9,29 @@ build system and allows external tools to analyse your project easily.
 
 OASIS first target is OCamlbuild, but other build system support is
 planned."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "expect"
+  "extlib" {= "1.5.3"}
+  "fileutils"
+  "ocaml" {< "4.00.0"}
+  "ocaml-data-notation"
+  "ocamlbuild"
+  "ocamlfind" {build}
+  "ocamlgraph" {= "1.8.2"}
+  "ocamlify"
+  "ounit"
+  "pcre"
+]
+build: [
+  ["rm" "test/TestMETA.ml"]
+  ["touch" "test/TestMETA.ml"]
+  ["rm" "test/test.ml"]
+  ["touch" "test/test.ml"]
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
 extra-files: ["oasis.install" "md5=5d129946ad00d0240a82059d956d0659"]
 url {
   src: "https://download.ocamlcore.org/oasis/oasis/0.2.0/oasis-0.2.0.tar.gz"

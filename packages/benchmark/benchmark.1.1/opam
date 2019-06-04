@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "benchmark"
+version: "1.1"
+synopsis: "Benchmark running times of code"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "oasis" {>= "0.3.0"}
+  "ocaml" {< "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "pcre"
+]
+flags: light-uninstall
 build: [
   ["rm" "setup.ml"] {ocaml:version >= "4.00.0"}
   ["oasis" "setup"] {ocaml:version >= "4.00.0"}
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "benchmark"]]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind"
-  "pcre"
-  "oasis" {>= "0.3.0"}
-  "ocamlbuild" {build}
-]
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Benchmark running times of code"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "benchmark"]
 url {
   src:
     "https://download.ocamlcore.org/ocaml-benchmark/ocaml-benchmark/1.1/benchmark-1.1.tar.gz"

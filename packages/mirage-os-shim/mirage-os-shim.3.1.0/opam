@@ -1,35 +1,6 @@
 opam-version: "2.0"
-maintainer: "mirageos-devel"
-authors: ["David Kaloper Meršinjak <david@numm.org>"]
-homepage: "https://github.com/mirage/mirage-os-shim"
-doc: "https://mirage.github.io/mirage-os-shim/doc"
-license: "ISC"
-dev-repo: "git+https://github.com/mirage/mirage-os-shim.git"
-bug-reports: "https://github.com/mirage/mirage-os-shim/issues"
-tags: []
-build: [
-  "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"
-          "--with-mirage-unix" "%{mirage-unix:installed}%"
-          "--with-mirage-xen" "%{mirage-xen:installed}%"
-          "--with-mirage-solo5" "%{mirage-solo5:installed}%"
-]
-depends: [
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "ocaml" {>= "4.04.0"}
-  "lwt"
-]
-depopts: [
-  "mirage-solo5"
-  "mirage-xen"
-  "mirage-unix"
-]
-conflicts: [
-  "mirage-unix" {< "3.1.0"}
-  "mirage-xen" {< "3.1.0"}
-  "mirage-solo5" {< "0.5.0"}
-]
+name: "mirage-os-shim"
+version: "3.1.0"
 synopsis: "Portable shim for MirageOS OS API"
 description: """
 mirage-os-shim is the intersection of the Mirage OS APIs exported under the `OS`
@@ -47,10 +18,44 @@ When using `ocamlbuild`, this is
 
 **WARNING** Direct access to the `OS` interface is largely deprecated. The
 interface is pretty volatile. It is highly likely that you, in fact, do not need
-this package at all.
-"""
-
+this package at all."""
+maintainer: "mirageos-devel"
+authors: "David Kaloper Meršinjak <david@numm.org>"
+license: "ISC"
+homepage: "https://github.com/mirage/mirage-os-shim"
+doc: "https://mirage.github.io/mirage-os-shim/doc"
+bug-reports: "https://github.com/mirage/mirage-os-shim/issues"
+depends: [
+  "lwt"
+  "ocaml" {>= "4.04.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+depopts: ["mirage-solo5" "mirage-unix" "mirage-xen"]
+conflicts: [
+  "mirage-solo5" {< "0.5.0"}
+  "mirage-unix" {< "3.1.0"}
+  "mirage-xen" {< "3.1.0"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--tests"
+  "false"
+  "--with-mirage-unix"
+  "%{mirage-unix:installed}%"
+  "--with-mirage-xen"
+  "%{mirage-xen:installed}%"
+  "--with-mirage-solo5"
+  "%{mirage-solo5:installed}%"
+]
+dev-repo: "git+https://github.com/mirage/mirage-os-shim.git"
 url {
-archive: "https://github.com/mirage/mirage-os-shim/releases/download/v3.1.0/mirage-os-shim-3.1.0.tbz"
-checksum: "3858cf40ab6cf906d47f3e78d8cd40f9"
+  src:
+    "https://github.com/mirage/mirage-os-shim/releases/download/v3.1.0/mirage-os-shim-3.1.0.tbz"
+  checksum: "md5=3858cf40ab6cf906d47f3e78d8cd40f9"
 }

@@ -1,36 +1,32 @@
 opam-version: "2.0"
+name: "pkcs11-driver"
+version: "0.18.0"
+synopsis: "Bindings to the PKCS#11 cryptographic API"
+description: "This library contains ctypes bindings to the PKCS#11 API."
 maintainer: "Nathan Rebours <nathan@cryptosense.com>"
 authors: "Etienne Millon <etienne@cryptosense.com>"
-homepage: "https://github.com/cryptosense/pkcs11"
-bug-reports: "https://github.com/cryptosense/pkcs11/issues"
 license: "BSD-2"
-dev-repo: "git+https://github.com/cryptosense/pkcs11.git"
+tags: "org:cryptosense"
+homepage: "https://github.com/cryptosense/pkcs11"
 doc: "https://cryptosense.github.io/pkcs11/doc"
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
-run-test: [
-  ["dune" "runtest" "-p" name "-j" jobs]
-]
+bug-reports: "https://github.com/cryptosense/pkcs11/issues"
 depends: [
   "ctypes"
   "ctypes-foreign"
   "dune" {build & >= "1.3.0"}
-  "pkcs11" {>= "0.18.0"}
-  "ppx_deriving" { >= "4.0" }
-  "ppx_deriving_yojson" { >= "3.0" }
   "ocaml" {>= "4.04.0"}
   "ounit" {with-test}
+  "pkcs11" {>= "0.18.0"}
+  "ppx_deriving" {>= "4.0"}
+  "ppx_deriving_yojson" {>= "3.0"}
 ]
 conflicts: [
-  "ctypes" { < "0.12.0" }
+  "ctypes" {< "0.12.0"}
 ]
-tags: ["org:cryptosense"]
-available: [os != "macos"]
-synopsis: "Bindings to the PKCS#11 cryptographic API"
-description: """
-This library contains ctypes bindings to the PKCS#11 API.
-"""
+available: os != "macos"
+build: ["dune" "build" "-p" name "-j" jobs]
+run-test: ["dune" "runtest" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/cryptosense/pkcs11.git"
 url {
   src:
     "https://github.com/cryptosense/pkcs11/releases/download/v0.18.0/pkcs11-v0.18.0.tbz"

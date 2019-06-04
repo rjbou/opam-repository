@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "stdcompat"
+version: "9"
 synopsis: "Compatibility module for OCaml standard library"
 description:
   "Compatibility module for OCaml standard library allowing programs to use some recent additions to the OCaml standard library while preserving the ability to be compiled on former versions of OCaml."
@@ -10,7 +12,7 @@ bug-reports: "https://github.com/thierry-martinez/stdcompat/issues"
 depends: [
   "ocaml" {>= "3.07" & < "4.09.0"}
 ]
-depopts: ["result" "seq" "uchar" "ocamlfind"]
+depopts: ["ocamlfind" "result" "seq" "uchar"]
 build: [
   ["./configure" "--prefix=%{prefix}%"]
   [make]

@@ -1,31 +1,6 @@
 opam-version: "2.0"
-name:         "uuuu"
-maintainer:   "Romain Calascibetta <romain.calascibetta@gmail.com>"
-authors:      "Romain Calascibetta <romain.calascibetta@gmail.com>"
-homepage:     "https://github.com/dinosaure/uuuu"
-bug-reports:  "https://github.com/dinosaure/uuuu/issues"
-dev-repo: "git+https://github.com/dinosaure/uuuu.git"
-doc:          "https://dinosaure.github.io/uuuu/"
-license:      "MIT"
-
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "jbuilder" {build}
-  "re" {>= "1.7.2"}
-  "fmt"
-  "bos"
-  "uutf"
-  "ptmap"
-  "menhir"
-  "rresult"
-  "angstrom"
-  "cmdliner"
-]
+name: "uuuu"
+version: "0.1.0"
 synopsis: "[Uuuu](https://www.youtube.com/watch?v=jjD9WzW6dK4)"
 description: """
 ---------------------------------------------------
@@ -37,6 +12,31 @@ https://ftp.unicode.org/Public/MAPPINGS/ISO8859/
 
 This project takes tables and converts them to OCaml code. Then, it provides a
 non-blocking decoder to translate ISO-8859 codepoint to UTF-8 codepoint."""
+maintainer: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+authors: "Romain Calascibetta <romain.calascibetta@gmail.com>"
+license: "MIT"
+homepage: "https://github.com/dinosaure/uuuu"
+doc: "https://dinosaure.github.io/uuuu/"
+bug-reports: "https://github.com/dinosaure/uuuu/issues"
+depends: [
+  "angstrom"
+  "bos"
+  "cmdliner"
+  "fmt"
+  "jbuilder" {build}
+  "menhir"
+  "ocaml" {>= "4.03.0"}
+  "ptmap"
+  "re" {>= "1.7.2"}
+  "rresult"
+  "uutf"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/dinosaure/uuuu.git"
 url {
   src:
     "https://github.com/dinosaure/uuuu/releases/download/v0.1.0/uuuu-0.1.0.tbz"

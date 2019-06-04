@@ -1,10 +1,32 @@
 opam-version: "2.0"
+name: "utop"
+version: "1.19.2"
+synopsis: "Universal toplevel for OCaml"
+description: """
+utop is an improved toplevel for OCaml. It can run in a terminal or in
+Emacs. It supports line edition, history, real-time and context
+sensitive completion, colors, and more.
+
+It integrates with the tuareg mode in Emacs."""
 maintainer: "jeremie@dimino.org"
-authors: ["Jérémie Dimino"]
+authors: "Jérémie Dimino"
 license: "BSD3"
 homepage: "https://github.com/diml/utop"
 bug-reports: "https://github.com/diml/utop/issues"
-dev-repo: "git://github.com/diml/utop.git"
+depends: [
+  "base-threads"
+  "base-unix"
+  "cppo" {>= "1.1.2"}
+  "cppo_ocamlbuild" {build}
+  "lambda-term" {>= "1.9" & < "2.0"}
+  "lwt"
+  "ocaml" {>= "4.01" & < "4.04"}
+  "ocamlbuild" {build}
+  "ocamlfind" {>= "1.5.6"}
+  "react" {>= "1.0.0"}
+]
+depopts: ["camlp4" "ppx_tools"]
+flags: light-uninstall
 build: [
   [
     "./configure"
@@ -16,36 +38,9 @@ build: [
   [make]
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
-install: [
-  [make "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "utop"]
-]
-depends: [
-  "ocaml" {>= "4.01" & < "4.04"}
-  "base-unix"
-  "base-threads"
-  "ocamlfind" {>= "1.5.6"}
-  "lambda-term" {>= "1.9" & < "2.0"}
-  "lwt"
-  "react" {>= "1.0.0"}
-  "cppo" {>= "1.1.2"}
-  "ocamlbuild" {build}
-  "cppo_ocamlbuild" {build}
-]
-depopts: [
-  "camlp4"
-  "ppx_tools"
-]
-synopsis: "Universal toplevel for OCaml"
-description: """
-utop is an improved toplevel for OCaml. It can run in a terminal or in
-Emacs. It supports line edition, history, real-time and context
-sensitive completion, colors, and more.
-
-It integrates with the tuareg mode in Emacs."""
-flags: light-uninstall
+install: [make "install"]
+remove: ["ocamlfind" "remove" "utop"]
+dev-repo: "git://github.com/diml/utop.git"
 extra-files: ["utop.install" "md5=f8911fcea9ad6a7bb58b0808446c9fa2"]
 url {
   src: "https://github.com/diml/utop/archive/1.19.2.tar.gz"

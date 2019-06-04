@@ -1,26 +1,24 @@
 opam-version: "2.0"
-maintainer: "martin@mjambon.com"
-authors: ["Martin Jambon"]
-
-homepage: "https://github.com/mjambon/biniou"
-bug-reports: "https://github.com/mjambon/biniou/issues"
-dev-repo: "git+https://github.com/mjambon/biniou.git"
-license: "BSD-3-Clause"
-
-build: make
-remove: [["ocamlfind" "remove" "biniou"]]
-depends: [
-  "ocaml" {>= "4.00" & < "4.06.0"}
-  "conf-which" {build}
-  "ocamlfind"
-  "easy-format"
-]
-install: [make "install" "BINDIR=%{bin}%"]
-
-# -bin-annot flag is used unconditionally, requiring ocaml >= 4.xx
+name: "biniou"
+version: "1.0.12"
 synopsis:
   "Binary data format designed for speed, safety, ease of use and backward compatibility as protocols evolve"
+maintainer: "martin@mjambon.com"
+authors: "Martin Jambon"
+license: "BSD-3-Clause"
+homepage: "https://github.com/mjambon/biniou"
+bug-reports: "https://github.com/mjambon/biniou/issues"
+depends: [
+  "conf-which" {build}
+  "easy-format"
+  "ocaml" {>= "4.00" & < "4.06.0"}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: make
+install: [make "install" "BINDIR=%{bin}%"]
+remove: ["ocamlfind" "remove" "biniou"]
+dev-repo: "git+https://github.com/mjambon/biniou.git"
 extra-files: ["biniou.install" "md5=c34aebd8172d5fc4cd99202e2f5a2063"]
 url {
   src: "https://github.com/mjambon/biniou/archive/v1.0.12.tar.gz"

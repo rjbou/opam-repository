@@ -1,5 +1,15 @@
 opam-version: "2.0"
+name: "coq"
+version: "8.3"
+synopsis: "Formal proof management system"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "camlp5" {!= "5.00"}
+  "num"
+  "ocaml" {>= "3.10.2" & < "4.02.0"}
+  "ocamlbuild" {build}
+]
+depopts: ["lablgtk"]
 build: [
   [
     "./configure"
@@ -12,19 +22,11 @@ build: [
   ]
   [make "-j%{jobs}%" "world"]
 ]
-depends: [
-  "ocaml" {>= "3.10.2" & < "4.02.0"}
-  "camlp5" {!= "5.00"}
-  "ocamlbuild" {build}
-  "num"
-]
-depopts: ["lablgtk"]
-patches: ["configure.patch"]
 install: [make "install"]
-synopsis: "Formal proof management system"
+patches: "configure.patch"
 extra-files: [
-  ["coq.install" "md5=90aa43dcd6bdeb615b19364fe1c72dfb"]
   ["configure.patch" "md5=57538c85ccec8ae97e06ae3b6697cf0e"]
+  ["coq.install" "md5=90aa43dcd6bdeb615b19364fe1c72dfb"]
 ]
 url {
   src: "http://coq.inria.fr/distrib/V8.3pl5/files/coq-8.3pl5.tar.gz"

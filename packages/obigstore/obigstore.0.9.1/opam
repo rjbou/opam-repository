@@ -1,31 +1,6 @@
 opam-version: "2.0"
-maintainer: "mfp@acm.org"
-homepage: "https://github.com/mfp/obigstore"
-license: "LGPL + static linking exception"
-doc: ["https://github.com/mfp/obigstore/blob/master/README.md"]
-build: [
-  ["omake" "-j9"]
-  ["omake" "test"] {with-test & "%{ounit:installed}"}
-]
-remove: [
-  ["ocamlfind" "remove" "obigstore"]
-  ["rm" "-f" "%{bin}%/obigstore" "%{bin}%/obigstore.exe" "%{bin}%/ob_repl" "%{bin}%/ob_repl.exe" "%{bin}%/ob_load" "%{bin}%/ob_load.exe" "%{bin}%/ob_dump" "%{bin}%/ob_dump.exe" ]
-]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "batteries"
-  "cryptokit"
-  "leveldb"
-  "extprot" {< "1.1.2"}
-  "lwt" {< "2.4.7"}
-  "omake" {build & < "0.10.0"}
-  "num"
-  "ounit"
-]
-patches: [ "obigstore-unset-warn-error.diff" ]
-dev-repo: "git://github.com/mfp/obigstore"
-install: ["omake" "install" "prefix=%{prefix}%"]
+name: "obigstore"
+version: "0.9.1"
 synopsis: "Client/server + embeddable semi-structured database."
 description: """
 obigstore is a database server + client library and associated tools. It
@@ -69,7 +44,45 @@ Limitations
 * transactions must fit in memory
 * sharding on key ranges is not built-in at this point
 * no automatic failover yet"""
+maintainer: "mfp@acm.org"
+license: "LGPL + static linking exception"
+homepage: "https://github.com/mfp/obigstore"
+doc: "https://github.com/mfp/obigstore/blob/master/README.md"
+depends: [
+  "batteries"
+  "cryptokit"
+  "extprot" {< "1.1.2"}
+  "leveldb"
+  "lwt" {< "2.4.7"}
+  "num"
+  "ocaml"
+  "ocamlfind" {build}
+  "omake" {build & < "0.10.0"}
+  "ounit"
+]
 flags: light-uninstall
+build: [
+  ["omake" "-j9"]
+  ["omake" "test"] {with-test & "%{ounit:installed}"}
+]
+install: ["omake" "install" "prefix=%{prefix}%"]
+remove: [
+  ["ocamlfind" "remove" "obigstore"]
+  [
+    "rm"
+    "-f"
+    "%{bin}%/obigstore"
+    "%{bin}%/obigstore.exe"
+    "%{bin}%/ob_repl"
+    "%{bin}%/ob_repl.exe"
+    "%{bin}%/ob_load"
+    "%{bin}%/ob_load.exe"
+    "%{bin}%/ob_dump"
+    "%{bin}%/ob_dump.exe"
+  ]
+]
+patches: "obigstore-unset-warn-error.diff"
+dev-repo: "git://github.com/mfp/obigstore"
 extra-files: [
   "obigstore-unset-warn-error.diff" "md5=db739e64dbffece2df490265195baef8"
 ]

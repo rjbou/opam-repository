@@ -1,14 +1,16 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.05.0+musl+static+flambda"
 synopsis:
   "Official 4.05.0 release compiled with musl-clang -static and with flambda activated"
 description:
   "Requires musl-clang to be installed (package musl on Arch Linux or musl-tools on Debian)"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.05.0" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
   "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.05.0" & post}
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler

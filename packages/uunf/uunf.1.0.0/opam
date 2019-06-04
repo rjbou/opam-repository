@@ -1,30 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/uunf"
-doc: "http://erratique.ch/software/uunf/doc/Uunf"
-dev-repo: "git+http://erratique.ch/repos/uunf.git"
-bug-reports: "https://github.com/dbuenzli/uunf/issues"
-tags: [ "unicode" "text" "normalization" "org:erratique" ]
-license: "BSD3"
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.06.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-]
-depopts: [ "uutf" "cmdliner" ]
-conflicts: [
-  "uutf" {!= "0.9.4"}
-]
-build: ["ocaml" "pkg/git.ml"]
-install: [
-  "ocaml"
-  "pkg/build.ml"
-  "native=%{ocaml:native}%"
-  "native-dynlink=%{ocaml:native-dynlink}%"
-  "uutf=%{uutf:installed}%"
-  "cmdliner=%{cmdliner:installed}%"
-]
+name: "uunf"
+version: "1.0.0"
 synopsis: "Unicode text normalization for OCaml"
 description: """
 Uunf is an OCaml library for normalizing Unicode text. It supports all
@@ -38,6 +14,32 @@ BSD3 license.
 
 [1]: http://www.unicode.org/reports/tr15/
 [2]: http://erratique.ch/software/uutf"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "BSD3"
+tags: ["normalization" "org:erratique" "text" "unicode"]
+homepage: "http://erratique.ch/software/uunf"
+doc: "http://erratique.ch/software/uunf/doc/Uunf"
+bug-reports: "https://github.com/dbuenzli/uunf/issues"
+depends: [
+  "ocaml" {>= "4.01.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+depopts: ["cmdliner" "uutf"]
+conflicts: [
+  "uutf" {!= "0.9.4"}
+]
+build: ["ocaml" "pkg/git.ml"]
+install: [
+  "ocaml"
+  "pkg/build.ml"
+  "native=%{ocaml:native}%"
+  "native-dynlink=%{ocaml:native-dynlink}%"
+  "uutf=%{uutf:installed}%"
+  "cmdliner=%{cmdliner:installed}%"
+]
+dev-repo: "git+http://erratique.ch/repos/uunf.git"
 url {
   src: "http://erratique.ch/software/uunf/releases/uunf-1.0.0.tbz"
   checksum: "md5=019a0f195dc59f1a9befb2857544e16a"

@@ -1,12 +1,14 @@
 opam-version: "2.0"
-maintainer: "martin@mjambon.com"
-build: make
-remove: [["ocamlfind" "remove" "ocamlscript"]]
-depends: ["ocaml" "ocamlfind" "camlp4"]
-dev-repo: "git://github.com/mjambon/ocamlscript"
-install: [make "install"]
+name: "ocamlscript"
+version: "2.0.4"
 synopsis: "Tool which compiles OCaml scripts into native code"
+maintainer: "martin@mjambon.com"
+depends: ["camlp4" "ocaml" "ocamlfind"]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "ocamlscript"]
+dev-repo: "git://github.com/mjambon/ocamlscript"
 extra-files: ["ocamlscript.install" "md5=93f5b87f6dfcf2ddca580fd6b506e3d6"]
 url {
   src: "https://github.com/mjambon/ocamlscript/archive/v2.0.4.tar.gz"

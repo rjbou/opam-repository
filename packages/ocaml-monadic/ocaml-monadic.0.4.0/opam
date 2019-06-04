@@ -1,24 +1,26 @@
 opam-version: "2.0"
-maintainer: "JHU PL Lab <pl.cs@jhu.edu>"
-authors: [ "JHU PL Lab <pl.cs@jhu.edu>" ]
-license: "BSD-3-clause"
-homepage: "http://github.com/zepalmer/ocaml-monadic"
-dev-repo: "git+https://github.com/zepalmer/ocaml-monadic.git"
-bug-reports: "https://github.com/zepalmer/ocaml-monadic/issues"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.04.0"}
-  "jbuilder" {build & >= "1.0+beta17"}
-  "ocaml-migrate-parsetree"
-  "ppx_tools_versioned"
-]
+name: "ocaml-monadic"
+version: "0.4.0"
 synopsis: "OCaml monadic syntax extensions"
 description: """
 A simple PPX language extension to include monadic operations that
 blend nicely with OCaml syntax."""
+maintainer: "JHU PL Lab <pl.cs@jhu.edu>"
+authors: "JHU PL Lab <pl.cs@jhu.edu>"
+license: "BSD-3-clause"
+homepage: "http://github.com/zepalmer/ocaml-monadic"
+bug-reports: "https://github.com/zepalmer/ocaml-monadic/issues"
+depends: [
+  "jbuilder" {build & >= "1.0+beta17"}
+  "ocaml" {>= "4.04.0"}
+  "ocaml-migrate-parsetree"
+  "ppx_tools_versioned"
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/zepalmer/ocaml-monadic.git"
 url {
   src:
     "https://github.com/zepalmer/ocaml-monadic/archive/affad91aeae24a41f088465d9c3ebe0fbc69fa73.zip"

@@ -1,21 +1,23 @@
 opam-version: "2.0"
-maintainer: "Steve Bleazard <stevebleazard@googlemail.com>"
-authors: "Steve Bleazard <stevebleazard@googlemail.com>"
-homepage: "https://www.github.com/stevebleazard/ocaml-conf-numa"
-bug-reports: "https://www.github.com/stevebleazard/ocaml-conf-numa/issues"
-license: "MIT"
-dev-repo: "git+https://www.github.com/stevebleazard/ocaml-conf-numa.git"
-depexts: [
-  ["libnuma-dev"] {os-distribution = "debian"}
-  ["libnuma-dev"] {os-distribution = "ubuntu"}
-  ["numactl-libs" "numactl-devel"] {os-distribution = "centos"}
-  ["numactl-libs" "numactl-devel"] {os-distribution = "fedora"}
-  ["libnuma-devel"] {os-family = "suse"}
-  ["libnuma-dev"] {os-distribution = "alpine"}
-]
-available: os != "macos" & os != "freebsd" & os != "openbsd"
+name: "conf-numa"
+version: "0.1.0"
 synopsis: "Package relying on libnuma"
 description: """
 Virtual package relying on a libnuma system installation.
 This package can only install if the libnuma lib is installed on the system."""
+maintainer: "Steve Bleazard <stevebleazard@googlemail.com>"
+authors: "Steve Bleazard <stevebleazard@googlemail.com>"
+license: "MIT"
+homepage: "https://www.github.com/stevebleazard/ocaml-conf-numa"
+bug-reports: "https://www.github.com/stevebleazard/ocaml-conf-numa/issues"
+available: os != "macos" & os != "freebsd" & os != "openbsd"
 flags: conf
+depexts: [
+  ["libnuma-dev"] {os-distribution = "debian"}
+  ["libnuma-dev"] {os-distribution = "ubuntu"}
+  ["libnuma-dev"] {os-distribution = "alpine"}
+  ["libnuma-devel"] {os-family = "suse"}
+  ["numactl-libs" "numactl-devel"] {os-distribution = "centos"}
+  ["numactl-libs" "numactl-devel"] {os-distribution = "fedora"}
+]
+dev-repo: "git+https://www.github.com/stevebleazard/ocaml-conf-numa.git"

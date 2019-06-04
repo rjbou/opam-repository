@@ -1,19 +1,6 @@
 opam-version: "2.0"
-maintainer: "opam-devel@lists.ocaml.org"
-authors: ["Daniel Bünzli <daniel.buenzli at erratique.ch>"]
-homepage: "http://erratique.ch/software/xmlm"
-license: "BSD3"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-]
-remove: [["ocamlfind" "remove" "xmlm"]]
-depends: [
-  "ocaml" {>= "3.10.0" & < "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "xmlm"
+version: "1.1.1"
 synopsis: "Streaming XML IO for OCaml"
 description: """
 Xmlm is an OCaml module for streaming XML IO. It aims at making XML
@@ -25,7 +12,22 @@ data structures to/from XML documents.
 
 Xmlm is made of a single independent module and distributed under the
 BSD3 license."""
+maintainer: "opam-devel@lists.ocaml.org"
+authors: "Daniel Bünzli <daniel.buenzli at erratique.ch>"
+license: "BSD3"
+homepage: "http://erratique.ch/software/xmlm"
+depends: [
+  "ocaml" {>= "3.10.0" & < "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "xmlm"]
 extra-files: ["xmlm.install" "md5=17cae44846e3d0dbc0c4cb294723369b"]
 url {
   src: "http://erratique.ch/software/xmlm/releases/xmlm-1.1.1.tbz"

@@ -1,46 +1,47 @@
 opam-version: "2.0"
-maintainer:   "Gabriel Radanne <drupyog@zoho.com>"
-authors:      [ "Thomas Gazagnaire"
-                "Anil Madhavapeddy"
-                "Dave Scott"
-                "Thomas Leonard"
-                "Gabriel Radanne" ]
-homepage:     "https://github.com/mirage/functoria"
-bug-reports:  "https://github.com/mirage/functoria/issues"
-dev-repo:     "git+https://github.com/mirage/functoria.git"
-doc:          "https://mirage.github.io/functoria/"
-license:      "ISC"
-tags:         ["org:mirage"]
-
-build: [
-  ["dune" "subst"] {pinned}
-  ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
-]
-
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
-  "base-unix"
-  "cmdliner" {>= "0.9.8"}
-  "rresult"
-  "astring"
-  "fmt"
-  "ocamlgraph"
-  "logs"
-  "bos"
-  "fpath"
-  "alcotest" {with-test}
-  "ptime"
-]
+name: "functoria"
+version: "2.2.3"
 synopsis: "A DSL to organize functor applications"
 description: """
 Functoria is a DSL to describe a set of modules and functors, their types and
 how to apply them in order to produce a complete application.
 
 The main use case is mirage. See the [mirage](https://github.com/mirage/mirage)
-repository for details.
-"""
+repository for details."""
+maintainer: "Gabriel Radanne <drupyog@zoho.com>"
+authors: [
+  "Anil Madhavapeddy"
+  "Dave Scott"
+  "Gabriel Radanne"
+  "Thomas Gazagnaire"
+  "Thomas Leonard"
+]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/functoria"
+doc: "https://mirage.github.io/functoria/"
+bug-reports: "https://github.com/mirage/functoria/issues"
+depends: [
+  "alcotest" {with-test}
+  "astring"
+  "base-unix"
+  "bos"
+  "cmdliner" {>= "0.9.8"}
+  "dune" {build}
+  "fmt"
+  "fpath"
+  "logs"
+  "ocaml" {>= "4.03.0"}
+  "ocamlgraph"
+  "ptime"
+  "rresult"
+]
+build: [
+  ["dune" "subst"] {pinned}
+  ["dune" "build" "-p" name "-j" jobs]
+  ["dune" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/functoria.git"
 url {
   src:
     "https://github.com/mirage/functoria/releases/download/2.2.3/functoria-2.2.3.tbz"

@@ -1,26 +1,6 @@
 opam-version: "2.0"
+name: "ppx_curried_constr"
 version: "1.0.0"
-authors: "Jun Furuse"
-maintainer: "jun.furuse@gmail.com"
-homepage: "http://bitbucket.org/camlspotter/ppx_curried_constr"
-bug-reports: "https://bitbucket.org/camlspotter/ppx_curried_constr/issues?status=new&status=open"
-dev-repo: "hg+https://bitbucket.org/camlspotter/ppx_curried_constr"
-build: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-build" ]
-]
-install: [
-  [ "ocaml" "setup.ml" "-install" ]
-]
-remove: [
-  [ "ocaml" "setup.ml" "-configure" "--prefix" prefix ]
-  [ "ocaml" "setup.ml" "-uninstall" ]
-]
-depends: [
-  "ocaml" {>= "4.02.2" & < "4.03.0"}
-  "ocamlfind" {build}
-  "omake" {build & < "0.10.1"}
-]
 synopsis: "ppx_curried_constr: ppx extension for curried constructors"
 description: """
 # Variant constructors as functions
@@ -112,6 +92,26 @@ Do you use REPL?  Personally, I use it only as a calculator.
 
 Cons constructor `(::)` is specially handled in OCaml
 and it is outside of the support of `ppx_curried_constr`."""
+maintainer: "jun.furuse@gmail.com"
+authors: "Jun Furuse"
+homepage: "http://bitbucket.org/camlspotter/ppx_curried_constr"
+bug-reports:
+  "https://bitbucket.org/camlspotter/ppx_curried_constr/issues?status=new&status=open"
+depends: [
+  "ocaml" {>= "4.02.2" & < "4.03.0"}
+  "ocamlfind" {build}
+  "omake" {build & < "0.10.1"}
+]
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-uninstall"]
+]
+dev-repo: "hg+https://bitbucket.org/camlspotter/ppx_curried_constr"
 url {
   src:
     "https://bitbucket.org/camlspotter/ppx_curried_constr/get/1.0.0.tar.gz"

@@ -1,23 +1,26 @@
 opam-version: "2.0"
+name: "uritemplate"
+version: "0.1.0"
 synopsis: "OCaml implementation of URI templates (RFC6570)"
-tags: "uri url templates RFC6570"
 maintainer: "Corin Chaplin <git@corinchaplin.co.uk>"
 authors: "Corin Chaplin <git@corinchaplin.co.uk>"
 license: "MIT"
+tags: "uri url templates RFC6570"
 homepage: "https://github.com/CorinChappy/uritemplate-ocaml"
-bug-reports: "https://github.com/CorinChappy/uritemplate-ocaml/issues"
 doc: "https://corinchappy.github.io/uritemplate-ocaml/"
+bug-reports: "https://github.com/CorinChappy/uritemplate-ocaml/issues"
 depends: [
-  "dune" {build}
-  "stdcompat" {>= "5"}
-  "ounit" {with-test}
   "atdgen" {with-test}
+  "dune" {build}
   "odoc" {with-doc}
+  "ounit" {with-test}
+  "stdcompat" {>= "5"}
 ]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
-  ["dune" "runtest" "-p" name "-j" jobs] {with-test & ocaml:version >= "4.03.0"}
+  ["dune" "runtest" "-p" name "-j" jobs]
+    {with-test & ocaml:version >= "4.03.0"}
 ]
 dev-repo: "git+https://https://github.com/CorinChappy/uritemplate-ocaml.git"
 url {

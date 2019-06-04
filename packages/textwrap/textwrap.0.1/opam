@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "textwrap"
+version: "0.1"
+synopsis: "Text wrapping and filling library"
 maintainer: "opam-devel@lists.ocaml.org"
-authors: ["Sergei Lebedev"]
-homepage: "https://github.com/superbobry/ocaml-textwrap"
+authors: "Sergei Lebedev"
 license: "MIT"
+homepage: "https://github.com/superbobry/ocaml-textwrap"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "textwrap"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/superbobry/ocaml-textwrap"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Text wrapping and filling library"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "textwrap"]
+dev-repo: "git://github.com/superbobry/ocaml-textwrap"
 url {
   src: "https://github.com/superbobry/ocaml-textwrap/archive/0.1.tar.gz"
   checksum: "md5=1d0a9ebba8ff5ae030485222d4fbabfe"

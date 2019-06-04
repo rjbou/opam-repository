@@ -1,18 +1,20 @@
 opam-version: "2.0"
+name: "planets"
+version: "0.1.13"
+synopsis:
+  "A simple interactive program for playing with simulations of planetary systems"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "ocaml" {= "3.12.1"}
+]
 build: [
   ["mkdir" "-p" bin]
   [make]
 ]
+install: [make "install" "PREFIX=%{prefix}%"]
 depexts: [
   ["tcl8.5-dev" "tk8.5-dev"] {os-distribution = "debian"}
   ["tcl8.5-dev" "tk8.5-dev"] {os-distribution = "ubuntu"}
-]
-install: [make "install" "PREFIX=%{prefix}%"]
-synopsis:
-  "A simple interactive program for playing with simulations of planetary systems"
-depends: [
-  "ocaml" {= "3.12.1"}
 ]
 extra-files: ["planets.install" "md5=05d2212ebd79f23391932ec918c7c87d"]
 url {

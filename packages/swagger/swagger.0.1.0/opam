@@ -1,24 +1,24 @@
 opam-version: "2.0"
-maintainer: "Andre Nathan <andre@hostnet.com.br>"
-authors: ["Andre Nathan <andre@hostnet.com.br>"]
-license: "MIT"
-homepage: "https://github.com/andrenth/ocaml-swagger"
-dev-repo: "git+https://github.com/andrenth/ocaml-swagger.git"
-bug-reports: "https://github.com/andrenth/ocaml-swagger/issues"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.05.0"}
-  "jbuilder" {build}
-  "atdgen" {>= "1.12.0"}
-  "re" {>= "1.7.3"}
-  "yojson" {>= "1.4.1"}
-]
+name: "swagger"
+version: "0.1.0"
 synopsis: "Swagger code generator for OCaml"
 description: """
 OCaml-Swagger is a Swagger 2.0 API client code generator
 for OCaml."""
+maintainer: "Andre Nathan <andre@hostnet.com.br>"
+authors: "Andre Nathan <andre@hostnet.com.br>"
+license: "MIT"
+homepage: "https://github.com/andrenth/ocaml-swagger"
+bug-reports: "https://github.com/andrenth/ocaml-swagger/issues"
+depends: [
+  "atdgen" {>= "1.12.0"}
+  "jbuilder" {build}
+  "ocaml" {>= "4.05.0"}
+  "re" {>= "1.7.3"}
+  "yojson" {>= "1.4.1"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/andrenth/ocaml-swagger.git"
 url {
   src: "https://github.com/andrenth/ocaml-swagger/archive/0.1.0.tar.gz"
   checksum: "md5=b83910df142b602819e6cd7f14be9c26"

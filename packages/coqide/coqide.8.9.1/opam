@@ -1,29 +1,36 @@
 opam-version: "2.0"
+name: "coqide"
+version: "8.9.1"
+synopsis: "IDE of the Coq formal proof management system"
 maintainer: "coqdev@inria.fr"
 authors: "The Coq development team, INRIA, CNRS, and contributors."
+license: "LGPL-2.1"
 homepage: "https://coq.inria.fr/"
 bug-reports: "https://github.com/coq/coq/issues"
-dev-repo: "git+https://github.com/coq/coq.git"
-license: "LGPL-2.1"
-synopsis: "IDE of the Coq formal proof management system"
-
 depends: [
-  "ocaml" {>= "4.02.3"}
   "camlp5"
+  "conf-gtksourceview"
   "coq" {= version}
   "lablgtk"
-  "conf-gtksourceview"
+  "ocaml" {>= "4.02.3"}
 ]
 build: [
   [
     "./configure"
-    "-configdir" "%{lib}%/coq/config"
-    "-prefix" prefix
-    "-mandir" man
-    "-docdir" doc
-    "-libdir" "%{lib}%/coq"
-    "-datadir" "%{share}%/coq"
-    "-camlp5dir" "%{lib}%/camlp5"
+    "-configdir"
+    "%{lib}%/coq/config"
+    "-prefix"
+    prefix
+    "-mandir"
+    man
+    "-docdir"
+    doc
+    "-libdir"
+    "%{lib}%/coq"
+    "-datadir"
+    "%{share}%/coq"
+    "-camlp5dir"
+    "%{lib}%/camlp5"
   ]
   [make "-j%{jobs}%" "coqide-files"]
   [make "-j%{jobs}%" "coqide-opt"]
@@ -35,8 +42,8 @@ install: [
   "install-ide-info"
   "install-ide-devfiles"
 ]
+dev-repo: "git+https://github.com/coq/coq.git"
 extra-files: ["coqide.install" "md5=d005cda8cb7888fbea94c5416dcb31bc"]
-
 url {
   src: "https://github.com/coq/coq/archive/V8.9.1.tar.gz"
   checksum: "md5=b0e47c588ca498073ad35eb5627a8852"

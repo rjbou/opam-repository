@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/incr_dom"
-bug-reports: "https://github.com/janestreet/incr_dom/issues"
-dev-repo: "git+https://github.com/janestreet/incr_dom.git"
-license: "Apache-2.0"
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.04.1"}
-  "async_js" {>= "v0.10" & < "v0.11"}
-  "async_kernel" {>= "v0.10" & < "v0.11"}
-  "core_kernel" {>= "v0.10" & < "v0.11"}
-  "incr_map" {>= "v0.10" & < "v0.11"}
-  "incr_select" {>= "v0.10" & < "v0.11"}
-  "incremental_kernel" {>= "v0.10" & < "v0.11"}
-  "ppx_driver" {>= "v0.10" & < "v0.11"}
-  "ppx_jane" {>= "v0.10" & < "v0.11"}
-  "virtual_dom" {>= "v0.10" & < "v0.11"}
-  "jbuilder" {build & >= "1.0+beta12"}
-  "js_of_ocaml" {>= "3.0"}
-  "js_of_ocaml-ppx"
-  "ocaml-migrate-parsetree" {>= "0.4"}
-]
+name: "incr_dom"
+version: "v0.10.0"
 synopsis: "A library for building dynamic webapps, using Js_of_ocaml."
 description: """
 The library is designed roughly on a model/view/controller model.
@@ -45,6 +22,29 @@ style.
 
 If you want a more concrete sense of how this works, look in the
 examples directory."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/incr_dom"
+bug-reports: "https://github.com/janestreet/incr_dom/issues"
+depends: [
+  "async_js" {>= "v0.10" & < "v0.11"}
+  "async_kernel" {>= "v0.10" & < "v0.11"}
+  "core_kernel" {>= "v0.10" & < "v0.11"}
+  "incr_map" {>= "v0.10" & < "v0.11"}
+  "incr_select" {>= "v0.10" & < "v0.11"}
+  "incremental_kernel" {>= "v0.10" & < "v0.11"}
+  "jbuilder" {build & >= "1.0+beta12"}
+  "js_of_ocaml" {>= "3.0"}
+  "js_of_ocaml-ppx"
+  "ocaml" {>= "4.04.1"}
+  "ocaml-migrate-parsetree" {>= "0.4"}
+  "ppx_driver" {>= "v0.10" & < "v0.11"}
+  "ppx_jane" {>= "v0.10" & < "v0.11"}
+  "virtual_dom" {>= "v0.10" & < "v0.11"}
+]
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/janestreet/incr_dom.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.10/files/incr_dom-v0.10.0.tar.gz"

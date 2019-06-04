@@ -1,13 +1,19 @@
 opam-version: "2.0"
+name: "conf-graphviz"
+version: "0.1"
+synopsis: "Virtual package relying on graphviz installation"
+description:
+  "This package can only install if the dot command is available on the system."
 maintainer: "unixjunkie@sdf.org"
-homepage: "http://www.graphviz.org/"
 authors: "http://www.graphviz.org/Credits.php"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
 license: "Eclipse Public License v1.0"
-build: [
-  ["which" "dot"]
+homepage: "http://www.graphviz.org/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "conf-which" {build}
 ]
-depends: ["conf-which" {build}]
+flags: conf
+build: ["which" "dot"]
 depexts: [
   ["graphviz"] {os-distribution = "debian"}
   ["graphviz"] {os-distribution = "ubuntu"}
@@ -15,10 +21,6 @@ depexts: [
   ["graphviz"] {os-distribution = "centos"}
   ["graphviz"] {os-distribution = "arch"}
   ["graphviz"] {os-distribution = "alpine"}
-  ["media-gfx/graphviz"] {os-distribution = "gentoo"}
   ["graphviz"] {os = "macos" & os-distribution = "homebrew"}
+  ["media-gfx/graphviz"] {os-distribution = "gentoo"}
 ]
-synopsis: "Virtual package relying on graphviz installation"
-description:
-  "This package can only install if the dot command is available on the system."
-flags: conf

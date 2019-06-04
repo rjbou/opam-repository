@@ -1,13 +1,30 @@
 opam-version: "2.0"
+name: "reason-parser"
+version: "1.13.2"
+synopsis: "Reason Parser: Meta Language Toolchain"
+description: """
+reason allows development of Meta Language syntax trees in non-text format. It
+allows a development model that is equivalent to collaborating on syntax trees
+that have been committed to a source code repository.
+
+This is the parser sub-package."""
 maintainer: "Jordan Walke <jordojw@gmail.com>"
 authors: "Jordan Walke <jordojw@gmail.com>"
-homepage: "https://github.com/facebook/reason"
-bug-reports: "https://github.com/facebook/reason/issues"
 license: "BSD"
-doc: "http://facebook.github.io/reason"
 tags: "syntax"
-dev-repo: "git://github.com/facebook/reason.git"
-substs: "pkg/META"
+homepage: "https://github.com/facebook/reason"
+doc: "http://facebook.github.io/reason"
+bug-reports: "https://github.com/facebook/reason/issues"
+depends: [
+  "menhir" {>= "20160303" & < "20170418"}
+  "merlin-extend" {>= "0.3"}
+  "ocaml" {>= "4.02" & < "4.05"}
+  "ocaml-migrate-parsetree"
+  "ocamlfind" {build}
+  "ppx_tools_versioned" {= "5.0alpha"}
+  "result" {= "1.2"}
+  "topkg" {= "0.8.1"}
+]
 build: [
   [make "compile_error"]
   ["ocamlbuild" "-package" "topkg" "pkg/build.native"]
@@ -27,23 +44,8 @@ build: [
     "--"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02" & < "4.05"}
-  "ocamlfind" {build}
-  "menhir" {>= "20160303" & < "20170418"}
-  "merlin-extend" {>= "0.3"}
-  "result" {= "1.2"}
-  "topkg" {= "0.8.1"}
-  "ocaml-migrate-parsetree"
-  "ppx_tools_versioned" {= "5.0alpha"}
-]
-synopsis: "Reason Parser: Meta Language Toolchain"
-description: """
-reason allows development of Meta Language syntax trees in non-text format. It
-allows a development model that is equivalent to collaborating on syntax trees
-that have been committed to a source code repository.
-
-This is the parser sub-package."""
+substs: "pkg/META"
+dev-repo: "git://github.com/facebook/reason.git"
 url {
   src:
     "https://github.com/facebook/reason/releases/download/1.13.2/reason-parser-1.13.2.tar.gz"

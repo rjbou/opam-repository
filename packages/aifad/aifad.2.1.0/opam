@@ -1,27 +1,27 @@
 opam-version: "2.0"
-maintainer: "Markus Mottl <markus.mottl@gmail.com>"
-authors: [ "Markus Mottl <markus.mottl@gmail.com>" ]
-license: "LGPL-2.1+ with OCaml linking exception"
-homepage: "https://mmottl.github.io/aifad"
-dev-repo: "git+https://github.com/mmottl/aifad.git"
-bug-reports: "https://github.com/mmottl/aifad/issues"
-
-build: [
-  ["jbuilder" "subst" "-p" name]{pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-
-depends: [
-  "ocaml" {>= "4.04"}
-  "res"
-  "pcre"
-  "cfg" {>= "2.1.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
-]
+name: "aifad"
+version: "2.1.0"
 synopsis: "AIFAD - Automated Induction of Functions over Algebraic Datatypes"
 description: """
 AIFAD is a machine learning tool that generalizes decision tree learning to
 algebraic datatypes."""
+maintainer: "Markus Mottl <markus.mottl@gmail.com>"
+authors: "Markus Mottl <markus.mottl@gmail.com>"
+license: "LGPL-2.1+ with OCaml linking exception"
+homepage: "https://mmottl.github.io/aifad"
+bug-reports: "https://github.com/mmottl/aifad/issues"
+depends: [
+  "cfg" {>= "2.1.0"}
+  "jbuilder" {build & >= "1.0+beta10"}
+  "ocaml" {>= "4.04"}
+  "pcre"
+  "res"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mmottl/aifad.git"
 url {
   src:
     "https://github.com/mmottl/aifad/releases/download/2.1.0/aifad-2.1.0.tbz"

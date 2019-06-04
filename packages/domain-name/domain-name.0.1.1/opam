@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "Hannes Mehnert <hannes@mehnert.org>"
-authors: ["Hannes Mehnert <hannes@mehnert.org>"]
-homepage: "https://github.com/hannesm/domain-name"
-doc: "https://hannesm.github.io/domain-name/doc"
-dev-repo: "git+https://github.com/hannesm/domain-name.git"
-bug-reports: "https://github.com/hannesm/domain-name/issues"
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.04.2"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "fmt"
-  "astring"
-  "alcotest" {with-test}
-]
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
+name: "domain-name"
+version: "0.1.1"
 synopsis:
   "[RFC 1035](https://tools.ietf.org/html/rfc1035) Internet domain names"
 description: """
@@ -33,6 +13,28 @@ case insensitive manner.
 
 The invariants on the length of domain names are preserved throughout the
 module."""
+maintainer: "Hannes Mehnert <hannes@mehnert.org>"
+authors: "Hannes Mehnert <hannes@mehnert.org>"
+license: "ISC"
+homepage: "https://github.com/hannesm/domain-name"
+doc: "https://hannesm.github.io/domain-name/doc"
+bug-reports: "https://github.com/hannesm/domain-name/issues"
+depends: [
+  "alcotest" {with-test}
+  "astring"
+  "fmt"
+  "ocaml" {>= "4.04.2"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/hannesm/domain-name.git"
 url {
   src:
     "https://github.com/hannesm/domain-name/releases/download/0.1.1/domain-name-0.1.1.tbz"

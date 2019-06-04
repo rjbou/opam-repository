@@ -1,16 +1,12 @@
 opam-version: "2.0"
+name: "xmldiff"
+version: "0.5.0"
+synopsis: "Diffs on XML trees."
 maintainer: "zoggy@bat8.org"
-authors: ["Maxence Guesdon"]
-homepage: ["https://zoggy.github.io/xmldiff/"]
+authors: "Maxence Guesdon"
 license: "GNU Lesser General Public License version 3"
-doc: ["https://zoggy.github.io/xmldiff/refdoc/"]
-build: [
-  ["./configure" "--prefix" prefix]
-  [make "all"]
-]
-remove: [
-  ["ocamlfind" "remove" "xmldiff"]
-]
+homepage: "https://zoggy.github.io/xmldiff/"
+doc: "https://zoggy.github.io/xmldiff/refdoc/"
 depends: [
   "ocaml" {>= "4.02.0"}
   "ocamlfind"
@@ -20,9 +16,13 @@ depopts: ["js_of_ocaml"]
 conflicts: [
   "js_of_ocaml" {< "2.4.0"}
 ]
-install: [make "install"]
-synopsis: "Diffs on XML trees."
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make "all"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "xmldiff"]
 url {
   src: "http://zoggy.github.com/xmldiff/xmldiff-0.5.0.tar.gz"
   checksum: "md5=f2881ff25230e0c90dc7fb041a71b7a1"

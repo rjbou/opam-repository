@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "sturgeon"
+version: "0.4.2"
 synopsis: "A toolkit for communicating with Emacs"
 description: """
 Sturgeon implements various tools for manipulating Emacs from OCaml:
@@ -15,9 +17,9 @@ homepage: "https://github.com/let-def/sturgeon"
 doc: "https://let-def.github.io/sturgeon/doc"
 bug-reports: "https://github.com/let-def/sturgeon/issues"
 depends: [
-  "ocaml" {>= "4.01.0"}
   "dune" {build}
   "inuit"
+  "ocaml" {>= "4.01.0"}
   "result"
 ]
 build: [

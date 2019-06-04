@@ -1,20 +1,22 @@
 opam-version: "2.0"
+name: "alberto"
+version: "0.2"
+synopsis: "OCaml interface to Erlang ports"
 maintainer: "superbobry@gmail.com"
+depends: [
+  "ocaml" {< "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "ocplib-endian"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-remove: [["ocamlfind" "remove" "alberto"]]
-depends: [
-  "ocaml" {< "4.02.0"}
-  "ocamlfind"
-  "ocplib-endian"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/selectel/alberto"
 install: [make "install"]
-synopsis: "OCaml interface to Erlang ports"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "alberto"]
+dev-repo: "git://github.com/selectel/alberto"
 url {
   src: "https://github.com/selectel/alberto/archive/0.2.tar.gz"
   checksum: "md5=869f00178380e824f9c134f0cf39d0a7"

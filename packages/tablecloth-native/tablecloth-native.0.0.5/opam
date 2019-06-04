@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "tablecloth-native"
+version: "0.0.5"
 synopsis:
   "Native OCaml library implementing Tablecloth, a cross-platform standard library for OCaml, Bucklescript and ReasonML"
 maintainer: "Paul Biggar <paul@darklang.com>"
@@ -7,9 +9,9 @@ license: "MIT with some exceptions"
 homepage: "https://github.com/darklang/tablecloth"
 bug-reports: "https://github.com/darklang/tablecloth/issues"
 depends: [
-  "ocaml"
-  "dune" {build}
   "base" {>= "v0.10.0"}
+  "dune" {build}
+  "ocaml"
 ]
 build: [
   ["mv" "native/dune-project" "."]

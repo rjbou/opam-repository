@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "gwenael.delaval@inria.fr"
-authors: "Gwenaël Delaval"
-homepage: "http://heptagon.gforge.inria.fr"
-bug-reports: "https://gforge.inria.fr/tracker/?group_id=2773"
-build: [
-   ["./configure" "--prefix" prefix]
-   [make]
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "menhir" {build & >= "20141215"}
-  "ocamlgraph" {build}
-  "camlp4" {build}
-  "ocamlbuild" {build}
-]
-depopts: [
-  "lablgtk"
-  "reatk"
-]
-conflicts: [
-  "reatk" { <= "0.10.1" | >= "0.11" }
-]
+name: "heptagon"
+version: "1.03.04"
 synopsis: "Compiler for the Heptagon/BZR synchronous programming language"
 description: """
 Heptagon/BZR is a synchronous dataflow language whose syntax and
@@ -33,7 +12,27 @@ following features:
 - Inclusion of discrete controller synthesis within the compilation
 - Expression and compilation of array values with modular memory optimization
 See http://heptagon.gforge.inria.fr for further informations."""
+maintainer: "gwenael.delaval@inria.fr"
+authors: "Gwenaël Delaval"
+homepage: "http://heptagon.gforge.inria.fr"
+bug-reports: "https://gforge.inria.fr/tracker/?group_id=2773"
+depends: [
+  "camlp4" {build}
+  "menhir" {build & >= "20141215"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ocamlgraph" {build}
+]
+depopts: ["lablgtk" "reatk"]
+conflicts: [
+  "reatk" {<= "0.10.1" | >= "0.11"}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
 extra-files: ["heptagon.install" "md5=eae4ae21fb60b00f2076c1252c1750c2"]
 url {
   src:

@@ -1,27 +1,29 @@
 opam-version: "2.0"
+name: "text"
+version: "0.8.0"
+synopsis:
+  "Library for dealing with \"text\", i.e. sequence of unicode characters, in a convenient way"
 maintainer: "vb@luminar.eu.org"
 authors: "Jeremie Dimino"
 homepage: "https://github.com/vbmithr/ocaml-text"
 bug-reports: "https://github.com/vbmithr/ocaml-text/issues"
+depends: [
+  "base-bytes"
+  "camlp4"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
+depopts: ["pcre"]
+flags: light-uninstall
 build: [
   [make "setup.exe"]
   ["./setup.exe" "-configure" "--%{pcre:enable}%-pcre"]
   [make]
 ]
-remove: [["ocamlfind" "remove" "text"]]
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "base-bytes"
-  "ocamlbuild" {build}
-  "camlp4"
-]
-depopts: ["pcre"]
-dev-repo: "git://github.com/vbmithr/ocaml-text"
 install: [make "install"]
-synopsis:
-  "Library for dealing with \"text\", i.e. sequence of unicode characters, in a convenient way"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "text"]
+dev-repo: "git://github.com/vbmithr/ocaml-text"
 url {
   src: "https://github.com/vbmithr/ocaml-text/archive/0.8.tar.gz"
   checksum: "md5=ec96a60a0c9dad44ce47d76764a303e6"

@@ -1,14 +1,6 @@
 opam-version: "2.0"
-maintainer: "vb@luminar.eu.org"
-authors: [
-  "Vincent Bernardoff <vb@luminar.eu.org>"
-  "Anil Madhavapeddy <anil@recoil.org>"
-]
-license: "ISC"
-tags: ["org:mirage" "org:xapi-project"]
-homepage: "https://github.com/mirage/ocaml-tuntap"
-doc: "https://mirage.github.io/ocaml-tuntap/"
-bug-reports: "https://github.com/mirage/ocaml-tuntap/issues"
+name: "tuntap"
+version: "1.8.0"
 synopsis: "OCaml library for handling TUN/TAP devices"
 description: """
 This is an OCaml library for handling TUN/TAP devices.  TUN refers to layer 3
@@ -18,17 +10,25 @@ See <http://en.wikipedia.org/wiki/TUN/TAP> for more information.
 
 Linux, FreeBSD, OpenBSD and macOS should all be supported.  You will need
 to install the third-party <http://tuntaposx.sourceforge.net/> on macOS before
-using this library.
-"""
-
+using this library."""
+maintainer: "vb@luminar.eu.org"
+authors: [
+  "Anil Madhavapeddy <anil@recoil.org>"
+  "Vincent Bernardoff <vb@luminar.eu.org>"
+]
+license: "ISC"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/ocaml-tuntap"
+doc: "https://mirage.github.io/ocaml-tuntap/"
+bug-reports: "https://github.com/mirage/ocaml-tuntap/issues"
 depends: [
-  "ocaml" {>= "4.04.2"}
+  "cmdliner"
   "dune" {build}
   "ipaddr" {>= "2.4.0"}
-  "macaddr"
-  "cmdliner"
-  "ounit" {with-test}
   "lwt" {with-test}
+  "macaddr"
+  "ocaml" {>= "4.04.2"}
+  "ounit" {with-test}
 ]
 build: [
   ["dune" "subst"] {pinned}

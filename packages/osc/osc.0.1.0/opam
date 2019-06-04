@@ -1,30 +1,28 @@
 opam-version: "2.0"
+name: "osc"
+version: "0.1.0"
+synopsis: "Pure OCaml OpenSoundControl client and server implementation"
+maintainer: "john.else@gmail.com"
 authors: "John Else"
 homepage: "https://github.com/johnelse/ocaml-osc"
 bug-reports: "https://github.com/johnelse/ocaml-osc/issues"
-dev-repo: "git://github.com/johnelse/ocaml-osc"
-maintainer: "john.else@gmail.com"
+depends: [
+  "oasis" {build}
+  "ocaml" {< "4.06.0"}
+  "ocplib-endian"
+  "ounit"
+  "rresult"
+]
+depopts: ["lwt"]
 build: [
   [make]
   [make "doc"] {with-test}
   [make "test"] {with-test}
   [make "test-interop-sclang"] {with-test}
 ]
-install: [
-  [make "PREFIX=%{prefix}%" "install"]
-]
-remove: [
-  [make "PREFIX=%{prefix}%" "uninstall"]
-]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "oasis" {build}
-  "ocplib-endian"
-  "ounit"
-  "rresult"
-]
-depopts: ["lwt"]
-synopsis: "Pure OCaml OpenSoundControl client and server implementation"
+install: [make "PREFIX=%{prefix}%" "install"]
+remove: [make "PREFIX=%{prefix}%" "uninstall"]
+dev-repo: "git://github.com/johnelse/ocaml-osc"
 url {
   src: "https://github.com/johnelse/ocaml-osc/archive/0.1.0.tar.gz"
   checksum: "md5=00bbec12a47c937eb9dab1beb85887e5"

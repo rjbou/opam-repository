@@ -1,47 +1,6 @@
 opam-version: "2.0"
-name:         "conex"
-homepage:     "https://github.com/hannesm/conex"
-dev-repo: "git+https://github.com/hannesm/conex.git"
-bug-reports:  "https://github.com/hannesm/conex/issues"
-doc:          "https://hannesm.github.io/conex/doc"
-maintainer:   ["Hannes Mehnert <hannes@mehnert.org>"]
-license:      "BSD2"
-
-build: [
-  [
-    "ocaml"
-    "pkg/pkg.ml"
-    "build"
-    "--pinned"
-    "%{pinned}%"
-    "--tests"
-    "false"
-    "--with-format"
-    "%{opam-format:installed}%"
-  ]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "cmdliner"
-  "opam-file-format" {>= "2.0.0~beta"}
-  "cstruct" {>= "1.6.0"}
-  "nocrypto" {>= "0.5.3"}
-  "x509" {>= "0.4.0"}
-  "alcotest" {with-test}
-  "logs"
-  "fmt"
-  "rresult"
-  "astring"
-]
-depopts: [
-  "opam-format"
-]
+name: "conex"
+version: "0.9.2"
 synopsis: "Establish trust in community repositories"
 description: """
 [Conex](https://github.com/hannesm/conex) is a library to verify and attest release integrity and
@@ -110,7 +69,46 @@ authenticity.  There are different kinds of resources:
 Modifications to identities and authorisations need to be approved by a quorum
 of janitors, package index and release files can be modified either by an authorised
 id or by a quorum of janitors."""
+maintainer: "Hannes Mehnert <hannes@mehnert.org>"
 authors: "Hannes Mehnert <hannes@mehnert.org>"
+license: "BSD2"
+homepage: "https://github.com/hannesm/conex"
+doc: "https://hannesm.github.io/conex/doc"
+bug-reports: "https://github.com/hannesm/conex/issues"
+depends: [
+  "alcotest" {with-test}
+  "astring"
+  "cmdliner"
+  "cstruct" {>= "1.6.0"}
+  "fmt"
+  "logs"
+  "nocrypto" {>= "0.5.3"}
+  "ocaml" {>= "4.03.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "opam-file-format" {>= "2.0.0~beta"}
+  "rresult"
+  "topkg" {build}
+  "x509" {>= "0.4.0"}
+]
+depopts: ["opam-format"]
+build: [
+  [
+    "ocaml"
+    "pkg/pkg.ml"
+    "build"
+    "--pinned"
+    "%{pinned}%"
+    "--tests"
+    "false"
+    "--with-format"
+    "%{opam-format:installed}%"
+  ]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/hannesm/conex.git"
 url {
   src:
     "https://github.com/hannesm/conex/releases/download/0.9.2/conex-0.9.2.tbz"

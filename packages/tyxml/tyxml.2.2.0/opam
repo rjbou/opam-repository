@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "tyxml"
+version: "2.2.0"
+synopsis:
+  "Parser and printer for xml, and a simple library for building valid HTML5, XHTML 1.1 and SVG documents."
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: make
-remove: [["ocamlfind" "remove" "tyxml"]]
 depends: [
+  "camlp4"
   "ocaml" {>= "3.12.1"}
   "ocamlfind"
   "ocamlnet" {>= "3.6.0"}
   "pcre"
-  "camlp4"
 ]
-patches: ["rm_netstring_pcre.patch"]
-install: [make "install"]
-synopsis:
-  "Parser and printer for xml, and a simple library for building valid HTML5, XHTML 1.1 and SVG documents."
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "tyxml"]
+patches: "rm_netstring_pcre.patch"
 extra-files: [
   "rm_netstring_pcre.patch" "md5=e12f3fc6f749c36fe4c00c1909bca0f2"
 ]

@@ -1,29 +1,26 @@
 opam-version: "2.0"
-license: "LGPL-2.1 with OCaml linking exception"
+name: "ocamldap"
+version: "2.2"
+synopsis: "Implementation of the Light Weight Directory Access Protocol"
 maintainer: "Kate <kit.ty.kate@disroot.org>"
-authors: [
-  "Kate <kit.ty.kate@disroot.org>"
-  "Eric Stokes <letaris@me.com>"
-]
+authors: ["Eric Stokes <letaris@me.com>" "Kate <kit.ty.kate@disroot.org>"]
+license: "LGPL-2.1 with OCaml linking exception"
 homepage: "https://github.com/kit-ty-kate/ocamldap"
-dev-repo: "git+https://github.com/kit-ty-kate/ocamldap.git"
 bug-reports: "https://github.com/kit-ty-kate/ocamldap/issues"
-patches: [
-  "ocaml-4.02.patch"
-]
-build: make
-remove: [["ocamlfind" "remove" "ldap"]]
 depends: [
   "ocaml" {>= "3.12.1" & < "4.06.0"}
+  "ocamlbuild" {build}
   "ocamlfind" {build}
   "ocamlnet" {>= "3.6.0"}
   "pcre"
   "ssl"
-  "ocamlbuild" {build}
 ]
-install: [make "install"]
-synopsis: "Implementation of the Light Weight Directory Access Protocol"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "ldap"]
+patches: "ocaml-4.02.patch"
+dev-repo: "git+https://github.com/kit-ty-kate/ocamldap.git"
 extra-files: ["ocaml-4.02.patch" "md5=0e16f26afe3d32c5c35bb4754d34142d"]
 url {
   src: "http://bitbucket.org/deplai_j/ocamldap/downloads/ocamldap-2.2.tar.gz"

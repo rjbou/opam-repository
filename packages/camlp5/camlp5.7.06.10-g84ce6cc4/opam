@@ -1,6 +1,8 @@
+opam-version: "2.0"
+name: "camlp5"
+version: "7.06.10-g84ce6cc4"
 synopsis: "Preprocessor-pretty-printer of OCaml"
-description:
-"""
+description: """
 Camlp5 is a preprocessor and pretty-printer for OCaml programs. It also provides parsing and printing tools.
 
 As a preprocessor, it allows to:
@@ -18,34 +20,47 @@ extensible grammars
 extensible printers
 stream parsers and lexers
 pretty print module
-It works as a shell command and can also be used in the OCaml toplevel.
-"""
-opam-version: "2.0"
+It works as a shell command and can also be used in the OCaml toplevel."""
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-authors: ["Daniel de Rauglaudre"]
-homepage: "https://camlp5.github.io"
+authors: "Daniel de Rauglaudre"
 license: "BSD-3-Clause"
-bug-reports: "https://github.com/camlp5/camlp5/issues"
-dev-repo: "git+https://github.com/camlp5/camlp5.git"
+homepage: "https://camlp5.github.io"
 doc: "https://camlp5.github.io/doc/html"
-
+bug-reports: "https://github.com/camlp5/camlp5/issues"
 depends: [
-  "ocaml"       { >= "4.02" & <= "4.07.1" }
+  "ocaml" {>= "4.02" & <= "4.07.1"}
 ]
-
 build: [
   ["./configure" "--prefix" prefix "-libdir" lib "-mandir" man]
   [make "world.opt"]
 ]
 install: [make "install"]
 remove: [
-  ["sh" "-ecx" "./configure --prefix '%{prefix}%' -libdir '%{lib}%' -mandir '%{man}%' && %{make}% uninstall"]
-  [ "rm" "-rf" "%{lib}%/camlp5" ]
-  [ "rm" "-f" "%{man}%/man1/camlp5.1" "%{man}%/man1/camlp5o.1" "%{man}%/man1/camlp5o.opt.1" "%{man}%/man1/camlp5r.1" "%{man}%/man1/camlp5r.opt.1" "%{man}%/man1/camlp5sch.1" "%{man}%/man1/mkcamlp5.1" "%{man}%/man1/mkcamlp5.opt.1" "%{man}%/man1/ocpp5.1" ]
+  [
+    "sh"
+    "-ecx"
+    "./configure --prefix '%{prefix}%' -libdir '%{lib}%' -mandir '%{man}%' && %{make}% uninstall"
+  ]
+  ["rm" "-rf" "%{lib}%/camlp5"]
+  [
+    "rm"
+    "-f"
+    "%{man}%/man1/camlp5.1"
+    "%{man}%/man1/camlp5o.1"
+    "%{man}%/man1/camlp5o.opt.1"
+    "%{man}%/man1/camlp5r.1"
+    "%{man}%/man1/camlp5r.opt.1"
+    "%{man}%/man1/camlp5sch.1"
+    "%{man}%/man1/mkcamlp5.1"
+    "%{man}%/man1/mkcamlp5.opt.1"
+    "%{man}%/man1/ocpp5.1"
+  ]
 ]
-
+dev-repo: "git+https://github.com/camlp5/camlp5.git"
 extra-files: ["camlp5.install" "md5=b16bcaf28bfb364236b2181fb50a6564"]
 url {
-  src: "https://github.com/camlp5/camlp5/archive/84ce6cc4d7738b3c43dfeadd5e9717bb9b50c786.tar.gz"
-  checksum: "sha256=3a9b90684a710b23b2f83f020304f0fda48219725d7a9ea881ae49effd9afdeb"
+  src:
+    "https://github.com/camlp5/camlp5/archive/84ce6cc4d7738b3c43dfeadd5e9717bb9b50c786.tar.gz"
+  checksum:
+    "sha256=3a9b90684a710b23b2f83f020304f0fda48219725d7a9ea881ae49effd9afdeb"
 }

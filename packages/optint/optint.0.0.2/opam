@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "optint"
+version: "0.0.2"
 synopsis: "Abstract type on integer between x64 and x86 architecture"
 description: """
 This library provide one module `Optint` which use internally an `int` if you
@@ -24,8 +26,8 @@ homepage: "https://github.com/dinosaure/optint"
 doc: "https://dinosaure.github.io/optint/"
 bug-reports: "https://github.com/dinosaure/optint/issues"
 depends: [
-  "ocaml" {>= "4.03.0"}
   "dune" {build}
+  "ocaml" {>= "4.03.0"}
 ]
 build: [
   ["dune" "subst"]

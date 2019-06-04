@@ -1,27 +1,27 @@
 opam-version: "2.0"
+name: "monadlib"
+version: "0.2"
+synopsis: "A starter library for monads, with transformers and applicatives."
 maintainer: "phil.scott@ed.ac.uk"
+authors: "Phil Scott"
 homepage: "https://github.com/Chattered/ocaml-monad"
-dev-repo: "git+https://github.com/Chattered/ocaml-monad.git"
 bug-reports: "https://github.com/Chattered/ocaml-monad/issues"
-authors: ["Phil Scott"]
+depends: [
+  "batteries" {>= "2.0"}
+  "oasis"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-install: [
-  ["ocaml" "setup.ml" "-install"]
-]
-remove: [["ocamlfind" "remove" "monadlib"]]
-depends: [
-  "ocaml"
-  "oasis"
-  "ocamlfind"
-  "batteries" {>= "2.0"}
-  "ocamlbuild" {build}
-]
-synopsis: "A starter library for monads, with transformers and applicatives."
-flags: light-uninstall
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "monadlib"]
+dev-repo: "git+https://github.com/Chattered/ocaml-monad.git"
 url {
   src: "https://github.com/Chattered/ocaml-monad/archive/v0.2.tar.gz"
   checksum: "md5=8e0f3285b291e1313871d241391192cd"

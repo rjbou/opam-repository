@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "Sam Riyad"
-authors: ["Sam Riyad"]
-tags: ["networking" "load balancing" "scalability"]
-license: "MIT"
-         
-homepage: "https://github.com/xnukernpoll/ocaml-balancers"
-dev-repo: "git+https://github.com/xnukernpoll/ocaml-balancers.git"
-bug-reports: "https://github.com/xnukernpoll/ocaml-balancers/issues"
-             
-build: [
-  [ "jbuilder" "subst" ] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-  
-depends: [
-  "ocaml"
-  "jbuilder" {build}
-  "fmt"
-  "cstruct"
-  "lwt"
-  "hex"
-  "react"
-]
+name: "balancer"
+version: "1.0"
 synopsis:
   "A collection of load balancing algorithms implemented in pure Ocaml"
 description: """
@@ -31,6 +10,26 @@ The supported Algorithms are Power of two choices, P2C with Partial Key Grouping
 Each loadbalancer supports state updates via react (making it easier to work service discovery utilities), along with manually removing and deleting nodes.
 
 Also included are utilities for thread safe shared state under Balancer.Util."""
+maintainer: "Sam Riyad"
+authors: "Sam Riyad"
+license: "MIT"
+tags: ["load balancing" "networking" "scalability"]
+homepage: "https://github.com/xnukernpoll/ocaml-balancers"
+bug-reports: "https://github.com/xnukernpoll/ocaml-balancers/issues"
+depends: [
+  "cstruct"
+  "fmt"
+  "hex"
+  "jbuilder" {build}
+  "lwt"
+  "ocaml"
+  "react"
+]
+build: [
+  ["jbuilder" "subst"] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/xnukernpoll/ocaml-balancers.git"
 url {
   src: "https://github.com/XnuKernPoll/ocaml-balancers/archive/v1.0.tar.gz"
   checksum: "md5=9dc229881dfea7372e065feb1572afba"

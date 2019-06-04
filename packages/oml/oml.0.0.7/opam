@@ -1,32 +1,35 @@
 opam-version: "2.0"
 name: "oml"
 version: "0.0.7"
+synopsis: "Math Library"
+description: """
+[![Build Status](https://travis-ci.org/hammerlab/oml.svg?branch=master)](https://travis-ci.org/hammerlab/oml/)
+[![Coverage Status](https://coveralls.io/repos/hammerlab/oml/badge.svg?branch=HEAD&service=github)](https://coveralls.io/github/hammerlab/oml?branch=HEAD)
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hammerlab/oml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
+
+A collection of OCaml Math and Statistics functions.
+The API is available [online](http://hammerlab.github.io/oml/index.html)."""
 maintainer: "Leonid Rozenberg <leonidr@gmail.com>"
 authors: "Leonid Rozenberg <leonidr@gmail.com>"
-homepage: "https://github.com/hammerlab/oml/"
-dev-repo: "git+https://github.com/hammerlab/oml.git"
-bug-reports: "https://github.com/hammerlab/oml/issues"
 license: "Apache2"
+homepage: "https://github.com/hammerlab/oml/"
+bug-reports: "https://github.com/hammerlab/oml/issues"
 depends: [
-  "ocaml" {>= "4.03"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "kaputt" {with-test}
   "dsfo" {with-test}
+  "kaputt" {with-test}
+  "ocaml" {>= "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
 ]
-depopts: [
-  "lacaml"
-  "lbfgs"
-  "ocephes"
-]
+depopts: ["lacaml" "lbfgs" "ocephes"]
 conflicts: [
-  "lacaml" { < "8.0.6" }
-  "lacaml" { >= "9.2.3" }
-  "lbfgs" { < "0.8.7" }
-  "ocephes" { < "0.8" }
+  "lacaml" {< "8.0.6"}
+  "lacaml" {>= "9.2.3"}
+  "lbfgs" {< "0.8.7"}
+  "ocephes" {< "0.8"}
 ]
-
 build: [
   [
     "ocaml"
@@ -56,15 +59,7 @@ build: [
   ] {with-test}
   ["ocaml" "pkg/pkg.ml" "test" "--build-dir" "_test"] {with-test}
 ]
-synopsis: "Math Library"
-description: """
-[![Build Status](https://travis-ci.org/hammerlab/oml.svg?branch=master)](https://travis-ci.org/hammerlab/oml/)
-[![Coverage Status](https://coveralls.io/repos/hammerlab/oml/badge.svg?branch=HEAD&service=github)](https://coveralls.io/github/hammerlab/oml?branch=HEAD)
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/hammerlab/oml?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
-
-A collection of OCaml Math and Statistics functions.
-The API is available [online](http://hammerlab.github.io/oml/index.html)."""
+dev-repo: "git+https://github.com/hammerlab/oml.git"
 url {
   src:
     "https://github.com/hammerlab/oml/releases/download/0.0.7/oml-0.0.7.tbz"

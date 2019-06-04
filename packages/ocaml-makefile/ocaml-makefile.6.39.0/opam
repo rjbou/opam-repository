@@ -1,16 +1,6 @@
 opam-version: "2.0"
-maintainer: "Markus Mottl <markus.mottl@gmail.com>"
-authors: [ "Markus Mottl <markus.mottl@gmail.com>" ]
-license: "LGPL-2.1+ with OCaml linking exception"
-homepage: "https://mmottl.github.io/ocaml-makefile"
-dev-repo: "git+https://github.com/mmottl/ocaml-makefile.git"
-bug-reports: "https://github.com/mmottl/ocaml-makefile/issues"
-
-build: ["mkdir" "-p" "%{lib}%/ocaml-makefile"]
-
-install: ["cp" "OCamlMakefile" "%{lib}%/ocaml-makefile"]
-
-remove: ["rm" "%{lib}%/ocaml-makefile/OCamlMakefile"]
+name: "ocaml-makefile"
+version: "6.39.0"
 synopsis:
   "A Simple Generic Makefile for [OCaml](http://www.ocaml.org)-Projects"
 description: """
@@ -611,8 +601,17 @@ Please submit bugs reports, feature requests, contributions and similar to
 the [GitHub issue tracker](https://github.com/mmottl/ocaml-makefile/issues).
 
 Up-to-date information is available at: <https://mmottl.github.io/ocaml-makefile>"""
+maintainer: "Markus Mottl <markus.mottl@gmail.com>"
+authors: "Markus Mottl <markus.mottl@gmail.com>"
+license: "LGPL-2.1+ with OCaml linking exception"
+homepage: "https://mmottl.github.io/ocaml-makefile"
+bug-reports: "https://github.com/mmottl/ocaml-makefile/issues"
 depends: ["ocaml"]
 flags: light-uninstall
+build: ["mkdir" "-p" "%{lib}%/ocaml-makefile"]
+install: ["cp" "OCamlMakefile" "%{lib}%/ocaml-makefile"]
+remove: ["rm" "%{lib}%/ocaml-makefile/OCamlMakefile"]
+dev-repo: "git+https://github.com/mmottl/ocaml-makefile.git"
 url {
   src:
     "https://github.com/mmottl/ocaml-makefile/releases/download/6.39.0/ocaml-makefile-6.39.0.tbz"

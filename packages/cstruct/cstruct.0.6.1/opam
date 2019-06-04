@@ -1,22 +1,21 @@
 opam-version: "2.0"
+name: "cstruct"
+version: "0.6.1"
+synopsis: "access C structures via a camlp4 extension"
 maintainer: "anil@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: make
-remove: [["ocamlfind" "remove" "cstruct"]]
+tags: ["org:mirage" "org:xapi-project"]
 depends: [
+  "camlp4"
   "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
   "ocamlfind"
   "ocplib-endian"
-  "camlp4"
-  "ocamlbuild" {build}
 ]
-dev-repo: "git://github.com/mirage/ocaml-cstruct"
-install: [make "install"]
-synopsis: "access C structures via a camlp4 extension"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "cstruct"]
+dev-repo: "git://github.com/mirage/ocaml-cstruct"
 url {
   src:
     "https://github.com/mirage/ocaml-cstruct/archive/ocaml-cstruct-0.6.1.tar.gz"

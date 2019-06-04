@@ -1,34 +1,6 @@
 opam-version: "2.0"
-maintainer:   "anil@recoil.org"
-authors:      ["Anil Madhavapeddy" "Thomas Leonard" "Thomas Gazagnaire" "Rudi Grinberg"]
-homepage:     "https://github.com/mirage/ocaml-conduit"
-dev-repo: "git+https://github.com/mirage/ocaml-conduit.git"
-bug-reports:  "https://github.com/mirage/ocaml-conduit/issues"
-tags:         "org:mirage"
-license:      "ISC"
-
-build: [
-  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
-depends: [
-  "ocaml" {>= "4.03.0"}
-  "base-unix"
-  "jbuilder" {build & >= "1.0+beta9"}
-  "ppx_sexp_conv" {< "v0.13"}
-  "conduit-lwt" {>= "1.1.0"}
-  "lwt" {>= "3.0.0"}
-  "uri" {>= "1.9.4"}
-  "ipaddr" {>= "2.8.0" & < "3.0.0"}
-]
-depopts: [
-  "tls"
-  "lwt_ssl"
-  "launchd"
-]
-conflicts: [
-  "tls" {<"0.8.0" }
-]
+name: "conduit-lwt-unix"
+version: "1.1.0"
 synopsis: "An OCaml network connection establishment library"
 description: """
 [![Build Status](https://travis-ci.org/mirage/ocaml-conduit.svg?branch=master)](https://travis-ci.org/mirage/ocaml-conduit)
@@ -66,6 +38,33 @@ are being resolved to.
 * **WWW:** https://github.com/mirage/ocaml-conduit
 * **E-mail:** <mirageos-devel@lists.xenproject.org>
 * **Bugs:** https://github.com/mirage/ocaml-conduit/issues"""
+maintainer: "anil@recoil.org"
+authors: [
+  "Anil Madhavapeddy" "Rudi Grinberg" "Thomas Gazagnaire" "Thomas Leonard"
+]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/ocaml-conduit"
+bug-reports: "https://github.com/mirage/ocaml-conduit/issues"
+depends: [
+  "base-unix"
+  "conduit-lwt" {>= "1.1.0"}
+  "ipaddr" {>= "2.8.0" & < "3.0.0"}
+  "jbuilder" {build & >= "1.0+beta9"}
+  "lwt" {>= "3.0.0"}
+  "ocaml" {>= "4.03.0"}
+  "ppx_sexp_conv" {< "v0.13"}
+  "uri" {>= "1.9.4"}
+]
+depopts: ["launchd" "lwt_ssl" "tls"]
+conflicts: [
+  "tls" {< "0.8.0"}
+]
+build: [
+  ["jbuilder" "subst" "-p" name "--name" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/mirage/ocaml-conduit.git"
 url {
   src:
     "https://github.com/mirage/ocaml-conduit/releases/download/v1.1.0/conduit-1.1.0.tbz"

@@ -1,9 +1,15 @@
 opam-version: "2.0"
+name: "conf-cpio"
+version: "1"
+synopsis: "Virtual package relying on cpio"
+description:
+  "This package can only install if the cpio binary is installed on the system."
 maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "https://www.gnu.org/software/cpio/"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
 authors: "GNU Project | BSD"
 license: "GPL-3 | BSD"
+homepage: "https://www.gnu.org/software/cpio/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
+flags: conf
 build: ["cpio" "--version"]
 depexts: [
   ["cpio"] {os-distribution = "debian"}
@@ -16,7 +22,3 @@ depexts: [
   ["cpio"] {os-distribution = "ol"}
   ["cpio"] {os-distribution = "arch"}
 ]
-synopsis: "Virtual package relying on cpio"
-description:
-  "This package can only install if the cpio binary is installed on the system."
-flags: conf

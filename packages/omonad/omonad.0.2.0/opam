@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "omonad"
+version: "0.2.0"
+synopsis: "Monad programming using ppx preprocessor"
 maintainer: "Wojciech.Meyer@gmail.com"
+depends: [
+  "oasis"
+  "ocaml" {>= "4.01.0" & < "4.02"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["oasis" "setup"]
   ["ocaml" "setup.ml" "-configure" "--enable-tests" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "omonad"]]
-depends: [
-  "ocaml" {>= "4.01.0" & < "4.02"}
-  "ocamlfind"
-  "oasis"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/danmey/omonad"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "Monad programming using ppx preprocessor"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "omonad"]
+dev-repo: "git://github.com/danmey/omonad"
 url {
   src: "https://github.com/danmey/omonad/archive/omonad-0.2.0.tar.gz"
   checksum: "md5=dea6977d88367c052aaccb0071a67c22"

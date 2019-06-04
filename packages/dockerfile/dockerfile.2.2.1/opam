@@ -1,25 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: "Anil Madhavapeddy <anil@recoil.org>"
-homepage: "https://github.com/avsm/ocaml-dockerfile"
-bug-reports: "https://github.com/avsm/ocaml-dockerfile/issues"
-license: "ISC"
-doc: "http://avsm.github.io/avsm/ocaml-dockerfile/doc"
-tags: ["org:mirage" "org:ocamllabs"]
-dev-repo: "git+https://github.com/avsm/ocaml-dockerfile.git"
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "ppx_deriving"
-  "ppx_sexp_conv" {< "v0.13"}
-  "topkg" {build}
-  "cmdliner"
-  "sexplib" {< "v0.13"}
-  "base-bytes"
-  "fmt"
-]
+name: "dockerfile"
+version: "2.2.1"
 synopsis: "Typed interface for constructing Docker container descriptions"
 description: """
 [Docker](http://docker.com) is a container manager that can build images
@@ -37,6 +18,27 @@ awk/sed-style assembly.
 - **Source:**: https://github.com/avsm/ocaml-dockerfile
 - **Issues**: https://github.com/avsm/ocaml-dockerfile/issues
 - **Email**: <mirageos-devel@lists.xenproject.org>"""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: "Anil Madhavapeddy <anil@recoil.org>"
+license: "ISC"
+tags: ["org:mirage" "org:ocamllabs"]
+homepage: "https://github.com/avsm/ocaml-dockerfile"
+doc: "http://avsm.github.io/avsm/ocaml-dockerfile/doc"
+bug-reports: "https://github.com/avsm/ocaml-dockerfile/issues"
+depends: [
+  "base-bytes"
+  "cmdliner"
+  "fmt"
+  "ocaml" {>= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_deriving"
+  "ppx_sexp_conv" {< "v0.13"}
+  "sexplib" {< "v0.13"}
+  "topkg" {build}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/avsm/ocaml-dockerfile.git"
 url {
   src:
     "https://github.com/avsm/ocaml-dockerfile/releases/download/v2.2.1/dockerfile-2.2.1.tbz"

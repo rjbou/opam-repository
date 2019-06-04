@@ -1,26 +1,6 @@
 opam-version: "2.0"
-maintainer: "Dario Teixeira <dario.teixeira@nleyten.com>"
-authors: ["Richard W.M. Jones <rich@annexia.org>"]
-homepage: "http://pgocaml.forge.ocamlcore.org/"
-bug-reports: "https://github.com/darioteixeira/pgocaml/issues"
-dev-repo: "git+https://github.com/darioteixeira/pgocaml.git"
-license: "LGPL-2.0 with OCaml linking exception"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-remove: [["ocamlfind" "remove" "pgocaml"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind" {build}
-  "batteries" {>= "2.0.0"}
-  "pcre"
-  "calendar"
-  "csv"
-  "camlp4"
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "pgocaml"
+version: "1.7.1"
 synopsis: "Interface to PostgreSQL databases"
 description: """
 PG'OCaml provides an interface to PostgreSQL databases for OCaml
@@ -31,8 +11,31 @@ about the database. This allows PG'OCaml to check at compile-time if
 the program is indeed consistent with the database structure. This
 type-safe database access is the primary advantage that PG'OCaml has
 over other PostgreSQL bindings for OCaml."""
+maintainer: "Dario Teixeira <dario.teixeira@nleyten.com>"
+authors: "Richard W.M. Jones <rich@annexia.org>"
+license: "LGPL-2.0 with OCaml linking exception"
+homepage: "http://pgocaml.forge.ocamlcore.org/"
+bug-reports: "https://github.com/darioteixeira/pgocaml/issues"
+depends: [
+  "batteries" {>= "2.0.0"}
+  "calendar"
+  "camlp4"
+  "csv"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "pcre"
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "pgocaml"]
+dev-repo: "git+https://github.com/darioteixeira/pgocaml.git"
 url {
-  src: "https://download.ocamlcore.org/pgocaml/pgocaml/1.7.1/pgocaml-1.7.1.tgz"
+  src:
+    "https://download.ocamlcore.org/pgocaml/pgocaml/1.7.1/pgocaml-1.7.1.tgz"
   checksum: "md5=107bf500ea85abadb7cfa012d1ac01e8"
 }

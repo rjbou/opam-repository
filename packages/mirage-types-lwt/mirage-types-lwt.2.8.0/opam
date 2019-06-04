@@ -1,20 +1,6 @@
 opam-version: "2.0"
-maintainer:   ["anil@recoil.org" "thomas@gazagnaire.org"]
-authors:      "The MirageOS team"
-homepage:     "https://github.com/mirage/mirage"
-bug-reports:  "https://github.com/mirage/mirage/issues/"
-dev-repo: "git+https://github.com/mirage/mirage.git"
-tags:         ["org:mirage" "org:xapi-project"]
-
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "lwt"
-  "cstruct" {>= "1.4.0"}
-  "io-page" {>= "1.4.0"}
-  "ipaddr"
-  "mirage-types" {= "2.8.0"}
-]
+name: "mirage-types-lwt"
+version: "2.8.0"
 synopsis: "Lwt module type definitions for Mirage-compatible applications"
 description: """
 This is a virtual package that pulls in all the concrete
@@ -28,3 +14,18 @@ for several that are left abstract in `mirage-types`, including but not limited 
 - `type page_aligned_buffer = Io_page.t`
 - `type buffer = Cstruct.t`
 - `type macaddr = Macaddr.t`"""
+maintainer: ["anil@recoil.org" "thomas@gazagnaire.org"]
+authors: "The MirageOS team"
+tags: ["org:mirage" "org:xapi-project"]
+homepage: "https://github.com/mirage/mirage"
+bug-reports: "https://github.com/mirage/mirage/issues/"
+depends: [
+  "cstruct" {>= "1.4.0"}
+  "io-page" {>= "1.4.0"}
+  "ipaddr"
+  "lwt"
+  "mirage-types" {= "2.8.0"}
+  "ocaml"
+  "ocamlfind"
+]
+dev-repo: "git+https://github.com/mirage/mirage.git"

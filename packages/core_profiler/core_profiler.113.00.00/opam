@@ -1,30 +1,32 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
-homepage: "https://github.com/janestreet/core_profiler"
-license: "Apache-2.0"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-remove: [["ocamlfind" "remove" "core_profiler"]]
-depends: [
-  "ocaml" {>= "4.02.1" & < "4.03"}
-  "camlp4"
-  "core" {>= "113.00.00" & < "113.01.00"}
-  "core_extended" {>= "113.00.00" & < "113.01.00"}
-  "re2" {>= "113.00.00" & < "113.01.00"}
-  "textutils" {>= "112.17.00" & < "112.18.00"}
-  "ocamlbuild" {build}
-]
-bug-reports: "https://github.com/janestreet/core_profiler/issues"
-dev-repo: "git+https://github.com/janestreet/core_profiler.git"
-install: [[make "install"]]
+name: "core_profiler"
+version: "113.00.00"
 synopsis: "Profiling library"
 description: """
 Core_profiler is a library that helps you profile programs and
 estimate various costs."""
+maintainer: "opensource@janestreet.com"
+authors: "Jane Street Group, LLC <opensource@janestreet.com>"
+license: "Apache-2.0"
+homepage: "https://github.com/janestreet/core_profiler"
+bug-reports: "https://github.com/janestreet/core_profiler/issues"
+depends: [
+  "camlp4"
+  "core" {>= "113.00.00" & < "113.01.00"}
+  "core_extended" {>= "113.00.00" & < "113.01.00"}
+  "ocaml" {>= "4.02.1" & < "4.03"}
+  "ocamlbuild" {build}
+  "re2" {>= "113.00.00" & < "113.01.00"}
+  "textutils" {>= "112.17.00" & < "112.18.00"}
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "core_profiler"]
+dev-repo: "git+https://github.com/janestreet/core_profiler.git"
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/113.00/files/core_profiler-113.00.00.tar.gz"

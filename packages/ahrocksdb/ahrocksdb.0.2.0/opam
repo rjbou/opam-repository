@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "ahrocksdb"
+version: "0.2.0"
 synopsis: "A binding to RocksDB"
 description: """
 This is a binding to Facebook's RocksDB.
@@ -23,17 +25,17 @@ homepage: "https://github.com/ahrefs/ocaml-ahrocksdb"
 doc: "https://ahrefs.github.io/ocaml-ahrocksdb/"
 bug-reports: "https://github.com/ahrefs/ocaml-ahrocksdb/issues"
 depends: [
-  "ocaml" {>= "4.06.0"}
-  "dune" {build}
-  "base" {build & < "v0.13"}
-  "stdio" {build & < "v0.13"}
-  "ctypes" {>= "0.12.0"}
-  "astring"
-  "conf-rocksdb"
-  "rresult"
-  "bos" {with-test}
-  "cryptokit" {with-test}
   "alcotest" {with-test}
+  "astring"
+  "base" {build & < "v0.13"}
+  "bos" {with-test}
+  "conf-rocksdb"
+  "cryptokit" {with-test}
+  "ctypes" {>= "0.12.0"}
+  "dune" {build}
+  "ocaml" {>= "4.06.0"}
+  "rresult"
+  "stdio" {build & < "v0.13"}
 ]
 build: [
   ["dune" "subst"] {pinned}

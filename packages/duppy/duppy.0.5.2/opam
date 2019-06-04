@@ -1,25 +1,25 @@
 opam-version: "2.0"
+name: "duppy"
+version: "0.5.2"
+synopsis: "Library providing monadic threads"
 maintainer: "Romain Beauxis <toots@rastageeks.org>"
 authors: "The Savonet Team <savonet-users@lists.sourceforge.net>"
 homepage: "https://github.com/savonet/ocaml-duppy"
+bug-reports: "https://github.com/savonet/ocaml-duppy/issues"
+depends: [
+  "camlp4"
+  "ocaml" {< "4.06.0"}
+  "ocamlfind"
+  "pcre"
+]
+flags: light-uninstall
 build: [
   ["./configure" "--prefix" prefix]
   [make]
 ]
-install: [
-  [make "install"]
-]
+install: [make "install"]
 remove: ["ocamlfind" "remove" "duppy"]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "camlp4"
-  "ocamlfind"
-  "pcre"
-]
-bug-reports: "https://github.com/savonet/ocaml-duppy/issues"
 dev-repo: "git+https://github.com/savonet/ocaml-duppy.git"
-synopsis: "Library providing monadic threads"
-flags: light-uninstall
 url {
   src:
     "https://github.com/savonet/ocaml-duppy/releases/download/0.5.2/ocaml-duppy-0.5.2.tar.gz"

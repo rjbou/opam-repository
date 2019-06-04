@@ -1,12 +1,29 @@
 opam-version: "2.0"
+name: "ppx_deriving_morphism"
+version: "0.4"
+synopsis: "Morphism generator for OCaml >=4.02"
+description: """
+ppx_deriving_morphism is a ppx_deriving plugin that provides
+a generator for records implementing openly recursive map and fold routines
+for arbitrary data structures."""
 maintainer: "Christoph Höger <christoph.hoeger@tu-berlin.de>"
 authors: "Christoph Höger <christoph.hoeger@tu-berlin.de>"
-homepage: "https://github.com/choeger/ppx_deriving_morphism"
-bug-reports: "https://github.com/choeger/ppx_deriving_morphism/issues"
 license: "BSD"
 tags: "syntax"
-dev-repo: "git://github.com/choeger/ppx_deriving_morphism.git"
-substs: "pkg/META"
+homepage: "https://github.com/choeger/ppx_deriving_morphism"
+bug-reports: "https://github.com/choeger/ppx_deriving_morphism/issues"
+depends: [
+  "cppo" {build}
+  "cppo_ocamlbuild" {build}
+  "ocaml" {>= "4.02.1" & < "4.05"}
+  "ocamlfind" {build}
+  "ounit" {with-test}
+  "ppx_deriving" {>= "3.0" & < "4.3"}
+  "ppx_import" {with-test}
+  "ppx_tools" {>= "4.02.3"}
+  "result"
+]
+available: opam-version >= "1.2"
 build: [
   [
     "ocaml"
@@ -22,23 +39,8 @@ build: [
     "--"
   ] {with-test}
 ]
-depends: [
-  "ocaml" {>= "4.02.1" & < "4.05"}
-  "ppx_deriving" {>= "3.0" & < "4.3"}
-  "ppx_tools" {>= "4.02.3"}
-  "ocamlfind" {build}
-  "cppo" {build}
-  "cppo_ocamlbuild" {build}
-  "result"
-  "ounit" {with-test}
-  "ppx_import" {with-test}
-]
-available: opam-version >= "1.2"
-synopsis: "Morphism generator for OCaml >=4.02"
-description: """
-ppx_deriving_morphism is a ppx_deriving plugin that provides
-a generator for records implementing openly recursive map and fold routines
-for arbitrary data structures."""
+substs: "pkg/META"
+dev-repo: "git://github.com/choeger/ppx_deriving_morphism.git"
 url {
   src: "https://github.com/choeger/ppx_deriving_morphism/archive/v0.4.tar.gz"
   checksum: "md5=d26eab20880bf39724c3b839c8015701"

@@ -1,20 +1,22 @@
 opam-version: "2.0"
+name: "curses"
+version: "1.0.3"
+synopsis: "Bindings to curses/ncurses"
+description: "Tools for building terminal-based user interfaces"
 maintainer: "ogunden@phauna.org"
+depends: ["ocaml" "ocamlfind"]
+flags: light-uninstall
 build: [
   ["./configure" "--enable-widec"]
   [make "OCAMLMAKEFILE=OCamlMakefile" "byte"]
   [make "OCAMLMAKEFILE=OCamlMakefile" "opt"]
 ]
-remove: [["ocamlfind" "remove" "curses"]]
-depends: ["ocaml" "ocamlfind"]
+install: [make "OCAMLMAKEFILE=OCamlMakefile" "install"]
+remove: ["ocamlfind" "remove" "curses"]
 depexts: [
   ["libncurses-dev"] {os-distribution = "ubuntu"}
   ["libncurses-dev"] {os-distribution = "debian"}
 ]
-install: [make "OCAMLMAKEFILE=OCamlMakefile" "install"]
-synopsis: "Bindings to curses/ncurses"
-description: "Tools for building terminal-based user interfaces"
-flags: light-uninstall
 url {
   src: "http://ocaml.phauna.org/distfiles/ocaml-curses-1.0.3.ogunden1.tar.gz"
   checksum: "md5=58f22c4884f17d82024c68d82f1c3d61"

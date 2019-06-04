@@ -1,36 +1,6 @@
 opam-version: "2.0"
 name: "charrua-core"
-maintainer: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
-authors: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
-license: "ISC"
-homepage: "https://github.com/mirage/charrua-core"
-bug-reports: "https://github.com/mirage/charrua-core/issues"
-dev-repo: "git+https://github.com/mirage/charrua-core.git"
-doc: "https://mirage.github.io/charrua-core/api"
-
-available: opam-version >= "1.2"
-build: [
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
-  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
-    {with-test}
-  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.03"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "ppx_sexp_conv" {< "v0.13"}
-  "ppx_tools"
-  "menhir" {build}
-  "cstruct" {>= "1.9.0" & < "3.0.0"}
-  "ppx_cstruct"
-  "sexplib" {< "v0.13"}
-  "ipaddr" {>= "2.5.0" & < "3.0.0"}
-  "tcpip" {>= "3.1.0" & < "3.2.0"}
-  "rresult"
-  "io-page" {with-test}
-]
+version: "0.7"
 synopsis:
   "DHCP core library - a DHCP server and wire frame encoder and decoder"
 description: """
@@ -52,6 +22,36 @@ is a Mirage DHCP unikernel server based on charrua-core.
 
 You can browse the API for [charrua-core](http://www.github.com/mirage/charrua-core) at
 http://mirage.github.io/charrua-core/api"""
+maintainer: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
+authors: "Christiano F. Haesbaert <haesbaert@haesbaert.org>"
+license: "ISC"
+homepage: "https://github.com/mirage/charrua-core"
+doc: "https://mirage.github.io/charrua-core/api"
+bug-reports: "https://github.com/mirage/charrua-core/issues"
+depends: [
+  "cstruct" {>= "1.9.0" & < "3.0.0"}
+  "io-page" {with-test}
+  "ipaddr" {>= "2.5.0" & < "3.0.0"}
+  "menhir" {build}
+  "ocaml" {>= "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "ppx_cstruct"
+  "ppx_sexp_conv" {< "v0.13"}
+  "ppx_tools"
+  "rresult"
+  "sexplib" {< "v0.13"}
+  "tcpip" {>= "3.1.0" & < "3.2.0"}
+  "topkg" {build}
+]
+available: opam-version >= "1.2"
+build: [
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"]
+  ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "true"]
+    {with-test}
+  ["ocaml" "pkg/pkg.ml" "test"] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/charrua-core.git"
 url {
   src:
     "https://github.com/mirage/charrua-core/releases/download/v0.7/charrua-core-0.7.tbz"

@@ -1,35 +1,35 @@
 opam-version: "2.0"
+name: "posix-semaphore"
+version: "0.3.0-0"
+synopsis: "POSIX semaphore"
+description: """
+The POSIX sempahore library provides access to POSIX named and unnamed
+semaphores and the functions to work with them."""
 maintainer: "Markus W. Weissmann <markus.weissmann@in.tum.de>"
-authors: [ "Markus W. Weissmann <markus.weissmann@in.tum.de>" ]
+authors: "Markus W. Weissmann <markus.weissmann@in.tum.de>"
 license: "MIT"
+tags: "clib:rt"
 homepage: "https://github.com/mwweissmann/ocaml-posix-semaphore"
 doc: "http://posix-semaphore.forge.ocamlcore.org/doc/"
-dev-repo: "git://github.com/mwweissmann/ocaml-posix-semaphore.git"
 bug-reports: "https://github.com/mwweissmann/ocaml-posix-semaphore/issues"
-tags: [ "clib:rt"  ]
+depends: [
+  "base-unix"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {>= "1.5"}
+  "posix-time"
+  "result"
+]
+available: os != "macos"
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
   ["ocaml" "setup.ml" "-doc"] {with-doc}
 ]
 install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "posix-semaphore"]
-]
-depends: [
-  "ocaml"
-  "result"
-  "base-unix"
-  "posix-time"
-  "ocamlfind" {>= "1.5"}
-  "ocamlbuild" {build}
-]
-available: os != "macos"
-synopsis: "POSIX semaphore"
-description: """
-The POSIX sempahore library provides access to POSIX named and unnamed
-semaphores and the functions to work with them."""
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "posix-semaphore"]
+dev-repo: "git://github.com/mwweissmann/ocaml-posix-semaphore.git"
 url {
   src:
     "https://github.com/mwweissmann/ocaml-posix-semaphore/archive/0.3.0.tar.gz"

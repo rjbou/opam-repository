@@ -1,11 +1,13 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.08.0+beta2+flambda"
 synopsis: "second beta of 4.08.0, with flambda activated"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.08.0" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
   "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.08.0" & post}
   "ocaml-beta"
 ]
 conflict-class: "ocaml-core-compiler"

@@ -1,30 +1,6 @@
 opam-version: "2.0"
-maintainer: "jonathan.protzenko@inria.fr"
-homepage: "http://protz.github.io/mezzo/"
-license: "GPL-2"
-depends: [
-  "ocaml" {>= "4.00.1" & < "4.06.0"}
-  "ocamlfind"
-  "yojson"
-  "ulex"
-  "menhir"
-  "fix"
-  "functory"
-  "pprint"
-  "ocamlbuild"
-]
-patches: [
-  "no-deprecated-fatal-warning.patch"
-]
-build: [
-  ["./configure"]
-  [make]
-]
-remove: [
-  ["ocamlfind" "remove" "mezzo"]
-]
-dev-repo: "git://github.com/protz/mezzo"
-install: [make "install"]
+name: "mezzo"
+version: "0.0.m8"
 synopsis:
   "We present the design of Mezzo, a programming language in the ML tradition,"
 description: """
@@ -32,12 +8,34 @@ which places strong emphasis on the control of aliasing and access to mutable
 memory. A balance between simplicity and expressiveness is achieved by
 marrying a static discipline of permissions and a dynamic mechanism of
 adoption and abandon."""
+maintainer: "jonathan.protzenko@inria.fr"
+license: "GPL-2"
+homepage: "http://protz.github.io/mezzo/"
+depends: [
+  "fix"
+  "functory"
+  "menhir"
+  "ocaml" {>= "4.00.1" & < "4.06.0"}
+  "ocamlbuild"
+  "ocamlfind"
+  "pprint"
+  "ulex"
+  "yojson"
+]
 flags: light-uninstall
+build: [
+  ["./configure"]
+  [make]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "mezzo"]
+patches: "no-deprecated-fatal-warning.patch"
+dev-repo: "git://github.com/protz/mezzo"
 extra-files: [
+  ["mezzo.install" "md5=adaa93c48604159605ff61de94168535"]
   [
     "no-deprecated-fatal-warning.patch" "md5=32570a7e064947ccdb7d06b35f7cb79c"
   ]
-  ["mezzo.install" "md5=adaa93c48604159605ff61de94168535"]
 ]
 url {
   src: "https://github.com/protz/mezzo/archive/m8.tar.gz"

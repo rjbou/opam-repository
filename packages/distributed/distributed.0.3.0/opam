@@ -1,10 +1,26 @@
 opam-version: "2.0"
+name: "distributed"
+version: "0.3.0"
+synopsis:
+  "Library to provide Erlang style distributed computations. This library is inspired by Cloud Haskell."
+description: """
+Library to provide Erlang style distributed computations. This library
+is inspired by Cloud Haskell."""
 maintainer: "essdotteedot <essdotteedot@gmail.com>"
 authors: "essdotteedot <essdotteedot@gmail.com>"
+license: "MIT"
 homepage: "https://github.com/essdotteedot/distributed"
 bug-reports: "https://github.com/essdotteedot/distributed/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/essdotteedot/distributed.git"
+depends: [
+  "base-threads"
+  "base-unix"
+  "lwt" {< "3.0.0"}
+  "ocaml" {>= "4.02.3"}
+  "ocamlfind" {build}
+  "ounit" {with-test & >= "2.0"}
+]
+available: os = "linux" | os = "macos"
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix "--%{lwt:enable}%-lwt"]
   ["ocaml" "setup.ml" "-build"]
@@ -16,21 +32,7 @@ build: [
 ]
 install: ["ocaml" "setup.ml" "-install"]
 remove: ["ocamlfind" "remove" "distributed"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "base-threads"
-  "base-unix"
-  "lwt" {< "3.0.0"}
-  "ocamlfind" {build}
-  "ounit" {with-test & >= "2.0"}
-]
-available: os = "linux" | os = "macos"
-synopsis:
-  "Library to provide Erlang style distributed computations. This library is inspired by Cloud Haskell."
-description: """
-Library to provide Erlang style distributed computations. This library
-is inspired by Cloud Haskell."""
-flags: light-uninstall
+dev-repo: "git+https://github.com/essdotteedot/distributed.git"
 url {
   src: "https://github.com/essdotteedot/distributed/archive/v0.3.0.tar.gz"
   checksum: "md5=e478f6d968cef13c82267afaffa376d6"

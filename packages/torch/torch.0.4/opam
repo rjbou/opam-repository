@@ -1,12 +1,15 @@
 opam-version: "2.0"
-bug-reports:  "https://github.com/LaurentMazare/ocaml-torch/issues"
-homepage:     "https://github.com/LaurentMazare/ocaml-torch"
-dev-repo:     "git+https://github.com/LaurentMazare/ocaml-torch.git"
-maintainer:   "Laurent Mazare <lmazare@gmail.com>"
-authors:      [ "Laurent Mazare" ]
-
-build: [["dune" "build" "-p" name "-j" jobs]]
-
+name: "torch"
+version: "0.4"
+synopsis: "PyTorch bindings for OCaml"
+description: """
+The ocaml-torch project provides some OCaml bindings for the PyTorch library.
+This brings to OCaml NumPy-like tensor computations with GPU acceleration and
+tape-based automatic differentiation."""
+maintainer: "Laurent Mazare <lmazare@gmail.com>"
+authors: "Laurent Mazare"
+homepage: "https://github.com/LaurentMazare/ocaml-torch"
+bug-reports: "https://github.com/LaurentMazare/ocaml-torch/issues"
 depends: [
   "base" {>= "0.11.0" & < "v0.13"}
   "cmdliner"
@@ -24,16 +27,9 @@ depends: [
   "stb_image"
   "stdio" {< "v0.13"}
 ]
-
 available: os = "linux" | os = "macos"
-
-synopsis: "PyTorch bindings for OCaml"
-description: """
-The ocaml-torch project provides some OCaml bindings for the PyTorch library.
-This brings to OCaml NumPy-like tensor computations with GPU acceleration and
-tape-based automatic differentiation.
-"""
-
+build: ["dune" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/LaurentMazare/ocaml-torch.git"
 url {
   src: "https://github.com/LaurentMazare/ocaml-torch/archive/0.4.tar.gz"
   checksum: [

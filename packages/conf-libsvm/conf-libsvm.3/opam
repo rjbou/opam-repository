@@ -1,27 +1,29 @@
 opam-version: "2.0"
-maintainer: "Akinori ABE <aabe.65535@gmail.com>"
-authors: [ "Akinori ABE <aabe.65535@gmail.com>" ]
-license: "MIT"
-bug-reports: "https://github.com/ocaml/opam-repository/issues"
-homepage: "https://www.csie.ntu.edu.tw/~cjlin/libsvm/"
-build: [
-  ["sh" "-exc" "cc $CFLAGS test.c -lsvm"] {os = "linux"}
-  ["sh" "-exc" "cc $CFLAGS -DDARWIN test.c -lsvm"] {os = "macos"}
-]
-depexts: [
-  ["libsvm-dev"] {os-distribution = "ubuntu"}
-  ["libsvm-dev"] {os-distribution = "debian"}
-  ["libsvm"] {os-distribution = "arch"}
-  ["sci-libs/libsvm"] {os-distribution = "gentoo"}
-  ["libsvm-devel"] {os-distribution = "fedora"}
-  ["libsvm-devel"] {os-distribution = "centos"}
-  ["libsvm"] {os = "macos" & os-distribution = "homebrew"}
-]
+name: "conf-libsvm"
+version: "3"
 synopsis: "Virtual package relying on libsvm library installation"
 description: """
 This package can only install if the libsvm library is available on the system:
 
 - `libsvm/svm.h` is at an include path.
 - `libsvm.so` is at a library path."""
-extra-files: ["test.c" "md5=a8bf07a6d8723a85c7777bde2d041e3f"]
+maintainer: "Akinori ABE <aabe.65535@gmail.com>"
+authors: "Akinori ABE <aabe.65535@gmail.com>"
+license: "MIT"
+homepage: "https://www.csie.ntu.edu.tw/~cjlin/libsvm/"
+bug-reports: "https://github.com/ocaml/opam-repository/issues"
 flags: conf
+build: [
+  ["sh" "-exc" "cc $CFLAGS test.c -lsvm"] {os = "linux"}
+  ["sh" "-exc" "cc $CFLAGS -DDARWIN test.c -lsvm"] {os = "macos"}
+]
+depexts: [
+  ["libsvm"] {os-distribution = "arch"}
+  ["libsvm"] {os = "macos" & os-distribution = "homebrew"}
+  ["libsvm-dev"] {os-distribution = "ubuntu"}
+  ["libsvm-dev"] {os-distribution = "debian"}
+  ["libsvm-devel"] {os-distribution = "fedora"}
+  ["libsvm-devel"] {os-distribution = "centos"}
+  ["sci-libs/libsvm"] {os-distribution = "gentoo"}
+]
+extra-files: ["test.c" "md5=a8bf07a6d8723a85c7777bde2d041e3f"]

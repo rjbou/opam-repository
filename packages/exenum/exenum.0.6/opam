@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "lebotlan@users.forge.ocamlcore.org"
-authors: ["D. Le Botlan"]
-homepage: "http://exenum.forge.ocamlcore.org/"
-license: "GPL-3"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-remove: [["ocamlfind" "remove" "exenum"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-  "num"
-]
-install: ["ocaml" "setup.ml" "-install"]
+name: "exenum"
+version: "0.6"
 synopsis:
   "Build efficient enumerations for datatypes. Inspired by Feat for Haskell."
 description: """
@@ -39,7 +24,24 @@ v) (fun u -> v)) (fun u -> y)))
 
 Efficiency: computing lambda-term number 1E200 is instantaneous (on an
 antique Intel Centrino)."""
+maintainer: "lebotlan@users.forge.ocamlcore.org"
+authors: "D. Le Botlan"
+license: "GPL-3"
+homepage: "http://exenum.forge.ocamlcore.org/"
+depends: [
+  "num"
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "exenum"]
 url {
   src:
     "https://download.ocamlcore.org/exenum/exenum-source/0.6/exenum-source-0.6.tgz"

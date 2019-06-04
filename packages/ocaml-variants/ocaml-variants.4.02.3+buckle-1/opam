@@ -1,4 +1,6 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.02.3+buckle-1"
 synopsis: "4.02.3+buckle-1"
 description: """
 ==================================
@@ -6,11 +8,11 @@ description: """
 Provides patches required for [bucklescript](https://github.com/bloomberg/bucklescript)"""
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.02.3" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
-  "base-threads" {post}
   "base-ocamlbuild" {post}
+  "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.02.3" & post}
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler

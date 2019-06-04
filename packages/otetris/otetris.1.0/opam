@@ -1,28 +1,30 @@
 opam-version: "2.0"
-maintainer: "lord@crocodile.org"
-authors: "Vadim Zaliva"
-homepage: "https://github.com/vzaliva/otetris"
-bug-reports: "https://github.com/vzaliva/otetris/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/vzaliva/otetris.git"
-build: ["jbuilder" "build" "-p" name]
-depends: [
-  "ocaml"
-  "jbuilder" {build}
-  "batteries"
-  "lwt" {>= "3.1.0" & < "4.0.0"}
-  "lambda-term" {< "2.0"}
-  "conf-sdl-image"
-  "conf-sdl-ttf"
-  "conf-sdl-gfx"
-  "conf-sdl-mixer"
-  "ocamlsdl"
-  "ocaml-migrate-parsetree"
-]
+name: "otetris"
+version: "1.0"
 synopsis: "Tetris game implemented in OCaml language."
 description: """
 Two versions - terminal and using graphics (using SDL) are provided.  They
 could be launched as 'ttetris' and 'gtetris'."""
+maintainer: "lord@crocodile.org"
+authors: "Vadim Zaliva"
+license: "MIT"
+homepage: "https://github.com/vzaliva/otetris"
+bug-reports: "https://github.com/vzaliva/otetris/issues"
+depends: [
+  "batteries"
+  "conf-sdl-gfx"
+  "conf-sdl-image"
+  "conf-sdl-mixer"
+  "conf-sdl-ttf"
+  "jbuilder" {build}
+  "lambda-term" {< "2.0"}
+  "lwt" {>= "3.1.0" & < "4.0.0"}
+  "ocaml"
+  "ocaml-migrate-parsetree"
+  "ocamlsdl"
+]
+build: ["jbuilder" "build" "-p" name]
+dev-repo: "git+https://github.com/vzaliva/otetris.git"
 url {
   src: "https://github.com/vzaliva/otetris/archive/v1.0.tar.gz"
   checksum: "md5=3fcc605d3d4ffd72bfa195f9a987e757"

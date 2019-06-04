@@ -1,22 +1,25 @@
 opam-version: "2.0"
-authors: [ "Maas-Maarten Zeeman" "Sylvain Le Gall" ]
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-homepage: "http://ounit.forge.ocamlcore.org"
-bug-reports: "https://forge.ocamlcore.org/tracker/?func=browse&group_id=162&atid=730"
-dev-repo: "git+https://github.com/gildor478/ounit.git"
-doc: ["http://ounit.forge.ocamlcore.org/api-ounit/index.html"]
-build: [make "build"]
-remove: [["ocamlfind" "remove" "oUnit"]]
-depends: [
-  "ocaml" {>= "3.11.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "base-bytes"
-]
-install: [make "install"]
+name: "ounit"
+version: "2.0.8"
 synopsis:
   "Unit testing framework loosely based on HUnit. It is similar to JUnit, and other XUnit testing frameworks"
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+authors: ["Maas-Maarten Zeeman" "Sylvain Le Gall"]
+homepage: "http://ounit.forge.ocamlcore.org"
+doc: "http://ounit.forge.ocamlcore.org/api-ounit/index.html"
+bug-reports:
+  "https://forge.ocamlcore.org/tracker/?func=browse&group_id=162&atid=730"
+depends: [
+  "base-bytes"
+  "ocaml" {>= "3.11.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+]
 flags: light-uninstall
+build: [make "build"]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "oUnit"]
+dev-repo: "git+https://github.com/gildor478/ounit.git"
 url {
   src: "https://download.ocamlcore.org/ounit/ounit/2.0.8/ounit-2.0.8.tar.gz"
   checksum: "md5=bd12d66c9dbd95a50570bb686b0f10f5"

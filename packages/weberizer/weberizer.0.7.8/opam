@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
-authors: [ "Christophe Troestler <Christophe.Troestler@umons.ac.be>" ]
-tags: [ "web" "template" ]
-license: "LGPL-3.0 with OCaml linking exception"
-homepage: "https://github.com/Chris00/weberizer"
-dev-repo: "git+https://github.com/Chris00/weberizer.git"
-bug-reports: "https://github.com/Chris00/weberizer/issues"
-doc: "https://Chris00.github.io/weberizer/doc"
-build: [
-  [ "jbuilder" "subst" "-p" name ] {pinned}
-  [ "jbuilder" "build" "-p" name "-j" jobs ]
-]
-depends: [
-  "ocaml" {>= "4.03"}
-  "jbuilder" {build}
-  "ocamlnet"
-]
+name: "weberizer"
+version: "0.7.8"
 synopsis: "Compile HTML templates into OCaml modules"
 description: """
 Weberizer is a simple templating engine for OCaml.  It compiles the
@@ -25,6 +10,23 @@ escaped according to the context of the template in which they appear.
 You can add you own functions to the generated module — for example to
 set several related variables at once (you can also hide those
 variables from the interface if desired)."""
+maintainer: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
+authors: "Christophe Troestler <Christophe.Troestler@umons.ac.be>"
+license: "LGPL-3.0 with OCaml linking exception"
+tags: ["template" "web"]
+homepage: "https://github.com/Chris00/weberizer"
+doc: "https://Chris00.github.io/weberizer/doc"
+bug-reports: "https://github.com/Chris00/weberizer/issues"
+depends: [
+  "jbuilder" {build}
+  "ocaml" {>= "4.03"}
+  "ocamlnet"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+https://github.com/Chris00/weberizer.git"
 url {
   src:
     "https://github.com/Chris00/weberizer/releases/download/0.7.8/weberizer-0.7.8.tbz"

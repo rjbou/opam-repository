@@ -1,31 +1,6 @@
 opam-version: "2.0"
-maintainer: "ygrek@autistici.org"
-homepage: "https://github.com/mfp/extprot"
-license: "MIT"
-authors: ["Mauricio Fernandez <mfp@acm.org>"]
-doc: ["https://github.com/mfp/extprot/blob/master/README.md"]
-dev-repo: "git://github.com/mfp/extprot.git"
-bug-reports: "https://github.com/mfp/extprot/issues"
-build: [
-  ["omake"]
-  ["omake" "test"] {with-test}
-]
-install: [
-  ["omake" "install" "prefix=%{prefix}%"]
-]
-remove: [
-  ["ocamlfind" "remove" "extprot"]
-  ["rm" "-f" "%{bin}%/extprotc" "%{bin}%/extprotc.exe"]
-]
-depends: [
-  "ocaml" {>= "4.02.0" & < "4.06.0"}
-  "omake" {build}
-  "ocamlfind" {build}
-  "ounit" {with-test}
-  "camlp4" {build}
-  "extlib" | "extlib-compat"
-  "base-bytes"
-]
+name: "extprot"
+version: "1.4.0"
 synopsis:
   "Extensible binary protocols for cross-language communication and long-term serialization"
 description: """
@@ -33,7 +8,32 @@ extprot allows you to create compact, efficient, extensible, binary protocols th
 be used for cross-language communication and long-term data serialization.
 extprot supports protocols with rich, composable types, whose definition can evolve
 while keeping both forward and backward compatibility."""
+maintainer: "ygrek@autistici.org"
+authors: "Mauricio Fernandez <mfp@acm.org>"
+license: "MIT"
+homepage: "https://github.com/mfp/extprot"
+doc: "https://github.com/mfp/extprot/blob/master/README.md"
+bug-reports: "https://github.com/mfp/extprot/issues"
+depends: [
+  "base-bytes"
+  "camlp4" {build}
+  ("extlib" | "extlib-compat")
+  "ocaml" {>= "4.02.0" & < "4.06.0"}
+  "ocamlfind" {build}
+  "omake" {build}
+  "ounit" {with-test}
+]
 flags: light-uninstall
+build: [
+  ["omake"]
+  ["omake" "test"] {with-test}
+]
+install: ["omake" "install" "prefix=%{prefix}%"]
+remove: [
+  ["ocamlfind" "remove" "extprot"]
+  ["rm" "-f" "%{bin}%/extprotc" "%{bin}%/extprotc.exe"]
+]
+dev-repo: "git://github.com/mfp/extprot.git"
 url {
   src: "https://github.com/mfp/extprot/archive/v1.4.0.tar.gz"
   checksum: "md5=1e1d4d14770fd1ff1456a1e6739487d3"

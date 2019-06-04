@@ -1,23 +1,25 @@
 opam-version: "2.0"
+name: "lwt-zmq"
+version: "1.0-beta4"
+synopsis: "Lwt-friendly wrapping around ZeroMQ sockets"
 maintainer: "hez@0ok.org"
 homepage: "https://github.com/hcarty/lwt-zmq"
-build: make
-remove: [["ocamlfind" "remove" "lwt-zmq"]]
 depends: [
-  "ocaml"
-  "ocamlfind"
   "lwt"
+  "ocaml"
   "ocaml-zmq"
   "ocamlbuild" {build}
+  "ocamlfind"
 ]
+flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "lwt-zmq"]
 depexts: [
   ["libzmq-dev"] {os-distribution = "debian"}
   ["libzmq-dev"] {os-distribution = "ubuntu"}
 ]
 dev-repo: "git://github.com/hcarty/lwt-zmq"
-install: [make "install"]
-synopsis: "Lwt-friendly wrapping around ZeroMQ sockets"
-flags: light-uninstall
 url {
   src: "https://github.com/hcarty/lwt-zmq/archive/v1.0-beta4.tar.gz"
   checksum: "md5=29338d125a545daf45df9e3d7631d01d"

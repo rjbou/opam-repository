@@ -1,31 +1,28 @@
 opam-version: "2.0"
 name: "bap-primus-region"
 version: "1.4.0"
+synopsis:
+  "Provides a set of operations to store and manipulate interval trees"
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
+depends: [
+  "bap-primus" {= "1.4.0"}
+  "bap-std" {= "1.4.0"}
+  "ocaml" {>= "4.03" & < "4.06"}
+]
 build: [
   ["./configure" "--prefix=%{prefix}%" "--enable-primus-region"]
   [make]
 ]
-
-install: [[make "install"]]
-
+install: [make "install"]
 remove: [
-        ["ocamlfind" "remove" "bap-plugin-primus_region"]
-        ["bapbundle" "remove" "primus_region.plugin"]
-        ]
-
-depends: [
-  "ocaml" {>= "4.03" & < "4.06"}
-  "bap-std" {= "1.4.0"}
-  "bap-primus" {= "1.4.0"}
+  ["ocamlfind" "remove" "bap-plugin-primus_region"]
+  ["bapbundle" "remove" "primus_region.plugin"]
 ]
-synopsis:
-  "Provides a set of operations to store and manipulate interval trees"
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v1.4.0.tar.gz"
   checksum: "md5=b7785715c24645e8e69a8091427d090e"

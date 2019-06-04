@@ -1,20 +1,22 @@
 opam-version: "2.0"
-maintainer: "https://github.com/ocaml/opam-repository/issues"
-build: make
-remove: [["ocamlfind" "remove" "odn"]]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "type_conv" {= "108.00.02"}
-  "ocamlbuild" {build}
-]
-install: [make "install"]
+name: "ocaml-data-notation"
+version: "0.0.9"
 synopsis: "Store data using OCaml notation"
 description: """
 This project uses type-conv to dump OCaml data structure using OCaml
 data notation. This kind of data dumping helps to write OCaml code
 generator, like OASIS."""
+maintainer: "https://github.com/ocaml/opam-repository/issues"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "type_conv" {= "108.00.02"}
+]
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "odn"]
 url {
   src:
     "https://download.ocamlcore.org/odn/ocaml-data-notation/0.0.9/ocaml-data-notation-0.0.9.tar.gz"

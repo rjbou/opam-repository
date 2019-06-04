@@ -1,21 +1,23 @@
 opam-version: "2.0"
+name: "baardskeerder"
+version: "0.5.1"
+synopsis: "Baardskeerder is an append-only B-ish tree."
 maintainer: "romain.slootmaekers@incubaid.com"
-homepage: "http://incubaid.github.io/baardskeerder/"
 license: "LGPL v3"
-build: ["sh" "-exc" "cd src && %{make}%"]
-remove: [["ocamlfind" "remove" "baardskeerder"]]
+homepage: "http://incubaid.github.io/baardskeerder/"
 depends: [
+  "lwt"
   "ocaml" {< "4.01.0"}
+  "ocamlbuild" {build}
   "ocamlfind"
   "ounit" {< "2.0.0"}
   "quickcheck"
-  "lwt"
-  "ocamlbuild" {build}
 ]
 available: os != "macos"
-install: ["sh" "-exc" "cd src && %{make}% install"]
-synopsis: "Baardskeerder is an append-only B-ish tree."
 flags: light-uninstall
+build: ["sh" "-exc" "cd src && %{make}%"]
+install: ["sh" "-exc" "cd src && %{make}% install"]
+remove: ["ocamlfind" "remove" "baardskeerder"]
 url {
   src: "https://github.com/Incubaid/baardskeerder/tarball/0.5.1"
   checksum: "md5=aaa1703be8f109391fc6e9a6a8324f2f"

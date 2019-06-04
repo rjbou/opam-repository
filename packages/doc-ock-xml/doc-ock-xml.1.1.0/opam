@@ -1,33 +1,33 @@
-version: "1.1.0"
 opam-version: "2.0"
-maintainer: "lpw25@cl.cam.ac.uk"
-authors: [
- "Leo White <lpw25@cl.cam.ac.uk>"
- "David Sheets <sheets@alum.mit.edu>" ]
-homepage:  "https://github.com/ocaml-doc/doc-ock-xml"
-doc: "https://ocaml-doc.github.com/doc-ock-xml/"
-license: "ISC"
-dev-repo: "git+http://github.com/ocaml-doc/doc-ock-xml.git"
-bug-reports: "https://github.com/ocaml-doc/doc-ock-xml/issues"
-tags: ["doc" "xml" "ocaml" "org:ocaml-doc"]
-
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "jbuilder" {build}
-  "xmlm"
-  "menhir"
-  "doc-ock" {>= "1.1.0" & < "1.2.0"}
-]
-build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
-  ["jbuilder" "build" "-p" name "-j" jobs]
-]
+name: "doc-ock-xml"
+version: "1.1.0"
 synopsis: "XML printer and parser for Doc-Ock"
 description: """
 Doc-ock-xml is an XML printer and parser for [Doc-ock][doc-ock]
 
 doc-ock: https://github.com/ocaml-doc/doc-ock"""
+maintainer: "lpw25@cl.cam.ac.uk"
+authors: [
+  "David Sheets <sheets@alum.mit.edu>" "Leo White <lpw25@cl.cam.ac.uk>"
+]
+license: "ISC"
+tags: ["doc" "ocaml" "org:ocaml-doc" "xml"]
+homepage: "https://github.com/ocaml-doc/doc-ock-xml"
+doc: "https://ocaml-doc.github.com/doc-ock-xml/"
+bug-reports: "https://github.com/ocaml-doc/doc-ock-xml/issues"
+depends: [
+  "doc-ock" {>= "1.1.0" & < "1.2.0"}
+  "jbuilder" {build}
+  "menhir"
+  "ocaml"
+  "ocamlfind" {build}
+  "xmlm"
+]
+build: [
+  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "build" "-p" name "-j" jobs]
+]
+dev-repo: "git+http://github.com/ocaml-doc/doc-ock-xml.git"
 url {
   src:
     "http://github.com/ocaml-doc/doc-ock-xml/releases/download/v1.1.0/doc-ock-xml-1.1.0.tbz"

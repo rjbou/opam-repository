@@ -1,32 +1,41 @@
 opam-version: "2.0"
-maintainer:    "thomas@gazagnaire.org"
-homepage:      "https://github.com/mirage/mirage-net"
-bug-reports:   "https://github.com/mirage/mirage-net/issues"
-dev-repo: "git+https://github.com/mirage/mirage-net.git"
-doc:           "https://mirage.github.io/mirage-net/"
-authors:       ["Thomas Gazagnaire" "Anil Madhavapeddy" "Gabriel Radanne"
-               "Mindy Preston" "Thomas Leonard" "Nicolas Ojeda Bar"
-               "Dave Scott" "David Kaloper" "Hannes Mehnert" "Richard Mortier"]
-tags:          [ "org:mirage"]
-license:       "ISC"
-
+name: "mirage-net-lwt"
+version: "1.1.0"
+synopsis: "MirageOS TCP/IP networking library"
+maintainer: "thomas@gazagnaire.org"
+authors: [
+  "Anil Madhavapeddy"
+  "Dave Scott"
+  "David Kaloper"
+  "Gabriel Radanne"
+  "Hannes Mehnert"
+  "Mindy Preston"
+  "Nicolas Ojeda Bar"
+  "Richard Mortier"
+  "Thomas Gazagnaire"
+  "Thomas Leonard"
+]
+license: "ISC"
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-net"
+doc: "https://mirage.github.io/mirage-net/"
+bug-reports: "https://github.com/mirage/mirage-net/issues"
+depends: [
+  "cstruct"
+  "io-page"
+  "ipaddr" {>= "1.0.0" & < "3.0.0"}
+  "jbuilder" {build & >= "1.0+beta7"}
+  "lwt"
+  "mirage-net" {>= "1.0.0" & < "2.0.0"}
+  "ocaml"
+  "result"
+  "topkg" {build & >= "0.8.0"}
+]
 build: [
   ["jbuilder" "subst" "-p" name] {pinned}
   ["jbuilder" "build" "-p" name "-j" jobs]
 ]
-
-depends: [
-  "ocaml"
-  "jbuilder" {build & >= "1.0+beta7"}
-  "topkg" {build & >= "0.8.0"}
-  "mirage-net" {>= "1.0.0" & < "2.0.0"}
-  "lwt"
-  "ipaddr" {>= "1.0.0" & < "3.0.0"}
-  "cstruct"
-  "io-page"
-  "result"
-]
-synopsis: "MirageOS TCP/IP networking library"
+dev-repo: "git+https://github.com/mirage/mirage-net.git"
 url {
   src:
     "https://github.com/mirage/mirage-net/releases/download/v1.1.0/mirage-net-1.1.0.tbz"

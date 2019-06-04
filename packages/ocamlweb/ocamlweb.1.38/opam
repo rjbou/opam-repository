@@ -1,7 +1,13 @@
 opam-version: "2.0"
+name: "ocamlweb"
+version: "1.38"
+synopsis: "A literate programming tool for OCaml"
 maintainer: "filliatr@lri.fr"
-authors: ["Jean-Christophe Filliâtre"]
+authors: "Jean-Christophe Filliâtre"
 license: "GNU Library General Public License version 2"
+depends: [
+  "ocaml" {< "4.06.0"}
+]
 build: [
   [
     "./configure"
@@ -19,10 +25,6 @@ build: [
   [make]
 ]
 install: [make "install" "BASETEXDIR=%{lib}%/ocamlweb/texmf"]
-synopsis: "A literate programming tool for OCaml"
-depends: [
-  "ocaml" {< "4.06.0"}
-]
 extra-files: ["ocamlweb.install" "md5=8190c722de440e2f113fd8c332c29be6"]
 url {
   src: "http://www.lri.fr/~filliatr/ftp/ocamlweb/ocamlweb-1.38.tar.gz"

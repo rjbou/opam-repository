@@ -1,25 +1,26 @@
 opam-version: "2.0"
+name: "obelisk"
+version: "0.4.0"
 synopsis: "Pretty-printing for Menhir files"
 description: """
 Obelisk is a simple tool which produces pretty-printed output from a Menhir parser file (.mly).
-It is inspired from yacc2latex and is also written in OCaml, but is aimed at supporting features from Menhir instead of only those of ocamlyacc.
-"""
+It is inspired from yacc2latex and is also written in OCaml, but is aimed at supporting features from Menhir instead of only those of ocamlyacc."""
 maintainer: "Lélio Brun <lelio.brun@inria.fr>"
 authors: "Lélio Brun <lelio.brun@inria.fr>"
 license: "MIT"
 homepage: "https://github.com/Lelio-Brun/Obelisk"
-bug-reports: "https://github.com/Lelio-Brun/Obelisk/issues"
 doc: "https://github.com/Lelio-Brun/Obelisk/blob/v0.4.0/README.md"
-dev-repo: "git+https://github.com/Lelio-Brun/Obelisk.git"
-build: [make]
-install: [make "install" "BINDIR=%{bin}%"]
-run-test: [make "tests"]
+bug-reports: "https://github.com/Lelio-Brun/Obelisk/issues"
 depends: [
-  "ocaml" {build & >= "4.03"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
   "menhir" {build}
+  "ocaml" {build & >= "4.03"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
 ]
+build: make
+run-test: [make "tests"]
+install: [make "install" "BINDIR=%{bin}%"]
+dev-repo: "git+https://github.com/Lelio-Brun/Obelisk.git"
 url {
   src: "https://github.com/Lelio-Brun/Obelisk/archive/v0.4.0.tar.gz"
   checksum: [

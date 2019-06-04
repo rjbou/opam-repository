@@ -1,22 +1,24 @@
 opam-version: "2.0"
+name: "ocp-indent"
+version: "0.6.2"
+synopsis: "A simple tool to indent OCaml programs"
 maintainer: "contact@ocamlpro.com"
 homepage: "https://github.com/OCamlPro/ocp-indent"
-build: [
-  ["./configure" "--prefix" prefix]
-  [make]
-]
-remove: [
-  ["./configure" "--prefix" prefix]
-  [make "uninstall"]
-]
 depends: [
   "ocaml" {>= "4.00.0" & < "4.06.0"}
   "ocp-build" {build & >= "1.99.3-beta"}
 ]
-dev-repo: "git://github.com/OCamlPro/ocp-indent"
-patches: ["fix-warn-error.patch"]
+build: [
+  ["./configure" "--prefix" prefix]
+  [make]
+]
 install: [make "install"]
-synopsis: "A simple tool to indent OCaml programs"
+remove: [
+  ["./configure" "--prefix" prefix]
+  [make "uninstall"]
+]
+patches: "fix-warn-error.patch"
+dev-repo: "git://github.com/OCamlPro/ocp-indent"
 extra-files: ["fix-warn-error.patch" "md5=f7ef872c17d2c56fb9e7cf8d8a1a6e86"]
 url {
   src: "https://github.com/OCamlPro/ocp-indent/archive/0.6.2.tar.gz"

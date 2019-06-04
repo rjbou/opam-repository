@@ -1,29 +1,6 @@
 opam-version: "2.0"
-authors:      [ "Mindy Preston" "Hannes Mehnert" "Anil Madhavapeddy"
-                "Thomas Gazagnaire" ]
-maintainer:   [ "anil@recoil.org" "thomas@gazagnaire.org"]
-homepage:     "https://github.com/mirage/mirage-fs-unix"
-dev-repo: "git+https://github.com/mirage/mirage-fs-unix.git"
-bug-reports:  "https://github.com/mirage/mirage-fs-unix/issues"
-doc:          "https://mirage.github.io/mirage-fs-unix/"
-tags:         [ "org:mirage" ]
-build: [
-  ["jbuilder" "build" "-p" name "-j" jobs]
-  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
-]
-depends: [
-  "ocaml" {>= "4.04.2"}
-  "jbuilder" {build & >= "1.0+beta7"}
-  "cstruct" {>= "3.2.0"}
-  "cstruct-lwt" {< "3.4.0"}
-  "mirage-kv-lwt" {>= "1.0.0" & < "2.0.0"}
-  "mirage-fs-lwt" {>= "1.0.0"}
-  "lwt"
-  "rresult" {with-test}
-  "mirage-clock-unix" {with-test & >= "1.2.0"}
-  "alcotest" {with-test & >= "0.7.1"}
-  "ptime" {with-test}
-]
+name: "mirage-fs-unix"
+version: "1.4.1"
 synopsis: "Passthrough filesystem for MirageOS on Unix"
 description: """
 This is a pass-through Mirage filesystem to an underlying Unix directory.  The
@@ -35,6 +12,32 @@ defined in the `mirage-fs` package.
 
 * WWW: <https://mirage.io>
 * E-mail: <mirageos-devel@lists.xenproject.org>"""
+maintainer: ["anil@recoil.org" "thomas@gazagnaire.org"]
+authors: [
+  "Anil Madhavapeddy" "Hannes Mehnert" "Mindy Preston" "Thomas Gazagnaire"
+]
+tags: "org:mirage"
+homepage: "https://github.com/mirage/mirage-fs-unix"
+doc: "https://mirage.github.io/mirage-fs-unix/"
+bug-reports: "https://github.com/mirage/mirage-fs-unix/issues"
+depends: [
+  "alcotest" {with-test & >= "0.7.1"}
+  "cstruct" {>= "3.2.0"}
+  "cstruct-lwt" {< "3.4.0"}
+  "jbuilder" {build & >= "1.0+beta7"}
+  "lwt"
+  "mirage-clock-unix" {with-test & >= "1.2.0"}
+  "mirage-fs-lwt" {>= "1.0.0"}
+  "mirage-kv-lwt" {>= "1.0.0" & < "2.0.0"}
+  "ocaml" {>= "4.04.2"}
+  "ptime" {with-test}
+  "rresult" {with-test}
+]
+build: [
+  ["jbuilder" "build" "-p" name "-j" jobs]
+  ["jbuilder" "runtest" "-p" name "-j" jobs] {with-test}
+]
+dev-repo: "git+https://github.com/mirage/mirage-fs-unix.git"
 url {
   src:
     "https://github.com/mirage/mirage-fs-unix/releases/download/v1.4.1/mirage-fs-unix-1.4.1.tbz"

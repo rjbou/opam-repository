@@ -1,44 +1,6 @@
 opam-version: "2.0"
-maintainer: "Dario Teixeira <dario.teixeira@nleyten.com>"
-authors: ["Dario Teixeira <dario.teixeira@nleyten.com>"]
-homepage: "http://lambdoc.forge.ocamlcore.org/"
-bug-reports: "https://github.com/darioteixeira/lambdoc/issues"
-dev-repo: "git+https://github.com/darioteixeira/lambdoc.git"
-license: "GPL-2.0"
-build: [
-  [
-    "./configure"
-    "--prefix"
-    prefix
-    "--docdir"
-    "%{doc}%/lambdoc"
-    "--%{alcotest:enable}%-tests"
-  ]
-  [make]
-  [make "doc"]
-  [make "test"] {with-test}
-]
-install: [[make "install"]]
-remove: [["ocamlfind" "remove" "lambdoc"]]
-depends: [
-  "ocaml" {>= "4.02.0"}
-  "ocamlfind"
-  "camlp4"
-  "batteries" {>= "2"}
-  "menhir"
-  "ulex"
-  "sexplib" {< "113.01.00"}
-  "type_conv"
-  "pcre"
-  "pxp"
-  "xstrp4"
-  "tyxml" {>= "3.2" & < "3.6"}
-  "omd" {>= "1.0.0"}
-  "blahcaml"
-  "camlhighlight" {>= "3.0" & < "4"}
-  "alcotest" {with-test}
-  "ocamlbuild" {build}
-]
+name: "lambdoc"
+version: "1.0-beta4"
 synopsis:
   "Library providing support for semantically rich documents in web applications."
 description: """
@@ -56,7 +18,47 @@ of basic macros. Particularly of note is a powerful extension mechanism that
 allows the definition of custom commands tailored to a particular application.
 It also ships with 'lambcmd', a CLI application that allows the conversion
 between any of the input formats into one of the supported output targets."""
+maintainer: "Dario Teixeira <dario.teixeira@nleyten.com>"
+authors: "Dario Teixeira <dario.teixeira@nleyten.com>"
+license: "GPL-2.0"
+homepage: "http://lambdoc.forge.ocamlcore.org/"
+bug-reports: "https://github.com/darioteixeira/lambdoc/issues"
+depends: [
+  "alcotest" {with-test}
+  "batteries" {>= "2"}
+  "blahcaml"
+  "camlhighlight" {>= "3.0" & < "4"}
+  "camlp4"
+  "menhir"
+  "ocaml" {>= "4.02.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+  "omd" {>= "1.0.0"}
+  "pcre"
+  "pxp"
+  "sexplib" {< "113.01.00"}
+  "type_conv"
+  "tyxml" {>= "3.2" & < "3.6"}
+  "ulex"
+  "xstrp4"
+]
 flags: light-uninstall
+build: [
+  [
+    "./configure"
+    "--prefix"
+    prefix
+    "--docdir"
+    "%{doc}%/lambdoc"
+    "--%{alcotest:enable}%-tests"
+  ]
+  [make]
+  [make "doc"]
+  [make "test"] {with-test}
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "lambdoc"]
+dev-repo: "git+https://github.com/darioteixeira/lambdoc.git"
 extra-files: ["lambdoc.install" "md5=971ede381fa9ce100bc7484a58f8ff73"]
 url {
   src: "https://github.com/darioteixeira/lambdoc/archive/v1.0-beta4.tar.gz"

@@ -1,32 +1,6 @@
 opam-version: "2.0"
-maintainer: "Anil Madhavapeddy <anil@recoil.org>"
-authors: [
-  "Anil Madhavapeddy"
-  "Thomas Gazagnaire"
-  "David Sheets"
-  "Rudi Grinberg"
-  "Timothy Bourke"
-]
-homepage: "https://github.com/mirage/ocaml-cow"
-bug-reports: "https://github.com/mirage/ocaml-cow/issues"
-license: "ISC"
-doc: "http://mirage.github.io/ocaml-cow"
-tags: [
-  "org:mirage" "org:xapi-project" "www" "html" "xml" "css" "json" "markdown"
-]
-dev-repo: "git+https://github.com/mirage/ocaml-cow.git"
-build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
-depends: [
-  "ocaml" {>= "4.02.3"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "uri" {>= "1.3.9"}
-  "xmlm" {>= "1.1.1"}
-  "omd" {>= "0.8.2"}
-  "ezjsonm" {>= "0.4.0"}
-  "alcotest" {with-test}
-]
+name: "cow"
+version: "2.2.0"
 synopsis: "XML, JSON, HTML and Markdown libraries"
 description: """
 Writing web-applications requires a lot of skills: HTML, CSS, XML,
@@ -34,6 +8,34 @@ JSON and Markdown, to name but a few! This library provides OCaml
 combinators for these web formats.
 
 More documentation at <https://mirage.github.io/ocaml-cow>."""
+maintainer: "Anil Madhavapeddy <anil@recoil.org>"
+authors: [
+  "Anil Madhavapeddy"
+  "David Sheets"
+  "Rudi Grinberg"
+  "Thomas Gazagnaire"
+  "Timothy Bourke"
+]
+license: "ISC"
+tags: [
+  "css" "html" "json" "markdown" "org:mirage" "org:xapi-project" "www" "xml"
+]
+homepage: "https://github.com/mirage/ocaml-cow"
+doc: "http://mirage.github.io/ocaml-cow"
+bug-reports: "https://github.com/mirage/ocaml-cow/issues"
+depends: [
+  "alcotest" {with-test}
+  "ezjsonm" {>= "0.4.0"}
+  "ocaml" {>= "4.02.3"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "omd" {>= "0.8.2"}
+  "topkg" {build}
+  "uri" {>= "1.3.9"}
+  "xmlm" {>= "1.1.1"}
+]
+build: ["ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%"]
+dev-repo: "git+https://github.com/mirage/ocaml-cow.git"
 url {
   src:
     "https://github.com/mirage/ocaml-cow/releases/download/v2.2.0/cow-2.2.0.tbz"

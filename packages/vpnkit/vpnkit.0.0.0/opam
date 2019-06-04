@@ -1,59 +1,6 @@
 opam-version: "2.0"
-maintainer: "David Scott <dave.scott@docker.com>"
-authors: [
-	"Anil Madhavapeddy <anil@recoil.org>"
-	"David Scott <dave.scott@docker.com>"
-	"David Sheets <dsheets@docker.com>"
-	"Gaetan de Villele <gdevillele@gmail.com>"
-	"Ian Campbell <ian.campbell@docker.com>"
-	"Magnus Skjegstad <magnus@skjegstad.com>"
-	"Mindy Preston <mindy.preston@docker.com>"
-	"Sebastiaan van Stijn <github@gone.nl>"
-	"Thomas Gazagnaire <thomas@gazagnaire.com>"
-	"Thomas Leonard <thomas.leonard@docker.com>"
-]
-homepage:     "https://github.com/docker/vpnkit"
-bug-reports:  "https://github.com/docker/vpnkit/issues"
-dev-repo: "git+https://github.com/docker/vpnkit.git"
-doc:          "https://docker.github.io/vpnkit/"
-
-build: [
-  [make]
-]
-install: [make "install" "BINDIR=%{bin}%"]
-remove: [make "uninstall" "BINDIR=%{bin}%"]
-
-depends: [
-  "ocaml"
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "oasis" {build}
-  "alcotest" {with-test}
-  "result"
-  "tar-format" {>= "0.6.0" & < "0.7.0"}
-  "ipaddr"
-  "lwt" {< "2.7.0"}
-  "uwt" {= "0.0.3"}
-  "tcpip" {>= "2.8.0" & < "3.0.0"}
-  "pcap-format"
-  "dns"
-  "dns-forward" {< "0.10.0"}
-  "datakit-server" {< "0.10.0"}
-  "hashcons" {= "1.0.1"}
-  "pcap-format" {>= "0.4.0"}
-  "cmdliner"
-  "charrua-core" {>= "0.3"}
-  "named-pipe" {>= "0.4.0"}
-  "hvsock" {>= "0.8.1" & < "0.13.0"}
-  "asl"
-  "win-eventlog"
-  "fd-send-recv"
-  "logs"
-  "fmt"
-  "astring"
-  "mirage-flow" {>= "1.1.0"}
-  "mirage-types-lwt" {< "3.0.0"}
-]
+name: "vpnkit"
+version: "0.0.0"
 synopsis:
   "VPN-friendly networking devices for [HyperKit](https://github.com/docker/hyperkit)"
 description: """
@@ -71,6 +18,57 @@ respect to the host's VPN configuration.
 VPNKit operates by reconstructing Ethernet traffic from the VM and translating it into the
 relevant socket API calls on OSX or Windows. This allows the host application to generate
 traffic without requiring low-level Ethernet bridging support."""
+maintainer: "David Scott <dave.scott@docker.com>"
+authors: [
+  "Anil Madhavapeddy <anil@recoil.org>"
+  "David Scott <dave.scott@docker.com>"
+  "David Sheets <dsheets@docker.com>"
+  "Gaetan de Villele <gdevillele@gmail.com>"
+  "Ian Campbell <ian.campbell@docker.com>"
+  "Magnus Skjegstad <magnus@skjegstad.com>"
+  "Mindy Preston <mindy.preston@docker.com>"
+  "Sebastiaan van Stijn <github@gone.nl>"
+  "Thomas Gazagnaire <thomas@gazagnaire.com>"
+  "Thomas Leonard <thomas.leonard@docker.com>"
+]
+homepage: "https://github.com/docker/vpnkit"
+doc: "https://docker.github.io/vpnkit/"
+bug-reports: "https://github.com/docker/vpnkit/issues"
+depends: [
+  "alcotest" {with-test}
+  "asl"
+  "astring"
+  "charrua-core" {>= "0.3"}
+  "cmdliner"
+  "datakit-server" {< "0.10.0"}
+  "dns"
+  "dns-forward" {< "0.10.0"}
+  "fd-send-recv"
+  "fmt"
+  "hashcons" {= "1.0.1"}
+  "hvsock" {>= "0.8.1" & < "0.13.0"}
+  "ipaddr"
+  "logs"
+  "lwt" {< "2.7.0"}
+  "mirage-flow" {>= "1.1.0"}
+  "mirage-types-lwt" {< "3.0.0"}
+  "named-pipe" {>= "0.4.0"}
+  "oasis" {build}
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "pcap-format"
+  "pcap-format" {>= "0.4.0"}
+  "result"
+  "tar-format" {>= "0.6.0" & < "0.7.0"}
+  "tcpip" {>= "2.8.0" & < "3.0.0"}
+  "uwt" {= "0.0.3"}
+  "win-eventlog"
+]
+build: make
+install: [make "install" "BINDIR=%{bin}%"]
+remove: [make "uninstall" "BINDIR=%{bin}%"]
+dev-repo: "git+https://github.com/docker/vpnkit.git"
 url {
   src: "https://github.com/djs55/vpnkit/archive/v0.0.0.tar.gz"
   checksum: "md5=9bd05f1339ba9d48a119ee394b701c8f"

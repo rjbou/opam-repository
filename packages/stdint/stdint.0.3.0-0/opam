@@ -1,31 +1,6 @@
 opam-version: "2.0"
-maintainer: "Markus W. Weissmann <markus.weissmann@in.tum.de>"
-authors: [
-  "Andre Nathan <andre@digirati.com.br>"
-  "Jeff Shaw <shawjef3@msu.edu>"
-  "Markus W. Weissmann <markus.weissmann@in.tum.de>"
-  "Florian Pichlmeier <florian.pichlmeier@mytum.de>"
-]
-license: "MIT"
-homepage: "https://github.com/andrenth/ocaml-stdint"
-doc: "http://stdint.forge.ocamlcore.org/doc/"
-dev-repo: "git+https://github.com/andrenth/ocaml-stdint.git"
-bug-reports: "https://github.com/andrenth/ocaml-stdint/issues"
-build: [
-  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
-  ["ocaml" "setup.ml" "-build"]
-  ["ocaml" "setup.ml" "-doc"] {with-doc}
-]
-install: ["ocaml" "setup.ml" "-install"]
-remove: [
-  ["ocamlfind" "remove" "stdint"]
-]
-depends: [
-  "ocaml"
-  "base-bytes"
-  "ocamlfind" {>= "1.5"}
-  "ocamlbuild" {build}
-]
+name: "stdint"
+version: "0.3.0-0"
 synopsis: "signed and unsigned integer types having specified widths"
 description: """
 The stdint library provides signed and unsigned integer types of various
@@ -36,7 +11,32 @@ like maximum and minimum values, infix operators conversion to and from every
 other integer type (including int, float and nativeint), parsing from and
 conversion to readable strings (binary, octal, decimal, hexademical),
 conversion to and from buffers in both big endian and little endian byte order."""
+maintainer: "Markus W. Weissmann <markus.weissmann@in.tum.de>"
+authors: [
+  "Andre Nathan <andre@digirati.com.br>"
+  "Florian Pichlmeier <florian.pichlmeier@mytum.de>"
+  "Jeff Shaw <shawjef3@msu.edu>"
+  "Markus W. Weissmann <markus.weissmann@in.tum.de>"
+]
+license: "MIT"
+homepage: "https://github.com/andrenth/ocaml-stdint"
+doc: "http://stdint.forge.ocamlcore.org/doc/"
+bug-reports: "https://github.com/andrenth/ocaml-stdint/issues"
+depends: [
+  "base-bytes"
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind" {>= "1.5"}
+]
 flags: light-uninstall
+build: [
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-doc"] {with-doc}
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: ["ocamlfind" "remove" "stdint"]
+dev-repo: "git+https://github.com/andrenth/ocaml-stdint.git"
 url {
   src: "https://github.com/andrenth/ocaml-stdint/archive/0.3.0.tar.gz"
   checksum: "md5=1f9fa21baf9c0df490a841a6e916963a"

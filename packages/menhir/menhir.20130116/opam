@@ -1,15 +1,18 @@
 opam-version: "2.0"
+name: "menhir"
+version: "20130116"
+synopsis: "LR(1) parser generator"
 maintainer: "https://github.com/ocaml/opam-repository/issues"
 authors: [
   "François Pottier <francois.pottier@inria.fr>"
   "Yann Régis-Gianas <yrg@pps.univ-paris-diderot.fr>"
 ]
 homepage: "http://gallium.inria.fr/~fpottier/menhir/"
-remove: [["ocamlfind" "remove" "menhirLib"]]
 depends: [
   "ocaml" {< "4.06.0"}
   "ocamlfind"
 ]
+flags: light-uninstall
 install: [
   make
   "install"
@@ -18,8 +21,7 @@ install: [
   "libdir=%{lib}%/menhir"
   "mandir=%{man}%/man1"
 ]
-synopsis: "LR(1) parser generator"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "menhirLib"]
 extra-files: ["menhir.install" "md5=cc272194297647b1b7a0415ad3ea6e5f"]
 url {
   src: "http://cristal.inria.fr/~fpottier/menhir/menhir-20130116.tar.gz"

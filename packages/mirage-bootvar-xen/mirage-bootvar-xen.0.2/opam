@@ -1,29 +1,25 @@
 opam-version: "2.0"
 name: "mirage-bootvar-xen"
 version: "0.2"
+synopsis: "Library for reading MirageOS unikernel boot parameters in Xen"
 maintainer: "Magnus Skjegstad <magnus@skjegstad.com>"
 authors: "Magnus Skjegstad <magnus@skjegstad.com>"
+license: "ISC"
 homepage: "https://github.com/MagnusS/mirage-bootvar-xen"
 bug-reports: "https://github.com/MagnusS/mirage-bootvar-xen/issues/"
-dev-repo: "git+https://github.com/MagnusS/mirage-bootvar-xen.git"
-license: "ISC"
-build: [
-  [make]
-]
-install: [make "install"]
-remove: [
-  ["ocamlfind" "remove" "mirage-bootvar"]
-]
 depends: [
-  "ocaml"
-  "mirage-xen" {>= "2.2.0"}
-  "mirage-types" {< "3.0.0"}
   "ipaddr"
-  "re"
+  "mirage-types" {< "3.0.0"}
+  "mirage-xen" {>= "2.2.0"}
+  "ocaml"
   "ocamlbuild" {build}
+  "re"
 ]
-synopsis: "Library for reading MirageOS unikernel boot parameters in Xen"
 flags: light-uninstall
+build: make
+install: [make "install"]
+remove: ["ocamlfind" "remove" "mirage-bootvar"]
+dev-repo: "git+https://github.com/MagnusS/mirage-bootvar-xen.git"
 url {
   src: "https://github.com/MagnusS/mirage-bootvar-xen/archive/0.2.tar.gz"
   checksum: "md5=472a33ae73e42c647095dab8736d1257"

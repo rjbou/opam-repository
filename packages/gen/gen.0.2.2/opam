@@ -1,28 +1,26 @@
 opam-version: "2.0"
+name: "gen"
+version: "0.2.2"
+synopsis: "Simple and efficient iterators"
 maintainer: "simon.cruanes.2007@m4x.org"
 authors: "Simon Cruanes"
-build: [
-    ["./configure" "--disable-docs" "--disable-tests" "--disable-bench"]
-    [make "all"]
-]
-install: [
-    [make "install"]
-]
-remove: [
-    ["ocamlfind" "remove" "gen"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-tags: [ "gen" "iterator" "iter" "fold" ]
+tags: ["fold" "gen" "iter" "iterator"]
 homepage: "https://github.com/c-cube/gen/"
 doc: "http://cedeela.fr/~simon/software/gen/"
 bug-reports: "https://github.com/c-cube/gen/issues"
-dev-repo: "git+https://github.com/c-cube/gen.git"
-synopsis: "Simple and efficient iterators"
+depends: [
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
 flags: light-uninstall
+build: [
+  ["./configure" "--disable-docs" "--disable-tests" "--disable-bench"]
+  [make "all"]
+]
+install: [make "install"]
+remove: ["ocamlfind" "remove" "gen"]
+dev-repo: "git+https://github.com/c-cube/gen.git"
 url {
   src: "https://github.com/c-cube/gen/archive/0.2.2.tar.gz"
   checksum: "md5=d76f9935ceb961ace660f701ad0a664c"

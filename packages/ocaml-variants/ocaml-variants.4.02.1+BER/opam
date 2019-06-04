@@ -1,13 +1,15 @@
 opam-version: "2.0"
+name: "ocaml-variants"
+version: "4.02.1+BER"
 synopsis: "BER-N102 MetaOCaml"
 maintainer: "platform@lists.ocaml.org"
 depends: [
-  "ocaml" {= "4.02.1" & post}
-  "base-unix" {post}
   "base-bigarray" {post}
-  "base-threads" {post}
-  "base-ocamlbuild" {post}
   "base-metaocaml-ocamlfind" {post}
+  "base-ocamlbuild" {post}
+  "base-threads" {post}
+  "base-unix" {post}
+  "ocaml" {= "4.02.1" & post}
 ]
 conflict-class: "ocaml-core-compiler"
 flags: compiler

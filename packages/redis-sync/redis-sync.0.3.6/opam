@@ -1,17 +1,19 @@
 opam-version: "2.0"
+name: "redis-sync"
+version: "0.3.6"
+synopsis: "Synchronous client for Redis"
 maintainer: "aluuu@husa.su"
-authors: ["Mike Wells" "David Höppner" "Aleksandr Dinu"]
+authors: ["Aleksandr Dinu" "David Höppner" "Mike Wells"]
+license: "BSD3"
 homepage: "https://github.com/0xffea/ocaml-redis"
 bug-reports: "https://github.com/0xffea/ocaml-redis/issues"
-license: "BSD3"
-dev-repo: "git+https://github.com/0xffea/ocaml-redis.git"
-build: ["jbuilder" "build" "-p" name "-j" jobs]
 depends: [
-  "ocaml" {>= "4.02.3"}
   "jbuilder" {build}
+  "ocaml" {>= "4.02.3"}
   "redis" {>= "0.3.5"}
 ]
-synopsis: "Synchronous client for Redis"
+build: ["jbuilder" "build" "-p" name "-j" jobs]
+dev-repo: "git+https://github.com/0xffea/ocaml-redis.git"
 url {
   src: "https://github.com/0xffea/ocaml-redis/archive/0.3.6.tar.gz"
   checksum: "md5=69c2dd7a17211436b08819dea13aa93a"

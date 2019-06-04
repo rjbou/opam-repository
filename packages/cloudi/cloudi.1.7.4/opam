@@ -1,21 +1,19 @@
 opam-version: "2.0"
 name: "cloudi"
 version: "1.7.4"
+synopsis: "OCaml CloudI API"
 maintainer: "Michael Truog <mjtruog at protonmail dot com>"
 authors: "Michael Truog <mjtruog at protonmail dot com>"
+license: "MIT"
 homepage: "https://cloudi.org/"
 bug-reports: "https://github.com/CloudI/CloudI/issues"
-license: "MIT"
-dev-repo: "git+https://github.com/CloudI/cloudi_api_ocaml.git"
-build: [
-  [make]
-]
 depends: [
-  "ocaml" {>= "4.03.0" & < "4.08.0"}
+  ("base-num" | "num")
   "base-unix"
-  "base-num" | "num"
+  "ocaml" {>= "4.03.0" & < "4.08.0"}
 ]
-synopsis: "OCaml CloudI API"
+build: make
+dev-repo: "git+https://github.com/CloudI/cloudi_api_ocaml.git"
 url {
   src: "https://github.com/CloudI/cloudi_api_ocaml/archive/v1.7.4.tar.gz"
   checksum: "md5=dfd0ca7b6363adff7ed9bdb1cd246185"

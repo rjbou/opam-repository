@@ -1,41 +1,6 @@
 opam-version: "2.0"
-maintainer: "rudi.grinberg@gmail.com"
-authors: ["Rudi Grinberg"]
-license: "MIT"
-
-homepage: "https://github.com/rgrinberg/opium"
-bug-reports: "https://github.com/rgrinberg/opium/issues"
-dev-repo: "git+https://github.com/rgrinberg/opium.git"
-build: [
-  [make]
-  [make "check"] {with-test}
-]
-install: [make "install"]
-
-remove: [
-  ["ocamlfind" "remove" "opium_rock"]
-  ["ocamlfind" "remove" "opium"]
-]
-
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "omake" {build}
-  "cppo" {build}
-  "cohttp" {>= "0.15.0" & < "0.99"}
-  "ezjsonm" {>= "0.4.0"}
-  "base64" {>= "2.0.0" & < "3.0.0"}
-  "lwt"
-  "core_kernel" {< "v0.13"}
-  "cmdliner"
-  "fieldslib" {< "v0.13"}
-  "sexplib" {< "v0.13"}
-  "re" {>= "1.3.0"}
-  "magic-mime"
-  "cow" {>= "0.10.0" & < "2.0.0"}
-  "fieldslib" {<= "113.00.00"}
-  "ounit" {with-test}
-]
+name: "opium"
+version: "0.14.0"
 synopsis: "Sinatra like web toolkit based on Lwt + Cohttp"
 description: """
 Opium is a minimalistic library for quickly binding functions
@@ -47,7 +12,41 @@ to http routes. Its features include (but not limited to):
 
 Note: This library is still at an early stage so expect breakages
 until 1.0"""
+maintainer: "rudi.grinberg@gmail.com"
+authors: "Rudi Grinberg"
+license: "MIT"
+homepage: "https://github.com/rgrinberg/opium"
+bug-reports: "https://github.com/rgrinberg/opium/issues"
+depends: [
+  "base64" {>= "2.0.0" & < "3.0.0"}
+  "cmdliner"
+  "cohttp" {>= "0.15.0" & < "0.99"}
+  "core_kernel" {< "v0.13"}
+  "cow" {>= "0.10.0" & < "2.0.0"}
+  "cppo" {build}
+  "ezjsonm" {>= "0.4.0"}
+  "fieldslib" {< "v0.13"}
+  "fieldslib" {<= "113.00.00"}
+  "lwt"
+  "magic-mime"
+  "ocaml" {>= "4.01.0"}
+  "ocamlfind" {build}
+  "omake" {build}
+  "ounit" {with-test}
+  "re" {>= "1.3.0"}
+  "sexplib" {< "v0.13"}
+]
 flags: light-uninstall
+build: [
+  [make]
+  [make "check"] {with-test}
+]
+install: [make "install"]
+remove: [
+  ["ocamlfind" "remove" "opium_rock"]
+  ["ocamlfind" "remove" "opium"]
+]
+dev-repo: "git+https://github.com/rgrinberg/opium.git"
 url {
   src: "https://github.com/rgrinberg/opium/archive/v0.14.0.tar.gz"
   checksum: "md5=09be6a2006fc1abda8ec0e1547f21503"

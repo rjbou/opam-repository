@@ -1,19 +1,19 @@
 opam-version: "2.0"
-maintainer: "raphael.proust@cl.cam.ac.uk"
-authors: [ "Raphaël Proust" ]
-license: "BSD"
-build: [
-	[make]
-]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "batteries"
-  "yojson"
-  "acme"
-  "ocaml9p"
-]
-dev-repo: "git://github.com/raphael-proust/merlin-acme"
+name: "merlin-acme"
+version: "0.1"
 synopsis: "Merlin interface for acme."
+maintainer: "raphael.proust@cl.cam.ac.uk"
+authors: "Raphaël Proust"
+license: "BSD"
+depends: [
+  "acme"
+  "batteries"
+  "ocaml" {>= "4.01.0"}
+  "ocaml9p"
+  "yojson"
+]
+build: make
+dev-repo: "git://github.com/raphael-proust/merlin-acme"
 extra-files: ["merlin-acme.install" "md5=96d5289dad1003bd939ce097abfc8dc5"]
 url {
   src: "https://github.com/raphael-proust/merlin-acme/archive/0.1.tar.gz"

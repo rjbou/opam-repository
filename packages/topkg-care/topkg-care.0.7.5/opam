@@ -1,29 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/topkg"
-doc: "http://erratique.ch/software/topkg/doc"
-license: "ISC"
-dev-repo: "git+http://erratique.ch/repos/topkg.git"
-bug-reports: "https://github.com/dbuenzli/topkg/issues"
-tags: ["packaging" "ocamlbuild" "org:erratique"]
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build & >= "1.6.1"}
-  "ocamlbuild" {build}
-  "topkg" {= "0.7.5"}
-  "result"
-  "fmt"
-  "logs"
-  "bos" {>= "0.1.5"}
-  "cmdliner"
-  "opam-lib" {= "1.2.2"}
-]
-build:[[
-  "ocaml" "pkg/pkg.ml" "build"
-          "--pkg-name" "%{name}%"
-          "--pinned" "%{pinned}%"
-]]
+name: "topkg-care"
+version: "0.7.5"
 synopsis: "The transitory OCaml software packager"
 description: """
 Topkg is a packager for distributing OCaml software. It provides an
@@ -48,6 +25,35 @@ Topkg-care is distributed under the ISC license it depends on
 [logs]: http://erratique.ch/software/logs
 [bos]: http://erratique.ch/software/bos
 [cmdliner]: http://erratique.ch/software/cmdliner"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+tags: ["ocamlbuild" "org:erratique" "packaging"]
+homepage: "http://erratique.ch/software/topkg"
+doc: "http://erratique.ch/software/topkg/doc"
+bug-reports: "https://github.com/dbuenzli/topkg/issues"
+depends: [
+  "bos" {>= "0.1.5"}
+  "cmdliner"
+  "fmt"
+  "logs"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build & >= "1.6.1"}
+  "opam-lib" {= "1.2.2"}
+  "result"
+  "topkg" {= "0.7.5"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pkg-name"
+  "%{name}%"
+  "--pinned"
+  "%{pinned}%"
+]
+dev-repo: "git+http://erratique.ch/repos/topkg.git"
 url {
   src: "http://erratique.ch/software/topkg/releases/topkg-0.7.5.tbz"
   checksum: "md5=98d4859d180bd5d2f96462769ccc8053"

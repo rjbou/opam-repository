@@ -1,27 +1,25 @@
 opam-version: "2.0"
+name: "ptmap"
+version: "1.0.0"
+synopsis: "Maps over integers implemented as Patricia trees"
 maintainer: "Jean-Christophe.Filliatre@lri.fr"
-authors: ["Jean-Christophe Filliâtre"]
+authors: "Jean-Christophe Filliâtre"
+license: "GPL-2.1"
 homepage: "https://www.lri.fr/~filliatr/software.en.html"
 bug-reports: "https://github.com/UnixJunkie/ptmap/issues"
-dev-repo: "git+https://github.com/UnixJunkie/ptmap.git"
-license: "GPL-2.1"
+depends: [
+  "obuild" {build}
+  "ocaml"
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["obuild" "configure"]
   ["obuild" "build" "lib-ptmap"]
 ]
-install: [
-  ["obuild" "install"]
-]
-remove: [
-  ["ocamlfind" "remove" "ptmap"]
-]
-depends: [
-  "ocaml"
-  "ocamlfind"
-  "obuild" {build}
-]
-synopsis: "Maps over integers implemented as Patricia trees"
-flags: light-uninstall
+install: ["obuild" "install"]
+remove: ["ocamlfind" "remove" "ptmap"]
+dev-repo: "git+https://github.com/UnixJunkie/ptmap.git"
 url {
   src: "https://github.com/UnixJunkie/ptmap/archive/v1.0.0.tar.gz"
   checksum: "md5=f0dd78d650bd2e92ff11883eacdd4da6"

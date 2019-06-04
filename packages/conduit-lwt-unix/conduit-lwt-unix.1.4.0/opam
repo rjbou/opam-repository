@@ -1,23 +1,26 @@
 opam-version: "2.0"
+name: "conduit-lwt-unix"
+version: "1.4.0"
+synopsis: "A network connection establishment library for Lwt_unix"
 maintainer: "anil@recoil.org"
 authors: [
-  "Anil Madhavapeddy" "Thomas Leonard" "Thomas Gazagnaire" "Rudi Grinberg"
+  "Anil Madhavapeddy" "Rudi Grinberg" "Thomas Gazagnaire" "Thomas Leonard"
 ]
 license: "ISC"
 tags: "org:mirage"
 homepage: "https://github.com/mirage/ocaml-conduit"
 bug-reports: "https://github.com/mirage/ocaml-conduit/issues"
 depends: [
-  "ocaml" {>= "4.03.0"}
-  "dune" {build}
   "base-unix"
-  "ppx_sexp_conv" {< "v0.13"}
-  "conduit-lwt" {>="1.4.0"}
-  "lwt" {>= "3.0.0"}
-  "uri" {>= "1.9.4"}
+  "conduit-lwt" {>= "1.4.0"}
+  "dune" {build}
   "ipaddr" {>= "3.0.0"}
+  "lwt" {>= "3.0.0"}
+  "ocaml" {>= "4.03.0"}
+  "ppx_sexp_conv" {< "v0.13"}
+  "uri" {>= "1.9.4"}
 ]
-depopts: ["tls" "lwt_ssl" "launchd"]
+depopts: ["launchd" "lwt_ssl" "tls"]
 conflicts: [
   "tls" {< "0.8.0"}
 ]
@@ -26,7 +29,6 @@ build: [
   ["dune" "build" "-p" name "-j" jobs]
 ]
 dev-repo: "git+https://github.com/mirage/ocaml-conduit.git"
-synopsis: "A network connection establishment library for Lwt_unix"
 url {
   src:
     "https://github.com/mirage/ocaml-conduit/releases/download/v1.4.0/conduit-v1.4.0.tbz"

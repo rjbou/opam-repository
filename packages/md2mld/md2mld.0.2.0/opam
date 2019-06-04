@@ -1,5 +1,6 @@
 opam-version: "2.0"
 name: "md2mld"
+version: "0.2.0"
 synopsis: "Md files into odoc mld files"
 description: """
 md2mld converts a Markdown-format file into the `mld` format used by [odoc](https://github.com/ocaml/odoc) to render HTML documentation or OCaml libraries.  You can use this script to automatically embed a README.md file into API documentation for an OCaml  library.
@@ -22,9 +23,9 @@ homepage: "https://github.com/mseri/md2mld"
 doc: "https://mseri.github.io/md2mld/"
 bug-reports: "https://github.com/mseri/md2mld/issues"
 depends: [
-  "ocaml"
-  "dune" {build & >= "1.4.0"}
   "base-bytes"
+  "dune" {build & >= "1.4.0"}
+  "ocaml"
   "omd"
 ]
 build: ["jbuilder" "build" "-p" name "-j" jobs]

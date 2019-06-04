@@ -1,19 +1,31 @@
 opam-version: "2.0"
+name: "dose"
+version: "3.3"
+synopsis: "Dose library (part of Mancoosi tools)"
 maintainer: "roberto@dicosmo.org"
 authors: [
-  "Roberto Di Cosmo"
-  "Ralf Treinen"
-  "Stefano Zacchiroli"
-  "Pietro Abate"
   "Jaap Boender"
   "Jakub Zwolakowski"
-  "Olivier Rosello"
   "Johannes Schauer"
+  "Olivier Rosello"
+  "Pietro Abate"
+  "Ralf Treinen"
+  "Roberto Di Cosmo"
+  "Stefano Zacchiroli"
 ]
+license: "LGPL-v3+ with OCaml linking exception"
 homepage: "http://www.mancoosi.org/software/"
 bug-reports: "https://gforge.inria.fr/tracker/?group_id=4395"
-license: "LGPL-v3+ with OCaml linking exception"
-dev-repo: "git+https://gforge.inria.fr/git/dose/dose.git"
+depends: [
+  "conf-perl" {build}
+  "cudf" {>= "0.7"}
+  ("extlib" {< "1.7.0"} | "extlib-compat" {< "1.7.0"})
+  "ocaml"
+  "ocamlbuild" {build}
+  "ocamlgraph" {= "1.8.5"}
+  "re" {>= "1.2.0"}
+]
+flags: light-uninstall
 build: [
   ["./configure" "--with-ocamlgraph" "--bindir=%{bin}%"]
   [make]
@@ -30,28 +42,18 @@ remove: [
     "%{bin}%/eclipsecheck"
   ]
 ]
-depends: [
-  "ocaml"
-  "ocamlgraph" {= "1.8.5"}
-  "cudf" {>= "0.7"}
-  "conf-perl" {build}
-  ("extlib" {< "1.7.0"} | "extlib-compat" {< "1.7.0"})
-  "re" {>= "1.2.0"}
-  "ocamlbuild" {build}
-]
 patches: [
   "0001-Removed-hard-failure-cases-in-favor-of-finer-diagnos.patch"
   "0002-ocamlgraph-1.8.6.diff" {ocamlgraph:version >= "1.8.6"}
 ]
 depexts: ["perl-Pod-Html"] {os-distribution = "fedora"}
-synopsis: "Dose library (part of Mancoosi tools)"
-flags: light-uninstall
+dev-repo: "git+https://gforge.inria.fr/git/dose/dose.git"
 extra-files: [
-  ["0002-ocamlgraph-1.8.6.diff" "md5=c44ed3dc7a5c5128089abf11278f042b"]
   [
     "0001-Removed-hard-failure-cases-in-favor-of-finer-diagnos.patch"
     "md5=2e396c572c4c0aee272bf2e342309a65"
   ]
+  ["0002-ocamlgraph-1.8.6.diff" "md5=c44ed3dc7a5c5128089abf11278f042b"]
 ]
 url {
   src: "https://gforge.inria.fr/frs/download.php/file/34277/dose3-3.3.tar.gz"

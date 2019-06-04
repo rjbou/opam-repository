@@ -1,19 +1,50 @@
 opam-version: "2.0"
 name: "bap"
 version: "0.9.4"
+synopsis: "Binary Analysis Platform"
+description: """
+BAP library provides basic facilities for performing binary
+analysis using OCaml, Python or other languages.
+
+BAP uses LLVM library as a disassembling backend, and provide facilities to
+parse files in ELF and DWARF formats."""
 maintainer: "Ivan Gotovchits <ivg@ieee.org>"
 authors: "BAP Team"
+license: "MIT"
 homepage: "https://github.com/BinaryAnalysisPlatform/bap/"
 bug-reports: "https://github.com/BinaryAnalysisPlatform/bap/issues"
-dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
-license: "MIT"
+depends: [
+  "base-unix"
+  "bitstring"
+  "camlzip"
+  "cmdliner"
+  "cohttp" {= "0.15.0"}
+  "conf-time"
+  "core_kernel" {= "111.28.0"}
+  "ezjsonm" {= "0.4.0"}
+  "faillib"
+  "fileutils"
+  "lwt"
+  "oasis" {build & >= "0.4.0" & < "0.4.7"}
+  "ocaml" {= "4.01"}
+  "ocamlbuild" {build}
+  "ocamlgraph"
+  "ocurl"
+  "re"
+  "uri"
+  "utop"
+  "zarith"
+]
+flags: light-uninstall
 build: [
-  ["./configure"
-                 "--prefix=%{prefix}%"
-                 "--with-cxx=`which clang++`"
-                 "--enable-docs"
-                 "--docdir=%{doc}%/bap"
-                 "--mandir=%{man}%"]
+  [
+    "./configure"
+    "--prefix=%{prefix}%"
+    "--with-cxx=`which clang++`"
+    "--enable-docs"
+    "--docdir=%{doc}%/bap"
+    "--mandir=%{man}%"
+  ]
   [make]
   [make "doc"]
 ]
@@ -22,7 +53,6 @@ install: [
   ["cp" "bapbuild" "%{bin}%/bapbuild"]
   ["cp" "baptop" "%{bin}%/baptop"]
 ]
-
 remove: [
   ["ocamlfind" "remove" "bap"]
   ["ocamlfind" "remove" "core_lwt"]
@@ -38,29 +68,6 @@ remove: [
   ["rm" "-f" "%{bin}%/bapbuild"]
   ["rm" "-f" "%{bin}%/baptop"]
 ]
-
-depends: [
-  "ocaml" {= "4.01"}
-  "base-unix"
-  "conf-time"
-  "bitstring"
-  "camlzip"
-  "cmdliner"
-  "cohttp" {= "0.15.0"}
-  "core_kernel" {= "111.28.0"}
-  "ezjsonm" {= "0.4.0"}
-  "faillib"
-  "fileutils"
-  "lwt"
-  "ocamlgraph"
-  "ocurl"
-  "re"
-  "uri"
-  "utop"
-  "zarith"
-  "ocamlbuild" {build}
-  "oasis" {build & >= "0.4.0" & < "0.4.7"}
-]
 depexts:
   [
     "libgmp-dev"
@@ -71,14 +78,7 @@ depexts:
     "llvm"
     "m4"
   ] {os-distribution = "ubuntu"}
-synopsis: "Binary Analysis Platform"
-description: """
-BAP library provides basic facilities for performing binary
-analysis using OCaml, Python or other languages.
-
-BAP uses LLVM library as a disassembling backend, and provide facilities to
-parse files in ELF and DWARF formats."""
-flags: light-uninstall
+dev-repo: "git://github.com/BinaryAnalysisPlatform/bap/"
 url {
   src: "https://github.com/BinaryAnalysisPlatform/bap/archive/v0.9.4.tar.gz"
   checksum: "md5=8b7081e41efa7dfdf0f363646ab119ce"

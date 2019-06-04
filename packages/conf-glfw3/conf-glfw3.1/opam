@@ -1,22 +1,27 @@
 opam-version: "2.0"
+name: "conf-glfw3"
+version: "1"
 synopsis: "Virtual package relying on a GLFW3 system installation"
-description: "This package can only install if libglfw3 is installed on the system."
+description:
+  "This package can only install if libglfw3 is installed on the system."
 maintainer: "Sylvain BOILARD <boilard@crans.org>"
-authors: ["Sylvain BOILARD <boilard@crans.org>"]
+authors: "Sylvain BOILARD <boilard@crans.org>"
+license: "Zlib"
 homepage: "http://www.glfw.org"
 bug-reports: "https://github.com/ocaml/opam-repository/issues"
-license: "Zlib"
-build: [["pkg-config" "glfw3"]]
-depends: ["conf-pkg-config" {build}]
-depexts: [
-  ["libglfw3-dev"] {os-distribution = "debian"}
-  ["libglfw3-dev"] {os-distribution = "ubuntu"}
-  ["glfw-devel" "epel-release"] {os-distribution = "centos"}
-  ["glfw-devel"] {os-distribution = "rhel"}
-  ["glfw-devel"] {os-distribution = "fedora"}
-  ["glfw-dev"] {os-distribution = "alpine"}
-  ["libglfw-devel"] {os-family = "suse"}
-  ["libglfw-devel"] {os-distribution = "mageia"}
-  ["glfw"] {os = "macos" & os-distribution = "homebrew"}
+depends: [
+  "conf-pkg-config" {build}
 ]
 flags: conf
+build: ["pkg-config" "glfw3"]
+depexts: [
+  ["glfw"] {os = "macos" & os-distribution = "homebrew"}
+  ["glfw-dev"] {os-distribution = "alpine"}
+  ["glfw-devel"] {os-distribution = "rhel"}
+  ["glfw-devel"] {os-distribution = "fedora"}
+  ["glfw-devel" "epel-release"] {os-distribution = "centos"}
+  ["libglfw-devel"] {os-family = "suse"}
+  ["libglfw-devel"] {os-distribution = "mageia"}
+  ["libglfw3-dev"] {os-distribution = "debian"}
+  ["libglfw3-dev"] {os-distribution = "ubuntu"}
+]

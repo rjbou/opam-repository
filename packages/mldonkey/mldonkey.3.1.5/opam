@@ -1,21 +1,6 @@
 opam-version: "2.0"
-maintainer: "ygrek@autistici.org"
-homepage: "http://mldonkey.sourceforge.net/"
-license: "GPL-2"
-build: [
-  ["./configure" "--enable-debug" "--prefix" prefix]
-  [make]
-]
-depends: [
-  "ocaml" {>= "3.10.1" & < "4.02.0"}
-  "camlp4"
-  "num"
-]
-depexts: [
-  ["zlib1g-dev"] {os-distribution = "ubuntu"}
-  ["zlib1g-dev"] {os-distribution = "debian"}
-]
-install: [make "install"]
+name: "mldonkey"
+version: "3.1.5"
 synopsis: "Cross-platform multi-network peer-to-peer daemon"
 description: """
 Supported networks include:
@@ -25,6 +10,23 @@ Supported networks include:
  * HTTP/FTP
 MLdonkey core runs as a background daemon and provides several control
 interfaces : telnet, web, and binary protocol for third party GUIs."""
+maintainer: "ygrek@autistici.org"
+license: "GPL-2"
+homepage: "http://mldonkey.sourceforge.net/"
+depends: [
+  "camlp4"
+  "num"
+  "ocaml" {>= "3.10.1" & < "4.02.0"}
+]
+build: [
+  ["./configure" "--enable-debug" "--prefix" prefix]
+  [make]
+]
+install: [make "install"]
+depexts: [
+  ["zlib1g-dev"] {os-distribution = "ubuntu"}
+  ["zlib1g-dev"] {os-distribution = "debian"}
+]
 extra-files: ["mldonkey.install" "md5=2e7066252014134777257e08af460045"]
 url {
   src:

@@ -1,19 +1,21 @@
 opam-version: "2.0"
+name: "dolog"
+version: "0.1"
+synopsis: "the dumb ocaml logger"
 maintainer: "unixjunkie@sdf.org"
+depends: [
+  "ocaml" {< "4.06.0"}
+  "ocamlbuild" {build}
+  "ocamlfind"
+]
+flags: light-uninstall
 build: [
   ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
   ["ocaml" "setup.ml" "-build"]
 ]
-remove: [["ocamlfind" "remove" "dolog"]]
-depends: [
-  "ocaml" {< "4.06.0"}
-  "ocamlfind"
-  "ocamlbuild" {build}
-]
-dev-repo: "git://github.com/HappyCrow/dolog"
 install: ["ocaml" "setup.ml" "-install"]
-synopsis: "the dumb ocaml logger"
-flags: light-uninstall
+remove: ["ocamlfind" "remove" "dolog"]
+dev-repo: "git://github.com/HappyCrow/dolog"
 url {
   src: "https://github.com/HappyCrow/dolog/archive/v0.1.tar.gz"
   checksum: "md5=bfbf124228a756a9ee4cb069c2f53e64"

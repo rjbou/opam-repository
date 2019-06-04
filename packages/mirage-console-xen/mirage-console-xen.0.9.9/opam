@@ -1,20 +1,19 @@
 opam-version: "2.0"
+name: "mirage-console-xen"
+version: "0.9.9"
+synopsis: "A Mirage-compatible Console library for Xen"
 maintainer: "anil@recoil.org"
-tags: [
-  "org:mirage"
-  "org:xapi-project"
-]
-build: [make "xen-build"]
+tags: ["org:mirage" "org:xapi-project"]
 depends: [
-  "ocaml"
-  "ocamlfind"
+  "io-page-xen" {>= "0.9.9"}
   "mirage-types" {= "0.3.0"}
   "mirage-xen" {>= "0.9.9" & < "2.0.0"}
-  "io-page-xen" {>= "0.9.9"}
+  "ocaml"
+  "ocamlfind"
 ]
-dev-repo: "git://github.com/mirage/mirage-console"
+build: [make "xen-build"]
 install: [make "xen-install"]
-synopsis: "A Mirage-compatible Console library for Xen"
+dev-repo: "git://github.com/mirage/mirage-console"
 url {
   src: "https://github.com/mirage/mirage-console/archive/v0.9.9.tar.gz"
   checksum: "md5=9628ac0871182f5bc3ade47190edcdab"

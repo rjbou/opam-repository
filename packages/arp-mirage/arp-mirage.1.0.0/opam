@@ -1,36 +1,38 @@
 opam-version: "2.0"
+name: "arp-mirage"
+version: "1.0.0"
+synopsis: "Address Resolution Protocol for MirageOS"
 maintainer: "Hannes Mehnert <hannes@mehnert.org>"
-authors: ["Hannes Mehnert <hannes@mehnert.org>"]
+authors: "Hannes Mehnert <hannes@mehnert.org>"
+license: "ISC"
 homepage: "https://github.com/mirage/arp"
 doc: "https://mirage.github.io/arp/"
-dev-repo: "git+https://github.com/mirage/arp.git"
 bug-reports: "https://github.com/mirage/arp/issues"
-license: "ISC"
-synopsis: "Address Resolution Protocol for MirageOS"
 depends: [
-  "ocaml" {>= "4.04.2"}
-  "dune" {build & >= "1.0"}
-  "mirage-time-lwt"
-  "mirage-protocols-lwt" {< "2.0.0"}
-  "ethernet" {< "2.0.0"}
-  "lwt"
-  "duration"
-  "arp" {>= "1.0.0" & < "2.0.0"}
-  "logs"
-  "cstruct" {>= "2.2.0"}
-  "fmt" {with-test}
-  "mirage-vnetif" {with-test}
   "alcotest" {with-test}
+  "arp" {>= "1.0.0" & < "2.0.0"}
+  "cstruct" {>= "2.2.0"}
+  "dune" {build & >= "1.0"}
+  "duration"
+  "ethernet" {< "2.0.0"}
+  "fmt" {with-test}
+  "logs"
+  "lwt"
   "mirage-clock-unix" {with-test}
+  "mirage-protocols-lwt" {< "2.0.0"}
   "mirage-random" {with-test}
   "mirage-random-test" {with-test}
+  "mirage-time-lwt"
   "mirage-unix" {with-test}
+  "mirage-vnetif" {with-test}
+  "ocaml" {>= "4.04.2"}
 ]
 build: [
   ["dune" "subst"] {pinned}
   ["dune" "build" "-p" name "-j" jobs]
   ["dune" "runtest" "-p" name "-j" jobs] {with-test}
 ]
+dev-repo: "git+https://github.com/mirage/arp.git"
 url {
   src:
     "https://github.com/mirage/arp/releases/download/v1.0.0/arp-v1.0.0.tbz"

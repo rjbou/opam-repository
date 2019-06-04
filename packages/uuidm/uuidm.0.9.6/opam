@@ -1,27 +1,6 @@
 opam-version: "2.0"
-maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
-authors: ["Daniel Bünzli <daniel.buenzl i@erratique.ch>"]
-homepage: "http://erratique.ch/software/uuidm"
-doc: "http://erratique.ch/software/uuidm/doc/Uuidm"
-dev-repo: "git+http://erratique.ch/repos/uuidm.git"
-bug-reports: "https://github.com/dbuenzli/uuidm/issues"
-tags: [ "uuid" "codec" "org:erratique" ]
-license: "ISC"
-depends: [
-  "ocaml" {>= "4.01.0"}
-  "ocamlfind" {build}
-  "ocamlbuild" {build}
-  "topkg" {build}
-  "base-bytes"
-]
-depopts: [
-  "cmdliner"
-]
-conflicts: [ "cmdliner" {< "0.9.8"} ]
-build:
-[  "ocaml" "pkg/pkg.ml" "build"
-           "--pinned" "%{pinned}%"
-           "--with-cmdliner" "%{cmdliner:installed}%" ]
+name: "uuidm"
+version: "0.9.6"
 synopsis: "Universally unique identifiers (UUIDs) for OCaml"
 description: """
 Uuidm is an OCaml module implementing 128 bits universally unique
@@ -31,6 +10,34 @@ identifiers version 3, 5 (named based with MD5, SHA-1 hashing) and 4
 Uuidm has no dependency and is distributed under the ISC license.
 
 [rfc4122]: http://tools.ietf.org/html/rfc4122"""
+maintainer: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+authors: "Daniel Bünzli <daniel.buenzl i@erratique.ch>"
+license: "ISC"
+tags: ["codec" "org:erratique" "uuid"]
+homepage: "http://erratique.ch/software/uuidm"
+doc: "http://erratique.ch/software/uuidm/doc/Uuidm"
+bug-reports: "https://github.com/dbuenzli/uuidm/issues"
+depends: [
+  "base-bytes"
+  "ocaml" {>= "4.01.0"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+]
+depopts: ["cmdliner"]
+conflicts: [
+  "cmdliner" {< "0.9.8"}
+]
+build: [
+  "ocaml"
+  "pkg/pkg.ml"
+  "build"
+  "--pinned"
+  "%{pinned}%"
+  "--with-cmdliner"
+  "%{cmdliner:installed}%"
+]
+dev-repo: "git+http://erratique.ch/repos/uuidm.git"
 url {
   src: "http://erratique.ch/software/uuidm/releases/uuidm-0.9.6.tbz"
   checksum: "md5=98ef30cd99ad4e4f7b4c33affa19465b"
