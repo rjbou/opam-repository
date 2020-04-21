@@ -1,0 +1,40 @@
+opam-version: "2.0"
+maintainer: "opam-devel@lists.ocaml.org"
+authors: [
+  "Vincent Bernardoff <vb@luminar.eu.org>"
+  "Raja Boujbel <raja.boujbel@ocamlpro.com>"
+  "Roberto Di Cosmo <roberto@dicosmo.org>"
+  "Thomas Gazagnaire <thomas@gazagnaire.org>"
+  "Louis Gesbert <louis.gesbert@ocamlpro.com>"
+  "Fabrice Le Fessant <Fabrice.Le_fessant@inria.fr>"
+  "Anil Madhavapeddy <anil@recoil.org>"
+  "Guillem Rieu <guillem.rieu@ocamlpro.com>"
+  "Ralf Treinen <ralf.treinen@pps.jussieu.fr>"
+  "Frederic Tuong <tuong@users.gforge.inria.fr>"
+]
+homepage: "https://opam.ocaml.org/"
+bug-reports: "https://github.com/ocaml/opam/issues"
+depends: [
+  "ocaml" {>= "4.02.3"}
+  "opam-format" {= "2.1.0~alpha"}
+  "mccs" {>= "1.1+9"}
+  "dose3" {>= "5"}
+  "cudf" {>= "0.7"}
+  "dune" {build & >= "1.2.1"}
+]
+depopts: ["z3"]
+conflicts: [
+  "z3" {< "4.8.4"}
+]
+build: [
+  ["./configure" "--disable-checks" "--prefix" prefix]
+  [make "%{name}%.install"]
+]
+dev-repo: "git+https://github.com/ocaml/opam.git"
+url {
+  src: "https://github.com/ocaml/opam/archive/2.1.0-alpha.tar.gz"
+  checksum: [
+    "md5=264e6b5ac2b86e60bf9b8f2e24a88db5"
+    "sha512=9b87de35bcb79993b3eb251e0840f48dc772e64b4f01af90a7356790ae589a8572fb1e5cb52ce89250d8dcc5fd6e80242127a83aedc9ef05e247e687b38b343a"
+  ]
+}
