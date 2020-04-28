@@ -1,0 +1,24 @@
+opam-version: "2.0"
+maintainer: "Magnus Valle <mvalle@trøll.com>"
+authors: "Magnus Valle <mvalle@trøll.com>"
+license: "MIT"
+homepage: "https://github.com/mvalle/ocaml-ofx"
+bug-reports: "https://github.com/mvalle/ocaml-ofx/issues"
+depends: [
+  "ocaml" {>= "4.02.0"}
+  "ocamlfind" {build}
+  "xml-light"
+  "ounit"
+]
+flags: light-uninstall
+build: make
+install: [make "install" "PREFIX=%{prefix}%"]
+remove: ["ocamlfind" "remove" "ofx"]
+dev-repo: "git+https://github.com/mvalle/ocaml-ofx.git"
+url {
+  src: "https://github.com/mvalle/ocaml-ofx/archive/ofx.0.1.5.zip"
+  checksum: [
+    "md5=ac7edcda7c272ca5c83ea8bc2f7a3009"
+    "sha512=fa72e9a8a07284a2b37afe66761631e407718248a954e82540ce42310426234c10fa5b1adcb2e77326e0d69f246c8e0662895130ca50f933ab26ef662a4bee44"
+  ]
+}
