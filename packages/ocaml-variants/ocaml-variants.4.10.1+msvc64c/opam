@@ -1,0 +1,30 @@
+opam-version: "2.0"
+synopsis: "Pre-compiled 4.10.1 release for AppVeyor (msvc64)"
+maintainer: "platform@lists.ocaml.org"
+authors: "Xavier Leroy and many contributors"
+homepage: "https://ocaml.org"
+bug-reports: "https://github.com/fdopen/opam-repository-mingw/issues"
+dev-repo: "git+https://github.com/ocaml/ocaml"
+depends: [
+  "ocaml" {= "4.10.1" & post}
+  "base-unix" {post}
+  "base-bigarray" {post}
+  "base-threads" {post}
+]
+conflict-class: "ocaml-core-compiler"
+flags: compiler
+setenv: [
+  [OCAMLLIB = "%{prefix}%/lib/ocaml"]
+  [CAML_LD_LIBRARY_PATH = "%{lib}%/stublibs"]
+  [CC = "cl.exe"]
+]
+build: [
+  ["sed" "-i" "s#@PREFIX@#%{prefix}%#g" "lib/ocaml/ld.conf"]
+  ["sed" "-i" "s#@PREFIX@#%{prefix}%#g" "lib/ocaml/Makefile.config"]
+]
+install: ["dash.exe" "install.sh" prefix]
+url {
+  src:
+    "https://github.com/fdopen/ocaml/releases/download/4.10.1-2/4.10.1+msvc64c2.tar.xz"
+  checksum: "sha512=dcea5363900542f7678f0722bfa084230ec90b994bf3124856b8016eab25957002a3e47fc62138b26f0762852bb34e04a9ea51f30c09807cda57a5ec224d78a7"
+}

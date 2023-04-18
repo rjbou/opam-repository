@@ -11,13 +11,13 @@ dev-repo: "git+https://github.com/mirage/ocaml-base64.git"
 depends: [
   "ocaml"
   "base-bytes"
-  "jbuilder" {build & >= "1.0+beta10"}
+  "jbuilder" {>= "1.0+beta10"}
   "bos" {with-test}
   "rresult" {with-test}
   "alcotest" {with-test & >= "0.4.0"}
 ]
 build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "subst" "-p" name] {dev}
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name] {with-test}
 ]

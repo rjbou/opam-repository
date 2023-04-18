@@ -1,0 +1,16 @@
+--- ./src/int_math_stubs.c
++++ ./src/int_math_stubs.c
+@@ -43,7 +43,13 @@
+ static uint64_t __inline __builtin_ctzll(uint64_t x)
+ {
+   int r = 0;
++#ifdef _WIN64
+   _BitScanReverse64(&r, x);
++#else
++  if (_BitScanReverse(&r, (unsigned long)(x>>32)))
++    return (r + 32);
++  _BitScanReverse(&r, (unsigned long)x);
++#endif
+   return r;
+ }
+ 

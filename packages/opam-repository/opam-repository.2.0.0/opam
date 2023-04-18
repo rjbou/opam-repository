@@ -1,5 +1,6 @@
 opam-version: "2.0"
 maintainer: "opam-devel@lists.ocaml.org"
+license: "LGPL-2.1-only WITH OCaml-LGPL-linking-exception"
 authors: [
   "Vincent Bernardoff <vb@luminar.eu.org>"
   "Raja Boujbel <raja.boujbel@ocamlpro.com>"
@@ -16,15 +17,15 @@ homepage: "https://opam.ocaml.org/"
 bug-reports: "https://github.com/ocaml/opam/issues"
 dev-repo: "git+https://github.com/ocaml/opam.git"
 build: [
-  ["./configure" "--disable-checks" "--prefix" prefix]
+  ["env" "CI=" "./configure" "--disable-checks" "--prefix" prefix]
   [make "%{name}%.install"]
 ]
 depends: [
   "ocaml" {>= "4.02.3"}
   "opam-format" {= "2.0.0"}
-  "jbuilder" {build & >= "1.0+beta17"}
+  "jbuilder" {>= "1.0+beta17"}
 ]
-synopsis: "opam 2.0 development libraries"
+synopsis: "Repository library for opam 2.0"
 description: """
 This library includes repository and remote sources handling, including
 curl/wget, rsync, git, mercurial, darcs backends."""

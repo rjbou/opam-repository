@@ -21,6 +21,9 @@ depends: [
   "ocamlbuild"
 ]
 patches: ["cppo-1.3.1.patch" {os="win32"}]
+conflicts: [
+  "cppo_ocamlbuild"
+]
 synopsis: "Equivalent of the C preprocessor for OCaml programs"
 flags: light-uninstall
 extra-files: [

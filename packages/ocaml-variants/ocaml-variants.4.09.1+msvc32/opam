@@ -1,0 +1,45 @@
+opam-version: "2.0"
+synopsis: "OCaml 4.09.1 (msvc32)"
+maintainer: "platform@lists.ocaml.org"
+authors: "Xavier Leroy and many contributors"
+homepage: "https://ocaml.org"
+bug-reports: "https://github.com/fdopen/opam-repository-mingw/issues"
+dev-repo: "git+https://github.com/ocaml/ocaml"
+depends: [
+  "ocaml" {= "4.09.1" & post}
+  "base-unix" {post}
+  "base-bigarray" {post}
+  "base-threads" {post}
+]
+conflict-class: "ocaml-core-compiler"
+flags: compiler
+setenv: [
+  [OCAMLLIB = "%{prefix}%/lib/ocaml"]
+  [CAML_LD_LIBRARY_PATH = "%{lib}%/stublibs"]
+  [CC = "cl.exe"]
+]
+build: [
+  ["./configure" "--prefix=%{prefix}%" "--host=i686-pc-windows"]
+  [make "SHELL=/bin/dash" "flexdll"]
+  [make "SHELL=/bin/dash" "-j%{jobs}%" "world.opt"]
+  [make "SHELL=/bin/dash" "flexlink.opt"]
+]
+install: [
+  [make "SHELL=/bin/dash" "install"]
+  ["dash" "-exc" "echo \"%{lib}%/stublibs\"  >> \"%{lib}%/ocaml/ld.conf\""]
+]
+patches: ["ocaml-4.09.1.patch" "inline-flexdll.patch"]
+url {
+  src: "https://github.com/ocaml/ocaml/archive/4.09.1.tar.gz"
+  checksum: "sha512=81fe1b14f4245b474ff8e3236b824c798d5134fbb143eef946bb38e66102a224ec7bf01b4a232f4cd7fc62e2ad5932ee190e70f5b6aac409d38fd8384ed6ee7c"
+}
+extra-source "ocaml-4.09.1.patch" {
+  src:
+    "https://gist.githubusercontent.com/fdopen/e071d078f117db434deac680d83e72a6/raw/fb849e51083f86b980e9cf895fbb32e2d6db33c2/ocaml-4.09.1.patch"
+  checksum: "sha512=8dfb0a100459443440928fd94d48a3058590ffa626d7bc50d14936c35d0f41ecd27b65cdbe613bab2c28762268ae4f6e6c3778341709a49702e67f2eda155ba0"
+}
+extra-source "inline-flexdll.patch" {
+  src:
+    "https://gist.githubusercontent.com/fdopen/afe3140904cc975cc9d2e4992e13d547/raw/3d8b647eb196a3174e6c6105881e5d6a4b8fa166/inline-flexdll.patch"
+  checksum: "sha512=1a5abdad64f222d7f6f201cdbc0c568c63892cf46fa587882d105e1c3e6f1ddae5e301460e0d6022ca73edfbe8cbc7baf9310930bafba50aedfe304031dc4496"
+}

@@ -1,6 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+maintainer: "Jane Street developers"
+authors: ["Jane Street Group, LLC"]
 homepage: "https://github.com/janestreet/core"
 bug-reports: "https://github.com/janestreet/core/issues"
 dev-repo: "git+https://github.com/janestreet/core.git"
@@ -9,7 +9,7 @@ build: [
   ["jbuilder" "build" "-p" name "-j" jobs]
 ]
 depends: [
-  "ocaml" {>= "4.04.1"}
+  "ocaml" {>= "4.04.1" & < "4.12.0"}
   "base" {>= "v0.10" & < "v0.11"}
   "configurator" {>= "v0.10" & < "v0.11"}
   "core_kernel" {>= "v0.10" & < "v0.11"}
@@ -20,8 +20,8 @@ depends: [
   "spawn" {>= "v0.10" & < "v0.11"}
   "stdio" {>= "v0.10" & < "v0.11"}
   "base-threads"
-  "jbuilder" {build & >= "1.0+beta12"}
-  "ocaml-migrate-parsetree" {>= "0.4"}
+  "jbuilder" {>= "1.0+beta12"}
+  "ocaml-migrate-parsetree" {>= "0.4" & < "2.0.0"}
 ]
 available: arch != "arm64" & os != "win32"
 synopsis: "Industrial strength alternative to OCaml's standard library"

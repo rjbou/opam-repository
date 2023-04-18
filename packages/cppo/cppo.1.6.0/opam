@@ -7,13 +7,13 @@ bug-reports: "https://github.com/mjambon/cppo/issues"
 license: "BSD-3-Clause"
 
 build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "subst" "-p" name] {dev}
   ["jbuilder" "build" "-p" name "-j" jobs]
   ["jbuilder" "runtest" "-p" name] {with-test & os != "win32"}
 ]
 depends: [
   "ocaml" {< "4.07.0"}
-  "jbuilder" {build & >= "1.0+beta10"}
+  "jbuilder" {>= "1.0+beta10"}
   "base-bytes"
   "base-unix"
 ]

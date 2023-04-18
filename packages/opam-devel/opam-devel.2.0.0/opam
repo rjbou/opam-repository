@@ -1,5 +1,6 @@
 opam-version: "2.0"
 maintainer: "opam-devel@lists.ocaml.org"
+license: "LGPL-2.1-only WITH OCaml-LGPL-linking-exception"
 authors: [
   "Vincent Bernardoff <vb@luminar.eu.org>"
   "Raja Boujbel <raja.boujbel@ocamlpro.com>"
@@ -18,13 +19,12 @@ dev-repo: "git+https://github.com/ocaml/opam.git"
 build: [
   ["./configure" "--disable-checks" "--prefix" prefix]
   [make "%{name}%.install"]
-  [make "tests"] {with-test}
 ]
 depends: [
   "ocaml" {>= "4.02.3"}
   "opam-client" {= "2.0.0"}
   "cmdliner" {>= "0.9.8"}
-  "jbuilder" {build & >= "1.0+beta20"}
+  "jbuilder" {>= "1.0+beta20"}
 ]
 post-messages: [
 "The development version of opam has been successfuly compiled into %{lib}%/%{name}%. You should not run it from there, please install the binaries to your PATH, e.g. with
@@ -34,7 +34,7 @@ If you just want to give it a try without altering your current installation, yo
     alias opam2=\"OPAMROOT=~/.opam2 %{lib}%/%{name}%/opam\""
   {success}
 ]
-synopsis: "opam 2.0.0 development version"
+synopsis: "Bootstrapped development binary for opam 2.0"
 description: """
 This package compiles (bootstraps) opam 2.0.0. For consistency and safety of the
 installation, the binaries are not installed into the PATH, but into
@@ -43,3 +43,4 @@ url {
   src: "https://github.com/ocaml/opam/archive/2.0.0-rc4.tar.gz"
   checksum: "md5=385612adf8733f6816cfcbc39e3e1b50"
 }
+available: os != "win32"

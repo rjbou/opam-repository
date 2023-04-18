@@ -1,0 +1,11 @@
+--- ./Makefile
++++ ./Makefile
+@@ -14,7 +14,7 @@
+ LIBDIR=$(DESTDIR)$(PREFIX)/lib/ocaml/cmdliner
+ DOCDIR=$(DESTDIR)$(PREFIX)/share/doc/cmdliner
+ NATIVE=$(shell ocamlopt -version > /dev/null 2>&1 && echo true)
+-EXT_LIB=.a
++EXT_LIB:=$(shell ocamlc -config | awk -F '[\t\r ]+' '/^ext_lib:/ {print $$2}')
+ 
+ INSTALL=install
+ B=_build

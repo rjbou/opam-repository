@@ -1,6 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+maintainer: "Jane Street developers"
+authors: ["Jane Street Group, LLC"]
 homepage: "https://github.com/janestreet/base"
 bug-reports: "https://github.com/janestreet/base/issues"
 dev-repo: "git+https://github.com/janestreet/base.git"
@@ -10,7 +10,7 @@ build: [
 ]
 depends: [
   "ocaml" {>= "4.04.1" & < "4.07.0"}
-  "jbuilder" {build & >= "1.0+beta12"}
+  "jbuilder" {>= "1.0+beta12"}
   "sexplib" {>= "v0.10" & < "v0.11"}
 ]
 depopts: [
@@ -31,7 +31,7 @@ features such as I/O are not offered by Base. They are instead
 provided by companion libraries such as stdio:
 
   https://github.com/janestreet/stdio"""
-extra-files: ["base-v0.10.0.patch" "md5=36c7aa61a4e11b58fb180e04d4a25745"]
+extra-files: ["base-v0.10.0.patch" "md5=c0640707f86210397d741456b94916ac"]
 url {
   src:
     "https://ocaml.janestreet.com/ocaml-core/v0.10/files/base-v0.10.0.tar.gz"

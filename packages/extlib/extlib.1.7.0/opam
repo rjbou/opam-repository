@@ -1,10 +1,10 @@
 opam-version: "2.0"
 maintainer: "ygrek@autistici.org"
 homepage: "https://github.com/ygrek/ocaml-extlib"
-dev-repo: "git://github.com/ygrek/ocaml-extlib.git"
+dev-repo: "git+https://github.com/ygrek/ocaml-extlib.git"
 bug-reports: "https://github.com/ygrek/ocaml-extlib/issues"
-doc: ["http://ygrek.org.ua/p/extlib/doc/"]
-license: "LGPL-2.1 with OCaml linking exception"
+doc: ["https://ygrek.org/p/extlib/doc/"]
+license: "LGPL-2.1-only WITH OCaml-LGPL-linking-exception"
 authors: [
   "Nicolas Cannasse"
   "Brian Hurt"
@@ -21,7 +21,7 @@ authors: [
 ]
 build: [
   [make "minimal=1" "build"]
-  [make "test"] {with-test}
+  [make "test"] {with-test & ocaml:version < "4.06.0"}
   [make "doc"] {with-doc}
 ]
 install: [ [make "minimal=1" "install"] ]
@@ -29,7 +29,7 @@ remove: [
   ["ocamlfind" "remove" "extlib"]
 ]
 depends: [
-  "ocaml"
+  "ocaml" {< "4.12.0"}
   "ocamlfind" {build}
   "cppo" {build}
   "base-bytes" {build}
@@ -48,5 +48,5 @@ extra-files: [
 url {
   src: "https://github.com/ygrek/ocaml-extlib/archive/1.7.0.tar.gz"
   checksum: "md5=b50b02d9e40d35cc20c82d9c881a1bf6"
-  mirrors: "http://ygrek.org.ua/p/release/ocaml-extlib/extlib-1.7.0.tar.gz"
+  mirrors: "https://ygrek.org/p/release/ocaml-extlib/extlib-1.7.0.tar.gz"
 }

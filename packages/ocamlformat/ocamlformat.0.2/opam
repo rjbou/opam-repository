@@ -6,7 +6,7 @@ bug-reports: "https://github.com/ocaml-ppx/ocamlformat/issues"
 license: "MIT"
 dev-repo: "git+https://github.com/ocaml-ppx/ocamlformat.git"
 build: [
-  ["jbuilder" "subst" "-p" name] {pinned}
+  ["jbuilder" "subst" "-p" name] {dev}
   [make]
 ]
 depends: [
@@ -14,10 +14,11 @@ depends: [
   "base" {< "v0.10.0"}
   "base-unix"
   "cmdliner"
-  "jbuilder" {build}
-  "ocaml-migrate-parsetree" {>= "1.0.5"}
+  "cmdliner" {with-test & < "1.1.0"}
+  "jbuilder" {>= "1.0+beta7"}
+  "ocaml-migrate-parsetree" {>= "1.0.5" & < "2.0.0"}
   "ocamlformat_support" {= "0.1"}
-  "stdio"
+  "stdio" {< "v0.12"}
 ]
 synopsis: "Auto-formatter for OCaml code"
 description:

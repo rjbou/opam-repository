@@ -1,5 +1,5 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
+maintainer: "Jane Street developers"
 build: make
 remove: [["ocamlfind" "remove" "core"]]
 depends: [
@@ -17,9 +17,8 @@ depends: [
   "herelib" {= "109.12.00"}
   "ocamlbuild" {build}
 ]
-available: os != "win32"
+dev-repo: "git+https://github.com/janestreet/core"
 install: [make "install"]
-dev-repo: "git://github.com/janestreet/core"
 synopsis: "Industrial strength alternative to OCaml's standard library"
 description: """
 The Core suite of libraries is an industrial strength alternative to
@@ -30,3 +29,4 @@ url {
   src: "https://github.com/janestreet/core/archive/109.12.00.tar.gz"
   checksum: "md5=b885a11d7d1b1a7048d8c0e7e0eedc86"
 }
+available: os != "win32"

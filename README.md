@@ -1,63 +1,44 @@
-# opam mingw repository
+# opam-repository-mingw
 
-An opam repository for windows - including an experimental build of opam
-for windows (of course, you still need cygwin for nearly everything:
-a shell interpreter to run configure scripts, git, rsync, ...)
+[OCaml for Windows](https://fdopen.github.io/opam-repository-mingw/) was a fork of OCaml providing support for the mingw-w64 and MSVC ports of OCaml maintained by [@fdopen](https://github.com/fdopen).
 
-## Homepage
+Its deprecation was announced in [August 2021](https://fdopen.github.io/opam-repository-mingw/2021/02/26/repo-discontinued/) and it has received no updates since November 2022 in [696c4b2](https://github.com/fdopen/opam-repository-mingw/commit/696c4b27488b4b0d3ec3929dbe65565cb91764a1).
 
-There is now a small homepage with installation instructions and usage
-information: https://fdopen.github.io/opam-repository-mingw/ - and a
-[graphical installer](https://fdopen.github.io/opam-repository-mingw/installation/) that
-automates the steps listed below.
+OCaml's [setup-ocaml](https://github.com/ocaml/setup-ocaml) GitHub Action as well as other CI systems were still using [fdopen/opam-repository-mingw](https://github.com/fdopen/opam-repository-mingw) with [ocaml/opam-repository](https://github.com/ocaml/opam-repository) added to switch selections to provide newer packages. However, this was problematic when new releases require the constraints of existing packages to be updated.
 
-## Summary
+## Updates
 
-### Download
+This repository adds packages for OCaml 4.14.1 (released 19 Dec, 2022) and contains updates to _existing_ packages only to allow upstream opam-repository to be safely used, as constraints updated to deal with _new_ releases of packages are copied back to this repository.
 
-* [32-bit](https://github.com/fdopen/opam-repository-mingw/releases/download/0.0.0.1/opam32.tar.xz)
-* [64-bit](https://github.com/fdopen/opam-repository-mingw/releases/download/0.0.0.1/opam64.tar.xz)
+All new releases should be made to opam-repository only. This repository will only be periodically updated with constraint changes made in opam-repository. Issues and pull requests towards this goal are warmly welcomed!
 
-The archives contain native versions of opam, flexdll and aspcud. They
-are all not linked against cygwin1.dll, so you can use them with
-either the 32-bit or 64-bit version of cygwin.
+It is possible to use this repository with opam-repository. It's necessary to _add_ opam-repository to the repositories selections for the switches. It's important that opam-repository is at a _lower priority_ than opam-repository-mingw for existing packages, so it's better to use these lines in your `ocaml/setup-ocaml@v2` step than to issue `opam repo add` later:
 
-
-### Installation
-
-* First install [cygwin](https://cygwin.com/) and a few additionals
-  packages: rsync, patch, diffutils, curl, make, unzip, git, m4, perl.
-  And of course mingw64-i686-gcc-core and/or mingw64-x86_64-gcc-core.
-
-* If your logon name contains whitespace characters (e.g. 'Firstname
-  Lastname') or any other character that would require quoting inside
-  a unix shell or cmd.exe, follow the instructions at
-  https://www.cygwin.com/faq.html#faq.setup.name-with-space
-
-* Then proceed inside a cygwin shell:
-
-```bash
-$ tar -xf 'opam32.tar.xz' # or tar -xf 'opam64.tar.xz'
-$ bash opam32/install.sh  # --prefix /usr/foo, the default prefix is /usr/local
-                          # maybe you have to add /usr/local/bin to your PATH
-$ opam init default 'https://github.com/fdopen/opam-repository-mingw.git' --comp 4.03.0+mingw32 --switch 4.03.0+mingw32
-# or, if you prefer the 64-bit version - 'opam switch -a' will list other supported versions
-$ opam init default 'https://github.com/fdopen/opam-repository-mingw.git' --comp 4.03.0+mingw64 --switch 4.03.0+mingw64
-$ eval $(opam config env)
+```
+uses: ocaml/setup-ocaml@v2
+with:
+  opam-repositories: |
+    opam-repository-mingw: https://github.com/ocaml-opam/opam-repository-mingw.git#sunset
+    default: https://github.com/ocaml/opam-repository.git
 ```
 
-## Things to remember
+This is not the default in setup-ocaml at present because newer versions of packages may not contain required patches.
 
-* Add `/usr/i686-w64-mingw32/sys-root/mingw/bin` (or
-  `/usr/x86_64-w64-mingw32/sys-root/mingw/bin`) to your $PATH, if you
-  use
-  [depext-cygwinports](https://fdopen.github.io/opam-repository-mingw/depext-cygwin/)
+## What do I do when things are broken?
 
-* Consider to use windows symlinks inside cygwin: `export
-  CYGWIN='winsymlinks:native'`. Otherwise ocamlbuild and many build
-  and test scripts will create symlinks, that are only understood by
-  cygwin tools, but not by the OCaml compiler and other native windows
-  programs.  (Usually only adminstrators are allowed to create
-  symlinks. But you can change the default settings, see
-  [this post](https://cygwin.com/ml/cygwin/2013-05/msg00405.html) for
-  details)
+Please open an issue in the [issue tracker](https://github.com/ocaml-opam/opam-repository-mingw/issues)!
+
+If a version of a package isn't building, there are three possible remedies:
+
+- Previous versions of the package may have carried non-upstreamed patches in opam-repository-mingw. opam-repository's policy is not to carry such patches. In this case, the package actually doesn't work on Windows.
+  - opam-repository should be updated to have `os != "win32"` added to the `available` field for the package
+  - An issue on the package's upstream repo should be opened highlighting the need to upstream patches (or even a pull request with them!)
+  - The patches in opam-repository-mingw make changes which may not necessarily be accepted/acceptable upstream in their current form, so the issue may be a better starting point than simply taking a patch and opening a pull request for it (for example, the `utop` package contains patches which may require further work and review)
+- The package relies on environment changes in "OCaml for Windows". For example, the Zarith package works in "OCaml for Windows" because the compiler packages unconditionally set the `CC` environment variable. This change is both not particularly desirable change to upstream (it is _very_ confusing, for example, when working on the compiler itself) and also extremely difficult to upstream, so the fix here is instead to change the package's availability with `(os != "win32" | os-distribution = "cygwinports")` and constrain away OCaml 5 on Windows (`"ocaml" {< "5.0" | os != "win32"}`)
+- Package constraints on _existing packages_ need updating in ocaml-opam/opam-repository-mingw. For example, the release of ppxlib 0.29 required some existing packages to have upperbounds added.
+
+## Sunset
+
+[opam 2.2](https://github.com/ocaml/opam) offers full support for native Windows development. As part of the development of opam 2.2, opam-repository's compiler packages will be updated to enable native Windows opam switches without needing this repository.
+
+Packages should then be fixed upstream in the usual way with new releases providing Windows support, with the gradual aim of allowing all Windows users to use ocaml/opam-repository only and cease using this repository completely.

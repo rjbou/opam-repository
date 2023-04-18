@@ -1,6 +1,6 @@
 opam-version: "2.0"
-maintainer: "opensource@janestreet.com"
-authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+maintainer: "Jane Street developers"
+authors: ["Jane Street Group, LLC"]
 homepage: "https://github.com/ocaml/dune"
 bug-reports: "https://github.com/ocaml/dune/issues"
 dev-repo: "git+https://github.com/ocaml/dune.git"
@@ -34,7 +34,7 @@ several opam roots/switches simultaneously. This helps maintaining
 packages across several versions of OCaml and gives cross-compilation
 for free."""
 depends: [
-  "ocaml" {>= "4.02.3"}
+  "ocaml" {>= "4.02.3" & < "4.08.0"}
 ]
 extra-files: ["dune-1.1.1.patch" "md5=9d2c0f522e630bbf749be11b76e0235b"]
 url {

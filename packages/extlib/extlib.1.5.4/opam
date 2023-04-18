@@ -1,14 +1,14 @@
 opam-version: "2.0"
 maintainer: "ygrek@autistici.org"
 homepage: "http://code.google.com/p/ocaml-extlib"
-dev-repo: "git://github.com/ygrek/ocaml-extlib.git"
+dev-repo: "git+https://github.com/ygrek/ocaml-extlib.git"
 bug-reports: "https://github.com/ygrek/ocaml-extlib/issues"
 authors: [
   "Nicolas Cannasse"
   "Brian Hurt"
   "Yamagata Yoriyuki"
 ]
-license: "LGPL-2.1 with OCaml linking exception"
+license: "LGPL-2.1-only WITH OCaml-LGPL-linking-exception"
 doc: ["http://ocaml-extlib.googlecode.com/svn/doc/apiref/index.html"]
 build: [
   [make "all"]
@@ -34,5 +34,5 @@ url {
   src:
     "http://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ocaml-extlib/extlib-1.5.4.tar.gz"
   checksum: "md5=329041625309b9e49051e5b097a9185d"
-  mirrors: "http://ygrek.org.ua/p/release/ocaml-extlib/extlib-1.5.4.tar.gz"
+  mirrors: "https://ygrek.org/p/release/ocaml-extlib/extlib-1.5.4.tar.gz"
 }

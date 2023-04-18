@@ -1,0 +1,49 @@
+opam-version: "2.0"
+synopsis: "Fast, portable, and opinionated build system"
+description: """
+
+dune is a build system that was designed to simplify the release of
+Jane Street packages. It reads metadata from "dune" files following a
+very simple s-expression syntax.
+
+dune is fast, has very low-overhead, and supports parallel builds on
+all platforms. It has no system dependencies; all you need to build
+dune or packages using dune is OCaml. You don't need make or bash
+as long as the packages themselves don't use bash explicitly.
+
+dune supports multi-package development by simply dropping multiple
+repositories into the same directory.
+
+It also supports multi-context builds, such as building against
+several opam roots/switches simultaneously. This helps maintaining
+packages across several versions of OCaml and gives cross-compilation
+for free.
+"""
+maintainer: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+authors: ["Jane Street Group, LLC <opensource@janestreet.com>"]
+license: "MIT"
+homepage: "https://github.com/ocaml/dune"
+doc: "https://dune.readthedocs.io/"
+bug-reports: "https://github.com/ocaml/dune/issues"
+depends: [
+  "ocaml" {>= "4.02" & < "4.07"}
+  "base-unix"
+  "base-threads"
+]
+conflicts: [
+  "dune-configurator" {< "2.3.0"}
+  "odoc" {< "1.3.0"}
+  "dune-release" {< "1.3.0"}
+  "jbuilder" {= "transition"}
+]
+dev-repo: "git+https://github.com/ocaml/dune.git"
+build: [
+ ["sh" "build.sh"]
+]
+available: os = "win32"
+url {
+  src: "https://github.com/fdopen/dune/releases/download/2.5.1/dune.2.5.1.tar.xz"
+  checksum: [
+    "sha512=1dd737355dd3bbc7e04f452f7930a4cfebce857757394559784b2669d945512ffc5163f405aafbf9b5099325d22f21529cbddd76b81530118e21d17008c75375"
+  ]
+}

@@ -14,6 +14,7 @@ build: [
     man
     "-config"
     "%{lib}%/findlib.conf"
+    "-no-camlp4" {!ocaml:preinstalled & ocaml:version >= "4.02.0"}
     "-no-topfind" {ocaml:preinstalled}
   ]
   [make "all"]
@@ -32,6 +33,7 @@ remove: [
     man
     "-config"
     "%{lib}%/findlib.conf"
+    "-no-camlp4" {!ocaml:preinstalled & ocaml:version >= "4.02.0"}
     "-no-topfind" {ocaml:preinstalled}
   ]
   [make "uninstall"]
@@ -42,6 +44,7 @@ depends: [
   "num" {= "0"}
 ]
 patches: [
+ "no-awk-check.patch"
  "findlib-1.6.1.patch" { os = "win32" }
  "normdir.patch" { os = "win32" }
 ]
@@ -57,9 +60,11 @@ extra-files: [
   ["ocamlfind.install" "md5=06f2c282ab52d93aa6adeeadd82a2543"]
   ["normdir.patch" "md5=43265063ebb085874f60c3d1f732328d"]
   ["findlib-1.6.1.patch" "md5=1ab7c9d9667aee45a167a49c9e3e4ace"]
+  ["no-awk-check.patch" "md5=0378123bf1a45fccdea434c053ddb687"]
 ]
 url {
   src: "http://download.camlcity.org/download/findlib-1.6.1.tar.gz"
   checksum: "md5=50a900451dbaa67c6985a09c905f94a7"
   mirrors: "http://download2.camlcity.org/download/findlib-1.6.1.tar.gz"
 }
+depopts: ["graphics"]

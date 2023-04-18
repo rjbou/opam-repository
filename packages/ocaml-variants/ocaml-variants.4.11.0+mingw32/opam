@@ -1,0 +1,46 @@
+opam-version: "2.0"
+synopsis: "OCaml 4.11.0 (mingw32)"
+maintainer: "platform@lists.ocaml.org"
+authors: "Xavier Leroy and many contributors"
+homepage: "https://ocaml.org"
+bug-reports: "https://github.com/fdopen/opam-repository-mingw/issues"
+dev-repo: "git+https://github.com/ocaml/ocaml"
+depends: [
+  "ocaml" {= "4.11.0" & post}
+  "base-unix" {post}
+  "base-bigarray" {post}
+  "base-threads" {post}
+]
+conflict-class: "ocaml-core-compiler"
+flags: compiler
+setenv: [
+  [OCAMLLIB = "%{prefix}%/lib/ocaml"]
+  [CAML_LD_LIBRARY_PATH = "%{lib}%/stublibs"]
+  [CC = "i686-w64-mingw32-gcc.exe"]
+  [CPP = "i686-w64-mingw32-cpp.exe"]
+]
+build: [
+  ["./configure" "--prefix=%{prefix}%" "--host=i686-w64-mingw32" "CC=i686-w64-mingw32-gcc" "CPP=i686-w64-mingw32-cpp"]
+  [make "SHELL=/bin/dash" "flexdll"]
+  [make "SHELL=/bin/dash" "-j%{jobs}%" "world.opt"]
+  [make "SHELL=/bin/dash" "flexlink.opt"]
+]
+install: [
+  [make "SHELL=/bin/dash" "install"]
+  ["dash" "-exc" "echo \"%{lib}%/stublibs\"  >> \"%{lib}%/ocaml/ld.conf\""]
+]
+patches: ["ocaml-4.11.0+beta2.patch" "inline-flexdll.patch"]
+url {
+  src: "https://github.com/ocaml/ocaml/archive/4.11.0.tar.gz"
+  checksum: "sha512=9cb1025d009adff7b6fff247ec53998401919833784bb668cea56980082a60aa51d01c067bebe6afefb52a574a2b8e242a79e62d410f78fb68af1b27fe5b6166"
+}
+extra-source "ocaml-4.11.0+beta2.patch" {
+  src:
+    "https://gist.githubusercontent.com/fdopen/005b770a365e0dcdcf702c9eff54e34a/raw/e43272c4a55f39cfdb496ac8a2710de33a426b8f/ocaml-4.11.0+beta2.patch"
+  checksum: "sha512=a0abe3ca5c24726ab9616c8a09ff1ed819ce63f89315bda4f6c7759d8d0dc60ef3efab999ada910d8160c86c2b28eeaef6fbc5d241a2ad7f770d2565aa1d7fb7"
+}
+extra-source "inline-flexdll.patch" {
+  src:
+    "https://gist.githubusercontent.com/fdopen/fdc645a61a208552ebac76a67eafd3ee/raw/9f521e91c8f0e9490652651ccdbfae88da701919/inline-flexdll.patch"
+  checksum: "sha512=c62b6725b14e37f7d98e45c3c7308dacb292830bac293eb4b13fe3b1f0cfc035a14315433cf58defd485845e5cb738f7d1f050b416a0052b176d5b276e40a560"
+}

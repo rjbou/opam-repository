@@ -16,6 +16,7 @@ build: [
     man
     "-config"
     "%{lib}%/findlib.conf"
+    "-no-camlp4" {!ocaml:preinstalled & ocaml:version >= "4.02.0"}
     "-no-topfind" {ocaml:preinstalled}
   ]
   [make "all"]
@@ -35,17 +36,18 @@ remove: [
     man
     "-config"
     "%{lib}%/findlib.conf"
+    "-no-camlp4" {!ocaml:preinstalled & ocaml:version >= "4.02.0"}
     "-no-topfind" {ocaml:preinstalled}
   ]
   [make "uninstall"]
 ]
+patches: [ "no-awk-check.patch" "findlib-1.6.2.patch" {os = "win32"} ]
 depends: [
   "ocaml" {>= "3.12.0" & < "4.07"}
   "conf-m4" {build}
   "num" {= "0"}
 ]
 authors: "Gerd Stolpmann <gerd@gerd-stolpmann.de>"
-patches: "findlib-1.6.2.patch" {os = "win32"}
 synopsis: "A library manager for OCaml"
 description: """
 Findlib is a library manager for OCaml. It provides a convention how
@@ -56,6 +58,7 @@ in programs and scripts."""
 extra-files: [
   ["ocamlfind.install" "md5=06f2c282ab52d93aa6adeeadd82a2543"]
   ["findlib-1.6.2.patch" "md5=43b54ac43e97f92ad1199e1c5244ff4e"]
+  ["no-awk-check.patch" "md5=0378123bf1a45fccdea434c053ddb687"]
 ]
 url {
   src: "http://download.camlcity.org/download/findlib-1.6.2.tar.gz"
@@ -63,3 +66,4 @@ url {
   mirrors:
     "http://gazagnaire.org/packages/ocamlfind.1.6.2/findlib-1.6.2.tar.gz"
 }
+depopts: ["graphics"]

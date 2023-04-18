@@ -11,12 +11,14 @@ build: [
 ]
 depends: [
   "ocaml" {>= "4.04.1"}
-  "base" {>= "v0.11.0"}
+  "base" {>= "v0.11.0" & < "v0.12"}
   "base-unix"
   "cmdliner"
-  "dune" {build}
-  "ocaml-migrate-parsetree" {>= "1.0.10"}
-  "stdio"
+  "cmdliner" {with-test & < "1.1.0"}
+  "dune"
+  "dune" {with-test & < "3.0"}
+  "ocaml-migrate-parsetree" {>= "1.0.10" & < "2.0.0"}
+  "stdio" {< "v0.12"}
 ]
 synopsis: "Auto-formatter for OCaml code"
 description:

@@ -1,5 +1,6 @@
 opam-version: "2.0"
 maintainer: "opam-devel@lists.ocaml.org"
+license: "LGPL-2.1-only WITH OCaml-LGPL-linking-exception"
 authors: [
   "Thomas Gazagnaire <thomas@gazagnaire.org>"
   "Anil Madhavapeddy   <anil@recoil.org>"
@@ -22,12 +23,12 @@ depends: [
   "opam-state" {= "2.0.0~rc"}
   "opam-solver" {= "2.0.0~rc"}
   "cmdliner" {>= "0.9.8"}
-  "jbuilder" {build & >= "1.0+beta12"}
+  "jbuilder" {>= "1.0+beta12"}
 ]
 conflicts: [
   "dune"
 ]
-synopsis: "opam 2.0 development libraries"
+synopsis: "Client library for opam 2.0"
 description:
   "Actions on the opam root, switches, installations, and front-end."
 url {
