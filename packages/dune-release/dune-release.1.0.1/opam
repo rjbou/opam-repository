@@ -23,8 +23,8 @@ depends: [
   "bos"
   "cmdliner" {< "1.1.0"}
   "re"
-  "opam-format"
-  "opam-state"
+  "opam-format" {< "2.2"}
+  "opam-state" {< "2.2"}
   "rresult"
   "logs"
   "odoc"

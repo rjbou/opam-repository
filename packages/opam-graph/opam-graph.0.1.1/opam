@@ -14,8 +14,8 @@ depends: [
   "cmdliner" {>= "1.1.0"}
   "fmt" {>= "0.8.7"}
   "logs"
-  "opam-core"
-  "opam-format" {>= "2.1.1"}
+  "opam-core" {< "2.2"}
+  "opam-format" {>= "2.1.1" & < "2.2"}
   "ocamldot"
   "tyxml" {>= "4.3.0"}
   "gg"

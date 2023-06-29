@@ -24,8 +24,8 @@ depends: [
   "opam-state" {< "2.1.0~rc"}
   "ocaml" {>= "4.08.0"}
   "0install-solver"
-  "opam-client" {with-test}
-  "opam-solver" {with-test}
+  "opam-client" {with-test & < "2.2"}
+  "opam-solver" {with-test & < "2.2"}
   "astring" {with-test}
   "alcotest" {with-test}
 ]

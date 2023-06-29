@@ -18,10 +18,10 @@ depends: [
   "cow" {= "2.3.0"}
   "js_of_ocaml" {>= "2.4.1" & < "3.3.0"}
   "js_of_ocaml-ppx"
-  "opam-core" {>= "2.0.0"}
-  "opam-format" {>= "2.0.0"}
-  "opam-state" {>= "2.0.0"}
-  "opam-client" {>= "2.0.0"}
+  "opam-core" {>= "2.0.0" & < "2.2"}
+  "opam-format" {>= "2.0.0" & < "2.2"}
+  "opam-state" {>= "2.0.0" & < "2.2"}
+  "opam-client" {>= "2.0.0" & < "2.2"}
   "cohttp-lwt-unix"
   "yojson" {>= "1.6.0"}
 ]

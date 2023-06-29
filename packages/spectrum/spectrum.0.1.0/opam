@@ -17,7 +17,7 @@ depends: [
   "utop" {dev}
   "ocp-indent" {dev}
   "ocaml-lsp-server" {dev}
-  "opam-format" {dev}
+  "opam-format" {dev & < "2.2"}
   "opam-publish" {dev}
   "dune-release" {dev}
   "odoc" {with-doc}

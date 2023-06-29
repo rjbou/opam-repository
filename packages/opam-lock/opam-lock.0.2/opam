@@ -9,7 +9,7 @@ depends: [
   "ocaml"
   "jbuilder" {>= "1.0+beta7"}
   "cmdliner" {>= "1.0"}
-  "opam-solver" {>= "2.0.0~beta5"}
+  "opam-solver" {>= "2.0.0~beta5" & < "2.2"}
   "opam-state" {>= "2.0.0~beta5" & < "2.1"}
 ]
 build: ["jbuilder" "build" "-p" name]
