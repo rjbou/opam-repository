@@ -18,7 +18,7 @@ depends: [
   "dune" {>= "1.0"}
   "tls-lwt" {>= "0.16.0"}
   "ocaml" {>= "4.08.0"}
-  "opam-core" {>= "2.2.0" & < "2.5"}
+  "opam-core" {>= "2.2.0"}
   "opam-format" {>= "2.2.0"}
   "opam-state" {>= "2.2.0"}
   "github" {>= "4.3.2"}
@@ -29,9 +29,9 @@ build: ["dune" "build" "-p" name "-j" jobs]
 dev-repo: "git+https://github.com/ocaml/opam-publish.git"
 url {
   src:
-    "https://github.com/ocaml/opam-publish/releases/download/2.7.0/opam-publish-2.7.0.tar.gz"
+    "https://github.com/ocaml-opam/opam-publish/archive/refs/tags/2.7.0.tar.gz"
   checksum: [
-    "md5=65775620ef78d8f11ec3fbddd26ff5dd"
-    "sha512=4dca6f1f2e41c2be4d43ee7dde053287230cadd7f13fb90361b69744155e30eadc093f44ce1cdec2e22bd16238d10106f33271d193b5c2d32801669645d0ff93"
+    "md5=866d3c3a7b11ce137544a200f34f0698"
+    "sha512=396cdcbe81531531b6f9d0db45fb7186b47e1acf47c52c2c753452410102b15ec903389216112598c487fff190ed63dc35beaf3280f6386d7352ec40106e4b34"
   ]
 }
